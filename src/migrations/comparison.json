@@ -1,0 +1,288 @@
+[
+  {
+    "_id": "comparisonTable",
+    "_type": "comparisonTable",
+    "title": "Comparison Table",
+    "columns": [
+      {
+        "_key": "column_1",
+        "name": "OsDental"
+      },
+      {
+        "_key": "column_2",
+        "name": "Dental Intelligence"
+      },
+      {
+        "_key": "column_3",
+        "name": "Practise Analytics"
+      },
+      {
+        "_key": "column_4",
+        "name": "Jarvis Analytics"
+      }
+    ],
+    "rowCategories": [
+      {
+        "_key": "category_1",
+        "name": "Comprehensive Data Integration",
+        "rows": [
+          {
+            "_key": "row_1",
+            "heading": "Enterprise-Wide Data Aggregation",
+            "description": "Finance, Clinical, HRIS*, VOIP*, AI Systems*",
+            "comparisons": [
+              {
+                "_type": "reference",
+                "_key": 1,
+                "_ref": "Y29tcGFyaXNvblZhbHVlMQo"
+              },
+              {
+                "_type": "reference",
+                "_key": 2,
+                "_ref": "Y29tcGFyaXNvblZhbHVlNAo"
+              },
+              {
+                "_type": "reference",
+                "_key": 3,
+                "_ref": "Y29tcGFyaXNvblZhbHVlNAo"
+              },
+              {
+                "_type": "reference",
+                "_key": 4,
+                "_ref": "Y29tcGFyaXNvblZhbHVlNAo"
+              }
+            ]
+          },
+          {
+            "_key": "row_2",
+            "heading": "Cross Functional Analytics",
+            "description": "Cross Departmental Insights, From Patient Growth To Profitability",
+            "comparisons": [
+              {
+                "_type": "reference",
+                "_key": 1,
+                "_ref": "Y29tcGFyaXNvblZhbHVlMQo"
+              },
+              {
+                "_type": "reference",
+                "_key": 2,
+                "_ref": "Y29tcGFyaXNvblZhbHVlMwo"
+              },
+              {
+                "_type": "reference",
+                "_key": 3,
+                "_ref": "Y29tcGFyaXNvblZhbHVlNAo"
+              },
+              {
+                "_type": "reference",
+                "_key": 4,
+                "_ref": "Y29tcGFyaXNvblZhbHVlMwo"
+              }
+            ]
+          },
+          {
+            "_key": "row_3",
+            "heading": "Multi-Site Data Management",
+            "description": "DSO Data Management With Centralized And Granular Views",
+            "comparisons": [
+              {
+                "_type": "reference",
+                "_key": 1,
+                "_ref": "Y29tcGFyaXNvblZhbHVlMQo"
+              },
+              {
+                "_type": "reference",
+                "_key": 2,
+                "_ref": "Y29tcGFyaXNvblZhbHVlMgo"
+              },
+              {
+                "_type": "reference",
+                "_key": 3,
+                "_ref": "Y29tcGFyaXNvblZhbHVlMwo"
+              },
+              {
+                "_type": "reference",
+                "_key": 4,
+                "_ref": "Y29tcGFyaXNvblZhbHVlMQo"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "_key": "category_2",
+        "name": "Advanced Financial Analytics",
+        "rows": [
+          {
+            "_key": "row_4",
+            "heading": "Industry Standard DSO P&L Reporting",
+            "description": "Consolidated Financials Across Offices",
+            "comparisons": [
+              {
+                "_type": "reference",
+                "_key": 1,
+                "_ref": "Y29tcGFyaXNvblZhbHVlMQo"
+              },
+              {
+                "_type": "reference",
+                "_key": 2,
+                "_ref": "Y29tcGFyaXNvblZhbHVlNAo"
+              },
+              {
+                "_type": "reference",
+                "_key": 3,
+                "_ref": "Y29tcGFyaXNvblZhbHVlNAo"
+              },
+              {
+                "_type": "reference",
+                "_key": 4,
+                "_ref": "Y29tcGFyaXNvblZhbHVlNAo"
+              }
+            ]
+          },
+          {
+            "_key": "row_5",
+            "heading": "Customized Financial KPIs",
+            "description": "From Enterprise-Focused Metrics To Practice Budget/Performance Tracking",
+            "comparisons": [
+              {
+                "_type": "reference",
+                "_key": 1,
+                "_ref": "Y29tcGFyaXNvblZhbHVlMQo"
+              },
+              {
+                "_type": "reference",
+                "_key": 2,
+                "_ref": "Y29tcGFyaXNvblZhbHVlNAo"
+              },
+              {
+                "_type": "reference",
+                "_key": 3,
+                "_ref": "Y29tcGFyaXNvblZhbHVlNAo"
+              },
+              {
+                "_type": "reference",
+                "_key": 4,
+                "_ref": "Y29tcGFyaXNvblZhbHVlNAo"
+              }
+            ]
+          },
+          {
+            "_key": "row_6",
+            "heading": "Bank/Investor Level Financial Statement Automation",
+            "description": "Fast, Accurate And Industry Specific Financial Packets",
+            "comparisons": [
+              {
+                "_type": "reference",
+                "_key": 1,
+                "_ref": "Y29tcGFyaXNvblZhbHVlMQo"
+              },
+              {
+                "_type": "reference",
+                "_key": 2,
+                "_ref": "Y29tcGFyaXNvblZhbHVlNAo"
+              },
+              {
+                "_type": "reference",
+                "_key": 3,
+                "_ref": "Y29tcGFyaXNvblZhbHVlNAo"
+              },
+              {
+                "_type": "reference",
+                "_key": 4,
+                "_ref": "Y29tcGFyaXNvblZhbHVlNAo"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "_key": "category_3",
+        "name": "Enterprise Grade Clinical Analytics",
+        "rows": [
+          {
+            "_key": "row_7",
+            "heading": "Cross-Practice Comparisons",
+            "description": "Compare Clinical Performance Across Multiple Locations To A Granular Level",
+            "comparisons": [
+              {
+                "_type": "reference",
+                "_key": 1,
+                "_ref": "Y29tcGFyaXNvblZhbHVlMQo"
+              },
+              {
+                "_type": "reference",
+                "_key": 2,
+                "_ref": "Y29tcGFyaXNvblZhbHVlMwo"
+              },
+              {
+                "_type": "reference",
+                "_key": 3,
+                "_ref": "Y29tcGFyaXNvblZhbHVlMgo"
+              },
+              {
+                "_type": "reference",
+                "_key": 4,
+                "_ref": "Y29tcGFyaXNvblZhbHVlMgo"
+              }
+            ]
+          },
+          {
+            "_key": "row_8",
+            "heading": "Best Practices Highlights",
+            "description": "Understand Easily Your Leaders and Laggards For Practice Optimization",
+            "comparisons": [
+              {
+                "_type": "reference",
+                "_key": 1,
+                "_ref": "Y29tcGFyaXNvblZhbHVlMQo"
+              },
+              {
+                "_type": "reference",
+                "_key": 2,
+                "_ref": "Y29tcGFyaXNvblZhbHVlMgo"
+              },
+              {
+                "_type": "reference",
+                "_key": 3,
+                "_ref": "Y29tcGFyaXNvblZhbHVlMwo"
+              },
+              {
+                "_type": "reference",
+                "_key": 4,
+                "_ref": "Y29tcGFyaXNvblZhbHVlMQo"
+              }
+            ]
+          },
+          {
+            "_key": "row_9",
+            "heading": "Customized Departmental Views",
+            "description": "Specialty, RCM, Operations, Patient Care highlight what's important to you!",
+            "comparisons": [
+              {
+                "_type": "reference",
+                "_key": 1,
+                "_ref": "Y29tcGFyaXNvblZhbHVlMQo"
+              },
+              {
+                "_type": "reference",
+                "_key": 2,
+                "_ref": "Y29tcGFyaXNvblZhbHVlMgo"
+              },
+              {
+                "_type": "reference",
+                "_key": 3,
+                "_ref": "Y29tcGFyaXNvblZhbHVlMwo"
+              },
+              {
+                "_type": "reference",
+                "_key": 4,
+                "_ref": "Y29tcGFyaXNvblZhbHVlNAo"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

@@ -1,0 +1,58 @@
+{
+  "private": true,
+  "scripts": {
+    "build": "next build",
+    "dev": "next",
+    "format": "npx prettier --write . --ignore-path .gitignore",
+    "lint": "next lint -- --ignore-path .gitignore",
+    "lint:fix": "npm run format && npm run lint -- --fix",
+    "start": "next start",
+    "type-check": "tsc --noEmit"
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true
+  },
+  "dependencies": {
+    "@portabletext/editor": "^1.8.0",
+    "@portabletext/react": "3.0.11",
+    "@radix-ui/react-avatar": "^1.1.1",
+    "@sanity/client": "6.12.3",
+    "@sanity/demo": "1.0.2",
+    "@sanity/vision": "3.28.0",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.1",
+    "dotenv": "^16.4.7",
+    "framer-motion": "^11.11.15",
+    "lucide-react": "^0.454.0",
+    "next": "14.1.0",
+    "next-sanity": "5.5.11",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-slick": "^0.30.2",
+    "sanity": "3.28.0",
+    "sanity-plugin-iframe-pane": "2.6.1",
+    "sanity-plugin-media": "^2.3.2",
+    "slick-carousel": "^1.8.1",
+    "styled-components": "6.1.8",
+    "tailwind-merge": "^2.5.4",
+    "tailwindcss-animate": "^1.0.7"
+  },
+  "devDependencies": {
+    "@tailwindcss/typography": "^0.5.15",
+    "@types/react": "18.2.55",
+    "autoprefixer": "^10.4.17",
+    "eslint": "8.56.0",
+    "eslint-config-next": "14.1.0",
+    "eslint-plugin-simple-import-sort": "10.0.0",
+    "postcss": "^8.4.35",
+    "prettier": "3.2.5",
+    "prettier-plugin-packagejson": "2.4.10",
+    "prettier-plugin-tailwindcss": "0.5.11",
+    "tailwindcss": "^3.4.14",
+    "typescript": "5.3.3"
+  },
+  "engines": {
+    "node": ">=16"
+  }
+}

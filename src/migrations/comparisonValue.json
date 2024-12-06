@@ -1,0 +1,46 @@
+[
+    {
+        "_id": "Y29tcGFyaXNvblZhbHVlMQo",
+        "_type": "comparisonValue",
+        "icon": {
+            "_type": "image",
+            "asset": {
+                "_ref": "image-a6d996f53fc6e228504c19031668d73e2d510a25-33x33-png"
+            }
+        },
+        "text": "Advanced"
+    },
+    {
+        "_id": "Y29tcGFyaXNvblZhbHVlMgo",
+        "_type": "comparisonValue",
+        "icon": {
+            "_type": "image",
+            "asset": {
+                "_ref": "image-c7bd5a688ea9685ba264b143288895794f1b9ea4-34x31-png"
+            }
+        },
+        "text": "Intermediate"
+    },
+    {
+        "_id": "Y29tcGFyaXNvblZhbHVlMwo",
+        "_type": "comparisonValue",
+        "icon": {
+            "_type": "image",
+            "asset": {
+                "_ref": "image-c7bd5a688ea9685ba264b143288895794f1b9ea4-34x31-png"
+            }
+        },
+        "text": "Basic"
+    },
+    {
+        "_id": "Y29tcGFyaXNvblZhbHVlNAo",
+        "_type": "comparisonValue",
+        "icon": {
+            "_type": "image",
+            "asset": {
+                "_ref": "image-76a1fd27b9f82d74a9d4dc974ef0f96cf5a47117-31x32-png"
+            }
+        },
+        "text": "Does Not Exist"
+    }
+]

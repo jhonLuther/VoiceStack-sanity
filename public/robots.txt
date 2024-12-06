@@ -1,0 +1,5 @@
+User-agent: *
+Disallow:
+Disallow: /lp/
+Disallow: /legal/
+Sitemap: https://osdental-dev.vercel.app/
