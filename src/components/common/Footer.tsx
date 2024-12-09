@@ -53,8 +53,8 @@ const BottomSection = () => {
 const Footer = (props) => {
   const footerContent = {
     cta: {
-      name: props.homeSettings.bookBtnContent,
-      url: props.siteSettings.demoBtnUrl,
+      name: props.homeSettings?.bookBtnContent,
+      url: props.siteSettings?.demoBtnUrl,
     },
   }
   return (

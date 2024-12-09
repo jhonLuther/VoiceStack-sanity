@@ -18,45 +18,45 @@ const Content = (props: any) => {
 
   const cta = {
     url: siteSettings.demoBtnUrl,
-    name: homeSettings.bookBtnContent,
+    name: homeSettings?.bookBtnContent,
   }
 
   const heroSectionData = {
-    strip: homeSettings.heroStrip,
+    strip: homeSettings?.heroStrip,
     header: {
-      static: homeSettings.heroTitleStatic,
-      dynamic: homeSettings.heroTitleStaticDynamic,
+      static: homeSettings?.heroTitleStatic,
+      dynamic: homeSettings?.heroTitleStaticDynamic,
     },
-    description: homeSettings.heroDescription,
+    description: homeSettings?.heroDescription,
     cta,
   }
 
   const featureSectionData = {
     strip: 'FEATURES',
-    header: homeSettings.featureHeader,
-    featuresByCategory: homeSettings.selectedFeatures,
+    header: homeSettings?.featureHeader,
+    featuresByCategory: homeSettings?.selectedFeatures,
     cta,
   }
 
   const integrationsSectionData = {
     strip: 'More than 125 available integrations',
-    header: homeSettings.integrationHeader,
-    integrations: homeSettings.selectedIntegrations,
+    header: homeSettings?.integrationHeader,
+    integrations: homeSettings?.selectedIntegrations,
     pms: allPMS,
     cta,
   }
 
   const benefitSectionData = {
     strip: 'BENEFITS',
-    header: homeSettings.benefitHeader,
-    benefits: homeSettings.selectedBenefits,
+    header: homeSettings?.benefitHeader,
+    benefits: homeSettings?.selectedBenefits,
     cta,
   }
 
   const testimonialSectionData = {
     strip: 'testimonials',
-    header: homeSettings.testimonialHeader,
-    testimonials: homeSettings.selectedTestimonials,
+    header: homeSettings?.testimonialHeader,
+    testimonials: homeSettings?.selectedTestimonials,
     cta,
   }
 

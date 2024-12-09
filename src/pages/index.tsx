@@ -40,16 +40,14 @@ export default function IndexPage(
   props: InferGetStaticPropsType<typeof getStaticProps>,
 ) {
   return (
+
     <div>
-      test
+     <BookDemoContextProvider>
+        <Layout {...props}>
+           {/* <CustomHead {...props} /> */}
+          <Content {...props} />
+         </Layout>
+      </BookDemoContextProvider>
     </div>
-    // <div>
-    //   <BookDemoContextProvider>
-    //     <Layout {...props}>
-    //       {/* <CustomHead {...props} /> */}
-    //       <Content {...props} />
-    //     </Layout>
-    //   </BookDemoContextProvider>
-    // </div>
   )
 }
