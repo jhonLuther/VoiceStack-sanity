@@ -16,7 +16,8 @@ import runQuery from '~/utils/runQuery'
 import Section from '~/components/structure/Section'
 import HeroSection from '~/components/HeroSection'
 import FeatureSection from '~/components/features/FeatureSection'
-import LinkCards from '~/components/linkCards'
+import LinkCards from '~/components/LinkCards'
+import LogoListingSection from '~/components/LogoListingSection'
 
 export const getStaticProps: GetStaticProps<SharedPageProps> = async ({
   draftMode = false,
@@ -54,6 +55,7 @@ export default function IndexPage(
             
             <HeroSection></HeroSection>
             <LinkCards></LinkCards>
+            <LogoListingSection></LogoListingSection>
 
             <FeatureSection></FeatureSection>
           </div>

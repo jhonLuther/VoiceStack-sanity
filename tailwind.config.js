@@ -63,9 +63,11 @@ module.exports = {
   				'5': 'hsl(var(--chart-5))'
   			},
 				'vs-blue': '#4A3CE1',
+				'vs-lemon-green': '#B5EB92',
   		},
   		animation: {
-  			'shiny-text': 'shiny-text 8s infinite'
+  			'shiny-text': 'shiny-text 8s infinite',
+				pullUp: 'pullUp 0.1s linear forwards',
   		},
   		keyframes: {
   			'shiny-text': {
@@ -75,8 +77,14 @@ module.exports = {
   				'30%, 60%': {
   					'background-position': 'calc(100% + var(--shiny-width)) 0'
   				}
-  			}
+  			},
+				pullUp: {
+          '0%': { transform: 'translateY(20%)', opacity: '0' },
+          '50%': { opacity: '1' },
+          '100%': { transform: 'translateY(0)', opacity: '1' },
+        },
   		},
+			
 			backgroundImage: {
 			'hero-pattern': "url('/hero-background.webp')",
 			'grid-pattern': "url('/about-us.webp')",
@@ -84,7 +92,8 @@ module.exports = {
 			spacing: {
         'lg': '130px',
 				'md': '96px',
-				'sm': '64px' 
+				'sm': '64px',
+				'xs': '48px' 
       },
 			maxWidth: {
         '7xl': '1240px', // Define a custom max-width value
