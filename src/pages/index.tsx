@@ -18,6 +18,7 @@ import HeroSection from '~/components/HeroSection'
 import FeatureSection from '~/components/features/FeatureSection'
 import LinkCards from '~/components/LinkCards'
 import LogoListingSection from '~/components/LogoListingSection'
+import CardsListingSection from '~/components/CardsListingSection'
 
 export const getStaticProps: GetStaticProps<SharedPageProps> = async ({
   draftMode = false,
@@ -56,7 +57,7 @@ export default function IndexPage(
             <HeroSection></HeroSection>
             <LinkCards></LinkCards>
             <LogoListingSection></LogoListingSection>
-
+            <CardsListingSection></CardsListingSection>
             <FeatureSection></FeatureSection>
           </div>
          </Layout>

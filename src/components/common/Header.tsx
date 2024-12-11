@@ -14,35 +14,35 @@ const Header = (props) => {
     loginUrl: props.siteSettings?.loginBtnUrl || '',
   }
 
-  const headerRef = useRef(null)
+  // const headerRef = useRef(null)
 
   useEffect(() => {
-    const header = headerRef.current
+    // const header = headerRef.current
     const nextSection = document.querySelector('#hero-section')
 
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          header.classList.remove('bg-[#02024a]')
-          header.classList.add('backdrop-blur-sm')
-        } else {
-          header.classList.remove('backdrop-blur-sm')
-          header.classList.add('bg-[#02024a]')
-        }
-      },
-      { threshold: 0.1 }, // Trigger when 10% of the next section is visible
-    )
+    // const observer = new IntersectionObserver(
+    //   ([entry]) => {
+    //     if (entry.isIntersecting) {
+    //       header.classList.remove('bg-[#02024a]')
+    //       header.classList.add('backdrop-blur-sm')
+    //     } else {
+    //       header.classList.remove('backdrop-blur-sm')
+    //       header.classList.add('bg-[#02024a]')
+    //     }
+    //   },
+    //   { threshold: 0.1 }, // Trigger when 10% of the next section is visible
+    // )
 
-    if (nextSection) {
-      observer.observe(nextSection)
-    }
+    // if (nextSection) {
+    //   observer.observe(nextSection)
+    // }
 
-    return () => observer.disconnect()
+    // return () => observer.disconnect()
   }, [])
 
   return (
     <header
-      ref={headerRef}
+      // ref={headerRef}
       className="fixed top-0 left-0 w-full py-4 backdrop-blur-sm  transition-colors duration-300 z-50 flex flex-col items-center "
     >
       <Container className="justify-between">

@@ -46,7 +46,7 @@ const HeroSection = () => {
       }, 3000); // Pause before showing the next message
       return () => clearTimeout(messageInterval);
     }
-  }, [wordIndex, activeIndex, words.length]);
+  }, [wordIndex, activeIndex, words.length, messages.length]);
 
 
   return (

@@ -49,7 +49,7 @@ const LogoListingSection = () => {
             {logos && logos.length > 0 && (
               logos.map((logo:any)=>{
                 return(
-                  <Image src={logo.image} alt={logo.alt} title={logo.title} className='max-h-10 w-auto'></Image>
+                  <Image src={logo.image} alt={logo.alt} title={logo.title} className='max-h-10 w-auto' key={logo.alt}></Image>
                 )
               })
             )}
