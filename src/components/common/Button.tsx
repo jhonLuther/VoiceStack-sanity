@@ -6,6 +6,7 @@ interface ButtonProps {
   type?:
     | 'primary'
     | 'primaryWhite'
+    | 'video'
   alter?: 'bgWhite' | 'borderWhite' | 'disabled' | 'default'
   children?: React.ReactNode
   link?: any
@@ -29,13 +30,12 @@ const Button: React.FunctionComponent<ButtonProps> = ({
   // const customClasses = `bg-zinc-500 hover:bg-zinc-600 text-white`;
   const customClasses = clsx({
     'bg-vs-blue hover:bg-vs-blue text-white border border-vs-blue bg-vs-blue': type === 'primary',
-    'bg-white hover:bg-white text-blue-500 border border-white': type === 'primaryWhite'
+    'bg-white hover:bg-white text-blue-500 border border-white': type === 'primaryWhite',
+    'text-white border border-white/30': type === 'video'
   });
-  console.log(customClasses);
   
 
   const combinedClasses = clsx(baseClasses, customClasses, className);
-  console.log({combinedClasses});
   
 
   if (link) {
