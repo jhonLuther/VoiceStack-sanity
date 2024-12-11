@@ -6,6 +6,7 @@ import IntegrationSection from './IntegrationSection'
 import AboutUsSection from './AboutUsSection'
 import CustomerSection from './CustomerSection'
 import ComparisonSection from './ComparisonSection'
+import Section from './structure/Section'
 
 /*
   Idea is to use adaptors to connect sanity data and UI components.
@@ -81,15 +82,22 @@ const Content = (props: any) => {
   }
 
   return (
-    <div className="flex flex-col overflow-hidden">
-      <HeroSection data={heroSectionData} />
-      <FeatureSection data={featureSectionData} />
-      <IntegrationSection data={integrationsSectionData} />
-      <BenefitsSection data={benefitSectionData} />
-      <TestimonialSection data={testimonialSectionData} />
-      <ComparisonSection data={comparisonSectionData} />
-      <AboutUsSection data={aboutSectionData} />
-    </div>
+    // <div className="flex flex-col overflow-hidden">
+    //   <HeroSection data={heroSectionData} />
+    //   <FeatureSection data={featureSectionData} />
+    //   <IntegrationSection data={integrationsSectionData} />
+    //   <BenefitsSection data={benefitSectionData} />
+    //   <TestimonialSection data={testimonialSectionData} />
+    //   <ComparisonSection data={comparisonSectionData} />
+    //   <AboutUsSection data={aboutSectionData} />
+    // </div>
+    // <div className='global-wrapper'>
+    //   Hi
+    //   <Section>
+    //     <span>Hi</span>
+    //   </Section>
+    // </div>
+    <></>
   )
 }
 

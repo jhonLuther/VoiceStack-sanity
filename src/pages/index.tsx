@@ -13,6 +13,8 @@ import Layout from '../components/Layout'
 import CustomHead from '~/components/common/CustomHead'
 import BookDemoContextProvider from '~/providers/BookDemoProvider'
 import runQuery from '~/utils/runQuery'
+import Section from '~/components/structure/Section'
+import HeroSection from '~/components/HeroSection'
 
 export const getStaticProps: GetStaticProps<SharedPageProps> = async ({
   draftMode = false,
@@ -45,7 +47,15 @@ export default function IndexPage(
      <BookDemoContextProvider>
         <Layout {...props}>
            {/* <CustomHead {...props} /> */}
-          <Content {...props} />
+          {/* <Content {...props} /> */}
+          <div className='global-wrapper'>
+            
+            <HeroSection></HeroSection>
+
+            <Section className="px-5" childClass="py-4">
+              <span>Hi</span>
+            </Section>
+          </div>
          </Layout>
       </BookDemoContextProvider>
     </div>

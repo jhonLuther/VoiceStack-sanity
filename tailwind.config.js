@@ -11,9 +11,11 @@ module.exports = {
   ],
   theme: {
   	extend: {
-  		fontFamily: {
-  			sans: " 'Poppins', sans-serif"
-  		},
+  		
+			fontFamily: {
+				sans: ['Inter', 'sans-serif'],
+				manrope: ['Manrope', 'system-ui', 'sans-serif'],
+			},
   		borderRadius: {
   			lg: 'var(--radius)',
   			md: 'calc(var(--radius) - 2px)',
@@ -59,7 +61,8 @@ module.exports = {
   				'3': 'hsl(var(--chart-3))',
   				'4': 'hsl(var(--chart-4))',
   				'5': 'hsl(var(--chart-5))'
-  			}
+  			},
+				'vs-blue': '#4A3CE1',
   		},
   		animation: {
   			'shiny-text': 'shiny-text 8s infinite'
@@ -74,10 +77,18 @@ module.exports = {
   				}
   			}
   		},
-		backgroundImage: {
-		'hero-pattern': "url('/hero-background.webp')",
-		'grid-pattern': "url('/about-us.webp')",
-		}
+			backgroundImage: {
+			'hero-pattern': "url('/hero-background.webp')",
+			'grid-pattern': "url('/about-us.webp')",
+			},
+			spacing: {
+        'lg': '130px',
+				'md': '96px',
+				'sm': '64px' 
+      },
+			maxWidth: {
+        '7xl': '1240px', // Define a custom max-width value
+      },
 
   	}
   },
