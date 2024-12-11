@@ -7,6 +7,7 @@ import {
   getALLSiteSettings,
   getComparisonTableData,
   getFounderDetails,
+  getIntegrationList,
 } from '~/lib/sanity.queries'
 import type { SharedPageProps } from '~/pages/_app'
 import Layout from '../components/Layout'
@@ -16,6 +17,7 @@ import runQuery from '~/utils/runQuery'
 import Section from '~/components/structure/Section'
 import HeroSection from '~/components/HeroSection'
 import FeatureSection from '~/components/features/FeatureSection'
+import AnimatedBeamSection from '~/components/ui/animated/AnimatedBeamSection'
 
 export const getStaticProps: GetStaticProps<SharedPageProps> = async ({
   draftMode = false,
@@ -25,6 +27,7 @@ export const getStaticProps: GetStaticProps<SharedPageProps> = async ({
   const founderDetails = await runQuery(getFounderDetails())
   const comparisonTableData = await runQuery(getComparisonTableData())
   const allPMS = await runQuery(getAllPMS())
+  const integrationPlatforms = await runQuery(getIntegrationList())
   console.log({len: allPMS.length})
   return {
     props: {
@@ -32,6 +35,7 @@ export const getStaticProps: GetStaticProps<SharedPageProps> = async ({
       siteSettings,
       founderDetails,
       comparisonTableData,
+      integrationPlatforms,
       allPMS,
       draftMode,
       token: draftMode ? readToken : '',
@@ -42,7 +46,10 @@ export const getStaticProps: GetStaticProps<SharedPageProps> = async ({
 export default function IndexPage(
   props: InferGetStaticPropsType<typeof getStaticProps>,
 ) {
+  const {integrationPlatforms} = props
+    
   return (
+    
 
     <div>
      <BookDemoContextProvider>
@@ -52,6 +59,7 @@ export default function IndexPage(
           <div className='global-wrapper'>
             
             <HeroSection></HeroSection>
+            <AnimatedBeamSection data={integrationPlatforms}/>
 
 
             <FeatureSection></FeatureSection>

@@ -17,6 +17,8 @@ import customBlockContent from './customBlockContent.js'
 import comparison from './Comparison'
 import comparisonValue from "./ComparisonValue"
 import PMS from './PMS'
+import Platforms from './Platforms'
+import PlatformList from './PlatformList'
 
 export const schemaTypes = [
   layout,
@@ -32,7 +34,9 @@ export const schemaTypes = [
   partner,
   comparison,
   comparisonValue,
-  PMS
+  PMS,
+  Platforms,
+  PlatformList
 ]
 
 export const schema: { types: SchemaTypeDefinition[] } = {
@@ -53,6 +57,8 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     partner,
     comparison,
     comparisonValue,
-    PMS
+    PMS,
+    Platforms,
+    PlatformList
   ],
 }

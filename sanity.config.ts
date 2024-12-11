@@ -102,12 +102,19 @@ export default defineConfig({
                   .schemaType('comparisonTable')
                   .documentId('comparisonTable'),
               ),
+              S.listItem()
+              .title('Platform')
+              .child(
+                S.document()
+                  .schemaType('platform')
+                  .documentId('platform'),
+              ),
               // S.listItem()
-              // .title('Legal Information')
+              // .title('Platform')
               // .child(
               //   S.document()
-              //     .schemaType('legal')
-              //     .documentId('legal'),
+              //     .schemaType('platform')
+              //     .documentId('platform'),
               // ),
         
               // S.documentTypeListItem('homeSettings').title('homeSettings'),
@@ -120,8 +127,8 @@ export default defineConfig({
               S.documentTypeListItem('legal').title('Legal'),
               S.documentTypeListItem('partner').title('Partner'),
               S.documentTypeListItem('comparisonValue').title('Comparison Value'),
-              S.documentTypeListItem('allPMS').title('All PMS')
-
+              S.documentTypeListItem('allPMS').title('All PMS'),
+              // S.documentTypeListItem('platform').title('Platform'),
           ])
     }),
 

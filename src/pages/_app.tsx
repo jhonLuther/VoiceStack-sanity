@@ -6,6 +6,7 @@ import { lazy } from 'react'
 import Layout from '../components/Layout'
 
 export interface SharedPageProps {
+  integrationPlatforms(integrationPlatforms: any): unknown
   draftMode: boolean
   token: string
 }
