@@ -16,6 +16,7 @@ import runQuery from '~/utils/runQuery'
 import Section from '~/components/structure/Section'
 import HeroSection from '~/components/HeroSection'
 import FeatureSection from '~/components/features/FeatureSection'
+import LinkCards from '~/components/linkCards'
 
 export const getStaticProps: GetStaticProps<SharedPageProps> = async ({
   draftMode = false,
@@ -52,7 +53,7 @@ export default function IndexPage(
           <div className='global-wrapper'>
             
             <HeroSection></HeroSection>
-
+            <LinkCards></LinkCards>
 
             <FeatureSection></FeatureSection>
           </div>
