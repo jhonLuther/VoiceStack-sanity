@@ -54,7 +54,7 @@ const HeroSection = () => {
       <Container>
         <div className='relative w-full flex items-center flex-col'>
           <div className='flex gap-8 items-center pb-10 flex-col max-w-[910px] w-full'>
-            <div className='flex flex-col items-center w-full'>
+            <div className='flex flex-col items-center w-full gap-5'>
               <div className='flex py-2.5 px-[17px] justify-center items-center gap-2 rounded-full border border-white/10 bg-gray-50/5'>
                 <span className='flex text-white text-center font-inter text-sm font-medium leading-[120%] tracking-[0.98px] uppercase'>Supercharge your practice growth</span>
               </div>
