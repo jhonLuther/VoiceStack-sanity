@@ -18,6 +18,7 @@ import Section from '~/components/structure/Section'
 import HeroSection from '~/components/HeroSection'
 import FeatureSection from '~/components/features/FeatureSection'
 import AnimatedBeamSection from '~/components/ui/animated/AnimatedBeamSection'
+import LinkCards from '~/components/linkCards'
 
 export const getStaticProps: GetStaticProps<SharedPageProps> = async ({
   draftMode = false,
@@ -61,6 +62,7 @@ export default function IndexPage(
             <HeroSection></HeroSection>
             <AnimatedBeamSection data={integrationPlatforms}/>
 
+            <LinkCards></LinkCards>
 
             <FeatureSection></FeatureSection>
           </div>
