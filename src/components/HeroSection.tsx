@@ -1,122 +1,146 @@
-import CTAButton from './common/CTAbutton'
-import Section from './structure/Section'
-import H1 from './typography/H1'
-import AnimatedShinyText from './ui/animated-shiny-text'
+import React, { useEffect, useState } from 'react'
 import { cn } from '~/lib/utils'
-import WordRotate from './ui/word-rotate'
-import Image from 'next/image'
-import useWindowSize from '~/hooks/useWindowSize'
-import { PortableText } from '@portabletext/react'
+import Section from './structure/Section'
+import Button from './common/Button'
+import ButtonArrow from './icons/ButtonArrow'
 import Container from './structure/Container'
+import H1 from './typography/H1'
+import { VideoItem, VideoModal } from './common/VideoModal'
+import {PlayIcon} from '@sanity/icons'
+import device from 'public/assets/voicestack-device.png'
+import voicestack from 'public/assets/voicestack-ui.png'
+import voicemail from 'public/assets/voicemail.png'
+import Image from 'next/image'
 
-const AnimatedShinyTextDemo = (props) => {
+const HeroSection = () => {
+  
+  const [isOpen, setIsOpen] = useState(false);
+  const overviewVideo:VideoItem = {
+    platform: 'vidyard',
+    videoId: "xpr7bMJc1SDnQSyTRErAYc",
+  }
+
+  const messages = [
+    "To Grow your Practice.",
+    "To Convert More New Patients.",
+    "To Reactivate Existing Patients.",
+    "To Eliminate Missed Calls.",
+  ];
+
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [wordIndex, setWordIndex] = useState(0);
+  const words = messages[activeIndex].split(" "); // Split the current message into words
+
+  useEffect(() => {
+    // Animating words one by one
+    if (wordIndex < words.length) {
+      const wordInterval = setTimeout(() => {
+        setWordIndex(wordIndex + 1);
+      }, 100); // Delay between each word pulling up
+      return () => clearTimeout(wordInterval);
+    } else {
+      // Switch to the next message after a delay
+      const messageInterval = setTimeout(() => {
+        setActiveIndex((activeIndex + 1) % messages.length); // Loop through messages
+        setWordIndex(0); // Reset word animation
+      }, 3000); // Pause before showing the next message
+      return () => clearTimeout(messageInterval);
+    }
+  }, [wordIndex, activeIndex, words.length]);
+
+
   return (
-    <div
-      className={cn(
-        'group rounded-full backdrop-blur-sm border-[1px] border-white/15 bg-white/10 text-base ',
-        props.className,
-      )}
-    >
-      <AnimatedShinyText className="inline-flex items-center justify-center px-5 py-2 text-white transition ease-out  ">
-        <span className="items-center text-ellipsis line-clamp-1">
-          {props.content}
-        </span>
-        {/* <ArrowRightIcon className="ml-1 size-3 md:size-4 transition-transform duration-300 ease-in-out group-hover:translate-x-0.5" /> */}
-      </AnimatedShinyText>
-    </div>
-  )
-}
-const components: any = {
-  block: {
-    normal: ({ children }: { children: React.ReactNode }) => (
-      <p className="text-white/80 !leading-6 text-[16px] font-light md:max-w-5xl 2xl:px-20 text-center">
-        {children}
-      </p>
-    ),
-  },
-  marks: {
-    strong: ({ children }: { children: React.ReactNode }) => (
-      <strong className="font-bold">{children}</strong>
-    ),
-  },
-}
-
-const HeroContent = ({ className = null, content }) => {
-  return (
-    <div className={cn(className)}>
-      <div className="flex flex-col items-center gap-3">
-        {/* Title and Subtitle */}
-        <AnimatedShinyTextDemo
-          className="text-sm font-light"
-          content={content?.strip}
-        />
-        <div className="flex flex-col items-center">
-          <H1 className="text-center text-white font-medium ">
-            {content?.header.static}
-            <span className="md:text-5xl text-4xl text-ellipsis font-semibold text-[#f768d1] text-center max-w-96 md:max-w-none">
-              {' '}
-              {content?.header.dynamic[0]}
-            </span>
-          </H1>
-        </div>
-
-        {/* Description */}
-        <PortableText value={content?.description} components={components} />
-
-        {/* Buttons */}
-        <div
-          className="flex justify-center md:justify-start items-center gap-3 mt-12"
-          data-aos="fade-up"
-          data-aos-delay="200"
-          data-aos-duration="1000"
-        >
-          <CTAButton
-            url={content.cta.url}
-            className="px-6 py-3"
-            name={content.cta.name}
-          />
-        </div>
-      </div>
-    </div>
-  )
-}
-const HeroSection = ({ data }) => {
-  const { width: windowWidth } = useWindowSize()
-  return (
-    <Section
-      id="hero-section"
-      className="hero-section bg-[#02024a] bg-hero-pattern bg-cover"
-    >
-      <Container className="relative h-[768px] lg:h-[1024px]">
-        {data && (
-          <HeroContent
-            className="absolute lg:top-56 left-0 w-full h-full lg:h-auto bg-transparent flex justify-center items-center  z-20 px-4"
-            content={data}
-          />
-        )}
-        {windowWidth > 1280 && (
-          <div className={`absolute bottom-0 left-[-50px]  z-15`}>
-            <Image
-              width={550}
-              height={579.939}
-              src={'/hero-left.svg'}
-              alt="hero-left"
-            />
+    <Section className="pt-md bg-vs-blue" childClass="flex">
+      <Container>
+        <div className='relative w-full flex items-center flex-col'>
+          <div className='flex gap-8 items-center pb-10 flex-col max-w-[910px] w-full'>
+            <div className='flex flex-col items-center w-full gap-5'>
+              <div className='flex py-2.5 px-[17px] justify-center items-center gap-2 rounded-full border border-white/10 bg-gray-50/5'>
+                <span className='flex text-white text-center font-inter text-sm font-medium leading-[120%] tracking-[0.98px] uppercase'>Supercharge your practice growth</span>
+              </div>
+              <H1 className='text-center w-full'>
+                {/* <span className="text-vs-lemon-green flex items-center gap-4 after:content-[url('../../public/assets/sparkles.svg')]">AI Powered</span> Enterprise Phone System for Dental Offices  */}
+                <span className="block text-vs-lemon-green">AI Powered</span> 
+                <span className='block'>Enterprise Phone System</span>
+                {/* <span className='text-slider'>
+                  <span>To1 Grow1 your1 Practice1.</span>
+                  <span>To2 Grow2 your2 Practice2.</span>
+                  <span>To3 Grow3 your3 Practice3.</span>
+                  <span>To4 Grow4 your4 Practice4.</span>
+                </span>  */}
+                <div className="relative h-20 overflow-hidden">
+                {messages.map((message, index) => (
+                  <span
+                    key={index}
+                    className={`block absolute w-full text-center  ${
+                      index === activeIndex ? "opacity-100 transition-opacity duration-500" : "opacity-0"
+                    }`}
+                  >
+                    {message.split(" ").map((word, i) => (
+                      <span
+                        key={i}
+                        className={`inline-block translate-y-full opacity-0 ${
+                          i < wordIndex ? "animate-pullUp" : ""
+                        }`}
+                        style={{ animationDelay: `${i * 0.3}s` }}
+                      >
+                        {word}&nbsp;
+                      </span>
+                    ))}
+                  </span>
+                ))}
+              </div>
+              </H1>
+            </div>
+            <div className='flex flex-col gap-8 items-center'>
+              <p className='text-white font-inter text-lg font-medium leading-[160%] text-center max-w-[600px] w-full'>
+                Increase new patient growth with state-of-the-art features including Call Transcriptions, Call Analytics, Two-way Texts & more.
+              </p>
+              <div className='flex gap-4 items-center'>
+                <Button type='primaryWhite' link='#'>
+                  <ButtonArrow></ButtonArrow>
+                  <span className="text-base font-medium">{`Book free demo`}</span>
+                </Button>
+                <Button type='video' onClick={() => {setIsOpen(true) }}>
+                  {/* <ButtonArrow></ButtonArrow> */}
+                  <PlayIcon></PlayIcon>
+                  <span className="text-base font-medium">{`Watch overview`}</span>
+                </Button>
+              </div>
+            </div>
           </div>
-        )}
-        {windowWidth > 1280 && (
-          <div className={`absolute bottom-5 right-[-50px] z-15`}>
-            <Image
-              width={500}
-              height={579.939}
-              src={'/hero-right.svg'}
-              alt="hero-left"
-            />
+
+          <div className='relative w-full'>
+            {/* <Image src={device} alt='device'></Image> */}
+            <div className='relative h-[480px] overflow-hidden w-full'>
+              <div className='absolute left-0 top-[80px] w-[85%]'>
+                <Image className='w-full h-full object-cover' src={voicestack} alt='voicestack'></Image>
+              </div>
+              <div className='absolute right-0 top-0 w-[25%]'>
+                <Image className='w-full h-full object-cover' src={voicemail} alt='voicemail'></Image>
+              </div>
+            </div>
+            
+            <div className='absolute left-0 -bottom-[80px] w-[38.5%]'>
+              <Image className='w-full h-full object-cover' src={device} alt='voicestack device'></Image>
+            </div>
           </div>
-        )}
+
+        </div>
+        <div>
+          {isOpen && (
+            <VideoModal
+              isPopup={true}
+              videoDetails={overviewVideo}
+              className={`pt-9  flex items-start`}
+              onClose={() => setIsOpen(false)}
+            />
+          )}
+        </div>
       </Container>
     </Section>
   )
 }
+
 
 export default HeroSection

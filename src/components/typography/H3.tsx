@@ -8,7 +8,7 @@ type H3Props = {
 
 const H3 = (props : H3Props) => {
   return (
-    <h3 className={cn('text-3xl md:text-2xl font-semibold',props.className)}>
+    <h3 className={cn('text-base md:text-base font-medium',props.className)}>
       {props.children}
     </h3>
   )
