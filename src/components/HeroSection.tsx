@@ -3,10 +3,13 @@ import { cn } from '~/lib/utils'
 import Section from './structure/Section'
 import Button from './common/Button'
 import ButtonArrow from './icons/ButtonArrow'
+import Container from './structure/Container'
 
 const HeroSection = () => {
   return (
     <Section className="py-md bg-vs-blue" childClass="flex">
+
+      <Container>
       <div className='relative'>
         <div className='flex gap-16'>
           <div>
@@ -31,6 +34,7 @@ const HeroSection = () => {
         </div>
 
       </div>
+      </Container>
     </Section>
   )
 }

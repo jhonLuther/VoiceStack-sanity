@@ -15,6 +15,7 @@ import BookDemoContextProvider from '~/providers/BookDemoProvider'
 import runQuery from '~/utils/runQuery'
 import Section from '~/components/structure/Section'
 import HeroSection from '~/components/HeroSection'
+import FeatureSection from '~/components/features/FeatureSection'
 
 export const getStaticProps: GetStaticProps<SharedPageProps> = async ({
   draftMode = false,
@@ -52,9 +53,8 @@ export default function IndexPage(
             
             <HeroSection></HeroSection>
 
-            <Section className="px-5" childClass="py-4">
-              <span>Hi</span>
-            </Section>
+
+            <FeatureSection></FeatureSection>
           </div>
          </Layout>
       </BookDemoContextProvider>
