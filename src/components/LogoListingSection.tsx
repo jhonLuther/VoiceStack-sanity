@@ -47,9 +47,9 @@ const LogoListingSection = () => {
           </div>
           <div className='flex flex-wrap justify-center items-center gap-x-12 gap-y-8 max-w-[1034px]'>
             {logos && logos.length > 0 && (
-              logos.map((logo:any)=>{
+              logos.map((logo:any,i)=>{
                 return(
-                  <Image src={logo.image} alt={logo.alt} title={logo.title} className='max-h-10 w-auto'></Image>
+                  <Image src={logo.image} key={i} alt={logo.alt} title={logo.title} className='max-h-10 w-auto'></Image>
                 )
               })
             )}

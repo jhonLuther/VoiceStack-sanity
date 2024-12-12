@@ -20,6 +20,7 @@ import FeatureSection from '~/components/features/FeatureSection'
 import LogoListingSection from '~/components/LogoListingSection'
 import AnimatedBeamSection from '~/components/ui/animated/AnimatedBeamSection'
 import LinkCards from '~/components/linkCards'
+import ComparisonSection from '~/components/ComparisonSection'
 
 export const getStaticProps: GetStaticProps<SharedPageProps> = async ({
   draftMode = false,
@@ -48,7 +49,20 @@ export const getStaticProps: GetStaticProps<SharedPageProps> = async ({
 export default function IndexPage(
   props: InferGetStaticPropsType<typeof getStaticProps>,
 ) {
-  const {integrationPlatforms} = props
+  const {integrationPlatforms,comparisonTableData} = props
+  
+
+  console.log(props,'al props');
+
+
+  // const comparisonSectionData = {
+  //   strip: "COMPARISON",
+  //   header: "How OSDental Compares",
+  //   columnDimensionName: "Features", 
+  //   table: comparisonTableData,
+  //   cta:'text',
+  // }
+  
     
   return (
     
@@ -57,7 +71,7 @@ export default function IndexPage(
      <BookDemoContextProvider>
         <Layout {...props}>
            {/* <CustomHead {...props} /> */}
-          {/* <Content {...props} /> */}
+          <Content {...props} />
           <div className='global-wrapper'>
             
             <HeroSection></HeroSection>
@@ -67,6 +81,8 @@ export default function IndexPage(
             <LogoListingSection></LogoListingSection>
 
             <FeatureSection></FeatureSection>
+            {/* <ComparisonSection data={comparisonSectionData} /> */}
+
           </div>
          </Layout>
       </BookDemoContextProvider>

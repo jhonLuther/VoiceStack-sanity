@@ -235,6 +235,7 @@ export const AnimatedBeam: React.FC<AnimatedBeamProps> = ({
     startYOffset,
     endXOffset,
     endYOffset,
+    useCurves
   ]);
 
   return (

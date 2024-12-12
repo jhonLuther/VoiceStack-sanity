@@ -1,30 +1,33 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import Container from '~/components/structure/Container';
 import Section from '~/components/structure/Section';
-import { AnimatedBeam } from './animated-beam';
-import { AnimatedBeamDemo } from './test';
+import { AnimatedBeamDemo } from './IntegrationSection';
 
-const enterpriseItems = [
-  "IVR & Call Routing",
-  "Visual Voicemail",
-  "Missed Call Response Tracking",
-  "Call Pop with Patient Details",
-  "Call Flow Analytics",
-  "Two-way Texting & Cloud Fax",
-]
+interface AnimatedBeamSectionProps {
+  data: {
+    pms: {
+      title: string;
+      items: string[];
+    };
+    analytics: {
+      title: string;
+      items: string[];
+    };
+    crm: {
+      title: string;
+      items: string[];
+    };
+  };
+}
 
-export default function AnimatedBeamSection({data}: any) {
-
-  
-  const containerRef = useRef(null);
-  const fromRef = useRef(null);
-  const toRef = useRef(null);
-
+export const AnimatedBeamSection: React.FC<AnimatedBeamSectionProps> = ({ data }) => {
   return (
     <Section className="py-24">
-      <Container ref={containerRef} className="w-full gap-16">
-        <AnimatedBeamDemo data={data}/>
+      <Container className="w-full gap-16">
+        <AnimatedBeamDemo data={data} />
       </Container>
     </Section>
-  )
-}
+  );
+};
+
+export default AnimatedBeamSection;
