@@ -22,11 +22,11 @@ function ComparisonSection({ data }) {
             ...data.table,
           }}
         />
-        <CTAButton
+        {/* <CTAButton
           className="px-6 py-3"
           name={data.cta.name ?? ''}
           url={data.cta.url ?? '/'}
-        />
+        /> */}
       </Container>
     </Section>
   )

@@ -125,9 +125,7 @@ const Header = () => {
                   <div onClick={toggleMenu} className={`flex lg:hidden text-zinc-900 cursor-pointer items-center select-none z-20 rounded-lg lg:rounded-xl lg:py-[6px] lg:pr-[10px] lg:pl-[14px]
                     ${showMenu ? 'absolute top-5 lg:top-[8px] right-5 lg:right-[8px] lg:relative' : 'bg-white'}`}>
                     {/* {!showMenu && <span className='hidden lg:inline-flex text-zinc-800 text-sm'>More</span>} */}
-                    {showMenu ? <CloseIcon width={40} height={40} /> : <MenuIcon width={40} height={40} />
-                      
-                    }
+                    {showMenu ? <CloseIcon width={40} height={40} /> : <MenuIcon width={40} height={40} />}
                   </div>
                  
                 </div>

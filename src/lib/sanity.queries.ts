@@ -380,6 +380,66 @@ export const getComparisonTableData = () =>
       }
     }
   } | order(_createdAt desc)[0]`
+export const getIntegrationList = () =>
+  groq`*[_type == "platform"] {
+      _id,
+      _createdAt,
+      integrationHeading,
+      integrationSubHeading,
+      integrationDescription,
+      "integrationImage": integrationImage.asset-> {
+        _id,
+        url,
+        metadata {
+          dimensions {
+            width,
+            height,
+            aspectRatio
+          }
+        }
+      },
+      analytics[]->{
+        ..., "image": image.asset-> {
+            _id,
+            url,
+            metadata {
+              dimensions {
+                width,
+                height,
+                aspectRatio
+              }
+            }
+          }
+      },
+      pms[]->{
+        ..., "image": image.asset-> {
+            _id,
+            url,
+            metadata {
+              dimensions {
+                width,
+                height,
+                aspectRatio
+              }
+            }
+          }
+
+      },
+      crm[]->{
+        ..., "image": image.asset-> {
+            _id,
+            url,
+            metadata {
+              dimensions {
+                width,
+                height,
+                aspectRatio
+              }
+            }
+          }
+      }
+
+  } | order(_createdAt desc)[0]`
 
 export const getAllPMS = () =>
   groq`*[_type == "allPMS"]{...,"image": pmsImage.asset -> {
