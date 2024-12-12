@@ -23,6 +23,7 @@ import Header from '~/components/common/Header'
 import AnimatedBeamSection from '~/components/ui/animated/AnimatedBeamSection'
 import LinkCards from '~/components/LinkCards'
 import ComparisonSection from '~/components/ComparisonSection'
+import BannerSection from '~/components/BannerSection'
 
 export const getStaticProps: GetStaticProps<SharedPageProps> = async ({
   draftMode = false,
@@ -78,6 +79,7 @@ export default function IndexPage(
             <CardsListingSection></CardsListingSection>
             <FeatureSection></FeatureSection>
             {/* <ComparisonSection data={comparisonSectionData} /> */}
+            <BannerSection></BannerSection>
           </div>
          </Layout>
       </BookDemoContextProvider>

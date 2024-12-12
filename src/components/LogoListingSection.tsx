@@ -38,7 +38,7 @@ const LogoListingSection = () => {
   return (
     <Section className="py-sm md:py-md pb-8">
       <Container >
-        <div className='flex flex-col items-center'>
+        <div className='flex flex-col items-center w-full'>
           <div className="flex justify-center w-full mb-12">
             <div className='flex flex-col w-full max-w-[780px] text-center'>
               <h2 className='text-gray-900 text-center font-inter text-lg font-medium leading-[1.45]'>Built for smarter dental practices.</h2>
