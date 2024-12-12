@@ -77,7 +77,7 @@ export default function IndexPage(
             <LogoListingSection></LogoListingSection>
             <CardsListingSection></CardsListingSection>
             <FeatureSection></FeatureSection>
-            <ComparisonSection data={comparisonSectionData} />
+            {/* <ComparisonSection data={comparisonSectionData} /> */}
           </div>
          </Layout>
       </BookDemoContextProvider>

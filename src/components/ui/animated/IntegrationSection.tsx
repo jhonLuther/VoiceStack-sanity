@@ -34,10 +34,13 @@ export function AnimatedBeamDemo({ data }: any) {
   const topPoint5 = useRef<HTMLDivElement>(null);
   const topPoint6 = useRef<HTMLDivElement>(null);
 
-  // Using arrays to store refs
-  const analyticsRefs = [];
-  const crmRefs = [];
-  const pmsRefs = [];  
+  // const analyticsRefs = [];
+  // const crmRefs = [];
+  // const pmsRefs = [];  
+
+  const analyticsRefs = data.analytics?.map(() => useRef<HTMLDivElement>(null)) || [];
+  const crmRefs = data.crm?.map(() => useRef<HTMLDivElement>(null)) || [];
+  const pmsRefs = data.pms?.map(() => useRef<HTMLDivElement>(null)) || [];
 
   return (
     <div
@@ -48,11 +51,10 @@ export function AnimatedBeamDemo({ data }: any) {
       <div className="flex flex-wrap justify-center bg-gray-50 rounded-lg z-20">
         {data.analytics?.map((analytic, index) => {
           const randomRef = useRef<HTMLDivElement>(null);
-          analyticsRefs.push(randomRef);
           return (
             <div
               key={index}
-              ref={randomRef}
+              ref={analyticsRefs[index]}
               className="md:max-w-[172px] flex z-20"
             >
               <ImageLoader
@@ -73,7 +75,9 @@ export function AnimatedBeamDemo({ data }: any) {
             const randomRef = useRef<HTMLDivElement>(null);
             crmRefs.push(randomRef);
             return (
-              <div key={index} ref={randomRef} className="md:max-w-[172px] flex z-20">
+              <div key={index}
+              ref={crmRefs[index]}
+              className="md:max-w-[172px] flex z-20">
                 <ImageLoader
                   className="flex justify-center h-20 w-full"
                   imageClassName="!object-contain h-20 w-auto"
@@ -130,7 +134,9 @@ export function AnimatedBeamDemo({ data }: any) {
             const randomRef = useRef<HTMLDivElement>(null);
             pmsRefs.push(randomRef);
             return (
-              <div key={index} ref={randomRef} className="md:max-w-[172px] flex">
+              <div key={index} 
+              ref={pmsRefs[index]}
+              className="md:max-w-[172px] flex">
                 <ImageLoader
                   className="flex justify-center h-20 w-full"
                   imageClassName="!object-contain h-20 w-auto"

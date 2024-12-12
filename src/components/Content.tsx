@@ -82,22 +82,17 @@ const Content = (props: any) => {
   }
 
   return (
-    // <div className="flex flex-col overflow-hidden">
-    //   <HeroSection data={heroSectionData} />
-    //   <FeatureSection data={featureSectionData} />
-    //   <IntegrationSection data={integrationsSectionData} />
-    //   <BenefitsSection data={benefitSectionData} />
-    //   <TestimonialSection data={testimonialSectionData} />
-    //   <ComparisonSection data={comparisonSectionData} />
-    //   <AboutUsSection data={aboutSectionData} />
-    // </div>
-    // <div className='global-wrapper'>
-    //   Hi
-    //   <Section>
-    //     <span>Hi</span>
-    //   </Section>
-    // </div>
-    <></>
+    <>
+          {/* <HeroSection data={heroSectionData} /> */}
+      <FeatureSection data={featureSectionData} />
+      <IntegrationSection data={integrationsSectionData} />
+      <BenefitsSection data={benefitSectionData} />
+      <TestimonialSection data={testimonialSectionData} />
+      <ComparisonSection data={comparisonSectionData} />
+      <AboutUsSection data={aboutSectionData} />
+    </>
+
+
   )
 }
 

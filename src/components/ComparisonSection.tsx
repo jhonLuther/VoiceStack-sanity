@@ -7,11 +7,13 @@ import Subtext from './typography/Subtext'
 import H2 from './typography/H2'
 
 function ComparisonSection({ data }) {
+  console.log(data,'comaprison dae');
+  
   return (
     <Section id="comparison-section" className="py-12 md:py-24 bg-[#F9F6FE]">
       <Container className="flex flex-col items-center gap-16">
         <div className="flex flex-col w-full items-center gap-2">
-          <Subtext>{data.strip}</Subtext>
+          <Subtext>{data?.strip}</Subtext>
           <div className="max-w-2xl w-full flex justify-center">
             <H2>{data.header}</H2>
           </div>
@@ -24,8 +26,8 @@ function ComparisonSection({ data }) {
         />
         {/* <CTAButton
           className="px-6 py-3"
-          name={data.cta.name ?? ''}
-          url={data.cta.url ?? '/'}
+          name={data?.cta.name ?? ''}
+          url={data?.cta.url ?? '/'}
         /> */}
       </Container>
     </Section>
