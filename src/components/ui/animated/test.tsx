@@ -37,7 +37,7 @@ export function AnimatedBeamDemo({ data }: any) {
   // Using arrays to store refs
   const analyticsRefs = [];
   const crmRefs = [];
-  const pmsRefs = [];
+  const pmsRefs = [];  
 
   return (
     <div

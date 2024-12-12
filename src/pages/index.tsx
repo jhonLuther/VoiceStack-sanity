@@ -17,6 +17,7 @@ import runQuery from '~/utils/runQuery'
 import Section from '~/components/structure/Section'
 import HeroSection from '~/components/HeroSection'
 import FeatureSection from '~/components/features/FeatureSection'
+import LogoListingSection from '~/components/LogoListingSection'
 import AnimatedBeamSection from '~/components/ui/animated/AnimatedBeamSection'
 import LinkCards from '~/components/linkCards'
 
@@ -63,6 +64,7 @@ export default function IndexPage(
             <AnimatedBeamSection data={integrationPlatforms}/>
 
             <LinkCards></LinkCards>
+            <LogoListingSection></LogoListingSection>
 
             <FeatureSection></FeatureSection>
           </div>
