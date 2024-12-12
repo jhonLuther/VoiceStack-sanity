@@ -11,6 +11,7 @@ export interface AnimatedBeamProps {
   fromRef: RefObject<HTMLElement>;
   toRef: RefObject<HTMLElement>;
   curvature?: number;
+  useCurves?: boolean;
   reverse?: boolean;
   pathColor?: string;
   pathWidth?: number;
@@ -31,7 +32,8 @@ export const AnimatedBeam: React.FC<AnimatedBeamProps> = ({
   fromRef,
   toRef,
   curvature = 0,
-  reverse = false, // Include the reverse prop
+  useCurves = true,
+  reverse = false, 
   duration = Math.random() * 3 + 4,
   delay = 0,
   pathColor = "gray",
@@ -65,16 +67,62 @@ export const AnimatedBeam: React.FC<AnimatedBeamProps> = ({
       };
 
   useEffect(() => {
+    // const updatePath = () => {
+    //   if (containerRef.current && fromRef.current && toRef.current) {
+    //     const containerRect = containerRef.current.getBoundingClientRect();
+    //     const rectA = fromRef.current.getBoundingClientRect();
+    //     const rectB = toRef.current.getBoundingClientRect();
+    
+    //     const svgWidth = containerRect.width;
+    //     const svgHeight = containerRect.height;
+    //     setSvgDimensions({ width: svgWidth, height: svgHeight });
+    
+    //     const startX =
+    //       rectA.left - containerRect.left + rectA.width / 2 + startXOffset;
+    //     const startY =
+    //       rectA.top - containerRect.top + rectA.height / 2 + startYOffset;
+    //     const endX =
+    //       rectB.left - containerRect.left + rectB.width / 2 + endXOffset;
+    //     const endY =
+    //       rectB.top - containerRect.top + rectB.height / 2 + endYOffset;
+    
+    //     const cornerRadius = 20; // Adjust as needed
+    
+    //     // Calculate intermediate points for the straight and curved segments
+    //     const midX = (startX + endX) / 2;
+    //     const midY = (startY + endY) / 2;
+    
+    //     const startCurveX = midX - cornerRadius;
+    //     const startCurveY = startY;
+    
+    //     const endCurveX = midX + cornerRadius;
+    //     const endCurveY = endY;
+    
+    //     const d = `
+    //       M ${startX},${startY}
+    //       L ${startCurveX},${startCurveY}
+    //       Q ${midX},${startY} ${midX},${startCurveY + cornerRadius}
+    //       L ${midX},${endCurveY - cornerRadius}
+    //       Q ${midX},${endY} ${endCurveX},${endY}
+    //       L ${endX},${endY}
+    //     `;
+    
+    //     setPathD(d.trim());
+    //   }
+    // };
+    
+
+
     const updatePath = () => {
       if (containerRef.current && fromRef.current && toRef.current) {
         const containerRect = containerRef.current.getBoundingClientRect();
         const rectA = fromRef.current.getBoundingClientRect();
         const rectB = toRef.current.getBoundingClientRect();
-
+    
         const svgWidth = containerRect.width;
         const svgHeight = containerRect.height;
         setSvgDimensions({ width: svgWidth, height: svgHeight });
-
+    
         const startX =
           rectA.left - containerRect.left + rectA.width / 2 + startXOffset;
         const startY =
@@ -83,12 +131,78 @@ export const AnimatedBeam: React.FC<AnimatedBeamProps> = ({
           rectB.left - containerRect.left + rectB.width / 2 + endXOffset;
         const endY =
           rectB.top - containerRect.top + rectB.height / 2 + endYOffset;
-
-        const controlY = startY - curvature;
-        const d = `M ${startX},${startY} Q ${
-          (startX + endX) / 2
-        },${controlY} ${endX},${endY}`;
-        setPathD(d);
+    
+        const cornerRadius = 20; // Adjust as needed
+    
+        // Determine the direction of the path
+        const isHorizontal = Math.abs(endX - startX) > Math.abs(endY - startY);
+        const isLeftToRight = startX < endX;
+    
+        let d;
+    
+        // Calculate the distance between the start and end points
+        const distanceX = Math.abs(endX - startX);
+        const distanceY = Math.abs(endY - startY);
+    
+        if (!useCurves || distanceX < 50 && distanceY < 50) {
+          // If the path is short or curves are not needed, use a straight line
+          d = `M ${startX},${startY} L ${endX},${endY}`;
+        } else {
+          // Otherwise, use curved path logic
+          if (isHorizontal) {
+            // Horizontal path
+            const midX = (startX + endX) / 2;
+    
+            if (isLeftToRight) {
+              // Left to Right
+              d = `
+                M ${startX},${startY}
+                L ${midX - cornerRadius},${startY}
+                Q ${midX},${startY} ${midX},${startY + cornerRadius}
+                L ${midX},${endY - cornerRadius}
+                Q ${midX},${endY} ${midX + cornerRadius},${endY}
+                L ${endX},${endY}
+              `;
+            } else {
+              // Right to Left
+              d = `
+                M ${startX},${startY}
+                L ${midX + cornerRadius},${startY}
+                Q ${midX},${startY} ${midX},${startY + cornerRadius}
+                L ${midX},${endY - cornerRadius}
+                Q ${midX},${endY} ${midX - cornerRadius},${endY}
+                L ${endX},${endY}
+              `;
+            }
+          } else {
+            // Vertical path
+            const midY = (startY + endY) / 2;
+    
+            if (isLeftToRight) {
+              // Left to Right
+              d = `
+                M ${startX},${startY}
+                L ${startX},${midY - cornerRadius}
+                Q ${startX},${midY} ${startX + cornerRadius},${midY}
+                L ${endX - cornerRadius},${midY}
+                Q ${endX},${midY} ${endX},${midY + cornerRadius}
+                L ${endX},${endY}
+              `;
+            } else {
+              // Right to Left
+              d = `
+                M ${startX},${startY}
+                L ${startX},${midY - cornerRadius}
+                Q ${startX},${midY} ${startX - cornerRadius},${midY}
+                L ${endX + cornerRadius},${midY}
+                Q ${endX},${midY} ${endX},${midY + cornerRadius}
+                L ${endX},${endY}
+              `;
+            }
+          }
+        }
+    
+        setPathD(d.trim());
       }
     };
 
