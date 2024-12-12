@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { motion, useMotionValueEvent, useScroll, useSpring, useTransform } from "motion/react";
 import PreText from './micro/PreText';
 import H2 from '../typography/H2';
@@ -35,50 +35,117 @@ const conversationalFeatures = [
 export default function AppearFeature() {
 
 
-    const { scrollYProgress } = useScroll();
+    const { scrollY } = useScroll();
     const [scrollPos, setScrollPos] = useState(0)
-
-
-    useMotionValueEvent(scrollYProgress, "change", (current) => {
-        // const diff = current - scrollY.getPrevious()
-        setScrollPos(current)
-      })
+    const [sectionStartY, setSectionStartY] = useState(0)
     const [currentItem, setcurrentItem] = useState<Number>(0);
 
+    const scrollRef = useRef(null)
+    const numberOfItems = conversationalFeatures.length
+
+    // const [sectionEndY, setSectionEndY] = useState(0)
+    // const [actualScrollStart, setActualScrollStart] = useState(0)
+    const [currentPos, setCurrentPos] = useState(0)
+
+    const actualScrollStart = sectionStartY + 160 + scrollRef?.current?.offsetHeight
+    const sectionEndY = sectionStartY + (scrollRef?.current?.offsetHeight * 2)
+    const percentScrolled = ((actualScrollStart - scrollPos) / (actualScrollStart - sectionEndY)) * 100
 
 
-  return (
-                          
-    
-                           <motion.div 
-                           
-                           className='flex flex-col gap-8'>
-                               <div className='flex flex-col gap-4'>
-                                   <PreText><span className=' text-vs-blue'><PhoneIcon></PhoneIcon></span>Conversational AI {scrollPos}</PreText>
-                                   <H2>Track, Follow-up and Convert missed opportunities with AI</H2>
-                                   <Paragraph>Enhance patient experience with AI call scoring, analytics, and automation to improve communication and processes.</Paragraph>
-                               </div>
-                               <ul className='flex flex-col gap-8'>
-   
-                                   {
-   
-                                       conversationalFeatures.map((item, i: number) => {
-                                           return (
-                                               <ListItem onClick={() => setcurrentItem(i)} key={i} title={item.title} showDesc={i == currentItem} desc={item.desc}> </ListItem>
-   
-                                           )
-                                       })
-                                   }
-   
-                               </ul>
-   
-                               <div className=''>
-                                   <Button type='primary'>
-                                       <ButtonArrow></ButtonArrow>
-                                       <span className="text-base font-medium">{`Book free demo`}</span>
-                                   </Button>
-                               </div>
-                           </motion.div>
-                          
-  )
+
+
+
+
+
+    const switchIndex = (percentage) => {
+
+
+        let index = 0;
+
+        if (percentage <= 25)
+            index = 0;
+
+        else if (percentage > 25 && percentage <= 50)
+            index = 1;
+        else if (percentage > 50 && percentage <= 75)
+            index = 2;
+        else if (percentage > 75 && percentage <= 100)
+            index = 3;
+        else if (percentage > 100)
+            index = 3;
+        else
+            index = 0;
+
+
+        return index;
+
+
+    }
+
+
+
+
+
+    useMotionValueEvent(scrollY, "change", (current) => {
+        // const diff = current - scrollY.getPrevious()
+        setScrollPos(current)
+    })
+
+
+
+
+
+
+    return (
+
+
+
+        <div ref={scrollRef} className='sticky top-40 left-0 bg-white' style={{ marginBottom: `${scrollRef?.current?.offsetHeight - 160}px` }}>
+
+            <motion.div
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ root: scrollRef }}
+                onViewportEnter={() => { (sectionStartY > 1) ? '' : setSectionStartY(scrollPos) }}
+                // onScroll={()}
+
+
+                className='flex gap-16'>
+
+
+                <div className='flex flex-col gap-8 w-1/3'>
+                    <div className='flex flex-col gap-4'>
+                        <PreText><span className=' text-vs-blue'><PhoneIcon></PhoneIcon></span>Conversational AI</PreText>
+                        <H2>Track, Follow-up and Convert missed opportunities with AI </H2>
+                        <Paragraph>Enhance patient experience with AI call scoring, analytics, and automation to improve communication and processes.</Paragraph>
+                    </div>
+                    <ul className='flex flex-col gap-8'>
+
+                        {
+
+                            conversationalFeatures.map((item, i: number) => {
+                                return (
+                                    <ListItem key={i} index={i} title={item.title} numberOfItems={numberOfItems} percentScrolled={percentScrolled} showDesc={i == switchIndex(percentScrolled)} desc={item.desc}> </ListItem>
+
+                                )
+                            })
+                        }
+
+                    </ul>
+
+                    <div className=''>
+                        <Button type='primary'>
+                            <ButtonArrow></ButtonArrow>
+                            <span className="text-base font-medium">{`Book free demo`}</span>
+                        </Button>
+                    </div>
+                </div>
+                <div className='flex w-full flex-1 bg-orange-200 border'>
+                    Test
+                </div>
+            </motion.div>
+
+        </div>
+
+    )
 }

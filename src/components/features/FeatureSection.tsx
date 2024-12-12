@@ -58,41 +58,26 @@ const conversationalFeatures = [
 ]
 
 export default function FeatureSection() {
-    const { scrollYProgress } = useScroll();
+    const { scrollY } = useScroll();
 
-    const [currentItem, setcurrentItem] = useState<Number>(0);
-    const stickyImageContainer = useRef(null)
-    let [imageHeight, setImageHeight] = useState(0)
 
-    useEffect(() => {
-        console.log({ stickyImageContainer })
-        setImageHeight = stickyImageContainer.current.offsetHeight
-    }, [stickyImageContainer])
 
+   
     return (
         <Section className="relative">
             <Container className="w-full gap-16 relative">
 
 
-                <div className='absolute w-full h-full left-0 top-0 flex'>
-                    <div className='w-1/3 h-full flex'>
 
-                    </div>
-
-                    <div className='w-2/3 h-full flex relative'>
-                        {imageHeight}
-                        <div ref={stickyImageContainer} className='sticky  w-full h-[32rem] top-[50%] -translate-y-[16rem] px-24'>
-                            <img className='w-3/4' src="./vs/new.png" />
-                        </div>
-                    </div>
-                </div>
-                <div className='flex flex-col w-1/3 gap-32 py-32'>
+                <div className='flex flex-col w-full gap-32 py-32 z-10'>
                     <div className='flex flex-col w-full gap-32 py-32'>
 
 
 
                         {/* Feature Item #1 */}
-                        <div className='flex flex-col gap-8'>
+
+                        <div className='flex w-full'>
+                        <div className='flex flex-col gap-8 w-1/3'>
                             <div className='flex flex-col gap-4'>
                                 <PreText><span className=' text-vs-blue'><PhoneIcon></PhoneIcon></span> Enterprise VoIP</PreText>
                                 <H2>Comprehensive VoIP solutions for your practice</H2>
@@ -115,6 +100,11 @@ export default function FeatureSection() {
                                     <ButtonArrow></ButtonArrow>
                                     <span className="text-base font-medium">{`Book free demo`}</span>
                                 </Button>
+                            </div>
+                        </div>
+
+                            <div className='w-full bg-teal-400 flex-1'>
+
                             </div>
                         </div>
                         {/* Feature Item #1 */}
