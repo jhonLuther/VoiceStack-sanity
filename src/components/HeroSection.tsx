@@ -36,7 +36,7 @@ const HeroSection = () => {
     if (wordIndex < words.length) {
       const wordInterval = setTimeout(() => {
         setWordIndex(wordIndex + 1);
-      }, 100); // Delay between each word pulling up
+      }, 0); // Delay between each word pulling up
       return () => clearTimeout(wordInterval);
     } else {
       // Switch to the next message after a delay

@@ -19,6 +19,7 @@ import FeatureSection from '~/components/features/FeatureSection'
 import LinkCards from '~/components/LinkCards'
 import LogoListingSection from '~/components/LogoListingSection'
 import CardsListingSection from '~/components/CardsListingSection'
+import Header from '~/components/common/Header'
 
 export const getStaticProps: GetStaticProps<SharedPageProps> = async ({
   draftMode = false,
@@ -52,8 +53,8 @@ export default function IndexPage(
         <Layout {...props}>
            {/* <CustomHead {...props} /> */}
           {/* <Content {...props} /> */}
-          <div className='global-wrapper'>
-            
+          <div className='global-wrapper pt-[98px]'>
+            <Header></Header>
             <HeroSection></HeroSection>
             <LinkCards></LinkCards>
             <LogoListingSection></LogoListingSection>
