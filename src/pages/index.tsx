@@ -24,7 +24,7 @@ import AnimatedBeamSection from '~/components/ui/animated/AnimatedBeamSection'
 import ComparisonSection from '~/components/ComparisonSection'
 import BannerSection from '~/components/BannerSection'
 import SiteComparisonSection from '~/components/SiteComparisonSection'
-import LinkCardsSection from '~/components/linkCards'
+import LinksCardsSection from '~/components/LinksCardSection'
 
 export const getStaticProps: GetStaticProps<SharedPageProps> = async ({
   draftMode = false,
@@ -73,7 +73,7 @@ export default function IndexPage(
           <div className='global-wrapper pt-[98px]'>
             <Header></Header>
             <HeroSection></HeroSection>
-            <LinkCardsSection></LinkCardsSection>
+            <LinksCardsSection></LinksCardsSection>
             <LogoListingSection></LogoListingSection>
             <CardsListingSection></CardsListingSection>
             <FeatureSection></FeatureSection>

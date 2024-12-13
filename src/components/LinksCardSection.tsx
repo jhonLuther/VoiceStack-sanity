@@ -8,7 +8,7 @@ import IntegrationsIcon from './icons/IntegrationsIcon';
 import Link from 'next/link';
 import LearnMore from './ui/LearnMore';
 
-const LinkCardsSection = () => {
+const LinksCardsSection = () => {
   const linkCardsData = [
     { 
       heading: "Enterprise VoIP", 
@@ -69,4 +69,4 @@ const LinkCardsSection = () => {
 }
 
 
-export default LinkCardsSection
+export default LinksCardsSection
