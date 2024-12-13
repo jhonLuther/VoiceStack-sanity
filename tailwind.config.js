@@ -98,6 +98,20 @@ module.exports = {
 			maxWidth: {
         '7xl': '1240px', // Define a custom max-width value
       },
+			
+			backgroundImage: {
+			'hero-pattern': "url('/hero-background.webp')",
+			'grid-pattern': "url('/about-us.webp')",
+			},
+			spacing: {
+        'lg': '130px',
+				'md': '96px',
+				'sm': '64px',
+				'xs': '48px' 
+      },
+			maxWidth: {
+        '7xl': '1240px', // Define a custom max-width value
+      },
 
   	}
   },

@@ -73,14 +73,16 @@ export default function IndexPage(
           <div className='global-wrapper pt-[98px]'>
             <Header></Header>
             <HeroSection></HeroSection>
-            <AnimatedBeamSection data={integrationPlatforms}/>
 
             <LinkCards></LinkCards>
             <LogoListingSection></LogoListingSection>
             <CardsListingSection></CardsListingSection>
             <FeatureSection></FeatureSection>
-            <ComparisonSection data={comparisonSectionData} />
-            <SiteComparisonSection data={comparisonSectionData} />
+            {/* <ComparisonSection data={comparisonSectionData} /> */}
+            {/* <SiteComparisonSection data={comparisonSectionData} /> */}
+            <AnimatedBeamSection data={integrationPlatforms}/>
+
+            {/* <ComparisonSection data={comparisonSectionData} /> */}
             <BannerSection></BannerSection>
           </div>
          </Layout>

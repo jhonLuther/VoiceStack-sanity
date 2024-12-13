@@ -7,6 +7,7 @@ import AboutUsSection from './AboutUsSection'
 import CustomerSection from './CustomerSection'
 import ComparisonSection from './ComparisonSection'
 import Section from './structure/Section'
+import Section from './structure/Section'
 
 /*
   Idea is to use adaptors to connect sanity data and UI components.

@@ -4,20 +4,7 @@ import Section from '~/components/structure/Section';
 import { AnimatedBeamDemo } from './IntegrationSection';
 
 interface AnimatedBeamSectionProps {
-  data: {
-    pms: {
-      title: string;
-      items: string[];
-    };
-    analytics: {
-      title: string;
-      items: string[];
-    };
-    crm: {
-      title: string;
-      items: string[];
-    };
-  };
+  data: any
 }
 
 export const AnimatedBeamSection: React.FC<AnimatedBeamSectionProps> = ({ data }) => {

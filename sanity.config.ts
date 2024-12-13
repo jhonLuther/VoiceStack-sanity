@@ -128,6 +128,7 @@ export default defineConfig({
               S.documentTypeListItem('partner').title('Partner'),
               S.documentTypeListItem('comparisonValue').title('Comparison Value'),
               S.documentTypeListItem('allPMS').title('All PMS'),
+              S.documentTypeListItem('platformList').title('PlatformList'),
               // S.documentTypeListItem('platform').title('Platform'),
           ])
     }),
