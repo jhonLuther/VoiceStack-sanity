@@ -51,11 +51,11 @@ export function AnimatedBeamDemo({ data }: any) {
       ref={containerRef}
     >
       {/* Analytics Section */}
-      <div className="max-w-4xl">
+      <div className="md:max-w-[1050px] w-full">
         <div className="flex p-2 items-center justify-center rounded-t-lg bg-gray-300 text-base font-semibold">
           <H3 className="text-gray-600">PMS</H3>
         </div>
-        <div className="flex flex-wrap justify-center z-10 rounded-lg border border-gray-100 bg-white shadow-lg">
+        <div className="flex  flex-wrap  justify-center z-10 rounded-lg border border-gray-100 bg-white shadow-lg">
           {data.analytics?.map((analytic, index) => (
             <div
               key={index}
@@ -97,7 +97,7 @@ export function AnimatedBeamDemo({ data }: any) {
 
         {/* Center Image */}
 
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/3">
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-[50%]">
           <LinesIcon />
         </div>
         <div className="flex flex-col items-center justify-start">

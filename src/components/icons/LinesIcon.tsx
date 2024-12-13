@@ -9,7 +9,7 @@ export const ConvergingParticleSVG = () => {
       fill="none" 
       xmlns="http://www.w3.org/2000/svg"
     >
-      <style>{`
+      {/* <style>{`
         @keyframes converge-top-left {
           0% { offset-distance: 0%; }
           100% { offset-distance: 100%; }
@@ -50,7 +50,7 @@ export const ConvergingParticleSVG = () => {
           0% { offset-distance: 0%; }
           100% { offset-distance: 100%; }
         }
-      `}</style>
+      `}</style> */}
 
       {/* Paths (kept as original light gray) */}
       <path 
@@ -118,7 +118,7 @@ export const ConvergingParticleSVG = () => {
       />
 
       {/* Animated Particles */}
-      <circle 
+      {/* <circle 
         r="3" 
         fill="#4A3CE1"
         style={{
@@ -207,7 +207,7 @@ export const ConvergingParticleSVG = () => {
           animation: 'converge-vertical 3s linear infinite',
           offsetRotate: '0deg'
         }}
-      />
+      /> */}
     </svg>
   );
 };
