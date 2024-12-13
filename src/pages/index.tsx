@@ -21,10 +21,10 @@ import LogoListingSection from '~/components/LogoListingSection'
 import CardsListingSection from '~/components/CardsListingSection'
 import Header from '~/components/common/Header'
 import AnimatedBeamSection from '~/components/ui/animated/AnimatedBeamSection'
-import LinkCards from '~/components/LinkCards'
 import ComparisonSection from '~/components/ComparisonSection'
 import BannerSection from '~/components/BannerSection'
 import SiteComparisonSection from '~/components/SiteComparisonSection'
+import LinkCards from '~/components/linkCards'
 
 export const getStaticProps: GetStaticProps<SharedPageProps> = async ({
   draftMode = false,
