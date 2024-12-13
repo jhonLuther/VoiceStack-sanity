@@ -5,7 +5,6 @@ import { AnimatedBeam } from "./animated-beam";
 import { cn } from "~/lib/utils";
 import ImageLoader from "~/components/common/imageLoader/imageLoader";
 import H3 from "~/components/typography/H3";
-import LinesIcon from "~/components/icons/LinesIcon";
 
 const Circle = forwardRef<
   HTMLDivElement,
@@ -52,7 +51,7 @@ export function AnimatedBeamDemo({ data }: any) {
       {/* Analytics Section */}
       <div className="max-w-4xl">
       <div className="flex p-2 items-center justify-center rounded-t-lg bg-gray-300 text-base font-semibold">
-         <H3 className="text-gray-600">PMS</H3>
+         <H3 className="text-gray-600">Analytics</H3>
       </div>  
       <div className="flex flex-wrap justify-center z-20  rounded-lg border border-gray-100 bg-white shadow-lg">
        <div className="flex items-center bg-gray-600 text-base font-semibold">
@@ -78,7 +77,7 @@ export function AnimatedBeamDemo({ data }: any) {
       </div>
 
       {/* CRM and PMS Sections */}
-      <div className="flex justify-between w-full items-center  mt-12">
+      <div className="flex justify-between w-full items-center  mt-10">
         <div className="flex flex-col gap-5 z-10  rounded-lg border border-gray-100 bg-white shadow-lg">
         <div className="flex p-2 items-center justify-center rounded-t-lg bg-gray-300 text-base font-semibold">
          <H3 className="text-gray-600">Analytics</H3>
@@ -102,10 +101,6 @@ export function AnimatedBeamDemo({ data }: any) {
         </div>
 
         {/* Center Image */}
-        <div className="relative ">
-        <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/3">
-          <LinesIcon/>
-        </div>
         <div className="flex flex-col items-center justify-start">
           <div className="flex gap-16">
             <div ref={topPoint1} className="flex flex-wrap justify-center  rounded-lg z-20 w-1 h-1">
@@ -143,7 +138,6 @@ export function AnimatedBeamDemo({ data }: any) {
               fixed={false}
             />
           </div>
-        </div>
         </div>
        
         <div className="flex flex-col gap-5 z-10 rounded-lg border border-gray-100 bg-white shadow-lg">
@@ -244,7 +238,7 @@ export function AnimatedBeamDemo({ data }: any) {
 
 
       {/* Animated Beams */}
-      {/* {analyticsRefs.slice(0, 7).map((ref, index) => (
+      {analyticsRefs.slice(0, 7).map((ref, index) => (
         <AnimatedBeam
           key={`analytics-beam-${index}`}
           containerRef={containerRef}
@@ -306,7 +300,7 @@ export function AnimatedBeamDemo({ data }: any) {
           duration={5}
           delay={index * 10}
         />
-      ))} */}
+      ))}
     </div>
   );
 }
