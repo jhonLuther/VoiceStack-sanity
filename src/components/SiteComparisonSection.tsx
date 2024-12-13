@@ -37,7 +37,7 @@ function SiteComparisonSection({ data }) {
             {data.table.rowCategories.length && (
               data.table.rowCategories.map((tableData:any, index:number) =>{
                 return (
-                  <SiteComparisonTable
+                  <SiteComparisonTable key={index}
                     data={{
                       columnDimensionName: data.columnDimensionName,
                       headerLogos: data.table.columns,

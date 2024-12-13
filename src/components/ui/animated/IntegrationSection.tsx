@@ -127,7 +127,7 @@ export function AnimatedBeamDemo({ data }: any) {
         <div className="flex p-2 items-center justify-center rounded-t-lg bg-gray-300 text-base font-semibold">
          <H3 className="text-gray-600">CRM</H3>
         </div> 
-          {data.pms?.map((pmss, index) => {
+          {/* {data.pms?.map((pmss, index) => {
             const randomRef = useRef<HTMLDivElement>(null);
             pmsRefs.push(randomRef);
             return (
@@ -142,7 +142,7 @@ export function AnimatedBeamDemo({ data }: any) {
                 />
               </div>
             );
-          })}
+          })} */}
         </div>
       </div>
 
