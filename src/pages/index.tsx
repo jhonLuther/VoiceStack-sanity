@@ -24,7 +24,6 @@ import AnimatedBeamSection from '~/components/ui/animated/AnimatedBeamSection'
 import ComparisonSection from '~/components/ComparisonSection'
 import BannerSection from '~/components/BannerSection'
 import SiteComparisonSection from '~/components/SiteComparisonSection'
-import LinkCards from '~/components/LinkCards'
 
 export const getStaticProps: GetStaticProps<SharedPageProps> = async ({
   draftMode = false,
