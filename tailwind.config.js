@@ -110,7 +110,7 @@ module.exports = {
 				'xs': '48px' 
       },
 			maxWidth: {
-        '7xl': '1240px', // Define a custom max-width value
+        '7xl': '1272px', // Define a custom max-width value
       },
 
   	}
