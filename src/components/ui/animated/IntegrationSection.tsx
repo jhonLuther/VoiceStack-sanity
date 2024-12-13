@@ -1,8 +1,9 @@
-import React, { useRef, useMemo } from "react";
+import React, { useRef, useMemo, forwardRef } from "react";
 import { AnimatedBeam } from "./animated-beam";
 import { cn } from "~/lib/utils";
 import ImageLoader from "~/components/common/imageLoader/imageLoader";
 import H3 from "~/components/typography/H3";
+import LinesIcon from "~/components/icons/LinesIcon";
 
 const Circle = forwardRef<
   HTMLDivElement,
