@@ -25,6 +25,7 @@ import ComparisonSection from '~/components/ComparisonSection'
 import BannerSection from '~/components/BannerSection'
 import SiteComparisonSection from '~/components/SiteComparisonSection'
 import LinksCardsSection from '~/components/LinksCardSection'
+import Testimonails from '~/components/testimonials/Testimonials'
 import FaqSection from '~/components/FaqSection'
 import Footer from '~/components/common/Footer'
 
@@ -76,6 +77,7 @@ export default function IndexPage(
             <Header></Header>
             <HeroSection></HeroSection>
             <LinksCardsSection></LinksCardsSection>
+            <Testimonails/>
             <LogoListingSection></LogoListingSection>
             <FeatureSection></FeatureSection>
             <AnimatedBeamSection data={integrationPlatforms}/>
