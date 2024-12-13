@@ -62,8 +62,8 @@ const Header = () => {
           className={`fixed w-full top-[35px] left-0 z-20 transition-all duration-300 ease-linear ${headerFixed && '!fixed w-full !top-4'}  left-0`}      >
           
 
-          <div className={`z-10 text-white px-4`}>
-            <div className="max-w-7xl mx-auto">
+          <div className={`z-10 text-white`}>
+            <div className="max-w-7xl mx-auto px-4">
               {/* <div className={`flex flex-col gap-3 justify-between py-[10px] transition-all duration-300 ease-linear relative  ${headerFixed ? '!lg:py-3' : 'lg:py-6'}`}> */}
               <div className={`flex gap-3 justify-between py-0 transition-all duration-300 ease-linear rounded-[10px] 
                 bg-white shadow-[0px_7px_40px_0px_rgba(0,0,0,0.10)] backdrop-blur-[12.5px] pl-6 pr-3 items-center h-[63px]`}>
