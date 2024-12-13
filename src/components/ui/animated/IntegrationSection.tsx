@@ -96,33 +96,32 @@ export function AnimatedBeamDemo({ data }: any) {
         </div>
 
         {/* Center Image */}
-        <div className="relative">
-          <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/3">
-            <LinesIcon />
-          </div>
-          <div className="flex flex-col items-center justify-start">
-            <div className="flex gap-16">
-              {topPointRefs.map((ref, index) => (
-                <div
-                  key={`top-point-${index}`}
-                  ref={ref}
-                  className="flex flex-wrap justify-center rounded-lg z-20 w-1 h-1"
-                />
-              ))}
-            </div>
 
-            <div
-              id="center-image"
-              ref={centerRef}
-              className="md:max-w-[250px] md:max-h-[250px] flex items-center justify-center z-20"
-            >
-              <ImageLoader
-                className="flex justify-center rounded-lg"
-                imageClassName="!w-auto"
-                image={data.integrationImage}
-                fixed={false}
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/3">
+          <LinesIcon />
+        </div>
+        <div className="flex flex-col items-center justify-start">
+          <div className="flex gap-16">
+            {topPointRefs.map((ref, index) => (
+              <div
+                key={`top-point-${index}`}
+                ref={ref}
+                className="flex flex-wrap justify-center rounded-lg z-20 w-1 h-1"
               />
-            </div>
+            ))}
+          </div>
+
+          <div
+            id="center-image"
+            ref={centerRef}
+            className="md:max-w-[250px] md:max-h-[250px] flex items-center justify-center z-20"
+          >
+            <ImageLoader
+              className="flex justify-center rounded-lg"
+              imageClassName="!w-auto"
+              image={data.integrationImage}
+              fixed={false}
+            />
           </div>
         </div>
 
