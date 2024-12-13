@@ -1,30 +1,9 @@
-"use client";
-
-import React, { forwardRef, useRef } from "react";
+import React, { useRef } from "react";
 import { AnimatedBeam } from "./animated-beam";
 import { cn } from "~/lib/utils";
 import ImageLoader from "~/components/common/imageLoader/imageLoader";
 import H3 from "~/components/typography/H3";
 import LinesIcon from "~/components/icons/LinesIcon";
-
-const Circle = forwardRef<
-  HTMLDivElement,
-  { className?: string; children?: React.ReactNode }
->(({ className, children }, ref) => {
-  return (
-    <div
-      ref={ref}
-      className={cn(
-        "z-10 flex size-12 items-center justify-center rounded-full bg-white p-3",
-        className
-      )}
-    >
-      {children}
-    </div>
-  );
-});
-
-Circle.displayName = "Circle";
 
 export function AnimatedBeamDemo({ data }: any) {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -36,10 +15,7 @@ export function AnimatedBeamDemo({ data }: any) {
   const topPoint5 = useRef<HTMLDivElement>(null);
   const topPoint6 = useRef<HTMLDivElement>(null);
 
-  // const analyticsRefs = [];
-  // const crmRefs = [];
-  // const pmsRefs = [];  
-
+  // Initialize refs for dynamic elements
   const analyticsRefs = data.analytics?.map(() => useRef<HTMLDivElement>(null)) || [];
   const crmRefs = data.crm?.map(() => useRef<HTMLDivElement>(null)) || [];
   const pmsRefs = data.pms?.map(() => useRef<HTMLDivElement>(null)) || [];
@@ -62,12 +38,12 @@ export function AnimatedBeamDemo({ data }: any) {
           return (
             <div
               key={index}
-              ref={analyticsRefs[index]}
+              ref={crmRefs[index]} // Use refs set up outside the map
               className="md:max-w-[172px] flex z-20"
             >
               <ImageLoader
-                className="flex justify-center rounded-lg"
-                imageClassName="!w-auto"
+                className="flex justify-center h-20 w-full"
+                imageClassName="!object-contain h-20 w-auto"
                 image={analytic.image}
                 fixed={false}
               />
@@ -128,8 +104,9 @@ export function AnimatedBeamDemo({ data }: any) {
             <div ref={topPoint5} className="flex flex-wrap justify-center  rounded-lg z-20 w-1 h-1">
 
             </div>
+            <div ref={topPoint4} className="flex flex-wrap justify-center bg-red-500 rounded-lg z-20 w-1 h-1" />
+            <div ref={topPoint5} className="flex flex-wrap justify-center bg-red-500 rounded-lg z-20 w-1 h-1" />
           </div>
-
 
           <div
             id="center-image"
@@ -169,80 +146,6 @@ export function AnimatedBeamDemo({ data }: any) {
         </div>
       </div>
 
-
-
-      {/* 
-      <AnimatedBeam
-        containerRef={containerRef}
-        fromRef={analyticsRefs[1]}
-        toRef={topPoint3}
-        curvature={0}
-        endYOffset={0}
-        duration={5}
-        delay={10}
-      />
-      <AnimatedBeam
-        containerRef={containerRef}
-        fromRef={analyticsRefs[2]}
-        toRef={topPoint3}
-        curvature={0}
-        endYOffset={0}
-        duration={5}
-        delay={10}
-      />
-
-      <AnimatedBeam
-        containerRef={containerRef}
-        fromRef={analyticsRefs[2]}
-        toRef={topPoint3}
-        // useCurves={false}
-        curvature={0}
-        startXOffset={1801}
-        duration={5}
-        delay={10}
-      />
-
-      <AnimatedBeam
-        containerRef={containerRef}
-        fromRef={analyticsRefs[3]}
-        toRef={topPoint3}
-        curvature={0}
-        useCurves={true}
-
-        startXOffset={60}
-        duration={5}
-        delay={10}
-      />
-      <AnimatedBeam
-        containerRef={containerRef}
-        fromRef={analyticsRefs[3]}
-        toRef={topPoint3}
-        curvature={0}
-        endYOffset={0}
-        duration={5}
-        delay={10}
-      />
-      <AnimatedBeam
-        containerRef={containerRef}
-        fromRef={analyticsRefs[4]}
-        toRef={topPoint4}
-        curvature={0}
-        endYOffset={0}
-        duration={5}
-        delay={10}
-      />
-      <AnimatedBeam
-        containerRef={containerRef}
-        fromRef={analyticsRefs[5]}
-        toRef={topPoint3}
-        curvature={0}
-        endYOffset={0}
-        duration={5}
-        delay={10}
-      /> */}
-
-
-
       {/* Animated Beams */}
       {/* {analyticsRefs.slice(0, 7).map((ref, index) => (
         <AnimatedBeam
@@ -266,35 +169,18 @@ export function AnimatedBeamDemo({ data }: any) {
         duration={5}
         delay={10}
       />
-      {crmRefs.map((ref, index) => {
-        const isLast = index === crmRefs.length - 1;
-        console.log(isLast, index, crmRefs.length);
-
-        return (
-          <AnimatedBeam
-            key={`crm-beam-${index}`}
-            containerRef={containerRef}
-            fromRef={ref}
-            toRef={centerRef}
-            curvature={-180}
-            endYOffset={0}
-            duration={5}
-            delay={index * 10}
-          />
-        );
-      })}
-
-      <AnimatedBeam
-        containerRef={containerRef}
-        fromRef={centerRef}
-        toRef={topPoint3}
-        curvature={0}
-        endYOffset={0}
-        useCurves={false}
-        duration={5}
-        delay={10}
-      />
-
+      {crmRefs.map((ref, index) => (
+        <AnimatedBeam
+          key={`crm-beam-${index}`}
+          containerRef={containerRef}
+          fromRef={ref}
+          toRef={centerRef}
+          curvature={-180}
+          endYOffset={0}
+          duration={5}
+          delay={index * 10}
+        />
+      ))}
       {pmsRefs.map((ref, index) => (
         <AnimatedBeam
           key={`pms-beam-${index}`}

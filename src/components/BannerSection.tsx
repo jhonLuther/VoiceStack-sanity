@@ -6,7 +6,7 @@ import Dome from 'public/assets/dome.svg'
 import Button from './common/Button'
 import ButtonArrow from './icons/ButtonArrow'
 import { PlayIcon } from 'lucide-react'
-import { VideoItem } from './common/VideoModal'
+import { VideoItem, VideoModal } from './common/VideoModal'
 import Image from 'next/image'
 
 const BannerSection = () => {
@@ -33,7 +33,7 @@ const BannerSection = () => {
                 </Button>
                 <Button type='video' onClick={() => {setIsOpen(true) }}>
                   {/* <ButtonArrow></ButtonArrow> */}
-                  <PlayIcon></PlayIcon>
+                  <PlayIcon width={16} height={16}></PlayIcon>
                   <span className="text-base font-medium">{`Watch overview`}</span>
                 </Button>
               </div>
@@ -42,6 +42,16 @@ const BannerSection = () => {
       </Container>
       {/* <div className='absolute h-[100px] bg-[url("../../public/assets/dome.svg")]'></div> */}
       <Image src={Dome} alt='dome' className='absolute left-[50%] bottom-0 -translate-x-[50%]'></Image>
+      <div>
+        {isOpen && (
+          <VideoModal
+            isPopup={true}
+            videoDetails={overviewVideo}
+            className={`pt-9  flex items-start`}
+            onClose={() => setIsOpen(false)}
+          />
+        )}
+      </div>
     </Section>
   )
 }
