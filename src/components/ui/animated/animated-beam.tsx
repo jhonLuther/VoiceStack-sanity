@@ -24,6 +24,7 @@ export interface AnimatedBeamProps {
   startYOffset?: number;
   endXOffset?: number;
   endYOffset?: number;
+  lineType?: string;
 }
 
 export const AnimatedBeam: React.FC<AnimatedBeamProps> = ({
@@ -45,6 +46,7 @@ export const AnimatedBeam: React.FC<AnimatedBeamProps> = ({
   startYOffset = 0,
   endXOffset = 0,
   endYOffset = 0,
+  lineType,
   ...rest
 }) => {
   const id = useId();
@@ -67,52 +69,7 @@ export const AnimatedBeam: React.FC<AnimatedBeamProps> = ({
       };
 
   useEffect(() => {
-    // const updatePath = () => {
-    //   if (containerRef.current && fromRef.current && toRef.current) {
-    //     const containerRect = containerRef.current.getBoundingClientRect();
-    //     const rectA = fromRef.current.getBoundingClientRect();
-    //     const rectB = toRef.current.getBoundingClientRect();
     
-    //     const svgWidth = containerRect.width;
-    //     const svgHeight = containerRect.height;
-    //     setSvgDimensions({ width: svgWidth, height: svgHeight });
-    
-    //     const startX =
-    //       rectA.left - containerRect.left + rectA.width / 2 + startXOffset;
-    //     const startY =
-    //       rectA.top - containerRect.top + rectA.height / 2 + startYOffset;
-    //     const endX =
-    //       rectB.left - containerRect.left + rectB.width / 2 + endXOffset;
-    //     const endY =
-    //       rectB.top - containerRect.top + rectB.height / 2 + endYOffset;
-    
-    //     const cornerRadius = 20; // Adjust as needed
-    
-    //     // Calculate intermediate points for the straight and curved segments
-    //     const midX = (startX + endX) / 2;
-    //     const midY = (startY + endY) / 2;
-    
-    //     const startCurveX = midX - cornerRadius;
-    //     const startCurveY = startY;
-    
-    //     const endCurveX = midX + cornerRadius;
-    //     const endCurveY = endY;
-    
-    //     const d = `
-    //       M ${startX},${startY}
-    //       L ${startCurveX},${startCurveY}
-    //       Q ${midX},${startY} ${midX},${startCurveY + cornerRadius}
-    //       L ${midX},${endCurveY - cornerRadius}
-    //       Q ${midX},${endY} ${endCurveX},${endY}
-    //       L ${endX},${endY}
-    //     `;
-    
-    //     setPathD(d.trim());
-    //   }
-    // };
-    
-
-
     const updatePath = () => {
       if (containerRef.current && fromRef.current && toRef.current) {
         const containerRect = containerRef.current.getBoundingClientRect();
@@ -122,7 +79,7 @@ export const AnimatedBeam: React.FC<AnimatedBeamProps> = ({
         const svgWidth = containerRect.width;
         const svgHeight = containerRect.height;
         setSvgDimensions({ width: svgWidth, height: svgHeight });
-    
+        console.log(containerRect.left)
         const startX =
           rectA.left - containerRect.left + rectA.width / 2 + startXOffset;
         const startY =

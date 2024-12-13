@@ -3,7 +3,25 @@ import { AnimatedBeam } from "./animated-beam";
 import { cn } from "~/lib/utils";
 import ImageLoader from "~/components/common/imageLoader/imageLoader";
 import H3 from "~/components/typography/H3";
-import LinesIcon from "~/components/icons/LinesIcon";
+
+const Circle = forwardRef<
+  HTMLDivElement,
+  { className?: string; children?: React.ReactNode }
+>(({ className, children }, ref) => {
+  return (
+    <div
+      ref={ref}
+      className={cn(
+        "z-10 flex size-12 items-center justify-center rounded-full bg-white p-3",
+        className
+      )}
+    >
+      {children}
+    </div>
+  );
+});
+
+Circle.displayName = "Circle";
 
 export function AnimatedBeamDemo({ data }: any) {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -41,11 +59,12 @@ export function AnimatedBeamDemo({ data }: any) {
             <div
               key={index}
               ref={analyticsRefs[index]}
+              ref={analyticsRefs[index]}
               className="md:max-w-[172px] flex z-20"
             >
               <ImageLoader
-                className="flex justify-center h-20 w-full"
-                imageClassName="!object-contain h-20 w-auto"
+                className="flex justify-center rounded-lg"
+                imageClassName="!w-auto"
                 image={analytic.image}
                 fixed={false}
               />
