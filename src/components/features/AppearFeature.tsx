@@ -100,7 +100,7 @@ export default function AppearFeature() {
 
 
 
-        <div ref={scrollRef} className='sticky top-40 left-0 bg-white' style={{ marginBottom: `${scrollRef?.current?.offsetHeight - 160}px` }}>
+        <div ref={scrollRef} className='sticky top-40 left-0 ' style={{ marginBottom: `${scrollRef?.current?.offsetHeight*1.5 - 160}px` }}>
 
             <motion.div
                 initial={{ opacity: 0 }}
@@ -110,16 +110,13 @@ export default function AppearFeature() {
                 // onScroll={()}
 
 
-                className='flex gap-16'>
-
-
-                <div className='flex flex-col gap-8 w-1/3'>
+                className='flex flex-col gap-12 w-full'>
                     <div className='flex flex-col gap-4'>
                         <PreText><span className=' text-vs-blue'><PhoneIcon></PhoneIcon></span>Conversational AI</PreText>
-                        <H2>Track, Follow-up and Convert missed opportunities with AI </H2>
+                        <H2>Track, Follow-up and Convert missed opportunities with&nbsp;AI </H2>
                         <Paragraph>Enhance patient experience with AI call scoring, analytics, and automation to improve communication and processes.</Paragraph>
                     </div>
-                    <ul className='flex flex-col gap-8'>
+                    <ul className='flex flex-col gap-4'>
 
                         {
 
@@ -139,10 +136,8 @@ export default function AppearFeature() {
                             <span className="text-base font-medium">{`Book free demo`}</span>
                         </Button>
                     </div>
-                </div>
-                <div className='flex w-full flex-1 bg-orange-200 border'>
-                    Test
-                </div>
+            
+ 
             </motion.div>
 
         </div>
