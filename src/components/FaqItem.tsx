@@ -8,7 +8,7 @@ const FaqItem = ({ question, answer, index }) => {
 
   useEffect(()=>{
     setIsOpen(index == 0);
-  },[])
+  },[index])
 
   return (
     <div className="border-b border-gray-200">
