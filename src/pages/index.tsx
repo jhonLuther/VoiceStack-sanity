@@ -26,6 +26,7 @@ import BannerSection from '~/components/BannerSection'
 import SiteComparisonSection from '~/components/SiteComparisonSection'
 import LinksCardsSection from '~/components/LinksCardSection'
 import FaqSection from '~/components/FaqSection'
+import Footer from '~/components/common/Footer'
 
 export const getStaticProps: GetStaticProps<SharedPageProps> = async ({
   draftMode = false,
@@ -82,6 +83,7 @@ export default function IndexPage(
             <SiteComparisonSection data={comparisonSectionData} />
             <FaqSection></FaqSection>
             <BannerSection></BannerSection>
+            <Footer></Footer>
           </div>
          </Layout>
       </BookDemoContextProvider>
