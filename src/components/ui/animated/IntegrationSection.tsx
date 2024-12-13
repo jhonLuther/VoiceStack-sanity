@@ -60,7 +60,6 @@ export function AnimatedBeamDemo({ data }: any) {
             <div
               key={index}
               ref={analyticsRefs[index]}
-              ref={analyticsRefs[index]}
               className="md:max-w-[172px] flex z-20"
             >
               <ImageLoader
