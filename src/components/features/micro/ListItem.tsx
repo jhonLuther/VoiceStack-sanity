@@ -14,12 +14,12 @@ export default function ListItem(props) {
         <div style={{height:`${actualPercentScrolled}%`}} className={`w-1 ${props.showDesc == true ? "bg-vs-blue" : "bg-transparent"} max-h-[100%] h-full rounded-full`}></div>
 
       </div>
-      <div className={`flex flex-col `}>
-        <H3 className={`group-hover:text-vs-blue`}>{props.title}</H3>
+      <div className={`flex flex-col transform transition-all ease-linear duration-300 ${props.showDesc? ' translate-x-1.5':' '}`}>
+        <H3 className={`group-hover:text-vs-blue transform transition-all ease-linear ${props.showDesc? '!text-lg':' opacity-50'}`}>{props.title}</H3>
 
         
 
-          <div className={`transform transition-opacity delay-75 overflow-hidden ${props.showDesc ? 'h-auto opacity-100':' h-0 opacity-0'}`}>
+          <div className={`overflow-hidden transform transition-all duration-300 ease-linear ${props.showDesc ? 'h-auto opacity-100':' h-0 opacity-0'}`}>
           <Paragraph>{props.desc}</Paragraph>
           </div>
       

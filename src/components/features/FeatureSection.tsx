@@ -64,20 +64,41 @@ export default function FeatureSection() {
 
    
     return (
-        <Section className="relative">
+        <Section className="relative ">
+
+            <div className='absolute top-0 left-0 flex w-full h-full'>
+
+                <div className='w-5/12 h-full bg-[#f9f9f9] flex'>
+
+                </div>
+                <div className='w-7/12 flex-1 h-full bg-vs-lemon-green'>
+
+                </div>
+
+
+
+            </div>
             <Container className="w-full gap-16 relative">
 
 
 
-                <div className='flex flex-col w-full gap-32 py-32 z-10'>
-                    <div className='flex flex-col w-full gap-32 py-32'>
+                <div className='w-full flex h-full  absolute top-0 left-0'>
+                    
 
+                </div>
+
+                <div className='flex w-full gap-32 z-10'>
+
+                
+
+
+                    <div className='flex flex-col w-1/3 gap-32 py-32'>
 
 
                         {/* Feature Item #1 */}
 
-                        <div className='flex w-full gap-16'>
-                        <div className='flex flex-col gap-8 w-1/3'>
+    
+                        <div className='flex flex-col gap-8 w-full'>
                             <div className='flex flex-col gap-4'>
                                 <PreText><span className=' text-vs-blue'><PhoneIcon></PhoneIcon></span> Enterprise VoIP</PreText>
                                 <H2>Comprehensive VoIP solutions for your practice</H2>
@@ -103,10 +124,7 @@ export default function FeatureSection() {
                             </div>
                         </div>
 
-                            <div className='w-full bg-teal-400 flex-1'>
-
-                            </div>
-                        </div>
+               
                         {/* Feature Item #1 */}
 
 
@@ -114,7 +132,7 @@ export default function FeatureSection() {
 
 
                         {/* Feature Item #3 */}
-                        <div className='flex flex-col gap-8'>
+                        <div className='flex flex-col gap-8 w-full'>
                             <div className='flex flex-col gap-4'>
                                 <PreText><span className=' text-vs-blue'><PhoneIcon></PhoneIcon></span> Attribution and Analytics</PreText>
                                 <H2>Guide to Tracking Customer Interactions</H2>
@@ -143,7 +161,7 @@ export default function FeatureSection() {
 
                     </div>
 
-                    <div className='h-full w-2/3 relative bg-gray-200'> </div>
+                    <div className='w-2/3 h-full'></div>
                 </div>
             </Container>
         </Section>
