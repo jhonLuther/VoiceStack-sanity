@@ -13,23 +13,20 @@ const TableTabset: React.FunctionComponent<TabsetProps> = ({
 }) => {
 
   
-  const [progressWidth, setProgressWidth] = useState(0);
-
-  useEffect ( () => {
-    setProgressWidth((currentIndex ) * 33.33);
-  },[currentIndex,progressWidth])
+ 
 
   console.log({tabs});
   
 
   return (
     <>
-      <ul className={`flex`}>
+      <ul className={`flex gap-3`}>
         {tabs.map((tab: any, index: number) => {
           return (
             <li
                 key={tab._uid}
-                className={`${currentIndex === index && 'block'} `}
+                className={`${currentIndex === index ? 'bg-gray-900 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-900 hover:text-white'} flex items-center 
+                gap-2 px-4 py-3 rounded-[22px] text-center font-inter text-sm font-medium leading-[145%] cursor-pointer`}
                 onClick={() => setCurrentIndex(index)}
               >
                 {/* {tab.tabIcon && tab.tabIcon.length > 0 && (

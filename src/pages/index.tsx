@@ -75,10 +75,10 @@ export default function IndexPage(
             <HeroSection></HeroSection>
             <LinksCardsSection></LinksCardsSection>
             <LogoListingSection></LogoListingSection>
-            <CardsListingSection></CardsListingSection>
             <FeatureSection></FeatureSection>
             <AnimatedBeamSection data={integrationPlatforms}/>
-            {/* <SiteComparisonSection data={comparisonSectionData} /> */}
+            <CardsListingSection></CardsListingSection>
+            <SiteComparisonSection data={comparisonSectionData} />
 
             <BannerSection></BannerSection>
           </div>
