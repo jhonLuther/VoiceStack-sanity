@@ -47,7 +47,7 @@ export default function AppearFeature() {
     // const [actualScrollStart, setActualScrollStart] = useState(0)
     const [currentPos, setCurrentPos] = useState(0)
 
-    const actualScrollStart = sectionStartY + 160 + scrollRef?.current?.offsetHeight
+    const actualScrollStart = sectionStartY  + scrollRef?.current?.offsetHeight + 160
     const sectionEndY = sectionStartY + (scrollRef?.current?.offsetHeight * 2)
     const percentScrolled = ((actualScrollStart - scrollPos) / (actualScrollStart - sectionEndY)) * 100
 

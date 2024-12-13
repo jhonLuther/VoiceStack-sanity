@@ -8,6 +8,8 @@ import H2 from './typography/H2'
 import Paragraph from './typography/Paragraph'
 import SiteComparisonTable from './SiteComparisonTable'
 import TableTabset from './TableTabSet'
+import Button from './common/Button'
+import ButtonArrow from './icons/ButtonArrow'
 
 function SiteComparisonSection({ data }) {
   console.log(data,'comparison main data');
@@ -17,7 +19,7 @@ function SiteComparisonSection({ data }) {
   const [isOpen, setIsOpen] = useState(false);
   
   return (
-    <Section id="comparison-section" className="py-12 md:py-24 bg-[#F9F6FE]">
+    <Section id="comparison" className="py-12 md:py-24">
       <Container className="flex flex-col items-center gap-16">
         
         <div className="flex justify-center w-full mb-12">
@@ -33,11 +35,14 @@ function SiteComparisonSection({ data }) {
             setCurrentIndex={setCurrentIndex}
           />
 
-          <div>
+          <div className='w-full'>
             {data.table.rowCategories.length && (
               data.table.rowCategories.map((tableData:any, index:number) =>{
                 return (
-                  <SiteComparisonTable key={index}
+                  <SiteComparisonTable 
+                    key={index}
+                    index={index}
+                    currentIndex={currentIndex}
                     data={{
                       columnDimensionName: data.columnDimensionName,
                       headerLogos: data.table.columns,
@@ -59,6 +64,12 @@ function SiteComparisonSection({ data }) {
           name={data?.cta.name ?? ''}
           url={data?.cta.url ?? '/'}
         /> */}
+        <div className='flex gap-4 items-center mt-12 lg:mt-16'>
+            <Button type='primary' link='#'>
+              <ButtonArrow></ButtonArrow>
+              <span className="text-base font-medium">{`Book free demo`}</span>
+            </Button>
+          </div>
       </Container>
     </Section>
   )

@@ -25,6 +25,7 @@ import ComparisonSection from '~/components/ComparisonSection'
 import BannerSection from '~/components/BannerSection'
 import SiteComparisonSection from '~/components/SiteComparisonSection'
 import LinksCardsSection from '~/components/LinksCardSection'
+import FaqSection from '~/components/FaqSection'
 
 export const getStaticProps: GetStaticProps<SharedPageProps> = async ({
   draftMode = false,
@@ -75,11 +76,11 @@ export default function IndexPage(
             <HeroSection></HeroSection>
             <LinksCardsSection></LinksCardsSection>
             <LogoListingSection></LogoListingSection>
-            <CardsListingSection></CardsListingSection>
             <FeatureSection></FeatureSection>
             <AnimatedBeamSection data={integrationPlatforms}/>
-            {/* <SiteComparisonSection data={comparisonSectionData} /> */}
-
+            <CardsListingSection></CardsListingSection>
+            <SiteComparisonSection data={comparisonSectionData} />
+            <FaqSection></FaqSection>
             <BannerSection></BannerSection>
           </div>
          </Layout>
