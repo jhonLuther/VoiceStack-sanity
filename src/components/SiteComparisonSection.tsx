@@ -20,7 +20,7 @@ function SiteComparisonSection({ data }) {
   
   return (
     <Section id="comparison" className="py-12 md:py-24">
-      <Container className="flex flex-col items-center gap-16">
+      <Container className="flex flex-col items-center">
         
         <div className="flex justify-center w-full mb-12">
           <div className='flex flex-col w-full max-w-[780px] text-center gap-4'>
@@ -28,7 +28,7 @@ function SiteComparisonSection({ data }) {
             <Paragraph>{data.header}</Paragraph>
           </div>
         </div>
-
+        <div className='flex flex-col gap-12 items-center w-full'>
           <TableTabset
             tabs={data?.table.rowCategories}
             currentIndex={currentIndex}
@@ -59,6 +59,7 @@ function SiteComparisonSection({ data }) {
               }}
             /> */}
           </div>
+        </div>
         {/* <CTAButton
           className="px-6 py-3"
           name={data?.cta.name ?? ''}
