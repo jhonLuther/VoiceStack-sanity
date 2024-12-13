@@ -78,7 +78,7 @@ export function AnimatedBeamDemo({ data }: any) {
       </div>
 
       {/* CRM and PMS Sections */}
-      <div className="flex justify-between w-full items-center  mt-12">
+      <div className="flex justify-between w-full items-center  mt-14">
         <div className="flex flex-col gap-5 z-10  rounded-lg border border-gray-100 bg-white shadow-lg">
         <div className="flex p-2 items-center justify-center rounded-t-lg bg-gray-300 text-base font-semibold">
          <H3 className="text-gray-600">Analytics</H3>
