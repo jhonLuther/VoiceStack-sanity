@@ -19,7 +19,7 @@ export default function ListItem(props) {
 
         
 
-          <div className={`transform transition-all duration-300 overflow-hidden ${props.showDesc ? 'h-auto':' h-0'}`}>
+          <div className={`transform transition-opacity delay-75 overflow-hidden ${props.showDesc ? 'h-auto opacity-100':' h-0 opacity-0'}`}>
           <Paragraph>{props.desc}</Paragraph>
           </div>
       

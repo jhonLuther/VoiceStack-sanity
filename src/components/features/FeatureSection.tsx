@@ -76,7 +76,7 @@ export default function FeatureSection() {
 
                         {/* Feature Item #1 */}
 
-                        <div className='flex w-full'>
+                        <div className='flex w-full gap-16'>
                         <div className='flex flex-col gap-8 w-1/3'>
                             <div className='flex flex-col gap-4'>
                                 <PreText><span className=' text-vs-blue'><PhoneIcon></PhoneIcon></span> Enterprise VoIP</PreText>
