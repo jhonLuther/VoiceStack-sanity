@@ -78,11 +78,9 @@ export default function IndexPage(
             <LogoListingSection></LogoListingSection>
             <CardsListingSection></CardsListingSection>
             <FeatureSection></FeatureSection>
-            {/* <ComparisonSection data={comparisonSectionData} /> */}
-            {/* <SiteComparisonSection data={comparisonSectionData} /> */}
+            <SiteComparisonSection data={comparisonSectionData} />
             <AnimatedBeamSection data={integrationPlatforms}/>
 
-            {/* <ComparisonSection data={comparisonSectionData} /> */}
             <BannerSection></BannerSection>
           </div>
          </Layout>
