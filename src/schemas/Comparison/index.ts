@@ -24,6 +24,12 @@ export default defineType({
               type: 'string',
               validation: (Rule) => Rule.required(),
             }),
+            defineField({
+              name: 'logo',
+              title: 'Logo',
+              type: 'image',
+              // validation: (Rule) => Rule.required(),
+            }),
           ],
         } as any),
       ],
@@ -41,6 +47,12 @@ export default defineType({
               title: 'Category Name',
               type: 'string',
               validation: (Rule) => Rule.required(),
+            }),
+            defineField({
+              name: 'icon',
+              title: 'Icon',
+              type: 'image',
+              // validation: (Rule) => Rule.required(),
             }),
             defineField({
               name: 'rows',

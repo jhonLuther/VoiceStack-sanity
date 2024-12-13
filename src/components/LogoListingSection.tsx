@@ -17,6 +17,8 @@ import westwind from 'public/assets/logos/westwind.png'
 import Image from 'next/image';
 import Button from './common/Button';
 import ButtonArrow from './icons/ButtonArrow';
+import H2 from './typography/H2';
+import Paragraph from './typography/Paragraph';
 
 const LogoListingSection = () => {
 
@@ -40,9 +42,13 @@ const LogoListingSection = () => {
       <Container >
         <div className='flex flex-col items-center w-full'>
           <div className="flex justify-center w-full mb-12">
-            <div className='flex flex-col w-full max-w-[780px] text-center'>
+            {/* <div className='flex flex-col w-full max-w-[780px] text-center'>
               <h2 className='text-gray-900 text-center font-inter text-lg font-medium leading-[1.45]'>Built for smarter dental practices.</h2>
               <p className='text-gray-500 text-center font-inter text-lg font-medium leading-[1.45]'>Used by leading Groups and DSOs.</p>
+            </div> */}
+            <div className='flex flex-col w-full max-w-[780px] text-center gap-4'>
+              <H2>Built for smarter dental practices.</H2>
+              <Paragraph>Used by leading Groups and DSOs.</Paragraph>
             </div>
           </div>
           <div className='flex flex-wrap justify-center items-center gap-x-12 gap-y-8 max-w-[1034px]'>

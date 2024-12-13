@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Section from './structure/Section'
 import Container from './structure/Container'
 import Wave from 'public/assets/wave.svg'
-import Dome from 'public/assets/dome.svg'
+import Dome from 'public/assets/dome.png'
 import Button from './common/Button'
 import ButtonArrow from './icons/ButtonArrow'
 import { PlayIcon } from 'lucide-react'
@@ -41,7 +41,8 @@ const BannerSection = () => {
         </div>
       </Container>
       {/* <div className='absolute h-[100px] bg-[url("../../public/assets/dome.svg")]'></div> */}
-      <Image src={Dome} alt='dome' className='absolute left-[50%] bottom-0 -translate-x-[50%]'></Image>
+      <div className='absolute h-[205px] bg-[url("/assets/wave.svg")] w-full left-0 bottom-0 bg-cover bg-repeat-x bg-left-bottom'></div>
+      <Image src={Dome} alt='dome' className='absolute left-[50%] bottom-0 -translate-x-[50%] w-[80%] max-w-[1002px]'></Image>
       <div>
         {isOpen && (
           <VideoModal

@@ -24,6 +24,7 @@ import AnimatedBeamSection from '~/components/ui/animated/AnimatedBeamSection'
 import LinkCards from '~/components/LinkCards'
 import ComparisonSection from '~/components/ComparisonSection'
 import BannerSection from '~/components/BannerSection'
+import SiteComparisonSection from '~/components/SiteComparisonSection'
 
 export const getStaticProps: GetStaticProps<SharedPageProps> = async ({
   draftMode = false,
@@ -53,10 +54,10 @@ export default function IndexPage(
   props: InferGetStaticPropsType<typeof getStaticProps>,
 ) {
   const {integrationPlatforms,comparisonTableData} = props
-    console.log({props});
+    // console.log({props});
     const comparisonSectionData = {
-      strip: "COMPARISON",
-      header: "How OSDental Compares",
+      strip: "VoiceStack is the Best-in-class",
+      header: "No other phone system can match VoiceStack's AI-driven features,outcome-driven workflows and integration possibilities, as shown in the comparison chart below. ",
       columnDimensionName: "Features", 
       table: comparisonTableData,
     }
@@ -78,7 +79,8 @@ export default function IndexPage(
             <LogoListingSection></LogoListingSection>
             <CardsListingSection></CardsListingSection>
             <FeatureSection></FeatureSection>
-            {/* <ComparisonSection data={comparisonSectionData} /> */}
+            <ComparisonSection data={comparisonSectionData} />
+            <SiteComparisonSection data={comparisonSectionData} />
             <BannerSection></BannerSection>
           </div>
          </Layout>
