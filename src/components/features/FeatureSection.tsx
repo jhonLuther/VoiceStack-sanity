@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import { motion, useScroll, useSpring } from "motion/react";
 import Section from '../structure/Section'
 import Container from '../structure/Container'
@@ -13,6 +13,8 @@ import PreText from './micro/PreText'
 import PhoneIcon from './micro/icons/PhoneIcon'
 import ListItem from './micro/ListItem'
 import AppearFeature from './AppearFeature';
+import { ImageContext } from '~/providers/ImageSwitchProvider';
+
 
 
 
@@ -60,9 +62,10 @@ const conversationalFeatures = [
 export default function FeatureSection() {
     const { scrollY } = useScroll();
 
+    const { activeImage, setActiveImage} = useContext(ImageContext)
 
 
-   
+
     return (
         <Section className="relative ">
 
@@ -83,22 +86,22 @@ export default function FeatureSection() {
 
 
                 <div className='w-full flex h-full  absolute top-0 left-0'>
-                    
+
 
                 </div>
 
-                <div className='flex w-full gap-32 z-10'>
-
-                
+                <div className='flex w-full gap-32 z-10 relative'>
 
 
-                    <div className='flex flex-col w-1/3 gap-32 py-32'>
+
+
+                    <div className='flex flex-col w-1/3 gap-64 py-32'>
 
 
                         {/* Feature Item #1 */}
 
-    
-                        <div className='flex flex-col gap-8 w-full'>
+
+                        <motion.div className='flex flex-col gap-8 w-full'>
                             <div className='flex flex-col gap-4'>
                                 <PreText><span className=' text-vs-blue'><PhoneIcon></PhoneIcon></span> Enterprise VoIP</PreText>
                                 <H2>Comprehensive VoIP solutions for your practice</H2>
@@ -122,17 +125,17 @@ export default function FeatureSection() {
                                     <span className="text-base font-medium">{`Book free demo`}</span>
                                 </Button>
                             </div>
-                        </div>
+                        </motion.div>
 
-               
+
                         {/* Feature Item #1 */}
 
 
-                                <AppearFeature></AppearFeature>
+                        <AppearFeature></AppearFeature>
 
 
                         {/* Feature Item #3 */}
-                        <div className='flex flex-col gap-8 w-full'>
+                        <motion.div className='flex flex-col gap-8 w-full'>
                             <div className='flex flex-col gap-4'>
                                 <PreText><span className=' text-vs-blue'><PhoneIcon></PhoneIcon></span> Attribution and Analytics</PreText>
                                 <H2>Guide to Tracking Customer Interactions</H2>
@@ -156,12 +159,17 @@ export default function FeatureSection() {
                                     <span className="text-base font-medium">{`Book free demo`}</span>
                                 </Button>
                             </div>
-                        </div>
+                        </motion.div>
                         {/* Feature Item #3 */}
 
                     </div>
 
-                    <div className='w-2/3 h-full'></div>
+                    <div className='w-2/3 h-full relativ px-12'>
+                    
+                            <div className='sticky top-40 py-24 left-0 h-auto'>
+                                <img src={ activeImage || './vs/dummy.png'}/>
+                            </div>
+                    </div>
                 </div>
             </Container>
         </Section>

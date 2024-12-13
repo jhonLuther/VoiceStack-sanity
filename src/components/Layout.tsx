@@ -1,6 +1,7 @@
 import Header from './common/Header'
 import Footer from './common/Footer'
 import NavigationContextProvider from '~/providers/NavigationContextProvider'
+import ImageSwitchProvider from '~/providers/ImageSwitchProvider'
 
 interface LayoutProps {
   children: React.ReactNode
@@ -31,14 +32,16 @@ export default function Layout({
 
   return (
     <NavigationContextProvider>
+      <ImageSwitchProvider>
 
-      <div
-        className={`flex flex-col w-full items-center}`}
-      >
-        {/* <Header /> */}
-        <main className="w-full flex flex-col">{children}</main>
-        {/* <Footer className={`w-full flex `} /> */}
-      </div>
+        <div
+          className={`flex flex-col w-full items-center}`}
+        >
+          {/* <Header /> */}
+          <main className="w-full flex flex-col">{children}</main>
+          {/* <Footer className={`w-full flex `} /> */}
+        </div>
+      </ImageSwitchProvider>
     </NavigationContextProvider>
   )
 }
