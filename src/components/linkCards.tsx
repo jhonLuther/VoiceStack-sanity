@@ -9,7 +9,7 @@ import Link from 'next/link';
 import LearnMore from './ui/LearnMore';
 
 const LinkCards = () => {
-  const linkCards = [
+  const linkCardsData = [
     { 
       heading: "Enterprise VoIP", 
       description:"Convert Patients with AI-driven call scoring, analytics, and automation.",
@@ -34,8 +34,8 @@ const LinkCards = () => {
     <Section className="pt-md pb-8">
       <Container>
         <div className='grid grid-cols-4 gap-12 justify-center'>
-          {linkCards && linkCards.length > 0 && (
-            linkCards.map((item:any, index:number) => {
+          {linkCardsData && linkCardsData.length > 0 && (
+            linkCardsData.map((item:any, index:number) => {
               return(
                 item.href ? (
                   <Link href={item.href}>
