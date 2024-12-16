@@ -42,5 +42,11 @@ export default defineType({
       title: 'Number of location',
       type: 'number',
     }),
+    defineField({
+      name: 'language',
+      type: 'string',
+      readOnly: true,
+      hidden: true,
+    }),
   ],
 })
