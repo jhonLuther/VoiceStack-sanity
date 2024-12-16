@@ -41,7 +41,7 @@ const TestimonialCarousel = ({ testimonials }) => {
                     'linear-gradient(37deg, #4B11A2 -7.71%, #742ACE 28.85%, #A947EB 68.49%, #D359DD 102.22%, #F768D1 124.54%), #FFF;',
                 }}
               >
-                <TestimonialCard props={testimonial} />
+                {/* <TestimonialCard props={testimonial} /> */}
               </div>
             </div>
           )
