@@ -27,6 +27,12 @@ export default defineType({
         maxLength: 96,
       },
     }),
+    defineField({
+      name: 'language',
+      type: 'string',
+      readOnly: true,
+      hidden: true,
+    }),
   ],
   preview: {
     select: {

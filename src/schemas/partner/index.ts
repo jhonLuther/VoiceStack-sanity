@@ -19,5 +19,11 @@ export default defineType({
       title: 'Organization Url',
       type: 'url',
     }),
+    defineField({
+      name: 'language',
+      type: 'string',
+      readOnly: true,
+      hidden: true,
+    }),
   ],
 })
