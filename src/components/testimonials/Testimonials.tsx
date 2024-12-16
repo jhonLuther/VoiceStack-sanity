@@ -16,6 +16,8 @@ import AppearTestimonials from './AppearTestimonials'
 import { ImageContext } from '~/providers/ImageSwitchProvider'
 import TestimonialCard from '../common/TestimonialCard'
 import TestCardOne from '../TestCardOne'
+import testimonialData from '../../migrations/testimonials.json'
+
 
 const enterpriseItems = [
   'IVR & Call Routing',
@@ -58,22 +60,34 @@ export default function Testimonails() {
 
   const { activeImage, setActiveImage } = useContext(ImageContext)
 
+  console.log({testimonialData});
+  
+
   return (
     <Section className="relative ">
       <div className="absolute top-0 left-0 flex w-full h-full">``
         <div className="w-5/12 h-full bg-[#111827] flex"></div>
         <div className="w-7/12 flex-1 h-full bg-[#111827]"></div>
       </div>
-      <Container className="w-full h-[300vh] gap-16 relative ">
+      <Container className="w-full h-[400vh] gap-16 relative ">
         <div className="w-full flex h-full  absolute top-0 left-0"></div>
 
         <div className="flex w-full gap-32 z-10 relative">
-          <div className="w-1/3 h-full relative pt-24 flex items-start">
+          <div className="flex-1 max-w-[366px] h-full relative pt-24 flex items-start">
             <AppearTestimonials />
           </div>
-          <div className="w-2/3 h-full relative px-12">
-            <div className="sticky top-[20vh] py-24 left-0 h-auto">
+          <div className="flex-1 h-full relative px-12 pt-24">
+            {/* <div className="sticky top-[20vh] py-24 left-0 h-auto"> */}
+              {/* <TestCardOne/>
               <TestCardOne/>
+              <TestCardOne/>
+              <TestCardOne/> */}
+
+            {/* </div> */}
+            <div>
+            {testimonialData.map((testimonial, index) => (
+              <TestimonialCard key={index} data={testimonial} />
+            ))}
             </div>
           </div>
         </div>

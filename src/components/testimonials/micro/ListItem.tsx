@@ -13,7 +13,8 @@ export default function ListItem(props) {
   return (
     <li onClick={props.onClick} className='group flex gap-4'>
       <div className='bg-gray-200 w-1 rounded-full flex '>
-        <div style={{height:`${actualPercentScrolled}%`}} className={`w-1 ${props.showDesc == true ? "bg-vs-blue" : "bg-transparent"} max-h-[100%] h-full rounded-full`}></div>
+        {/* <div style={{height:`${actualPercentScrolled}%`}} className={`w-1 ${props.showDesc == true ? "bg-vs-blue" : "bg-transparent"} max-h-[100%] h-full rounded-full`}></div> */}
+        <div className={`w-1 ${props.showDesc == true ? "bg-vs-blue h-full" : "bg-transparent"} max-h-[100%] h-full rounded-full`}></div>
 
       </div>
       <div className={`flex flex-col ease-linear ${props.showDesc? ' translate-x-1.5':' '}`}>
