@@ -59,24 +59,50 @@ export default function Testimonails() {
   const { scrollY } = useScroll()
 
   const { activeImage, setActiveImage } = useContext(ImageContext)
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const parentRef = useRef(null);
+
+  // Handle scroll-to-card logic
+  const handleScrollToCard = (index: number) => {
+    console.log("clicked");
+    
+    const card = cardRefs.current[index];
+    console.log({card});
+    
+    // if (card && parentRef.current) {
+    //   console.log("has parent ref");
+      
+    //   window.scrollTo({
+    //     top: card.offsetTop - (parentRef.current ? parentRef.current.offsetTop : 0),
+    //     behavior: "smooth"
+    //   });
+    // }
+    // if (card) {
+    //   card.scrollIntoView({
+    //       behavior: "smooth",
+    //       block: "start",
+    //       inline: "nearest"
+    //   });
+    // }
+  };
 
   console.log({testimonialData});
   
 
   return (
-    <Section className="relative ">
+    <Section className="relative " ref={parentRef}>
       <div className="absolute top-0 left-0 flex w-full h-full">``
         <div className="w-5/12 h-full bg-[#111827] flex"></div>
         <div className="w-7/12 flex-1 h-full bg-[#111827]"></div>
       </div>
-      <Container className="w-full h-[400vh] gap-16 relative ">
+      <Container className="w-full  gap-16 relative ">
         <div className="w-full flex h-full  absolute top-0 left-0"></div>
 
-        <div className="flex w-full gap-32 z-10 relative">
+        <div className="flex w-full gap-12 z-10 relative">
           <div className="flex-1 max-w-[366px] h-full relative pt-24 flex items-start">
-            <AppearTestimonials />
+            <AppearTestimonials  onListItemClick={handleScrollToCard}/>
           </div>
-          <div className="flex-1 h-full relative px-12 pt-24">
+          <div className="flex-1 h-full relative pt-24">
             {/* <div className="sticky top-[20vh] py-24 left-0 h-auto"> */}
               {/* <TestCardOne/>
               <TestCardOne/>
@@ -86,7 +112,12 @@ export default function Testimonails() {
             {/* </div> */}
             <div>
             {testimonialData.map((testimonial, index) => (
-              <TestimonialCard key={index} data={testimonial} />
+              <TestimonialCard 
+                key={index}
+                index={index} 
+                data={testimonial} 
+                ref={(el) => (cardRefs.current[index] = el)} 
+              />
             ))}
             </div>
           </div>
