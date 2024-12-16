@@ -12,7 +12,7 @@ const TestimonialCarousel = ({ testimonials }) => {
           <div
             className="w-full flex justify-center !rounded-xl"
           >
-            <TestimonialCard props={testimonials[0]} />
+            {/* <TestimonialCard props={testimonials[0]} /> */}
             
           </div>
         </div>
