@@ -20,6 +20,12 @@ export default defineType({
       title: 'Integration Product Image',
       type: 'image',
     }),
+    defineField({
+      name: 'language',
+      type: 'string',
+      readOnly: true,
+      hidden: true,
+    }),
   ],
   preview: {
     select: {

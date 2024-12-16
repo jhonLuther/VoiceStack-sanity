@@ -11,6 +11,7 @@ import {
   IframeOptions,
 } from 'sanity-plugin-iframe-pane'
 import { previewUrl } from 'sanity-plugin-iframe-pane/preview-url'
+import {documentInternationalization} from '@sanity/document-internationalization'
 
 // see https://www.sanity.io/docs/api-versioning for how versioning works
 import {
@@ -62,6 +63,28 @@ export default defineConfig({
     },
   },
   plugins: [
+    documentInternationalization({
+      supportedLanguages: [
+        { id: 'en', title: 'US English' },
+        { id: 'en-GB', title: 'UK English' },
+      ],
+      schemaTypes: ['layout','feature',
+        'featureCategory',
+        'integration',
+        'siteSettings',
+        'testimonial',
+        'benefit',
+        'homeSettings',
+        'person',
+        'legal',
+        'partner',
+        'comparisonTable',
+        'comparisonValue',
+        'allPMS'
+
+      ]
+    }),
+    
     deskTool({
       // `defaultDocumentNode` is responsible for adding a “Preview” tab to the document pane
       // You can add any React component to `S.view.component` and it will be rendered in the pane
