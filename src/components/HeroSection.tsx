@@ -36,7 +36,7 @@ const HeroSection = () => {
     if (wordIndex < words.length) {
       const wordInterval = setTimeout(() => {
         setWordIndex(wordIndex + 1);
-      }, 100); // Delay between each word pulling up
+      }, 200); // Delay between each word pulling up
       return () => clearTimeout(wordInterval);
     } else {
       // Switch to the next message after a delay
@@ -46,7 +46,7 @@ const HeroSection = () => {
       }, 3000); // Pause before showing the next message
       return () => clearTimeout(messageInterval);
     }
-  }, [wordIndex, activeIndex, words.length]);
+  }, [wordIndex, activeIndex, words.length, messages.length]);
 
 
   return (
@@ -82,7 +82,7 @@ const HeroSection = () => {
                         className={`inline-block translate-y-full opacity-0 ${
                           i < wordIndex ? "animate-pullUp" : ""
                         }`}
-                        style={{ animationDelay: `${i * 0.3}s` }}
+                        style={{ animationDelay: `${i * 0.2}s` }}
                       >
                         {word}&nbsp;
                       </span>

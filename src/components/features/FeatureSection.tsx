@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
+import { motion, useScroll, useSpring } from "motion/react";
 import Section from '../structure/Section'
 import Container from '../structure/Container'
 import H2 from '../typography/H2'
@@ -11,6 +12,11 @@ import ButtonArrow from '../icons/ButtonArrow'
 import PreText from './micro/PreText'
 import PhoneIcon from './micro/icons/PhoneIcon'
 import ListItem from './micro/ListItem'
+import AppearFeature from './AppearFeature';
+import { ImageContext } from '~/providers/ImageSwitchProvider';
+
+
+
 
 const enterpriseItems = [
     "IVR & Call Routing",
@@ -54,121 +60,117 @@ const conversationalFeatures = [
 ]
 
 export default function FeatureSection() {
+    const { scrollY } = useScroll();
 
-    const [currentItem, setcurrentItem] = useState<Number>(0);
+    const { activeImage, setActiveImage} = useContext(ImageContext)
+
+
 
     return (
-        <Section className="py-24 relative">
-            <Container className="w-full gap-16 relative">
-                <div className='flex flex-col w-1/3 gap-32'>
+        <Section className="relative ">
 
+            <div className='absolute top-0 left-0 flex w-full h-full'>
 
+                <div className='w-5/12 h-full bg-[#f9f9f9] flex'>
 
-                    {/* Feature Item #1 */}
-                    <div className='flex flex-col gap-8'>
-                        <div className='flex flex-col gap-4'>
-                            <PreText><span className=' text-vs-blue'><PhoneIcon></PhoneIcon></span> Enterprise VoIP</PreText>
-                            <H2>Comprehensive VoIP solutions for your practice</H2>
-                            <Paragraph>Enhance patient experience with AI call scoring, analytics, and automation to improve communication and processes.</Paragraph>
-                        </div>
-                        <ul className='flex flex-wrap gap-3'>
-                            {
-
-                                enterpriseItems.map((item, i: number) => {
-                                    return (
-                                        <PillItem key={i}> <span className='text-green-500'><TickIcon></TickIcon></span> {item}</PillItem>
-                                    )
-                                })
-                            }
-
-                        </ul>
-
-                        <div className=''>
-                            <Button type='primary'>
-                                <ButtonArrow></ButtonArrow>
-                                <span className="text-base font-medium">{`Book free demo`}</span>
-                            </Button>
-                        </div>
-                    </div>
-                    {/* Feature Item #1 */}
-
-
-                    {/* Feature Item #2 */}
-                    <div className='flex flex-col gap-8'>
-                        <div className='flex flex-col gap-4'>
-                            <PreText><span className=' text-vs-blue'><PhoneIcon></PhoneIcon></span>Conversational AI</PreText>
-                            <H2>Track, Follow-up and Convert missed opportunities with AI</H2>
-                            <Paragraph>Enhance patient experience with AI call scoring, analytics, and automation to improve communication and processes.</Paragraph>
-                        </div>
-                        <ul className='flex flex-col gap-8'>
-
-                            {
-
-                                conversationalFeatures.map((item, i: number) => {
-                                    return (
-                                        <ListItem onClick={() => setcurrentItem(i)} key={i} title={item.title} showDesc={i == currentItem} desc={item.desc}> </ListItem>
-
-                                    )
-                                })
-                            }
-
-                        </ul>
-
-                        <div className=''>
-                            <Button type='primary'>
-                                <ButtonArrow></ButtonArrow>
-                                <span className="text-base font-medium">{`Book free demo`}</span>
-                            </Button>
-                        </div>
-                    </div>
-                    {/* Feature Item #2 */}
-
-                    {/* Feature Item #3 */}
-                    <div className='flex flex-col gap-8'>
-                        <div className='flex flex-col gap-4'>
-                            <PreText><span className=' text-vs-blue'><PhoneIcon></PhoneIcon></span> Attribution and Analytics</PreText>
-                            <H2>Guide to Tracking Customer Interactions</H2>
-                            <Paragraph>Connect calls to your marketing team for engagement. Use analytics to assess performance and identify metrics to improve strategies.</Paragraph>
-                        </div>
-                        <ul className='flex flex-wrap gap-3'>
-                            {
-
-                                enterpriseItems.map((item, i: number) => {
-                                    return (
-                                        <PillItem key={i}> <span className='text-green-500'><TickIcon></TickIcon></span> {item}</PillItem>
-                                    )
-                                })
-                            }
-
-                        </ul>
-
-                        <div className=''>
-                            <Button type='primary'>
-                                <ButtonArrow></ButtonArrow>
-                                <span className="text-base font-medium">{`Book free demo`}</span>
-                            </Button>
-                        </div>
-                    </div>
-                    {/* Feature Item #3 */}
+                </div>
+                <div className='w-7/12 flex-1 h-full bg-vs-lemon-green'>
 
                 </div>
 
-                <div className='h-full w-2/3'> Hellp</div>
-{/* 
-                <div className='flex w-full h-full absolute top-0 left-0   '>
 
-                    <div className='w-1/3'></div>
 
-                    <div className='w-2/3 relative border flex items-center'>
+            </div>
+            <Container className="w-full gap-16 relative">
 
-                        <div className='bg-green-300 sticky h-40 flex w-full '>
 
-                        </div>
+
+                <div className='w-full flex h-full  absolute top-0 left-0'>
+
+
+                </div>
+
+                <div className='flex w-full gap-32 z-10 relative'>
+
+
+
+
+                    <div className='flex flex-col w-1/3 gap-64 py-32'>
+
+
+                        {/* Feature Item #1 */}
+
+
+                        <motion.div className='flex flex-col gap-8 w-full'>
+                            <div className='flex flex-col gap-4'>
+                                <PreText><span className=' text-vs-blue'><PhoneIcon></PhoneIcon></span> Enterprise VoIP</PreText>
+                                <H2>Comprehensive VoIP solutions for your practice</H2>
+                                <Paragraph>Enhance patient experience with AI call scoring, analytics, and automation to improve communication and processes.</Paragraph>
+                            </div>
+                            <ul className='flex flex-wrap gap-3'>
+                                {
+
+                                    enterpriseItems.map((item, i: number) => {
+                                        return (
+                                            <PillItem key={i}> <span className='text-green-500'><TickIcon></TickIcon></span> {item}</PillItem>
+                                        )
+                                    })
+                                }
+
+                            </ul>
+
+                            <div className=''>
+                                <Button type='primary'>
+                                    <ButtonArrow></ButtonArrow>
+                                    <span className="text-base font-medium">{`Book free demo`}</span>
+                                </Button>
+                            </div>
+                        </motion.div>
+
+
+                        {/* Feature Item #1 */}
+
+
+                        <AppearFeature></AppearFeature>
+
+
+                        {/* Feature Item #3 */}
+                        <motion.div className='flex flex-col gap-8 w-full'>
+                            <div className='flex flex-col gap-4'>
+                                <PreText><span className=' text-vs-blue'><PhoneIcon></PhoneIcon></span> Attribution and Analytics</PreText>
+                                <H2>Guide to Tracking Customer Interactions</H2>
+                                <Paragraph>Connect calls to your marketing team for engagement. Use analytics to assess performance and identify metrics to improve strategies.</Paragraph>
+                            </div>
+                            <ul className='flex flex-wrap gap-3'>
+                                {
+
+                                    enterpriseItems.map((item, i: number) => {
+                                        return (
+                                            <PillItem key={i}> <span className='text-green-500'><TickIcon></TickIcon></span> {item}</PillItem>
+                                        )
+                                    })
+                                }
+
+                            </ul>
+
+                            <div className=''>
+                                <Button type='primary'>
+                                    <ButtonArrow></ButtonArrow>
+                                    <span className="text-base font-medium">{`Book free demo`}</span>
+                                </Button>
+                            </div>
+                        </motion.div>
+                        {/* Feature Item #3 */}
 
                     </div>
 
-
-                </div> */}
+                    <div className='w-2/3 h-full relativ px-12'>
+                    
+                            <div className='sticky top-40 py-24 left-0 h-auto'>
+                                <img src={ activeImage || './vs/dummy.png'}/>
+                            </div>
+                    </div>
+                </div>
             </Container>
         </Section>
     )
