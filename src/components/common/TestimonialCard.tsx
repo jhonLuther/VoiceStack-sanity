@@ -90,5 +90,5 @@ const TestimonialCard = forwardRef<HTMLDivElement, TestimonialCardProps>(
     </div>
   );
 });
-
+TestimonialCard.displayName = "TestimonialCard";
 export default TestimonialCard;
