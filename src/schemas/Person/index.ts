@@ -33,5 +33,11 @@ export default defineType({
       title: 'Person Image',
       type: 'image',
     }),
+    defineField({
+      name: 'language',
+      type: 'string',
+      readOnly: true,
+      hidden: true,
+    }),
   ],
 })

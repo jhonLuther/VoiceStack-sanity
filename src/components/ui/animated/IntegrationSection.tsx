@@ -4,6 +4,7 @@ import { cn } from "~/lib/utils";
 import ImageLoader from "~/components/common/imageLoader/imageLoader";
 import H3 from "~/components/typography/H3";
 import LinesIcon from "~/components/icons/LinesIcon";
+import VideoPlayer from "~/components/common/VideoPlayer";
 
 const Circle = forwardRef<
   HTMLDivElement,
@@ -97,8 +98,9 @@ export function AnimatedBeamDemo({ data }: any) {
 
         {/* Center Image */}
 
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-[50%]">
-          <LinesIcon />
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-[50%] w-full">
+          {/* <LinesIcon /> */}
+        <VideoPlayer/>
         </div>
         <div className="flex flex-col items-center justify-start">
           <div className="flex gap-16">
@@ -106,7 +108,7 @@ export function AnimatedBeamDemo({ data }: any) {
               <div
                 key={`top-point-${index}`}
                 ref={ref}
-                className="flex flex-wrap justify-center rounded-lg z-20 w-1 h-1"
+                className="flex flex-wrap justify-center rounded-lg z-10 w-1 h-1"
               />
             ))}
           </div>
@@ -114,7 +116,7 @@ export function AnimatedBeamDemo({ data }: any) {
           <div
             id="center-image"
             ref={centerRef}
-            className="md:max-w-[250px] md:max-h-[250px] flex items-center justify-center z-20"
+            className="md:max-w-[250px] md:max-h-[250px] flex items-center justify-center z-10"
           >
             <ImageLoader
               className="flex justify-center rounded-lg"
