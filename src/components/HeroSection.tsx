@@ -21,10 +21,10 @@ const HeroSection = () => {
   }
 
   const messages = [
-    "To Grow your Practice.",
-    "To Convert More New Patients.",
-    "To Reactivate Existing Patients.",
-    "To Eliminate Missed Calls.",
+    "To Grow your Practice",
+    "To Convert More New Patients",
+    "To Reactivate Existing Patients",
+    "To Eliminate Missed Calls",
   ];
 
   const [activeIndex, setActiveIndex] = useState(0);

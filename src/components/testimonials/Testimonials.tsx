@@ -60,14 +60,17 @@ export default function Testimonails() {
 
   const { activeImage, setActiveImage } = useContext(ImageContext)
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const parentRef = useRef(null);
+  const parentRef = useRef<(HTMLDivElement | null)>(null);
 
   // Handle scroll-to-card logic
   const handleScrollToCard = (index: number) => {
     console.log("clicked");
     
     const card = cardRefs.current[index];
-    console.log({card});
+    // console.log({card});
+    console.log(card.offsetTop, "card.offsetTop");
+    console.log(parentRef, "parentRef");
+    
     
     // if (card && parentRef.current) {
     //   console.log("has parent ref");
@@ -77,20 +80,25 @@ export default function Testimonails() {
     //     behavior: "smooth"
     //   });
     // }
-    // if (card) {
-    //   card.scrollIntoView({
-    //       behavior: "smooth",
-    //       block: "start",
-    //       inline: "nearest"
-    //   });
-    // }
+    if (card) {
+      // card.scrollIntoView({
+      //     behavior: "smooth",
+      //     block: "start",
+      //     // inline:'start'
+      //     // inline: "nearest"
+      // });
+      //   window.scrollTo({
+      //   top: card.offsetTop - (parentRef.current ? parentRef.current.offsetTop : 0),
+      //   behavior: "smooth"
+      // });
+    }
   };
 
   console.log({testimonialData});
   
 
   return (
-    <Section className="relative " ref={parentRef}>
+    <Section className="relative" ref={parentRef}>
       <div className="absolute top-0 left-0 flex w-full h-full">``
         <div className="w-5/12 h-full bg-[#111827] flex"></div>
         <div className="w-7/12 flex-1 h-full bg-[#111827]"></div>
