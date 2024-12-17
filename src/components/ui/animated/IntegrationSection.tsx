@@ -135,10 +135,10 @@ export function AnimatedBeamDemo({ data }: any) {
             <div
               key={index}
               ref={pmsRefs[index]}
-              className="md:max-w-[172px] flex"
+              className="md:max-w-[172px] flex  "
             >
               <ImageLoader
-                className="flex justify-center h-20 w-full"
+                className="flex justify-center h-20 w-full "
                 imageClassName="!object-contain h-20 w-auto"
                 image={pmss.image}
                 fixed={false}

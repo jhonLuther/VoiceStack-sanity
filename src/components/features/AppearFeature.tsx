@@ -32,7 +32,7 @@ const conversationalFeatures = [
 ]
 
 
-export default function AppearFeature({ getIndex, index, ref }) {
+export default function AppearFeature({ key, getIndex, index, ref, dataIndex }: any) {  
 
 
   const { scrollY } = useScroll();
@@ -40,7 +40,7 @@ export default function AppearFeature({ getIndex, index, ref }) {
   const [sectionStartY, setSectionStartY] = useState(0)
   const [currentItem, setcurrentItem] = useState<Number>(0);
 
-  const scrollRef = useRef(ref)
+  const scrollRef = useRef(null)
   const numberOfItems = conversationalFeatures.length
 
   // const [sectionEndY, setSectionEndY] = useState(0)
@@ -118,10 +118,7 @@ export default function AppearFeature({ getIndex, index, ref }) {
 
 
   return (
-
-
-
-    <div ref={scrollRef} className='sticky top-40 left-0 ' style={{ marginBottom: `${scrollRef?.current?.offsetHeight * 1.5 - 160}px` }}>
+    <div data-index={index? index : 1} id={dataIndex} ref={scrollRef} className='sticky top-40 left-0 ' style={{ marginBottom: `${scrollRef?.current?.offsetHeight * 1.5 - 160}px` }}>
 
       <motion.div
         initial={{ opacity: 0 }}
@@ -141,7 +138,7 @@ export default function AppearFeature({ getIndex, index, ref }) {
 
           {
 
-            conversationalFeatures.map((item, i: number) => {
+            conversationalFeatures && conversationalFeatures.map((item, i: number) => {
               return (
                 <ListItem onClick={handleClick} key={i}
                   index={i} title={item.title} numberOfItems={numberOfItems}
