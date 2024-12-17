@@ -104,13 +104,13 @@ export default function FeatureSection() {
 
   return (
     <Section className="relative">
-      <div className="absolute top-0 left-0 flex w-full h-full">
+      {/* <div className="absolute top-0 left-0 flex w-full h-full">
         <div className="w-5/12 h-full bg-[#f9f9f9]" />
         <div className="w-7/12 h-full bg-vs-lemon-green" />
-      </div>
+      </div> */}
 
       <Container className="relative flex gap-16">
-        <div className="flex flex-col w-1/3 gap-32 py-16">
+        <div className="flex flex-col flex-1 gap-32 py-16">
           {features.map((feature, index) => (
             index === 1 ? (
               <AppearFeature 
@@ -154,8 +154,8 @@ export default function FeatureSection() {
         </div>
 
         {/* Sticky Image Section */}
-        <div className="w-2/3 px-12">
-          <div className="sticky top-40 py-24">
+        <div className="flex-1 px-12 bg-vs-lemon-green">
+          <div className="sticky top-0 py-24 h-[100vh] flex flex-col justify-center">
             <AnimatePresence mode="wait">
               <motion.img
                 key={activeImage}

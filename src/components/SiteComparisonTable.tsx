@@ -13,10 +13,12 @@ import React from 'react'
 function RowHeading({ heading, description }) {
   return (
     <TableCell className="">
-      <p className="text-gray-500 font-inter text-[15px] font-normal leading-[150%] capitalize">{heading}</p>
-      <p className="flex text-gray-600 text-xs font-normal !p-0">
-        {description}
-      </p>
+      <div className='py-4 border-b border-b-gray-200'>
+        <p className="text-gray-500 font-inter text-[15px] font-normal leading-[150%] capitalize">{heading}</p>
+        {/* <p className="flex text-gray-600 text-xs font-normal !p-0">
+          {description}
+        </p> */}
+      </div>
     </TableCell>
   )
 }
@@ -25,16 +27,18 @@ function ComparisonRichIcon({ comparisonValue }) {
   const { icon, text } = comparisonValue
   return (
     <>
-      <p className="flex flex-row gap-2 justify-start items-center ">
-        <Image
-          className="w-auto h-auto object-contain"
-          src={icon.url}
-          alt={`${text} image`}
-          width={400}
-          height={400}
-        />
-        <span className="text-gray-600">{text}</span>
-      </p>
+      <div className='py-4 border-b border-b-gray-200'>
+        <p className="flex flex-row gap-2 justify-start items-center ">
+          <Image
+            className="object-contain"
+            src={icon.url}
+            alt={`${text} image`}
+            width={16}
+            height={17}
+          />
+          <span className="text-gray-600">{text}</span>
+        </p>
+      </div>
     </>
   )
 }
@@ -70,11 +74,11 @@ export default function SiteComparisonTable({ data, index, currentIndex }) {
               .map((column:any, index:number) => (
                 <TableHead
                   key={index}
-                  className=" text-white items-center justify-center"
+                  className={`text-white items-center justify-center pt-5 ${index == 0 ? 'bg-gray-50 rounded-tl-[10px] rounded-tr-[10px]' : ''}`}
                 >
                   {/* {column.name} */}
                   <Image
-                    className="justify-center items-center py-3 w-auto h-auto"
+                    className="justify-center items-center py-3 min-h-full w-auto m-auto"
                     src={column.logo.url}
                     width={135}
                     height={26}
@@ -93,8 +97,8 @@ export default function SiteComparisonTable({ data, index, currentIndex }) {
                     key={index}
                     className=" flex-row justify-between px-8 border-0"
                   >
-                    <TableCell className='text-gray-900 text-base font-medium leading-[145%]'>{data.tableData.name}</TableCell>
-                    <TableCell></TableCell>
+                    <TableCell className='text-gray-900 text-base font-medium leading-[145%] py-4'>{data.tableData.name}</TableCell>
+                    <TableCell className={`text-center justify-center bg-gray-50`}></TableCell>
                     <TableCell></TableCell>
                     <TableCell></TableCell>
               </TableRow>
@@ -112,7 +116,7 @@ export default function SiteComparisonTable({ data, index, currentIndex }) {
                     {row.comparisons.map((comparisonValue, idx) => (
                       <TableCell
                         key={idx}
-                        className={`text-center  justify-center ${idx == 0 ? 'bg-stone-100' : ''}`}
+                        className={`text-center  justify-center ${idx == 0 ? 'bg-gray-50' : ''}`}
                       >
                         <ComparisonRichIcon comparisonValue={comparisonValue} />
                       </TableCell>
