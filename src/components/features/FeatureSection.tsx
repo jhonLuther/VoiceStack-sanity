@@ -89,7 +89,7 @@ export default function FeatureSection() {
   const sampleImages = [
     "https://a.storyblok.com/f/144863/1216x960/df291daa9a/permissions-based-reporting-access.png",
     "https://a.storyblok.com/f/144863/1216x960/ce2eab0766/easy-to-use-goal-setting.png",
-    "https://a.storyblok.com/f/144863/1007x1216/4895c75910/reporting-analytics.png",
+    "https://a.storyblok.com/f/144863/1217x960/050dc7ba8d/enhance-care-coordination.png",
     "https://a.storyblok.com/f/144863/1216x960/86fd7e19ea/powerful-analytics-dashboard.png",
   ];
 
