@@ -29,9 +29,11 @@ const conversationalFeatures = [
 
     },
 ]
+interface AppearTestimonialsProps {
+    onListItemClick: (index: number) => void; // Callback to handle clicks
+  }
 
-
-export default function AppearFeature() {
+const AppearTestimonials: React.FC<AppearTestimonialsProps> = ({ onListItemClick }) => {
 
 
     const { scrollY } = useScroll();
@@ -45,17 +47,23 @@ export default function AppearFeature() {
     // const [sectionEndY, setSectionEndY] = useState(0)
     // const [actualScrollStart, setActualScrollStart] = useState(0)
     const [currentPos, setCurrentPos] = useState(0)
+    // useEffect(()=>{
+
+    // },)
 
     const actualScrollStart = sectionStartY  + scrollRef?.current?.offsetHeight + 160
-    const sectionEndY = sectionStartY + (scrollRef?.current?.offsetHeight * 2)
+    // const sectionEndY = sectionStartY + (scrollRef?.current?.offsetHeight * 2)
+    // const sectionEndY = sectionStartY + (window.innerHeight * 4)
+    const sectionEndY = typeof window !== 'undefined' 
+        ? sectionStartY + (window.innerHeight * 4) 
+        : 0;
+    // const sectionEndY = sectionStartY + 3200;
     const percentScrolled = ((actualScrollStart - scrollPos) / (actualScrollStart - sectionEndY)) * 100
-
-
-
-
-
-
-
+    // console.log("actualScrollStart", actualScrollStart);
+    // console.log("sectionStartY", sectionStartY);
+    // console.log("sectionEndY", sectionEndY);
+    // console.log("percentScrolled", percentScrolled);
+    
     const switchIndex = (percentage) => {
 
 
@@ -98,48 +106,56 @@ export default function AppearFeature() {
     return (
 
 
+        <div className='h-[100vh] sticky top-40'>
 
-        <div ref={scrollRef} className='sticky top-40 left-0 h-auto text-white' style={{ marginBottom: `${scrollRef?.current?.offsetHeight*1.5 - 160}px` }}>
+            {/* <div ref={scrollRef} className='sticky top-40 left-0 h-auto text-white' style={{ marginBottom: `${scrollRef?.current?.offsetHeight*1.5 - 160}px` }}> */}
+            <div ref={scrollRef} className='left-0 h-auto text-white'>
 
-            <motion.div
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ root: scrollRef }}
-                onViewportEnter={() => { (sectionStartY > 1) ? '' : setSectionStartY(scrollPos) }}
-                // onScroll={()}
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ root: scrollRef }}
+                    onViewportEnter={() => { (sectionStartY > 1) ? '' : setSectionStartY(scrollPos) }}
+                    // onScroll={()}
 
 
-                className='flex flex-col gap-12 w-full'>
-                    <div className='flex flex-col gap-4'>
-                        {/* <PreText><span className=' text-vs-blue'><PhoneIcon></PhoneIcon></span>Conversational AI</PreText> */}
-                        <H2>Purpose-built for Practice Growth</H2>
-                        <Paragraph className="text-white/60" >VoiceStack is trusted by some of the most successful dental groups to create impactful business outcomes across all their locations.</Paragraph>
-                    </div>
-                    <ul className='flex flex-col gap-4'>
+                    className='flex flex-col gap-12 w-full'>
+                        <div className='flex flex-col gap-4'>
+                            {/* <PreText><span className=' text-vs-blue'><PhoneIcon></PhoneIcon></span>Conversational AI</PreText> */}
+                            <H2>Purpose-built for Practice Growth</H2>
+                            <Paragraph className="text-white/60" >VoiceStack is trusted by some of the most successful dental groups to create impactful business outcomes across all their locations.</Paragraph>
+                        </div>
+                        <ul className='flex flex-col gap-4'>
 
-                        {
+                            {
 
-                            conversationalFeatures.map((item, i: number) => {
-                                return (
-                                    <ListItem key={i} index={i} title={item.title} numberOfItems={numberOfItems} percentScrolled={percentScrolled} showDesc={i == switchIndex(percentScrolled)} desc={item?.desc ?? ""}> </ListItem>
+                                conversationalFeatures.map((item, i: number) => {
+                                    return (
+                                        <ListItem key={i} index={i} title={item.title} 
+                                        numberOfItems={numberOfItems} percentScrolled={percentScrolled} 
+                                        showDesc={i == switchIndex(percentScrolled)} desc={item?.desc ?? ""}
+                                        onClick={onListItemClick}
+                                        > </ListItem>
 
-                                )
-                            })
-                        }
+                                    )
+                                })
+                            }
 
-                    </ul>
+                        </ul>
 
-                    <div className=''>
-                        <Button type='primary'>
-                            <ButtonArrow></ButtonArrow>
-                            <span className="text-base font-medium">{`Book free demo`}</span>
-                        </Button>
-                    </div>
-            
- 
-            </motion.div>
+                        <div className=''>
+                            <Button type='primary'>
+                                <ButtonArrow></ButtonArrow>
+                                <span className="text-base font-medium">{`Book free demo`}</span>
+                            </Button>
+                        </div>
+                
+    
+                </motion.div>
 
+            </div>
         </div>
 
     )
 }
+export default AppearTestimonials;

@@ -59,14 +59,14 @@ const Header = () => {
       {/* {showMenu && <div className='fixed top-0 w-full h-full z-[19] bg-zinc-900'></div>} */}
       <div className={`relative w-full before:content-[''] before:-z-0 before:h-[100px] before:absolute before:left-0 before:right-0 before:top-[-100px] before:bg-vs-blue`}>
         <header
-          className={`fixed w-full top-[35px] left-0 z-20 transition-all duration-300 ease-linear ${headerFixed && '!fixed w-full !top-4'}  left-0`}      >
+          className={`fixed w-full top-4 lg:top-[35px] left-0 z-20 transition-all duration-300 ease-linear ${headerFixed && '!fixed w-full !top-4'}  left-0`}      >
           
 
-          <div className={`z-10 text-white px-4`}>
-            <div className="max-w-7xl mx-auto">
+          <div className={`z-20 text-white`}>
+            <div className="max-w-7xl mx-auto px-4">
               {/* <div className={`flex flex-col gap-3 justify-between py-[10px] transition-all duration-300 ease-linear relative  ${headerFixed ? '!lg:py-3' : 'lg:py-6'}`}> */}
-              <div className={`flex gap-3 justify-between py-0 transition-all duration-300 ease-linear rounded-[10px] 
-                bg-white shadow-[0px_7px_40px_0px_rgba(0,0,0,0.10)] backdrop-blur-[12.5px] pl-6 pr-3 items-center h-[63px]`}>
+              <div className={`flex gap-3 justify-between py-0 transition-all duration-300 ease-linear rounded-sm lg:rounded-[10px] 
+                bg-white shadow-[0px_7px_40px_0px_rgba(0,0,0,0.10)] backdrop-blur-[12.5px] lg:pl-6 pl-3 pr-3 items-center h-[48px] lg:h-[63px]`}>
                 
                 <div className={`flex flex-row gap-3 justify-between items-center flex-1 
                 lg:relative transition-all duration-300 ease-in-out ${headerFixed ? 'lg:my-3 my-2' : 'lg:my-3 my-2'}`}>
@@ -76,18 +76,20 @@ const Header = () => {
                     <Image src={VoicestackLogo} alt='VoiceStack'></Image>
                   </Link>
 
-                  <div className={`lg:flex flex-col lg:flex-row lg:gap-6 justify-between rounded-xl items-center lg:static absolute top-0 
+                  <div className={`lg:flex flex-col lg:flex-row lg:gap-6 justify-between rounded-[4px] lg:rounded-none items-center 
+                    lg:static absolute top-[45px] left-0 right-0 bg-white pb-4 lg:pb-0 
+                    h-[calc(100vh-77px)] lg:h-auto shadow-[0px_40px_40px_0px_rgba(0,0,0,0.10)] lg:shadow-none
                     ${showMenu ? 'flex': 'hidden'}`}>
 
                     {/* nav items */}
                     <div className={`lg:flex-row top-[110px] right-0 px-4 pt-4 pb-8 lg:p-0 bg-white lg:bg-transparent left-0 lg:static flex-col 
-                      gap-2 justify-between lg:items-center flex`}>
-                      <nav className="flex flex-col lg:flex-row gap-y-2 gap-x-4 lg:gap-x-8 flex-wrap ">
+                      gap-2 justify-between items-center flex`}>
+                      <nav className="flex flex-col lg:flex-row gap-y-4 gap-x-4 lg:gap-x-8 flex-wrap ">
                         {navigationLinks && navigationLinks?.map((link:any, i) => (
                           <Link
                             key={link.href}
                             href={link.href}
-                            className={`text-gray-700 text-base font-medium leading-[1.15]`}
+                            className={`text-gray-700 text-base font-medium leading-[1.15] text-center`}
                           >
                             {link.label}
                           </Link>
@@ -123,7 +125,7 @@ const Header = () => {
 
                   {/* menu icon */}
                   <div onClick={toggleMenu} className={`flex lg:hidden text-zinc-900 cursor-pointer items-center select-none z-20 rounded-lg lg:rounded-xl lg:py-[6px] lg:pr-[10px] lg:pl-[14px]
-                    ${showMenu ? 'absolute top-5 lg:top-[8px] right-5 lg:right-[8px] lg:relative' : 'bg-white'}`}>
+                    `}>
                     {/* {!showMenu && <span className='hidden lg:inline-flex text-zinc-800 text-sm'>More</span>} */}
                     {showMenu ? <CloseIcon width={40} height={40} /> : <MenuIcon width={40} height={40} />}
                   </div>

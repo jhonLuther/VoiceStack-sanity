@@ -1,0 +1,98 @@
+[
+    {
+        "image": {
+            "_type": "image",
+            "url": "https://cdn.sanity.io/images/76tr0pyh/production/f1882ebb9e402fb648536885bba8f663227939f9-586x814.png"
+        },
+        "bgColor": "#B5EB92",
+        "heading": "Convert More Enquires",
+        "description": "Reactivated <span>$100,000</span> worth of treatment in <span>30 days.</span>",
+        "name": "Mike Panihi",
+        "designation": "Operating Partner, Roligo Dental",
+        "place": "New Jersey",
+        "region": "United States",
+        "locations": "10+",
+        "logo": {
+            "_type": "image",
+            "asset": {
+                "_ref": "image-a6d996f53fc6e228504c19031668d73e2d510a25-33x33-png"
+            }
+        },
+        "video": {
+            "platform": "vidyard",
+            "videoId": "xpr7bMJc1SDnQSyTRErAYc"
+        }
+    },
+    {
+        "image": {
+            "_type": "image",
+            "url": "https://cdn.sanity.io/images/76tr0pyh/production/1e139c2e25049fc2e0ac0bd626de9566408f7b67-586x814.png"
+        },
+        "bgColor": "#EBE192",
+        "heading": "Reactivate Lost Patients",
+        "description": "Reactivated <span>$100,000</span> worth of treatment in <span>30 days.</span>",
+        "name": "Stuart McGuiggan",
+        "designation": "CEO, Star Dental Institute",
+        "place": "Colorado",
+        "region": "United States",
+        "locations": "2",
+        "logo": {
+            "_type": "image",
+            "asset": {
+                "_ref": "image-a6d996f53fc6e228504c19031668d73e2d510a25-33x33-png"
+            }
+        },
+        "video": {
+            "platform": "vidyard",
+            "videoId": "xpr7bMJc1SDnQSyTRErAYc"
+        }
+    },
+    {
+        "image": {
+            "_type": "image",
+            "url": "https://cdn.sanity.io/images/76tr0pyh/production/3aeb26adfc6c1de52a3dce344f3eabba623c5ced-586x814.png"
+        },
+        "bgColor": "#92CDEB",
+        "heading": "Eliminate Missed Calls",
+        "description": "Reactivated <span>$100,000</span> worth of treatment in <span>30 days.</span>",
+        "name": "DeDee Tibben",
+        "designation": "Manager, Northwest Dental Group",
+        "place": "Colorado",
+        "region": "United States",
+        "locations": "4",
+        "logo": {
+            "_type": "image",
+            "asset": {
+                "_ref": "image-a6d996f53fc6e228504c19031668d73e2d510a25-33x33-png"
+            }
+        },
+        "video": {
+            "platform": "vidyard",
+            "videoId": "xpr7bMJc1SDnQSyTRErAYc"
+        }
+    },
+    {
+        "image": {
+            "_type": "image",
+            "url": "https://cdn.sanity.io/images/76tr0pyh/production/01f0a94e073fb517e6e6121f766da722f2333f32-586x814.png"
+        },
+        "bgColor": "#9298EB",
+        "heading": "Train Your Staff Better",
+        "description": "Reactivated <span>$100,000</span> worth of treatment in <span>30 days.</span>",
+        "name": "Himesh Kana",
+        "designation": "CEO, Dental Depot DFW",
+        "place": "Colorado",
+        "region": "United States",
+        "locations": "4",
+        "logo": {
+            "_type": "image",
+            "asset": {
+                "_ref": "image-a6d996f53fc6e228504c19031668d73e2d510a25-33x33-png"
+            }
+        },
+        "video": {
+            "platform": "vidyard",
+            "videoId": "xpr7bMJc1SDnQSyTRErAYc"
+        }
+    }
+]
