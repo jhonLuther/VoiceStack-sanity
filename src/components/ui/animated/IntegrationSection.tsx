@@ -48,7 +48,7 @@ export function AnimatedBeamDemo({ data }: any) {
 
   return (
     <div
-      className="relative flex w-full h-full flex-col items-center rounded-lg"
+      className="relative flex w-full h-full flex-col items-center rounded-lg overflow-hidden"
       ref={containerRef}
     >
       {/* Analytics Section */}
@@ -98,7 +98,7 @@ export function AnimatedBeamDemo({ data }: any) {
 
         {/* Center Image */}
 
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-[50%] w-full">
+        <div className="absolute md:top-[83px] lg:top-[43px] left-1/2 transform -translate-x-1/2 w-full md:w-[980px] lg:w-[1106px]">
           {/* <LinesIcon /> */}
         <VideoPlayer/>
         </div>

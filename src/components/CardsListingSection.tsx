@@ -41,11 +41,11 @@ const CardsListingSection = () => {
               <Paragraph>VoiceStack is a good fit for a wide range of dental practices, including single-site practices, multi-site groups, as well as large dental corporate DSO’s.</Paragraph>
             </div>
           </div>
-          <div className='flex flex-wrap justify-center'>
+          <div className='flex flex-wrap gap-4 md:gap-0 flex-col md:flex-row justify-center'>
             {cardsListing && cardsListing.length > 0 && (
               cardsListing.map((item:any, index:number)=>{
                 return(
-                  <div key={index} className='flex flex-1 p-8 gap-3 flex-col justify-between border-y border-r border-gray-200 first:border-l'>
+                  <div key={index} className='flex flex-1 p-8 gap-3 flex-col justify-between border-y border-r border-gray-200 border-l md:border-l-0 md:first:border-l'>
                     <div className='flex flex-col gap-3'>
                       <H3 className='inline-flex items-center gap-2'>{item.icon && <item.icon />}{item.heading}</H3>
                       {item.description && (

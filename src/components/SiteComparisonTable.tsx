@@ -14,7 +14,7 @@ function RowHeading({ heading, description }) {
   return (
     <TableCell className="">
       <div className='py-4 border-b border-b-gray-200'>
-        <p className="text-gray-500 font-inter text-[15px] font-normal leading-[150%] capitalize">{heading}</p>
+        <p className="text-gray-500 font-inter text-xs lg:text-[15px] font-normal leading-[150%] capitalize text-left">{heading}</p>
         {/* <p className="flex text-gray-600 text-xs font-normal !p-0">
           {description}
         </p> */}
@@ -28,7 +28,7 @@ function ComparisonRichIcon({ comparisonValue }) {
   return (
     <>
       <div className='py-4 border-b border-b-gray-200'>
-        <p className="flex flex-row gap-2 justify-start items-center ">
+        <p className="flex flex-row gap-2 justify-start items-center text-left flex-shrink-0">
           <Image
             className="object-contain"
             src={icon.url}
@@ -51,7 +51,7 @@ export default function SiteComparisonTable({ data, index, currentIndex }) {
     // <></>
     <div className={`${index === currentIndex ? 'block' : 'hidden'}`}>
 
-      <Table className={`md:overflow-hidden bg-white w-full `}>
+      <Table className={`md:overflow-hidden bg-white w-full overflow-auto min-w-[700px] `}>
         <TableCaption className="hidden">
           A list of your recent invoices.
         </TableCaption>

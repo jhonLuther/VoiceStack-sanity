@@ -73,7 +73,7 @@ export default function IndexPage(
         <Layout {...props}>
            <CustomHead {...props} />
           {/* <Content {...props} /> */}
-          <div className='global-wrapper pt-[98px]'>
+          <div className='global-wrapper pt-[64px] lg:pt-[98px]'>
             <Header></Header>
             <HeroSection></HeroSection>
             <LinksCardsSection></LinksCardsSection>

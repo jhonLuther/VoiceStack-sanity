@@ -116,7 +116,7 @@ export default function Testimonails() {
         <div className="w-full flex h-full  absolute top-0 left-0"></div>
 
         <div className="flex w-full gap-12 z-10 relative">
-          <div className="flex-1 max-w-[366px] h-full relative pt-24 flex items-start">
+          <div className="flex-1 max-w-[366px] h-full relative pt-24 items-start hidden lg:flex">
             <AppearTestimonials  onListItemClick={handleScrollToCard}/>
           </div>
           <div className="flex-1 h-full relative pt-24">

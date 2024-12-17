@@ -61,8 +61,8 @@ const FaqSection = () => {
   return (
     <Section className="py-sm md:py-md pb-8">
       <Container >
-        <div className='flex gap-20 w-full'>
-          <div className="flex justify-center w-full max-w-[320px] mb-12 lg:sticky top-28 self-start">
+        <div className='flex flex-col md:flex-row gap-10 lg:gap-20 w-full'>
+          <div className="flex justify-center w-full max-w-[320px] md:sticky top-28 self-start">
             <div className='flex flex-col w-full max-w-[780px] text-center gap-4'>
               <H2 className="text-left">Frequently Asked Questions</H2>
               <Paragraph className="text-left">For queries contact <a href="mailto:hello@voicestack.com" className='flex text-vs-blue'>hello@voicestack.com</a></Paragraph>
