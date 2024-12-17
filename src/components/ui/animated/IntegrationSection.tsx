@@ -48,15 +48,15 @@ export function AnimatedBeamDemo({ data }: any) {
 
   return (
     <div
-      className="relative flex w-full flex-col items-center overflow-hidden rounded-lg"
+      className="relative flex w-full h-full flex-col items-center rounded-lg"
       ref={containerRef}
     >
       {/* Analytics Section */}
       <div className="md:max-w-[1050px] w-full">
-        <div className="flex p-2 items-center justify-center rounded-t-lg bg-gray-300 text-base font-semibold">
+        <div className="flex p-2 items-center justify-center rounded-t-[20px] bg-gray-300 text-base font-semibold">
           <H3 className="text-gray-600">PMS</H3>
         </div>
-        <div className="flex  flex-wrap  justify-center z-10 rounded-lg border border-gray-100 bg-white shadow-lg">
+        <div className="flex  flex-wrap relative  justify-center z-10 rounded-b-[20px] border border-gray-100 bg-white shadow-lg">
           {data.analytics?.map((analytic, index) => (
             <div
               key={index}
@@ -64,7 +64,7 @@ export function AnimatedBeamDemo({ data }: any) {
               className="md:max-w-[172px] flex z-10"
             >
               <ImageLoader
-                className="flex justify-center rounded-lg"
+                className="flex justify-center rounded-[20px]"
                 imageClassName="!w-auto"
                 image={analytic.image}
                 fixed={false}
@@ -76,8 +76,8 @@ export function AnimatedBeamDemo({ data }: any) {
 
       {/* CRM and PMS Sections */}
       <div className="flex justify-between w-full items-center mt-14">
-        <div className="flex flex-col gap-5 z-10 rounded-lg border border-gray-100 bg-white shadow-lg">
-          <div className="flex p-2 items-center justify-center rounded-t-lg bg-gray-300 text-base font-semibold">
+        <div className="flex flex-col relative gap-5 z-10 rounded-[20px] border border-gray-100 bg-white shadow-lg">
+          <div className="flex p-2 items-center justify-center rounded-t-[20px] bg-gray-300 text-base font-semibold">
             <H3 className="text-gray-600">Analytics</H3>
           </div>
           {data.crm?.map((crms, index) => (
@@ -108,7 +108,7 @@ export function AnimatedBeamDemo({ data }: any) {
               <div
                 key={`top-point-${index}`}
                 ref={ref}
-                className="flex flex-wrap justify-center rounded-lg z-10 w-1 h-1"
+                className="flex flex-wrap justify-center rounded-[20px] z-10 w-1 h-1"
               />
             ))}
           </div>
@@ -119,7 +119,7 @@ export function AnimatedBeamDemo({ data }: any) {
             className="md:max-w-[250px] md:max-h-[250px] flex items-center justify-center z-10"
           >
             <ImageLoader
-              className="flex justify-center rounded-lg"
+              className="flex justify-center rounded-[20px]"
               imageClassName="!w-auto"
               image={data.integrationImage}
               fixed={false}
@@ -127,8 +127,8 @@ export function AnimatedBeamDemo({ data }: any) {
           </div>
         </div>
 
-        <div className="flex flex-col gap-5 z-10 rounded-lg border border-gray-100 bg-white shadow-lg">
-          <div className="flex p-2 items-center justify-center rounded-t-lg bg-gray-300 text-base font-semibold">
+        <div className="flex flex-col gap-5 z-10 rounded-[20px] border border-gray-100 bg-white shadow-lg">
+          <div className="flex p-2 items-center justify-center rounded-t-[20px] bg-gray-300 text-base font-semibold">
             <H3 className="text-gray-600">CRM</H3>
           </div>
           {data.pms?.map((pmss, index) => (
