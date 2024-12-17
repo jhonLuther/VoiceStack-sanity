@@ -125,7 +125,7 @@ export default function FeatureSection() {
                 key={index}
                 ref={(el) => (featureRefs.current[index] = el)}
                 data-index={index} 
-                className="cursor-pointer"
+                className="cursor-pointer gap-4 flex flex-col"
                 initial={{ opacity: 0, x: -30 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5 }}
