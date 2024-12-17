@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Slider from 'react-slick'
 import TestimonialCard from './TestimonialCard'
+import { VideoItem } from './VideoModal'
 
 const TestimonialCarousel = ({ testimonials }) => {
-  const testimonialLength = testimonials.length
+  const testimonialLength = testimonials.length;
+  
 
   if (testimonialLength == 1) {
     return (

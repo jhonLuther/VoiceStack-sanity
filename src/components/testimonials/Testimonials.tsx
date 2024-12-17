@@ -17,6 +17,7 @@ import { ImageContext } from '~/providers/ImageSwitchProvider'
 import TestimonialCard from '../common/TestimonialCard'
 import TestCardOne from '../TestCardOne'
 import testimonialData from '../../migrations/testimonials.json'
+import { VideoItem, VideoModal } from '../common/VideoModal'
 
 
 const enterpriseItems = [
@@ -61,6 +62,14 @@ export default function Testimonails() {
   const { activeImage, setActiveImage } = useContext(ImageContext)
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
   const parentRef = useRef<(HTMLDivElement | null)>(null);
+  
+  const [isOpen, setIsOpen] = useState(false);
+  const [selectedVideo, setSelectedVideo] = useState<VideoItem | null>(null);
+
+  const handleOpenVideo = (video: VideoItem) => {
+    setSelectedVideo(video);
+    setIsOpen(true);
+  };
 
   // Handle scroll-to-card logic
   const handleScrollToCard = (index: number) => {
@@ -125,11 +134,22 @@ export default function Testimonails() {
                 index={index} 
                 data={testimonial} 
                 ref={(el) => (cardRefs.current[index] = el)} 
+                onOpenVideo={handleOpenVideo}
               />
             ))}
             </div>
           </div>
         </div>
+        <div>
+      {isOpen && (
+        <VideoModal
+          isPopup={true}
+          videoDetails={selectedVideo}
+          className={`pt-9 z-30 flex items-start`}
+          onClose={() => setIsOpen(false)}
+        />
+      )}
+    </div>
       </Container>
     </Section>
   )
