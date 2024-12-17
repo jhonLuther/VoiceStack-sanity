@@ -94,7 +94,9 @@ export default function FeatureSection() {
   ];
 
   const switchIndex = (percentage) => {
-    if (percentage <= 25) setActiveImage(sampleImages[0]);
+    if(percentage < 0 && -50)
+      setActiveImage(features[0].image)
+    else if (percentage <= 25) setActiveImage(sampleImages[0]);
     else if (percentage > 25 && percentage <= 50) setActiveImage(sampleImages[1]);
     else if (percentage > 50 && percentage <= 75) setActiveImage(sampleImages[2]);
     else if (percentage > 75 && percentage <= 100) setActiveImage(sampleImages[3]);
@@ -114,8 +116,9 @@ export default function FeatureSection() {
               <AppearFeature 
                 key={index}
                 getIndex={(percentage) => switchIndex(percentage)} 
-                ref={(el) => (featureRefs.current[index] = el)}
+                ref={featureRefs.current[1]}
                 index={index}
+                data-index={1} 
               />
             ) : (
               <motion.div
@@ -162,7 +165,7 @@ export default function FeatureSection() {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.5 }}
-                className="w-full h-auto rounded-lg shadow-lg"
+                className="w-full h-auto rounded-lg shadow-lg md:max-h-[538px] "
               />
             </AnimatePresence>
           </div>
