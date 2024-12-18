@@ -16,22 +16,16 @@ type TestimonialCardProps = {
 const TestimonialCard = forwardRef<HTMLDivElement, TestimonialCardProps>(
   ({ data, index, activeIndex, isSticky, scale, onOpenVideo }, ref) => {
 
-    // const scale = activeIndex !== null
-    // ? 0.9 + (Math.max(0, index - activeIndex) * 0.02)
-    // : 1;
-
-    // console.log({scale});
-    
+    const topValue = 160 + (index * 20);
 
   return (
     // <div className="top-40 sticky h-[100vh]" ref={ref} id={`${index}`}>
     <div className={`sticky testimonial-card`} ref={ref} id={`${index}`}  data-index={index}
-      // style={{ top: `${160 + (index*20)}px` }}
       style={{
-        top: `${160 + index * 20}px`,
-        // transform: isSticky ? `scale(${scale})` : "scale(1)",
-        // opacity: isSticky ? 1 : 0.5,
-        // transition: "transform 0.3s ease, opacity 0.3s ease",
+        top:topValue,
+        transform: isSticky ? `scale(${scale})` : "scale(1)",
+        // opacity: isSticky ? 1 : 0.8,
+        transition: "transform 0.3s ease, opacity 0.3s ease",
       }}
     >
 

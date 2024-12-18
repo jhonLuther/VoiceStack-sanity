@@ -81,10 +81,9 @@ export default function Testimonails() {
         const card = cardRefs.current[index];
         if (card) {
           const rect = card.getBoundingClientRect();
-          console.log(rect.top,index, "target-",160 + index * 20, rect.top <= (160 + (index * 20)) );
-          
+          console.log(rect.top,index, "target-",260 + index * 20, rect.top <= (200) );
           // Check if the card is at the top of the viewport (sticky point)
-          return rect.top > 160 + index * 20;
+          return rect.top <= (200);
         }
         return false;
       });
@@ -154,9 +153,9 @@ export default function Testimonails() {
             <div className="w-full relative">
               <div className='flex flex-col w-full gap-20'>
                 {testimonialData.map((testimonial, index) => {
-                // Calculate the scaling value dynamically when sticky
-                const isSticky = stickyStates[index] || false;
-                const scale = 0.9 + (index * 0.02);
+                  // Calculate the scaling value dynamically when sticky
+                  const isSticky = stickyStates[index] || false;
+                  const scale = 0.95 + (index * 0.02);
                   return(
 
                     <TestimonialCard 
