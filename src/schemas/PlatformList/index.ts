@@ -20,7 +20,7 @@ export default defineType({
 
   preview: {
     select: {
-      title: 'name',
+      title: 'image.asset.title',
       media: 'image',
     },
     prepare(selection) {

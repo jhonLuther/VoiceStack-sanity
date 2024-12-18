@@ -342,7 +342,9 @@ export const getIntegrationList = (region) =>
                 height,
                 aspectRatio
               }
-            }
+            },
+            ...,
+
           }
       },
       pms[]->{
@@ -355,7 +357,9 @@ export const getIntegrationList = (region) =>
                 height,
                 aspectRatio
               }
-            }
+            },
+            ...,
+
           }
 
       },
@@ -369,7 +373,9 @@ export const getIntegrationList = (region) =>
                 height,
                 aspectRatio
               }
-            }
+            },
+            ...,
+
           }
       }
 
