@@ -13,6 +13,8 @@ import comparison from './Comparison'
 import comparisonValue from "./ComparisonValue"
 import Platforms from './Platforms'
 import PlatformList from './PlatformList'
+import heroSubFeature from './heroSubFeature'
+import LogoListing from './LogoListing'
 
 export const schemaTypes = [
   layout,
@@ -21,10 +23,12 @@ export const schemaTypes = [
   Testimonials,
   HomeSettings,
   legal,
+  heroSubFeature,
   comparison,
   comparisonValue,
   Platforms,
-  PlatformList
+  PlatformList,
+  LogoListing
 ]
 
 export const schema: { types: SchemaTypeDefinition[] } = {
@@ -33,7 +37,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     customBlockContent,
     layout,
     Features,
-
+    heroSubFeature,
     SiteSettings,
     Testimonials,
     HomeSettings,
@@ -42,6 +46,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     comparison,
     comparisonValue,
     Platforms,
-    PlatformList
+    PlatformList,
+    LogoListing
   ],
 }

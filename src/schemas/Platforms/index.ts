@@ -27,6 +27,17 @@ export default defineType({
     }),
 
     defineField({
+      name: 'crm',
+      title: 'CRM',
+      type: 'array',
+      of: [
+        {
+          type: 'reference',
+          to: [{ type: 'platformList' }],
+        },
+      ],
+    }),
+    defineField({
       name: 'analytics',
       title: 'Analytics',
       type: 'array',
@@ -48,17 +59,7 @@ export default defineType({
         },
       ],
     }),
-    defineField({
-      name: 'crm',
-      title: 'CRM',
-      type: 'array',
-      of: [
-        {
-          type: 'reference',
-          to: [{ type: 'platformList' }],
-        },
-      ],
-    }),
     
   ],
+  
 })

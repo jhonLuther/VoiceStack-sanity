@@ -1,47 +1,26 @@
 import React, { useState } from 'react'
 import Section from './structure/Section'
 import Container from './structure/Container'
-import CallIcon from './icons/CallIcon';
-import ChatIcon from './icons/ChatIcon';
-import AnalyticsIcon from './icons/AnalyticsIcon';
-import IntegrationsIcon from './icons/IntegrationsIcon';
 import Link from 'next/link';
 import LearnMore from './ui/LearnMore';
+import Image from 'next/image';
 
-const LinksCardsSection = () => {
-  const linkCardsData = [
-    { 
-      heading: "Enterprise VoIP", 
-      description:"Convert Patients with AI-driven call scoring, analytics, and automation.",
-      href: "#", label: "Learn More", icon: CallIcon 
-    },
-    {
-      heading: "Conversational AI", 
-      description:"Track, follow-up and convert missed opportunities with AI.", 
-      href: "#", label: "Learn More", icon: ChatIcon 
-    },
-    { heading: "Attribution and Analytics", 
-      description:"Connect inbound calls directly to marketing and analyze campaign performance.",
-      href: "#", label: "Learn More", icon: AnalyticsIcon 
-    },
-    { 
-      heading: "Seamless Integrations", 
-      description:"Sync effortlessly with PMS, CRM and analytics tools for unified data insights.",
-      label: "Learn More", icon: IntegrationsIcon 
-    },
-  ];
+const LinksCardsSection = ({props}) => {
+
   return (
     <Section className="pt-md pb-8">
       <Container>
         <div className='grid md:grid-cols-2 lg:grid-cols-4 gap-0 md:gap-6 xl:gap-12 justify-center'>
-          {linkCardsData && linkCardsData.length > 0 && (
-            linkCardsData.map((item:any, index:number) => {
+          {props && props.length > 0 && (
+            props.map((item:any, index:number) => {
               return(
                 item.href ? (
                   <Link href={item.href}>
                     <div key={index} className='flex py-6 gap-3 flex-col justify-between h-full group'>
                       <div className='flex flex-col gap-3'>
-                        <h2 className='inline-flex items-center gap-2 text-gray-900 text-base font-medium leading-[145%]'>{item.icon && <item.icon />}{item.heading}</h2>
+                        <h2 className='inline-flex items-center gap-2 text-gray-900 text-base font-medium leading-[145%]'>
+                         <Image width={20} height={20} src={item?.icon} alt={'logo'}/>
+                          {item.heading}</h2>
                         {item.description && (
                           <p className='text-gray-500 text-base font-normal leading-[160%]'>{item.description}</p>
                         )}
@@ -52,7 +31,9 @@ const LinksCardsSection = () => {
                 ):(
                     <div key={index} className='flex py-6 gap-3 flex-col justify-between'>
                       <div className='flex flex-col gap-3'>
-                        <h2 className='inline-flex items-center gap-2 text-gray-900 text-base font-medium leading-[145%]'>{item.icon && <item.icon />}{item.heading}</h2>
+                        <h2 className='inline-flex items-center gap-2 text-gray-900 text-base font-medium leading-[145%]'>
+                        <Image width={20} height={20} src={item?.icon} alt={'logo'}/>
+                          {item.heading}</h2>
                         {item.description && (
                           <p className='text-gray-500 text-base font-normal leading-[160%]'>{item.description}</p>
                         )}
