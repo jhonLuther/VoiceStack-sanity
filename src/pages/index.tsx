@@ -9,6 +9,7 @@ import {
   getFounderDetails,
   getIntegrationList,
   logoSection,
+  featureSectionQuery,
 } from '~/lib/sanity.queries'
 import Layout from '../components/Layout'
 import CustomHead from '~/components/common/CustomHead'
@@ -39,6 +40,7 @@ export const getServerSideProps: GetStaticProps<any> = async ({
   const integrationPlatforms = await runQuery(getIntegrationList(region))
   const heroSectionData = await runQuery(heroSection)
   const logoSectionData = await runQuery(logoSection)
+  const featureSectionData = await runQuery(featureSectionQuery)
 
   return {
     props: {
@@ -51,7 +53,8 @@ export const getServerSideProps: GetStaticProps<any> = async ({
       token: draftMode ? readToken : '',
       region,
       heroSectionData,
-      logoSectionData
+      logoSectionData,
+      featureSectionData
     }
   }
 }
@@ -82,7 +85,7 @@ export default function IndexPage(
             <LinksCardsSection props ={linkCardSectionData}/>
             <Testimonails />
             <LogoListingSection props={props?.logoSectionData}/>
-            <FeatureSection></FeatureSection>
+            <FeatureSection props={props?.featureSectionData}/>
             <AnimatedBeamSection data={integrationPlatforms} />
             <CardsListingSection></CardsListingSection>
             <SiteComparisonSection data={comparisonSectionData} />
