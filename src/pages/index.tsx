@@ -62,9 +62,9 @@ export default function IndexPage(
   const { integrationPlatforms, comparisonTableData } = props
   console.log(props?.heroSectionData)
   const comparisonSectionData = {
-    strip: 'VoiceStack is the Best-in-class',
+    strip: 'The Best-in-class Phone System. For the Best-in-Class Dental Practices.',
     header:
-      "No other phone system can match VoiceStack's AI-driven features,outcome-driven workflows and integration possibilities, as shown in the comparison chart below. ",
+      "No other phone system can match VoiceStack’s AI-driven features,outcome-driven workflows and integration capabilities, as shown in the comparison chart below. ",
     columnDimensionName: 'Features',
     table: comparisonTableData,
   }
