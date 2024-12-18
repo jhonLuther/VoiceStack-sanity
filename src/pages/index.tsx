@@ -8,8 +8,8 @@ import {
   getComparisonTableData,
   getFounderDetails,
   getIntegrationList,
+  logoSection,
 } from '~/lib/sanity.queries'
-import type { SharedPageProps } from '~/pages/_app'
 import Layout from '../components/Layout'
 import CustomHead from '~/components/common/CustomHead'
 import BookDemoContextProvider from '~/providers/BookDemoProvider'
@@ -27,17 +27,18 @@ import Testimonails from '~/components/testimonials/Testimonials'
 import FaqSection from '~/components/FaqSection'
 import Footer from '~/components/common/Footer'
 
-export const getServerSideProps: GetStaticProps<SharedPageProps> = async ({
-  req,
+export const getServerSideProps: GetStaticProps<any> = async ({
+  locale,
   draftMode = false,
 }) => {
-  const region = req?.headers?.referer?.includes('en-GB') ?  'aus' : 'us'
+  const region = locale
   const homeSettings = await runQuery(getALLHomeSettings(region))
   const siteSettings = await runQuery(getALLSiteSettings(region))
   const founderDetails = await runQuery(getFounderDetails(region))
   const comparisonTableData = await runQuery(getComparisonTableData(region))
   const integrationPlatforms = await runQuery(getIntegrationList(region))
   const heroSectionData = await runQuery(heroSection)
+  const logoSectionData = await runQuery(logoSection)
 
   return {
     props: {
@@ -49,7 +50,8 @@ export const getServerSideProps: GetStaticProps<SharedPageProps> = async ({
       draftMode,
       token: draftMode ? readToken : '',
       region,
-      heroSectionData
+      heroSectionData,
+      logoSectionData
     }
   }
 }
@@ -79,7 +81,7 @@ export default function IndexPage(
             <HeroSection props ={props?.heroSectionData}/>
             <LinksCardsSection props ={linkCardSectionData}/>
             <Testimonails />
-            <LogoListingSection></LogoListingSection>
+            <LogoListingSection props={props?.logoSectionData}/>
             <FeatureSection></FeatureSection>
             <AnimatedBeamSection data={integrationPlatforms} />
             <CardsListingSection></CardsListingSection>
