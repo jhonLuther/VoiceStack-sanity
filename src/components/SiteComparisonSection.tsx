@@ -12,7 +12,7 @@ import Button from './common/Button'
 import ButtonArrow from './icons/ButtonArrow'
 
 function SiteComparisonSection({ data }) {
-  console.log(data,'comparison main data');
+  // console.log(data,'comparison main data');
   // console.log("logodata", data.table.columns[0]);
   
   const [currentIndex, setCurrentIndex] = useState<number>(0);

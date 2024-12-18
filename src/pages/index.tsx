@@ -3,7 +3,6 @@ import Content from '~/components/Content'
 import { readToken } from '~/lib/sanity.api'
 import {
   getALLHomeSettings,
-  getAllPMS,
   getALLSiteSettings,
   getComparisonTableData,
   getFounderDetails,
@@ -29,16 +28,17 @@ import Testimonails from '~/components/testimonials/Testimonials'
 import FaqSection from '~/components/FaqSection'
 import Footer from '~/components/common/Footer'
 
-export const getStaticProps: GetStaticProps<SharedPageProps> = async ({
+export const getServerSideProps: GetStaticProps<SharedPageProps> = async ({
+  req,
   draftMode = false,
 }) => {
-  const homeSettings = await runQuery(getALLHomeSettings())
-  const siteSettings = await runQuery(getALLSiteSettings())
-  const founderDetails = await runQuery(getFounderDetails())
-  const comparisonTableData = await runQuery(getComparisonTableData())
-  const allPMS = await runQuery(getAllPMS())
-  const integrationPlatforms = await runQuery(getIntegrationList())
-  console.log({len: allPMS.length})
+  const region = req?.headers?.referer?.includes('en-GB') ?  'aus' : 'us'
+  const homeSettings = await runQuery(getALLHomeSettings(region))
+  const siteSettings = await runQuery(getALLSiteSettings(region))
+  const founderDetails = await runQuery(getFounderDetails(region))
+  const comparisonTableData = await runQuery(getComparisonTableData(region))
+  const integrationPlatforms = await runQuery(getIntegrationList(region))
+
   return {
     props: {
       homeSettings,
@@ -46,30 +46,29 @@ export const getStaticProps: GetStaticProps<SharedPageProps> = async ({
       founderDetails,
       comparisonTableData,
       integrationPlatforms,
-      allPMS,
       draftMode,
       token: draftMode ? readToken : '',
-    },
+      region,
+    }
   }
 }
 
 export default function IndexPage(
-  props: InferGetStaticPropsType<typeof getStaticProps>,
+  props: InferGetStaticPropsType<typeof getServerSideProps>,
 ) {
-  const {integrationPlatforms,comparisonTableData} = props
-    // console.log({props});
-    const comparisonSectionData = {
-      strip: "VoiceStack is the Best-in-class",
-      header: "No other phone system can match VoiceStack's AI-driven features,outcome-driven workflows and integration possibilities, as shown in the comparison chart below. ",
-      columnDimensionName: "Features", 
-      table: comparisonTableData,
-    }
-    
-  return (
-    
+  const { integrationPlatforms, comparisonTableData } = props
+  console.log(props?.region)
+  const comparisonSectionData = {
+    strip: 'VoiceStack is the Best-in-class',
+    header:
+      "No other phone system can match VoiceStack's AI-driven features,outcome-driven workflows and integration possibilities, as shown in the comparison chart below. ",
+    columnDimensionName: 'Features',
+    table: comparisonTableData,
+  }
 
+  return (
     <div>
-     <BookDemoContextProvider>
+      <BookDemoContextProvider>
         <Layout {...props}>
            <CustomHead {...props} />
           {/* <Content {...props} /> */}
@@ -77,17 +76,17 @@ export default function IndexPage(
             <Header></Header>
             <HeroSection></HeroSection>
             <LinksCardsSection></LinksCardsSection>
-            <Testimonails/>
+            <Testimonails />
             <LogoListingSection></LogoListingSection>
             <FeatureSection></FeatureSection>
-            <AnimatedBeamSection data={integrationPlatforms}/>
+            <AnimatedBeamSection data={integrationPlatforms} />
             <CardsListingSection></CardsListingSection>
             <SiteComparisonSection data={comparisonSectionData} />
             <FaqSection></FaqSection>
             <BannerSection></BannerSection>
             <Footer></Footer>
           </div>
-         </Layout>
+        </Layout>
       </BookDemoContextProvider>
     </div>
   )

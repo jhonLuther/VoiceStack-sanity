@@ -69,18 +69,14 @@ export default defineConfig({
         { id: 'en-GB', title: 'UK English' },
       ],
       schemaTypes: ['layout','feature',
-        'featureCategory',
-        'integration',
         'siteSettings',
         'testimonial',
-        'benefit',
+   
         'homeSettings',
-        'person',
+   
         'legal',
-        'partner',
         'comparisonTable',
         'comparisonValue',
-        'allPMS'
 
       ]
     }),
@@ -142,15 +138,9 @@ export default defineConfig({
         
               // S.documentTypeListItem('homeSettings').title('homeSettings'),
               S.documentTypeListItem('testimonial').title('Testimonial'),
-              S.documentTypeListItem('featureCategory').title('FeatureCategory'),
               S.documentTypeListItem('feature').title('Feature'),
-              S.documentTypeListItem('integration').title('Integration'),
-              S.documentTypeListItem('benefit').title('Benefit'),
-              S.documentTypeListItem('person').title('Person'),
               S.documentTypeListItem('legal').title('Legal'),
-              S.documentTypeListItem('partner').title('Partner'),
               S.documentTypeListItem('comparisonValue').title('Comparison Value'),
-              S.documentTypeListItem('allPMS').title('All PMS'),
               S.documentTypeListItem('platformList').title('PlatformList'),
               // S.documentTypeListItem('platform').title('Platform'),
           ])

@@ -61,53 +61,7 @@ export default defineType({
       type: 'string',
     }),
 
-    defineField({
-      name: 'selectedfeatures',
-      title: 'Selected Feature',
-      type: 'array',
-      of: [
-        {
-          type: 'reference',
-          to: [{ type: 'featureCategory' }],
-        },
-      ],
-    }),
-
-    defineField({
-      name: 'integration',
-      title: 'Add Integration',
-      type: 'array',
-      of: [
-        {
-          type: 'reference',
-          to: [{ type: 'integration' }],
-        },
-      ],
-    }),
-
-    defineField({
-      name: 'selectedBenefits',
-      title: 'Selected Benefits',
-      type: 'array',
-      of: [
-        {
-          type: 'reference',
-          to: [{ type: 'benefit' }],
-        },
-      ],
-    }),
-
-    defineField({
-      name: 'selectedPartner',
-      title: 'Selected Partner',
-      type: 'array',
-      of: [
-        {
-          type: 'reference',
-          to: [{ type: 'partner' }],
-        },
-      ],
-    }),
+    
 
     defineField({
       name: 'selectedTestimonial',

@@ -7,25 +7,12 @@ const config = {
   env: {
     PUBLIC_URL: '/',
   },
-  async redirects() {
-    return [
-      {
-        source: '/ostermsconditions',
-        destination: '/legal/terms-and-conditions',
-        permanent: true,
-      },
-      {
-        source: '/osprivacypolicy',
-        destination: '/legal/privacy-policy',
-        permanent: true,
-      },
-      {
-        source: '/osbusinessagreement',
-        destination: '/legal/business-agreement',
-        permanent: true,
-      },
-    ]
+  i18n: {
+    locales: ['en', 'en-GB'],
+    defaultLocale: 'en',
+    localeDetection:false
   },
+  
 }
 
 export default config

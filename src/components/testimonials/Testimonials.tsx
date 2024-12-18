@@ -103,7 +103,7 @@ export default function Testimonails() {
     }
   };
 
-  console.log({testimonialData});
+  // console.log({testimonialData});
   
 
   return (

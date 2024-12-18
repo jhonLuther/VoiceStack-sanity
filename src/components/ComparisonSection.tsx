@@ -7,7 +7,7 @@ import Subtext from './typography/Subtext'
 import H2 from './typography/H2'
 
 function ComparisonSection({ data }) {
-  console.log(data,'comaprison dae');
+  // console.log(data,'comaprison dae');
   
   return (
     <Section id="comparison-section" className="py-12 md:py-24 bg-[#F9F6FE]">

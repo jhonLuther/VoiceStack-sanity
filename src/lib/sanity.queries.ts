@@ -2,6 +2,11 @@ import type { PortableTextBlock } from '@portabletext/types'
 import type { ImageAsset, Slug } from '@sanity/types'
 import groq from 'groq'
 import { type SanityClient } from 'next-sanity'
+import { cookies } from 'next/headers'
+
+
+
+
 
 export const postsQuery = groq`*[_type == "post" && defined(slug.current)] | order(_createdAt desc)`
 
@@ -60,25 +65,6 @@ export const integrationListQuery = groq`*[_type == "integration" ]{
     
    
   }`
-export const featureSectionQuery = groq`
-    *[_type == "featureCategory" && !(_id in path('drafts.**'))] {
-      ..., 
-      "imageUrl": categoryImage.asset->{
-        _id,
-        url,
-        metadata {
-          dimensions {
-            width,
-            height,
-            aspectRatio
-          }
-        }
-      },
-      "altText": image.altText,
-      "title": image.title,
-      "features": features[]->
-    }
-  `
 export const testimonialQuery = groq`*[_type == "testimonial"]{...,"AuthorImage":authorimage.asset->url}`
 export const heroSectionQuery_ = groq`
   *[_type == "siteSettings"][0]{
@@ -196,7 +182,7 @@ export const benifitQuery = groq` *[_type == "benefit"]{
 'benefitPoints':benefitPoints
     
 }`
-export const getFounderDetails = () => groq`*[_type == "person"]{
+export const getFounderDetails = (region) => groq`*[_type == "person"]{
   'name':personName,
   'socialMediaLinks':socialMediaLinks,
   'image': personImage.asset->{
@@ -228,9 +214,6 @@ export async function fetchIntegrationList(client: SanityClient): Promise<any> {
   return await client.fetch(integrationListQuery)
 }
 
-export async function featureSection(client: SanityClient): Promise<any> {
-  return await client.fetch(featureSectionQuery)
-}
 
 export async function fetchTestimonial(client: SanityClient): Promise<any> {
   return await client.fetch(testimonialQuery)
@@ -286,7 +269,7 @@ export async function fetchTermsAndCondition(
   return await client.fetch(query, { docType })
 }
 
-export const getALLHomeSettings = () => groq`*[_type == "homeSettings"]{
+export const getALLHomeSettings = (region: string) => groq`*[_type == "homeSettings"]{
   ...,
  "selectedIntegrations": integration[]->{
       "image": integrationProductImage.asset->{
@@ -357,7 +340,7 @@ export const getALLHomeSettings = () => groq`*[_type == "homeSettings"]{
     }
 } | order(_createdAt desc)[0]`
 
-export const getALLSiteSettings = () =>
+export const getALLSiteSettings = (region) =>
   groq`*[_type == "siteSettings"] | order(_createdAt desc)[0]`
 
 // export const getComparisonTableData = () =>
@@ -380,7 +363,7 @@ export const getALLSiteSettings = () =>
 //       }
 //     }
 //   } | order(_createdAt desc)[0]`
-export const getComparisonTableData = () =>
+export const getComparisonTableData = (region) =>
   groq`*[_type == "comparisonTable"] {
     ..., 
     "columns": columns[] {
@@ -415,7 +398,7 @@ export const getComparisonTableData = () =>
       }
     }
   } | order(_createdAt desc)[0]`
-export const getIntegrationList = () =>
+export const getIntegrationList = (region) =>
   groq`*[_type == "platform"] {
       _id,
       _createdAt,
@@ -476,19 +459,6 @@ export const getIntegrationList = () =>
 
   } | order(_createdAt desc)[0]`
 
-export const getAllPMS = () =>
-  groq`*[_type == "allPMS"]{...,"image": pmsImage.asset -> {
-      _id,
-      url,
-      metadata {
-        dimensions {
-          width,
-          height,
-          aspectRatio
-        }
-      }
-    }  
-  }`
 
 /*####################################### INTERFACES    ###########################*/
 export interface Post {
