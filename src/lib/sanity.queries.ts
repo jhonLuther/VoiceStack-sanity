@@ -81,22 +81,20 @@ export const heroSection = groq`*[_type == "homeSettings"][0]{
                                       
     }
 }`
-export const benifitQuery = groq` *[_type == "benefit"]{
-  'benefitHeading':benefitHeading,
-   'benifitSectionImage':benefitImageSection.asset->{
-       _id,
-       url,
-       metadata {
-         dimensions {
-           width,
-           height,
-           aspectRatio
-         }
-       }
-     },
-'benefitPoints':benefitPoints
+
+export const logoSection = groq` *[_type == "logoListing"][0]{
+  'image':logo[]->image.asset->{url,_id,altText,   metadata {
+          dimensions {
+            width,
+            height,
+            aspectRatio
+          }
+        }},
+    logoSectionHeader,
+    logoSectionHeaderDescptn,
     
-}`
+}
+`
 export const getFounderDetails = (region) => groq`*[_type == "person"]{
   'name':personName,
   'socialMediaLinks':socialMediaLinks,
@@ -146,11 +144,7 @@ export async function fetchAboutSection(client: SanityClient): Promise<any> {
 export async function fetchHeroSectionData(client: SanityClient): Promise<any> {
   return await client.fetch(heroSection)
 }
-export async function fetchBenefitSectionData(
-  client: SanityClient,
-): Promise<any> {
-  return await client.fetch(benifitQuery)
-}
+
 
 export async function getLegalInformation(
   client: SanityClient,
@@ -259,26 +253,7 @@ export const getALLHomeSettings = (
 export const getALLSiteSettings = (region) =>
   groq`*[_type == "siteSettings"] | order(_createdAt desc)[0]`
 
-// export const getComparisonTableData = () =>
-//   groq`*[_type == "comparisonTable"] {
-//     ..., "rowCategories": rowCategories[] {
-//       ..., "rows": rows[] {
-//         ..., "comparisons": comparisons[] -> {
-//           ..., "icon": icon.asset-> {
-//             _id,
-//             url,
-//             metadata {
-//               dimensions {
-//                 width,
-//                 height,
-//                 aspectRatio
-//               }
-//             }
-//           }
-//         }
-//       }
-//     }
-//   } | order(_createdAt desc)[0]`
+
 export const getComparisonTableData = (region) =>
   groq`*[_type == "comparisonTable"] {
     ..., 
