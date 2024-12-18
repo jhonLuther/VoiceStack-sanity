@@ -73,7 +73,9 @@ export default function IndexPage(
     <div>
       <BookDemoContextProvider>
         <Layout {...props}>
-          <div className="global-wrapper pt-[98px]">
+           <CustomHead {...props} />
+          {/* <Content {...props} /> */}
+          <div className='global-wrapper pt-[64px] lg:pt-[98px]'>
             <Header></Header>
             <HeroSection></HeroSection>
             <LinksCardsSection></LinksCardsSection>

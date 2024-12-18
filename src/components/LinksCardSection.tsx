@@ -33,7 +33,7 @@ const LinksCardsSection = () => {
   return (
     <Section className="pt-md pb-8">
       <Container>
-        <div className='grid grid-cols-4 gap-12 justify-center'>
+        <div className='grid md:grid-cols-2 lg:grid-cols-4 gap-0 md:gap-6 xl:gap-12 justify-center'>
           {linkCardsData && linkCardsData.length > 0 && (
             linkCardsData.map((item:any, index:number) => {
               return(

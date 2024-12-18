@@ -1,13 +1,16 @@
 import Image from "next/image";
-import React, { forwardRef } from "react";
+import React, { forwardRef, useState } from "react";
+import { VideoItem, VideoModal } from "./VideoModal";
 
 type TestimonialCardProps = {
   data: any;
   index?: number; // Allow any type for the `data` prop
+  onOpenVideo?: (video: VideoItem) => void;
 };
 
 const TestimonialCard = forwardRef<HTMLDivElement, TestimonialCardProps>(
-  ({ data, index }, ref) => {
+  ({ data, index, onOpenVideo }, ref) => {
+
   return (
     <div className="top-40 sticky h-[100vh]" ref={ref} id={`${index}`}>
       <div className="p-4 rounded-lg shadow-md bg-white flex">
@@ -76,19 +79,14 @@ const TestimonialCard = forwardRef<HTMLDivElement, TestimonialCardProps>(
       </div>
 
 
-      {/* Video (Optional) */}
-      {/* {data?.video?.videoId && (
-        <a
-          href={`https://embed.vidyard.com/watch/${data.video.videoId}`}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="block mt-4 text-blue-500 underline"
-        >
-          Watch Video
-        </a>
-      )} */}
+      {data?.video && data.video.videoId && (
+        <div className="text-white cursor-pointer" onClick={() => onOpenVideo(data.video)}>
+          {/* Watch Video */}
+        </div>
+      )}
+    
     </div>
   );
 });
-
+TestimonialCard.displayName = "TestimonialCard";
 export default TestimonialCard;

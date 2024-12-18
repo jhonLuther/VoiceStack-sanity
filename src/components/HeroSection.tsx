@@ -21,10 +21,10 @@ const HeroSection = () => {
   }
 
   const messages = [
-    "To Grow your Practice.",
-    "To Convert More New Patients.",
-    "To Reactivate Existing Patients.",
-    "To Eliminate Missed Calls.",
+    "To Grow your Practice",
+    "To Convert More New Patients",
+    "To Reactivate Existing Patients",
+    "To Eliminate Missed Calls",
   ];
 
   const [activeIndex, setActiveIndex] = useState(0);
@@ -50,13 +50,13 @@ const HeroSection = () => {
 
 
   return (
-    <Section className="pt-md bg-vs-blue" childClass="flex">
+    <Section className="pt-sm md:pt-md bg-vs-blue" childClass="flex">
       <Container>
         <div className='relative w-full flex items-center flex-col'>
           <div className='flex gap-8 items-center pb-10 flex-col max-w-[910px] w-full'>
             <div className='flex flex-col items-center w-full gap-5'>
               <div className='flex py-2.5 px-[17px] justify-center items-center gap-2 rounded-full border border-white/10 bg-gray-50/5'>
-                <span className='flex text-white text-center font-inter text-sm font-medium leading-[120%] tracking-[0.98px] uppercase'>Supercharge your practice growth</span>
+                <span className='flex text-white text-center text-xs font-medium leading-[120%] tracking-[0.98px] uppercase'>Supercharge your practice growth</span>
               </div>
               <H1 className='text-center w-full'>
                 {/* <span className="text-vs-lemon-green flex items-center gap-4 after:content-[url('../../public/assets/sparkles.svg')]">AI Powered</span> Enterprise Phone System for Dental Offices  */}
@@ -96,7 +96,7 @@ const HeroSection = () => {
               <p className='text-white font-inter text-lg font-medium leading-[160%] text-center max-w-[600px] w-full'>
                 Increase new patient growth with state-of-the-art features including Call Transcriptions, Call Analytics, Two-way Texts & more.
               </p>
-              <div className='flex gap-4 items-center'>
+              <div className='flex gap-4 flex-col md:flex-row items-center'>
                 <Button type='primaryWhite' link='#'>
                   <ButtonArrow></ButtonArrow>
                   <span className="text-base font-medium">{`Book free demo`}</span>
@@ -112,16 +112,16 @@ const HeroSection = () => {
 
           <div className='relative w-full'>
             {/* <Image src={device} alt='device'></Image> */}
-            <div className='relative h-[480px] overflow-hidden w-full'>
-              <div className='absolute left-0 top-[80px] w-[85%]'>
+            <div className='relative pt-[58%] lg:pt-0 lg:h-[480px] overflow-hidden w-full'>
+              <div className='absolute left-0 bottom-0 md:bottom-auto md:top-[80px] w-[85%]'>
                 <Image className='w-full h-full object-cover' src={voicestack} alt='voicestack'></Image>
               </div>
-              <div className='absolute right-0 top-0 w-[25%]'>
+              <div className='absolute right-0 bottom-[-40px] lg:bottom-auto lg:top-0 w-[25%]'>
                 <Image className='w-full h-full object-cover' src={voicemail} alt='voicemail'></Image>
               </div>
             </div>
             
-            <div className='absolute left-0 -bottom-[80px] w-[38.5%]'>
+            <div className='absolute left-0 -bottom-[80px] min-w-[200px] w-[38.5%]'>
               <Image className='w-full h-full object-cover' src={device} alt='voicestack device'></Image>
             </div>
           </div>
