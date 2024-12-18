@@ -40,7 +40,7 @@ function ComparisonRichIcon({ comparisonValue }) {
 }
 
 export default function SiteComparisonTable({ data, index, currentIndex }) {
-  console.log({data});
+  // console.log({data});
   
   return (
 
