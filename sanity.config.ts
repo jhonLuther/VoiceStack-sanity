@@ -142,6 +142,7 @@ export default defineConfig({
               S.documentTypeListItem('legal').title('Legal'),
               S.documentTypeListItem('comparisonValue').title('Comparison Value'),
               S.documentTypeListItem('platformList').title('PlatformList'),
+              S.documentTypeListItem('logoListing').title('logoListing'),
               // S.documentTypeListItem('platform').title('Platform'),
           ])
     }),
