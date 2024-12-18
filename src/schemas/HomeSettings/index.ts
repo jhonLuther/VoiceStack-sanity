@@ -51,6 +51,22 @@ export default defineType({
     }),
 
     defineField({
+      name: 'heroSubFeature',
+      title: 'Hero SubFeature',
+      type: 'array',
+      of: [
+        {
+          type: 'reference',
+          to: [{ type: 'heroSubFeature' }],
+        },
+      ],
+    }),
+
+
+
+
+
+    defineField({
       name: 'selectedTestimonial',
       title: 'Selected Testimonial',
       type: 'array',

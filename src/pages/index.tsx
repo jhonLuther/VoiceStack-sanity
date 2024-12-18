@@ -66,6 +66,7 @@ export default function IndexPage(
     columnDimensionName: 'Features',
     table: comparisonTableData,
   }
+  const linkCardSectionData:any = props?.heroSectionData?.heroSubFeature
 
   return (
     <div>
@@ -76,7 +77,7 @@ export default function IndexPage(
           <div className='global-wrapper pt-[64px] lg:pt-[98px]'>
             <Header></Header>
             <HeroSection props ={props?.heroSectionData}/>
-            <LinksCardsSection></LinksCardsSection>
+            <LinksCardsSection props ={linkCardSectionData}/>
             <Testimonails />
             <LogoListingSection></LogoListingSection>
             <FeatureSection></FeatureSection>

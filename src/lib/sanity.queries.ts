@@ -71,8 +71,16 @@ export const heroSectionQuery_ = groq`
 
 export const AboutQuery = groq`*[_type == "siteSettings"]{"about":ogDescription
 }`
-export const heroSection = groq`
-*[_type == "homeSettings"][0]`
+export const heroSection = groq`*[_type == "homeSettings"][0]{
+  ...,
+  "heroSubFeature":heroSubFeature[]->{"heading":heroSubFeatureHeading,
+                                       "description":heroSubFeatureContent,
+                                       "icon":heroSubFeatureIcon.asset->url,
+                                       "label":"Learn More",
+                                       "href": "#"
+                                      
+    }
+}`
 export const benifitQuery = groq` *[_type == "benefit"]{
   'benefitHeading':benefitHeading,
    'benifitSectionImage':benefitImageSection.asset->{
