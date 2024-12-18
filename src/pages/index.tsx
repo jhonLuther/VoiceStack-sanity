@@ -10,7 +10,6 @@ import {
   getIntegrationList,
   logoSection,
 } from '~/lib/sanity.queries'
-import type { SharedPageProps } from '~/pages/_app'
 import Layout from '../components/Layout'
 import CustomHead from '~/components/common/CustomHead'
 import BookDemoContextProvider from '~/providers/BookDemoProvider'
@@ -28,7 +27,7 @@ import Testimonails from '~/components/testimonials/Testimonials'
 import FaqSection from '~/components/FaqSection'
 import Footer from '~/components/common/Footer'
 
-export const getServerSideProps: GetStaticProps<SharedPageProps> = async ({
+export const getServerSideProps: GetStaticProps<any> = async ({
   locale,
   draftMode = false,
 }) => {
