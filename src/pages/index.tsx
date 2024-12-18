@@ -2,6 +2,7 @@ import type { GetStaticProps, InferGetStaticPropsType } from 'next'
 import Content from '~/components/Content'
 import { readToken } from '~/lib/sanity.api'
 import {
+  heroSection,
   getALLHomeSettings,
   getALLSiteSettings,
   getComparisonTableData,
@@ -13,14 +14,12 @@ import Layout from '../components/Layout'
 import CustomHead from '~/components/common/CustomHead'
 import BookDemoContextProvider from '~/providers/BookDemoProvider'
 import runQuery from '~/utils/runQuery'
-import Section from '~/components/structure/Section'
 import HeroSection from '~/components/HeroSection'
 import FeatureSection from '~/components/features/FeatureSection'
 import LogoListingSection from '~/components/LogoListingSection'
 import CardsListingSection from '~/components/CardsListingSection'
 import Header from '~/components/common/Header'
 import AnimatedBeamSection from '~/components/ui/animated/AnimatedBeamSection'
-import ComparisonSection from '~/components/ComparisonSection'
 import BannerSection from '~/components/BannerSection'
 import SiteComparisonSection from '~/components/SiteComparisonSection'
 import LinksCardsSection from '~/components/LinksCardSection'
@@ -38,6 +37,7 @@ export const getServerSideProps: GetStaticProps<SharedPageProps> = async ({
   const founderDetails = await runQuery(getFounderDetails(region))
   const comparisonTableData = await runQuery(getComparisonTableData(region))
   const integrationPlatforms = await runQuery(getIntegrationList(region))
+  const heroSectionData = await runQuery(heroSection)
 
   return {
     props: {
@@ -49,6 +49,7 @@ export const getServerSideProps: GetStaticProps<SharedPageProps> = async ({
       draftMode,
       token: draftMode ? readToken : '',
       region,
+      heroSectionData
     }
   }
 }
@@ -57,7 +58,7 @@ export default function IndexPage(
   props: InferGetStaticPropsType<typeof getServerSideProps>,
 ) {
   const { integrationPlatforms, comparisonTableData } = props
-  console.log(props?.region)
+  console.log(props?.heroSectionData)
   const comparisonSectionData = {
     strip: 'VoiceStack is the Best-in-class',
     header:
@@ -74,7 +75,7 @@ export default function IndexPage(
           {/* <Content {...props} /> */}
           <div className='global-wrapper pt-[64px] lg:pt-[98px]'>
             <Header></Header>
-            <HeroSection></HeroSection>
+            <HeroSection props ={props?.heroSectionData}/>
             <LinksCardsSection></LinksCardsSection>
             <Testimonails />
             <LogoListingSection></LogoListingSection>

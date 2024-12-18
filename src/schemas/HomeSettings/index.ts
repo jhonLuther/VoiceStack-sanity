@@ -5,6 +5,11 @@ export default defineType({
   type: 'document',
   fields: [
     defineField({
+      name: 'heroStripHeader',
+      title: 'Hero Strip Section Header',
+      type: 'string',
+    }),
+    defineField({
       name: 'heroStrip',
       title: 'Hero Strip',
       type: 'string',
@@ -34,34 +39,16 @@ export default defineType({
     }),
 
     defineField({
-      name: 'aboutSectionImage',
-      title: 'About Section Image',
+      name: 'heroImage',
+      title: 'Hero Section Image',
       type: 'image',
     }),
-    defineField({
-      name: 'featureHeader',
-      title: 'Feature Section Header',
-      type: 'string',
-    }),
 
     defineField({
-      name: 'benefitHeader',
-      title: 'Benefit Section Header',
+      name: 'heroStripDescription',
+      title: 'Hero Strip Description Header',
       type: 'string',
     }),
-    defineField({
-      name: 'testimonialHeader',
-      title: 'Testimonial Header',
-      type: 'string',
-    }),
-
-    defineField({
-      name: 'integrationHeader',
-      title: 'Integration Section Header',
-      type: 'string',
-    }),
-
-    
 
     defineField({
       name: 'selectedTestimonial',
