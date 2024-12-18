@@ -3,14 +3,10 @@ import { SchemaTypeDefinition } from 'sanity'
 import blockContent from './blockContent'
 import layout from './layout'
 import Features from './Features'
-
-import Integrations from './Integrations'
 import SiteSettings from './SiteSettings'
 import Testimonials from './Testimonials'
-import Benefits from './Benefits'
 import HomeSettings from './HomeSettings'
 import multipleString from './multipleString'
-import Person from './Person'
 import legal from './Legal'
 import customBlockContent from './customBlockContent.js'
 import comparison from './Comparison'
@@ -21,12 +17,9 @@ import PlatformList from './PlatformList'
 export const schemaTypes = [
   layout,
   Features,
-  Integrations,
   SiteSettings,
   Testimonials,
-  Benefits,
   HomeSettings,
-  Person,
   legal,
   comparison,
   comparisonValue,
@@ -41,13 +34,10 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     layout,
     Features,
 
-    Integrations,
     SiteSettings,
     Testimonials,
-    Benefits,
     HomeSettings,
     multipleString,
-    Person,
     legal,
     comparison,
     comparisonValue,

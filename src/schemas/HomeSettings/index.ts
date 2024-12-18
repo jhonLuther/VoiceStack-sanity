@@ -61,31 +61,6 @@ export default defineType({
       type: 'string',
     }),
 
-
-    defineField({
-      name: 'integration',
-      title: 'Add Integration',
-      type: 'array',
-      of: [
-        {
-          type: 'reference',
-          to: [{ type: 'integration' }],
-        },
-      ],
-    }),
-
-    defineField({
-      name: 'selectedBenefits',
-      title: 'Selected Benefits',
-      type: 'array',
-      of: [
-        {
-          type: 'reference',
-          to: [{ type: 'benefit' }],
-        },
-      ],
-    }),
-
     
 
     defineField({

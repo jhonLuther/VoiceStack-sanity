@@ -459,19 +459,6 @@ export const getIntegrationList = (region) =>
 
   } | order(_createdAt desc)[0]`
 
-export const getAllPMS = (region) =>
-  groq`*[_type == "allPMS"]{...,"image": pmsImage.asset -> {
-      _id,
-      url,
-      metadata {
-        dimensions {
-          width,
-          height,
-          aspectRatio
-        }
-      }
-    }  
-  }`
 
 /*####################################### INTERFACES    ###########################*/
 export interface Post {
