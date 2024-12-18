@@ -86,17 +86,7 @@ export default defineType({
       ],
     }),
 
-    defineField({
-      name: 'selectedPartner',
-      title: 'Selected Partner',
-      type: 'array',
-      of: [
-        {
-          type: 'reference',
-          to: [{ type: 'partner' }],
-        },
-      ],
-    }),
+    
 
     defineField({
       name: 'selectedTestimonial',

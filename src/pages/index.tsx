@@ -3,7 +3,6 @@ import Content from '~/components/Content'
 import { readToken } from '~/lib/sanity.api'
 import {
   getALLHomeSettings,
-  getAllPMS,
   getALLSiteSettings,
   getComparisonTableData,
   getFounderDetails,
@@ -38,7 +37,6 @@ export const getServerSideProps: GetStaticProps<SharedPageProps> = async ({
   const siteSettings = await runQuery(getALLSiteSettings(region))
   const founderDetails = await runQuery(getFounderDetails(region))
   const comparisonTableData = await runQuery(getComparisonTableData(region))
-  const allPMS = await runQuery(getAllPMS(region))
   const integrationPlatforms = await runQuery(getIntegrationList(region))
 
   return {
@@ -48,7 +46,6 @@ export const getServerSideProps: GetStaticProps<SharedPageProps> = async ({
       founderDetails,
       comparisonTableData,
       integrationPlatforms,
-      allPMS,
       draftMode,
       token: draftMode ? readToken : '',
       region,

@@ -12,11 +12,9 @@ import HomeSettings from './HomeSettings'
 import multipleString from './multipleString'
 import Person from './Person'
 import legal from './Legal'
-import partner from './partner'
 import customBlockContent from './customBlockContent.js'
 import comparison from './Comparison'
 import comparisonValue from "./ComparisonValue"
-import PMS from './PMS'
 import Platforms from './Platforms'
 import PlatformList from './PlatformList'
 
@@ -30,10 +28,8 @@ export const schemaTypes = [
   HomeSettings,
   Person,
   legal,
-  partner,
   comparison,
   comparisonValue,
-  PMS,
   Platforms,
   PlatformList
 ]
@@ -53,10 +49,8 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     multipleString,
     Person,
     legal,
-    partner,
     comparison,
     comparisonValue,
-    PMS,
     Platforms,
     PlatformList
   ],
