@@ -69,7 +69,6 @@ export default defineConfig({
         { id: 'en-GB', title: 'UK English' },
       ],
       schemaTypes: ['layout','feature',
-        'featureCategory',
         'integration',
         'siteSettings',
         'testimonial',
@@ -142,7 +141,6 @@ export default defineConfig({
         
               // S.documentTypeListItem('homeSettings').title('homeSettings'),
               S.documentTypeListItem('testimonial').title('Testimonial'),
-              S.documentTypeListItem('featureCategory').title('FeatureCategory'),
               S.documentTypeListItem('feature').title('Feature'),
               S.documentTypeListItem('integration').title('Integration'),
               S.documentTypeListItem('benefit').title('Benefit'),

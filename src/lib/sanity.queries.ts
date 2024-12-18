@@ -65,25 +65,6 @@ export const integrationListQuery = groq`*[_type == "integration" ]{
     
    
   }`
-export const featureSectionQuery = groq`
-    *[_type == "featureCategory" && !(_id in path('drafts.**'))] {
-      ..., 
-      "imageUrl": categoryImage.asset->{
-        _id,
-        url,
-        metadata {
-          dimensions {
-            width,
-            height,
-            aspectRatio
-          }
-        }
-      },
-      "altText": image.altText,
-      "title": image.title,
-      "features": features[]->
-    }
-  `
 export const testimonialQuery = groq`*[_type == "testimonial"]{...,"AuthorImage":authorimage.asset->url}`
 export const heroSectionQuery_ = groq`
   *[_type == "siteSettings"][0]{
@@ -233,9 +214,6 @@ export async function fetchIntegrationList(client: SanityClient): Promise<any> {
   return await client.fetch(integrationListQuery)
 }
 
-export async function featureSection(client: SanityClient): Promise<any> {
-  return await client.fetch(featureSectionQuery)
-}
 
 export async function fetchTestimonial(client: SanityClient): Promise<any> {
   return await client.fetch(testimonialQuery)
