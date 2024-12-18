@@ -20,7 +20,7 @@ import ButtonArrow from './icons/ButtonArrow';
 import H2 from './typography/H2';
 import Paragraph from './typography/Paragraph';
 
-const LogoListingSection = ({props}) => { debugger
+const LogoListingSection = ({props}) => {
 
   const logos = [
     { image: espireDental, alt: "Espire Dental", title: "Espire Dental"},
