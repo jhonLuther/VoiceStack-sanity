@@ -75,7 +75,7 @@ export function AnimatedBeamDemo({ data }: any) {
       </div>
 
       {/* CRM and PMS Sections */}
-      <div className="flex justify-between w-full items-center mt-14">
+      <div className="flex justify-between w-full items-center mt-14 relative">
         <div className="flex flex-col relative gap-5 z-10 rounded-[20px] border border-gray-100 bg-white shadow-lg">
           <div className="flex p-2 items-center justify-center rounded-t-[20px] bg-gray-300 text-base font-semibold">
             <H3 className="text-gray-600">Analytics</H3>
@@ -98,7 +98,7 @@ export function AnimatedBeamDemo({ data }: any) {
 
         {/* Center Image */}
 
-        <div className="absolute md:top-[83px] lg:top-[43px] left-1/2 transform -translate-x-1/2 w-full md:w-[980px] lg:w-[1106px]">
+        <div className="absolute md:top-[-107px] lg:top-[-145px] left-1/2 transform -translate-x-1/2 w-full md:w-[980px] lg:w-[1106px]">
           {/* <LinesIcon /> */}
         <VideoPlayer/>
         </div>

@@ -154,7 +154,7 @@ export default function FeatureSection() {
         </div>
 
         {/* Sticky Image Section */}
-        <div className="flex-1 px-12 bg-vs-lemon-green">
+        <div className={`flex-1 px-12 bg-vs-lemon-green relative feature-after`}>
           <div className="sticky top-0 py-24 h-[100vh] flex flex-col justify-center">
             <AnimatePresence mode="wait">
               <motion.img

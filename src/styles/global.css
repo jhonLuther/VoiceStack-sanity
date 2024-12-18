@@ -219,3 +219,18 @@ html {
 ::-webkit-scrollbar-thumb:hover {
     background: #555; /* Color of the handle when hovered */
 }
+
+/* //custom styles */
+
+.feature-after{
+  &::after{
+    content: "";
+    position: absolute;
+    width: calc(100vw/2);
+    background-color: rgb(181, 235, 146);
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+  }
+}

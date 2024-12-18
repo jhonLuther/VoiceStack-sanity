@@ -99,7 +99,7 @@ const Header = () => {
                     </div>
 
                     {/* mob cta and phone */}
-                    <div className='flex gap-5 items-center lg:hidden'>
+                    <div className='flex flex-col md:flex-row gap-3 md:gap-5 items-center lg:hidden'>
                       <div className='flex-shrink-0'>
                         <a href="tel:+(407) 833-6123" className='text-gray-700 px-[12px] py-[7px] rounded-[7px] text-sm font-medium leading-6 flex items-center whitespace-nowrap gap-[8px]  
                         border border-gray-300'><TelIcon/>(407) 833-6123</a>
