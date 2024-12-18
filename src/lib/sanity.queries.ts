@@ -97,7 +97,9 @@ export const heroSection = groq`
             height,
             aspectRatio
           }
-        }
+        },
+        "altText": image.altText,
+        "title": image.title,
       },
       "altText": image.altText,
       "title": image.title,
@@ -117,7 +119,9 @@ export const heroSection = groq`
             height,
             aspectRatio
           }
-        }
+        },
+        "altText": image.altText,
+        "title": image.title,
       },
       "altText": image.altText,
       "title": image.title,
@@ -142,7 +146,8 @@ export const heroSection = groq`
             height,
             aspectRatio
           }
-        }
+        },
+    
       }
     }
   },
@@ -426,7 +431,9 @@ export const getIntegrationList = (region) =>
                 height,
                 aspectRatio
               }
-            }
+            },
+            ...,
+
           }
       },
       pms[]->{
@@ -439,7 +446,9 @@ export const getIntegrationList = (region) =>
                 height,
                 aspectRatio
               }
-            }
+            },
+            ...,
+
           }
 
       },
@@ -453,7 +462,9 @@ export const getIntegrationList = (region) =>
                 height,
                 aspectRatio
               }
-            }
+            },
+            ...,
+
           }
       }
 

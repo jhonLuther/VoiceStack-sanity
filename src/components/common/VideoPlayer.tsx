@@ -17,7 +17,7 @@ export default function VideoPlayer() {
   loop
   muted
 >
-  <source src="https://cdn.sanity.io/files/76tr0pyh/production/9209691db756a477af8ac42708e5899cc9e23e6e.mp4" type="video/mp4" />
+  <source src="https://cdn.sanity.io/files/76tr0pyh/production/666e1638ad12147f6e2088f692a9e4ac5fb8981d.webm" type="video/mp4" />
 </video>
     </div>
   );
