@@ -66,7 +66,7 @@ const TestimonialCard = forwardRef<HTMLDivElement, TestimonialCardProps>(
                 <ul className="flex flex-col gap-4">
                   {data.before.map((item:any, index:number) => {
                     return(
-                      <li className="flex gap-2 text-sm text-gray-700 leading-[1.3]">
+                      <li className="flex gap-2 text-sm text-gray-700 leading-[1.3]" key={index+item}>
                         <span className="flex-shrink-0 mt-[2px] text-gray-400"><TickIcon /></span>{item}
                       </li>
                     )
@@ -81,7 +81,7 @@ const TestimonialCard = forwardRef<HTMLDivElement, TestimonialCardProps>(
                   <ul className="flex flex-col gap-4">
                     {data.after.map((item:any, index:number) => {
                       return(
-                        <li className="flex gap-2 text-sm text-gray-700 leading-[1.3]">
+                        <li className="flex gap-2 text-sm text-gray-700 leading-[1.3]" key={index+item}>
                           <span className="flex-shrink-0 mt-[2px] text-vs-blue"><TickIcon /></span>{item}
                         </li>
                       )
@@ -107,7 +107,7 @@ const TestimonialCard = forwardRef<HTMLDivElement, TestimonialCardProps>(
                     <ul className="flex flex-wrap gap-3">
                       {data.keyFeatures.map((item:any, index:number) => {
                         return(
-                          <li className="flex items-center justify-center px-2 py-[6px] border border-gray-200 text-gray-700 text-sm leading-[1.3] rounded-full">
+                          <li key={index+item} className="flex items-center justify-center px-2 py-[6px] border border-gray-200 text-gray-700 text-sm leading-[1.3] rounded-full">
                             {item}
                           </li>
                         )

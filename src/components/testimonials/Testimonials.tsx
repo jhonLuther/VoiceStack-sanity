@@ -95,7 +95,7 @@ export default function Testimonails() {
 
     // Cleanup listener on unmount
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [testimonialData]);
+  }, []);
 
   // Handle scroll-to-card logic
   // const handleScrollToCard = (index: number) => {
