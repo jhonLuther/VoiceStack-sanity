@@ -3,7 +3,7 @@ import { SchemaTypeDefinition } from 'sanity'
 import blockContent from './blockContent'
 import layout from './layout'
 import Features from './Features'
-import FeatureCategories from './FeatureCategories'
+
 import Integrations from './Integrations'
 import SiteSettings from './SiteSettings'
 import Testimonials from './Testimonials'
@@ -23,7 +23,6 @@ import PlatformList from './PlatformList'
 export const schemaTypes = [
   layout,
   Features,
-  FeatureCategories,
   Integrations,
   SiteSettings,
   Testimonials,
@@ -45,7 +44,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     customBlockContent,
     layout,
     Features,
-    FeatureCategories,
+
     Integrations,
     SiteSettings,
     Testimonials,

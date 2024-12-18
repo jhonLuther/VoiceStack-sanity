@@ -61,17 +61,6 @@ export default defineType({
       type: 'string',
     }),
 
-    defineField({
-      name: 'selectedfeatures',
-      title: 'Selected Feature',
-      type: 'array',
-      of: [
-        {
-          type: 'reference',
-          to: [{ type: 'featureCategory' }],
-        },
-      ],
-    }),
 
     defineField({
       name: 'integration',
