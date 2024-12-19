@@ -162,6 +162,14 @@ export const getFounderDetails = (region) => groq`*[_type == "person"]{
     'description':personDescription
 }`
 
+export async function fetchFaq(
+  client: SanityClient,
+  region: string,
+): Promise<any> {
+  const query = groq`*[_type == "faq" && language ==$region] |order(order asc)`
+  return await client.fetch(query, { region })
+}
+
 export const SeoQuery = groq`*[_type == "siteSettings"]
 | order(_createdAt desc)[0].seoSettings
 `
