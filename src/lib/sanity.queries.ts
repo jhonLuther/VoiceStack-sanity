@@ -104,40 +104,46 @@ export const logoSection = groq` *[_type == "logoListing"][0]{
 }
 `
 
-export const featureSectionQuery = groq`*[_type == "testimonial"]{...,
+export async function featureSectionQuery(
+  client: SanityClient,
+  region: string,
+) {
+  const query = groq`*[_type == "testimonial" && language == $region]{...,
    
-  "testimonialImage":testimonialImage.asset->{url,_id,altText,
-  metadata {
-         dimensions {
-           width,
-           height,
-           aspectRatio
-         }
+    "testimonialImage":testimonialImage.asset->{url,_id,altText,
+    metadata {
+           dimensions {
+             width,
+             height,
+             aspectRatio
+           }
+    }
+  },
+  "testimonialIcon":testimonialIcon.asset->{url,_id,altText,
+    metadata {
+           dimensions {
+             width,
+             height,
+             aspectRatio
+           }
+    }
+  },
+  "testimonialSubSection":testimonialSubSection[]->{
+    featureSubDescription,
+    featureSubHead,
+    "image":featureChipImage.asset->{url,_id,altText,
+    metadata {
+           dimensions {
+             width,
+             height,
+             aspectRatio
+           }
+    }
+  },
   }
-},
-"testimonialIcon":testimonialIcon.asset->{url,_id,altText,
-  metadata {
-         dimensions {
-           width,
-           height,
-           aspectRatio
-         }
-  }
-},
-"testimonialSubSection":testimonialSubSection[]->{
-  featureSubDescription,
-  featureSubHead,
-  "image":featureChipImage.asset->{url,_id,altText,
-  metadata {
-         dimensions {
-           width,
-           height,
-           aspectRatio
-         }
-  }
-},
+  }`
+  return await client.fetch(query,{region})
 }
-}`
 export const getFounderDetails = (region) => groq`*[_type == "person"]{
   'name':personName,
   'socialMediaLinks':socialMediaLinks,
