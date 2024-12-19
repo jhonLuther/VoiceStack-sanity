@@ -52,7 +52,7 @@ const TestimonialCard = forwardRef<HTMLDivElement, TestimonialCardProps>(
           )}
           
           {/* before and after data */}
-          {data.before && data.before.length > 0 ?(
+          {/* {data.before && data.before.length > 0 ?(
             <div className="flex-1 flex flex-row gap-6 justify-between">
               <div className="flex gap-6 flex-col flex-1 p-8">
                 <span className="inline-flex self-start justify-center items-center text-gray-50 text-base 
@@ -84,9 +84,9 @@ const TestimonialCard = forwardRef<HTMLDivElement, TestimonialCardProps>(
                 </div>
               )}
             </div>
-          ):(
-          // {/* message and key features */}
-            <div className="flex-1 flex flex-row gap-6 justify-between">
+          ):( */}
+          {/* message and key features */}
+            {/* <div className="flex-1 flex flex-row gap-6 justify-between">
               <div className="flex gap-3 flex-col flex-1 p-8">
                 <h3 className="text-gray-500 font-inter text-base font-medium leading-[110%]">{data?.heading || ""}</h3>
                 <p
@@ -111,7 +111,54 @@ const TestimonialCard = forwardRef<HTMLDivElement, TestimonialCardProps>(
                 </div>
               )}
             </div>
-          )}
+          )} */}
+          <div className="flex-1 flex flex-row gap-6 justify-between">
+              <div className="flex gap-3 flex-col flex-1 p-8">
+                {/* <h3 className="text-gray-500 font-inter text-base font-medium leading-[110%]">{data?.heading || ""}</h3> */}
+                {data.listItems && data.listItems.length > 0 && (
+                  data.listItems.map((item:any) => {
+                    return (
+                      <div>
+                        <span>{item.listHeading}</span>
+                        <div className="flex ">
+                          {item.before && (
+                            <div className="flex gap-2 items-center">
+                              <span>{item.before}</span>
+                              <span>{`->`}</span>
+                            </div>
+                          )}
+                          {item.after && (
+                            <div className="flex gap-2 items-center">
+                              <span>{item.after}</span>
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    )
+                  })
+                )}
+                <p
+                  className="text-gray-900 font-manrope text-3xl font-bold leading-[120%] [&_span]:text-vs-blue"
+                  dangerouslySetInnerHTML={{ __html: data?.description || "" }}
+                ></p>
+              </div>
+
+              {data.keyFeatures && data.keyFeatures.length > 0 && (
+                <div className="flex-1 flex flex-col p-8 gap-8 border-l border-gray-200">
+                    <h3 className="text-gray-500 font-inter text-base font-medium leading-[110%]">Key Features</h3>
+                    <ul className="flex flex-wrap gap-3">
+                      {data.keyFeatures.map((item:any, index:number) => {
+                        return(
+                          <li key={index+item} className="flex items-center justify-center px-2 py-[6px] border border-gray-200 text-gray-700 text-sm leading-[1.3] rounded-full">
+                            {item}
+                          </li>
+                        )
+                      })}
+                      
+                    </ul>
+                </div>
+              )}
+            </div>
         </div>
 
         {/* Testimonee Details bottom strip */}
