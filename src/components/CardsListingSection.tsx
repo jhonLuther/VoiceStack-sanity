@@ -1,10 +1,6 @@
 import React, { useState } from 'react'
 import Section from './structure/Section'
 import Container from './structure/Container';
-import Button from './common/Button';
-import ButtonArrow from './icons/ButtonArrow';
-import H2 from './typography/H2';
-import Paragraph from './typography/Paragraph';
 import SingleSiteIcon from './icons/SingleSiteIcon';
 import MultiSiteIcon from './icons/MultiSiteIcon';
 import StartupIcon from './icons/StartupIcon';
@@ -16,16 +12,16 @@ const CardsListingSection = () => {
   const cardsListing = [
     { 
       heading: "Single Site Dental Practices", 
-      description:"Easy to use, yet powerful clinical and administrative workflows to meet all your needs.",
+      description:"Easy to use, yet powerful front office workflows to make staff members more productive.",
       icon: SingleSiteIcon 
     },
     {
       heading: "Multi-Site DSOs", 
-      description:"Highly scalable and configurable to meet the growing needs of multi-site dental groups.", 
+      description:"Highly scalable across locations, with configurability for unique workflows and full-cycle patient relationship management.", 
       icon: MultiSiteIcon 
     },
     { heading: "Startup Dental Practices", 
-      description:"The complete software kit with built-inbest practices to quickly start and scale your new practice.",
+      description:"The complete patient growth kit with built-in best practices to quickly start and scale your new practice.",
       icon: StartupIcon 
     }
   ];
