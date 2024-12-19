@@ -8,8 +8,9 @@ import {
   getComparisonTableData,
   getFounderDetails,
   getIntegrationList,
+  logoSection,
+  featureSectionQuery,
 } from '~/lib/sanity.queries'
-import type { SharedPageProps } from '~/pages/_app'
 import Layout from '../components/Layout'
 import CustomHead from '~/components/common/CustomHead'
 import BookDemoContextProvider from '~/providers/BookDemoProvider'
@@ -26,18 +27,22 @@ import LinksCardsSection from '~/components/LinksCardSection'
 import Testimonails from '~/components/testimonials/Testimonials'
 import FaqSection from '~/components/FaqSection'
 import Footer from '~/components/common/Footer'
+import { getClient } from '~/lib/sanity.client'
 
-export const getServerSideProps: GetStaticProps<SharedPageProps> = async ({
-  req,
+export const getServerSideProps: GetStaticProps<any> = async ({
+  locale,
   draftMode = false,
 }) => {
-  const region = req?.headers?.referer?.includes('en-GB') ?  'aus' : 'us'
+  const region = locale
+  const client = getClient(draftMode ? { token: readToken } : undefined)
   const homeSettings = await runQuery(getALLHomeSettings(region))
   const siteSettings = await runQuery(getALLSiteSettings(region))
   const founderDetails = await runQuery(getFounderDetails(region))
   const comparisonTableData = await runQuery(getComparisonTableData(region))
   const integrationPlatforms = await runQuery(getIntegrationList(region))
-  const heroSectionData = await runQuery(heroSection)
+  const heroSectionData = await heroSection(client,region)
+  const logoSectionData = await runQuery(logoSection)
+  const featureSectionData = await runQuery(featureSectionQuery)
 
   return {
     props: {
@@ -49,7 +54,9 @@ export const getServerSideProps: GetStaticProps<SharedPageProps> = async ({
       draftMode,
       token: draftMode ? readToken : '',
       region,
-      heroSectionData
+      heroSectionData,
+      logoSectionData,
+      featureSectionData
     }
   }
 }
@@ -79,8 +86,8 @@ export default function IndexPage(
             <HeroSection props ={props?.heroSectionData}/>
             <LinksCardsSection props ={linkCardSectionData}/>
             <Testimonails />
-            <LogoListingSection></LogoListingSection>
-            <FeatureSection></FeatureSection>
+            <LogoListingSection props={props?.logoSectionData}/>
+            <FeatureSection props={props?.featureSectionData}/>
             <AnimatedBeamSection data={integrationPlatforms} />
             <CardsListingSection></CardsListingSection>
             <SiteComparisonSection data={comparisonSectionData} />

@@ -5,18 +5,13 @@ export default defineType({
   type: 'document',
   fields: [
     defineField({
-      name: 'authorname',
-      title: 'Author Name',
-      type: 'string',
-    }),
-    defineField({
-      name: 'authordesignation',
-      title: 'Designation',
-      type: 'string',
-    }),
-    defineField({
       name: 'testimonialheading',
       title: 'Testimonial Heading',
+      type: 'string',
+    }),
+    defineField({
+      name: 'testimonialSubheading',
+      title: 'Testimonial Sub Heading',
       type: 'string',
     }),
     defineField({
@@ -26,22 +21,36 @@ export default defineType({
     }),
 
     defineField({
-      name: 'authorimage',
-      title: 'Author Image',
+      name: 'testimonialIcon',
+      title: 'Testimonial Icon',
       type: 'image',
     }),
 
     defineField({
-      name: 'location',
-      title: 'location',
-      type: 'string',
-      
+      name: 'testimonialImage',
+      title: 'Testimonial Image',
+      type: 'image',
     }),
+
     defineField({
-      name: 'numberOflocation',
-      title: 'Number of location',
-      type: 'number',
+      name: 'testimonialChip',
+      title: 'Testimonial Chip',
+      type: 'array',
+      of: [{ type: 'string' }],
     }),
+
+    defineField({
+      name: 'testimonialSubSection',
+      title: 'Testimonial Sub Section',
+      type: 'array',
+      of: [
+        {
+          type: 'reference',
+          to: [{ type: 'featureSubSection' }],
+        },
+      ],
+    }),
+
     defineField({
       name: 'language',
       type: 'string',

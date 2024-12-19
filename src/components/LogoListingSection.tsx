@@ -20,7 +20,7 @@ import ButtonArrow from './icons/ButtonArrow';
 import H2 from './typography/H2';
 import Paragraph from './typography/Paragraph';
 
-const LogoListingSection = () => {
+const LogoListingSection = ({props}) => {
 
   const logos = [
     { image: espireDental, alt: "Espire Dental", title: "Espire Dental"},
@@ -42,20 +42,19 @@ const LogoListingSection = () => {
       <Container >
         <div className='flex flex-col items-center w-full'>
           <div className="flex justify-center w-full mb-12">
-            {/* <div className='flex flex-col w-full max-w-[780px] text-center'>
-              <h2 className='text-gray-900 text-center font-inter text-lg font-medium leading-[1.45]'>Built for smarter dental practices.</h2>
-              <p className='text-gray-500 text-center font-inter text-lg font-medium leading-[1.45]'>Used by leading Groups and DSOs.</p>
-            </div> */}
             <div className='flex flex-col w-full max-w-[780px] text-center gap-4'>
-              <H2>Built for smarter dental practices.</H2>
-              <Paragraph>Used by leading Groups and DSOs.</Paragraph>
+              <H2>{props?.logoSectionHeader}</H2>
+              <Paragraph>{props?.logoSectionHeaderDescptn}</Paragraph>
             </div>
           </div>
           <div className='flex flex-wrap justify-center items-center gap-x-12 gap-y-8 max-w-[1034px]'>
-            {logos && logos.length > 0 && (
-              logos.map((logo:any,i)=>{
+            {props.image && props.image?.length && (
+              props?.image?.map((logo:any,i)=>{
                 return(
-                  <Image src={logo.image} alt={logo.alt} title={logo.title} className='max-h-10 w-auto' key={logo.alt}></Image>
+                  <Image src={logo.url} alt={logo.altText} title={logo.altText}
+                  width={logo?.metadata?.dimensions?.width}
+                  height={logo?.metadata?.dimensions?.height}
+                   className='max-h-10 w-auto' key={logo?._id}></Image>
                 )
               })
             )}

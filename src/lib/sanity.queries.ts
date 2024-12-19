@@ -71,31 +71,60 @@ export const heroSectionQuery_ = groq`
 
 export const AboutQuery = groq`*[_type == "siteSettings"]{"about":ogDescription
 }`
-export const heroSection = groq`*[_type == "homeSettings"][0]{
-  ...,
-  "heroSubFeature":heroSubFeature[]->{"heading":heroSubFeatureHeading,
-                                       "description":heroSubFeatureContent,
-                                       "icon":heroSubFeatureIcon.asset->url,
-                                       "label":"Learn More",
-                                       "href": "#"
-                                      
+
+export async function heroSection(client: SanityClient, region: string) {
+  const query = 
+   groq`*[_type == "homeSettings" && language == $region][0]{
+      ...,
+      "heroSubFeature": heroSubFeature[]->{
+        "heading": heroSubFeatureHeading,
+        "description": heroSubFeatureContent,
+        "icon": heroSubFeatureIcon.asset->url,
+        "label": "Learn More",
+        "href": "#"
+      }
     }
-}`
-export const benifitQuery = groq` *[_type == "benefit"]{
-  'benefitHeading':benefitHeading,
-   'benifitSectionImage':benefitImageSection.asset->{
-       _id,
-       url,
-       metadata {
+  `;
+  
+  return await client.fetch(query, { region });
+}
+
+
+export const logoSection = groq` *[_type == "logoListing"][0]{
+  'image':logo[]->image.asset->{url,_id,altText,   metadata {
+          dimensions {
+            width,
+            height,
+            aspectRatio
+          }
+        }},
+    logoSectionHeader,
+    logoSectionHeaderDescptn,
+    
+}
+`
+
+export const featureSectionQuery = groq`*[_type == "testimonial"]{...,
+   
+  "testimonialImage":testimonialImage.asset->{url,_id,altText,
+  metadata {
          dimensions {
            width,
            height,
            aspectRatio
          }
-       }
-     },
-'benefitPoints':benefitPoints
-    
+  }
+},
+"testimonialIcon":testimonialIcon.asset->{url,_id,altText,
+  metadata {
+         dimensions {
+           width,
+           height,
+           aspectRatio
+         }
+  }
+}
+
 }`
 export const getFounderDetails = (region) => groq`*[_type == "person"]{
   'name':personName,
@@ -143,14 +172,9 @@ export async function fetchAboutSection(client: SanityClient): Promise<any> {
   return await client.fetch(AboutQuery)
 }
 
-export async function fetchHeroSectionData(client: SanityClient): Promise<any> {
-  return await client.fetch(heroSection)
-}
-export async function fetchBenefitSectionData(
-  client: SanityClient,
-): Promise<any> {
-  return await client.fetch(benifitQuery)
-}
+// export async function fetchHeroSectionData(client: SanityClient): Promise<any> {
+//   return await client.fetch(heroSection)
+// }
 
 export async function getLegalInformation(
   client: SanityClient,
@@ -259,26 +283,6 @@ export const getALLHomeSettings = (
 export const getALLSiteSettings = (region) =>
   groq`*[_type == "siteSettings"] | order(_createdAt desc)[0]`
 
-// export const getComparisonTableData = () =>
-//   groq`*[_type == "comparisonTable"] {
-//     ..., "rowCategories": rowCategories[] {
-//       ..., "rows": rows[] {
-//         ..., "comparisons": comparisons[] -> {
-//           ..., "icon": icon.asset-> {
-//             _id,
-//             url,
-//             metadata {
-//               dimensions {
-//                 width,
-//                 height,
-//                 aspectRatio
-//               }
-//             }
-//           }
-//         }
-//       }
-//     }
-//   } | order(_createdAt desc)[0]`
 export const getComparisonTableData = (region) =>
   groq`*[_type == "comparisonTable"] {
     ..., 

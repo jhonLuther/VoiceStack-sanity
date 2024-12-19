@@ -99,13 +99,13 @@ export default defineConfig({
         S.list()
           .title('Base')
           .items([
-            S.listItem()
-              .title('Home Page')
-              .child(
-                S.document()
-                  .schemaType('homeSettings')
-                  .documentId('homeSettings'),
-              ),
+            // S.listItem()
+            //   .title('Home Page')
+            //   .child(
+            //     S.document()
+            //       .schemaType('homeSettings')
+            //       .documentId('homeSettings'),
+            //   ),
         
               S.listItem()
               .title('Site Configuration')
@@ -136,12 +136,13 @@ export default defineConfig({
               //     .documentId('platform'),
               // ),
         
-              // S.documentTypeListItem('homeSettings').title('homeSettings'),
-              S.documentTypeListItem('testimonial').title('Testimonial'),
-              S.documentTypeListItem('feature').title('Feature'),
+              S.documentTypeListItem('homeSettings').title('homeSettings'),
+              S.documentTypeListItem('testimonial').title('FeatureSection'),
+              // S.documentTypeListItem('feature').title('Feature'),
               S.documentTypeListItem('legal').title('Legal'),
               S.documentTypeListItem('comparisonValue').title('Comparison Value'),
               S.documentTypeListItem('platformList').title('PlatformList'),
+              S.documentTypeListItem('logoListing').title('logoListing'),
               // S.documentTypeListItem('platform').title('Platform'),
           ])
     }),
