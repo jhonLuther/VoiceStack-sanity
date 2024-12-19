@@ -71,16 +71,24 @@ export const heroSectionQuery_ = groq`
 
 export const AboutQuery = groq`*[_type == "siteSettings"]{"about":ogDescription
 }`
-export const heroSection = groq`*[_type == "homeSettings"][0]{
-  ...,
-  "heroSubFeature":heroSubFeature[]->{"heading":heroSubFeatureHeading,
-                                       "description":heroSubFeatureContent,
-                                       "icon":heroSubFeatureIcon.asset->url,
-                                       "label":"Learn More",
-                                       "href": "#"
-                                      
+
+export async function heroSection(client: SanityClient, region: string) {
+  const query = 
+   groq`*[_type == "homeSettings" && language == $region][0]{
+      ...,
+      "heroSubFeature": heroSubFeature[]->{
+        "heading": heroSubFeatureHeading,
+        "description": heroSubFeatureContent,
+        "icon": heroSubFeatureIcon.asset->url,
+        "label": "Learn More",
+        "href": "#"
+      }
     }
-}`
+  `;
+  
+  return await client.fetch(query, { region });
+}
+
 
 export const logoSection = groq` *[_type == "logoListing"][0]{
   'image':logo[]->image.asset->{url,_id,altText,   metadata {
@@ -164,9 +172,9 @@ export async function fetchAboutSection(client: SanityClient): Promise<any> {
   return await client.fetch(AboutQuery)
 }
 
-export async function fetchHeroSectionData(client: SanityClient): Promise<any> {
-  return await client.fetch(heroSection)
-}
+// export async function fetchHeroSectionData(client: SanityClient): Promise<any> {
+//   return await client.fetch(heroSection)
+// }
 
 export async function getLegalInformation(
   client: SanityClient,

@@ -40,6 +40,18 @@ export default defineType({
     }),
 
     defineField({
+      name: 'testimonialSubSection',
+      title: 'Testimonial Sub Section',
+      type: 'array',
+      of: [
+        {
+          type: 'reference',
+          to: [{ type: 'featureSubSection' }],
+        },
+      ],
+    }),
+
+    defineField({
       name: 'language',
       type: 'string',
       readOnly: true,

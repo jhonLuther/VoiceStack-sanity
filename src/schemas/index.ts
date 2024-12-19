@@ -15,6 +15,7 @@ import Platforms from './Platforms'
 import PlatformList from './PlatformList'
 import heroSubFeature from './heroSubFeature'
 import LogoListing from './LogoListing'
+import featureSubSection from './featureSubSection'
 
 export const schemaTypes = [
   layout,
@@ -28,7 +29,8 @@ export const schemaTypes = [
   comparisonValue,
   Platforms,
   PlatformList,
-  LogoListing
+  LogoListing,
+  featureSubSection
 ]
 
 export const schema: { types: SchemaTypeDefinition[] } = {
@@ -47,6 +49,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     comparisonValue,
     Platforms,
     PlatformList,
-    LogoListing
+    LogoListing,
+    featureSubSection
   ],
 }

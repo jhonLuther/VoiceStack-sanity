@@ -10,8 +10,8 @@ import PreText from './micro/PreText'
 import PhoneIcon from './micro/icons/PhoneIcon'
 import AppearFeature from './AppearFeature'
 
-export default function FeatureSection({ props }) {
-  const [activeImage, setActiveImage] = useState(props[0].testimonialImage.url)
+export default function FeatureSection({ props }) { debugger
+  const [activeImage, setActiveImage] = useState(props[0].testimonialImage)
   const featureRefs = useRef([]) // To store refs for each feature
 
   console.log(featureRefs, 'features')
@@ -61,11 +61,6 @@ export default function FeatureSection({ props }) {
 
   return (
     <Section className="relative">
-      {/* <div className="absolute top-0 left-0 flex w-full h-full">
-        <div className="w-5/12 h-full bg-[#f9f9f9]" />
-        <div className="w-7/12 h-full bg-vs-lemon-green" />
-      </div> */}
-
       <Container className="relative flex gap-16">
         <div className="flex flex-col flex-1 gap-32 py-16">
           {props.map((feature, index) =>
