@@ -8,9 +8,9 @@
         "heading": "Train Your Staff Better",
         "description": "",
         "keyFeatures": [
-            "Call Outcome Analysis",
-            "Call Transcript",
-            "Integrations"
+            "Call Scoring",
+            "Staff Performance",
+            "Campaign Performance"
         ],
         "listItems":[
             {
@@ -21,7 +21,7 @@
             },
             {
                 "listHeading": "Missed Opportunities Converted",
-                "before": "4h 30min",
+                "before": "16%",
                 "after": "41%",
                 "description": ""
             },
@@ -32,20 +32,7 @@
                 "description": "$200,000 <span>in 90 days</span>"
             }
         ],
-        "before": [
-            "Boost your confidence in your email marketing",
-            "Generate more ideas for content creation more often",
-            "Free up your team for other tasks",
-            "Ensure consistency and professionalism in responses",
-            "Manage your online reputation efficiently"
-        ],
-        "after": [
-            "Ensure consistency and professionalism in responses",
-            "Manage your online reputation efficiently",
-            "Boost your confidence in your email marketing",
-            "Free up your team for other tasks",
-            "Generate more ideas for content creation more often"
-        ],
+        
         "name": "Himesh Kana",
         "designation": "CEO, Dental Depot DFW",
         "place": "Colorado",
@@ -71,8 +58,9 @@
         "description": "Reactivated <span>$100,000</span> worth of treatment in <span>30 days.</span>",
         "keyFeatures": [
             "Call Outcome Analysis",
-            "Call Transcript",
-            "Integrations"
+            "Treatment Analytics ",
+            "Integrations",
+            "Missed Opportunity"
         ],
         "listItems":[],
         "name": "Stuart McGuiggan",
@@ -98,9 +86,9 @@
         "heading": "Eliminate Missed Calls",
         "description": "",
         "keyFeatures": [
-            "Call Outcome Analysis",
-            "Call Transcript",
-            "Integrations"
+            "Call Scoring",
+            "Staff Performance",
+            "Campaign Performance"
         ],
         "listItems":[
             {

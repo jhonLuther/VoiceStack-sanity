@@ -44,7 +44,7 @@ const TestimonialCard = forwardRef<HTMLDivElement, TestimonialCardProps>(
               />
               {data?.video && data.video.videoId && (
                 <div className="cursor-pointer absolute bottom-3 right-3 flex gap-2 font-medium text-base
-                  items-center rounded-l-full py-2 pr-4 pl-2 bg-white text-gray-900" onClick={() => onOpenVideo(data.video)}>
+                  items-center rounded-full py-2 pr-4 pl-2 bg-white text-gray-900 shadow-[0px_4px_20px_0px_rgba(0,0,0,0.20)]" onClick={() => onOpenVideo(data.video)}>
                   <span><VideoPlayIcon/></span>Watch
                 </div>
               )}
@@ -113,25 +113,26 @@ const TestimonialCard = forwardRef<HTMLDivElement, TestimonialCardProps>(
             </div>
           )} */}
           <div className="flex-1 flex flex-row justify-between">
+            {/*  */}
               <div className="flex flex-col flex-1 p-8">
                 {/* <h3 className="text-gray-500 font-inter text-base font-medium leading-[110%]">{data?.heading || ""}</h3> */}
                 {data.listItems && data.listItems.length > 0 && (
                   data.listItems.map((item:any) => {
                     return (
-                      <div className="py-3 border-b border-gray-200 last:border-none">
-                        <span>{item.listHeading}</span>
+                      <div className="py-3 border-b border-gray-200 last:border-none gap-1 flex flex-col">
+                        <span className="text-gray-900 text-base font-normal leading-[160%]">{item.listHeading}</span>
 
                         {item.after && (
                           <div className="flex gap-2">
                             {item.before && (
                               <div className="flex gap-2 items-center">
-                                <span>{item.before}</span>
-                                <span>{`->`}</span>
+                                <span className="text-gray-900 font-manrope text-[30px] font-bold leading-[1.2]">{item.before}</span>
+                                <span className="text-gray-900 font-manrope text-[30px] font-bold leading-[1.2]">{`->`}</span>
                               </div>
                             )}
                             {item.after && (
                               <div className="flex gap-2 items-center">
-                                <span>{item.after}</span>
+                                <span className="text-vs-blue font-manrope text-[30px] font-bold leading-[1.2]">{item.after}</span>
                               </div>
                             )}
                           </div>
@@ -139,7 +140,8 @@ const TestimonialCard = forwardRef<HTMLDivElement, TestimonialCardProps>(
                         {item.description && (
                           <div
                             dangerouslySetInnerHTML={{__html: item.description}}
-                            className="[&_span]:text-vs-blue"
+                            className="[&_span]:text-gray-900 [&_span]:font-medium [&_span]:text-[20px] 
+                             text-vs-blue font-manrope text-[30px] font-bold leading-[1.2]"
                           ></div>
                         )}
                       </div>
@@ -156,7 +158,7 @@ const TestimonialCard = forwardRef<HTMLDivElement, TestimonialCardProps>(
 
               {data.keyFeatures && data.keyFeatures.length > 0 && (
                 <div className="flex-1 flex flex-col px-6 pt-12 pb-8 gap-8 border-l border-gray-200 max-w-[270px]">
-                    <h3 className="text-gray-500 font-inter text-base font-medium leading-[110%]">Key Features</h3>
+                    <h3 className="text-gray-500 font-inter text-sm font-medium leading-[110%]">Key Features Used</h3>
                     <ul className="flex flex-wrap gap-3">
                       {data.keyFeatures.map((item:any, index:number) => {
                         return(
