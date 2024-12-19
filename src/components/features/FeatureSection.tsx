@@ -39,7 +39,7 @@ export default function FeatureSection({ props }) {
     return () => {
       if (observer) observer.disconnect()
     }
-  }, [])
+  }, [props])
 
   const testimonialIndex: number = props?.findIndex(
     (e: any) => e.testimonialSubSection != null,
