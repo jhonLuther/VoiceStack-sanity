@@ -10,12 +10,10 @@ import PreText from './micro/PreText'
 import PhoneIcon from './micro/icons/PhoneIcon'
 import AppearFeature from './AppearFeature'
 
-export default function FeatureSection({ props }) { debugger
+export default function FeatureSection({ props }) { 
   const [activeImage, setActiveImage] = useState(props[0].testimonialImage)
   const featureRefs = useRef([]) // To store refs for each feature
-
-  console.log(featureRefs, 'features')
-
+  
   useEffect(() => {
     const observerOptions = {
       root: null,

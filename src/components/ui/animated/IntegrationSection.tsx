@@ -136,7 +136,7 @@ export function AnimatedBeamDemo({ data }: any) {
             >
               <ImageLoader
                 className="flex justify-center h-20 w-full"
-                imageClassName="!object-contain h-20 w-auto"
+                imageClassName={`!object-contain ${isMobile ? 'h-10' : 'h-20'} w-auto`}
                 image={analytic.image}
                 fixed={false}
               />
@@ -182,7 +182,7 @@ export function AnimatedBeamDemo({ data }: any) {
             >
               <ImageLoader
                 className="flex justify-center h-20 w-full"
-                imageClassName="!object-contain h-20 w-auto"
+                imageClassName={`!object-contain ${isMobile ? 'h-10' : 'h-20'} w-auto`}
                 image={crms.image}
                 fixed={false}
               />
