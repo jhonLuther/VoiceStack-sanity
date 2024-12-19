@@ -27,18 +27,20 @@ import LinksCardsSection from '~/components/LinksCardSection'
 import Testimonails from '~/components/testimonials/Testimonials'
 import FaqSection from '~/components/FaqSection'
 import Footer from '~/components/common/Footer'
+import { getClient } from '~/lib/sanity.client'
 
 export const getServerSideProps: GetStaticProps<any> = async ({
   locale,
   draftMode = false,
 }) => {
   const region = locale
+  const client = getClient(draftMode ? { token: readToken } : undefined)
   const homeSettings = await runQuery(getALLHomeSettings(region))
   const siteSettings = await runQuery(getALLSiteSettings(region))
   const founderDetails = await runQuery(getFounderDetails(region))
   const comparisonTableData = await runQuery(getComparisonTableData(region))
   const integrationPlatforms = await runQuery(getIntegrationList(region))
-  const heroSectionData = await runQuery(heroSection)
+  const heroSectionData = await heroSection(client,region)
   const logoSectionData = await runQuery(logoSection)
   const featureSectionData = await runQuery(featureSectionQuery)
 
