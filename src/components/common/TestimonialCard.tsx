@@ -117,9 +117,9 @@ const TestimonialCard = forwardRef<HTMLDivElement, TestimonialCardProps>(
               <div className="flex flex-col flex-1 p-8">
                 {/* <h3 className="text-gray-500 font-inter text-base font-medium leading-[110%]">{data?.heading || ""}</h3> */}
                 {data.listItems && data.listItems.length > 0 && (
-                  data.listItems.map((item:any) => {
+                  data.listItems.map((item:any, index:number) => {
                     return (
-                      <div className="py-3 border-b border-gray-200 last:border-none gap-1 flex flex-col">
+                      <div className="py-3 border-b border-gray-200 last:border-none gap-1 flex flex-col" key={index}>
                         <span className="text-gray-900 text-base font-normal leading-[160%]">{item.listHeading}</span>
 
                         {item.after && (
