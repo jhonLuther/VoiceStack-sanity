@@ -12,11 +12,11 @@ export default function ListItem(props) {
   // console.log({scrolled:((props.percentScrolled-startPoint)/(endPoint-startPoint))*100})
 
   return (
-    <li  onClick={() => props.onClick(props.percentScrolled,props.index,liRef)} className={`'group flex gap-4 cursor-pointer  py-2  rounded-lg ' ${props.showDesc ? "bg-vs-blue/10" : ''}`}>
+    <li  onClick={() => props.onClick(props.percentScrolled,props.index,liRef)} className={`'group flex gap-4 cursor-pointer   rounded-lg ' ${props.showDesc ? "bg-vs-blue/10" : ''}`}>
       <div className='bg-gray-200 w-1 rounded-full flex '>
         <div  ref={liRef}style={{height:`${actualPercentScrolled}%`}} className={`w-1 ${props.showDesc == true ? "bg-vs-blue" : "bg-transparent"} max-h-[100%] h-full rounded-full`}></div>
       </div>
-      <div className={`flex flex-col ease-linear ${props.showDesc? ' translate-x-1.5':' '} `}>
+      <div className={`flex flex-col ease-linear py-2  ${props.showDesc? ' translate-x-1.5':' '} `}>
         <H3 className={`group-hover:text-vs-blue ease-linear ${props.showDesc? '!text-lg':' opacity-50'}`}>{props.title}</H3>
           <div className={`overflow-hidden ease-linear ${props.showDesc ? 'opacity-100':' h-0 opacity-1'}`}>
           <Paragraph>{props.desc}</Paragraph>
