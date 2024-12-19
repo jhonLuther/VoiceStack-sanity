@@ -13,6 +13,7 @@ import Image from 'next/image'
 import { PortableText } from '@portabletext/react'
 
 const HeroSection = ({ props }) => {
+  console.log({props})
   const [isOpen, setIsOpen] = useState(false)
   const overviewVideo: VideoItem = {
     platform: 'vidyard',
@@ -21,7 +22,7 @@ const HeroSection = ({ props }) => {
 
   const [activeIndex, setActiveIndex] = useState(0)
   const [wordIndex, setWordIndex] = useState(0)
-  const words = props?.heroTitleStaticDynamic[activeIndex].split(' ')
+  const words = props?.heroTitleStaticDynamic[activeIndex]?.split(' ')
 
   const components: any = {
     block: {
@@ -34,7 +35,7 @@ const HeroSection = ({ props }) => {
   }
 
   useEffect(() => {
-    if (wordIndex < words.length) {
+    if (wordIndex < words?.length) {
       const wordInterval = setTimeout(() => {
         setWordIndex(wordIndex + 1)
       }, 200)
@@ -51,7 +52,7 @@ const HeroSection = ({ props }) => {
   }, [
     wordIndex,
     activeIndex,
-    words.length,
+    words?.length,
     props?.heroTitleStaticDynamic?.length,
   ])
 
@@ -68,7 +69,7 @@ const HeroSection = ({ props }) => {
               </div>
               <H1 className="text-center w-full">
                 <span className="block text-vs-lemon-green">
-                  {props.heroStrip}
+                  {props?.heroStrip ? props.heroStrip: ""}
                 </span>
                 <span className="block">{props?.heroTitleStatic}</span>
 
