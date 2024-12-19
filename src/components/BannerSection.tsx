@@ -24,7 +24,7 @@ const BannerSection = () => {
         <div className='flex justify-center w-full'>
           <div className='flex flex-col gap-8 items-center w-full'>
               <h2 className='text-gray-50 text-center font-manrope text-4xl md:text-5xl font-bold leading-[1.1667] tracking-[-0.96px] w-full max-w-[630px]'>
-                Get the VoIP phones powered by AI that you require today!
+                Start Your Practice Growth Journey Today.
               </h2>
               <div className='flex gap-4 items-center flex-col md:flex-row'>
                 <Button type='primaryWhite' link='#'>

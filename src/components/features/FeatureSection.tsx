@@ -10,11 +10,11 @@ import PreText from './micro/PreText'
 import PhoneIcon from './micro/icons/PhoneIcon'
 import AppearFeature from './AppearFeature'
 
-export default function FeatureSection({ props }) { debugger
-  const [activeImage, setActiveImage] = useState(props[0].testimonialImage)
-  const featureRefs = useRef([]) // To store refs for each feature
-
-  console.log(featureRefs, 'features')
+export default function FeatureSection({ props }) {
+  const [activeImage, setActiveImage] = useState(props[0].testimonialImage?.url);
+  const featureRefs = useRef([]);
+  const featureData = props.sort((a, b) => a.testimonialOrder - b.testimonialOrder);
+ 
 
   useEffect(() => {
     const observerOptions = {
@@ -39,18 +39,18 @@ export default function FeatureSection({ props }) { debugger
     return () => {
       if (observer) observer.disconnect()
     }
-  }, [])
+  }, [props])
 
-  const sampleImages = [
-    'https://a.storyblok.com/f/144863/1216x960/df291daa9a/permissions-based-reporting-access.png',
-    'https://a.storyblok.com/f/144863/1216x960/ce2eab0766/easy-to-use-goal-setting.png',
-    'https://a.storyblok.com/f/144863/1217x960/050dc7ba8d/enhance-care-coordination.png',
-    'https://a.storyblok.com/f/144863/1216x960/86fd7e19ea/powerful-analytics-dashboard.png',
-  ]
+  const testimonialIndex: number = props?.findIndex(
+    (e: any) => e.testimonialSubSection != null,
+  )
+  const sampleImages = props[testimonialIndex]?.testimonialSubSection.map(
+    (e: any) => e.image.url,
+  )
 
   const switchIndex = (percentage) => {
-    if (percentage < 0 && -50) setActiveImage(props[0].testimonialImage)
-    else if (percentage <= 25) setActiveImage(props[0]?.testimonialImage)
+    if (percentage < 0) setActiveImage(props[0].testimonialImage?.url)
+    else if (percentage <= 25) setActiveImage(sampleImages[1])
     else if (percentage > 25 && percentage <= 50)
       setActiveImage(sampleImages[1])
     else if (percentage > 50 && percentage <= 75)
@@ -63,14 +63,18 @@ export default function FeatureSection({ props }) { debugger
     <Section className="relative">
       <Container className="relative flex gap-16">
         <div className="flex flex-col flex-1 gap-32 py-16">
-          {props.map((feature, index) =>
-            index === 1 ? (
+          {featureData.map((feature, index) =>
+            feature?.testimonialSubSection?.length
+            
+             ? (
               <AppearFeature
                 key={feature?._id}
                 getIndex={(percentage) => switchIndex(percentage)}
                 ref={featureRefs.current[1]}
                 index={index}
                 data-index={1}
+                data ={feature}
+                props={props[index]}
               />
             ) : (
               <motion.div
@@ -91,7 +95,7 @@ export default function FeatureSection({ props }) { debugger
                 <H2>{feature.testimonialheading}</H2>
                 <Paragraph>{feature.testimonialDescription}</Paragraph>
                 <ul className="flex flex-wrap gap-2 mt-4">
-                  {feature.testimonialChip.map((item, i) => (
+                  { feature?.testimonialChip && feature?.testimonialChip?.map((item, i) => (
                     <PillItem key={i}>
                       <span className="text-green-500">
                         <TickIcon />
@@ -113,7 +117,7 @@ export default function FeatureSection({ props }) { debugger
             <AnimatePresence mode="wait">
               <motion.img
                 key={activeImage}
-                src={activeImage?.url}
+                src={activeImage}
                 alt="Active Feature"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}

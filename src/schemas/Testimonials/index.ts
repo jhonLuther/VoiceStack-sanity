@@ -6,42 +6,47 @@ export default defineType({
   fields: [
     defineField({
       name: 'testimonialheading',
-      title: 'Testimonial Heading',
+      title: 'Feature Heading',
       type: 'string',
     }),
     defineField({
+      name: 'testimonialOrder',
+      title: 'Feature Order',
+      type: 'number',
+    }),
+    defineField({
       name: 'testimonialSubheading',
-      title: 'Testimonial Sub Heading',
+      title: 'Feature Sub Heading',
       type: 'string',
     }),
     defineField({
       name: 'testimonialDescription',
-      title: 'Testimonial Description',
+      title: 'Feature Description',
       type: 'text',
     }),
 
     defineField({
       name: 'testimonialIcon',
-      title: 'Testimonial Icon',
+      title: 'Feature Icon',
       type: 'image',
     }),
 
     defineField({
       name: 'testimonialImage',
-      title: 'Testimonial Image',
+      title: 'Feature Image',
       type: 'image',
     }),
 
     defineField({
       name: 'testimonialChip',
-      title: 'Testimonial Chip',
+      title: 'Feature Chip',
       type: 'array',
       of: [{ type: 'string' }],
     }),
 
     defineField({
       name: 'testimonialSubSection',
-      title: 'Testimonial Sub Section',
+      title: 'Feature Sub Section',
       type: 'array',
       of: [
         {
