@@ -32,24 +32,25 @@ const CardsListingSection = () => {
 
  
   return (
-    <Section className="py-sm md:py-md pb-8">
+    <Section className="py-sm md:py-md md:pt-0 pb-8 bg-gray-900">
       <Container >
-        <div className='flex flex-col items-center w-full'>
-          <div className="flex justify-center w-full mb-12">
+        <div className='flex flex-col gap-16 items-center w-full'>
+          {/* <div className="flex justify-center w-full">
             <div className='flex flex-col w-full max-w-[780px] text-center gap-4'>
               <H2>Used by leading Groups and DSOs</H2>
               <Paragraph>VoiceStack is a good fit for a wide range of dental practices, including single-site practices, multi-site groups, as well as large dental corporate DSO’s.</Paragraph>
             </div>
-          </div>
+          </div> */}
           <div className='flex flex-wrap gap-4 md:gap-0 flex-col md:flex-row justify-center'>
             {cardsListing && cardsListing.length > 0 && (
               cardsListing.map((item:any, index:number)=>{
                 return(
-                  <div key={index} className='flex flex-1 p-8 gap-3 flex-col justify-between border-y border-r border-gray-200 border-l md:border-l-0 md:first:border-l'>
+                  <div key={index} className='flex flex-1 p-8 gap-3 flex-col justify-between 
+                    border-y border-r border-gray-700 border-l md:border-l-0 md:first:border-l md:first:rounded-l-[20px] md:last:rounded-r-[20px]'>
                     <div className='flex flex-col gap-3'>
-                      <H3 className='inline-flex items-center gap-2'>{item.icon && <item.icon />}{item.heading}</H3>
+                      <H3 className='inline-flex items-center gap-2 text-white'>{item.icon && <item.icon />}{item.heading}</H3>
                       {item.description && (
-                        <p className='text-gray-500 text-base font-normal leading-[160%]'>{item.description}</p>
+                        <p className='text-gray-400 text-base font-normal leading-[160%]'>{item.description}</p>
                       )}
                     </div>
                   </div>
@@ -57,12 +58,12 @@ const CardsListingSection = () => {
               })
             )}
           </div>
-          <div className='flex gap-4 items-center mt-12 lg:mt-16'>
+          {/* <div className='flex gap-4 items-center'>
             <Button type='primary' link='#'>
               <ButtonArrow></ButtonArrow>
               <span className="text-base font-medium">{`Book free demo`}</span>
             </Button>
-          </div>
+          </div> */}
         </div>
       </Container>
     </Section>

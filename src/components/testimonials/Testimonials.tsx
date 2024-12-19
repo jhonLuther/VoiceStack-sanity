@@ -81,7 +81,7 @@ export default function Testimonails() {
         const card = cardRefs.current[index];
         if (card) {
           const rect = card.getBoundingClientRect();
-          console.log(rect.top,index, "target-",260 + index * 20, rect.top <= (200) );
+          // console.log(rect.top,index, "target-",260 + index * 20, rect.top <= (200) );
           // Check if the card is at the top of the viewport (sticky point)
           return rect.top <= (200);
         }
@@ -137,43 +137,51 @@ export default function Testimonails() {
         <div className="w-7/12 flex-1 h-full bg-[#111827]"></div>
       </div> */}
       <Container className="w-full relative">
-        {/* <div className="w-full flex h-full  absolute top-0 left-0"></div> */}
-        <div className='flex flex-col items-center w-full gap-16'>
+          <div className='flex flex-col items-center w-full gap-16'>
 
-          <div className="flex justify-center w-full">
-            <div className='flex flex-col w-full max-w-[780px] text-center gap-4'>
-              <H2 className="text-white">Purpose-built for Practice Growth</H2>
-              <Paragraph className="text-gray-400">VoiceStack is trusted by some of the most successful dental groups to create impactful business outcomes across all their locations.</Paragraph>
-            </div>
-          </div>
-          <div className="flex w-full gap-12 z-10 relative">
-            {/* <div className="flex-1 max-w-[366px] h-full relative pt-24 items-start hidden lg:flex">
-              <AppearTestimonials  onListItemClick={handleScrollToCard}/>
-            </div> */}
-            <div className="w-full relative">
-              <div className='flex flex-col w-full gap-20'>
-                {testimonialData.map((testimonial, index) => {
-                  // Calculate the scaling value dynamically when sticky
-                  const isSticky = stickyStates[index] || false;
-                  const scale = 0.95 + (index * 0.02);
-                  return(
-
-                    <TestimonialCard 
-                      key={index}
-                      index={index} 
-                      data={testimonial} 
-                      ref={(el) => (cardRefs.current[index] = el)} 
-                      onOpenVideo={handleOpenVideo}
-                      isSticky={isSticky}
-                      scale={scale}
-                    />
-                  )
-                 
-                })}
+            <div className="flex justify-center w-full">
+              <div className='flex flex-col w-full max-w-[780px] text-center gap-4'>
+                <H2 className="text-white">Purpose-built for Practice Growth</H2>
+                <Paragraph className="text-gray-400">VoiceStack is trusted by some of the most successful dental groups to create impactful business outcomes across all their locations.</Paragraph>
               </div>
             </div>
+
+            <div className="flex w-full gap-12 z-10 relative">
+              {/* <div className="flex-1 max-w-[366px] h-full relative pt-24 items-start hidden lg:flex">
+                <AppearTestimonials  onListItemClick={handleScrollToCard}/>
+              </div> */}
+              <div className="w-full relative">
+                <div className='flex flex-col w-full gap-20'>
+                  {testimonialData.map((testimonial, index) => {
+                    // Calculate the scaling value dynamically when sticky
+                    const isSticky = stickyStates[index] || false;
+                    const scale = 0.95 + (index * 0.02);
+                    return(
+
+                      <TestimonialCard 
+                        key={index}
+                        index={index} 
+                        data={testimonial} 
+                        ref={(el) => (cardRefs.current[index] = el)} 
+                        onOpenVideo={handleOpenVideo}
+                        isSticky={isSticky}
+                        scale={scale}
+                      />
+                    )
+                  
+                  })}
+                </div>
+              </div>
+            </div>
+
+            <div className='flex gap-4 items-center'>
+              <Button type='primary' link='#'>
+                <ButtonArrow></ButtonArrow>
+                <span className="text-base font-medium">{`Book free demo`}</span>
+              </Button>
+            </div>
           </div>
-        </div>
+
           {isOpen && (
             <VideoModal
               isPopup={true}
@@ -183,6 +191,7 @@ export default function Testimonails() {
             />
           )}
       </Container>
+          
     </Section>
   )
 }

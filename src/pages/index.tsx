@@ -64,6 +64,7 @@ export default function IndexPage(
 ) {
   const { integrationPlatforms, comparisonTableData } = props
   console.log(props?.heroSectionData)
+  console.log(props?.featureSectionData, "featuresd")
   const comparisonSectionData = {
     strip: 'The Best-in-class Phone System. For the Best-in-Class Dental Practices.',
     header:
@@ -84,10 +85,10 @@ export default function IndexPage(
             <HeroSection props ={props?.heroSectionData}/>
             <LinksCardsSection props ={linkCardSectionData}/>
             <Testimonails />
+            <CardsListingSection></CardsListingSection>
             <LogoListingSection props={props?.logoSectionData}/>
             <FeatureSection props={props?.featureSectionData}/>
             <AnimatedBeamSection data={integrationPlatforms} />
-            <CardsListingSection></CardsListingSection>
             <SiteComparisonSection data={comparisonSectionData} />
             <FaqSection></FaqSection>
             <BannerSection></BannerSection>

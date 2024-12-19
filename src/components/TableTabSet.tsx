@@ -20,7 +20,7 @@ const TableTabset: React.FunctionComponent<TabsetProps> = ({
 
   return (
     <>
-      <ul className={`flex flex-col md:flex-row gap-3`}>
+      <ul className={`hidden md:flex flex-col md:flex-row gap-3`}>
         {tabs.map((tab: any, index: number) => {
           return (
             <li

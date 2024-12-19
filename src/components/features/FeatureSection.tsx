@@ -11,7 +11,7 @@ import PhoneIcon from './micro/icons/PhoneIcon'
 import AppearFeature from './AppearFeature'
 
 export default function FeatureSection({ props }) {
-  const [activeImage, setActiveImage] = useState(props[0].testimonialImage)
+  const [activeImage, setActiveImage] = useState(props[0].testimonialImage.url)
   const featureRefs = useRef([]) // To store refs for each feature
 
   console.log(featureRefs, 'features')
@@ -27,7 +27,7 @@ export default function FeatureSection({ props }) {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           const index = entry.target.getAttribute('data-index')
-          setActiveImage(props[index].testimonialImage) // Update active image
+          setActiveImage(props[index].testimonialImage.url) // Update active image
         }
       })
     }, observerOptions)
