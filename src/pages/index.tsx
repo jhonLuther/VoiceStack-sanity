@@ -42,7 +42,7 @@ export const getServerSideProps: GetStaticProps<any> = async ({
   const integrationPlatforms = await runQuery(getIntegrationList(region))
   const heroSectionData = await heroSection(client,region)
   const logoSectionData = await runQuery(logoSection)
-  const featureSectionData = await runQuery(featureSectionQuery)
+  const featureSectionData = await featureSectionQuery(client,region)
 
   return {
     props: {
