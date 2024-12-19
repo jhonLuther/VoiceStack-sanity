@@ -8,7 +8,7 @@ import {
   TableHeader,
   TableRow,
 } from './ui/table'
-import React from 'react'
+import React, { useState } from 'react'
 
 function RowHeading({ heading, description }) {
   return (
@@ -43,90 +43,114 @@ function ComparisonRichIcon({ comparisonValue }) {
   )
 }
 
-export default function SiteComparisonTable({ data, index, currentIndex }) {
-  // console.log({data});
+export default function SiteComparisonTable({ data, index, currentIndex, isMobile }) {
+  console.log({data});
+  
+  const [currentChildIndex, setCurrentChildIndex] = useState<number|null>(0);
+
+  const toggle = () =>{
+    console.log(index,currentChildIndex);
+    
+    if(index === currentChildIndex){
+      setCurrentChildIndex(null)
+    }
+    else{
+      setCurrentChildIndex(index)
+    }
+  }
   
   return (
 
-    // <></>
-    <div className={`${index === currentIndex ? 'block' : 'hidden'}`}>
+    <>
+      <div
+        className={`${currentIndex === index ? 'bg-gray-900 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-900 hover:text-white'} flex items-center 
+        gap-2 px-4 py-3 rounded-[22px] justify-center text-center font-inter text-sm font-medium leading-[145%] cursor-pointer md:hidden`}
+        onClick={toggle}
+      >
+        {/* {tab.tabIcon && tab.tabIcon.length > 0 && (
+          <ImageLoader image={tab.tabIcon[0].image}></ImageLoader>
+        )} */}
+        {data.tableData.name}
+      </div>
+      <div className={`${(index === currentIndex  && !isMobile) || (index === currentChildIndex && isMobile) ? 'block' : 'hidden'}`}>
 
-      <Table className={`md:overflow-hidden bg-white w-full overflow-auto min-w-[700px] `}>
-        <TableCaption className="hidden">
-          A list of your recent invoices.
-        </TableCaption>
-        <TableHeader className="">
-          <TableRow className="w-full justify-between px-8 py-2 !border-0">
-            <TableHead className="justify-start items-center">
-              {/* {data.columnDimensionName}{data.tableData.name} */}
-            </TableHead>
-            {/* <TableHead className="w-72 text-white flex items-center justify-center">
-              <Image
-                className="bg-[#2d0666] rounded-md justify-center items-center px-5 py-3"
-                src="/OSDentalLogo.svg"
-                width={135}
-                height={26}
-                alt="OS Dental Logo"
-              />
-            </TableHead> */}
-            {data.headerLogos
-              // .filter((_, idx) => idx != 0)
-              .map((column:any, index:number) => (
-                <TableHead
-                  key={index}
-                  className={`text-white items-center justify-center pt-5 ${index == 0 ? 'bg-gray-50 rounded-tl-[10px] rounded-tr-[10px]' : ''}`}
-                >
-                  {/* {column.name} */}
-                  <Image
-                    className="justify-center items-center py-3 min-h-full w-auto m-auto"
-                    src={column.logo.url}
-                    width={135}
-                    height={26}
-                    alt="OS Dental Logo"
-                  />
-                </TableHead>
-              ))}
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          <React.Fragment>
-              {/* <TableRow className="bg-[#e9d5ff] hover:bg-purple-300 text-[##2d353e] text-xl font-semibold px-8">
-                <TableCell>{data.tableData.name}</TableCell>
-              </TableRow> */}
-              <TableRow
+        <Table className={`md:overflow-hidden bg-white w-full overflow-auto min-w-[700px] `}>
+          <TableCaption className="hidden">
+            A list of your recent invoices.
+          </TableCaption>
+          <TableHeader className="">
+            <TableRow className="w-full justify-between px-8 py-2 !border-0">
+              <TableHead className="justify-start items-center">
+                {/* {data.columnDimensionName}{data.tableData.name} */}
+              </TableHead>
+              {/* <TableHead className="w-72 text-white flex items-center justify-center">
+                <Image
+                  className="bg-[#2d0666] rounded-md justify-center items-center px-5 py-3"
+                  src="/OSDentalLogo.svg"
+                  width={135}
+                  height={26}
+                  alt="OS Dental Logo"
+                />
+              </TableHead> */}
+              {data.headerLogos
+                // .filter((_, idx) => idx != 0)
+                .map((column:any, index:number) => (
+                  <TableHead
                     key={index}
-                    className=" flex-row justify-between px-8 border-0"
+                    className={`text-white items-center justify-center pt-5 ${index == 0 ? 'bg-gray-50 rounded-tl-[10px] rounded-tr-[10px]' : ''}`}
                   >
-                    <TableCell className='text-gray-900 text-base font-medium leading-[145%] py-4'>{data.tableData.name}</TableCell>
-                    <TableCell className={`text-center justify-center bg-gray-50`}></TableCell>
-                    <TableCell></TableCell>
-                    <TableCell></TableCell>
-              </TableRow>
-              {data.tableData.rows.map((row, index) => {
-                return (
-                  <TableRow
-                    key={index}
-                    className=" flex-row justify-between px-8 border-0"
-                  >
-                    <RowHeading
-                      key={index+Math.log(Math.sin(index))}
-                      heading={row.heading}
-                      description={row.description}
+                    {/* {column.name} */}
+                    <Image
+                      className="justify-center items-center py-3 min-h-full w-auto m-auto"
+                      src={column.logo.url}
+                      width={135}
+                      height={26}
+                      alt="OS Dental Logo"
                     />
-                    {row.comparisons.map((comparisonValue, idx) => (
-                      <TableCell
-                        key={idx}
-                        className={`text-center  justify-center ${idx == 0 ? 'bg-gray-50' : ''}`}
-                      >
-                        <ComparisonRichIcon comparisonValue={comparisonValue} />
-                      </TableCell>
-                    ))}
-                  </TableRow>
-                )
-              })}
-            </React.Fragment>
-        </TableBody>
-      </Table>
-    </div>
+                  </TableHead>
+                ))}
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            <React.Fragment>
+                {/* <TableRow className="bg-[#e9d5ff] hover:bg-purple-300 text-[##2d353e] text-xl font-semibold px-8">
+                  <TableCell>{data.tableData.name}</TableCell>
+                </TableRow> */}
+                <TableRow
+                      key={index}
+                      className=" flex-row justify-between px-8 border-0"
+                    >
+                      <TableCell className='text-gray-900 text-base font-medium leading-[145%] py-4'>{data.tableData.name}</TableCell>
+                      <TableCell className={`text-center justify-center bg-gray-50`}></TableCell>
+                      <TableCell></TableCell>
+                      <TableCell></TableCell>
+                </TableRow>
+                {data.tableData.rows.map((row, index) => {
+                  return (
+                    <TableRow
+                      key={index}
+                      className=" flex-row justify-between px-8 border-0"
+                    >
+                      <RowHeading
+                        key={index+Math.log(Math.sin(index))}
+                        heading={row.heading}
+                        description={row.description}
+                      />
+                      {row.comparisons.map((comparisonValue, idx) => (
+                        <TableCell
+                          key={idx}
+                          className={`text-center  justify-center ${idx == 0 ? 'bg-gray-50' : ''}`}
+                        >
+                          <ComparisonRichIcon comparisonValue={comparisonValue} />
+                        </TableCell>
+                      ))}
+                    </TableRow>
+                  )
+                })}
+              </React.Fragment>
+          </TableBody>
+        </Table>
+      </div>
+    </>
   )
 }

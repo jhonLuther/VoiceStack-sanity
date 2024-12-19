@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Section from './structure/Section'
 import Container from './structure/Container'
 import CTAButton from './common/CTAbutton'
@@ -17,6 +17,22 @@ function SiteComparisonSection({ data }) {
   
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [isOpen, setIsOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkWidth = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    // Check on initial load
+    checkWidth();
+
+    // Add event listener
+    window.addEventListener('resize', checkWidth);
+    
+    // Cleanup
+    return () => window.removeEventListener('resize', checkWidth);
+  }, []);
   
   return (
     <Section id="comparison" className="py-12 md:py-24">
@@ -43,6 +59,7 @@ function SiteComparisonSection({ data }) {
                     key={index}
                     index={index}
                     currentIndex={currentIndex}
+                    isMobile={isMobile}
                     data={{
                       columnDimensionName: data.columnDimensionName,
                       headerLogos: data.table.columns,

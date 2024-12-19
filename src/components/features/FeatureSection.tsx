@@ -25,7 +25,7 @@ export default function FeatureSection({ props }) {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           const index = entry.target.getAttribute('data-index')
-          setActiveImage(props[index].testimonialImage) // Update active image
+          setActiveImage(props[index].testimonialImage.url) // Update active image
         }
       })
     }, observerOptions)

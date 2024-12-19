@@ -2,83 +2,27 @@
     {
         "image": {
             "_type": "image",
-            "url": "https://cdn.sanity.io/images/76tr0pyh/production/f1882ebb9e402fb648536885bba8f663227939f9-586x814.png"
+            "url": "https://cdn.sanity.io/images/76tr0pyh/production/d0144c897baf395bca2499be75b0cce9f09b0d9e-686x667.png"
         },
-        "bgColor": "#B5EB92",
-        "heading": "Convert More Enquires",
-        "description": "Reactivated <span>$100,000</span> worth of treatment in <span>30 days.</span>",
-        "name": "Mike Panihi",
-        "designation": "Operating Partner, Roligo Dental",
-        "place": "New Jersey",
-        "region": "United States",
-        "locations": "10+",
-        "logo": {
-            "_type": "image",
-            "asset": {
-                "_ref": "image-a6d996f53fc6e228504c19031668d73e2d510a25-33x33-png"
-            }
-        },
-        "video": {
-            "platform": "vidyard",
-            "videoId": "xpr7bMJc1SDnQSyTRErAYc"
-        }
-    },
-    {
-        "image": {
-            "_type": "image",
-            "url": "https://cdn.sanity.io/images/76tr0pyh/production/1e139c2e25049fc2e0ac0bd626de9566408f7b67-586x814.png"
-        },
-        "bgColor": "#EBE192",
-        "heading": "Reactivate Lost Patients",
-        "description": "Reactivated <span>$100,000</span> worth of treatment in <span>30 days.</span>",
-        "name": "Stuart McGuiggan",
-        "designation": "CEO, Star Dental Institute",
-        "place": "Colorado",
-        "region": "United States",
-        "locations": "2",
-        "logo": {
-            "_type": "image",
-            "asset": {
-                "_ref": "image-a6d996f53fc6e228504c19031668d73e2d510a25-33x33-png"
-            }
-        },
-        "video": {
-            "platform": "vidyard",
-            "videoId": "xpr7bMJc1SDnQSyTRErAYc"
-        }
-    },
-    {
-        "image": {
-            "_type": "image",
-            "url": "https://cdn.sanity.io/images/76tr0pyh/production/3aeb26adfc6c1de52a3dce344f3eabba623c5ced-586x814.png"
-        },
-        "bgColor": "#92CDEB",
-        "heading": "Eliminate Missed Calls",
-        "description": "Reactivated <span>$100,000</span> worth of treatment in <span>30 days.</span>",
-        "name": "DeDee Tibben",
-        "designation": "Manager, Northwest Dental Group",
-        "place": "Colorado",
-        "region": "United States",
-        "locations": "4",
-        "logo": {
-            "_type": "image",
-            "asset": {
-                "_ref": "image-a6d996f53fc6e228504c19031668d73e2d510a25-33x33-png"
-            }
-        },
-        "video": {
-            "platform": "vidyard",
-            "videoId": "xpr7bMJc1SDnQSyTRErAYc"
-        }
-    },
-    {
-        "image": {
-            "_type": "image",
-            "url": "https://cdn.sanity.io/images/76tr0pyh/production/01f0a94e073fb517e6e6121f766da722f2333f32-586x814.png"
-        },
-        "bgColor": "#9298EB",
+        "bgColor": "#FFFFFF",
         "heading": "Train Your Staff Better",
         "description": "Reactivated <span>$100,000</span> worth of treatment in <span>30 days.</span>",
+        "keyFeatures": [
+        ],
+        "before": [
+            "Boost your confidence in your email marketing",
+            "Generate more ideas for content creation more often",
+            "Free up your team for other tasks",
+            "Ensure consistency and professionalism in responses",
+            "Manage your online reputation efficiently"
+        ],
+        "after": [
+            "Ensure consistency and professionalism in responses",
+            "Manage your online reputation efficiently",
+            "Boost your confidence in your email marketing",
+            "Free up your team for other tasks",
+            "Generate more ideas for content creation more often"
+        ],
         "name": "Himesh Kana",
         "designation": "CEO, Dental Depot DFW",
         "place": "Colorado",
@@ -86,13 +30,67 @@
         "locations": "4",
         "logo": {
             "_type": "image",
-            "asset": {
-                "_ref": "image-a6d996f53fc6e228504c19031668d73e2d510a25-33x33-png"
-            }
+            "url": "https://cdn.sanity.io/images/76tr0pyh/production/6cc456692a2cfb9402e76bfacb2d750afb5bfc6e-376x129.png"
+        },
+        "video": {
+            "platform": "vidyard",
+            "videoId": "xpr7bMJc1SDnQSyTRErAYc"
+        }
+    },
+    
+    {
+        "image": {
+            "_type": "image",
+            "url": "https://cdn.sanity.io/images/76tr0pyh/production/9072a9731f6b979c3b2e6bbf5374d0aa59bd4826-686x667.png"
+        },
+        "bgColor": "#EBE192",
+        "heading": "Reactivate Lost Patients",
+        "description": "Reactivated <span>$100,000</span> worth of treatment in <span>30 days.</span>",
+        "keyFeatures": [
+            "Call Outcome Analysis",
+            "Call Transcript",
+            "Integrations"
+        ],
+        "name": "Stuart McGuiggan",
+        "designation": "CEO, Star Dental Institute",
+        "place": "Colorado",
+        "region": "United States",
+        "locations": "2",
+        "logo": {
+            "_type": "image",
+            "url": "https://cdn.sanity.io/images/76tr0pyh/production/f816ce8e26ea1574cab0375bdeb62c5bef717ca2-376x129.png"
+        },
+        "video": {
+            "platform": "vidyard",
+            "videoId": "xpr7bMJc1SDnQSyTRErAYc"
+        }
+    },
+    {
+        "image": {
+            "_type": "image",
+            "url": "https://cdn.sanity.io/images/76tr0pyh/production/52bb50b6a800cb1d25dc6873d1159c8d86eff2f1-686x667.png"
+        },
+        "bgColor": "#92CDEB",
+        "heading": "Eliminate Missed Calls",
+        "description": "Reactivated <span>$100,000</span> worth of treatment in <span>30 days.</span>",
+        "keyFeatures": [
+            "Call Outcome Analysis",
+            "Call Transcript",
+            "Integrations"
+        ],
+        "name": "DeDee Tibben",
+        "designation": "Manager, Northwest Dental Group",
+        "place": "Colorado",
+        "region": "United States",
+        "locations": "4",
+        "logo": {
+            "_type": "image",
+            "url": "https://cdn.sanity.io/images/76tr0pyh/production/741ae22e8dd6f33686066b929cdc2582596e836a-376x129.png"
         },
         "video": {
             "platform": "vidyard",
             "videoId": "xpr7bMJc1SDnQSyTRErAYc"
         }
     }
+    
 ]
