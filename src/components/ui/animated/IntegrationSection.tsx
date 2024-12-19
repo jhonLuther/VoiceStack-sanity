@@ -29,7 +29,7 @@ Circle.displayName = "Circle";
 export function AnimatedBeamDemo({ data }: any) {
   const containerRef = useRef<HTMLDivElement>(null);
   const centerRef = useRef<HTMLDivElement>(null);
-  const isMobile = useMediaQuery(870);
+  const isMobile = useMediaQuery(767);
   const topPointRefs = useMemo(
     () => Array.from({ length: 6 }, () => React.createRef<HTMLDivElement>()),
     []
@@ -153,7 +153,7 @@ export function AnimatedBeamDemo({ data }: any) {
 
         {/* {!isMobile && */}
         {/* <> */}
-        <div className={`absolute top-[-190px] md:top-[-107px] lg:top-[-145px] left-1/2 transform -translate-x-1/2 ${isMobile ? 'md:w-[300px]' : 'md:w-[980px]'} lg:w-[1106px]`}>
+        <div className={`absolute top-[-190px] md:top-[-132px] lg:top-[-163px] left-1/2 transform -translate-x-1/2 ${isMobile ? 'md:w-[300px]' : 'md:w-[980px]'} lg:w-[1106px]`}>
           {/* <LinesIcon /> */}
           <VideoPlayer />
         </div>
