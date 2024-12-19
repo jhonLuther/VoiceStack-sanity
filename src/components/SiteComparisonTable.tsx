@@ -23,11 +23,11 @@ function RowHeading({ heading, description }) {
   )
 }
 
-function ComparisonRichIcon({ comparisonValue }) {
+function ComparisonRichIcon({ comparisonValue, vsIndex }) {
   const { icon, text } = comparisonValue
   return (
     <>
-      <div className='py-4 border-b border-b-gray-200'>
+      <div className={`py-4 border-b ${vsIndex ? 'border-b-vs-blue/20':'border-b-gray-200'} `}>
         <p className="flex flex-row gap-2 justify-start items-center text-left flex-shrink-0">
           <Image
             className="object-contain"
@@ -74,12 +74,12 @@ export default function SiteComparisonTable({ data, index, currentIndex, isMobil
       </div>
       <div className={`${(index === currentIndex  && !isMobile) || (index === currentChildIndex && isMobile) ? 'block' : 'hidden'}`}>
 
-        <Table className={`md:overflow-hidden bg-white w-full overflow-auto min-w-[700px] `}>
+        <Table className={`md:overflow-hidden bg-white w-full overflow-auto min-w-[700px] mb-[20px]`}>
           <TableCaption className="hidden">
             A list of your recent invoices.
           </TableCaption>
           <TableHeader className="">
-            <TableRow className="w-full justify-between px-8 py-2 !border-0">
+            <TableRow className="w-full justify-between  py-2 !border-0">
               <TableHead className="justify-start items-center">
                 {/* {data.columnDimensionName}{data.tableData.name} */}
               </TableHead>
@@ -97,7 +97,7 @@ export default function SiteComparisonTable({ data, index, currentIndex, isMobil
                 .map((column:any, index:number) => (
                   <TableHead
                     key={index}
-                    className={`text-white items-center justify-center pt-5 ${index == 0 ? 'bg-gray-50 rounded-tl-[10px] rounded-tr-[10px]' : ''}`}
+                    className={`text-white items-center justify-center pt-5 ${index == 0 ? 'bg-vs-blue/10 rounded-tl-[10px] rounded-tr-[10px]' : ''}`}
                   >
                     {/* {column.name} */}
                     <Image
@@ -113,15 +113,15 @@ export default function SiteComparisonTable({ data, index, currentIndex, isMobil
           </TableHeader>
           <TableBody>
             <React.Fragment>
-                {/* <TableRow className="bg-[#e9d5ff] hover:bg-purple-300 text-[##2d353e] text-xl font-semibold px-8">
+                {/* <TableRow className="bg-[#e9d5ff] hover:bg-purple-300 text-[##2d353e] text-xl font-semibold ">
                   <TableCell>{data.tableData.name}</TableCell>
                 </TableRow> */}
                 <TableRow
                       key={index}
-                      className=" flex-row justify-between px-8 border-0"
+                      className=" flex-row justify-between  border-0"
                     >
                       <TableCell className='text-gray-900 text-base font-medium leading-[145%] py-4'>{data.tableData.name}</TableCell>
-                      <TableCell className={`text-center justify-center bg-gray-50`}></TableCell>
+                      <TableCell className={`text-center justify-center bg-vs-blue/10`}></TableCell>
                       <TableCell></TableCell>
                       <TableCell></TableCell>
                 </TableRow>
@@ -129,7 +129,7 @@ export default function SiteComparisonTable({ data, index, currentIndex, isMobil
                   return (
                     <TableRow
                       key={index}
-                      className=" flex-row justify-between px-8 border-0"
+                      className=" flex-row justify-between  border-0"
                     >
                       <RowHeading
                         key={index+Math.log(Math.sin(index))}
@@ -139,9 +139,9 @@ export default function SiteComparisonTable({ data, index, currentIndex, isMobil
                       {row.comparisons.map((comparisonValue, idx) => (
                         <TableCell
                           key={idx}
-                          className={`text-center  justify-center ${idx == 0 ? 'bg-gray-50' : ''}`}
+                          className={`text-center  justify-center ${idx == 0 ? 'bg-vs-blue/10' : ''}`}
                         >
-                          <ComparisonRichIcon comparisonValue={comparisonValue} />
+                          <ComparisonRichIcon comparisonValue={comparisonValue} vsIndex={idx == 0}/>
                         </TableCell>
                       ))}
                     </TableRow>

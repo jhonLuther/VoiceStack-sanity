@@ -29,7 +29,7 @@ const TestimonialCard = forwardRef<HTMLDivElement, TestimonialCardProps>(
       }}
     >
 
-      <div className={`rounded-[20px] shadow-md max-w-[1032px] mx-auto ${index % 2 === 0 ? 'bg-white': 'bg-gray-100'}`}>
+      <div className={`rounded-[20px] shadow-md max-w-[1032px] mx-auto ${index % 2 === 0 ? 'bg-white': 'bg-white'}`}>
 
         <div className="flex">
           {/* Image */}
@@ -112,39 +112,50 @@ const TestimonialCard = forwardRef<HTMLDivElement, TestimonialCardProps>(
               )}
             </div>
           )} */}
-          <div className="flex-1 flex flex-row gap-6 justify-between">
-              <div className="flex gap-3 flex-col flex-1 p-8">
+          <div className="flex-1 flex flex-row justify-between">
+              <div className="flex flex-col flex-1 p-8">
                 {/* <h3 className="text-gray-500 font-inter text-base font-medium leading-[110%]">{data?.heading || ""}</h3> */}
                 {data.listItems && data.listItems.length > 0 && (
                   data.listItems.map((item:any) => {
                     return (
-                      <div>
+                      <div className="py-3 border-b border-gray-200 last:border-none">
                         <span>{item.listHeading}</span>
-                        <div className="flex ">
-                          {item.before && (
-                            <div className="flex gap-2 items-center">
-                              <span>{item.before}</span>
-                              <span>{`->`}</span>
-                            </div>
-                          )}
-                          {item.after && (
-                            <div className="flex gap-2 items-center">
-                              <span>{item.after}</span>
-                            </div>
-                          )}
-                        </div>
+
+                        {item.after && (
+                          <div className="flex gap-2">
+                            {item.before && (
+                              <div className="flex gap-2 items-center">
+                                <span>{item.before}</span>
+                                <span>{`->`}</span>
+                              </div>
+                            )}
+                            {item.after && (
+                              <div className="flex gap-2 items-center">
+                                <span>{item.after}</span>
+                              </div>
+                            )}
+                          </div>
+                        )}
+                        {item.description && (
+                          <div
+                            dangerouslySetInnerHTML={{__html: item.description}}
+                            className="[&_span]:text-vs-blue"
+                          ></div>
+                        )}
                       </div>
                     )
                   })
                 )}
-                <p
-                  className="text-gray-900 font-manrope text-3xl font-bold leading-[120%] [&_span]:text-vs-blue"
-                  dangerouslySetInnerHTML={{ __html: data?.description || "" }}
-                ></p>
+                {data.description && (
+                  <p
+                    className="text-gray-900 font-manrope text-3xl font-bold leading-[120%] [&_span]:text-vs-blue"
+                    dangerouslySetInnerHTML={{ __html: data?.description || "" }}
+                  ></p>
+                )}
               </div>
 
               {data.keyFeatures && data.keyFeatures.length > 0 && (
-                <div className="flex-1 flex flex-col p-8 gap-8 border-l border-gray-200">
+                <div className="flex-1 flex flex-col px-6 pt-12 pb-8 gap-8 border-l border-gray-200 max-w-[270px]">
                     <h3 className="text-gray-500 font-inter text-base font-medium leading-[110%]">Key Features</h3>
                     <ul className="flex flex-wrap gap-3">
                       {data.keyFeatures.map((item:any, index:number) => {
@@ -190,7 +201,7 @@ const TestimonialCard = forwardRef<HTMLDivElement, TestimonialCardProps>(
               <Image
                 src={`${data.logo.url}`}
                 alt="Company Logo"
-                className=""
+                className="max-w-full"
                 width={188}
                 height={64}
               />

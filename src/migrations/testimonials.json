@@ -2,11 +2,11 @@
     {
         "image": {
             "_type": "image",
-            "url": "https://cdn.sanity.io/images/76tr0pyh/production/d0144c897baf395bca2499be75b0cce9f09b0d9e-686x667.png"
+            "url": "https://cdn.sanity.io/images/76tr0pyh/production/5138d497f4a0c7075b156d9ada998dccdf86c801-686x666.png"
         },
         "bgColor": "#FFFFFF",
         "heading": "Train Your Staff Better",
-        "description": "Reactivated <span>$100,000</span> worth of treatment in <span>30 days.</span>",
+        "description": "",
         "keyFeatures": [
             "Call Outcome Analysis",
             "Call Transcript",
@@ -129,7 +129,7 @@
         "locations": "4",
         "logo": {
             "_type": "image",
-            "url": "https://cdn.sanity.io/images/76tr0pyh/production/24119a324849adbc84a9d3a8e1d2484ed4da8b18-249x82.png"
+            "url": "https://cdn.sanity.io/images/76tr0pyh/production/741ae22e8dd6f33686066b929cdc2582596e836a-376x129.png"
         },
         "video": {
             "platform": "vidyard",
