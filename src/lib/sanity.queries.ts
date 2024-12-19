@@ -123,8 +123,20 @@ export const featureSectionQuery = groq`*[_type == "testimonial"]{...,
            aspectRatio
          }
   }
+},
+"testimonialSubSection":testimonialSubSection[]->{
+  featureSubDescription,
+  featureSubHead,
+  "image":featureChipImage.asset->{url,_id,altText,
+  metadata {
+         dimensions {
+           width,
+           height,
+           aspectRatio
+         }
+  }
+},
 }
-
 }`
 export const getFounderDetails = (region) => groq`*[_type == "person"]{
   'name':personName,
