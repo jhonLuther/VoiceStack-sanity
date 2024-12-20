@@ -17,7 +17,9 @@ const TestimonialCard = forwardRef<HTMLDivElement, TestimonialCardProps>(
   ({ data, index, activeIndex, isSticky, scale, onOpenVideo }, ref) => {
 
     const topValue = 160 + (index * 20);
-
+  
+  const video  = data.video
+  console.log({testimonial: data})
   return (
     // <div className="top-40 sticky h-[100vh]" ref={ref} id={`${index}`}>
     <div className={`sticky testimonial-card`} ref={ref} id={`${index}`}  data-index={index}
@@ -42,9 +44,9 @@ const TestimonialCard = forwardRef<HTMLDivElement, TestimonialCardProps>(
                 alt={`${data?.name || "Testimonial"}`}
                 className="w-full h-full object-cover"
               />
-              {data?.video && data.video.videoId && (
+              {data?.video[0] && data.video[0].videoId && (
                 <div className="cursor-pointer absolute bottom-3 right-3 flex gap-2 font-medium text-base
-                  items-center rounded-full py-2 pr-4 pl-2 bg-white text-gray-900 shadow-[0px_4px_20px_0px_rgba(0,0,0,0.20)]" onClick={() => onOpenVideo(data.video)}>
+                  items-center rounded-full py-2 pr-4 pl-2 bg-white text-gray-900 shadow-[0px_4px_20px_0px_rgba(0,0,0,0.20)]" onClick={() => onOpenVideo(data.video[0])}>
                   <span><VideoPlayIcon/></span>Watch
                 </div>
               )}
@@ -148,10 +150,11 @@ const TestimonialCard = forwardRef<HTMLDivElement, TestimonialCardProps>(
                     )
                   })
                 )}
-                {data.description && (
+                {data.testimonialdescription && (
                   <p
                     className="text-gray-900 font-manrope text-3xl font-bold leading-[120%] [&_span]:text-vs-blue"
-                    dangerouslySetInnerHTML={{ __html: data?.description || "" }}
+                    dangerouslySetInnerHTML={{ __html: data?.testimonialdescription 
+                       || "" }}
                   ></p>
                 )}
               </div>

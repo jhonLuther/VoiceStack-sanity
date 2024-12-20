@@ -91,14 +91,29 @@ export async function getTestimonialSecitonData(
   client: SanityClient,
   region: string,
 ) {
-  const query = groq`*[_type == "homeSettings" && language == $region][0]{
+  const query = groq`*[_type == "testimonialSection" && language == $region]{
       ...,
-      "heroSubFeature": heroSubFeature[]->{
-        "heading": heroSubFeatureHeading,
-        "description": heroSubFeatureContent,
-        "icon": heroSubFeatureIcon.asset->url,
-        "label": "Learn More",
-        "href": "#"
+      "logo": logo.asset-> {
+        _id,
+        url,
+        metadata {
+          dimensions {
+            width,
+            height,
+            aspectRatio
+          }
+        }
+      },
+      "image": testimonialImage.asset-> {
+        _id,
+        url,
+        metadata {
+          dimensions {
+            width,
+            height,
+            aspectRatio
+          }
+        }
       }
     }
   `
