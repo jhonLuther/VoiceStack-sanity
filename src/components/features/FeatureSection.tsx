@@ -61,7 +61,7 @@ export default function FeatureSection({ data }) {
   }
 
   return (
-    <Section className="relative">
+    <Section className="relative" id="features">
       <Container className="relative flex gap-16">
         <div className="flex flex-col flex-1 gap-32 py-16">
           {featureData.map((feature, index) =>

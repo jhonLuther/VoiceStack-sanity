@@ -13,8 +13,8 @@ import TelIcon from '../icons/TelIcon';
 
 
 export const navigationLinks = [
-  { href: "#", label: "Features" },
-  { href: "#", label: "Integrations" },
+  { href: "#features", label: "Features" },
+  { href: "#integrations", label: "Integrations" },
   { href: "#comparison", label: "Comparison" },
   { href: "#", label: "Contact Us" },
 ];

@@ -3,21 +3,14 @@ import { motion, useScroll, useSpring } from 'motion/react'
 import Section from '../structure/Section'
 import Container from '../structure/Container'
 import H2 from '../typography/H2'
-import Subtext from '../typography/Subtext'
 import Paragraph from '../typography/Paragraph'
-import TickIcon from './micro/icons/TickIcon'
-import PillItem from './micro/PillItem'
 import Button from '../common/Button'
 import ButtonArrow from '../icons/ButtonArrow'
-import PreText from './micro/PreText'
-import PhoneIcon from './micro/icons/PhoneIcon'
-import ListItem from './micro/ListItem'
-import AppearTestimonials from './AppearTestimonials'
 import { ImageContext } from '~/providers/ImageSwitchProvider'
 import TestimonialCard from '../common/TestimonialCard'
-import TestCardOne from '../TestCardOne'
-import testimonialData from '../../migrations/testimonials.json'
+import data from '../../migrations/testimonials.json'
 import { VideoItem, VideoModal } from '../common/VideoModal'
+import { isEmpty } from 'lodash'
 
 const enterpriseItems = [
   'IVR & Call Routing',
@@ -56,6 +49,16 @@ const conversationalFeatures = [
 ]
 
 export default function Testimonails({ data }) {
+
+  console.log({testData: data})
+  if (isEmpty(data)) {
+    return (
+      <>
+        <p>Testimonail Section is Loading...</p>
+      </>
+    )
+  }
+
   const { scrollY } = useScroll()
 
   const { activeImage, setActiveImage } = useContext(ImageContext)
@@ -76,7 +79,7 @@ export default function Testimonails({ data }) {
 
   useEffect(() => {
     const handleScroll = () => {
-      const updatedStickyStates = testimonialData.map((_, index) => {
+      const updatedStickyStates = data.map((_, index) => {
         const card = cardRefs.current[index]
         if (card) {
           const rect = card.getBoundingClientRect()
@@ -156,22 +159,23 @@ export default function Testimonails({ data }) {
               </div> */}
             <div className="w-full relative">
               <div className="flex flex-col w-full gap-20">
-                {testimonialData && testimonialData.map((testimonial, index) => {
-                  // Calculate the scaling value dynamically when sticky
-                  const isSticky = stickyStates[index] || false
-                  const scale = 0.95 + index * 0.02
-                  return (
-                    <TestimonialCard
-                      key={index}
-                      index={index}
-                      data={testimonial}
-                      ref={(el) => (cardRefs.current[index] = el)}
-                      onOpenVideo={handleOpenVideo}
-                      isSticky={isSticky}
-                      scale={scale}
-                    />
-                  )
-                })}
+                {data &&
+                  data.map((testimonial, index) => {
+                    // Calculate the scaling value dynamically when sticky
+                    const isSticky = stickyStates[index] || false
+                    const scale = 0.95 + index * 0.02
+                    return (
+                      <TestimonialCard
+                        key={index}
+                        index={index}
+                        data={testimonial}
+                        ref={(el) => (cardRefs.current[index] = el)}
+                        onOpenVideo={handleOpenVideo}
+                        isSticky={isSticky}
+                        scale={scale}
+                      />
+                    )
+                  })}
               </div>
             </div>
           </div>
