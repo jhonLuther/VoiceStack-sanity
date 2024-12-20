@@ -15,8 +15,8 @@ export default function ListItem(props) {
       </div>
       <div className={`flex flex-col ease-linear py-2  transition-all duration-300 ${props.showDesc? ' translate-x-1.5':' '} `}>
         <H3 className={`group-hover:text-vs-blue ease-linear ${props.showDesc? '!text-lg':' opacity-50'} transition-all duration-300`}>{props.title}</H3>
-        <div className={`overflow-hidden ease-linear transition-all duration-300 ${props.showDesc ? 'opacity-100':' h-0 opacity-1'}`}>
-          <Paragraph>{props.desc}</Paragraph>
+        <div className={`overflow-hidden ease-linear pr-2 transition-all duration-300 ${props.showDesc ? 'opacity-100':' h-0 opacity-1'}`}>
+          <Paragraph className={`flex `}>{props.desc}</Paragraph>
         </div>
       </div>
     </li>
