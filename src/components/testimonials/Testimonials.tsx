@@ -3,19 +3,11 @@ import { motion, useScroll, useSpring } from 'motion/react'
 import Section from '../structure/Section'
 import Container from '../structure/Container'
 import H2 from '../typography/H2'
-import Subtext from '../typography/Subtext'
 import Paragraph from '../typography/Paragraph'
-import TickIcon from './micro/icons/TickIcon'
-import PillItem from './micro/PillItem'
 import Button from '../common/Button'
 import ButtonArrow from '../icons/ButtonArrow'
-import PreText from './micro/PreText'
-import PhoneIcon from './micro/icons/PhoneIcon'
-import ListItem from './micro/ListItem'
-import AppearTestimonials from './AppearTestimonials'
 import { ImageContext } from '~/providers/ImageSwitchProvider'
 import TestimonialCard from '../common/TestimonialCard'
-import TestCardOne from '../TestCardOne'
 import testimonialData from '../../migrations/testimonials.json'
 import { VideoItem, VideoModal } from '../common/VideoModal'
 
@@ -145,7 +137,6 @@ export default function Testimonails() {
                 <Paragraph className="text-gray-400">VoiceStack is trusted by some of the most successful dental groups to create impactful business outcomes across all their locations.</Paragraph>
               </div>
             </div>
-
             <div className="flex w-full gap-12 z-10 relative">
               {/* <div className="flex-1 max-w-[366px] h-full relative pt-24 items-start hidden lg:flex">
                 <AppearTestimonials  onListItemClick={handleScrollToCard}/>
