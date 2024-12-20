@@ -9,8 +9,12 @@ import PillItem from './micro/PillItem'
 import PreText from './micro/PreText'
 import PhoneIcon from './micro/icons/PhoneIcon'
 import AppearFeature from './AppearFeature'
+import Button from '../common/Button'
+import ButtonArrow from '../icons/ButtonArrow'
+import { FormModal } from '../common/FormModal'
 
 export default function FeatureSection({ data }) {
+  const [openForm, setOpenForm] = useState(false)
   const [activeImage, setActiveImage] = useState(data[0].testimonialImage?.url)
   const featureRefs = useRef([])
   // const featureData = data.sort(
@@ -42,6 +46,11 @@ export default function FeatureSection({ data }) {
   //   }
   // }, [data])
 
+
+  const openModal = () =>{
+    setOpenForm(true)
+  }
+
   const testimonialIndex: number = data?.findIndex(
     (e: any) => e.testimonialSubSection != null,
   )
@@ -52,7 +61,7 @@ export default function FeatureSection({ data }) {
   const switchIndex = (percentage) => {
 
 
-    if (percentage <= 25 && percentage>0) setActiveImage(sampleImages[0])
+    if (percentage <= 25 && percentage > 0) setActiveImage(sampleImages[0])
     else if (percentage > 25 && percentage <= 50)
       setActiveImage(sampleImages[1])
     else if (percentage > 50 && percentage <= 75)
@@ -65,7 +74,7 @@ export default function FeatureSection({ data }) {
     <Section className="relative bg-[#f9f9f9]" id="features">
       <div className='bg-vs-lemon-green w-1/2 h-full absolute top-0 right-0 z-0'></div>
       <Container className="relative flex gap-16">
-        
+
         <div className="flex flex-col flex-1 py-20 pb-40">
           {data.map((feature, index) =>
             feature?.testimonialSubSection?.length ? (
@@ -77,48 +86,56 @@ export default function FeatureSection({ data }) {
                 data-index={1}
                 data={feature}
                 props={data[index]}
+          
               />
             ) : (
 
               <div className='h-[100vh] relative flex' key={feature?.id}>
 
-              <div className="mt-40 left-0 self-start flex flex-col justify-center">
-              <motion.div
-                key={index}
-                ref={(el) => (featureRefs.current[index] = el)}
-                data-index={index}
-                className={`cursor-pointer gap-4 flex flex-col  self-start justify-center transform`}
-         
-                // initial={{ opacity: 0, x: -30 }}
-                // animate={{ opacity: 1, x: 0 }}
-                // transition={{ duration: 0.5 }}
-                // initial={{ translateY: "50%" }}
-                // whileInView={{translateY:"-50%"}}
-                onViewportEnter={ ()=> setActiveImage(feature.testimonialImage.url)}
-    
-                
-              >
-                <PreText>
-                  <span className="text-vs-blue">
-                    <PhoneIcon />
-                  </span>{' '}
-                  {feature.testimonialSubheading}
-                </PreText>
-                <H2>{feature.testimonialheading}</H2>
-                <Paragraph>{feature.testimonialDescription}</Paragraph>
-                <ul className="flex flex-wrap gap-2 mt-4">
-                  {feature?.testimonialChip &&
-                    feature?.testimonialChip?.map((item, i) => (
-                      <PillItem key={i}>
-                        <span className="text-green-500">
-                          <TickIcon />
-                        </span>{' '}
-                        {item}
-                      </PillItem>
-                    ))}
-                </ul>
-              </motion.div>
-              </div>
+                <div className="mt-40 left-0 self-start flex flex-col justify-center">
+                  <motion.div
+                    key={index}
+                    ref={(el) => (featureRefs.current[index] = el)}
+                    data-index={index}
+                    className={`cursor-pointer gap-4 flex flex-col  self-start justify-center transform`}
+
+                    // initial={{ opacity: 0, x: -30 }}
+                    // animate={{ opacity: 1, x: 0 }}
+                    // transition={{ duration: 0.5 }}
+                    // initial={{ translateY: "50%" }}
+                    // whileInView={{translateY:"-50%"}}
+                    onViewportEnter={() => setActiveImage(feature.testimonialImage.url)}
+
+
+                  >
+                    <PreText>
+                      <span className="text-vs-blue">
+                        <PhoneIcon />
+                      </span>{' '}
+                      {feature.testimonialSubheading}
+                    </PreText>
+                    <H2>{feature.testimonialheading}</H2>
+                    <Paragraph>{feature.testimonialDescription}</Paragraph>
+                    <ul className="flex flex-wrap gap-2 mt-4">
+                      {feature?.testimonialChip &&
+                        feature?.testimonialChip?.map((item, i) => (
+                          <PillItem key={i}>
+                            <span className="text-green-500">
+                              <TickIcon />
+                            </span>{' '}
+                            {item}
+                          </PillItem>
+                        ))}
+                    </ul>
+
+                    <div className='mt-4'>
+                    <Button type="primary" onClick={() => {setOpenForm(true)}}>
+              <ButtonArrow></ButtonArrow>
+              <span className="text-base font-medium">{`Book free demo`}</span>
+            </Button>
+                    </div>
+                  </motion.div>
+                </div>
               </div>
             ),
           )}
@@ -146,7 +163,14 @@ export default function FeatureSection({ data }) {
 
       </Container>
 
-      
+      {openForm && (
+            <FormModal
+              className={`pt-9  flex items-start`}
+              onClose={() => setOpenForm(false)}
+            />
+          )}
+
+
     </Section>
   )
 }
