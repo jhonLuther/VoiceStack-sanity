@@ -8,6 +8,7 @@ const config = {
     PUBLIC_URL: '/',
   },
   i18n: {
+    localeDetection:false,
     locales: ['en', 'en-GB'],
     defaultLocale: 'en'
   },

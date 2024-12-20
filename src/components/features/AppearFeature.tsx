@@ -57,10 +57,10 @@ export default function AppearFeature({
 
   const actualScrollStart =
     sectionStartY + scrollRef?.current?.offsetHeight + 160
-  // const sectionEndY = sectionStartY + scrollRef?.current?.offsetHeight * 2
-  const sectionEndY = typeof window !== 'undefined' 
-        ? sectionStartY + (window.innerHeight * 3) 
-        : 0;
+  const sectionEndY = sectionStartY + scrollRef?.current?.offsetHeight * 4
+  // const sectionEndY = typeof window !== 'undefined' 
+  //       ? sectionStartY + (window.innerHeight * 3) 
+  //       : 0;
   const percentScrolled =
     ((actualScrollStart - scrollPos) / (actualScrollStart - sectionEndY)) * 100
   const [activeItemIndex, setActiveItemIndex] = useState(null)
@@ -107,6 +107,7 @@ export default function AppearFeature({
   })
 
   return (
+    <div style={{height:`${scrollRef?.current?.offsetHeight * 4}px`}}>
     <div
       data-index={index ? index : 1}
       id={dataIndex}
@@ -169,6 +170,7 @@ export default function AppearFeature({
           </Button>
         </div>
       </motion.div>
+    </div>
     </div>
   )
 }
