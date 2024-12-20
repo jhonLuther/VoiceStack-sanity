@@ -106,7 +106,6 @@ export async function getTestimonialSecitonData(
   return await client.fetch(query, { region })
 }
 
-
 export async function logoSection(client: SanityClient, region: string) {
   const query = groq` *[_type == "logoListing" && language == $region][0]{
   'image':logo[]->image.asset->{url,_id,altText,   metadata {
@@ -161,7 +160,7 @@ export async function featureSectionQuery(
   },
   }
   } | order(testimonialOrder asc)`
-  return await client.fetch(query,{region})
+  return await client.fetch(query, { region })
 }
 export const getFounderDetails = (region) => groq`*[_type == "person"]{
   'name':personName,
@@ -202,7 +201,6 @@ export async function metaDataQuery(client: SanityClient): Promise<any> {
 export async function fetchIntegrationList(client: SanityClient): Promise<any> {
   return await client.fetch(integrationListQuery)
 }
-
 
 export async function heroSectionQuery(
   client: SanityClient,
@@ -360,8 +358,8 @@ export const getComparisonTableData = (region) =>
       }
     }
   } | order(_createdAt desc)[0]`
-export const getIntegrationList = (region) =>
-  groq`*[_type == "platform"] {
+export async function getIntegrationList(client: SanityClient, region: string) {
+  const query = groq`*[_type == "platform" && language == $region] {
       _id,
       _createdAt,
       integrationHeading,
@@ -426,6 +424,8 @@ export const getIntegrationList = (region) =>
       }
 
   } | order(_createdAt desc)[0]`
+  return await client.fetch(query, { region })
+}
 
 /*####################################### INTERFACES    ###########################*/
 export interface Post {

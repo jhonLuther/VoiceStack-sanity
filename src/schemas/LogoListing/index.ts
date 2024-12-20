@@ -24,7 +24,7 @@ export default defineType({
           to: [{ type: 'platformList' }],
         },
       ],
-    })
+    }),
     defineField({
       name: 'language',
       type: 'string',
