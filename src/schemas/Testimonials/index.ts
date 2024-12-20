@@ -1,3 +1,4 @@
+
 import { defineField, defineType } from 'sanity'
 export default defineType({
   name: 'testimonial',
@@ -63,4 +64,10 @@ export default defineType({
       hidden: true,
     }),
   ],
+  preview:{
+    select: {
+      title: 'testimonialheading',
+      media: 'testimonialIcon',
+    },
+  }
 })
