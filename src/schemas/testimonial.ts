@@ -68,7 +68,7 @@ export default defineType({
     defineField({
       name: 'testimonialImage',
       title: 'Testimonial Image',
-      type: 'string',
+      type: 'image',
     }),
 
     defineField({
@@ -122,5 +122,11 @@ export default defineType({
       type: 'array',
       of: [{ type: 'string' }],
     }),
+    defineField({
+        name: 'language',
+        type: 'string',
+        readOnly: true,
+        hidden: true,
+      }),
   ],
 })
