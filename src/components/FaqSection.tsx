@@ -11,7 +11,7 @@ import FaqItem from './FaqItem';
 const FaqSection = ({data}) => {
 
   return (
-    <Section className="py-sm md:py-md pb-8">
+    <Section className="py-sm md:py-md pb-8 scroll-smooth scroll-m-16" id="faq">
       <Container >
         <div className='flex flex-col md:flex-row gap-10 lg:gap-20 w-full'>
           <div className="flex justify-center w-full max-w-[320px] md:sticky top-28 self-start">

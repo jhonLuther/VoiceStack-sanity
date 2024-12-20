@@ -35,7 +35,7 @@ function SiteComparisonSection({ data }) {
   }, []);
   
   return (
-    <Section id="comparison" className="py-12 md:py-24">
+    <Section id="comparison" className="py-12 md:py-24 scroll-m-16">
       <Container className="flex flex-col items-center">
         
         <div className="flex justify-center w-full mb-12">

@@ -9,8 +9,8 @@ import CTAButton from './common/CTAbutton'
 const FeatureSection = ({data}) => {
   return (
     <Section
-      id="features-section"
-      className="features-section pt-12 md:pt-24 pb-12 md:pb-16 z-10 !bg-[#F9F6FE]"
+      id="features"
+      className="features-section pt-12 md:pt-24 pb-12 md:pb-16 z-10 scroll-m-32 !bg-[#F9F6FE] "
     >
       <Container className="flex flex-col items-center gap-16">
         <div className="flex flex-col w-full items-center gap-2">

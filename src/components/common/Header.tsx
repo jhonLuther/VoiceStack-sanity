@@ -16,7 +16,7 @@ export const navigationLinks = [
   { href: "#features", label: "Features" },
   { href: "#integrations", label: "Integrations" },
   { href: "#comparison", label: "Comparison" },
-  { href: "#", label: "Contact Us" },
+  { href: "#faq", label: "FAQ" },
 ];
 
 const Header = () => {
