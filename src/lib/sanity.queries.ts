@@ -141,7 +141,7 @@ export async function featureSectionQuery(
     }
   },
   }
-  } | order(_createdAt asc)`
+  } | order(testimonialOrder asc)`
   return await client.fetch(query,{region})
 }
 export const getFounderDetails = (region) => groq`*[_type == "person"]{
