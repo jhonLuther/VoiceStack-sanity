@@ -8,7 +8,7 @@ import { ChevronDown, Minus, Plus } from 'lucide-react';
 import FaqItem from './FaqItem';
 
 
-const FaqSection = ({props}) => {
+const FaqSection = ({data}) => {
 
   return (
     <Section className="py-sm md:py-md pb-8">
@@ -23,7 +23,7 @@ const FaqSection = ({props}) => {
           <div className='flex justify-center flex-grow max-w-[830px]'>
 
             <div className="flex flex-col w-full">
-              {props.map((faq, index) => (
+              {data.map((faq, index) => (
                 <FaqItem 
                   key={faq?._id}
                   index={index}
