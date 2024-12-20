@@ -69,13 +69,6 @@ export default function Testimonails({ data }) {
   const [stickyStates, setStickyStates] = useState<boolean[]>([]) // Tracks if each card is sticky
   // const containerRef = useRef<HTMLDivElement>(null);
 
-  if (isEmpty(data)) {
-    return (
-      <>
-        <p>Testimonail Section is Loading...</p>
-      </>
-    )
-  }
 
   const handleOpenVideo = (video: VideoItem) => {
     console.log({video});
@@ -102,7 +95,7 @@ export default function Testimonails({ data }) {
 
     // Cleanup listener on unmount
     return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+  }, [data])
 
   // Handle scroll-to-card logic
   // const handleScrollToCard = (index: number) => {
@@ -130,6 +123,13 @@ export default function Testimonails({ data }) {
   //   // }
   // };
 
+  if (isEmpty(data)) {
+    return (
+      <>
+        <p>Testimonail Section is Loading...</p>
+      </>
+    )
+  }
 
   return (
     <Section
