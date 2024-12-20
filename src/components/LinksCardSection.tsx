@@ -7,6 +7,9 @@ import Image from 'next/image';
 
 const LinksCardsSection = ({props}) => {
 
+  console.log({props});
+  
+
   return (
     <Section className="pt-md pb-8">
       <Container>

@@ -11,13 +11,16 @@ import voicestack from 'public/assets/voicestack-ui.png'
 import voicemail from 'public/assets/voicemail.png'
 import Image from 'next/image'
 import { PortableText } from '@portabletext/react'
+import HubSpotForm from './common/HubspotForm'
+import { FormModal } from './common/FormModal'
 
 const HeroSection = ({ props }) => {
   console.log({props})
   const [isOpen, setIsOpen] = useState(false)
+  const [openForm, setOpenForm] = useState(false)
   const overviewVideo: VideoItem = {
     platform: 'vidyard',
-    videoId: 'xpr7bMJc1SDnQSyTRErAYc',
+    videoId: 'Hj4GYLXARVjqQEnaejq3Bz',
   }
 
   const [activeIndex, setActiveIndex] = useState(0)
@@ -105,9 +108,10 @@ const HeroSection = ({ props }) => {
                 key={props?._rev}
                 value={props?.heroDescription}
               />
+              {/* <HubSpotForm></HubSpotForm> */}
 
               <div className="flex gap-4 flex-col md:flex-row items-center">
-                <Button type="primaryWhite" link="#">
+                <Button type="primaryWhite" onClick={() => {setOpenForm(true)}}>
                   <ButtonArrow></ButtonArrow>
                   <span className="text-base font-medium">
                     {props?.bookBtnContent}
@@ -160,8 +164,14 @@ const HeroSection = ({ props }) => {
             <VideoModal
               isPopup={true}
               videoDetails={overviewVideo}
-              className={`pt-9  flex items-start`}
+              className={`pt-9 flex items-start`}
               onClose={() => setIsOpen(false)}
+            />
+          )}
+          {openForm && (
+            <FormModal
+              className={`pt-9  flex items-start`}
+              onClose={() => setOpenForm(false)}
             />
           )}
         </div>
