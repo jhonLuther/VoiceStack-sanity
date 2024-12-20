@@ -115,7 +115,7 @@ export async function getTestimonialSecitonData(
           }
         }
       }
-    }
+    } | order( order asc)
   `
 
   return await client.fetch(query, { region })
