@@ -19,7 +19,6 @@ const TestimonialCard = forwardRef<HTMLDivElement, TestimonialCardProps>(
     const topValue = 160 + (index * 20);
   
   const video  = data.video
-  console.log({testimonial: data})
   return (
     // <div className="top-40 sticky h-[100vh]" ref={ref} id={`${index}`}>
     <div className={`sticky testimonial-card`} ref={ref} id={`${index}`}  data-index={index}

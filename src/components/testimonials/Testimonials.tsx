@@ -50,7 +50,6 @@ const conversationalFeatures = [
 
 export default function Testimonails({ data }) {
 
-  console.log({testData: data})
   if (isEmpty(data)) {
     return (
       <>
@@ -83,7 +82,6 @@ export default function Testimonails({ data }) {
         const card = cardRefs.current[index]
         if (card) {
           const rect = card.getBoundingClientRect()
-          // console.log(rect.top,index, "target-",260 + index * 20, rect.top <= (200) );
           // Check if the card is at the top of the viewport (sticky point)
           return rect.top <= 200
         }
@@ -100,15 +98,10 @@ export default function Testimonails({ data }) {
 
   // Handle scroll-to-card logic
   // const handleScrollToCard = (index: number) => {
-  //   console.log("clicked");
 
   //   const card = cardRefs.current[index];
-  //   // console.log({card});
-  //   // console.log(card.offsetTop, "card.offsetTop");
-  //   // console.log(parentRef, "parentRef");
 
   //   // if (card && parentRef.current) {
-  //   //   console.log("has parent ref");
 
   //   //   window.scrollTo({
   //   //     top: card.offsetTop - (parentRef.current ? parentRef.current.offsetTop : 0),
@@ -129,7 +122,6 @@ export default function Testimonails({ data }) {
   //   // }
   // };
 
-  // console.log({testimonialData});
 
   return (
     <Section
@@ -160,7 +152,7 @@ export default function Testimonails({ data }) {
             <div className="w-full relative">
               <div className="flex flex-col w-full gap-20">
                 {data &&
-                  data.map((testimonial, index) => {
+                  data?.map((testimonial, index) => {
                     // Calculate the scaling value dynamically when sticky
                     const isSticky = stickyStates[index] || false
                     const scale = 0.95 + index * 0.02
