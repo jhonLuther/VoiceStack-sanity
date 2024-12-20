@@ -44,7 +44,6 @@ function ComparisonRichIcon({ comparisonValue, vsIndex }) {
 }
 
 export default function SiteComparisonTable({ data, index, currentIndex, isMobile }) {
-  console.log({data});
   
   const [currentChildIndex, setCurrentChildIndex] = useState<number|null>(0);
 
@@ -125,7 +124,7 @@ export default function SiteComparisonTable({ data, index, currentIndex, isMobil
                       <TableCell></TableCell>
                       <TableCell></TableCell>
                 </TableRow>
-                {data.tableData.rows.map((row, index) => {
+                {data?.tableData?.rows?.map((row, index) => {
                   return (
                     <TableRow
                       key={index}

@@ -15,7 +15,7 @@ const TableTabset: React.FunctionComponent<TabsetProps> = ({
   
  
 
-  // console.log({tabs});
+  console.log({tabs:tabs});
   
 
   return (
@@ -26,7 +26,7 @@ const TableTabset: React.FunctionComponent<TabsetProps> = ({
             <li
                 key={tab._uid || index}
                 className={`${currentIndex === index ? 'bg-gray-900 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-900 hover:text-white'} flex items-center 
-                gap-2 px-4 py-3 rounded-[22px] justify-center text-center font-inter text-sm font-medium leading-[145%] cursor-pointer`}
+                gap-2 px-4 py-3 rounded-[22px] transition-all duration-300 ease-in-out  justify-center text-center font-inter text-sm font-medium leading-[145%] cursor-pointer`}
                 onClick={() => setCurrentIndex(index)}
               >
                 {/* {tab.tabIcon && tab.tabIcon.length > 0 && (
