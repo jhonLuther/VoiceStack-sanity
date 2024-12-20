@@ -70,6 +70,7 @@ export const getServerSideProps: GetStaticProps<any> = async ({
 export default function IndexPage(
   props: InferGetStaticPropsType<typeof getServerSideProps>,
 ) {
+  
   if (isEmpty(props)) {
     return <>Loading ... </>
   }
