@@ -75,7 +75,7 @@ export default function FeatureSection({ data }) {
       <div className='bg-vs-lemon-green w-1/2 h-full absolute top-0 right-0 z-0'></div>
       <Container className="relative flex gap-16">
 
-        <div className="flex flex-col flex-1 py-20 pb-40">
+        <div className="flex w-1/2 flex-col flex-1 py-20 pb-40">
           {data.map((feature, index) =>
             feature?.testimonialSubSection?.length ? (
               <AppearFeature
@@ -143,9 +143,9 @@ export default function FeatureSection({ data }) {
 
         {/* Sticky Image Section */}
         <div
-          className={`relative`}
+          className={`relative w-1/2`}
         >
-          <div className="sticky top-0 py-24 h-[100vh] flex flex-col justify-center">
+          <div className="sticky top-0 py-24 h-[100vh] flex flex-col justify-center pl-12">
             <AnimatePresence mode="wait">
               <motion.img
                 key={activeImage}
@@ -155,7 +155,7 @@ export default function FeatureSection({ data }) {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.300 }}
-                className="w-full h-auto rounded-lg max-w-full md:max-h-[538px] "
+                className="w-auto h-auto rounded-lg max-w-full bg-black/5 md:max-h-[538px] "
               />
             </AnimatePresence>
           </div>
