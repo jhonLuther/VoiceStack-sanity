@@ -57,7 +57,10 @@ export default function AppearFeature({
 
   const actualScrollStart =
     sectionStartY + scrollRef?.current?.offsetHeight + 160
-  const sectionEndY = sectionStartY + scrollRef?.current?.offsetHeight * 2
+  // const sectionEndY = sectionStartY + scrollRef?.current?.offsetHeight * 2
+  const sectionEndY = typeof window !== 'undefined' 
+        ? sectionStartY + (window.innerHeight * 3) 
+        : 0;
   const percentScrolled =
     ((actualScrollStart - scrollPos) / (actualScrollStart - sectionEndY)) * 100
   const [activeItemIndex, setActiveItemIndex] = useState(null)
@@ -109,9 +112,10 @@ export default function AppearFeature({
       id={dataIndex}
       ref={scrollRef}
       className="sticky top-40 left-0 "
-      style={{
-        marginBottom: `${scrollRef?.current?.offsetHeight * 1.5 - 160}px`,
-      }}
+      
+      // style={{
+      //   marginBottom: `${scrollRef?.current?.offsetHeight * 1.5 - 160}px`,
+      // }}
     >
       <motion.div
         initial={{ opacity: 0 }}

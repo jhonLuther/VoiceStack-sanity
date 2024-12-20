@@ -2,27 +2,37 @@
     {
         "image": {
             "_type": "image",
-            "url": "https://cdn.sanity.io/images/76tr0pyh/production/d0144c897baf395bca2499be75b0cce9f09b0d9e-686x667.png"
+            "url": "https://cdn.sanity.io/images/76tr0pyh/production/5138d497f4a0c7075b156d9ada998dccdf86c801-686x666.png"
         },
         "bgColor": "#FFFFFF",
         "heading": "Train Your Staff Better",
-        "description": "Reactivated <span>$100,000</span> worth of treatment in <span>30 days.</span>",
+        "description": "",
         "keyFeatures": [
+            "Call Scoring",
+            "Staff Performance",
+            "Campaign Performance"
         ],
-        "before": [
-            "Boost your confidence in your email marketing",
-            "Generate more ideas for content creation more often",
-            "Free up your team for other tasks",
-            "Ensure consistency and professionalism in responses",
-            "Manage your online reputation efficiently"
+        "listItems":[
+            {
+                "listHeading": "Reduction in Missed Call Response Time",
+                "before": "4h 30min",
+                "after": "3min",
+                "description": ""
+            },
+            {
+                "listHeading": "Missed Opportunities Converted",
+                "before": "16%",
+                "after": "41%",
+                "description": ""
+            },
+            {
+                "listHeading": "Estimated Additional Revenue",
+                "before": "",
+                "after": "",
+                "description": "$200,000 <span>in 90 days</span>"
+            }
         ],
-        "after": [
-            "Ensure consistency and professionalism in responses",
-            "Manage your online reputation efficiently",
-            "Boost your confidence in your email marketing",
-            "Free up your team for other tasks",
-            "Generate more ideas for content creation more often"
-        ],
+        
         "name": "Himesh Kana",
         "designation": "CEO, Dental Depot DFW",
         "place": "Colorado",
@@ -48,9 +58,11 @@
         "description": "Reactivated <span>$100,000</span> worth of treatment in <span>30 days.</span>",
         "keyFeatures": [
             "Call Outcome Analysis",
-            "Call Transcript",
-            "Integrations"
+            "Treatment Analytics ",
+            "Integrations",
+            "Missed Opportunity"
         ],
+        "listItems":[],
         "name": "Stuart McGuiggan",
         "designation": "CEO, Star Dental Institute",
         "place": "Colorado",
@@ -68,19 +80,39 @@
     {
         "image": {
             "_type": "image",
-            "url": "https://cdn.sanity.io/images/76tr0pyh/production/52bb50b6a800cb1d25dc6873d1159c8d86eff2f1-686x667.png"
+            "url": "https://cdn.sanity.io/images/76tr0pyh/production/8520c140a3d4d38c26d7a06660db22c5d92ea56b-686x666.png"
         },
         "bgColor": "#92CDEB",
         "heading": "Eliminate Missed Calls",
-        "description": "Reactivated <span>$100,000</span> worth of treatment in <span>30 days.</span>",
+        "description": "",
         "keyFeatures": [
-            "Call Outcome Analysis",
-            "Call Transcript",
-            "Integrations"
+            "Call Scoring",
+            "Staff Performance",
+            "Campaign Performance"
         ],
-        "name": "DeDee Tibben",
-        "designation": "Manager, Northwest Dental Group",
-        "place": "Colorado",
+        "listItems":[
+            {
+                "listHeading": "Conversion rate from first-time inquiries",
+                "before": "",
+                "after": "84%",
+                "description": ""
+            },
+            {
+                "listHeading": "Call Answer Rate",
+                "before": "",
+                "after": "90%",
+                "description": ""
+            },
+            {
+                "listHeading": "Estimated Additional Revenue",
+                "before": "",
+                "after": "",
+                "description": "$200,000 <span>in 90 days</span>"
+            }
+        ],
+        "name": "Katie Post",
+        "designation": "CEO, Northwest Dental Group",
+        "place": "Minnesota",
         "region": "United States",
         "locations": "4",
         "logo": {

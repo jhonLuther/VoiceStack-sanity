@@ -62,7 +62,7 @@ export default function FeatureSection({ props }) {
     <Section className="relative">
       <Container className="relative flex gap-16">
         <div className="flex flex-col flex-1 gap-32 py-16">
-          {props && props?.map((feature, index) =>
+          {props && props?.map((feature:any, index:number) =>
             feature?.testimonialSubSection?.length
             
              ? (
