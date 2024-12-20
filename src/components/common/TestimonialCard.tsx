@@ -17,6 +17,7 @@ const TestimonialCard = forwardRef<HTMLDivElement, TestimonialCardProps>(
   ({ data, index, activeIndex, isSticky, scale, onOpenVideo }, ref) => {
 
     const topValue = 160 + (index * 20);
+    
   
   const video  = data.video
   // console.log({testimonial: data})
