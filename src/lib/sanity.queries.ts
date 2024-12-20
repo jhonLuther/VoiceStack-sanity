@@ -141,7 +141,7 @@ export async function featureSectionQuery(
     }
   },
   }
-  }`
+  } | order(_createdAt asc)`
   return await client.fetch(query,{region})
 }
 export const getFounderDetails = (region) => groq`*[_type == "person"]{
@@ -184,9 +184,6 @@ export async function fetchIntegrationList(client: SanityClient): Promise<any> {
   return await client.fetch(integrationListQuery)
 }
 
-export async function fetchTestimonial(client: SanityClient): Promise<any> {
-  return await client.fetch(testimonialQuery)
-}
 
 export async function heroSectionQuery(
   client: SanityClient,
