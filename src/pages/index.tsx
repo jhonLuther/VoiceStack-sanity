@@ -1,8 +1,6 @@
 import type { GetStaticProps, InferGetStaticPropsType } from 'next'
-import Content from '~/components/Content'
 import { readToken } from '~/lib/sanity.api'
 import {
-  heroSection,
   getALLHomeSettings,
   getALLSiteSettings,
   getComparisonTableData,
@@ -11,6 +9,8 @@ import {
   logoSection,
   featureSectionQuery,
   fetchFaq,
+  getHeroSectionData,
+  getTestimonialSecitonData,
 } from '~/lib/sanity.queries'
 import Layout from '../components/Layout'
 import CustomHead from '~/components/common/CustomHead'
@@ -29,6 +29,7 @@ import Testimonails from '~/components/testimonials/Testimonials'
 import FaqSection from '~/components/FaqSection'
 import Footer from '~/components/common/Footer'
 import { getClient } from '~/lib/sanity.client'
+import { isEmpty } from 'lodash'
 
 export const getServerSideProps: GetStaticProps<any> = async ({
   locale,
@@ -41,10 +42,11 @@ export const getServerSideProps: GetStaticProps<any> = async ({
   const founderDetails = await runQuery(getFounderDetails(region))
   const comparisonTableData = await runQuery(getComparisonTableData(region))
   const integrationPlatforms = await runQuery(getIntegrationList(region))
-  const heroSectionData = await heroSection(client,region)
+  const heroSectionData = await getHeroSectionData(client, region)
+  const testimonialSecitonData = await getTestimonialSecitonData(client, region)
   const logoSectionData = await runQuery(logoSection)
-  const featureSectionData = await featureSectionQuery(client,region)
-  const faq = await fetchFaq(client,region)
+  const featureSectionData = await featureSectionQuery(client, region)
+  const faqSectionData = await fetchFaq(client,region)
 
   return {
     props: {
@@ -59,43 +61,55 @@ export const getServerSideProps: GetStaticProps<any> = async ({
       heroSectionData,
       logoSectionData,
       featureSectionData,
-      faq
-    }
+      testimonialSecitonData,
+      faqSectionData
+    },
   }
 }
 
 export default function IndexPage(
   props: InferGetStaticPropsType<typeof getServerSideProps>,
 ) {
-  const { integrationPlatforms, comparisonTableData } = props
-  console.log(props?.heroSectionData)
-  console.log(props?.featureSectionData, "featuresd")
+  if (isEmpty(props)) {
+    return <>Loading ... </>
+  }
+
+  const {
+    heroSectionData,
+    testimonialSecitonData,
+    logoSectionData,
+    featureSectionData,
+    integrationPlatforms,
+    comparisonTableData,
+    faqSectionData
+  } = props
   const comparisonSectionData = {
-    strip: 'The Best-in-class Phone System. For the Best-in-Class Dental Practices.',
+    strip:
+      'The Best-in-class Phone System. For the Best-in-Class Dental Practices.',
     header:
-      "No other phone system can match VoiceStack’s AI-driven features,outcome-driven workflows and integration capabilities, as shown in the comparison chart below. ",
+      'No other phone system can match VoiceStack’s AI-driven features,outcome-driven workflows and integration capabilities, as shown in the comparison chart below. ',
     columnDimensionName: 'Features',
     table: comparisonTableData,
   }
-  const linkCardSectionData:any = props?.heroSectionData?.heroSubFeature
+  const linkCardSectionData: any = props?.heroSectionData?.heroSubFeature
 
   return (
     <div>
       <BookDemoContextProvider>
         <Layout {...props}>
-           <CustomHead {...props} />
+          <CustomHead {...props} />
           {/* <Content {...props} /> */}
-          <div className='global-wrapper pt-[64px] lg:pt-[98px]'>
-            <Header></Header>
-            <HeroSection props ={props?.heroSectionData}/>
-            <LinksCardsSection props ={linkCardSectionData}/>
-            <Testimonails />
-            <CardsListingSection></CardsListingSection>
-            <LogoListingSection props={props?.logoSectionData}/>
-            <FeatureSection props={props?.featureSectionData}/>
+          <div className="global-wrapper pt-[64px] lg:pt-[98px]">
+            <Header />
+            <HeroSection data={heroSectionData} />
+            <LinksCardsSection data={linkCardSectionData} />
+            <Testimonails data={testimonialSecitonData} />
+            <CardsListingSection />
+            <LogoListingSection data={logoSectionData} />
+            <FeatureSection data={featureSectionData} />
             <AnimatedBeamSection data={integrationPlatforms} />
             <SiteComparisonSection data={comparisonSectionData} />
-            <FaqSection props ={props?.faq}/>
+            <FaqSection data={faqSectionData}/>
             <BannerSection></BannerSection>
             <Footer></Footer>
           </div>

@@ -14,8 +14,7 @@ import { PortableText } from '@portabletext/react'
 import HubSpotForm from './common/HubspotForm'
 import { FormModal } from './common/FormModal'
 
-const HeroSection = ({ props }) => {
-  console.log({props})
+const HeroSection = ({ data }) => {
   const [isOpen, setIsOpen] = useState(false)
   const [openForm, setOpenForm] = useState(false)
   const overviewVideo: VideoItem = {
@@ -25,7 +24,7 @@ const HeroSection = ({ props }) => {
 
   const [activeIndex, setActiveIndex] = useState(0)
   const [wordIndex, setWordIndex] = useState(0)
-  const words = props?.heroTitleStaticDynamic[activeIndex]?.split(' ')
+  const words = data?.heroTitleStaticDynamic[activeIndex]?.split(' ')
 
   const components: any = {
     block: {
@@ -45,9 +44,7 @@ const HeroSection = ({ props }) => {
       return () => clearTimeout(wordInterval)
     } else {
       const messageInterval = setTimeout(() => {
-        setActiveIndex(
-          (activeIndex + 1) % props?.heroTitleStaticDynamic?.length,
-        ) // Loop through messages
+        setActiveIndex((activeIndex + 1) % data?.heroTitleStaticDynamic?.length) // Loop through messages
         setWordIndex(0)
       }, 3000)
       return () => clearTimeout(messageInterval)
@@ -56,7 +53,7 @@ const HeroSection = ({ props }) => {
     wordIndex,
     activeIndex,
     words?.length,
-    props?.heroTitleStaticDynamic?.length,
+    data?.heroTitleStaticDynamic?.length,
   ])
 
   return (
@@ -67,17 +64,17 @@ const HeroSection = ({ props }) => {
             <div className="flex flex-col items-center w-full gap-5">
               <div className="flex py-2.5 px-[17px] justify-center items-center gap-2 rounded-full border border-white/10 bg-gray-50/5">
                 <span className="flex text-white text-center text-xs font-medium leading-[120%] tracking-[0.98px] uppercase">
-                  {props?.heroStripHeader}
+                  {data?.heroStripHeader}
                 </span>
               </div>
               <H1 className="text-center w-full">
                 <span className="block text-vs-lemon-green">
-                  {props?.heroStrip ? props.heroStrip: ""}
+                  {data?.heroStrip ? data.heroStrip : ''}
                 </span>
-                <span className="block">{props?.heroTitleStatic}</span>
+                <span className="block">{data?.heroTitleStatic}</span>
 
                 <div className="relative h-20 overflow-hidden">
-                  {props?.heroTitleStaticDynamic?.map((message, index) => (
+                  {data?.heroTitleStaticDynamic?.map((message, index) => (
                     <span
                       key={index}
                       className={`block absolute w-full text-center  ${
@@ -105,8 +102,8 @@ const HeroSection = ({ props }) => {
             <div className="flex flex-col gap-8 items-center">
               <PortableText
                 components={components}
-                key={props?._rev}
-                value={props?.heroDescription}
+                key={data?._rev}
+                value={data?.heroDescription}
               />
               {/* <HubSpotForm></HubSpotForm> */}
 
@@ -114,7 +111,7 @@ const HeroSection = ({ props }) => {
                 <Button type="primaryWhite" onClick={() => {setOpenForm(true)}}>
                   <ButtonArrow></ButtonArrow>
                   <span className="text-base font-medium">
-                    {props?.bookBtnContent}
+                    {data?.bookBtnContent}
                   </span>
                 </Button>
                 <Button
