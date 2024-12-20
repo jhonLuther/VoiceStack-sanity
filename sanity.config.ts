@@ -78,6 +78,8 @@ export default defineConfig({
         'legal',
         'comparisonTable',
         'comparisonValue',
+        'testimonialSection',
+        'logoListing'
       ],
     }),
 

@@ -81,7 +81,7 @@ export async function heroSection(client: SanityClient, region: string) {
         "description": heroSubFeatureContent,
         "icon": heroSubFeatureIcon.asset->url,
         "label": "Learn More",
-        "href": "#"
+        "href": "/:hankey:"
       }
     }
   `;
@@ -90,7 +90,9 @@ export async function heroSection(client: SanityClient, region: string) {
 }
 
 
-export const logoSection = groq` *[_type == "logoListing"][0]{
+
+export async function logoSection(client: SanityClient, region: string) {
+  const query = groq` *[_type == "logoListing" && language == $region][0]{
   'image':logo[]->image.asset->{url,_id,altText,   metadata {
           dimensions {
             width,
@@ -101,8 +103,9 @@ export const logoSection = groq` *[_type == "logoListing"][0]{
     logoSectionHeader,
     logoSectionHeaderDescptn,
     
+}`
+  return await client.fetch(query, { region })
 }
-`
 
 export async function featureSectionQuery(
   client: SanityClient,

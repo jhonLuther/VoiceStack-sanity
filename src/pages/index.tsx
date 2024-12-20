@@ -42,7 +42,7 @@ export const getServerSideProps: GetStaticProps<any> = async ({
   const comparisonTableData = await runQuery(getComparisonTableData(region))
   const integrationPlatforms = await runQuery(getIntegrationList(region))
   const heroSectionData = await heroSection(client,region)
-  const logoSectionData = await runQuery(logoSection)
+  const logoSectionData = await logoSection(client,region);
   const featureSectionData = await featureSectionQuery(client,region)
   const faq = await fetchFaq(client,region)
 

@@ -122,5 +122,11 @@ export default defineType({
       type: 'array',
       of: [{ type: 'string' }],
     }),
+    defineField({
+        name: 'language',
+        type: 'string',
+        readOnly: true,
+        hidden: true,
+      }),
   ],
 })
