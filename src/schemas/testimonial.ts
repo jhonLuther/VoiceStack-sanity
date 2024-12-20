@@ -68,7 +68,7 @@ export default defineType({
     defineField({
       name: 'testimonialImage',
       title: 'Testimonial Image',
-      type: 'string',
+      type: 'image',
     }),
 
     defineField({
