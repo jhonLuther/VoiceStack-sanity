@@ -35,11 +35,10 @@ const Button: React.FunctionComponent<ButtonProps> = ({
     'bg-white hover:bg-white text-blue-500 border border-white': type === 'primaryWhite',
     'text-white border border-white/30': type === 'video'
   });
-  // console.log(customClasses);
   
 
   const combinedClasses = clsx(baseClasses, customClasses, className);
-  // console.log({combinedClasses});
+;
   
 
   if (link) {

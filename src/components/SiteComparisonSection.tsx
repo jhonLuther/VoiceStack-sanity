@@ -13,9 +13,6 @@ import ButtonArrow from './icons/ButtonArrow'
 import { FormModal } from './common/FormModal'
 
 function SiteComparisonSection({ data }) {
-  // console.log(data,'comparison main data');
-  // console.log("logodata", data.table.columns[0]);
-  
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [isOpen, setIsOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);

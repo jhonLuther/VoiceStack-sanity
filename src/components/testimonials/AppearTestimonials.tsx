@@ -59,10 +59,6 @@ const AppearTestimonials: React.FC<AppearTestimonialsProps> = ({ onListItemClick
         : 0;
     // const sectionEndY = sectionStartY + 3200;
     const percentScrolled = ((actualScrollStart - scrollPos) / (actualScrollStart - sectionEndY)) * 100
-    // console.log("actualScrollStart", actualScrollStart);
-    // console.log("sectionStartY", sectionStartY);
-    // console.log("sectionEndY", sectionEndY);
-    // console.log("percentScrolled", percentScrolled);
     
     const switchIndex = (percentage) => {
 

@@ -138,7 +138,7 @@ export default function AppearFeature({
               <span className=" text-vs-blue">
                 <PhoneIcon></PhoneIcon>
               </span>
-              {data?.testimonialSubheading} {scrollPos>actualScrollStart ? "true" :"false"}
+              {data?.testimonialSubheading}
             </PreText>
             <H2>
             {props?.testimonialheading}

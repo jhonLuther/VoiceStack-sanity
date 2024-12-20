@@ -48,7 +48,6 @@ export default function SiteComparisonTable({ data, index, currentIndex, isMobil
   const [currentChildIndex, setCurrentChildIndex] = useState<number|null>(0);
 
   const toggle = () =>{
-    console.log(index,currentChildIndex);
     
     if(index === currentChildIndex){
       setCurrentChildIndex(null)

@@ -15,7 +15,6 @@ const TableTabset: React.FunctionComponent<TabsetProps> = ({
   
  
 
-  console.log({tabs:tabs});
   
 
   return (
