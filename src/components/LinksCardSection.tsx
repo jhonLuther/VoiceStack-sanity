@@ -19,6 +19,8 @@ const LinksCardsSection = ({ data }) => {
                     key={index}
                     className="flex py-6 gap-3 flex-col justify-between h-full group"
                   >
+                    
+                {item.href}
                     <div className="flex flex-col gap-3">
                       <h2 className="inline-flex items-center gap-2 text-gray-900 text-base font-medium leading-[145%]">
                         <Image

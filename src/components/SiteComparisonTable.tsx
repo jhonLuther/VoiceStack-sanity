@@ -75,9 +75,9 @@ export default function SiteComparisonTable({ data, index, currentIndex, isMobil
       <div className={`${(index === currentIndex  && !isMobile) || (index === currentChildIndex && isMobile) ? 'block' : 'hidden'}`}>
 
         <Table className={`md:overflow-hidden bg-white w-full overflow-auto min-w-[700px] mb-[20px]`}>
-          <TableCaption className="hidden">
+          {/* <TableCaption className="hidden">
             A list of your recent invoices.
-          </TableCaption>
+          </TableCaption> */}
           <TableHeader className="">
             <TableRow className="w-full justify-between  py-2 !border-0">
               <TableHead className="justify-start items-center">

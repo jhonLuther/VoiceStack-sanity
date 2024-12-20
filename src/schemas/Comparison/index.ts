@@ -49,6 +49,12 @@ export default defineType({
               validation: (Rule) => Rule.required(),
             }),
             defineField({
+              name: 'iconSvgCode',
+              title: 'Icon Svg Code',
+              type: 'string',
+              validation: (Rule) => Rule.required(),
+            }),
+            defineField({
               name: 'icon',
               title: 'Icon',
               type: 'image',

@@ -29,7 +29,10 @@ const TableTabset: React.FunctionComponent<TabsetProps> = ({
                 gap-2 px-4 py-3 rounded-[22px] justify-center text-center font-inter text-sm font-medium leading-[145%] cursor-pointer`}
                 onClick={() => setCurrentIndex(index)}
               >
-                {/* {tab.tabIcon && tab.tabIcon.length > 0 && (
+                {tab.iconSvgCode && (
+                  <span dangerouslySetInnerHTML={{__html: tab.iconSvgCode}}></span>
+                )}
+                {/* {tab.icon && tab.icon.length > 0 && (
                   <ImageLoader image={tab.tabIcon[0].image}></ImageLoader>
                 )} */}
                 {tab.name}

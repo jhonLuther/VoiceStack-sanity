@@ -80,7 +80,7 @@ export async function getHeroSectionData(client: SanityClient, region: string) {
         "description": heroSubFeatureContent,
         "icon": heroSubFeatureIcon.asset->url,
         "label": "Learn More",
-        "href": "/:hankey:"
+        "href": ""
       }
     }
   `
