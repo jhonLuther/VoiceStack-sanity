@@ -15,7 +15,7 @@ const LinksCardsSection = ({props}) => {
             props.map((item:any, index:number) => {
               return(
                 item.href ? (
-                  <Link href={item.href}>
+                  <Link href={item.href} key={index}>
                     <div key={index} className='flex py-6 gap-3 flex-col justify-between h-full group'>
                       <div className='flex flex-col gap-3'>
                         <h2 className='inline-flex items-center gap-2 text-gray-900 text-base font-medium leading-[145%]'>

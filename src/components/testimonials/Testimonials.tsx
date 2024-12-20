@@ -152,7 +152,7 @@ export default function Testimonails() {
               </div> */}
               <div className="w-full relative">
                 <div className='flex flex-col w-full gap-20'>
-                  {testimonialData.map((testimonial, index) => {
+                  {testimonialData && testimonialData.map((testimonial, index) => {
                     // Calculate the scaling value dynamically when sticky
                     const isSticky = stickyStates[index] || false;
                     const scale = 0.95 + (index * 0.02);

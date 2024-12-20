@@ -13,7 +13,6 @@ import Image from 'next/image'
 import { PortableText } from '@portabletext/react'
 
 const HeroSection = ({ props }) => {
-  console.log({props})
   const [isOpen, setIsOpen] = useState(false)
   const overviewVideo: VideoItem = {
     platform: 'vidyard',
