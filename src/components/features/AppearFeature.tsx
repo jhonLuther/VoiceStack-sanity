@@ -69,7 +69,11 @@ export default function AppearFeature({
   // );
 
   const switchIndex = (percentage) => {
-    getIndex(percentage)
+
+    if(scrollPos>actualScrollStart){
+      getIndex(percentage)
+    }
+    
     let index = 0
 
     if (percentage <= 25) index = 0
@@ -134,7 +138,7 @@ export default function AppearFeature({
               <span className=" text-vs-blue">
                 <PhoneIcon></PhoneIcon>
               </span>
-              {data?.testimonialSubheading}
+              {data?.testimonialSubheading} {scrollPos>actualScrollStart ? "true" :"false"}
             </PreText>
             <H2>
             {props?.testimonialheading}

@@ -17,30 +17,30 @@ export default function FeatureSection({ data }) {
     (a, b) => a.testimonialOrder - b.testimonialOrder,
   )
 
-  useEffect(() => {
-    const observerOptions = {
-      root: null,
-      rootMargin: '0px',
-      threshold: 0.5,
-    }
+  // useEffect(() => {
+  //   const observerOptions = {
+  //     root: null,
+  //     rootMargin: '0px',
+  //     threshold: 0.5,
+  //   }
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          const index = entry.target.getAttribute('data-index')
-          setActiveImage(data[index].testimonialImage.url) // Update active image
-        }
-      })
-    }, observerOptions)
+  //   const observer = new IntersectionObserver((entries) => {
+  //     entries.forEach((entry) => {
+  //       if (entry.isIntersecting) {
+  //         const index = entry.target.getAttribute('data-index')
+  //         setActiveImage(data[index].testimonialImage.url) // Update active image
+  //       }
+  //     })
+  //   }, observerOptions)
 
-    featureRefs.current.forEach((ref) => {
-      if (ref) observer.observe(ref)
-    })
+  //   featureRefs.current.forEach((ref) => {
+  //     if (ref) observer.observe(ref)
+  //   })
 
-    return () => {
-      if (observer) observer.disconnect()
-    }
-  }, [data])
+  //   return () => {
+  //     if (observer) observer.disconnect()
+  //   }
+  // }, [data])
 
   const testimonialIndex: number = data?.findIndex(
     (e: any) => e.testimonialSubSection != null,
@@ -50,8 +50,9 @@ export default function FeatureSection({ data }) {
   )
 
   const switchIndex = (percentage) => {
-    if (percentage < 0) setActiveImage(data[0].testimonialImage?.url)
-    else if (percentage <= 25) setActiveImage(sampleImages[1])
+
+
+    if (percentage <= 25 && percentage>0) setActiveImage(sampleImages[0])
     else if (percentage > 25 && percentage <= 50)
       setActiveImage(sampleImages[1])
     else if (percentage > 50 && percentage <= 75)
@@ -61,9 +62,11 @@ export default function FeatureSection({ data }) {
   }
 
   return (
-    <Section className="relative scroll-m-32" id="features" >
+    <Section className="relative bg-[#f9f9f9]" id="features">
+      <div className='bg-vs-lemon-green w-1/2 h-full absolute top-0 right-0 z-0'></div>
       <Container className="relative flex gap-16">
-        <div className="flex flex-col flex-1 gap-32 py-16">
+        
+        <div className="flex flex-col flex-1 py-16">
           {featureData.map((feature, index) =>
             feature?.testimonialSubSection?.length ? (
               <AppearFeature
@@ -76,14 +79,24 @@ export default function FeatureSection({ data }) {
                 props={data[index]}
               />
             ) : (
+
+              <div className='h-[100vh] relative flex'>
+
+              <div className="mt-40 left-0 self-start flex flex-col justify-center">
               <motion.div
                 key={index}
                 ref={(el) => (featureRefs.current[index] = el)}
                 data-index={index}
-                className="cursor-pointer gap-4 flex flex-col"
-                initial={{ opacity: 0, x: -30 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5 }}
+                className={`cursor-pointer gap-4 flex flex-col  self-start justify-center transform`}
+         
+                // initial={{ opacity: 0, x: -30 }}
+                // animate={{ opacity: 1, x: 0 }}
+                // transition={{ duration: 0.5 }}
+                // initial={{ translateY: "50%" }}
+                // whileInView={{translateY:"-50%"}}
+                onViewportEnter={ ()=> setActiveImage(sampleImages[index])}
+    
+                
               >
                 <PreText>
                   <span className="text-vs-blue">
@@ -105,13 +118,15 @@ export default function FeatureSection({ data }) {
                     ))}
                 </ul>
               </motion.div>
+              </div>
+              </div>
             ),
           )}
         </div>
 
         {/* Sticky Image Section */}
         <div
-          className={`flex-1 px-12 bg-vs-lemon-green relative feature-after`}
+          className={`relative`}
         >
           <div className="sticky top-0 py-24 h-[100vh] flex flex-col justify-center">
             <AnimatePresence mode="wait">
@@ -122,13 +137,16 @@ export default function FeatureSection({ data }) {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                transition={{ duration: 0.5 }}
-                className="w-full h-auto rounded-lg shadow-lg md:max-h-[538px] "
+                transition={{ duration: 0.300 }}
+                className="w-full h-auto rounded-lg max-w-full md:max-h-[538px] "
               />
             </AnimatePresence>
           </div>
         </div>
+
       </Container>
+
+      
     </Section>
   )
 }
