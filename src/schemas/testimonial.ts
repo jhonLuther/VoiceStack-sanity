@@ -38,7 +38,31 @@ export default defineType({
     defineField({
       name: 'video',
       title: 'Video',
-      type: 'file',
+      type: 'array',
+      of: [
+        {
+          type: 'object',
+          name: 'videoDetails',
+          title: 'Video Details',
+          fields: [
+            {
+              name: 'videoPlatform',
+              title: 'Video Platform',
+              type: 'string',
+            },
+            {
+              name: 'videoId',
+              title: 'Video Id',
+              type: 'string',
+            },
+            {
+              name: 'videotitle',
+              title: 'Video Title',
+              type: 'string',
+            },
+          ],
+        },
+      ],
     }),
 
     defineField({
