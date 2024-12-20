@@ -127,41 +127,41 @@ export default function AppearFeature({
         }}
         // onScroll={()}
 
-        className="flex flex-col gap-12 w-full"
-      >
-        <div className="flex flex-col gap-4">
-          <PreText>
-            <span className=" text-vs-blue">
-              <PhoneIcon></PhoneIcon>
-            </span>
-            {data?.testimonialSubheading}
-          </PreText>
-          <H2>
-           {props?.testimonialheading}
-          </H2>
-          <Paragraph>
-           {data?.testimonialDescription}
-          </Paragraph>
-        </div>
-        <ul className="flex flex-col gap-4">
-          {data?.testimonialSubSection &&
-            data?.testimonialSubSection?.map((item, i: number) => {
-              return (
-                <ListItem
-                  onClick={handleClick}
-                  key={i}
-                  index={i}
-                  title={item.featureSubHead}
-                  numberOfItems={numberOfItems}
-                  percentScrolled={percentScrolled}
-                  showDesc={i == switchIndex(percentScrolled)}
-                  desc={item.featureSubDescription}
-                >
-                  {' '}
-                </ListItem>
-              )
-            })}
-        </ul>
+          className="flex flex-col gap-12 w-full"
+        >
+          <div className="flex flex-col gap-4">
+            <PreText>
+              <span className=" text-vs-blue">
+                <PhoneIcon></PhoneIcon>
+              </span>
+              {data?.testimonialSubheading}
+            </PreText>
+            <H2>
+            {props?.testimonialheading}
+            </H2>
+            <Paragraph>
+            {data?.testimonialDescription}
+            </Paragraph>
+          </div>
+          <ul className="flex flex-col gap-4">
+            {data?.testimonialSubSection &&
+              data?.testimonialSubSection?.map((item, i: number) => {
+                return (
+                  <ListItem
+                    onClick={handleClick}
+                    key={i}
+                    index={i}
+                    title={item.featureSubHead}
+                    numberOfItems={numberOfItems}
+                    percentScrolled={percentScrolled}
+                    showDesc={i == switchIndex(percentScrolled)}
+                    desc={item.featureSubDescription}
+                  >
+                    {' '}
+                  </ListItem>
+                )
+              })}
+          </ul>
 
         <div className="">
           <Button type="primary">

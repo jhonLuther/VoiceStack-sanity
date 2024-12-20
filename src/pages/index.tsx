@@ -68,8 +68,6 @@ export default function IndexPage(
   props: InferGetStaticPropsType<typeof getServerSideProps>,
 ) {
   const { integrationPlatforms, comparisonTableData } = props
-  console.log(props?.heroSectionData)
-  console.log(props?.featureSectionData, "featuresd")
   const comparisonSectionData = {
     strip: 'The Best-in-class Phone System. For the Best-in-Class Dental Practices.',
     header:

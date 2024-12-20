@@ -13,7 +13,6 @@ import AppearFeature from './AppearFeature'
 export default function FeatureSection({ props }) {
   const [activeImage, setActiveImage] = useState(props[0].testimonialImage?.url);
   const featureRefs = useRef([]);
-  const featureData = props.sort((a, b) => a.testimonialOrder - b.testimonialOrder);
  
 
   useEffect(() => {
@@ -63,9 +62,8 @@ export default function FeatureSection({ props }) {
     <Section className="relative">
       <Container className="relative flex gap-16">
         <div className="flex flex-col flex-1 gap-32 py-16">
-          {featureData.map((feature, index) =>
+          {props && props?.map((feature:any, index:number) =>
             feature?.testimonialSubSection?.length
-            
              ? (
               <AppearFeature
                 key={feature?._id}
