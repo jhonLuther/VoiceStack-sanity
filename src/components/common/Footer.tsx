@@ -257,7 +257,7 @@ const Footer = (props) => {
           <div className='py-6 border-gray-800 border-t'>
             <div className='flex gap-3'>
               <span className='text-gray-600 font-inter text-sm font-medium leading-[115%]'>&copy; VoiceStack 2024</span>
-              <span className='text-gray-600 font-inter text-sm font-medium leading-[115%]'>Made with ♥︎ in Good Methods Global</span>
+              {/* <span className='text-gray-600 font-inter text-sm font-medium leading-[115%]'>Made with ♥︎ in Good Methods Global</span> */}
             </div>
           </div>
         </div>
