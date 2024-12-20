@@ -44,7 +44,7 @@ const HubSpotForm = ({ id, eventName }: { id?: string; eventName?: string }) => 
               //     });
               //   }, 250);
               // },
-            });
+            } as any);
           }
         };
       }

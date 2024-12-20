@@ -90,7 +90,7 @@ export default function FeatureSection({ data }) {
               />
             ) : (
 
-              <div className='h-[100vh] relative flex'>
+              <div className='h-[100vh] relative flex' key={feature?.id}>
 
                 <div className="mt-40 left-0 self-start flex flex-col justify-center">
                   <motion.div
