@@ -4,7 +4,7 @@ import blockContent from './blockContent'
 import layout from './layout'
 import Features from './Features'
 import SiteSettings from './SiteSettings'
-import Testimonials from './Testimonials'
+import Testimonials from './Feature'
 import HomeSettings from './HomeSettings'
 import multipleString from './multipleString'
 import legal from './Legal'
@@ -17,6 +17,7 @@ import heroSubFeature from './heroSubFeature'
 import LogoListing from './LogoListing'
 import featureSubSection from './featureSubSection'
 import faq from './faq'
+import testimonialSection from './testimonial'
 
 export const schemaTypes = [
   layout,
@@ -32,6 +33,7 @@ export const schemaTypes = [
   PlatformList,
   LogoListing,
   featureSubSection,
+  testimonialSection,
   faq
 ]
 
@@ -53,6 +55,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     PlatformList,
     LogoListing,
     featureSubSection,
+    testimonialSection,
     faq
   ],
 }
