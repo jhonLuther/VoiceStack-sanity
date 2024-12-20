@@ -70,9 +70,10 @@ export const getServerSideProps: GetStaticProps<any> = async ({
 export default function IndexPage(
   props: InferGetStaticPropsType<typeof getServerSideProps>,
 ) {
-  
-  if (isEmpty(props)) {
-    return <>Loading ... </>
+
+  const { className, ...rProps} = props
+  if (isEmpty(rProps)) {
+    return <><p className="p-5">Loading ... </p></>
   }
 
   const {
@@ -84,6 +85,7 @@ export default function IndexPage(
     comparisonTableData,
     faqSectionData
   } = props
+
   const comparisonSectionData = {
     strip:
       'The Best-in-class Phone System. For the Best-in-Class Dental Practices.',
@@ -92,7 +94,7 @@ export default function IndexPage(
     columnDimensionName: 'Features',
     table: comparisonTableData,
   }
-  const linkCardSectionData: any = props?.heroSectionData?.heroSubFeature
+  const linkCardSectionData: any = heroSectionData?.heroSubFeature
 
   return (
     <div>
