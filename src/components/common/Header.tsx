@@ -10,6 +10,7 @@ import Image from 'next/image';
 import ButtonArrow from '../icons/ButtonArrow';
 import Button from './Button';
 import TelIcon from '../icons/TelIcon';
+import { FormModal } from './FormModal';
 
 
 export const navigationLinks = [
@@ -25,6 +26,8 @@ const Header = () => {
   const [headerFixed, setHeaderFixed] = useState(false);
   const router = useRouter();
   const pathname = usePathname()
+  
+  const [openForm, setOpenForm] = useState(false)
 
   const closeMenu = () => {
     setShowMenu(false);
@@ -104,7 +107,7 @@ const Header = () => {
                         <a href="tel:+(407) 833-6123" className='text-gray-700 px-[12px] py-[7px] rounded-[7px] text-sm font-medium leading-6 flex items-center whitespace-nowrap gap-[8px]  
                         border border-gray-300'><TelIcon/>(407) 833-6123</a>
                       </div>
-                      <Button type='primarySm' link='#'>
+                      <Button type='primarySm'  onClick={() => {setOpenForm(true)}}>
                         <ButtonArrow></ButtonArrow>
                         <span className="text-base font-medium">{`Book free demo`}</span>
                       </Button>
@@ -117,7 +120,7 @@ const Header = () => {
                       <a href="tel:+(407) 833-6123" className='text-gray-700 px-[12px] py-[7px] rounded-[7px] text-sm font-medium leading-6 flex items-center whitespace-nowrap gap-[8px]  
                       border border-gray-300'><TelIcon/>(407) 833-6123</a>
                     </div>
-                    <Button type='primarySm' link='#'>
+                    <Button type='primarySm' onClick={() => {setOpenForm(true)}}>
                       <ButtonArrow></ButtonArrow>
                       <span className="text-sm font-medium">{`Book free demo`}</span>
                     </Button>
@@ -136,6 +139,12 @@ const Header = () => {
           </div>
         </header>
       </div>
+      {openForm && (
+        <FormModal
+          className={`pt-9  flex items-start`}
+          onClose={() => setOpenForm(false)}
+        />
+      )}
     </>
 
   );

@@ -79,7 +79,6 @@ export const AnimatedBeam: React.FC<AnimatedBeamProps> = ({
         const svgWidth = containerRect.width;
         const svgHeight = containerRect.height;
         setSvgDimensions({ width: svgWidth, height: svgHeight });
-        console.log(containerRect.left)
         const startX =
           rectA.left - containerRect.left + rectA.width / 2 + startXOffset;
         const startY =

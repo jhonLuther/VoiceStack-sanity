@@ -19,8 +19,11 @@ import Button from './common/Button'
 import ButtonArrow from './icons/ButtonArrow'
 import H2 from './typography/H2'
 import Paragraph from './typography/Paragraph'
+import { FormModal } from './common/FormModal'
 
 const LogoListingSection = ({ data }) => {
+  
+  const [openForm, setOpenForm] = useState(false)
   const logos = [
     { image: espireDental, alt: 'Espire Dental', title: 'Espire Dental' },
     { image: westwind, alt: 'Westwind', title: 'Westwind' },
@@ -80,12 +83,18 @@ const LogoListingSection = ({ data }) => {
               })}
           </div>
           <div className="flex gap-4 items-center mt-12 lg:mt-16">
-            <Button type="primary" link="#">
+            <Button type="primary" onClick={() => {setOpenForm(true)}}>
               <ButtonArrow></ButtonArrow>
               <span className="text-base font-medium">{`Book free demo`}</span>
             </Button>
           </div>
         </div>
+        {openForm && (
+            <FormModal
+              className={`pt-9  flex items-start`}
+              onClose={() => setOpenForm(false)}
+            />
+          )}
       </Container>
     </Section>
   )

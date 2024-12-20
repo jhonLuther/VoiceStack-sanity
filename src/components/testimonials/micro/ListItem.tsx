@@ -20,7 +20,6 @@ export default function ListItem(props: any) {
   const endPoint = (props.index+1) * (100/props.numberOfItems)
   const actualPercentScrolled = props.percentScrolled> 0 ?((props.percentScrolled-startPoint)/(endPoint-startPoint))*100 : 0
 
-  // console.log({scrolled:((props.percentScrolled-startPoint)/(endPoint-startPoint))*100})
 
   // Handle click
   // const handleClick = () => {
