@@ -21,11 +21,11 @@ interface VideoProps {
 const getIframeUrl = (platform: VideoPlatform, videoId: string): string => {
   switch (platform) {
     case 'vimeo':
-      return `https://player.vimeo.com/video/${videoId}?autoplay=1`
+      return `https://player.vimeo.com/video/${videoId}`
     case 'vidyard':
-      return `https://play.vidyard.com/${videoId}?autoplay=1`
+      return `https://play.vidyard.com/${videoId}`
     case 'youtube':
-      return `https://www.youtube.com/embed/${videoId}?autoplay=1`
+      return `https://www.youtube.com/embed/${videoId}`
     default:
       throw new Error(`Unsupported platform: ${platform}`)
   }
@@ -71,7 +71,7 @@ export const VideoModal: React.FC<VideoProps> = ({
       <div
         className={`${
           isPopup
-            ? 'relative w-full max-w-xl aspect-[16/9] b rounded-lg'
+            ? 'relative w-full max-w-[800px] aspect-[16/9] b rounded-lg'
             : 'w-full aspect-[16/9] relative'
         }`}
       >
