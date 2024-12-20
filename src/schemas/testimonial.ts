@@ -11,6 +11,11 @@ export default defineType({
       type: 'string',
     }),
     defineField({
+      name: 'order',
+      title: 'Testimonial Order',
+      type: 'number',
+    }),
+    defineField({
       name: 'designation',
       title: 'Designation',
       type: 'string',
@@ -123,10 +128,10 @@ export default defineType({
       of: [{ type: 'string' }],
     }),
     defineField({
-        name: 'language',
-        type: 'string',
-        readOnly: true,
-        hidden: true,
-      }),
+      name: 'language',
+      type: 'string',
+      readOnly: true,
+      hidden: true,
+    }),
   ],
 })

@@ -12,7 +12,7 @@ import React, { useState } from 'react'
 
 function RowHeading({ heading, description }) {
   return (
-    <TableCell className="">
+    <TableCell className="lg:min-w-[330px]">
       <div className='py-4 border-b border-b-gray-200'>
         <p className="text-gray-500 font-inter text-xs lg:text-[15px] font-normal leading-[150%] capitalize text-left">{heading}</p>
         {/* <p className="flex text-gray-600 text-xs font-normal !p-0">
@@ -44,7 +44,6 @@ function ComparisonRichIcon({ comparisonValue, vsIndex }) {
 }
 
 export default function SiteComparisonTable({ data, index, currentIndex, isMobile }) {
-  console.log({data});
   
   const [currentChildIndex, setCurrentChildIndex] = useState<number|null>(0);
 
@@ -75,9 +74,9 @@ export default function SiteComparisonTable({ data, index, currentIndex, isMobil
       <div className={`${(index === currentIndex  && !isMobile) || (index === currentChildIndex && isMobile) ? 'block' : 'hidden'}`}>
 
         <Table className={`md:overflow-hidden bg-white w-full overflow-auto min-w-[700px] mb-[20px]`}>
-          <TableCaption className="hidden">
+          {/* <TableCaption className="hidden">
             A list of your recent invoices.
-          </TableCaption>
+          </TableCaption> */}
           <TableHeader className="">
             <TableRow className="w-full justify-between  py-2 !border-0">
               <TableHead className="justify-start items-center">
@@ -125,7 +124,7 @@ export default function SiteComparisonTable({ data, index, currentIndex, isMobil
                       <TableCell></TableCell>
                       <TableCell></TableCell>
                 </TableRow>
-                {data.tableData.rows.map((row, index) => {
+                {data?.tableData?.rows?.map((row, index) => {
                   return (
                     <TableRow
                       key={index}
@@ -139,7 +138,7 @@ export default function SiteComparisonTable({ data, index, currentIndex, isMobil
                       {row.comparisons.map((comparisonValue, idx) => (
                         <TableCell
                           key={idx}
-                          className={`text-center  justify-center ${idx == 0 ? 'bg-vs-blue/10' : ''}`}
+                          className={`text-center lg:min-w-[162px]  justify-center ${idx == 0 ? 'bg-vs-blue/10' : ''}`}
                         >
                           <ComparisonRichIcon comparisonValue={comparisonValue} vsIndex={idx == 0}/>
                         </TableCell>
