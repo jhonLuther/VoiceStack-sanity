@@ -13,9 +13,9 @@ import AppearFeature from './AppearFeature'
 export default function FeatureSection({ data }) {
   const [activeImage, setActiveImage] = useState(data[0].testimonialImage?.url)
   const featureRefs = useRef([])
-  const featureData = data.sort(
-    (a, b) => a.testimonialOrder - b.testimonialOrder,
-  )
+  // const featureData = data.sort(
+  //   (a, b) => a.testimonialOrder - b.testimonialOrder,
+  // )
 
   // useEffect(() => {
   //   const observerOptions = {
@@ -66,8 +66,8 @@ export default function FeatureSection({ data }) {
       <div className='bg-vs-lemon-green w-1/2 h-full absolute top-0 right-0 z-0'></div>
       <Container className="relative flex gap-16">
         
-        <div className="flex flex-col flex-1 py-16">
-          {featureData.map((feature, index) =>
+        <div className="flex flex-col flex-1 py-20 pb-40">
+          {data.map((feature, index) =>
             feature?.testimonialSubSection?.length ? (
               <AppearFeature
                 key={feature?._id}
@@ -94,7 +94,7 @@ export default function FeatureSection({ data }) {
                 // transition={{ duration: 0.5 }}
                 // initial={{ translateY: "50%" }}
                 // whileInView={{translateY:"-50%"}}
-                onViewportEnter={ ()=> setActiveImage(sampleImages[index])}
+                onViewportEnter={ ()=> setActiveImage(feature.testimonialImage.url)}
     
                 
               >
