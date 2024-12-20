@@ -11,6 +11,7 @@ import TestimonialCard from '../common/TestimonialCard'
 import data from '../../migrations/testimonials.json'
 import { VideoItem, VideoModal } from '../common/VideoModal'
 import { isEmpty } from 'lodash'
+import { FormModal } from '../common/FormModal'
 
 const enterpriseItems = [
   'IVR & Call Routing',
@@ -50,7 +51,9 @@ const conversationalFeatures = [
 
 export default function Testimonails({ data }) {
 
-  console.log({testData: data})
+  // console.log({testData: data})
+  
+  const [openForm, setOpenForm] = useState(false)
   if (isEmpty(data)) {
     return (
       <>
@@ -73,6 +76,8 @@ export default function Testimonails({ data }) {
   // const containerRef = useRef<HTMLDivElement>(null);
 
   const handleOpenVideo = (video: VideoItem) => {
+    console.log({video});
+    
     setSelectedVideo(video)
     setIsOpen(true)
   }
@@ -181,7 +186,7 @@ export default function Testimonails({ data }) {
           </div>
 
           <div className="flex gap-4 items-center">
-            <Button type="primary" link="#">
+            <Button type="primary"   onClick={() => {setOpenForm(true)}}>
               <ButtonArrow></ButtonArrow>
               <span className="text-base font-medium">{`Book free demo`}</span>
             </Button>
@@ -196,6 +201,12 @@ export default function Testimonails({ data }) {
             onClose={() => setIsOpen(false)}
           />
         )}
+        {openForm && (
+            <FormModal
+              className={`pt-9  flex items-start`}
+              onClose={() => setOpenForm(false)}
+            />
+          )}
       </Container>
     </Section>
   )

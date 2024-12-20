@@ -8,10 +8,13 @@ import ButtonArrow from './icons/ButtonArrow'
 import { PlayIcon } from 'lucide-react'
 import { VideoItem, VideoModal } from './common/VideoModal'
 import Image from 'next/image'
+import { FormModal } from './common/FormModal'
 
 const BannerSection = () => {
   
   const [isOpen, setIsOpen] = useState(false);
+  
+  const [openForm, setOpenForm] = useState(false)
   const overviewVideo:VideoItem = {
     platform: 'vidyard',
     videoId: "Hj4GYLXARVjqQEnaejq3Bz",
@@ -27,7 +30,7 @@ const BannerSection = () => {
                 Start Your Practice Growth Journey With VoiceStack.
               </h2>
               <div className='flex gap-4 items-center flex-col md:flex-row relative z-[1]'>
-                <Button type='primaryWhite' link='#'>
+                <Button type='primaryWhite'   onClick={() => {setOpenForm(true)}}>
                   <ButtonArrow></ButtonArrow>
                   <span className="text-base font-medium">{`Book free demo`}</span>
                 </Button>
@@ -53,6 +56,12 @@ const BannerSection = () => {
           />
         )}
       </div>
+        {openForm && (
+          <FormModal
+            className={`pt-9  flex items-start`}
+            onClose={() => setOpenForm(false)}
+          />
+        )}
     </Section>
   )
 }

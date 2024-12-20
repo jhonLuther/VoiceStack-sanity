@@ -10,6 +10,7 @@ import SiteComparisonTable from './SiteComparisonTable'
 import TableTabset from './TableTabSet'
 import Button from './common/Button'
 import ButtonArrow from './icons/ButtonArrow'
+import { FormModal } from './common/FormModal'
 
 function SiteComparisonSection({ data }) {
   // console.log(data,'comparison main data');
@@ -18,6 +19,8 @@ function SiteComparisonSection({ data }) {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [isOpen, setIsOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  
+  const [openForm, setOpenForm] = useState(false)
 
   useEffect(() => {
     const checkWidth = () => {
@@ -39,7 +42,7 @@ function SiteComparisonSection({ data }) {
       <Container className="flex flex-col items-center">
         
         <div className="flex justify-center w-full mb-12">
-          <div className='flex flex-col w-full max-w-[780px] text-center gap-4'>
+          <div className='flex flex-col w-full max-w-[635px] text-center gap-4'>
             <H2>{data?.strip}</H2>
             <Paragraph>{data.header}</Paragraph>
           </div>
@@ -83,12 +86,18 @@ function SiteComparisonSection({ data }) {
           url={data?.cta.url ?? '/'}
         /> */}
         <div className='flex gap-4 items-center mt-12 lg:mt-16'>
-            <Button type='primary' link='#'>
+            <Button type='primary'   onClick={() => {setOpenForm(true)}}>
               <ButtonArrow></ButtonArrow>
               <span className="text-base font-medium">{`Book free demo`}</span>
             </Button>
           </div>
       </Container>
+        {openForm && (
+          <FormModal
+            className={`pt-9  flex items-start`}
+            onClose={() => setOpenForm(false)}
+          />
+        )}
     </Section>
   )
 }

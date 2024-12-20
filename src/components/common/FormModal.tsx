@@ -37,7 +37,7 @@ export const FormModal: React.FC<FormModalProps> = ({
       >
        
         <div
-          className="relative transform overflow-hidden rounded-lg min-h-[706px ]
+          className="relative transform overflow-hidden rounded-lg min-h-[706px]
           bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg"
         >
           <div className="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">

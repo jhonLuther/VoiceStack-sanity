@@ -44,12 +44,12 @@ const TestimonialCard = forwardRef<HTMLDivElement, TestimonialCardProps>(
                 alt={`${data?.name || "Testimonial"}`}
                 className="w-full h-full object-cover"
               />
-              {data?.video[0] && data.video[0].videoId && (
+              {/* {data?.video[0] && data.video[0].videoId && (
                 <div className="cursor-pointer absolute bottom-3 right-3 flex gap-2 font-medium text-base
                   items-center rounded-full py-2 pr-4 pl-2 bg-white text-gray-900 shadow-[0px_4px_20px_0px_rgba(0,0,0,0.20)]" onClick={() => onOpenVideo(data.video[0])}>
                   <span><VideoPlayIcon/></span>Watch
                 </div>
-              )}
+              )} */}
             </div>
           )}
           
