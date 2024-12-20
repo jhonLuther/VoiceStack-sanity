@@ -79,7 +79,8 @@ export default defineConfig({
         'comparisonTable',
         'comparisonValue',
         'testimonialSection',
-        'logoListing'
+        'logoListing',
+        'platform'
       ],
     }),
 
@@ -123,11 +124,7 @@ export default defineConfig({
                   .schemaType('comparisonTable')
                   .documentId('comparisonTable'),
               ),
-            S.listItem()
-              .title('Platform')
-              .child(
-                S.document().schemaType('platform').documentId('platform'),
-              ),
+            
             // S.listItem()
             // .title('Platform')
             // .child(
@@ -142,6 +139,7 @@ export default defineConfig({
             // S.documentTypeListItem('feature').title('Feature'),
             S.documentTypeListItem('legal').title('Legal'),
             S.documentTypeListItem('comparisonValue').title('Comparison Value'),
+            S.documentTypeListItem('platform').title('IntegrationList'),
             S.documentTypeListItem('platformList').title('PlatformList'),
             S.documentTypeListItem('logoListing').title('logoListing'),
             S.documentTypeListItem('faq').title('Faq'),
