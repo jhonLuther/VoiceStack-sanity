@@ -14,7 +14,7 @@ const BannerSection = () => {
   const [isOpen, setIsOpen] = useState(false);
   const overviewVideo:VideoItem = {
     platform: 'vidyard',
-    videoId: "xpr7bMJc1SDnQSyTRErAYc",
+    videoId: "Hj4GYLXARVjqQEnaejq3Bz",
   }
   
   return (
@@ -26,7 +26,7 @@ const BannerSection = () => {
               <h2 className='text-gray-50 text-center font-manrope text-4xl md:text-5xl font-bold leading-[1.1667] tracking-[-0.96px] w-full max-w-[630px]'>
                 Start Your Practice Growth Journey With VoiceStack.
               </h2>
-              <div className='flex gap-4 items-center flex-col md:flex-row'>
+              <div className='flex gap-4 items-center flex-col md:flex-row relative z-[1]'>
                 <Button type='primaryWhite' link='#'>
                   <ButtonArrow></ButtonArrow>
                   <span className="text-base font-medium">{`Book free demo`}</span>

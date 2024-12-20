@@ -56,7 +56,7 @@ function SiteComparisonSection({ data }) {
               data.table.rowCategories.map((tableData:any, index:number) =>{
                 return (
                   <SiteComparisonTable 
-                    key={index}
+                    key={index+1}
                     index={index}
                     currentIndex={currentIndex}
                     isMobile={isMobile}

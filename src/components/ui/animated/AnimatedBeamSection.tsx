@@ -14,7 +14,7 @@ interface AnimatedBeamSectionProps {
 export const AnimatedBeamSection: React.FC<AnimatedBeamSectionProps> = ({ data }) => {
 
   return (
-    <Section className="py-24">
+    <Section className="py-24" id="integrations">
       <Container className="w-full gap-16 flex flex-col items-center ">
         <div className='flex flex-col w-full items-center max-w-[780px] text-center gap-4'>
           <div className='flex items-center justify-center'>

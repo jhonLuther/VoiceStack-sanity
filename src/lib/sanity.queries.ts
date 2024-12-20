@@ -72,9 +72,8 @@ export const heroSectionQuery_ = groq`
 export const AboutQuery = groq`*[_type == "siteSettings"]{"about":ogDescription
 }`
 
-export async function heroSection(client: SanityClient, region: string) {
-  const query = 
-   groq`*[_type == "homeSettings" && language == $region][0]{
+export async function getHeroSectionData(client: SanityClient, region: string) {
+  const query = groq`*[_type == "homeSettings" && language == $region][0]{
       ...,
       "heroSubFeature": heroSubFeature[]->{
         "heading": heroSubFeatureHeading,
@@ -84,11 +83,28 @@ export async function heroSection(client: SanityClient, region: string) {
         "href": "/:hankey:"
       }
     }
-  `;
-  
-  return await client.fetch(query, { region });
-}
+  `
 
+  return await client.fetch(query, { region })
+}
+export async function getTestimonialSecitonData(
+  client: SanityClient,
+  region: string,
+) {
+  const query = groq`*[_type == "homeSettings" && language == $region][0]{
+      ...,
+      "heroSubFeature": heroSubFeature[]->{
+        "heading": heroSubFeatureHeading,
+        "description": heroSubFeatureContent,
+        "icon": heroSubFeatureIcon.asset->url,
+        "label": "Learn More",
+        "href": "#"
+      }
+    }
+  `
+
+  return await client.fetch(query, { region })
+}
 
 
 export async function logoSection(client: SanityClient, region: string) {

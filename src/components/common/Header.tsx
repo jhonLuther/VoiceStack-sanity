@@ -13,8 +13,8 @@ import TelIcon from '../icons/TelIcon';
 
 
 export const navigationLinks = [
-  { href: "#", label: "Features" },
-  { href: "#", label: "Integrations" },
+  { href: "#features", label: "Features" },
+  { href: "#integrations", label: "Integrations" },
   { href: "#comparison", label: "Comparison" },
   { href: "#", label: "Contact Us" },
 ];
@@ -87,7 +87,7 @@ const Header = () => {
                       <nav className="flex flex-col lg:flex-row gap-y-4 gap-x-4 lg:gap-x-8 flex-wrap ">
                         {navigationLinks && navigationLinks?.map((link:any, i) => (
                           <Link
-                            key={link.href}
+                            key={link.href+i}
                             href={link.href}
                             className={`text-gray-700 text-base font-medium leading-[1.15] text-center`}
                           >

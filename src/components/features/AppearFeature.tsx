@@ -57,7 +57,7 @@ export default function AppearFeature({
 
   const actualScrollStart =
     sectionStartY + scrollRef?.current?.offsetHeight + 160
-  const sectionEndY = sectionStartY + scrollRef?.current?.offsetHeight * 2
+  const sectionEndY = sectionStartY + scrollRef?.current?.offsetHeight * 4
   // const sectionEndY = typeof window !== 'undefined' 
   //       ? sectionStartY + (window.innerHeight * 3) 
   //       : 0;
@@ -107,26 +107,25 @@ export default function AppearFeature({
   })
 
   return (
-    <div className='h-[300vh]'>
-
-      <div
-        data-index={index ? index : 1}
-        id={dataIndex}
-        ref={scrollRef}
-        className="sticky top-40 left-0 "
-        
-        // style={{
-        //   marginBottom: `${scrollRef?.current?.offsetHeight * 1.5 - 160}px`,
-        // }}
-      >
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ root: scrollRef }}
-          onViewportEnter={() => {
-            sectionStartY > 1 ? '' : setSectionStartY(scrollPos)
-          }}
-          // onScroll={()}
+    <div style={{height:`${scrollRef?.current?.offsetHeight * 4}px`}}>
+    <div
+      data-index={index ? index : 1}
+      id={dataIndex}
+      ref={scrollRef}
+      className="sticky top-40 left-0 "
+      
+      // style={{
+      //   marginBottom: `${scrollRef?.current?.offsetHeight * 1.5 - 160}px`,
+      // }}
+    >
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ root: scrollRef }}
+        onViewportEnter={() => {
+          sectionStartY > 1 ? '' : setSectionStartY(scrollPos)
+        }}
+        // onScroll={()}
 
           className="flex flex-col gap-12 w-full"
         >
@@ -164,14 +163,14 @@ export default function AppearFeature({
               })}
           </ul>
 
-          <div className="">
-            <Button type="primary">
-              <ButtonArrow></ButtonArrow>
-              <span className="text-base font-medium">{`Book free demo`}</span>
-            </Button>
-          </div>
-        </motion.div>
-      </div>
+        <div className="">
+          <Button type="primary">
+            <ButtonArrow></ButtonArrow>
+            <span className="text-base font-medium">{`Book free demo`}</span>
+          </Button>
+        </div>
+      </motion.div>
+    </div>
     </div>
   )
 }
