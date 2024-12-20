@@ -57,10 +57,10 @@ export default function AppearFeature({
 
   const actualScrollStart =
     sectionStartY + scrollRef?.current?.offsetHeight + 160
-  // const sectionEndY = sectionStartY + scrollRef?.current?.offsetHeight * 2
-  const sectionEndY = typeof window !== 'undefined' 
-        ? sectionStartY + (window.innerHeight * 3) 
-        : 0;
+  const sectionEndY = sectionStartY + scrollRef?.current?.offsetHeight * 2
+  // const sectionEndY = typeof window !== 'undefined' 
+  //       ? sectionStartY + (window.innerHeight * 3) 
+  //       : 0;
   const percentScrolled =
     ((actualScrollStart - scrollPos) / (actualScrollStart - sectionEndY)) * 100
   const [activeItemIndex, setActiveItemIndex] = useState(null)
@@ -107,68 +107,71 @@ export default function AppearFeature({
   })
 
   return (
-    <div
-      data-index={index ? index : 1}
-      id={dataIndex}
-      ref={scrollRef}
-      className="sticky top-40 left-0 "
-      
-      // style={{
-      //   marginBottom: `${scrollRef?.current?.offsetHeight * 1.5 - 160}px`,
-      // }}
-    >
-      <motion.div
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ root: scrollRef }}
-        onViewportEnter={() => {
-          sectionStartY > 1 ? '' : setSectionStartY(scrollPos)
-        }}
-        // onScroll={()}
+    <div className='h-[300vh]'>
 
-        className="flex flex-col gap-12 w-full"
+      <div
+        data-index={index ? index : 1}
+        id={dataIndex}
+        ref={scrollRef}
+        className="sticky top-40 left-0 "
+        
+        // style={{
+        //   marginBottom: `${scrollRef?.current?.offsetHeight * 1.5 - 160}px`,
+        // }}
       >
-        <div className="flex flex-col gap-4">
-          <PreText>
-            <span className=" text-vs-blue">
-              <PhoneIcon></PhoneIcon>
-            </span>
-            {data?.testimonialSubheading}
-          </PreText>
-          <H2>
-           {props?.testimonialheading}
-          </H2>
-          <Paragraph>
-           {data?.testimonialDescription}
-          </Paragraph>
-        </div>
-        <ul className="flex flex-col gap-4">
-          {data?.testimonialSubSection &&
-            data?.testimonialSubSection?.map((item, i: number) => {
-              return (
-                <ListItem
-                  onClick={handleClick}
-                  key={i}
-                  index={i}
-                  title={item.featureSubHead}
-                  numberOfItems={numberOfItems}
-                  percentScrolled={percentScrolled}
-                  showDesc={i == switchIndex(percentScrolled)}
-                  desc={item.featureSubDescription}
-                >
-                  {' '}
-                </ListItem>
-              )
-            })}
-        </ul>
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ root: scrollRef }}
+          onViewportEnter={() => {
+            sectionStartY > 1 ? '' : setSectionStartY(scrollPos)
+          }}
+          // onScroll={()}
 
-        <div className="">
-          <Button type="primary">
-            <ButtonArrow></ButtonArrow>
-            <span className="text-base font-medium">{`Book free demo`}</span>
-          </Button>
-        </div>
-      </motion.div>
+          className="flex flex-col gap-12 w-full"
+        >
+          <div className="flex flex-col gap-4">
+            <PreText>
+              <span className=" text-vs-blue">
+                <PhoneIcon></PhoneIcon>
+              </span>
+              {data?.testimonialSubheading}
+            </PreText>
+            <H2>
+            {props?.testimonialheading}
+            </H2>
+            <Paragraph>
+            {data?.testimonialDescription}
+            </Paragraph>
+          </div>
+          <ul className="flex flex-col gap-4">
+            {data?.testimonialSubSection &&
+              data?.testimonialSubSection?.map((item, i: number) => {
+                return (
+                  <ListItem
+                    onClick={handleClick}
+                    key={i}
+                    index={i}
+                    title={item.featureSubHead}
+                    numberOfItems={numberOfItems}
+                    percentScrolled={percentScrolled}
+                    showDesc={i == switchIndex(percentScrolled)}
+                    desc={item.featureSubDescription}
+                  >
+                    {' '}
+                  </ListItem>
+                )
+              })}
+          </ul>
+
+          <div className="">
+            <Button type="primary">
+              <ButtonArrow></ButtonArrow>
+              <span className="text-base font-medium">{`Book free demo`}</span>
+            </Button>
+          </div>
+        </motion.div>
+      </div>
     </div>
   )
 }

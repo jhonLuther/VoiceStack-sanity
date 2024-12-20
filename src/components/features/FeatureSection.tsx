@@ -64,7 +64,6 @@ export default function FeatureSection({ props }) {
         <div className="flex flex-col flex-1 gap-32 py-16">
           {props && props?.map((feature:any, index:number) =>
             feature?.testimonialSubSection?.length
-            
              ? (
               <AppearFeature
                 key={feature?._id}
