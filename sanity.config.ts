@@ -136,13 +136,14 @@ export default defineConfig({
 
             S.documentTypeListItem('homeSettings').title('homeSettings'),
             S.documentTypeListItem('testimonial').title('FeatureSection'),
+            S.documentTypeListItem('testimonialSection').title('Testimonial'),
             // S.documentTypeListItem('feature').title('Feature'),
             S.documentTypeListItem('legal').title('Legal'),
             S.documentTypeListItem('comparisonValue').title('Comparison Value'),
             S.documentTypeListItem('platformList').title('PlatformList'),
             S.documentTypeListItem('logoListing').title('logoListing'),
             S.documentTypeListItem('faq').title('Faq'),
-            S.documentTypeListItem('testimonialSection').title('Testimonial'),
+           
             // S.documentTypeListItem('platform').title('Platform'),
           ]),
     }),
