@@ -13,6 +13,7 @@ import PhoneIcon from './micro/icons/PhoneIcon'
 import Button from '../common/Button'
 import ButtonArrow from '../icons/ButtonArrow'
 import ListItem from './micro/ListItem'
+import { FormModal } from '../common/FormModal'
 
 // const conversationalFeatures = [
 //   {
@@ -44,6 +45,7 @@ export default function AppearFeature({
 }: any) {
 
   const { scrollY } = useScroll()
+  const [openForm, setOpenForm] = useState(false)
   const [scrollPos, setScrollPos] = useState(0)
   const [sectionStartY, setSectionStartY] = useState(0)
   const [currentItem, setcurrentItem] = useState<Number>(0)
@@ -168,13 +170,20 @@ export default function AppearFeature({
           </ul>
 
         <div className="">
-          <Button type="primary">
-            <ButtonArrow></ButtonArrow>
-            <span className="text-base font-medium">{`Book free demo`}</span>
-          </Button>
+        <Button type="primary" onClick={() => {setOpenForm(true)}}>
+              <ButtonArrow></ButtonArrow>
+              <span className="text-base font-medium">{`Book free demo`}</span>
+            </Button>
         </div>
       </motion.div>
     </div>
+    {openForm && (
+            <FormModal
+              className={`pt-9  flex items-start`}
+              onClose={() => setOpenForm(false)}
+            />
+          )}
     </div>
+    
   )
 }

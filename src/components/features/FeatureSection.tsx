@@ -11,8 +11,10 @@ import PhoneIcon from './micro/icons/PhoneIcon'
 import AppearFeature from './AppearFeature'
 import Button from '../common/Button'
 import ButtonArrow from '../icons/ButtonArrow'
+import { FormModal } from '../common/FormModal'
 
 export default function FeatureSection({ data }) {
+  const [openForm, setOpenForm] = useState(false)
   const [activeImage, setActiveImage] = useState(data[0].testimonialImage?.url)
   const featureRefs = useRef([])
   // const featureData = data.sort(
@@ -43,6 +45,11 @@ export default function FeatureSection({ data }) {
   //     if (observer) observer.disconnect()
   //   }
   // }, [data])
+
+
+  const openModal = () =>{
+    setOpenForm(true)
+  }
 
   const testimonialIndex: number = data?.findIndex(
     (e: any) => e.testimonialSubSection != null,
@@ -79,6 +86,7 @@ export default function FeatureSection({ data }) {
                 data-index={1}
                 data={feature}
                 props={data[index]}
+          
               />
             ) : (
 
@@ -121,10 +129,10 @@ export default function FeatureSection({ data }) {
                     </ul>
 
                     <div className='mt-4'>
-                      <Button type="primary">
-                        <ButtonArrow></ButtonArrow>
-                        <span className="text-base font-medium">{`Book free demo`}</span>
-                      </Button>
+                    <Button type="primary" onClick={() => {setOpenForm(true)}}>
+              <ButtonArrow></ButtonArrow>
+              <span className="text-base font-medium">{`Book free demo`}</span>
+            </Button>
                     </div>
                   </motion.div>
                 </div>
@@ -154,6 +162,13 @@ export default function FeatureSection({ data }) {
         </div>
 
       </Container>
+
+      {openForm && (
+            <FormModal
+              className={`pt-9  flex items-start`}
+              onClose={() => setOpenForm(false)}
+            />
+          )}
 
 
     </Section>
