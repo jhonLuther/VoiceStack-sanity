@@ -24,8 +24,15 @@ const Header = () => {
 
   const [showMenu, setShowMenu] = useState(false);
   const [headerFixed, setHeaderFixed] = useState(false);
+  const [isUk, setIsUk] = useState(false);
   const router = useRouter();
   const pathname = usePathname()
+  console.log(router.locale);
+
+  useEffect(()=>{
+    setIsUk(router.locale == "en-GB");
+  },[router.locale])
+  
   
   const [openForm, setOpenForm] = useState(false)
 
@@ -88,16 +95,22 @@ const Header = () => {
                     <div className={`lg:flex-row top-[110px] right-0 px-4 pt-4 pb-8 lg:p-0 bg-white lg:bg-transparent left-0 lg:static flex-col 
                       gap-2 justify-between items-center flex`}>
                       <nav className="flex flex-col lg:flex-row gap-y-4 gap-x-4 lg:gap-x-8 flex-wrap ">
-                        {navigationLinks && navigationLinks?.map((link:any, i) => (
-                          <Link
-                            key={link.href+i}
-                            href={link.href}
-                            className={`text-gray-700 text-base font-medium leading-[1.15] text-center`}
-                          >
-                            {link.label}
-                          </Link>
+                        {navigationLinks && navigationLinks?.map((link:any, i) => {
+                          if (link.label === "Comparison" && isUk) {
+                            return null;
+                          }
+                        
+                          return (
+                            <Link
+                              key={link.href + i}
+                              href={link.href}
+                              className="text-gray-700 text-base font-medium leading-[1.15] text-center"
+                            >
+                              {link.label}
+                            </Link>
+                          );
 
-                        ))}
+                        })}
                       </nav>
                     </div>
 

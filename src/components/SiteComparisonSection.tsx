@@ -11,13 +11,21 @@ import TableTabset from './TableTabSet'
 import Button from './common/Button'
 import ButtonArrow from './icons/ButtonArrow'
 import { FormModal } from './common/FormModal'
+import { useRouter } from 'next/router'
 
 function SiteComparisonSection({ data }) {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [isOpen, setIsOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   
-  const [openForm, setOpenForm] = useState(false)
+  const [openForm, setOpenForm] = useState(false);
+  
+  const [isUk, setIsUk] = useState(false);
+  const router = useRouter();
+
+  useEffect(()=>{
+    setIsUk(router.locale == "en-GB");
+  },[router.locale])
 
   useEffect(() => {
     const checkWidth = () => {
@@ -35,67 +43,72 @@ function SiteComparisonSection({ data }) {
   }, []);
   
   return (
-    <Section id="comparison" className="py-12 md:py-24 scroll-m-16">
-      <Container className="flex flex-col items-center">
-        
-        <div className="flex justify-center w-full mb-12">
-          <div className='flex flex-col w-full max-w-[635px] text-center gap-4'>
-            <H2>{data?.strip}</H2>
-            <Paragraph>{data.header}</Paragraph>
+    isUk ? (
+      <></> 
+    ):(
+      <Section id="comparison" className="py-12 md:py-24 scroll-m-16">
+        <Container className="flex flex-col items-center">
+          
+          <div className="flex justify-center w-full mb-12">
+            <div className='flex flex-col w-full max-w-[635px] text-center gap-4'>
+              <H2>{data?.strip}</H2>
+              <Paragraph>{data.header}</Paragraph>
+            </div>
           </div>
-        </div>
-        <div className='flex flex-col gap-12 items-center w-full'>
-          <TableTabset
-            tabs={data?.table.rowCategories}
-            currentIndex={currentIndex}
-            setCurrentIndex={setCurrentIndex}
-          />
+          <div className='flex flex-col gap-12 items-center w-full'>
+            <TableTabset
+              tabs={data?.table.rowCategories}
+              currentIndex={currentIndex}
+              setCurrentIndex={setCurrentIndex}
+            />
+  
+            <div className='w-full'>
+              {data.table.rowCategories.length && (
+                data.table.rowCategories.map((tableData:any, index:number) =>{
+                  return (
+                    <SiteComparisonTable 
+                      key={index+1}
+                      index={index}
+                      currentIndex={currentIndex}
+                      isMobile={isMobile}
+                      data={{
+                        columnDimensionName: data.columnDimensionName,
+                        headerLogos: data.table.columns,
+                        tableData,
+                      }}
+                    />
+                  )
+                })
+              )}
+              {/* <SiteComparisonTable
+                data={{
+                  columnDimensionName: data.columnDimensionName,
+                  ...data.table,
+                }}
+              /> */}
+            </div>
+          </div>
+          {/* <CTAButton
+            className="px-6 py-3"
+            name={data?.cta.name ?? ''}
+            url={data?.cta.url ?? '/'}
+          /> */}
+          <div className='flex gap-4 items-center mt-12 lg:mt-16'>
+              <Button type='primary'   onClick={() => {setOpenForm(true)}}>
+                <ButtonArrow></ButtonArrow>
+                <span className="text-base font-medium">{`Book free demo`}</span>
+              </Button>
+            </div>
+        </Container>
+          {openForm && (
+            <FormModal
+              className={`pt-9  flex items-start`}
+              onClose={() => setOpenForm(false)}
+            />
+          )}
+      </Section>
+    )
 
-          <div className='w-full'>
-            {data.table.rowCategories.length && (
-              data.table.rowCategories.map((tableData:any, index:number) =>{
-                return (
-                  <SiteComparisonTable 
-                    key={index+1}
-                    index={index}
-                    currentIndex={currentIndex}
-                    isMobile={isMobile}
-                    data={{
-                      columnDimensionName: data.columnDimensionName,
-                      headerLogos: data.table.columns,
-                      tableData,
-                    }}
-                  />
-                )
-              })
-            )}
-            {/* <SiteComparisonTable
-              data={{
-                columnDimensionName: data.columnDimensionName,
-                ...data.table,
-              }}
-            /> */}
-          </div>
-        </div>
-        {/* <CTAButton
-          className="px-6 py-3"
-          name={data?.cta.name ?? ''}
-          url={data?.cta.url ?? '/'}
-        /> */}
-        <div className='flex gap-4 items-center mt-12 lg:mt-16'>
-            <Button type='primary'   onClick={() => {setOpenForm(true)}}>
-              <ButtonArrow></ButtonArrow>
-              <span className="text-base font-medium">{`Book free demo`}</span>
-            </Button>
-          </div>
-      </Container>
-        {openForm && (
-          <FormModal
-            className={`pt-9  flex items-start`}
-            onClose={() => setOpenForm(false)}
-          />
-        )}
-    </Section>
   )
 }
 
