@@ -12,11 +12,14 @@ import AppearFeature from './AppearFeature'
 import Button from '../common/Button'
 import ButtonArrow from '../icons/ButtonArrow'
 import { FormModal } from '../common/FormModal'
+import useMediaQuery from '~/utils/mediaQuery'
 
 export default function FeatureSection({ data }) {
   const [openForm, setOpenForm] = useState(false)
   const [activeImage, setActiveImage] = useState(data[0].testimonialImage?.url)
   const featureRefs = useRef([])
+  const isMobile: any = useMediaQuery(767);
+
   // const featureData = data.sort(
   //   (a, b) => a.testimonialOrder - b.testimonialOrder,
   // )
@@ -47,7 +50,7 @@ export default function FeatureSection({ data }) {
   // }, [data])
 
 
-  const openModal = () =>{
+  const openModal = () => {
     setOpenForm(true)
   }
 
@@ -59,6 +62,7 @@ export default function FeatureSection({ data }) {
   )
 
   const switchIndex = (percentage) => {
+    if(isMobile) return
 
 
     if (percentage <= 25 && percentage > 0) setActiveImage(sampleImages[0])
@@ -70,43 +74,39 @@ export default function FeatureSection({ data }) {
       setActiveImage(sampleImages[3])
   }
 
-  return (
-    <Section className="relative bg-[#f9f9f9]" id="features">
-      <div className='bg-vs-lemon-green w-1/2 h-full absolute top-0 right-0 z-0'></div>
-      <Container className="relative flex gap-16">
+  const getIndexfromAppear = (index) => {
+    setActiveImage(isMobile && sampleImages[index])
+  }
 
-        <div className="flex w-1/2 flex-col flex-1 py-20 pb-40">
+  return (
+    <Section className="relative bg-[#f9f9f9] " id="features">
+      {!isMobile && <div className='bg-white md:bg-vs-lemon-green w-1/2 h-full absolute top-0 right-0 z-0'></div>}
+      <Container className="relative flex gap-16 md:flex-row flex-col">
+
+        <div className="flex md:gap-0 gap-6  md:w-1/2 w-full flex-col flex-1 md:py-20 md:pb-40">
           {data.map((feature, index) =>
             feature?.testimonialSubSection?.length ? (
               <AppearFeature
                 key={feature?._id}
                 getIndex={(percentage) => switchIndex(percentage)}
+                getIndexfromAppear={(index) => getIndexfromAppear(index)}
                 ref={featureRefs.current[1]}
                 index={index}
                 data-index={1}
                 data={feature}
                 props={data[index]}
-          
               />
             ) : (
 
-              <div className='h-[100vh] relative flex' key={feature?.id}>
+              <div className='md:h-[100vh]  relative flex' key={feature?.id}>
 
-                <div className="mt-40 left-0 self-start flex flex-col justify-center">
+                <div className="md:mt-40 mt-5 left-0 self-start flex flex-col justify-center">
                   <motion.div
                     key={index}
                     ref={(el) => (featureRefs.current[index] = el)}
                     data-index={index}
                     className={`cursor-pointer gap-4 flex flex-col  self-start justify-center transform`}
-
-                    // initial={{ opacity: 0, x: -30 }}
-                    // animate={{ opacity: 1, x: 0 }}
-                    // transition={{ duration: 0.5 }}
-                    // initial={{ translateY: "50%" }}
-                    // whileInView={{translateY:"-50%"}}
                     onViewportEnter={() => setActiveImage(feature.testimonialImage.url)}
-
-
                   >
                     <PreText>
                       <span className="text-vs-blue">
@@ -128,24 +128,34 @@ export default function FeatureSection({ data }) {
                         ))}
                     </ul>
 
-                    <div className='mt-4'>
-                    <Button type="primary" onClick={() => {setOpenForm(true)}}>
-              <ButtonArrow></ButtonArrow>
-              <span className="text-base font-medium">{`Book free demo`}</span>
-            </Button>
+                    <div className='mt-4 flex md:justify-start justify-center'>
+                      <Button type="primary" onClick={() => { setOpenForm(true) }}>
+                        <ButtonArrow></ButtonArrow>
+                        <span className="text-base font-medium">{`Book free demo`}</span>
+                      </Button>
                     </div>
+
+                    {isMobile && feature.testimonialImage && feature.testimonialImage.url &&
+                      <div className='bg-vs-lemon-green mx-[-16px] h-full z-0'>
+                        <motion.img
+                          key={activeImage}
+                          src={feature.testimonialImage.url}
+                          alt="Active Feature"
+                        />
+                      </div>
+                    }
                   </motion.div>
                 </div>
               </div>
-            ),
+            )
           )}
         </div>
 
         {/* Sticky Image Section */}
-        <div
-          className={`relative w-1/2`}
+        { <div
+          className={`relative mx-[-16px]   bg-vs-lemon-green md:w-1/2 w-auto h-full`}
         >
-          <div className="sticky top-0 py-24 h-[100vh] flex flex-col justify-center pl-12">
+          <div className="sticky top-0 md:py-24 md:h-[100vh] flex flex-col justify-center md:pl-12 ">
             <AnimatePresence mode="wait">
               <motion.img
                 key={activeImage}
@@ -155,20 +165,20 @@ export default function FeatureSection({ data }) {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.300 }}
-                className="w-auto h-auto rounded-lg max-w-full bg-black/5 md:max-h-[538px] "
+                className="w-auto h-auto  rounded-lg max-w-full bg-black/5 md:max-h-[538px] "
               />
             </AnimatePresence>
           </div>
-        </div>
+        </div>}
 
       </Container>
 
       {openForm && (
-            <FormModal
-              className={`pt-9  flex items-start`}
-              onClose={() => setOpenForm(false)}
-            />
-          )}
+        <FormModal
+          className={`pt-9  flex items-start`}
+          onClose={() => setOpenForm(false)}
+        />
+      )}
 
 
     </Section>
