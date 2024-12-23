@@ -37,7 +37,7 @@ export const getServerSideProps: GetStaticProps<any> = async ({
 }) => {
   const region = locale
   const client = getClient(draftMode ? { token: readToken } : undefined)
-  const homeSettings = await runQuery(getALLHomeSettings(region))
+  const homeSettings = await getALLHomeSettings(client, region)
   const siteSettings = await runQuery(getALLSiteSettings(region))
   const founderDetails = await runQuery(getFounderDetails(region))
   const comparisonTableData = await runQuery(getComparisonTableData(region))
@@ -77,6 +77,7 @@ export default function IndexPage(
   }
 
   const {
+    homeSettings,
     heroSectionData,
     testimonialSecitonData,
     logoSectionData,
@@ -103,8 +104,8 @@ export default function IndexPage(
           <CustomHead {...props} />
           {/* <Content {...props} /> */}
           <div className="global-wrapper pt-[64px] lg:pt-[98px]">
-            <Header />
-            <HeroSection data={heroSectionData} />
+            <Header data ={homeSettings} />
+            <HeroSection data={heroSectionData}  />
             <LinksCardsSection data={linkCardSectionData} />
             <Testimonails data={testimonialSecitonData} />
             <CardsListingSection />

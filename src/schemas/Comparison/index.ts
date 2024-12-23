@@ -30,6 +30,12 @@ export default defineType({
               type: 'image',
               // validation: (Rule) => Rule.required(),
             }),
+            defineField({
+              name: 'logoMobile',
+              title: 'Logo Mobile',
+              type: 'image',
+              // validation: (Rule) => Rule.required(),
+            }),
           ],
         } as any),
       ],
