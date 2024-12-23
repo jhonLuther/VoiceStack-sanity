@@ -19,37 +19,6 @@ export default function FeatureSection({ data }) {
   const [activeImage, setActiveImage] = useState(data[0].testimonialImage?.url)
   const featureRefs = useRef([])
   const isMobile: any = useMediaQuery(767);
-
-  // const featureData = data.sort(
-  //   (a, b) => a.testimonialOrder - b.testimonialOrder,
-  // )
-
-  // useEffect(() => {
-  //   const observerOptions = {
-  //     root: null,
-  //     rootMargin: '0px',
-  //     threshold: 0.5,
-  //   }
-
-  //   const observer = new IntersectionObserver((entries) => {
-  //     entries.forEach((entry) => {
-  //       if (entry.isIntersecting) {
-  //         const index = entry.target.getAttribute('data-index')
-  //         setActiveImage(data[index].testimonialImage.url) // Update active image
-  //       }
-  //     })
-  //   }, observerOptions)
-
-  //   featureRefs.current.forEach((ref) => {
-  //     if (ref) observer.observe(ref)
-  //   })
-
-  //   return () => {
-  //     if (observer) observer.disconnect()
-  //   }
-  // }, [data])
-
-
   const openModal = () => {
     setOpenForm(true)
   }
@@ -98,7 +67,7 @@ export default function FeatureSection({ data }) {
               />
             ) : (
 
-              <div className='md:h-[100vh]  relative flex' key={feature?.id}>
+              <div className='md:h-[100vh]  relative flex' key={feature?._rev}>
 
                 <div className="md:mt-40 mt-5 left-0 self-start flex flex-col justify-center">
                   <motion.div

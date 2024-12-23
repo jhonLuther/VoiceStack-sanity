@@ -36,7 +36,6 @@ import useMediaQuery from '~/utils/mediaQuery'
 // ]
 
 export default function AppearFeature({
-  key,
   getIndex,
   getIndexfromAppear,
   index,
