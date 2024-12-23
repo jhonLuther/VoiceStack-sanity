@@ -14,7 +14,7 @@ import ButtonArrow from '../icons/ButtonArrow'
 import { FormModal } from '../common/FormModal'
 import useMediaQuery from '~/utils/mediaQuery'
 
-export default function FeatureSection({ data }) {
+export default function FeatureSection({ data }) { debugger
   const [openForm, setOpenForm] = useState(false)
   const [activeImage, setActiveImage] = useState(data[0].testimonialImage?.url)
   const featureRefs = useRef([])
@@ -98,7 +98,7 @@ export default function FeatureSection({ data }) {
               />
             ) : (
 
-              <div className='md:h-[100vh]  relative flex' key={feature?.id}>
+              <div className='md:h-[100vh]  relative flex' key={feature?._rev}>
 
                 <div className="md:mt-40 mt-5 left-0 self-start flex flex-col justify-center">
                   <motion.div
