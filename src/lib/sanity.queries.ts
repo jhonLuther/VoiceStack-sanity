@@ -262,78 +262,80 @@ export async function fetchTermsAndCondition(
   return await client.fetch(query, { docType })
 }
 
-export const getALLHomeSettings = (
-  region: string,
-) => groq`*[_type == "homeSettings"]{
-  ...,
- "selectedIntegrations": integration[]->{
-      "image": integrationProductImage.asset->{
-        _id,
-        url,
-        metadata {
-          dimensions {
-            width,
-            height,
-            aspectRatio
+export async function getALLHomeSettings(client: SanityClient, region: string) {
+  const query = groq`*[_type == "homeSettings" && language ==$region][0]{
+    ...,
+   "selectedIntegrations": integration[]->{
+        "image": integrationProductImage.asset->{
+          _id,
+          url,
+          metadata {
+            dimensions {
+              width,
+              height,
+              aspectRatio
+            }
+          }
+        },
+        "altText": image.altText,
+        "title": image.title,
+        _createdAt,
+        _id
+      },
+    "selectedFeatures": selectedfeatures[]->{
+        ...,
+        "imageUrl": categoryImage.asset->{
+          _id,
+          url,
+          metadata {
+            dimensions {
+              width,
+              height,
+              aspectRatio
+            }
+          }
+        },
+        "altText": image.altText,
+        "title": image.title,
+        "features": features[]->
+      },
+    "selectedTestimonials": selectedTestimonial[]->{
+        ...,
+        "AuthorImage": authorimage.asset->url
+      },
+    "selectedPartners": selectedPartner[]->{
+        partnerName,
+        "image": partnerLogo.asset->{
+          _id,
+          url,
+          metadata {
+            dimensions {
+              width,
+              height,
+              aspectRatio
+            }
           }
         }
       },
-      "altText": image.altText,
-      "title": image.title,
-      _createdAt,
-      _id
-    },
-  "selectedFeatures": selectedfeatures[]->{
-      ...,
-      "imageUrl": categoryImage.asset->{
-        _id,
-        url,
-        metadata {
-          dimensions {
-            width,
-            height,
-            aspectRatio
+    "selectedBenefits": selectedBenefits[]->{
+        "benefitHeading":benefitHeading,
+        "benifitSectionImage": benefitImageSection.asset->{
+          _id,
+          url,
+          metadata {
+            dimensions {
+              width,
+              height,
+              aspectRatio
+            }
           }
-        }
-      },
-      "altText": image.altText,
-      "title": image.title,
-      "features": features[]->
-    },
-  "selectedTestimonials": selectedTestimonial[]->{
-      ...,
-      "AuthorImage": authorimage.asset->url
-    },
-  "selectedPartners": selectedPartner[]->{
-      partnerName,
-      "image": partnerLogo.asset->{
-        _id,
-        url,
-        metadata {
-          dimensions {
-            width,
-            height,
-            aspectRatio
-          }
-        }
+        },
+        "benefitPoints": benefitPoints
       }
-    },
-  "selectedBenefits": selectedBenefits[]->{
-      "benefitHeading":benefitHeading,
-      "benifitSectionImage": benefitImageSection.asset->{
-        _id,
-        url,
-        metadata {
-          dimensions {
-            width,
-            height,
-            aspectRatio
-          }
-        }
-      },
-      "benefitPoints": benefitPoints
-    }
-} | order(_createdAt desc)[0]`
+  }`
+  return await client.fetch(query, { region })
+}
+
 
 export const getALLSiteSettings = (region) =>
   groq`*[_type == "siteSettings"] | order(_createdAt desc)[0]`

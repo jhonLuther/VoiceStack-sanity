@@ -14,6 +14,7 @@ import Button from '../common/Button'
 import ButtonArrow from '../icons/ButtonArrow'
 import ListItem from './micro/ListItem'
 import { FormModal } from '../common/FormModal'
+import useMediaQuery from '~/utils/mediaQuery'
 
 // const conversationalFeatures = [
 //   {
@@ -34,9 +35,10 @@ import { FormModal } from '../common/FormModal'
 //   },
 // ]
 
-export default function AppearFeature({ 
+export default function AppearFeature({
   key,
   getIndex,
+  getIndexfromAppear,
   index,
   ref,
   dataIndex,
@@ -49,6 +51,7 @@ export default function AppearFeature({
   const [scrollPos, setScrollPos] = useState(0)
   const [sectionStartY, setSectionStartY] = useState(0)
   const [currentItem, setcurrentItem] = useState<Number>(0)
+  const isMobile: any = useMediaQuery(767);
 
   const scrollRef = useRef(null)
   const numberOfItems = data?.testimonialSubSection?.length
@@ -65,17 +68,17 @@ export default function AppearFeature({
   //       : 0;
   const percentScrolled =
     ((actualScrollStart - scrollPos) / (actualScrollStart - sectionEndY)) * 100
-  const [activeItemIndex, setActiveItemIndex] = useState(null)
+  const [activeItemIndex, setActiveItemIndex] = useState(0)
   // const [itemShowDesc, setItemShowDesc] = useState(
   //     conversationalFeatures.map((item) => false)
   // );
 
   const switchIndex = (percentage) => {
 
-    if(scrollPos>actualScrollStart){
+    if (scrollPos > actualScrollStart) {
       getIndex(percentage)
     }
-    
+
     let index = 0
 
     if (percentage <= 25) index = 0
@@ -98,6 +101,7 @@ export default function AppearFeature({
       setActiveItemIndex(null)
     } else {
       setActiveItemIndex(index)
+      getIndexfromAppear(index)
     }
     // setItemShowDesc(
     //     conversationalFeatures.map((item, i) => i === index)
@@ -113,25 +117,25 @@ export default function AppearFeature({
   })
 
   return (
-    <div style={{height:`${scrollRef?.current?.offsetHeight * 4}px`}}>
-    <div
-      data-index={index ? index : 1}
-      id={dataIndex}
-      ref={scrollRef}
-      className="sticky top-40 left-0 "
-      
+    <div style={{ height: isMobile ? `100%` : `${scrollRef?.current?.offsetHeight * 4}px` }}>
+      <div
+        data-index={index ? index : 1}
+        id={dataIndex}
+        ref={scrollRef}
+        className="sticky top-40 left-0 "
+
       // style={{
       //   marginBottom: `${scrollRef?.current?.offsetHeight * 1.5 - 160}px`,
       // }}
-    >
-      <motion.div
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ root: scrollRef }}
-        onViewportEnter={() => {
-          sectionStartY > 1 ? '' : setSectionStartY(scrollPos)
-        }}
-        // onScroll={()}
+      >
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ root: scrollRef }}
+          onViewportEnter={() => {
+            sectionStartY > 1 ? '' : setSectionStartY(scrollPos)
+          }}
+          // onScroll={()}
 
           className="flex flex-col gap-12 w-full"
         >
@@ -143,10 +147,10 @@ export default function AppearFeature({
               {data?.testimonialSubheading}
             </PreText>
             <H2>
-            {props?.testimonialheading}
+              {props?.testimonialheading}
             </H2>
             <Paragraph>
-            {data?.testimonialDescription}
+              {data?.testimonialDescription}
             </Paragraph>
           </div>
           <ul className="flex flex-col gap-4">
@@ -160,7 +164,7 @@ export default function AppearFeature({
                     title={item.featureSubHead}
                     numberOfItems={numberOfItems}
                     percentScrolled={percentScrolled}
-                    showDesc={i == switchIndex(percentScrolled)}
+                    showDesc={isMobile ? i == activeItemIndex : i == switchIndex(percentScrolled)}
                     desc={item.featureSubDescription}
                   >
                     {' '}
@@ -169,21 +173,21 @@ export default function AppearFeature({
               })}
           </ul>
 
-        <div className="">
-        <Button type="primary" onClick={() => {setOpenForm(true)}}>
+          <div className="flex md:justify-start justify-center">
+            <Button type="primary" onClick={() => { setOpenForm(true) }}>
               <ButtonArrow></ButtonArrow>
               <span className="text-base font-medium">{`Book free demo`}</span>
             </Button>
-        </div>
-      </motion.div>
+          </div>
+        </motion.div>
+      </div>
+      {openForm && (
+        <FormModal
+          className={`pt-9  flex items-start`}
+          onClose={() => setOpenForm(false)}
+        />
+      )}
     </div>
-    {openForm && (
-            <FormModal
-              className={`pt-9  flex items-start`}
-              onClose={() => setOpenForm(false)}
-            />
-          )}
-    </div>
-    
+
   )
 }

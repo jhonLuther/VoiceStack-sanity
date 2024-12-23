@@ -51,6 +51,42 @@ export default defineType({
     }),
 
     defineField({
+      name: 'heroHeaderSection',
+      title: 'Hero Header Button Content',
+      type: 'array',
+      of: [
+        {
+          type: 'object',
+          name: 'headerMenu',
+          title: 'Header Menu',
+          fields: [
+            {
+              name: 'headerMenu',
+              title: 'headerMenu',
+              type: 'string',
+            },
+            {
+              name: 'href',
+              title: 'Hero href',
+              type: 'string',
+            },
+          ],
+        },
+      ],
+    }),
+
+    defineField({
+      name: 'ctabutton',
+      title: 'CTA Button Title',
+      type: 'string',
+    }),
+    defineField({
+      name: 'phoneNumber',
+      title: 'Phone Number',
+      type: 'string',
+    }),
+
+    defineField({
       name: 'heroSubFeature',
       title: 'Hero SubFeature',
       type: 'array',
@@ -61,10 +97,6 @@ export default defineType({
         },
       ],
     }),
-
-
-
-
 
     defineField({
       name: 'selectedTestimonial',
