@@ -13,66 +13,15 @@ import { VideoItem, VideoModal } from '../common/VideoModal'
 import { isEmpty } from 'lodash'
 import { FormModal } from '../common/FormModal'
 
-const enterpriseItems = [
-  'IVR & Call Routing',
-  'Visual Voicemail',
-  'Missed Call Response Tracking',
-  'Call Pop with Patient Details',
-  'Call Flow Analytics',
-  'Two-way Texting & Cloud Fax',
-]
-
-const attributionItems = [
-  'Call Source Tracking',
-  'Ad Keywords Tracking',
-  'Campaigns Tracking',
-  'Google Analytics Integration',
-  'Google Adwords Integrations',
-]
-
-const conversationalFeatures = [
-  {
-    title: 'Call Transcripts & Summary',
-    desc: 'Access every conversation with every patient for a detailed analysis of patient needs including insurance & tx detection',
-  },
-  {
-    title: 'Call Outcome Analysis',
-    desc: 'Access every conversation with every patient for a detailed analysis of patient needs including insurance & tx detection',
-  },
-  {
-    title: 'Staff Performance Augmentation',
-    desc: 'Access every conversation with every patient for a detailed analysis of patient needs including insurance & tx detection',
-  },
-  {
-    title: 'Post Call Task Automation',
-    desc: 'Access every conversation with every patient for a detailed analysis of patient needs including insurance & tx detection',
-  },
-]
-
 export default function Testimonails({ data }) {
-
-  // console.log({testData: data})
-  
   const [openForm, setOpenForm] = useState(false)
-  
-
-  const { scrollY } = useScroll()
-
-  const { activeImage, setActiveImage } = useContext(ImageContext)
   const cardRefs = useRef<(HTMLDivElement | null)[]>([])
   const parentRef = useRef<HTMLDivElement | null>(null)
-
   const [isOpen, setIsOpen] = useState(false)
   const [selectedVideo, setSelectedVideo] = useState<VideoItem | null>(null)
-
-  const [activeIndex, setActiveIndex] = useState<number | null>(null)
   const [stickyStates, setStickyStates] = useState<boolean[]>([]) // Tracks if each card is sticky
-  // const containerRef = useRef<HTMLDivElement>(null);
-
 
   const handleOpenVideo = (video: VideoItem) => {
-    console.log({video});
-    
     setSelectedVideo(video)
     setIsOpen(true)
   }
@@ -97,36 +46,10 @@ export default function Testimonails({ data }) {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [data])
 
-  // Handle scroll-to-card logic
-  // const handleScrollToCard = (index: number) => {
-
-  //   const card = cardRefs.current[index];
-
-  //   // if (card && parentRef.current) {
-
-  //   //   window.scrollTo({
-  //   //     top: card.offsetTop - (parentRef.current ? parentRef.current.offsetTop : 0),
-  //   //     behavior: "smooth"
-  //   //   });
-  //   // }
-  //   // if (card) {
-  //     // card.scrollIntoView({
-  //     //     behavior: "smooth",
-  //     //     block: "start",
-  //     //     // inline:'start'
-  //     //     // inline: "nearest"
-  //     // });
-  //     //   window.scrollTo({
-  //     //   top: card.offsetTop - (parentRef.current ? parentRef.current.offsetTop : 0),
-  //     //   behavior: "smooth"
-  //     // });
-  //   // }
-  // };
-
   if (isEmpty(data)) {
     return (
       <>
-        <p>Testimonail Section is Loading...</p>
+        <p>Testimonial Section is Loading...</p>
       </>
     )
   }
@@ -136,10 +59,6 @@ export default function Testimonails({ data }) {
       className="relative py-sm md:py-md pb-8 bg-gray-900"
       ref={parentRef}
     >
-      {/* <div className="absolute top-0 left-0 flex w-full h-full">``
-        <div className="w-5/12 h-full bg-[#111827] flex"></div>
-        <div className="w-7/12 flex-1 h-full bg-[#111827]"></div>
-      </div> */}
       <Container className="w-full relative">
         <div className="flex flex-col items-center w-full gap-16">
           <div className="flex justify-center w-full">
@@ -154,9 +73,6 @@ export default function Testimonails({ data }) {
           </div>
 
           <div className="flex w-full gap-12 z-10 relative">
-            {/* <div className="flex-1 max-w-[366px] h-full relative pt-24 items-start hidden lg:flex">
-                <AppearTestimonials  onListItemClick={handleScrollToCard}/>
-              </div> */}
             <div className="w-full relative">
               <div className="flex flex-col w-full gap-8 md:gap-20">
                 {data &&
@@ -181,7 +97,12 @@ export default function Testimonails({ data }) {
           </div>
 
           <div className="flex gap-4 items-center">
-            <Button type="primary"   onClick={() => {setOpenForm(true)}}>
+            <Button
+              type="primary"
+              onClick={() => {
+                setOpenForm(true)
+              }}
+            >
               <ButtonArrow></ButtonArrow>
               <span className="text-base font-medium">{`Book free demo`}</span>
             </Button>
@@ -197,11 +118,11 @@ export default function Testimonails({ data }) {
           />
         )}
         {openForm && (
-            <FormModal
-              className={`pt-9  flex items-start`}
-              onClose={() => setOpenForm(false)}
-            />
-          )}
+          <FormModal
+            className={`pt-9  flex items-start`}
+            onClose={() => setOpenForm(false)}
+          />
+        )}
       </Container>
     </Section>
   )

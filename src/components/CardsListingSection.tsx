@@ -31,12 +31,6 @@ const CardsListingSection = () => {
     <Section className="py-sm md:py-md md:pt-0 pb-8 bg-gray-900">
       <Container >
         <div className='flex flex-col gap-16 items-center w-full'>
-          {/* <div className="flex justify-center w-full">
-            <div className='flex flex-col w-full max-w-[780px] text-center gap-4'>
-              <H2>Used by leading Groups and DSOs</H2>
-              <Paragraph>VoiceStack is a good fit for a wide range of dental practices, including single-site practices, multi-site groups, as well as large dental corporate DSO’s.</Paragraph>
-            </div>
-          </div> */}
           <div className='flex flex-wrap gap-4 md:gap-0 flex-col md:flex-row justify-center'>
             {cardsListing && cardsListing.length > 0 && (
               cardsListing.map((item:any, index:number)=>{
@@ -54,12 +48,6 @@ const CardsListingSection = () => {
               })
             )}
           </div>
-          {/* <div className='flex gap-4 items-center'>
-            <Button type='primary' link='#'>
-              <ButtonArrow></ButtonArrow>
-              <span className="text-base font-medium">{`Book free demo`}</span>
-            </Button>
-          </div> */}
         </div>
       </Container>
     </Section>

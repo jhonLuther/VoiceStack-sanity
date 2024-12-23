@@ -8,7 +8,6 @@ import Testimonials from './Feature'
 import HomeSettings from './HomeSettings'
 import multipleString from './multipleString'
 import legal from './Legal'
-import customBlockContent from './customBlockContent.js'
 import comparison from './Comparison'
 import comparisonValue from "./ComparisonValue"
 import Platforms from './Platforms'
@@ -40,7 +39,7 @@ export const schemaTypes = [
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
     blockContent,
-    customBlockContent,
+    
     layout,
     Features,
     heroSubFeature,

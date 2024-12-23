@@ -1,5 +1,4 @@
 import React from 'react'
-import Picture from './Picture'
 import LinkedIn from '../icons/LinkedIn'
 
 import H3 from '../typography/H3'

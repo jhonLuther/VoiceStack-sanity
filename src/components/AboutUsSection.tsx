@@ -1,10 +1,8 @@
 import React from 'react'
 import Section from './structure/Section'
 import Container from './structure/Container'
-import { Picture } from './common/RichImage'
 import H2 from './typography/H2'
 import Paragraph from './typography/Paragraph'
-import ImageLoader from './common/imageLoader/imageLoader'
 import PeopleCard from './common/PeopleCard'
 
 const AboutUsSection = ({ data }) => {

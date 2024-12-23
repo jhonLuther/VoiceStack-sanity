@@ -24,37 +24,7 @@ import { FormModal } from './common/FormModal'
 const LogoListingSection = ({ data }) => {
   
   const [openForm, setOpenForm] = useState(false)
-  const logos = [
-    { image: espireDental, alt: 'Espire Dental', title: 'Espire Dental' },
-    { image: westwind, alt: 'Westwind', title: 'Westwind' },
-    {
-      image: miSmiles,
-      alt: 'MI Smiles Dental Group',
-      title: 'MI Smiles Dental Group',
-    },
-    { image: dag, alt: 'DAG', title: 'DAG' },
-    { image: roligoDental, alt: 'Roligo Dental', title: 'Roligo Dental' },
-    { image: dentalDepot, alt: 'Dental Depot', title: 'Dental Depot' },
-    { image: schoolSmiles, alt: 'School Smiles', title: 'School Smiles' },
-    {
-      image: northwest,
-      alt: 'Northwest Dental Group',
-      title: 'Northwest Dental Group',
-    },
-    { image: atlanta, alt: 'Atlanta Dental Spa', title: 'Atlanta Dental Spa' },
-    {
-      image: smileDetect,
-      alt: 'Smile Detect Dental Office',
-      title: 'Smile Detect Dental Office',
-    },
-    {
-      image: fortBendDental,
-      alt: 'Fort Bend Dental',
-      title: 'Fort Bend Dental',
-    },
-    { image: charleston, alt: 'Charleston', title: 'Charleston' },
-    { image: dionHealth, alt: 'Dion Health', title: 'Dion Health' },
-  ]
+
   return (
     <Section className="py-sm md:py-md pb-8">
       <Container>
@@ -72,7 +42,7 @@ const LogoListingSection = ({ data }) => {
                 return (
                   <Image
                     src={logo.url}
-                    alt={logo.altText}
+                    alt={logo.altText || 'organization Logo'}
                     title={logo.altText}
                     width={logo?.metadata?.dimensions?.width}
                     height={logo?.metadata?.dimensions?.height}
