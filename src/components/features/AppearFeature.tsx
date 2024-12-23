@@ -1,11 +1,5 @@
-import React, { useEffect, useRef, useState } from 'react'
-import {
-  motion,
-  useMotionValueEvent,
-  useScroll,
-  useSpring,
-  useTransform,
-} from 'motion/react'
+import React, { useRef, useState } from 'react'
+import { motion, useMotionValueEvent, useScroll } from 'motion/react'
 import PreText from './micro/PreText'
 import H2 from '../typography/H2'
 import Paragraph from '../typography/Paragraph'
@@ -16,64 +10,30 @@ import ListItem from './micro/ListItem'
 import { FormModal } from '../common/FormModal'
 import useMediaQuery from '~/utils/mediaQuery'
 
-// const conversationalFeatures = [
-//   {
-//     title: 'Call Transcripts & Summary',
-//     desc: 'Access every conversation with every patient for a detailed analysis of patient needs including insurance & tx detection',
-//   },
-//   {
-//     title: 'Call Outcome Analysis',
-//     desc: 'Access every conversation with every patient for a detailed analysis of patient needs including insurance & tx detection',
-//   },
-//   {
-//     title: 'Staff Performance Augmentation',
-//     desc: 'Access every conversation with every patient for a detailed analysis of patient needs including insurance & tx detection',
-//   },
-//   {
-//     title: 'Post Call Task Automation',
-//     desc: 'Access every conversation with every patient for a detailed analysis of patient needs including insurance & tx detection',
-//   },
-// ]
-
 export default function AppearFeature({
   getIndex,
   getIndexfromAppear,
   index,
-  ref,
   dataIndex,
   data,
-  props
+  props,
 }: any) {
-
   const { scrollY } = useScroll()
   const [openForm, setOpenForm] = useState(false)
   const [scrollPos, setScrollPos] = useState(0)
   const [sectionStartY, setSectionStartY] = useState(0)
-  const [currentItem, setcurrentItem] = useState<Number>(0)
-  const isMobile: any = useMediaQuery(767);
+  const isMobile: any = useMediaQuery(767)
 
   const scrollRef = useRef(null)
   const numberOfItems = data?.testimonialSubSection?.length
-
-  // const [sectionEndY, setSectionEndY] = useState(0)
-  // const [actualScrollStart, setActualScrollStart] = useState(0)
-  const [currentPos, setCurrentPos] = useState(0)
-
   const actualScrollStart =
     sectionStartY + scrollRef?.current?.offsetHeight + 160
   const sectionEndY = sectionStartY + scrollRef?.current?.offsetHeight * 4
-  // const sectionEndY = typeof window !== 'undefined' 
-  //       ? sectionStartY + (window.innerHeight * 3) 
-  //       : 0;
   const percentScrolled =
     ((actualScrollStart - scrollPos) / (actualScrollStart - sectionEndY)) * 100
   const [activeItemIndex, setActiveItemIndex] = useState(0)
-  // const [itemShowDesc, setItemShowDesc] = useState(
-  //     conversationalFeatures.map((item) => false)
-  // );
 
   const switchIndex = (percentage) => {
-
     if (scrollPos > actualScrollStart) {
       getIndex(percentage)
     }
@@ -102,30 +62,23 @@ export default function AppearFeature({
       setActiveItemIndex(index)
       getIndexfromAppear(index)
     }
-    // setItemShowDesc(
-    //     conversationalFeatures.map((item, i) => i === index)
-    // );
   }
 
   useMotionValueEvent(scrollY, 'change', (current) => {
     setScrollPos(current)
-    // const newIndex = switchIndex(percentScrolled);
-    // setItemShowDesc(
-    //     conversationalFeatures.map((item, i) => i === newIndex)
-    // );
   })
 
   return (
-    <div style={{ height: isMobile ? `100%` : `${scrollRef?.current?.offsetHeight * 4}px` }}>
+    <div
+      style={{
+        height: isMobile ? `100%` : `${scrollRef?.current?.offsetHeight * 4}px`,
+      }}
+    >
       <div
         data-index={index ? index : 1}
         id={dataIndex}
         ref={scrollRef}
         className="sticky top-40 left-0 "
-
-      // style={{
-      //   marginBottom: `${scrollRef?.current?.offsetHeight * 1.5 - 160}px`,
-      // }}
       >
         <motion.div
           initial={{ opacity: 0 }}
@@ -134,8 +87,6 @@ export default function AppearFeature({
           onViewportEnter={() => {
             sectionStartY > 1 ? '' : setSectionStartY(scrollPos)
           }}
-          // onScroll={()}
-
           className="flex flex-col gap-12 w-full"
         >
           <div className="flex flex-col gap-4">
@@ -145,12 +96,8 @@ export default function AppearFeature({
               </span>
               {data?.testimonialSubheading}
             </PreText>
-            <H2>
-              {props?.testimonialheading}
-            </H2>
-            <Paragraph>
-              {data?.testimonialDescription}
-            </Paragraph>
+            <H2>{props?.testimonialheading}</H2>
+            <Paragraph>{data?.testimonialDescription}</Paragraph>
           </div>
           <ul className="flex flex-col gap-4">
             {data?.testimonialSubSection &&
@@ -163,7 +110,11 @@ export default function AppearFeature({
                     title={item.featureSubHead}
                     numberOfItems={numberOfItems}
                     percentScrolled={percentScrolled}
-                    showDesc={isMobile ? i == activeItemIndex : i == switchIndex(percentScrolled)}
+                    showDesc={
+                      isMobile
+                        ? i == activeItemIndex
+                        : i == switchIndex(percentScrolled)
+                    }
                     desc={item.featureSubDescription}
                   >
                     {' '}
@@ -173,7 +124,12 @@ export default function AppearFeature({
           </ul>
 
           <div className="flex md:justify-start justify-center">
-            <Button type="primary" onClick={() => { setOpenForm(true) }}>
+            <Button
+              type="primary"
+              onClick={() => {
+                setOpenForm(true)
+              }}
+            >
               <ButtonArrow></ButtonArrow>
               <span className="text-base font-medium">{`Book free demo`}</span>
             </Button>
@@ -187,6 +143,5 @@ export default function AppearFeature({
         />
       )}
     </div>
-
   )
 }

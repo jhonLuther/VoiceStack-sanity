@@ -16,7 +16,6 @@ import { FormModal } from '../common/FormModal'
 export default function Testimonails({ data }) {
   const [openForm, setOpenForm] = useState(false)
   const cardRefs = useRef<(HTMLDivElement | null)[]>([])
-  const parentRef = useRef<HTMLDivElement | null>(null)
   const [isOpen, setIsOpen] = useState(false)
   const [selectedVideo, setSelectedVideo] = useState<VideoItem | null>(null)
   const [stickyStates, setStickyStates] = useState<boolean[]>([]) // Tracks if each card is sticky
@@ -57,7 +56,6 @@ export default function Testimonails({ data }) {
   return (
     <Section
       className="relative py-sm md:py-md pb-8 bg-gray-900"
-      ref={parentRef}
     >
       <Container className="w-full relative">
         <div className="flex flex-col items-center w-full gap-16">
