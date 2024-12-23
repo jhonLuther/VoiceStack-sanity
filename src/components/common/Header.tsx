@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { ArrowRightIcon, UlistIcon } from '@sanity/icons'
 import { useRouter } from 'next/router';
 import { CloseIcon } from '@sanity/icons'
 import VoicestackLogo from 'public/assets/voicestack-logo.svg';
 import { MenuIcon } from '@sanity/icons';
-import { usePathname } from 'next/navigation'
 import Image from 'next/image';
 import ButtonArrow from '../icons/ButtonArrow';
 import Button from './Button';

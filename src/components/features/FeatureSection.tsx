@@ -14,7 +14,7 @@ import ButtonArrow from '../icons/ButtonArrow'
 import { FormModal } from '../common/FormModal'
 import useMediaQuery from '~/utils/mediaQuery'
 
-export default function FeatureSection({ data }) { debugger
+export default function FeatureSection({ data }) {
   const [openForm, setOpenForm] = useState(false)
   const [activeImage, setActiveImage] = useState(data[0].testimonialImage?.url)
   const featureRefs = useRef([])
