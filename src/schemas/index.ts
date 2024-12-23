@@ -17,6 +17,7 @@ import LogoListing from './LogoListing'
 import featureSubSection from './featureSubSection'
 import faq from './faq'
 import testimonialSection from './testimonial'
+import customBlockContent from './customBlockContent'
 
 export const schemaTypes = [
   layout,
@@ -33,7 +34,8 @@ export const schemaTypes = [
   LogoListing,
   featureSubSection,
   testimonialSection,
-  faq
+  faq,
+  customBlockContent
 ]
 
 export const schema: { types: SchemaTypeDefinition[] } = {
@@ -55,6 +57,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     LogoListing,
     featureSubSection,
     testimonialSection,
-    faq
+    faq,
+    customBlockContent
   ],
 }
