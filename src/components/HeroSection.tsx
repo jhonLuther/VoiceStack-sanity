@@ -18,7 +18,7 @@ const HeroSection = ({ data }) => {
   const [isOpen, setIsOpen] = useState(false)
   const [openForm, setOpenForm] = useState(false)
   const overviewVideo: VideoItem = {
-    platform: 'vidyard',
+    videoPlatform: 'vidyard',
     videoId: 'Hj4GYLXARVjqQEnaejq3Bz',
   }
 

@@ -3,6 +3,7 @@ import React, { forwardRef, useState } from "react";
 import { VideoItem, VideoModal } from "./VideoModal";
 import TickIcon from "../icons/TickIcon";
 import VideoPlayIcon from "../icons/VideoPlayIcon";
+import useMediaQuery from "~/utils/mediaQuery";
 
 type TestimonialCardProps = {
   data: any;
@@ -15,18 +16,20 @@ type TestimonialCardProps = {
 
 const TestimonialCard = forwardRef<HTMLDivElement, TestimonialCardProps>(
   ({ data, index, activeIndex, isSticky, scale, onOpenVideo }, ref) => {
-
-    const topValue = 160 + (index * 20);
     
+    const isMobile = useMediaQuery(767);
+
+    const topValue = isMobile ? 80 + (index * 20) : 160 + (index * 20);
+
   
   const video  = data.video
   // console.log({testimonial: data})
   return (
     // <div className="top-40 sticky h-[100vh]" ref={ref} id={`${index}`}>
-    <div className={`sticky testimonial-card`} ref={ref} id={`${index}`}  data-index={index}
+    <div className={`md:sticky testimonial-card`} ref={ref} id={`${index}`}  data-index={index}
       style={{
         top:topValue,
-        transform: isSticky ? `scale(${scale})` : "scale(1)",
+        transform: (isSticky && !isMobile) ? `scale(${scale})` : "scale(1)",
         // opacity: isSticky ? 1 : 0.8,
         transition: "transform 0.3s ease, opacity 0.3s ease",
       }}
@@ -34,10 +37,10 @@ const TestimonialCard = forwardRef<HTMLDivElement, TestimonialCardProps>(
 
       <div className={`rounded-[20px] shadow-md max-w-[1032px] mx-auto ${index % 2 === 0 ? 'bg-white': 'bg-white'}`}>
 
-        <div className="flex">
+        <div className="flex flex-col md:flex-row">
           {/* Image */}
           {data?.image?.url && (
-            <div className="flex-1 max-w-[343px] overflow-hidden relative">
+            <div className="flex-1 md:max-w-[250px] lg:max-w-[343px] overflow-hidden relative self-end">
               <Image
                 width={293}
                 height={407}
@@ -51,6 +54,12 @@ const TestimonialCard = forwardRef<HTMLDivElement, TestimonialCardProps>(
                   <span><VideoPlayIcon/></span>Watch
                 </div>
               )} */}
+              {data?.video[0] && data.video[0].videoId && (
+                <div className="cursor-pointer absolute bottom-3 right-3 flex gap-2 font-medium text-base
+                  items-center rounded-full py-2 pr-4 pl-2 bg-white text-gray-900 shadow-[0px_4px_20px_0px_rgba(0,0,0,0.20)]" onClick={() => onOpenVideo(data.video[0])}>
+                  <span><VideoPlayIcon/></span>Watch
+                </div>
+              )}
             </div>
           )}
           
@@ -115,7 +124,7 @@ const TestimonialCard = forwardRef<HTMLDivElement, TestimonialCardProps>(
               )}
             </div>
           )} */}
-          <div className="flex-1 flex flex-row justify-between">
+          <div className="flex-1 flex flex-col md:flex-row justify-between">
             {/*  */}
               <div className="flex flex-col flex-1 p-8">
                 {/* <h3 className="text-gray-500 font-inter text-base font-medium leading-[110%]">{data?.heading || ""}</h3> */}
@@ -129,13 +138,13 @@ const TestimonialCard = forwardRef<HTMLDivElement, TestimonialCardProps>(
                           <div className="flex gap-2">
                             {item.before && (
                               <div className="flex gap-2 items-center">
-                                <span className="text-gray-900 font-manrope text-[30px] font-bold leading-[1.2]">{item.before}</span>
-                                <span className="text-gray-900 font-manrope text-[30px] font-bold leading-[1.2]">{`->`}</span>
+                                <span className="text-gray-900 font-manrope text-[24px] lg:text-[30px] font-bold leading-[1.2]">{item.before}</span>
+                                <span className="text-gray-900 font-manrope text-[24px] lg:text-[30px] font-bold leading-[1.2]">{`->`}</span>
                               </div>
                             )}
                             {item.after && (
                               <div className="flex gap-2 items-center">
-                                <span className="text-vs-blue font-manrope text-[30px] font-bold leading-[1.2]">{item.after}</span>
+                                <span className="text-vs-blue font-manrope text-[24px] lg:text-[30px] font-bold leading-[1.2]">{item.after}</span>
                               </div>
                             )}
                           </div>
@@ -144,7 +153,7 @@ const TestimonialCard = forwardRef<HTMLDivElement, TestimonialCardProps>(
                           <div
                             dangerouslySetInnerHTML={{__html: item.description}}
                             className="[&_span]:text-gray-900 [&_span]:font-medium [&_span]:text-[20px] 
-                             text-vs-blue font-manrope text-[30px] font-bold leading-[1.2]"
+                             text-vs-blue font-manrope text-[24px] lg:text-[30px] font-bold leading-[1.2]"
                           ></div>
                         )}
                       </div>
@@ -153,7 +162,7 @@ const TestimonialCard = forwardRef<HTMLDivElement, TestimonialCardProps>(
                 )}
                 {data.testimonialdescription && (
                   <p
-                    className="text-gray-900 font-manrope text-3xl font-bold leading-[120%] [&_span]:text-vs-blue"
+                    className="text-gray-900 font-manrope text-[24px] lg:text-3xl font-bold leading-[120%] [&_span]:text-vs-blue"
                     dangerouslySetInnerHTML={{ __html: data?.testimonialdescription 
                        || "" }}
                   ></p>
@@ -161,7 +170,7 @@ const TestimonialCard = forwardRef<HTMLDivElement, TestimonialCardProps>(
               </div>
 
               {data.keyFeatures && data.keyFeatures.length > 0 && (
-                <div className="flex-1 flex flex-col px-6 pt-12 pb-8 gap-8 border-l border-gray-200 max-w-[270px]">
+                <div className="flex-1 flex flex-col px-6 pt-12 pb-8 gap-8 border-l border-gray-200 md:max-w-[200px] lg:max-w-[270px]">
                     <h3 className="text-gray-500 font-inter text-sm font-medium leading-[110%]">Key Features Used</h3>
                     <ul className="flex flex-wrap gap-3">
                       {data.keyFeatures.map((item:any, index:number) => {
@@ -179,7 +188,7 @@ const TestimonialCard = forwardRef<HTMLDivElement, TestimonialCardProps>(
         </div>
 
         {/* Testimonee Details bottom strip */}
-        <div className="flex flex-row items-center gap-8 border-t border-dashed border-gray-300 py-4 px-8 justify-between">
+        <div className="flex flex-col md:flex-row items-center gap-8 border-t border-dashed border-gray-300 py-4 px-8 justify-between">
           {/* name and designation */}
           <div>
             <p className="text-base text-gray-900 font-semibold leading-[140%]">{data?.name || "Unknown Name"}</p>

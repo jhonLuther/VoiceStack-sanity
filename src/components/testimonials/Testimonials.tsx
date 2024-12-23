@@ -158,7 +158,7 @@ export default function Testimonails({ data }) {
                 <AppearTestimonials  onListItemClick={handleScrollToCard}/>
               </div> */}
             <div className="w-full relative">
-              <div className="flex flex-col w-full gap-20">
+              <div className="flex flex-col w-full gap-8 md:gap-20">
                 {data &&
                   data?.map((testimonial, index) => {
                     // Calculate the scaling value dynamically when sticky

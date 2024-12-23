@@ -36,43 +36,43 @@ function ComparisonRichIcon({ comparisonValue, vsIndex }) {
             width={16}
             height={17}
           />
-          <span className="text-gray-600">{text}</span>
+          <span className="hidden md:inline text-gray-600">{text}</span>
         </p>
       </div>
     </>
   )
 }
 
-export default function SiteComparisonTable({ data, index, currentIndex, isMobile }) {
+export default function SiteComparisonTable({ data, mainIndex, currentIndex, isMobile }) {
   
   const [currentChildIndex, setCurrentChildIndex] = useState<number|null>(0);
 
   const toggle = () =>{
     
-    if(index === currentChildIndex){
+    if(mainIndex === currentChildIndex){
       setCurrentChildIndex(null)
     }
     else{
-      setCurrentChildIndex(index)
+      setCurrentChildIndex(mainIndex)
     }
   }
   
   return (
 
-    <>
+    <div className='flex flex-col gap-2'>
       <div
-        className={`${currentIndex === index ? 'bg-gray-900 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-900 hover:text-white'} flex items-center 
-        gap-2 px-4 py-3 rounded-[22px] justify-center text-center font-inter text-sm font-medium leading-[145%] cursor-pointer md:hidden`}
+        className={`${currentIndex === mainIndex ? 'bg-gray-100 text-gray-700' : 'bg-gray-100 text-gray-700 '} flex items-center 
+        gap-2 px-4 py-3 border border-gray-100 bg-gray-50 rounded-[6x] justify-start text-center font-inter text-sm font-medium leading-[145%] cursor-pointer md:hidden`}
         onClick={toggle}
       >
-        {/* {tab.tabIcon && tab.tabIcon.length > 0 && (
-          <ImageLoader image={tab.tabIcon[0].image}></ImageLoader>
-        )} */}
+        {data.tableData.iconSvgCode && (
+          <span dangerouslySetInnerHTML={{__html: data.tableData.iconSvgCode}}></span>
+        )}
         {data.tableData.name}
       </div>
-      <div className={`${(index === currentIndex  && !isMobile) || (index === currentChildIndex && isMobile) ? 'block' : 'hidden'}`}>
+      <div className={`${(mainIndex === currentIndex  && !isMobile) || (mainIndex === currentChildIndex && isMobile) ? 'block' : 'hidden'}`}>
 
-        <Table className={`md:overflow-hidden bg-white w-full overflow-auto min-w-[700px] mb-[20px]`}>
+        <Table className={`bg-white w-full overflow-auto min-w-[700px] mb-[25px]`}>
           {/* <TableCaption className="hidden">
             A list of your recent invoices.
           </TableCaption> */}
@@ -115,7 +115,7 @@ export default function SiteComparisonTable({ data, index, currentIndex, isMobil
                   <TableCell>{data.tableData.name}</TableCell>
                 </TableRow> */}
                 <TableRow
-                      key={index}
+                      key={mainIndex}
                       className=" flex-row justify-between  border-0"
                     >
                       <TableCell className='text-gray-900 text-base font-medium leading-[145%] py-4'>{data.tableData.name}</TableCell>
@@ -137,8 +137,11 @@ export default function SiteComparisonTable({ data, index, currentIndex, isMobil
                       {row.comparisons.map((comparisonValue, idx) => (
                         <TableCell
                           key={idx}
-                          className={`text-center lg:min-w-[162px]  justify-center ${idx == 0 ? 'bg-vs-blue/10' : ''}`}
+                          className={`text-center lg:min-w-[162px]  justify-center 
+                            ${(idx == 0 && index == data.tableData.rows.length-1) ? 'relative after:content-[""] after:absolute after:bottom-[-20px] after:bg-[rgb(74,60,225,0.1)] after:left-0 after:right-0 after:h-5 after:rounded-b-[10px]' : ''} 
+                            ${idx == 0 ? 'bg-vs-blue/10' : ''}`}
                         >
+                          {/* {data.tableData.rows.length-1 }{index}{idx} */}
                           <ComparisonRichIcon comparisonValue={comparisonValue} vsIndex={idx == 0}/>
                         </TableCell>
                       ))}
@@ -149,6 +152,6 @@ export default function SiteComparisonTable({ data, index, currentIndex, isMobil
           </TableBody>
         </Table>
       </div>
-    </>
+    </div>
   )
 }

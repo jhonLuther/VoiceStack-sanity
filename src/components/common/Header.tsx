@@ -27,7 +27,6 @@ const Header = () => {
   const [isUk, setIsUk] = useState(false);
   const router = useRouter();
   const pathname = usePathname()
-  console.log(router.locale);
 
   useEffect(()=>{
     setIsUk(router.locale == "en-GB");
