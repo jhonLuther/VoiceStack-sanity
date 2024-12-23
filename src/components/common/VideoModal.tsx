@@ -5,7 +5,7 @@ type VideoPlatform = 'vimeo' | 'vidyard' | 'youtube'
 
 export interface VideoItem {
   _id?: string
-  platform: VideoPlatform
+  videoPlatform: VideoPlatform
   videoId: string
   title?: string
 }
@@ -18,8 +18,8 @@ interface VideoProps {
   video?: VideoItem | VideoItem[]
 }
 
-const getIframeUrl = (platform: VideoPlatform, videoId: string): string => {
-  switch (platform) {
+const getIframeUrl = (videoPlatform: VideoPlatform, videoId: string): string => {
+  switch (videoPlatform) {
     case 'vimeo':
       return `https://player.vimeo.com/video/${videoId}`
     case 'vidyard':
@@ -27,18 +27,18 @@ const getIframeUrl = (platform: VideoPlatform, videoId: string): string => {
     case 'youtube':
       return `https://www.youtube.com/embed/${videoId}`
     default:
-      throw new Error(`Unsupported platform: ${platform}`)
+      throw new Error(`Unsupported platform: ${videoPlatform}`)
   }
 }
 
 // Move VideoIframe outside of the main component to avoid re-creation on each render
 const VideoIframe: React.FC<VideoItem> = ({
-  platform,
+  videoPlatform,
   videoId,
   title = '',
 }) => (
   <iframe
-    src={getIframeUrl(platform, videoId)}
+    src={getIframeUrl(videoPlatform, videoId)}
     title={title}
     frameBorder="0"
     allowFullScreen
@@ -88,7 +88,7 @@ export const VideoModal: React.FC<VideoProps> = ({
         {Array.isArray(videoData) ? (
           videoData.map((item) => (
             <VideoIframe
-              key={item._id || `${item.platform}-${item.videoId}`}
+              key={item._id || `${item.videoPlatform}-${item.videoId}`}
               {...item}
             />
           ))

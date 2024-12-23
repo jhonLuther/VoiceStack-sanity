@@ -72,7 +72,7 @@ export default function Testimonails({ data }) {
 
           <div className="flex w-full gap-12 z-10 relative">
             <div className="w-full relative">
-              <div className="flex flex-col w-full gap-20">
+              <div className="flex flex-col w-full gap-8 md:gap-20">
                 {data &&
                   data?.map((testimonial, index) => {
                     // Calculate the scaling value dynamically when sticky

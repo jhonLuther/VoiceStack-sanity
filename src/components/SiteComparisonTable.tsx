@@ -8,12 +8,13 @@ import {
   TableRow,
 } from './ui/table'
 import React, { useState } from 'react'
+import { Minus, Plus } from 'lucide-react'
 
 function RowHeading({ heading, description }) {
   return (
-    <TableCell className="lg:min-w-[330px]">
-      <div className='py-4 border-b border-b-gray-200'>
-        <p className="text-gray-500 font-inter text-xs lg:text-[15px] font-normal leading-[150%] capitalize text-left">{heading}</p>
+    <TableCell className="lg:min-w-[330px] w-[100px] md:w-auto pr-2 pl-0 md:px-4 border-b border-b-gray-200 md:border-none">
+      <div className='py-4 md:border-b border-b-gray-200'>
+        <p className="text-gray-500 font-inter text-[10px] md:text-xs lg:text-[15px] font-normal leading-[150%] capitalize text-left">{heading}</p>
         {/* <p className="flex text-gray-600 text-xs font-normal !p-0">
           {description}
         </p> */}
@@ -26,7 +27,7 @@ function ComparisonRichIcon({ comparisonValue, vsIndex }) {
   const { icon, text } = comparisonValue
   return (
     <>
-      <div className={`py-4 border-b ${vsIndex ? 'border-b-vs-blue/20':'border-b-gray-200'} `}>
+      <div className={`py-4 md:border-b ${vsIndex ? 'border-b-vs-blue/20':'border-b-gray-200'} `}>
         <p className="flex flex-row gap-2 justify-start items-center text-left flex-shrink-0">
           <Image
             className="object-contain"
@@ -35,48 +36,49 @@ function ComparisonRichIcon({ comparisonValue, vsIndex }) {
             width={16}
             height={17}
           />
-          <span className="text-gray-600">{text}</span>
+          <span className="hidden md:inline text-gray-600">{text}</span>
         </p>
       </div>
     </>
   )
 }
 
-export default function SiteComparisonTable({ data, index, currentIndex, isMobile }) {
+export default function SiteComparisonTable({ data, mainIndex, currentIndex, isMobile }) {
   
   const [currentChildIndex, setCurrentChildIndex] = useState<number|null>(0);
 
   const toggle = () =>{
     
-    if(index === currentChildIndex){
+    if(mainIndex === currentChildIndex){
       setCurrentChildIndex(null)
     }
     else{
-      setCurrentChildIndex(index)
+      setCurrentChildIndex(mainIndex)
     }
   }
   
   return (
 
-    <>
+    <div className='flex flex-col gap-2'>
       <div
-        className={`${currentIndex === index ? 'bg-gray-900 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-900 hover:text-white'} flex items-center 
-        gap-2 px-4 py-3 rounded-[22px] justify-center text-center font-inter text-sm font-medium leading-[145%] cursor-pointer md:hidden`}
+        className={`${currentChildIndex === mainIndex ? 'bg-gray-100 text-gray-700' : 'bg-gray-100 text-gray-700 '} flex items-center 
+        gap-2 px-4 py-3 border border-gray-100 bg-gray-50 rounded-[6px] justify-start text-center font-inter text-sm font-medium leading-[145%] cursor-pointer md:hidden`}
         onClick={toggle}
       >
-        {/* {tab.tabIcon && tab.tabIcon.length > 0 && (
-          <ImageLoader image={tab.tabIcon[0].image}></ImageLoader>
-        )} */}
+        {data.tableData.iconSvgCode && (
+          <span dangerouslySetInnerHTML={{__html: data.tableData.iconSvgCode}}></span>
+        )}
         {data.tableData.name}
+        {currentChildIndex === mainIndex ?  <Minus height={16} width={16}></Minus> : <Plus height={16} width={16}></Plus>}
       </div>
-      <div className={`${(index === currentIndex  && !isMobile) || (index === currentChildIndex && isMobile) ? 'block' : 'hidden'}`}>
+      <div className={`${(mainIndex === currentIndex  && !isMobile) || (mainIndex === currentChildIndex && isMobile) ? 'block' : 'hidden'}`}>
 
-        <Table className={`md:overflow-hidden bg-white w-full overflow-auto min-w-[700px] mb-[20px]`}>
+        <Table className={`bg-white w-full overflow-auto mb-[25px]`}>
           {/* <TableCaption className="hidden">
             A list of your recent invoices.
           </TableCaption> */}
           <TableHeader className="">
-            <TableRow className="w-full justify-between  py-2 !border-0">
+            <TableRow className="w-full justify-between  py-2 !border-0 hover:bg-inherit">
               <TableHead className="justify-start items-center">
                 {/* {data.columnDimensionName}{data.tableData.name} */}
               </TableHead>
@@ -114,8 +116,8 @@ export default function SiteComparisonTable({ data, index, currentIndex, isMobil
                   <TableCell>{data.tableData.name}</TableCell>
                 </TableRow> */}
                 <TableRow
-                      key={index}
-                      className=" flex-row justify-between  border-0"
+                      key={mainIndex}
+                      className="hidden md:table-row flex-row justify-between  border-0"
                     >
                       <TableCell className='text-gray-900 text-base font-medium leading-[145%] py-4'>{data.tableData.name}</TableCell>
                       <TableCell className={`text-center justify-center bg-vs-blue/10`}></TableCell>
@@ -126,7 +128,7 @@ export default function SiteComparisonTable({ data, index, currentIndex, isMobil
                   return (
                     <TableRow
                       key={index}
-                      className=" flex-row justify-between  border-0"
+                      className=" flex-row justify-between border-0"
                     >
                       <RowHeading
                         key={index+Math.log(Math.sin(index))}
@@ -136,8 +138,11 @@ export default function SiteComparisonTable({ data, index, currentIndex, isMobil
                       {row.comparisons.map((comparisonValue, idx) => (
                         <TableCell
                           key={idx}
-                          className={`text-center lg:min-w-[162px]  justify-center ${idx == 0 ? 'bg-vs-blue/10' : ''}`}
+                          className={`text-center lg:min-w-[162px]  justify-center  ${idx == 0 ? 'border-b-vs-blue/20':'border-b-gray-200'} border-b md:border-none
+                            ${(idx == 0 && index == data.tableData.rows.length-1) ? 'relative after:content-[""] after:absolute after:bottom-[-20px] after:bg-[rgb(74,60,225,0.1)] after:left-0 after:right-0 after:h-5 after:rounded-b-[10px]' : ''} 
+                            ${idx == 0 ? 'bg-vs-blue/10' : ''}`}
                         >
+                          {/* {data.tableData.rows.length-1 }{index}{idx} */}
                           <ComparisonRichIcon comparisonValue={comparisonValue} vsIndex={idx == 0}/>
                         </TableCell>
                       ))}
@@ -148,6 +153,6 @@ export default function SiteComparisonTable({ data, index, currentIndex, isMobil
           </TableBody>
         </Table>
       </div>
-    </>
+    </div>
   )
 }

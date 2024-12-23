@@ -59,13 +59,13 @@ function SiteComparisonSection({ data }) {
               setCurrentIndex={setCurrentIndex}
             />
   
-            <div className='w-full'>
+            <div className='w-full flex flex-col gap-2 '>
               {data.table.rowCategories.length && (
                 data.table.rowCategories.map((tableData:any, index:number) =>{
                   return (
                     <SiteComparisonTable 
                       key={index+1}
-                      index={index}
+                      mainIndex={index}
                       currentIndex={currentIndex}
                       isMobile={isMobile}
                       data={{

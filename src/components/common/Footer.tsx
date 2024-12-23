@@ -5,6 +5,8 @@ import CTAButton from './CTAbutton'
 import H2 from '../typography/H2'
 import Image from 'next/image'
 import VoicestackLogo from 'public/assets/voicestack-logo-sm.svg';
+import { useRouter } from 'next/router'
+import { useEffect, useState } from 'react'
 
 const TopSection = ({ data, ctaName }) => {
   return (
@@ -59,6 +61,15 @@ const Footer = (props) => {
       url: props.siteSettings?.demoBtnUrl,
     },
   }
+
+  const router = useRouter();
+
+  const [isUk, setIsUk] = useState(false);
+
+  useEffect(()=>{
+    setIsUk(router.locale == "en-GB");
+  },[router.locale])
+
   return (
     <Section id="footer" className={'bg-gray-900'}>
       <Container className="flex justify-center">
@@ -75,7 +86,7 @@ const Footer = (props) => {
               <ul className="flex gap-6 items-center">
                 <li>
                   <a
-                    href="https://www.linkedin.com/company/carestack/"
+                    href={isUk? "https://www.linkedin.com/showcase/voicestack-uk/" : "https://www.linkedin.com/company/voice-stack/"}
                     target="_blank"
                     rel=" noreferrer"
                     title="LinkedIn"
@@ -111,32 +122,7 @@ const Footer = (props) => {
                 </li>
                 <li>
                   <a
-                    href="https://www.youtube.com/c/CareStack"
-                    target="_blank"
-                    title="YouTube"
-                    rel=" noreferrer"
-                    className="group"
-                  >
-                    <span className="icon-youtube">
-                      <svg
-                        className="group-hover:text-white text-[#71717A] transition-colors duration-300"
-                        width="20"
-                        height="20"
-                        viewBox="0 0 20 20"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M19.8008 6C19.8008 6 19.6055 4.62109 19.0039 4.01563C18.2422 3.21875 17.3906 3.21484 17 3.16797C14.2031 2.96484 10.0039 2.96484 10.0039 2.96484H9.99609C9.99609 2.96484 5.79687 2.96484 3 3.16797C2.60938 3.21484 1.75781 3.21875 0.996094 4.01563C0.394531 4.62109 0.203125 6 0.203125 6C0.203125 6 0 7.62109 0 9.23828V10.7539C0 12.3711 0.199219 13.9922 0.199219 13.9922C0.199219 13.9922 0.394531 15.3711 0.992187 15.9766C1.75391 16.7734 2.75391 16.7461 3.19922 16.832C4.80078 16.9844 10 17.0313 10 17.0313C10 17.0313 14.2031 17.0234 17 16.8242C17.3906 16.7773 18.2422 16.7734 19.0039 15.9766C19.6055 15.3711 19.8008 13.9922 19.8008 13.9922C19.8008 13.9922 20 12.375 20 10.7539V9.23828C20 7.62109 19.8008 6 19.8008 6ZM7.93359 12.5938V6.97266L13.3359 9.79297L7.93359 12.5938Z"
-                          fill="currentColor"
-                        />
-                      </svg>
-                    </span>
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://www.facebook.com/CareStackSystem/"
+                    href={isUk? "https://www.facebook.com/profile.php?id=61569374245382" : "https://www.facebook.com/profile.php?id=61571032885384"}
                     target="_blank"
                     title="Facebook"
                     rel=" noreferrer"
@@ -172,7 +158,7 @@ const Footer = (props) => {
                 </li>
                 <li>
                   <a
-                    href="https://www.instagram.com/carestack_/"
+                    href={isUk ? "https://www.instagram.com/voicestack_uk/" : "https://www.instagram.com/voicestack.ai/"}
                     target="_blank"
                     title="Instagram"
                     rel=" noreferrer"
@@ -215,42 +201,6 @@ const Footer = (props) => {
                   </a>
                 </li>
 
-                <li>
-                  <a
-                    href="https://vimeo.com/user14264510"
-                    target="_blank"
-                    rel=" noreferrer"
-                    className="group"
-                    title="Vimeo"
-                  >
-                    <span className="icon-vimeo">
-                      <svg
-                        className="group-hover:text-white text-[#71717A] transition-colors duration-300"
-                        width="20"
-                        height="20"
-                        viewBox="0 0 20 20"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        {' '}
-                        <g clipPath="url(#clip0_312_61)">
-                          {' '}
-                          <path
-                            d="M0.812934 7.06493C0.812934 7.06493 2.48837 5.74419 3.04685 6.40401C3.60533 7.06493 5.7368 15.0356 6.44839 16.5062C7.06966 17.7961 8.78255 19.5002 10.6607 18.283C12.5388 17.0658 18.7823 11.7343 19.9004 5.43906C21.0173 -0.85512 12.3868 0.46342 11.4725 5.94687C13.7582 4.57546 14.9776 6.50425 13.8078 8.68859C12.6401 10.8707 11.5738 12.2939 11.0154 12.2939C10.458 12.2939 10.0295 10.8333 9.3906 8.28102C8.73078 5.64284 8.73408 0.889714 5.99016 1.42837C3.40154 1.93617 0 5.99864 0 5.99864L0.812934 7.06493V7.06493Z"
-                            fill="currentColor"
-                          />{' '}
-                        </g>{' '}
-                        <defs>
-                          {' '}
-                          <clipPath id="clip0_312_61">
-                            {' '}
-                            <rect width="20" height="20" fill="white" />{' '}
-                          </clipPath>{' '}
-                        </defs>{' '}
-                      </svg>
-                    </span>
-                  </a>
-                </li>
               </ul>
             </div>
           </div>

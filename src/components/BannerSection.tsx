@@ -16,7 +16,7 @@ const BannerSection = () => {
   
   const [openForm, setOpenForm] = useState(false)
   const overviewVideo:VideoItem = {
-    platform: 'vidyard',
+    videoPlatform: 'vidyard',
     videoId: "Hj4GYLXARVjqQEnaejq3Bz",
   }
   
