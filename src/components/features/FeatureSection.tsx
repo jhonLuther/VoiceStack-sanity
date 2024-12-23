@@ -31,11 +31,11 @@ export default function FeatureSection({ data }) {
   )
 
   const switchIndex = (percentage) => {
-    if(isMobile) return
+    if (isMobile) return
 
-
-    if (percentage <= 25 && percentage > 0) setActiveImage(sampleImages[0])
-    else if (percentage > 25 && percentage <= 50)
+    if (percentage <= 25 && percentage > 0) {
+      setActiveImage(sampleImages[0])
+    } else if (percentage > 25 && percentage <= 50)
       setActiveImage(sampleImages[1])
     else if (percentage > 50 && percentage <= 75)
       setActiveImage(sampleImages[2])
@@ -59,7 +59,6 @@ export default function FeatureSection({ data }) {
                 key={feature?._id}
                 getIndex={(percentage) => switchIndex(percentage)}
                 getIndexfromAppear={(index) => getIndexfromAppear(index)}
-                ref={featureRefs.current[1]}
                 index={index}
                 data-index={1}
                 data={feature}
