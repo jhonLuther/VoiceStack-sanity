@@ -24,7 +24,7 @@ const TestimonialCard = forwardRef<HTMLDivElement, TestimonialCardProps>(
   
   const video  = data.video
   return (
-    <div className={`md:sticky testimonial-card`} ref={ref} id={`${index}`}  data-index={index}
+    <div className={`md:sticky testimonial-card shadow-[0px_-4px_40px_0px_rgba(0,0,0,0.05)]`} ref={ref} id={`${index}`}  data-index={index}
       style={{
         top:topValue,
         transform: (isSticky && !isMobile) ? `scale(${scale})` : "scale(1)",
