@@ -132,7 +132,15 @@ export default function FeatureSection({ data }) {
                   >
                     <PreText>
                       <span className="text-vs-blue">
-                        <PhoneIcon />
+                      { feature.testimonialIcon && feature.testimonialIcon.url &&
+                      <div className=''>
+                        <motion.img
+                          key={activeImage}
+                          src={feature.testimonialIcon.url}
+                          alt="testimonial icon"
+                        />
+                      </div>
+                    }
                       </span>{' '}
                       {feature.testimonialSubheading}
                     </PreText>
