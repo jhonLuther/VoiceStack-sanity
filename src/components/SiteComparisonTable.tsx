@@ -99,13 +99,26 @@ export default function SiteComparisonTable({ data, mainIndex, currentIndex, isM
                     className={`text-white items-center justify-center pt-5 ${index == 0 ? 'bg-vs-blue/10 rounded-tl-[10px] rounded-tr-[10px]' : ''}`}
                   >
                     {/* {column.name} */}
-                    <Image
+                    {column.logo  && column.logo.url && !isMobile && (
+
+                      <Image
+                        className="justify-center items-center py-3 min-h-full w-auto m-auto"
+                        src={column.logo.url}
+                        width={135}
+                        height={26}
+                        alt="OS Dental Logo"
+                      />
+                    )}
+
+                    {column.logoMobile  && column.logoMobile.url && isMobile && (
+                      <Image
                       className="justify-center items-center py-3 min-h-full w-auto m-auto"
-                      src={column.logo.url}
+                      src={column.logoMobile.url}
                       width={135}
                       height={26}
                       alt="OS Dental Logo"
                     />
+                    )}
                   </TableHead>
                 ))}
             </TableRow>
