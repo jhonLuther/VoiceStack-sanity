@@ -1,7 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 
-const SITE_URL = process.env.SANITY_SITE_URL
+const SITE_URL = 'https://www.voicestack.com/'
 
 export async function getStaticProps() {
 

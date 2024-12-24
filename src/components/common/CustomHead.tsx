@@ -5,6 +5,7 @@ import { urlForImage } from '~/lib/sanity.image'
 
 export default function CustomHead(props) {
   const SchemaData = formatOrganizationSchema(props.siteSettings.seoSettings)
+  const jsonLdData = JSON.parse(props.siteSettings.injectJSONld)
 
   return (
     <Head>
@@ -17,9 +18,9 @@ export default function CustomHead(props) {
       <meta name="title" content='VoiceStack'></meta>
       <meta property="og:description" content={props.siteSettings?.ogDescription} />
       <meta property="og:image" content={urlForImage(props.siteSettings?.ogImage)} />
-      <script
+       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(SchemaData) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdData) }}
       ></script>
     </Head>
   )
