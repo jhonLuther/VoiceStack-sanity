@@ -66,14 +66,6 @@ export default function FeatureSection({ data }) {
 
 
   
-  
-  useEffect(() => {
-    console.log(activeImage,'on page load');
-    
-
-  }, []);
-  
-  
 
   const switchIndex = (percentage) => {
     if (isMobile) return
