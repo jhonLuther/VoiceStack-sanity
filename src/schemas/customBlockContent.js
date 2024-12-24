@@ -1,9 +1,7 @@
 import { defineArrayMember, defineType } from 'sanity'
-
 const HighlightDecorator = (props) => (
   <span style={{ backgroundColor: 'yellow' }}>{props.children}</span>
 )
-
 export default defineType({
   title: 'Custom Block Content',
   name: 'customBlockContent',

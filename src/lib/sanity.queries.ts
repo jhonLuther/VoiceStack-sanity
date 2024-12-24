@@ -354,6 +354,28 @@ export const getComparisonTableData = (region) =>
               aspectRatio
             }
           }
+        },
+        "logoMobile":logoMobile.asset-> {
+          _id,
+          url,
+          metadata {
+            dimensions {
+              width,
+              height,
+              aspectRatio
+            }
+          }
+        },
+        "logoMobile":logoMobile.asset-> {
+          _id,
+          url,
+          metadata {
+            dimensions {
+              width,
+              height,
+              aspectRatio
+            }
+          }
         }
     },
     

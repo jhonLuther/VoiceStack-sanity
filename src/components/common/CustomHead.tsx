@@ -9,11 +9,10 @@ export default function CustomHead(props) {
   return (
     <Head>
       <title>VoiceStack</title>
-      {/* <title>{`${props?.homeSettings?.heroStrip} | ${props?.homeSettings?.heroTitleStatic} | ${props.homeSettings?.heroTitleStaticDynamic[0]}`}</title> */}
+      <meta name="description"  content={props.siteSettings?.ogDescription}></meta>
       <link rel="icon" href={urlForImage(props.siteSettings?.ogFavicon)} sizes="any" />
       <meta property="og:type" content="website" />
       <meta property="og:url" content={props.siteSettings?.ogUrl} />
-      {/* <meta property="og:title" content={`${props.homeSettings?.heroStrip} | ${props.homeSettings?.heroTitleStatic} | ${props.homeSettings?.heroTitleStaticDynamic[0]}`} /> */}
       <meta property="og:title" content={'VoiceStack'} />
       <meta name="title" content='VoiceStack'></meta>
       <meta property="og:description" content={props.siteSettings?.ogDescription} />

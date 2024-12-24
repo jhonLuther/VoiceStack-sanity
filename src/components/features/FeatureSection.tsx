@@ -22,7 +22,8 @@ export default function FeatureSection({ data }) {
   const sampleImages = data[testimonialIndex]?.testimonialSubSection.map(
     (e: any) => e.image.url,
   );
-  const [activeImage, setActiveImage] = useState(sampleImages[0])
+  const [activeImage, setActiveImage] = useState(null)
+  const [currentIndex, setActiveIndex] = useState(0)
   const featureRefs = useRef([])
   const isMobile: any = useMediaQuery(767);
 
@@ -75,11 +76,11 @@ export default function FeatureSection({ data }) {
   
 
   const switchIndex = (percentage) => {
-    if(isMobile) return
+    if (isMobile) return
 
-
-    if (percentage <= 25 && percentage > 0) setActiveImage(sampleImages[0])
-    else if (percentage > 25 && percentage <= 50)
+    if (percentage <= 25 && percentage > 0) {
+      setActiveImage(sampleImages[0])
+    } else if (percentage > 25 && percentage <= 50)
       setActiveImage(sampleImages[1])
     else if (percentage > 50 && percentage <= 75)
       setActiveImage(sampleImages[2])
@@ -88,8 +89,14 @@ export default function FeatureSection({ data }) {
   }
 
   const getIndexfromAppear = (index) => {
-    setActiveImage(isMobile && sampleImages[index])
+    setActiveIndex(index)
+    setActiveImage(isMobile && sampleImages[currentIndex])
   }
+
+
+  useEffect(() => {
+    setActiveIndex(0)
+  },[isMobile])
 
   return (
     <Section className="relative bg-[#f9f9f9] " id="features">
@@ -103,7 +110,6 @@ export default function FeatureSection({ data }) {
                 key={feature?._id}
                 getIndex={(percentage) => switchIndex(percentage)}
                 getIndexfromAppear={(index) => getIndexfromAppear(index)}
-                ref={featureRefs.current[1]}
                 index={index}
                 data-index={1}
                 data={feature}
@@ -111,7 +117,7 @@ export default function FeatureSection({ data }) {
               />
             ) : (
 
-              <div className='md:h-[100vh]  relative flex' key={feature?.id}>
+              <div className='md:h-[100vh]  relative flex' key={feature?._rev}>
 
                 <div className="md:mt-40 mt-5 left-0 self-start flex flex-col justify-center">
                   <motion.div
@@ -194,7 +200,7 @@ export default function FeatureSection({ data }) {
                   key={image}
                   src={image}
                   alt="Feature Image"
-                  animate={{ opacity: activeImage === image ? 1 : 0 }}
+                  animate={{ opacity: currentIndex === index ? 1 : 0 }}
                   transition={{ duration: 0.300 }}
                   className={`absolute top-0 left-0 w-auto h-auto rounded-lg max-w-full bg-black/5 md:max-h-[538px]`}
                 />

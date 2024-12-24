@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Section from './structure/Section'
 import Container from './structure/Container'
-import CTAButton from './common/CTAbutton'
-import ComparisonTable from './ComparisonTable'
-import Subtext from './typography/Subtext'
 import H2 from './typography/H2'
 import Paragraph from './typography/Paragraph'
 import SiteComparisonTable from './SiteComparisonTable'
@@ -46,7 +43,7 @@ function SiteComparisonSection({ data }) {
     isUk ? (
       <></> 
     ):(
-      <Section id="comparison" className="py-12 md:py-24 scroll-m-16">
+      <Section id="comparison" className="py-sm md:py-md  scroll-m-16">
         <Container className="flex flex-col items-center">
           
           <div className="flex justify-center w-full mb-12">
@@ -62,13 +59,13 @@ function SiteComparisonSection({ data }) {
               setCurrentIndex={setCurrentIndex}
             />
   
-            <div className='w-full'>
+            <div className='w-full flex flex-col gap-2 '>
               {data.table.rowCategories.length && (
                 data.table.rowCategories.map((tableData:any, index:number) =>{
                   return (
                     <SiteComparisonTable 
                       key={index+1}
-                      index={index}
+                      mainIndex={index}
                       currentIndex={currentIndex}
                       isMobile={isMobile}
                       data={{
@@ -93,6 +90,9 @@ function SiteComparisonSection({ data }) {
             name={data?.cta.name ?? ''}
             url={data?.cta.url ?? '/'}
           /> */}
+          <div className="flex justify-end pt-6 w-full">
+            <span className='text-[11px] md:text-sm text-gray-600'>*Data from 3rd Party Services.</span>
+          </div>
           <div className='flex gap-4 items-center mt-12 lg:mt-16'>
               <Button type='primary'   onClick={() => {setOpenForm(true)}}>
                 <ButtonArrow></ButtonArrow>
