@@ -26,6 +26,7 @@ export default function FeatureSection({ data }) {
   const [currentIndex, setActiveIndex] = useState(0)
   const featureRefs = useRef([])
   const isMobile: any = useMediaQuery(767);
+  const imageRef = useRef(null);
 
   // const featureData = data.sort(
   //   (a, b) => a.testimonialOrder - b.testimonialOrder,
@@ -90,6 +91,16 @@ export default function FeatureSection({ data }) {
     setActiveIndex(0)
   },[isMobile])
 
+  useEffect(() => {
+    if (imageRef.current) {
+      imageRef.current.children[currentIndex].scrollIntoView({
+        behavior: 'smooth',
+        block: 'nearest',
+        inline: 'center',
+      });
+    }
+  }, [currentIndex]);
+
   return (
     <Section className="relative bg-[#f9f9f9] " id="features">
       {!isMobile && <div className='bg-white md:bg-vs-lemon-green w-1/2 h-full absolute top-0 right-0 z-0'></div>}
@@ -121,7 +132,15 @@ export default function FeatureSection({ data }) {
                   >
                     <PreText>
                       <span className="text-vs-blue">
-                        <PhoneIcon />
+                      { feature.testimonialIcon && feature.testimonialIcon.url &&
+                      <div className=''>
+                        <motion.img
+                          key={activeImage}
+                          src={feature.testimonialIcon.url}
+                          alt="testimonial icon"
+                        />
+                      </div>
+                    }
                       </span>{' '}
                       {feature.testimonialSubheading}
                     </PreText>
@@ -185,7 +204,7 @@ export default function FeatureSection({ data }) {
         {isMobile &&  <div
           className={`relative mx-[-16px] bg-vs-lemon-green md:w-1/2 w-auto h-full`}
         >
-          <div className="w-full pt-[87.1071%] relative ">
+          <div className="w-full pt-[87.1071%] relative " ref={imageRef}>
             <AnimatePresence>
               {sampleImages?.map((image, index) => (
                 <motion.img
