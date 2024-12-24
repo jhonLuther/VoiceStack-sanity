@@ -99,13 +99,12 @@ export default function AppearFeature({
     }
     if (activeItemIndex === index) {
       setActiveItemIndex(null)
+      setcurrentItem(index)
     } else {
       setActiveItemIndex(index)
+      setcurrentItem(index)
       getIndexfromAppear(index)
     }
-    // setItemShowDesc(
-    //     conversationalFeatures.map((item, i) => i === index)
-    // );
   }
 
   useMotionValueEvent(scrollY, 'change', (current) => {
@@ -158,14 +157,15 @@ export default function AppearFeature({
               data?.testimonialSubSection?.map((item, i: number) => {
                 return (
                   <ListItem
-                    onClick={handleClick}
-                    key={i}
-                    index={i}
-                    title={item.featureSubHead}
-                    numberOfItems={numberOfItems}
-                    percentScrolled={percentScrolled}
-                    showDesc={isMobile ? i == activeItemIndex : i == switchIndex(percentScrolled)}
-                    desc={item.featureSubDescription}
+                  onClick={handleClick}
+                  key={i}
+                  index={i}
+                  title={item.featureSubHead}
+                  numberOfItems={numberOfItems}
+                  percentScrolled={percentScrolled}
+                  showDesc={isMobile ? i === activeItemIndex : i === switchIndex(percentScrolled)}
+                  desc={item.featureSubDescription}
+                  currentItem={currentItem}
                   >
                     {' '}
                   </ListItem>
