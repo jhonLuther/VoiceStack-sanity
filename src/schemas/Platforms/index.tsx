@@ -1,4 +1,5 @@
 import { defineField, defineType } from 'sanity'
+import showCountryFlag from '~/components/utils/common';
 export default defineType({
   name: 'platform',
   title: 'Platform',
@@ -78,5 +79,17 @@ export default defineType({
       hidden: true,
     }),
   ],
+  preview: {
+    select: {
+      title: 'integrationHeading',
+      language:'language',
+    },
+    prepare(selection) {
+      return {
+        title: ` ${selection?.title}`,
+        media:<img src={showCountryFlag(selection?.language)}/>
+      };
+    },
+  },
   
 })
