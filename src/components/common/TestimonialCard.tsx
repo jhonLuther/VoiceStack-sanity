@@ -153,7 +153,7 @@ const TestimonialCard = forwardRef<HTMLDivElement, TestimonialCardProps>(
                   {data?.locations}
                 </span>
                 <span className="text-gray-500 text-sm font-medium leading-[140%]">
-                  Locations
+                   {Number(data.locations) > 1 ? "Locations": "Location"}
                 </span>
               </div>
             )}
