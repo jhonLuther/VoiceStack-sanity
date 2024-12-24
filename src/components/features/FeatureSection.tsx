@@ -106,7 +106,7 @@ export default function FeatureSection({ data }) {
       {!isMobile && <div className='bg-white md:bg-vs-lemon-green w-1/2 h-full absolute top-0 right-0 z-0'></div>}
       <Container className="relative flex gap-16 md:flex-row flex-col">
 
-        <div className="flex md:gap-0 gap-6  md:w-1/2 w-full flex-col flex-1 md:py-20 md:pb-40">
+        <div className="flex md:gap-0 gap-12  md:w-1/2 w-full flex-col flex-1 md:py-20 md:pb-40 pt-12">
           {data.map((feature, index) =>
             feature?.testimonialSubSection?.length ? (
               <AppearFeature
@@ -158,7 +158,7 @@ export default function FeatureSection({ data }) {
                         ))}
                     </ul>
 
-                    <div className='mt-4 flex md:justify-start justify-center'>
+                    <div className='mt-8 mb-12 md:m-0 flex md:justify-start justify-center'>
                       <Button type="primary" onClick={() => { setOpenForm(true) }}>
                         <ButtonArrow></ButtonArrow>
                         <span className="text-base font-medium">{`Book free demo`}</span>
