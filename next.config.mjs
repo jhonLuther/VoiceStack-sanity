@@ -9,7 +9,7 @@ const config = {
   },
   i18n: {
     localeDetection:false,
-    locales: ['en', 'en-GB'],
+    locales: ['en', 'en-GB','en-AU'],
     defaultLocale: 'en'
   },
   

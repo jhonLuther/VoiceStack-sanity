@@ -1,3 +1,7 @@
+import enGb from '../../../public/assets/countryFlags/EN-GB.png'
+import en from '../../../public/assets/countryFlags/EN-usa.png'
+import enAu from '../../../public/assets/countryFlags/EN-AU.png'
+
 export const fetchAuthor = (post) => {
   let authorData: any = []
   post &&
@@ -138,43 +142,49 @@ export const mergeAndRemoveDuplicates = (
   return result
 }
 
-
 export const formatOrganizationSchema = (props: any) => {
   const schema = {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": `${props?.name}`,
-    "url": `${props?.url}`,
-    "logo": `${props?.logoUrl}`,
-    "contactPoint": [
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: `${props?.name}`,
+    url: `${props?.url}`,
+    logo: `${props?.logoUrl}`,
+    contactPoint: [
       {
-        "@type": "ContactPoint",
-        "telephone": "",
-        "contactType": "Customer Service",
-        "areaServed": `${props?.areaServed}`,
-        "availableLanguage": ["English"]
-      }
+        '@type': 'ContactPoint',
+        telephone: '',
+        contactType: 'Customer Service',
+        areaServed: `${props?.areaServed}`,
+        availableLanguage: ['English'],
+      },
     ],
-    "sameAs": `${props?.socialLinks}`,
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "123 Main Street",
-      "addressLocality": "Orlando",
-      "addressRegion": "FL",
-      "postalCode": "32801",
-      "addressCountry": "US"
+    sameAs: `${props?.socialLinks}`,
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: '123 Main Street',
+      addressLocality: 'Orlando',
+      addressRegion: 'FL',
+      postalCode: '32801',
+      addressCountry: 'US',
     },
-    "founder": {
-      "@type": "Person",
-      "name": `${props?.founder}`
+    founder: {
+      '@type': 'Person',
+      name: `${props?.founder}`,
     },
-    "foundingDate": `${props?.foundingDate}`,
-    "numberOfEmployees": 50,
-    "description": `${props?.description}`,
-    "keywords": `${props?.keyWords}`
+    foundingDate: `${props?.foundingDate}`,
+    numberOfEmployees: 50,
+    description: `${props?.description}`,
+    keywords: `${props?.keyWords}`,
   }
   return schema
-  
-
 }
 
+export default function showCountryFlag(region: string) {
+  if (region === 'en') {
+    return en.src
+  } else if (region === 'en-GB') {
+    return enGb.src
+  } else if (region === 'en-AU') {
+    return enAu.src
+  }
+}

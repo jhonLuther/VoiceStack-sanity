@@ -67,6 +67,7 @@ export default defineConfig({
       supportedLanguages: [
         { id: 'en', title: 'US English' },
         { id: 'en-GB', title: 'UK English' },
+        { id: 'en-AU', title: 'Australia English' },
       ],
       schemaTypes: [
         'layout',
@@ -80,7 +81,7 @@ export default defineConfig({
         'comparisonValue',
         'testimonialSection',
         'logoListing',
-        'platform'
+        'platform',
       ],
     }),
 
@@ -124,7 +125,7 @@ export default defineConfig({
                   .schemaType('comparisonTable')
                   .documentId('comparisonTable'),
               ),
-            
+
             // S.listItem()
             // .title('Platform')
             // .child(
@@ -143,7 +144,7 @@ export default defineConfig({
             S.documentTypeListItem('platformList').title('PlatformList'),
             S.documentTypeListItem('logoListing').title('logoListing'),
             S.documentTypeListItem('faq').title('Faq'),
-           
+
             // S.documentTypeListItem('platform').title('Platform'),
           ]),
     }),
