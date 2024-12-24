@@ -60,6 +60,14 @@ const TestimonialCard = forwardRef<HTMLDivElement, TestimonialCardProps>(
           <div className="flex-1 flex flex-col md:flex-row justify-between">
             {/*  */}
               <div className="flex flex-col flex-1 pt-6 pb-3 px-4 md:p-8">
+                {data.testimonialdescription && (
+                  <p
+                    className={`text-gray-900 font-manrope text-[24px] lg:text-3xl font-bold leading-[120%] [&_span]:text-vs-blue 
+                      ${data.listItems && data.listItems.length > 0 ? "pb-3 border-b border-gray-200": ""}`}
+                    dangerouslySetInnerHTML={{ __html: data?.testimonialdescription 
+                       || "" }}
+                  ></p>
+                )}
                 {data.listItems &&
                   data.listItems.length > 0 &&
                   data.listItems.map((item: any, index: number) => {
@@ -99,13 +107,7 @@ const TestimonialCard = forwardRef<HTMLDivElement, TestimonialCardProps>(
                       </div>
                     )
                   })}
-                {data.testimonialdescription && (
-                  <p
-                    className="text-gray-900 font-manrope text-[24px] lg:text-3xl font-bold leading-[120%] [&_span]:text-vs-blue"
-                    dangerouslySetInnerHTML={{ __html: data?.testimonialdescription 
-                       || "" }}
-                  ></p>
-                )}
+                
               </div>
 
               {data.keyFeatures && data.keyFeatures.length > 0 && (
