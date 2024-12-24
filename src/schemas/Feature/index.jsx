@@ -1,5 +1,8 @@
+import { defineField, defineType } from 'sanity';
+import showCountryFlag from '~/components/utils/common';
 
-import { defineField, defineType } from 'sanity'
+
+
 export default defineType({
   name: 'testimonial',
   title: 'Testimonial',
@@ -25,26 +28,22 @@ export default defineType({
       title: 'Feature Description',
       type: 'text',
     }),
-
     defineField({
       name: 'testimonialIcon',
       title: 'Feature Icon',
       type: 'image',
     }),
-
     defineField({
       name: 'testimonialImage',
       title: 'Feature Image',
       type: 'image',
     }),
-
     defineField({
       name: 'testimonialChip',
       title: 'Feature Chip',
       type: 'array',
       of: [{ type: 'string' }],
     }),
-
     defineField({
       name: 'testimonialSubSection',
       title: 'Feature Sub Section',
@@ -56,7 +55,6 @@ export default defineType({
         },
       ],
     }),
-
     defineField({
       name: 'language',
       type: 'string',
@@ -64,10 +62,16 @@ export default defineType({
       hidden: true,
     }),
   ],
-  preview:{
+  preview: {
     select: {
       title: 'testimonialheading',
-      media: 'testimonialIcon',
+      language:'language',
     },
-  }
-})
+    prepare(selection) {
+      return {
+        title: ` ${selection?.title}`,
+        media:<img src={showCountryFlag(selection?.language)}/>
+      };
+    },
+  },
+});

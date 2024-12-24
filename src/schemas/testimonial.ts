@@ -134,4 +134,10 @@ export default defineType({
       hidden: true,
     }),
   ],
+  preview: {
+    select: {
+      title: 'language',
+      media: 'testimonialImage',
+    },
+  },
 })
