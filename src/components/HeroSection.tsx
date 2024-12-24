@@ -135,6 +135,7 @@ const HeroSection = ({ data }) => {
                 <Image
                   className="w-full h-full object-cover"
                   src={voicestack}
+                  title="VoiceStack"
                   alt="voicestack"
                 ></Image>
               </div>
@@ -143,6 +144,7 @@ const HeroSection = ({ data }) => {
                   className="w-full h-full object-cover"
                   src={voicemail}
                   alt="voicemail"
+                  title="Voice Mail"
                 ></Image>
               </div>
             </div>
@@ -152,6 +154,7 @@ const HeroSection = ({ data }) => {
                 className="w-full h-full object-cover"
                 src={device}
                 alt="voicestack device"
+                title='VoiceStack'
               ></Image>
             </div>
           </div>

@@ -26,8 +26,8 @@ const BannerSection = () => {
       <Container>
         <div className='flex justify-center w-full'>
           <div className='flex flex-col gap-8 items-center w-full'>
-              <h2 className='text-gray-50 text-center font-manrope text-4xl md:text-5xl font-bold leading-[1.1667] tracking-[-0.96px] w-full max-w-[630px]'>
-                Start Your Practice Growth Journey With VoiceStack.
+              <h2 className='text-gray-50 text-center font-manrope text-4xl lg:text-5xl font-bold leading-[1.1667] tracking-[-0.96px] w-full max-w-[800px]'>
+                Start Your Practice Growth Journey<br/> With VoiceStack.
               </h2>
               <div className='flex gap-4 items-center flex-col md:flex-row relative z-[1]'>
                 <Button type='primaryWhite'   onClick={() => {setOpenForm(true)}}>

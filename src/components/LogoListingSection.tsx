@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Section from './structure/Section'
 import Container from './structure/Container'
 import atlanta from 'public/assets/logos/atlanta-dental-spa.png'
@@ -20,10 +20,21 @@ import ButtonArrow from './icons/ButtonArrow'
 import H2 from './typography/H2'
 import Paragraph from './typography/Paragraph'
 import { FormModal } from './common/FormModal'
+import { useRouter } from 'next/router'
 
 const LogoListingSection = ({ data }) => {
   
-  const [openForm, setOpenForm] = useState(false)
+  const [openForm, setOpenForm] = useState(false);
+  
+  const [isUk, setIsUk] = useState(false);
+  const router = useRouter();
+
+  useEffect(()=>{
+    setIsUk(router.locale == "en-GB");
+  },[router.locale])
+
+  console.log({data});
+  
 
   return (
     <Section className="py-sm md:py-md pb-8">
@@ -46,7 +57,7 @@ const LogoListingSection = ({ data }) => {
                     title={logo.altText}
                     width={logo?.metadata?.dimensions?.width}
                     height={logo?.metadata?.dimensions?.height}
-                    className="max-h-10 w-auto"
+                    className={`${isUk ? 'h-12' : 'h-10'} w-auto`}
                     key={logo?._id}
                   ></Image>
                 )

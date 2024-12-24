@@ -72,7 +72,7 @@ const Header = ({data}) => {
                   
                   {/* Logo */}
                   <Link href="/" className="xl:flex-1 flex-shrink-0 text-2xl font-extrabold bg-gradient-text bg-clip-text text-transparent font-monrope tracking-tighterText">
-                    <Image src={VoicestackLogo} alt='VoiceStack'></Image>
+                    <Image src={VoicestackLogo} alt='VoiceStack' title='VoiceStack'></Image>
                   </Link>
 
                   <div className={`lg:flex flex-col lg:flex-row lg:gap-6 justify-between rounded-[4px] lg:rounded-none items-center 

@@ -21,8 +21,9 @@ const TestimonialCard = forwardRef<HTMLDivElement, TestimonialCardProps>(
 
     const topValue = isMobile ? 80 + (index * 20) : 160 + (index * 20);
 
-  
-  const video  = data.video
+    console.log({data});
+    
+    const video  = data.video
   return (
     <div className={`md:sticky testimonial-card shadow-[0px_-4px_40px_0px_rgba(0,0,0,0.05)]`} ref={ref} id={`${index}`}  data-index={index}
       style={{
@@ -42,8 +43,9 @@ const TestimonialCard = forwardRef<HTMLDivElement, TestimonialCardProps>(
               <Image
                 width={293}
                 height={407}
+                alt={data.image.altText || 'Testimonial'}
+                title={data.image.altText}
                 src={data.image.url}
-                alt={`${data?.name || "Testimonial"}`}
                 className="w-full h-full object-cover"
               />
               
@@ -164,7 +166,8 @@ const TestimonialCard = forwardRef<HTMLDivElement, TestimonialCardProps>(
             <div className="flex-shrink-0">
               <Image
                 src={`${data.logo.url}`}
-                alt="Company Logo"
+                alt={data.logo.altText || 'Logo'}
+                title={data.logo.altText}
                 className="max-w-full"
                 width={188}
                 height={64}
