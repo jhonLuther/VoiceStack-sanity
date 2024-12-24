@@ -11,7 +11,7 @@ export default function ListItem(props) {
   const isMobile: any = useMediaQuery(767);
 
   return (
-    <li  onClick={() => props.onClick(props.percentScrolled,props.index,liRef)} className={`group flex w-full gap-3 cursor-pointer rounded-lg  transition-all duration-300 ${props.showDesc ? "bg-vs-blue/10" : 'bg-vs-blue/0'}`}>
+    <li  onClick={() => props.onClick(props.percentScrolled,props.index,liRef)} className={`group flex w-full gap-3 md:cursor-auto cursor-pointer rounded-lg  transition-all duration-300 ${props.showDesc ? "bg-vs-blue/10" : 'bg-vs-blue/0'}`}>
       <div className='bg-gray-200 w-1 rounded-full flex'>
         <div ref={liRef} style={{height: isMobile ? '100%' : `${actualPercentScrolled}%`}} className={`w-1 ${props.showDesc == true ? "bg-vs-blue" : "bg-transparent"} max-h-[100%] h-full rounded-full`}></div>
       </div>
