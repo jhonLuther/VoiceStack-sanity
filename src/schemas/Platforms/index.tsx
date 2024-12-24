@@ -1,4 +1,5 @@
 import { defineField, defineType } from 'sanity'
+import showCountryFlag from '~/components/utils/common';
 export default defineType({
   name: 'platform',
   title: 'Platform',
@@ -24,6 +25,18 @@ export default defineType({
       name: 'integrationImage',
       title: 'Integration Image',
       type: 'image',
+    }),
+    defineField({
+      name: 'bgVideoUrl',
+      title: 'Bg Video Url',
+      description: 'Upload video in sanity media and paste url here',
+      type: 'url',
+    }),
+    defineField({
+      name: 'bgVideoUrlMobile',
+      title: 'Mobile Bg Video Url',
+      description: 'Upload video in sanity media and paste url here',
+      type: 'url',
     }),
 
     defineField({
@@ -66,5 +79,17 @@ export default defineType({
       hidden: true,
     }),
   ],
+  preview: {
+    select: {
+      title: 'integrationHeading',
+      language:'language',
+    },
+    prepare(selection) {
+      return {
+        title: ` ${selection?.title}`,
+        media:<img src={showCountryFlag(selection?.language)}/>
+      };
+    },
+  },
   
 })
