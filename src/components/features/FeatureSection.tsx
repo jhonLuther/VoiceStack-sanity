@@ -16,19 +16,56 @@ import useMediaQuery from '~/utils/mediaQuery'
 
 export default function FeatureSection({ data }) {
   const [openForm, setOpenForm] = useState(false)
-  const [activeImage, setActiveImage] = useState(data[0].testimonialImage?.url)
-  const featureRefs = useRef([])
-  const isMobile: any = useMediaQuery(767);
-  const openModal = () => {
-    setOpenForm(true)
-  }
-
   const testimonialIndex: number = data?.findIndex(
     (e: any) => e.testimonialSubSection != null,
   )
   const sampleImages = data[testimonialIndex]?.testimonialSubSection.map(
     (e: any) => e.image.url,
-  )
+  );
+  const [activeImage, setActiveImage] = useState(null)
+  const [currentIndex, setActiveIndex] = useState(0)
+  const featureRefs = useRef([])
+  const isMobile: any = useMediaQuery(767);
+
+  // const featureData = data.sort(
+  //   (a, b) => a.testimonialOrder - b.testimonialOrder,
+  // )
+
+  // useEffect(() => {
+  //   const observerOptions = {
+  //     root: null,
+  //     rootMargin: '0px',
+  //     threshold: 0.5,
+  //   }
+
+  //   const observer = new IntersectionObserver((entries) => {
+  //     entries.forEach((entry) => {
+  //       if (entry.isIntersecting) {
+  //         const index = entry.target.getAttribute('data-index')
+  //         setActiveImage(data[index].testimonialImage.url) // Update active image
+  //       }
+  //     })
+  //   }, observerOptions)
+
+  //   featureRefs.current.forEach((ref) => {
+  //     if (ref) observer.observe(ref)
+  //   })
+
+  //   return () => {
+  //     if (observer) observer.disconnect()
+  //   }
+  // }, [data])
+
+
+  
+
+
+  const openModal = () => {
+    setOpenForm(true)
+  }
+
+
+  
 
   const switchIndex = (percentage) => {
     if (isMobile) return
@@ -44,8 +81,14 @@ export default function FeatureSection({ data }) {
   }
 
   const getIndexfromAppear = (index) => {
-    setActiveImage(isMobile && sampleImages[index])
+    setActiveIndex(index)
+    setActiveImage(isMobile && sampleImages[currentIndex])
   }
+
+
+  useEffect(() => {
+    setActiveIndex(0)
+  },[isMobile])
 
   return (
     <Section className="relative bg-[#f9f9f9] " id="features">
@@ -73,7 +116,7 @@ export default function FeatureSection({ data }) {
                     key={index}
                     ref={(el) => (featureRefs.current[index] = el)}
                     data-index={index}
-                    className={`cursor-pointer gap-4 flex flex-col  self-start justify-center transform`}
+                    className={`md:cursor-auto cursor-pointer gap-4 flex flex-col  self-start justify-center transform`}
                     onViewportEnter={() => setActiveImage(feature.testimonialImage.url)}
                   >
                     <PreText>
@@ -120,7 +163,7 @@ export default function FeatureSection({ data }) {
         </div>
 
         {/* Sticky Image Section */}
-        { <div
+        {!isMobile && <div
           className={`relative mx-[-16px]   bg-vs-lemon-green md:w-1/2 w-auto h-full`}
         >
           <div className="sticky top-0 md:py-24 md:h-[100vh] flex flex-col justify-center md:pl-12 ">
@@ -135,6 +178,25 @@ export default function FeatureSection({ data }) {
                 transition={{ duration: 0.300 }}
                 className="w-auto h-auto  rounded-lg max-w-full bg-black/5 md:max-h-[538px] "
               />
+            </AnimatePresence>
+          </div>
+          
+        </div>}
+        {isMobile &&  <div
+          className={`relative mx-[-16px] bg-vs-lemon-green md:w-1/2 w-auto h-full`}
+        >
+          <div className="w-full pt-[87.1071%] relative ">
+            <AnimatePresence>
+              {sampleImages?.map((image, index) => (
+                <motion.img
+                  key={image}
+                  src={image}
+                  alt="Feature Image"
+                  animate={{ opacity: currentIndex === index ? 1 : 0 }}
+                  transition={{ duration: 0.300 }}
+                  className={`absolute top-0 left-0 w-auto h-auto rounded-lg max-w-full bg-black/5 md:max-h-[538px]`}
+                />
+              ))}
             </AnimatePresence>
           </div>
         </div>}
