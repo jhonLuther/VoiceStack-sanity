@@ -10,7 +10,7 @@ export default function VideoPlayer({videoData}) {
 
   useEffect(() => {
     setVideoSrc(isMobile ? mobileVideoSrc : desktopVideoSrc);
-  }, [isMobile]);
+  }, [isMobile, mobileVideoSrc, desktopVideoSrc ]);
 
   return (
     <video
