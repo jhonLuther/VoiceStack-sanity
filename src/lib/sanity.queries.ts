@@ -415,6 +415,8 @@ export async function getIntegrationList(client: SanityClient, region: string) {
           }
         }
       },
+      bgVideoUrl,
+      bgVideoUrlMobile,
       analytics[]->{
         ..., "image": image.asset-> {
             _id,

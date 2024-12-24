@@ -25,6 +25,18 @@ export default defineType({
       title: 'Integration Image',
       type: 'image',
     }),
+    defineField({
+      name: 'bgVideoUrl',
+      title: 'Bg Video Url',
+      description: 'Upload video in sanity media and paste url here',
+      type: 'url',
+    }),
+    defineField({
+      name: 'bgVideoUrlMobile',
+      title: 'Mobile Bg Video Url',
+      description: 'Upload video in sanity media and paste url here',
+      type: 'url',
+    }),
 
     defineField({
       name: 'crm',

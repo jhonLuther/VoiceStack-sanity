@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import useMediaQuery from '~/utils/mediaQuery';
 
-export default function VideoPlayer() {
-  const desktopVideoSrc = 'https://cdn.sanity.io/files/76tr0pyh/production/666e1638ad12147f6e2088f692a9e4ac5fb8981d.webm';
-  const mobileVideoSrc = 'https://cdn.sanity.io/files/76tr0pyh/production/6fca2173d8fa6e7704cf8b0deba9f489c56570a0.webm';
+export default function VideoPlayer({videoData}) {
+  const desktopVideoSrc = videoData?.bgVideoUrl || 'https://cdn.sanity.io/files/76tr0pyh/production/666e1638ad12147f6e2088f692a9e4ac5fb8981d.webm';
+  const mobileVideoSrc = videoData?.bgVideoUrlMobile || 'https://cdn.sanity.io/files/76tr0pyh/production/6fca2173d8fa6e7704cf8b0deba9f489c56570a0.webm';
 
   const isMobile = useMediaQuery(767);
   const [videoSrc, setVideoSrc] = useState(desktopVideoSrc);
