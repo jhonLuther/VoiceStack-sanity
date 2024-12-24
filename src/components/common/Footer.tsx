@@ -205,9 +205,28 @@ const Footer = (props) => {
             </div>
           </div>
           <div className='py-6 border-gray-800 border-t'>
-            <div className='flex gap-3'>
-              <span className='text-gray-600 font-inter text-sm font-medium leading-[115%]'>&copy; VoiceStack 2024</span>
+            <div className='flex gap-3 items-center justify-between'>
+              <span className='text-gray-600 font-inter text-sm font-medium leading-[115%]'>&copy; VoiceStack {new Date().getFullYear()}</span>
               {/* <span className='text-gray-600 font-inter text-sm font-medium leading-[115%]'>Made with ♥︎ in Good Methods Global</span> */}
+              {isUk ? (
+                <ul className='flex items-center gap-4'>
+                <li className='text-gray-600 font-inter text-sm font-medium leading-[115%]'>
+                  <Link href="https://www.voicestack.com/legal/uk/2024-11/privacy-policy" target='_blank'>Privacy Policy</Link>
+                </li>
+                <li className='text-gray-600 font-inter text-sm font-medium leading-[115%]'>
+                  <Link href="https://www.voicestack.com/legal/uk/2024-11/terms-and-conditions" target='_blank'>Terms of Service</Link>
+                </li>
+              </ul>
+              ):(
+              <ul className='flex items-center gap-4'>
+                {/* <li className='text-gray-600 font-inter text-sm font-medium leading-[115%]'>
+                  <Link href="/"  target='_blank'>Privacy Policy</Link>
+                </li> */}
+                <li className='text-gray-600 font-inter text-sm font-medium leading-[115%]'>
+                  <Link href="/legal/2024-10/terms-and-conditions" target='_blank'>Terms of Service</Link>
+                </li>
+              </ul>
+              )}
             </div>
           </div>
         </div>
