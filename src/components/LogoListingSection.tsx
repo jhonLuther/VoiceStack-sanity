@@ -37,7 +37,7 @@ const LogoListingSection = ({ data }) => {
   
 
   return (
-    <Section className="py-sm md:py-md pb-8">
+    <Section className="py-sm md:py-md md:pb-8">
       <Container>
         <div className="flex flex-col items-center w-full">
           <div className="flex justify-center w-full mb-12">
