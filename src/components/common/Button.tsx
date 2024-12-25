@@ -27,13 +27,13 @@ const Button: React.FunctionComponent<ButtonProps> = ({
   className,
   ...rest
 }) => {
-  const baseClasses = `px-[17px] py-[10px] rounded-[7px] text-gray-900 font-inter text-base font-medium leading-6 flex items-center whitespace-nowrap gap-[8px]  ${className}`;
+  const baseClasses = `rounded-[7px] text-gray-900 font-inter text-base font-medium leading-6 flex items-center whitespace-nowrap gap-[8px]  ${className}`;
   // const customClasses = `bg-zinc-500 hover:bg-zinc-600 text-white`;
   const customClasses = clsx({
-    'bg-vs-blue hover:bg-vs-blue text-white border border-vs-blue': type === 'primary',
+    'bg-vs-blue hover:bg-vs-blue text-white border border-vs-blue px-[17px] py-[10px] ': type === 'primary',
     'bg-vs-blue hover:bg-vs-blue text-white border border-vs-blue text-sm px-[12px] py-[8px]': type === 'primarySm',
-    'bg-white hover:bg-white text-blue-500 border border-white': type === 'primaryWhite',
-    'text-white border border-white/30': type === 'video'
+    'bg-white hover:bg-white text-blue-500 border border-white px-[17px] py-[10px] ': type === 'primaryWhite',
+    'text-white border border-white/30 px-[17px] py-[10px] ': type === 'video'
   });
   
 

@@ -140,17 +140,17 @@ const TestimonialCard = forwardRef<HTMLDivElement, TestimonialCardProps>(
             </p>
           </div>
 
-          <div className="flex items-center gap-8 md:justify-between flex-grow max-w-[320px]">
+          <div className="flex items-center gap-8 md:justify-between flex-grow md:max-w-[320px]">
             
             {/* region */}
-            <div className="flex flex-col gap-1">
+            <div className="flex flex-col gap-1 flex-1 md:flex-none">
               <span className="text-gray-900 text-base font-semibold leading-[140%]">{data?.place}</span>
               <span className="text-gray-500 text-sm font-medium leading-[140%]">{data?.region }</span>
             </div>
 
             {/* no of locations */}
             {data.locations && (
-              <div className="flex flex-col gap-1">
+              <div className="flex flex-col gap-1 flex-1 md:flex-none">
                 <span className="text-gray-900 text-base font-semibold leading-[140%]">
                   {data?.locations}
                 </span>

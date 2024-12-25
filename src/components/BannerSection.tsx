@@ -9,6 +9,7 @@ import { PlayIcon } from 'lucide-react'
 import { VideoItem, VideoModal } from './common/VideoModal'
 import Image from 'next/image'
 import { FormModal } from './common/FormModal'
+import VideoPlayIconWhite from './icons/VideoPlayIconWhite'
 
 const BannerSection = () => {
   
@@ -30,13 +31,12 @@ const BannerSection = () => {
                 Start Your Practice Growth Journey<br/> With VoiceStack.
               </h2>
               <div className='flex gap-4 items-center flex-col md:flex-row relative z-[1]'>
-                <Button type='primaryWhite'   onClick={() => {setOpenForm(true)}}>
+                <Button type='primary'   onClick={() => {setOpenForm(true)}}>
                   <ButtonArrow></ButtonArrow>
                   <span className="text-base font-medium">{`Book free demo`}</span>
                 </Button>
                 <Button type='video' onClick={() => {setIsOpen(true) }}>
-                  {/* <ButtonArrow></ButtonArrow> */}
-                  <PlayIcon width={16} height={16}></PlayIcon>
+                  <VideoPlayIconWhite></VideoPlayIconWhite>
                   <span className="text-base font-medium">{`Watch overview`}</span>
                 </Button>
               </div>
@@ -44,14 +44,14 @@ const BannerSection = () => {
         </div>
       </Container>
       {/* <div className='absolute h-[100px] bg-[url("../../public/assets/dome.svg")]'></div> */}
-      <div className='absolute h-[205px] bg-[url("/assets/wave.svg")] w-full left-0 bottom-0 bg-cover bg-repeat-x bg-left-bottom'></div>
-      <Image src={Dome} alt='dome' className='absolute left-[50%] bottom-0 -translate-x-[50%] w-[80%] max-w-[1002px]'></Image>
+      <div className='absolute h-[80px] md:h-[205px] bg-[url("/assets/wave.svg")] w-full left-0 bottom-0 bg-cover bg-repeat-x bg-left-bottom'></div>
+      <Image src={Dome} alt='dome' className='absolute left-[50%] bottom-0 -translate-x-[50%] w-[100%] max-w-[1002px]'></Image>
       <div>
         {isOpen && (
           <VideoModal
             isPopup={true}
             videoDetails={overviewVideo}
-            className={`pt-9  flex items-start`}
+            className={`pt-9 flex items-start`}
             onClose={() => setIsOpen(false)}
           />
         )}

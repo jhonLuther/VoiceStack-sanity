@@ -43,7 +43,9 @@ const LogoListingSection = ({ data }) => {
           <div className="flex justify-center w-full mb-12">
             <div className="flex flex-col w-full max-w-[780px] text-center gap-4">
               <H2>{data?.logoSectionHeader}</H2>
-              <Paragraph>{data?.logoSectionHeaderDescptn}</Paragraph>
+              <Paragraph
+                dangerouslySetInnerHTML={{__html: data?.logoSectionHeaderDescptn}}
+              ></Paragraph>
             </div>
           </div>
           <div className="flex flex-wrap justify-center items-center gap-x-12 gap-y-8 max-w-[1034px]">
