@@ -125,7 +125,7 @@ const TestimonialCard = forwardRef<HTMLDivElement, TestimonialCardProps>(
                     <ul className="flex flex-wrap gap-3">
                       {data.keyFeatures.map((item:any, index:number) => {
                         return(
-                          <li key={index+item} className="flex items-center justify-center px-2 py-[6px] border border-gray-200 text-gray-700 text-sm leading-[1.3] rounded-full">
+                          <li key={index+item} className="flex items-center justify-center px-2 py-[6px] border border-gray-200 bg-gray-100 text-gray-700 text-sm leading-[1.3] rounded-full">
                             {item}
                           </li>
                         )
