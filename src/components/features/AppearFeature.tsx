@@ -130,7 +130,7 @@ export default function AppearFeature({
               })}
           </ul>
 
-          <div className="flex md:justify-start justify-center">
+          {!isMobile && <div className="flex md:justify-start justify-center">
             <Button
               type="primary"
               onClick={() => {
@@ -140,7 +140,7 @@ export default function AppearFeature({
               <ButtonArrow></ButtonArrow>
               <span className="text-base font-medium">{`Book free demo`}</span>
             </Button>
-          </div>
+          </div>}
         </motion.div>
       </div>
       {openForm && (

@@ -29,6 +29,7 @@ export default function VideoPlayer({videoData}) {
       muted
     >
       <source src={videoSrc} type="video/webm" />
+      <source src="movie.ogg"  type="video/mp4"/>
     </video>
   );
 }
