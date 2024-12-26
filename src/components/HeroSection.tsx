@@ -100,6 +100,7 @@ const HeroSection = ({ data }) => {
                 </div>
               </H1>
             </div>
+            
             <div className="flex flex-col gap-8 items-center">
               <PortableText
                 components={components}
