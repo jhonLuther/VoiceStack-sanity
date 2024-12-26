@@ -128,7 +128,7 @@ export function AnimatedBeamDemo({ data }: any) {
       <div className={`flex gap-8 md:gap-0 justify-center ${isUk ? 'md:justify-evenly' :'md:justify-between'} md:justify-between w-full items-center md:mt-14 relative pb-4`}>
         {/*  */}
         <div
-          className={`flex flex-col relative gap-5 ${isMobile && 'flex-1 max-w-[148px]'} z-10 md:rounded-[20px] rounded-[10px] border border-gray-100 bg-white shadow-custom-light`}
+          className={`flex flex-col relative md:gap-5 ${isMobile && 'flex-1 max-w-[148px]'} z-10 md:rounded-[20px] rounded-[10px] border border-gray-100 bg-white shadow-custom-light`}
         >
           <div className="flex p-2 items-center justify-center rounded-t-[10px] md:rounded-t-[20px] bg-[#EDEBFC] text-base font-semibold">
             <H3 className="text-[#4A3CE1] font-semibold">Analytics</H3>
@@ -138,7 +138,7 @@ export function AnimatedBeamDemo({ data }: any) {
               <div
                 key={index}
                 ref={analyticsRefs[index]}
-                className="md:max-w-[172px]  border-b  border-gray-100 last:border-none  flex z-10"
+                className="md:max-w-[172px]  border-b  border-gray-100 last:border-none py-2 md:py-0 flex z-10"
               >
                 <ImageLoader
                   className="flex justify-center h-20 w-full"
@@ -179,7 +179,7 @@ export function AnimatedBeamDemo({ data }: any) {
         {/* </>} */}
 
         <div
-          className={`flex flex-col gap-5 z-10  ${isMobile && 'flex-1 max-w-[148px]'} md:rounded-[20px] rounded-[10px] border border-gray-100 bg-white shadow-custom-light`}
+          className={`flex flex-col md:gap-5 z-10  ${isMobile && 'flex-1 max-w-[148px]'} md:rounded-[20px] rounded-[10px] border border-gray-100 bg-white shadow-custom-light`}
         >
           <div className="flex p-2 items-center justify-center md:rounded-t-[20px]  rounded-t-[10px]  bg-[#EDEBFC] text-base font-semibold">
             <H3 className="text-[#4A3CE1] font-semibold">CRM</H3>
@@ -189,7 +189,7 @@ export function AnimatedBeamDemo({ data }: any) {
               <div
                 key={index}
                 ref={crmRefs[index]}
-                className="md:max-w-[172px]  border-b  border-gray-100 last:border-none flex z-10"
+                className="md:max-w-[172px]  py-2 md:py-0  border-b  border-gray-100 last:border-none flex z-10"
               >
                 <ImageLoader
                   className="flex justify-center h-20 w-full"
