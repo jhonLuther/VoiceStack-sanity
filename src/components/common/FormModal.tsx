@@ -20,16 +20,17 @@ export const FormModal: React.FC<FormModalProps> = ({
   onClose ,
   source,
   source1
-}) => {
-    const usFormId = "6b2d6906-028e-4d65-9cd1-34d528e0d5c0";
-    const ukFormId = "cf4c05ce-6c22-43a1-90a7-d0fc94c239fd"
-    const [formId, setFormId] = React.useState(usFormId);
+}) => {;
     const router = useRouter();
 
-    React.useEffect(()=>{
-      setFormId(router?.locale =='en-GB' ? ukFormId : usFormId)
-    },[router?.locale, source, source1])
-
+    const usFormId = '6b2d6906-028e-4d65-9cd1-34d528e0d5c0';
+    const ukFormId = 'cf4c05ce-6c22-43a1-90a7-d0fc94c239fd';
+  
+    const formId = React.useMemo(
+      () => (router?.locale === 'en-GB' ? ukFormId : usFormId),
+      [router?.locale]
+    );
+    
   return (
     <div
     className={`relative z-[999] `}
