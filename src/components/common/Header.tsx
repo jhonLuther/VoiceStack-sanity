@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { CloseIcon } from '@sanity/icons'
 import VoicestackLogo from 'public/assets/voicestack-logo.svg';
+import VoicestackLogoSm from 'public/assets/voicestack-logo-sm.svg';
 import { MenuIcon } from '@sanity/icons';
 import Image from 'next/image';
 import ButtonArrow from '../icons/ButtonArrow';
@@ -11,6 +12,7 @@ import TelIcon from '../icons/TelIcon';
 import { FormModal } from './FormModal';
 import ChevronUp from '../icons/ChevronDown';
 import Script from 'next/script';
+import useMediaQuery from '~/utils/mediaQuery';
 
 
 
@@ -48,7 +50,7 @@ const Header = ({data}) => {
   const router = useRouter();
   const matchedRegion = regions.find((region) => region.locale === router.locale);
   const toggleRef = useRef(null);
-  console.log({matchedRegion});
+  const isMobile = useMediaQuery(767);
   
 
   useEffect(()=>{
@@ -140,7 +142,7 @@ const Header = ({data}) => {
 			    style={{ display: 'none', visibility: 'hidden' }}></iframe></noscript>
 	      {/* <!--[END Google Tag Manager (noscript)]--> */}
 
-      {/* {showMenu && <div className='fixed top-0 w-full h-full z-[19] bg-zinc-900'></div>} */}
+      
       <div className={`relative w-full before:content-[''] before:-z-0 before:h-[100px] before:absolute before:left-0 before:right-0 before:top-[-100px] before:bg-vs-blue`}>
         <header
           className={`fixed w-full top-0 lg:top-[35px] left-0 z-20 transition-all duration-300 ease-linear ${headerFixed && '!fixed w-full lg:!top-4'}  left-0`}      >
@@ -156,12 +158,18 @@ const Header = ({data}) => {
                 lg:relative transition-all duration-300 ease-in-out ${headerFixed ? 'lg:my-3 my-2' : 'lg:my-3 my-2'}`}>
                   
                   {/* Logo */}
-                  <Link href="/" className="flex-shrink-0 text-2xl font-extrabold bg-gradient-text bg-clip-text text-transparent font-monrope tracking-tighterText">
+                  <Link href="/" className={`flex-shrink-0 text-2xl font-extrabold bg-gradient-text bg-clip-text 
+                    text-transparent font-monrope tracking-tighterText ${isMobile  && headerFixed && 'hidden'}`}>
                     <Image src={VoicestackLogo} alt='VoiceStack' title='VoiceStack'></Image>
                   </Link>
 
+                  {/* Logo Sm when mob scroll */}
+                  <Link href="/" className={`${isMobile  && headerFixed ? 'block': 'hidden'}`}>
+                    <Image src={VoicestackLogoSm} alt='VoiceStack' className='w-[26px] h-auto'></Image>
+                  </Link>
+
                   <div className={`lg:flex flex-col lg:flex-row lg:gap-6 justify-between lg:rounded-none items-center 
-                    lg:static absolute top-[40px] left-0 right-0 bg-white pb-20 lg:pb-0 
+                    lg:static absolute top-[44px] left-0 right-0 bg-white pb-20 lg:pb-0 
                     h-[calc(100vh-40px)] lg:h-auto shadow-[0px_40px_40px_0px_rgba(0,0,0,0.10)] lg:shadow-none
                     xl:flex-grow xl:justify-end xl:mr-10
                     ${showMenu ? 'flex': 'hidden'}`}>
@@ -252,13 +260,21 @@ const Header = ({data}) => {
                       <span className="text-sm font-medium">{`Book free demo`}</span>
                     </Button>
                   </div>
+                  <div className='flex gap-4 items-center'>
+                    <div className={`${isMobile  && headerFixed ? 'block': 'hidden'}`}>
+                      <Button type='primaryXs' onClick={() => {setOpenForm(true)}}>
+                        <ButtonArrow></ButtonArrow>
+                        <span className="text-sm font-medium">{`Book free demo`}</span>
+                      </Button>
+                    </div>      
 
-                  {/* menu icon */}
-                  <div onClick={toggleMenu} className={`flex lg:hidden text-zinc-900 cursor-pointer items-center select-none z-20 rounded-lg lg:rounded-xl lg:py-[6px] lg:pr-[10px] lg:pl-[14px]
-                    `}>
-                    {/* {!showMenu && <span className='hidden lg:inline-flex text-zinc-800 text-sm'>More</span>} */}
-                    {showMenu ? <CloseIcon width={40} height={40} /> : <MenuIcon width={40} height={40} />}
-                  </div>
+                    {/* menu icon */}
+                    <div onClick={toggleMenu} className={`flex lg:hidden text-zinc-900 cursor-pointer items-center select-none z-20 rounded-lg lg:rounded-xl lg:py-[6px] lg:pr-[10px] lg:pl-[14px]
+                      `}>
+                      {/* {!showMenu && <span className='hidden lg:inline-flex text-zinc-800 text-sm'>More</span>} */}
+                      {showMenu ? <CloseIcon width={40} height={40} /> : <MenuIcon width={40} height={40} />}
+                    </div>
+                  </div>      
                  
                 </div>
               </div>
