@@ -156,8 +156,8 @@ export function AnimatedBeamDemo({ data }: any) {
         {/* {!isMobile && */}
         {/* <> */}
         <div
-          className={`absolute top-[-190px] md:top-[-132px]  ${isUk ? 'lg:top-[-60px]' : 'lg:top-[-163px]'} left-1/2 transform -translate-x-1/2 ${isMobile ? 'md:w-[300px]' : 'md:w-[980px]'} 
-          ${isUk? 'lg:w-[588px]' : 'lg:w-[1106px]'}`}
+          className={`absolute top-[-190px] md:top-[-132px]  ${isUk ? 'lg:top-[-60px]' : 'lg:top-[-163px]'} left-1/2 transform -translate-x-1/2 ${isMobile ? 'md:w-[300px]' : ''} 
+          ${isUk? 'md:w-[588px] lg:w-[588px]' : 'md:w-[980px] lg:w-[1106px]'}`}
         >
           {/* <LinesIcon /> */}
           <VideoPlayer videoData={data} />
