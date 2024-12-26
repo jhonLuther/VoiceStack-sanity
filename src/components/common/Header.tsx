@@ -10,6 +10,7 @@ import Button from './Button';
 import TelIcon from '../icons/TelIcon';
 import { FormModal } from './FormModal';
 import ChevronUp from '../icons/ChevronDown';
+import Script from 'next/script';
 
 
 
@@ -99,9 +100,46 @@ const Header = ({data}) => {
     }
   });
 
+  
+
   const before = "before:content-[''] before:h-[100px] before:absolute before:left-0 before:right-0 before:top-full before:bg-zinc-900";
   return (
     <>
+        {/* Google Analytics */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-YY0CHYH7EY"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-YY0CHYH7EY');
+          `}
+        </Script>
+
+        {/* Google Tag Manager */}
+        <Script id="google-tag-manager" strategy="afterInteractive">
+          {`
+            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','GTM-KCX7H59S');
+          `}
+        </Script>
+
+        {/* Start cookieyes banner */}
+        <Script id="cookieyes" strategy="afterInteractive" 
+          src="https://cdn-cookieyes.com/client_data/892b60d226bd40003a3303d6/script.js">
+        </Script>
+
+        {/* <!--[BEGIN Google Tag Manager (noscript)]--> */}
+	      <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KCX7H59S" height="0" width="0"
+			    style={{ display: 'none', visibility: 'hidden' }}></iframe></noscript>
+	      {/* <!--[END Google Tag Manager (noscript)]--> */}
+
       {/* {showMenu && <div className='fixed top-0 w-full h-full z-[19] bg-zinc-900'></div>} */}
       <div className={`relative w-full before:content-[''] before:-z-0 before:h-[100px] before:absolute before:left-0 before:right-0 before:top-[-100px] before:bg-vs-blue`}>
         <header
