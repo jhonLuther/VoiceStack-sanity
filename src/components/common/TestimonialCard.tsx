@@ -57,6 +57,13 @@ const TestimonialCard = forwardRef<HTMLDivElement, TestimonialCardProps>(
               )}
             </div>
           )}
+
+          <div className="md:hidden block px-4 pt-6">
+            <p className="text-base text-gray-900 font-semibold leading-[140%]">{data?.name || ""}</p>
+            <p className="text-sm text-gray-500 font-medium leading-[140%]">
+              {data?.designation}
+            </p>
+          </div>
           
           
           <div className="flex-1 flex flex-col md:flex-row justify-between">
@@ -133,7 +140,7 @@ const TestimonialCard = forwardRef<HTMLDivElement, TestimonialCardProps>(
         {/* Testimonee Details bottom strip */}
         <div className="flex flex-col md:flex-row md:items-center gap-6 md:gap-8 border-t border-dashed border-gray-300 px-4 py-6 md:py-4 md:px-8 justify-between">
           {/* name and designation */}
-          <div>
+          <div className="hidden md:block">
             <p className="text-base text-gray-900 font-semibold leading-[140%]">{data?.name || ""}</p>
             <p className="text-sm text-gray-500 font-medium leading-[140%]">
               {data?.designation}
@@ -163,7 +170,7 @@ const TestimonialCard = forwardRef<HTMLDivElement, TestimonialCardProps>(
 
           {/* Logo */}
           {data?.logo && data.logo.url && (
-            <div className="flex-shrink-0">
+            <div className="flex-shrink-0 hidden md:block">
               <Image
                 src={`${data.logo.url}`}
                 alt={data.logo.altText || 'Logo'}
