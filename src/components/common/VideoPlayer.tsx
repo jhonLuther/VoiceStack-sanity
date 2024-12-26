@@ -4,6 +4,7 @@ import useMediaQuery from '~/utils/mediaQuery';
 export default function VideoPlayer({videoData}) {
   const desktopVideoSrc = videoData?.bgVideoUrl || 'https://cdn.sanity.io/files/76tr0pyh/production/666e1638ad12147f6e2088f692a9e4ac5fb8981d.webm';
   const mobileVideoSrc = videoData?.bgVideoUrlMobile || 'https://cdn.sanity.io/files/76tr0pyh/production/6fca2173d8fa6e7704cf8b0deba9f489c56570a0.webm';
+  const fallBackVideoSrc = 'https://cdn.sanity.io/files/76tr0pyh/production/d2aed3780f97baf45a538423e7b9fc7fcaf80186.mp4';
 
   const isMobile = useMediaQuery(767);
   const [videoSrc, setVideoSrc] = useState(desktopVideoSrc);
@@ -29,7 +30,7 @@ export default function VideoPlayer({videoData}) {
       muted
     >
       <source src={videoSrc} type="video/webm" />
-      <source src="movie.ogg"  type="video/mp4"/>
+      <source id='fallback' src={fallBackVideoSrc}  type="video/mp4"/>
     </video>
   );
 }

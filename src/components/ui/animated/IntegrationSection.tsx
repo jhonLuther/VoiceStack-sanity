@@ -1,4 +1,4 @@
-import React, { useRef, useMemo, forwardRef } from 'react'
+import React, { useRef, useMemo, forwardRef, useEffect, useState } from 'react'
 import { cn } from '~/lib/utils'
 import ImageLoader from '~/components/common/imageLoader/imageLoader'
 import H3 from '~/components/typography/H3'
@@ -30,8 +30,13 @@ export function AnimatedBeamDemo({ data }: any) {
   const centerRef = useRef<HTMLDivElement>(null)
   const isMobile = useMediaQuery(767)
   const router = useRouter()
-  const isUK = (router.locale === 'en-GB' || router.pathname.includes('en-GB')) 
+  const [isUk, setIsUk] = useState(false);
 
+    useEffect(()=>{
+      setIsUk(router.locale == "en-GB");
+    },[router.locale])
+  
+    
   const analyticsRefs = useMemo(
     () => data.analytics?.map(() => React.createRef<HTMLDivElement>()) || [],
     [data.analytics],
@@ -64,7 +69,7 @@ export function AnimatedBeamDemo({ data }: any) {
       ref={containerRef}
     >
       {/* Pms Section */}
-      <div className={`${isMobile ? 'w-full' : 'md:max-w-[991px]'} ${isUK && 'w-[180px]' } z-10 w-full`}>
+      <div className={`${isMobile ? 'w-full' : 'md:max-w-[991px]'} ${isUk && 'md:max-w-[180px] !w-[180px]' } z-10 w-full`}>
         <div className="flex p-2 items-center justify-center rounded-t-[20px] bg-gradient-to-b from-purple-50 to-purple-50 text-base font-semibold">
           <H3 className="text-[#4A3CE1] font-semibold">PMS</H3>
         </div>
@@ -120,7 +125,7 @@ export function AnimatedBeamDemo({ data }: any) {
       </div>
 
       {/* CRM and PMS Sections */}
-      <div className={`flex gap-8 md:gap-0 justify-center ${isUK ? 'md:justify-evenly' :'md:justify-between'} md:justify-between w-full items-center md:mt-14 relative pb-4`}>
+      <div className={`flex gap-8 md:gap-0 justify-center ${isUk ? 'md:justify-evenly' :'md:justify-between'} md:justify-between w-full items-center md:mt-14 relative pb-4`}>
         {/*  */}
         <div
           className={`flex flex-col relative gap-5 ${isMobile && 'flex-1 max-w-[148px]'} z-10 rounded-[20px] border border-gray-100 bg-white shadow-lg`}
@@ -151,8 +156,8 @@ export function AnimatedBeamDemo({ data }: any) {
         {/* {!isMobile && */}
         {/* <> */}
         <div
-          className={`absolute top-[-190px] md:top-[-132px]  ${isUK ? 'lg:top-[-60px]' : 'lg:top-[-163px]'} left-1/2 transform -translate-x-1/2 ${isMobile ? 'md:w-[300px]' : 'md:w-[980px]'} 
-          ${isUK? 'lg:w-[588px]' : 'lg:w-[1106px]'}`}
+          className={`absolute top-[-190px] md:top-[-132px]  ${isUk ? 'lg:top-[-60px]' : 'lg:top-[-163px]'} left-1/2 transform -translate-x-1/2 ${isMobile ? 'md:w-[300px]' : 'md:w-[980px]'} 
+          ${isUk? 'lg:w-[588px]' : 'lg:w-[1106px]'}`}
         >
           {/* <LinesIcon /> */}
           <VideoPlayer videoData={data} />
