@@ -9,6 +9,7 @@ import Button from './common/Button'
 import ButtonArrow from './icons/ButtonArrow'
 import { FormModal } from './common/FormModal'
 import { useRouter } from 'next/router'
+import LegendSection from './common/LegendSection'
 
 function SiteComparisonSection({ data }) {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
@@ -90,9 +91,11 @@ function SiteComparisonSection({ data }) {
             name={data?.cta.name ?? ''}
             url={data?.cta.url ?? '/'}
           /> */}
-          <div className="flex justify-end pt-6 w-full">
+          {isMobile ? <LegendSection/> :
+            <div className="flex justify-end pt-6 w-full">
             <span className='text-[11px] md:text-sm text-gray-600'>*Data from 3rd Party Services.</span>
-          </div>
+            </div>
+          }
           <div className='flex gap-4 items-center mt-12 lg:mt-16'>
               <Button type='primary'   onClick={() => {setOpenForm(true)}}>
                 <ButtonArrow></ButtonArrow>
