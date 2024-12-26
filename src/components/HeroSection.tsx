@@ -149,7 +149,7 @@ const HeroSection = ({ data }) => {
               </div>
             </div>
 
-            <div className="absolute left-[4%] md:left-0 -bottom-[45px] min-w-[220px] w-[38.5%]">
+            <div className="absolute left-[4%] md:left-0 -bottom-[45px] md:-bottom-[90px] min-w-[220px] w-[38.5%]">
               <Image
                 className="w-full h-full object-cover"
                 src={device}
