@@ -65,7 +65,7 @@ export function AnimatedBeamDemo({ data }: any) {
 
   return (
     <div
-      className="relative flex w-full h-full flex-col items-center rounded-lg "
+      className="relative flex w-full h-full flex-col items-center rounded-lg overflow-hidden  "
       ref={containerRef}
     >
       {/* Pms Section */}
@@ -156,8 +156,9 @@ export function AnimatedBeamDemo({ data }: any) {
         {/* {!isMobile && */}
         {/* <> */}
         <div
-          className={`absolute top-[-190px] md:top-[-132px]  ${isUk ? 'lg:top-[-60px]' : 'lg:top-[-163px]'} left-1/2 transform -translate-x-1/2 ${isMobile ? 'md:w-[300px]' : ''} 
-          ${isUk? 'md:w-[588px] lg:w-[588px]' : 'md:w-[980px] lg:w-[1106px]'}`}
+          className={`absolute top-[-190px]  left-1/2 transform -translate-x-1/2 
+          ${isMobile ? 'md:w-[300px]' : ' '} 
+          ${isUk? 'lg:w-[588px] md:w-[600px]  lg:top-[-60px] md:top-[-65px]' : 'lg:w-[1106px] md:w-[980px] lg:top-[-163px] md:top-[-132px]'}`}
         >
           {/* <LinesIcon /> */}
           <VideoPlayer videoData={data} />
