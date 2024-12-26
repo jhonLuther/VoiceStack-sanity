@@ -79,7 +79,6 @@ const Header = ({data}) => {
   }
   useEffect(() => {
     const handleBodyClick = (event) => {
-      // Close the switcher if the click is outside the toggle element
       if (toggleRef.current && !toggleRef.current.contains(event.target)) {
         setOpenSwitcher(false);
       }
@@ -124,7 +123,7 @@ const Header = ({data}) => {
                   </Link>
 
                   <div className={`lg:flex flex-col lg:flex-row lg:gap-6 justify-between lg:rounded-none items-center 
-                    lg:static absolute top-[40px] left-0 right-0 bg-white pb-12 lg:pb-0 
+                    lg:static absolute top-[40px] left-0 right-0 bg-white pb-20 lg:pb-0 
                     h-[calc(100vh-40px)] lg:h-auto shadow-[0px_40px_40px_0px_rgba(0,0,0,0.10)] lg:shadow-none
                     xl:flex-grow xl:justify-end xl:mr-10
                     ${showMenu ? 'flex': 'hidden'}`}>
@@ -158,7 +157,7 @@ const Header = ({data}) => {
                       {/* mob cta and phone */}
                       <div className='flex flex-col md:flex-row gap-3 md:gap-5 items-center lg:hidden'>
                         <div className='flex-shrink-0'>
-                          <a href="tel:+(407) 833-6123" className='text-gray-700 px-[12px] py-[7px] rounded-[7px] text-sm font-medium leading-6 flex items-center whitespace-nowrap gap-[8px]  
+                          <a href={`tel:${data?.phoneNumber}`} className='text-gray-700 px-[12px] py-[7px] rounded-[7px] text-sm font-medium leading-6 flex items-center whitespace-nowrap gap-[8px]  
                           border border-gray-300'><TelIcon/>{data?.phoneNumber}</a>
                         </div>
                         <Button type='primarySm'  onClick={() => {setOpenForm(true)}}>
@@ -207,7 +206,7 @@ const Header = ({data}) => {
                   {/* dt cta and phone */}
                   <div className='lg:flex gap-3 items-center lg:justify-end hidden'>
                     <div className='flex-shrink-0'>
-                      <a href="tel:+(407) 833-6123" className='text-gray-700 px-[12px] py-[7px] rounded-[7px] text-sm font-medium leading-6 flex items-center whitespace-nowrap gap-[8px]  
+                      <a href={`tel:${data?.phoneNumber}`} className='text-gray-700 px-[12px] py-[7px] rounded-[7px] text-sm font-medium leading-6 flex items-center whitespace-nowrap gap-[8px]  
                       border border-gray-300'><TelIcon/>{data?.phoneNumber}</a>
                     </div>
                     <Button type='primarySm' onClick={() => {setOpenForm(true)}}>
