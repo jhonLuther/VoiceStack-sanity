@@ -10,8 +10,8 @@ export default function VideoPlayer({videoData}) {
   const [videoSrc, setVideoSrc] = useState(desktopVideoSrc);
 
   useEffect(() => {
-    setVideoSrc(isMobile ? mobileVideoSrc : desktopVideoSrc);
-  }, [isMobile, mobileVideoSrc, desktopVideoSrc ]);
+    setVideoSrc(isMobile ? fallBackVideoSrc : desktopVideoSrc);
+  }, [isMobile, mobileVideoSrc, desktopVideoSrc ,fallBackVideoSrc]);
 
   return (
     <video
@@ -28,8 +28,8 @@ export default function VideoPlayer({videoData}) {
       autoPlay
       loop muted playsInline
     >
+      <source src={videoSrc} type="video/mp4" />
       <source src={videoSrc} type="video/webm" />
-      <source id='fallback' src={fallBackVideoSrc}  type="video/mp4"/>
       Your browser does not support the video tag.
     </video>
   );
