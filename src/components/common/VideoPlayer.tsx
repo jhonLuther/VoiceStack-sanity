@@ -26,11 +26,11 @@ export default function VideoPlayer({videoData}) {
       }}
       className="w-full h-full"
       autoPlay
-      loop
-      muted
+      loop muted playsInline
     >
       <source src={videoSrc} type="video/webm" />
       <source id='fallback' src={fallBackVideoSrc}  type="video/mp4"/>
+      Your browser does not support the video tag.
     </video>
   );
 }
