@@ -104,7 +104,7 @@ export default function FeatureSection({ data }) {
   return (
     <Section className="relative bg-[#f9f9f9] " id="features">
       {!isMobile && <div className='bg-white md:bg-vs-lemon-green w-1/2 h-full absolute top-0 right-0 z-0'></div>}
-      <Container className={`relative flex md:gap-16 md:flex-row flex-col`}>
+      <Container className={`relative flex md:gap-28 md:flex-row flex-col`}>
 
         <div className="flex md:gap-0 gap-12  md:w-1/2 w-full flex-col flex-1 md:py-20 md:pb-40 pt-16">
           {data.map((feature, index) =>
@@ -146,7 +146,7 @@ export default function FeatureSection({ data }) {
                     </PreText>
                     <H2>{feature.testimonialheading}</H2>
                     <Paragraph>{feature.testimonialDescription}</Paragraph>
-                    <ul className="flex flex-wrap gap-2 mt-4 mb-4 ">
+                    <ul className="flex flex-wrap gap-3 mt-4 mb-8 ">
                       {feature?.testimonialChip &&
                         feature?.testimonialChip?.map((item, i) => (
                           <PillItem key={i}>

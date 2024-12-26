@@ -65,7 +65,7 @@ export function AnimatedBeamDemo({ data }: any) {
 
   return (
     <div
-      className="relative flex w-full h-full flex-col items-center rounded-lg overflow-hidden"
+      className="relative flex w-full h-full flex-col items-center rounded-lg "
       ref={containerRef}
     >
       {/* Pms Section */}
@@ -79,7 +79,7 @@ export function AnimatedBeamDemo({ data }: any) {
          [&>*:nth-child(n)]:border-r  [&>*:nth-child(7)]:!border-r-0 [&>*:nth-child(14)]:!border-r-0
          
          [&>*:nth-child(n+8)]:border-t  border-gray-100  relative z-10 rounded-b-[20px]  bg-white shadow-lg`}> */}
-        <div className="flex flex-col  px-3 border-gray-100  relative z-10 rounded-b-[20px]  bg-white shadow-lg ">
+        <div className="flex flex-col  px-3 border-gray-100  relative z-10 rounded-b-[20px]  bg-white shadow-custom-light ">
           {groupedItems.map((pmss, outerIndex) => {
             return isMobile && outerIndex >= 3 ? null : (
               <div
@@ -128,7 +128,7 @@ export function AnimatedBeamDemo({ data }: any) {
       <div className={`flex gap-8 md:gap-0 justify-center ${isUk ? 'md:justify-evenly' :'md:justify-between'} md:justify-between w-full items-center md:mt-14 relative pb-4`}>
         {/*  */}
         <div
-          className={`flex flex-col relative gap-5 ${isMobile && 'flex-1 max-w-[148px]'} z-10 rounded-[20px] border border-gray-100 bg-white shadow-lg`}
+          className={`flex flex-col relative gap-5 ${isMobile && 'flex-1 max-w-[148px]'} z-10 rounded-[20px] border border-gray-100 bg-white shadow-custom-light`}
         >
           <div className="flex p-2 items-center justify-center rounded-t-[20px] bg-gradient-to-b from-purple-50 to-purple-50 text-base font-semibold">
             <H3 className="text-[#4A3CE1] font-semibold">Analytics</H3>
@@ -179,7 +179,7 @@ export function AnimatedBeamDemo({ data }: any) {
         {/* </>} */}
 
         <div
-          className={`flex flex-col gap-5 z-10  ${isMobile && 'flex-1 max-w-[148px]'} rounded-[20px] border border-gray-100 bg-white shadow-lg`}
+          className={`flex flex-col gap-5 z-10  ${isMobile && 'flex-1 max-w-[148px]'} rounded-[20px] border border-gray-100 bg-white shadow-custom-light`}
         >
           <div className="flex p-2 items-center justify-center rounded-t-[20px] bg-gradient-to-b from-purple-50 to-purple-50 text-base font-semibold">
             <H3 className="text-[#4A3CE1] font-semibold">CRM</H3>
