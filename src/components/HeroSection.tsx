@@ -41,7 +41,7 @@ const HeroSection = ({ data }) => {
     if (wordIndex < words?.length) {
       const wordInterval = setTimeout(() => {
         setWordIndex(wordIndex + 1)
-      }, 200)
+      }, 100)
       return () => clearTimeout(wordInterval)
     } else {
       const messageInterval = setTimeout(() => {
@@ -100,6 +100,7 @@ const HeroSection = ({ data }) => {
                 </div>
               </H1>
             </div>
+
             <div className="flex flex-col gap-8 items-center">
               <PortableText
                 components={components}
@@ -149,7 +150,7 @@ const HeroSection = ({ data }) => {
               </div>
             </div>
 
-            <div className="absolute left-[4%] md:left-0 -bottom-[45px] min-w-[220px] w-[38.5%]">
+            <div className="absolute left-[4%] md:left-0 -bottom-[45px] md:-bottom-[90px] min-w-[220px] w-[38.5%]">
               <Image
                 className="w-full h-full object-cover"
                 src={device}

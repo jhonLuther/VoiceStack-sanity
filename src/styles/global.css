@@ -270,6 +270,10 @@ html {
   @apply text-base border py-2 px-4 rounded w-full focus:outline-gray-950;
 }
 
+/* .hs-richtext.hs-main-font-element {
+  display: none;
+} */
+
 
 /* legal css */
 /* In your Tailwind-compatible file */
