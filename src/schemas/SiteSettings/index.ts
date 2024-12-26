@@ -10,6 +10,12 @@ export default defineType({
       title: 'Og Favicon',
       type: 'image',
     }),
+    {
+      name: 'injectJSONld',
+      title: 'JSON for JSON-LD',
+      type: 'text',
+      
+    },
     defineField({
       name: 'ogImage',
       title: 'Og Image',
@@ -130,6 +136,12 @@ export default defineType({
           of: [{ type: 'string' }],
         },
       ],
+    }),
+    defineField({
+      name: 'language',
+      type: 'string',
+      readOnly: true,
+      hidden: true,
     }),
   ],
 })

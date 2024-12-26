@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -171,29 +173,7 @@ html {
 }
 
 /* Submit Button */
-#hubspot-form button[type="submit"] {
-  background-color: #8639f8;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  padding: 12px 20px;
-  cursor: pointer;
-  font-weight: bold;
-  font-size: 16px;
-  width: 100%;
-}
 
-#hubspot-form button[type="submit"]:hover {
-  background-color: #6c2df7;
-}
-.hs_submit{
-  background: black;
-    color: white;
-    padding: 10px;
-    justify-content: center;
-    display: flex
-;
-}
 
 /* Custom Scrollbar for Webkit Browsers */
 ::-webkit-scrollbar {
@@ -209,11 +189,144 @@ html {
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-    background: #9e5cff; /* Color of the scrollbar handle */
+    background: #656565; /* Color of the scrollbar handle */
     border-radius: 12px; /* Rounded corners for the handle */
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
     background: #555; /* Color of the handle when hovered */
+}
+
+/* //custom styles */
+
+.feature-after{
+  &::after{
+    content: "";
+    position: absolute;
+    width: calc(100vw/2);
+    background-color: rgb(181, 235, 146);
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+  }
+}
+
+
+#hubspotForm .form-columns-1 .field.hs-form-field .input .hs-input {
+  /* @apply rounded-lg py-3 px-4 shadow-md ; */
+  padding-top: 0.5rem !important;
+  padding-bottom: 0.5rem !important;
+}
+
+#hubspotForm form {
+  @apply flex flex-wrap gap-x-8 gap-y-6;
+}
+
+#hubspotForm fieldset div:first-child {
+  margin-bottom: 1rem !important;
+}
+
+#hubspotForm fieldset .legal-consent-container {
+  font-size: 12px !important;
+}
+
+#hubspotForm .hs-submit {
+  @apply block w-full;
+}
+
+
+#hubspotForm .actions input[type='submit'] {
+  @apply block w-full mx-auto tracking-normal text-base mt-2 bg-gray-950 px-4 py-2 rounded text-white hover:cursor-pointer hover:-translate-y-0 transform duration-150;
+}
+
+#hubspotForm .actions {
+  @apply flex justify-center;
+}
+
+#hubspotForm .hs-error-msgs li {
+  @apply text-red-800 text-sm;
+}
+
+#hubspotForm .hs-error-msgs {
+  @apply absolute -bottom-7 w-full h-6 line-clamp-1 overflow-hidden left-0 text-ellipsis;
+}
+
+
+#hubspotForm .hs-form-field {
+  @apply gap-2 relative w-full;
+}
+
+#hubspotForm .hs-form-field .error {
+  @apply border-red-500;
+}
+
+#hubspotForm .hs-form-field label {
+  @apply text-sm;
+}
+
+#hubspotForm .hs-form-field input {
+  @apply text-base border py-2 px-4 rounded w-full focus:outline-gray-950;
+}
+
+
+/* legal css */
+/* In your Tailwind-compatible file */
+.legal-content h1 {
+  @apply text-4xl font-semibold mb-10 text-center;
+}
+
+.legal-content h2 {
+  @apply text-2xl font-semibold mb-2;
+}
+
+.legal-content li, .legal-content p {
+  @apply mb-5 text-justify !text-gray-800;
+}
+
+.legal-content a {
+  @apply text-blue-600 hover:underline underline-offset-2;
+}
+
+.legal-content h1 {
+  @apply text-4xl font-semibold mb-10 text-center;
+}
+
+.legal--inner table, .legal--inner td, .legal--inner th {
+  border: 1px solid #000;
+  border-collapse: collapse;
+}
+
+.legal--inner th {
+  padding: 12px;
+  font-weight: 700;
+}
+
+.legal--inner td {
+  padding: 12px;
+}
+
+.legal-content h2 {
+  @apply text-2xl font-semibold mb-2;
+}
+
+.legal-content li, .legal-content p {
+  @apply mb-5 text-justify !text-gray-800;
+}
+
+.legal-content a {
+  @apply text-blue-600 hover:underline underline-offset-2;
+}
+
+.legal-content table {
+  @apply table-auto;
+}
+
+.legal-content td {
+  @apply border p-4;
+}
+
+.legal-content tr:nth-child(odd) {
+  @apply bg-gray-50;
 }

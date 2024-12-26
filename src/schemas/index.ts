@@ -3,56 +3,61 @@ import { SchemaTypeDefinition } from 'sanity'
 import blockContent from './blockContent'
 import layout from './layout'
 import Features from './Features'
-import FeatureCategories from './FeatureCategories'
-import Integrations from './Integrations'
 import SiteSettings from './SiteSettings'
-import Testimonials from './Testimonials'
-import Benefits from './Benefits'
-import HomeSettings from './HomeSettings'
+import Testimonials from './Feature'
+import HomeSettings from './HomeSettings/index'
 import multipleString from './multipleString'
-import Person from './Person'
 import legal from './Legal'
-import partner from './partner'
-import customBlockContent from './customBlockContent.js'
 import comparison from './Comparison'
 import comparisonValue from "./ComparisonValue"
-import PMS from './PMS'
+import Platforms from './Platforms/index'
+import PlatformList from './PlatformList'
+import heroSubFeature from './heroSubFeature'
+import LogoListing from './LogoListing/index'
+import featureSubSection from './featureSubSection'
+import faq from './faq'
+import testimonialSection from './testimonial'
+import customBlockContent from './customBlockContent'
 
 export const schemaTypes = [
   layout,
   Features,
-  FeatureCategories,
-  Integrations,
   SiteSettings,
   Testimonials,
-  Benefits,
   HomeSettings,
-  Person,
   legal,
-  partner,
+  heroSubFeature,
   comparison,
   comparisonValue,
-  PMS
+  Platforms,
+  PlatformList,
+  LogoListing,
+  featureSubSection,
+  testimonialSection,
+  faq,
+  customBlockContent
 ]
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
     blockContent,
-    customBlockContent,
+    
     layout,
     Features,
-    FeatureCategories,
-    Integrations,
+    heroSubFeature,
     SiteSettings,
     Testimonials,
-    Benefits,
     HomeSettings,
     multipleString,
-    Person,
     legal,
-    partner,
     comparison,
     comparisonValue,
-    PMS
+    Platforms,
+    PlatformList,
+    LogoListing,
+    featureSubSection,
+    testimonialSection,
+    faq,
+    customBlockContent
   ],
 }

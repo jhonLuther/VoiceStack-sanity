@@ -1,0 +1,128 @@
+[
+    {
+        "image": {
+            "_type": "image",
+            "url": "https://cdn.sanity.io/images/76tr0pyh/production/5138d497f4a0c7075b156d9ada998dccdf86c801-686x666.png"
+        },
+        "bgColor": "#FFFFFF",
+        "heading": "Train Your Staff Better",
+        "description": "",
+        "keyFeatures": [
+            "Call Scoring",
+            "Staff Performance",
+            "Campaign Performance"
+        ],
+        "listItems":[
+            {
+                "listHeading": "Reduction in Missed Call Response Time",
+                "before": "4h 30min",
+                "after": "3min",
+                "description": ""
+            },
+            {
+                "listHeading": "Missed Opportunities Converted",
+                "before": "16%",
+                "after": "41%",
+                "description": ""
+            },
+            {
+                "listHeading": "Estimated Additional Revenue",
+                "before": "",
+                "after": "",
+                "description": "$200,000 <span>in 90 days</span>"
+            }
+        ],
+        
+        "name": "Himesh Kana",
+        "designation": "CEO, Dental Depot DFW",
+        "place": "Colorado",
+        "region": "United States",
+        "locations": "4",
+        "logo": {
+            "_type": "image",
+            "url": "https://cdn.sanity.io/images/76tr0pyh/production/6cc456692a2cfb9402e76bfacb2d750afb5bfc6e-376x129.png"
+        },
+        "video": {
+            "platform": "vidyard",
+            "videoId": "Hj4GYLXARVjqQEnaejq3Bz"
+        }
+    },
+    
+    {
+        "image": {
+            "_type": "image",
+            "url": "https://cdn.sanity.io/images/76tr0pyh/production/9072a9731f6b979c3b2e6bbf5374d0aa59bd4826-686x667.png"
+        },
+        "bgColor": "#EBE192",
+        "heading": "Reactivate Lost Patients",
+        "description": "Reactivated <span>$100,000</span> worth of treatment in <span>30 days.</span>",
+        "keyFeatures": [
+            "Call Outcome Analysis",
+            "Treatment Analytics ",
+            "Integrations",
+            "Missed Opportunity"
+        ],
+        "listItems":[],
+        "name": "Stuart McGuiggan",
+        "designation": "CEO, Star Dental Institute",
+        "place": "Colorado",
+        "region": "United States",
+        "locations": "2",
+        "logo": {
+            "_type": "image",
+            "url": "https://cdn.sanity.io/images/76tr0pyh/production/f816ce8e26ea1574cab0375bdeb62c5bef717ca2-376x129.png"
+        },
+        "video": {
+            "platform": "vidyard",
+            "videoId": "Hj4GYLXARVjqQEnaejq3Bz"
+        }
+    },
+    {
+        "image": {
+            "_type": "image",
+            "url": "https://cdn.sanity.io/images/76tr0pyh/production/8520c140a3d4d38c26d7a06660db22c5d92ea56b-686x666.png"
+        },
+        "bgColor": "#92CDEB",
+        "heading": "Eliminate Missed Calls",
+        "description": "",
+        "keyFeatures": [
+            "Call Scoring",
+            "Staff Performance",
+            "Campaign Performance"
+        ],
+        "listItems":[
+            {
+                "listHeading": "Conversion rate from first-time inquiries",
+                "before": "",
+                "after": "84%",
+                "description": ""
+            },
+            {
+                "listHeading": "Call Answer Rate",
+                "before": "",
+                "after": "90%",
+                "description": ""
+            },
+            {
+                "listHeading": "Estimated Additional Revenue",
+                "before": "",
+                "after": "",
+                "description": "$200,000 <span>in 90 days</span>"
+            }
+        ],
+        "name": "Katie Post",
+        "designation": "CEO, Northwest Dental Group",
+        "place": "Minnesota",
+        "region": "United States",
+        "locations": "4",
+        "logo": {
+            "_type": "image",
+            "url": "https://cdn.sanity.io/images/76tr0pyh/production/741ae22e8dd6f33686066b929cdc2582596e836a-376x129.png"
+        },
+        "video": {
+            "platform": "vidyard",
+            "videoId": "Hj4GYLXARVjqQEnaejq3Bz"
+        }
+    }
+    
+]

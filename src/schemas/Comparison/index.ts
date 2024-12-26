@@ -24,6 +24,18 @@ export default defineType({
               type: 'string',
               validation: (Rule) => Rule.required(),
             }),
+            defineField({
+              name: 'logo',
+              title: 'Logo',
+              type: 'image',
+              // validation: (Rule) => Rule.required(),
+            }),
+            defineField({
+              name: 'logoMobile',
+              title: 'Logo Mobile',
+              type: 'image',
+              // validation: (Rule) => Rule.required(),
+            }),
           ],
         } as any),
       ],
@@ -41,6 +53,18 @@ export default defineType({
               title: 'Category Name',
               type: 'string',
               validation: (Rule) => Rule.required(),
+            }),
+            defineField({
+              name: 'iconSvgCode',
+              title: 'Icon Svg Code',
+              type: 'string',
+              validation: (Rule) => Rule.required(),
+            }),
+            defineField({
+              name: 'icon',
+              title: 'Icon',
+              type: 'image',
+              // validation: (Rule) => Rule.required(),
             }),
             defineField({
               name: 'rows',
@@ -79,6 +103,12 @@ export default defineType({
           ],
         } as any),
       ],
+    }),
+    defineField({
+      name: 'language',
+      type: 'string',
+      readOnly: true,
+      hidden: true,
     }),
   ],
 })

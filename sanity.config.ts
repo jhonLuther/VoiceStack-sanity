@@ -11,6 +11,7 @@ import {
   IframeOptions,
 } from 'sanity-plugin-iframe-pane'
 import { previewUrl } from 'sanity-plugin-iframe-pane/preview-url'
+import {documentInternationalization} from '@sanity/document-internationalization'
 
 // see https://www.sanity.io/docs/api-versioning for how versioning works
 import {
@@ -62,6 +63,28 @@ export default defineConfig({
     },
   },
   plugins: [
+    documentInternationalization({
+      supportedLanguages: [
+        { id: 'en', title: 'US English' },
+        { id: 'en-GB', title: 'UK English' },
+        { id: 'en-AU', title: 'Australia English' },
+      ],
+      schemaTypes: [
+        'layout',
+        'feature',
+        'siteSettings',
+        'testimonial',
+        'homeSettings',
+        'faq',
+        'legal',
+        'comparisonTable',
+        'comparisonValue',
+        'testimonialSection',
+        'logoListing',
+        'platform',
+      ],
+    }),
+
     deskTool({
       // `defaultDocumentNode` is responsible for adding a “Preview” tab to the document pane
       // You can add any React component to `S.view.component` and it will be rendered in the pane
@@ -80,49 +103,50 @@ export default defineConfig({
         S.list()
           .title('Base')
           .items([
+            // S.listItem()
+            //   .title('Home Page')
+            //   .child(
+            //     S.document()
+            //       .schemaType('homeSettings')
+            //       .documentId('homeSettings'),
+            //   ),
+
             S.listItem()
-              .title('Home Page')
-              .child(
-                S.document()
-                  .schemaType('homeSettings')
-                  .documentId('homeSettings'),
-              ),
-        
-              S.listItem()
               .title('Site Configuration')
               .child(
                 S.document()
                   .schemaType('siteSettings')
                   .documentId('siteSettings'),
               ),
-              S.listItem()
+            S.listItem()
               .title('Comparison Table')
               .child(
                 S.document()
                   .schemaType('comparisonTable')
                   .documentId('comparisonTable'),
               ),
-              // S.listItem()
-              // .title('Legal Information')
-              // .child(
-              //   S.document()
-              //     .schemaType('legal')
-              //     .documentId('legal'),
-              // ),
-        
-              // S.documentTypeListItem('homeSettings').title('homeSettings'),
-              S.documentTypeListItem('testimonial').title('Testimonial'),
-              S.documentTypeListItem('featureCategory').title('FeatureCategory'),
-              S.documentTypeListItem('feature').title('Feature'),
-              S.documentTypeListItem('integration').title('Integration'),
-              S.documentTypeListItem('benefit').title('Benefit'),
-              S.documentTypeListItem('person').title('Person'),
-              S.documentTypeListItem('legal').title('Legal'),
-              S.documentTypeListItem('partner').title('Partner'),
-              S.documentTypeListItem('comparisonValue').title('Comparison Value'),
-              S.documentTypeListItem('allPMS').title('All PMS')
 
-          ])
+            // S.listItem()
+            // .title('Platform')
+            // .child(
+            //   S.document()
+            //     .schemaType('platform')
+            //     .documentId('platform'),
+            // ),
+
+            S.documentTypeListItem('homeSettings').title('homeSettings'),
+            S.documentTypeListItem('testimonial').title('FeatureSection'),
+            S.documentTypeListItem('testimonialSection').title('Testimonial'),
+            // S.documentTypeListItem('feature').title('Feature'),
+            S.documentTypeListItem('legal').title('Legal'),
+            S.documentTypeListItem('comparisonValue').title('Comparison Value'),
+            S.documentTypeListItem('platform').title('IntegrationList'),
+            S.documentTypeListItem('platformList').title('PlatformList'),
+            S.documentTypeListItem('logoListing').title('logoListing'),
+            S.documentTypeListItem('faq').title('Faq'),
+
+            // S.documentTypeListItem('platform').title('Platform'),
+          ]),
     }),
 
     media({
@@ -134,7 +158,7 @@ export default defineConfig({
         // string | string[] - when used with 3rd party asset sources, you may
         // wish to prevent users overwriting the creditLine based on the `source.name`
       },
-      maximumUploadSize: 10000000
+      maximumUploadSize: 10000000,
       // number - maximum file size (in bytes) that can be uploaded through the plugin interface
     }),
     previewUrl({
@@ -144,5 +168,4 @@ export default defineConfig({
     }),
     visionTool({ defaultApiVersion: apiVersion }),
   ],
-  
 })

@@ -1,16 +1,39 @@
 import { cn } from '~/lib/utils'
 
-const Paragraph = (props) => {
+type ParagraphProps = {
+  className?: string;
+  dangerouslySetInnerHTML?: { __html: string }; 
+  children?: React.ReactNode;
+};
+
+const Paragraph: React.FC<ParagraphProps> = ({
+  className = '',
+  dangerouslySetInnerHTML,
+  children,
+}) => {
+  
+  if (dangerouslySetInnerHTML) {
+    return (
+      <p
+        className={cn(
+          'text-gray-700 !leading-6 text-[16px] font-light md:max-w-3xl [&_span]:text-vs-blue',
+          className
+        )}
+        dangerouslySetInnerHTML={dangerouslySetInnerHTML}
+      />
+    );
+  }
+
   return (
     <p
       className={cn(
-        'text-white/80 !leading-6 text-[16px]  font-light md:max-w-3xl',
-        props.className,
+        'text-gray-700 !leading-6 text-[16px] font-light md:max-w-3xl',
+        className
       )}
     >
-      {props.children}
+      {children}
     </p>
-  )
-}
+  );
+};
 
-export default Paragraph
+export default Paragraph;

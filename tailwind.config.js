@@ -11,9 +11,11 @@ module.exports = {
   ],
   theme: {
   	extend: {
-  		fontFamily: {
-  			sans: " 'Poppins', sans-serif"
-  		},
+  		
+			fontFamily: {
+				sans: ['Inter', 'sans-serif'],
+				manrope: ['Manrope', 'system-ui', 'sans-serif'],
+			},
   		borderRadius: {
   			lg: 'var(--radius)',
   			md: 'calc(var(--radius) - 2px)',
@@ -59,10 +61,13 @@ module.exports = {
   				'3': 'hsl(var(--chart-3))',
   				'4': 'hsl(var(--chart-4))',
   				'5': 'hsl(var(--chart-5))'
-  			}
+  			},
+				'vs-blue': '#4A3CE1',
+				'vs-lemon-green': '#B5EB92',
   		},
   		animation: {
-  			'shiny-text': 'shiny-text 8s infinite'
+  			'shiny-text': 'shiny-text 8s infinite',
+				pullUp: 'pullUp 0.3s ease-in forwards',
   		},
   		keyframes: {
   			'shiny-text': {
@@ -72,12 +77,41 @@ module.exports = {
   				'30%, 60%': {
   					'background-position': 'calc(100% + var(--shiny-width)) 0'
   				}
-  			}
+  			},
+				pullUp: {
+          '0%': { transform: 'translateY(10%)', opacity: '0' },
+          '50%': { opacity: '1' },
+          '100%': { transform: 'translateY(0)', opacity: '1' },
+        },
   		},
-		backgroundImage: {
-		'hero-pattern': "url('/hero-background.webp')",
-		'grid-pattern': "url('/about-us.webp')",
-		}
+			
+			backgroundImage: {
+			'hero-pattern': "url('/hero-background.webp')",
+			'grid-pattern': "url('/about-us.webp')",
+			},
+			spacing: {
+        'lg': '130px',
+				'md': '96px',
+				'sm': '64px',
+				'xs': '48px' 
+      },
+			maxWidth: {
+        '7xl': '1240px', // Define a custom max-width value
+      },
+			
+			backgroundImage: {
+			'hero-pattern': "url('/hero-background.webp')",
+			'grid-pattern': "url('/about-us.webp')",
+			},
+			spacing: {
+        'lg': '130px',
+				'md': '96px',
+				'sm': '64px',
+				'xs': '48px' 
+      },
+			maxWidth: {
+        '7xl': '1272px', // Define a custom max-width value
+      },
 
   	}
   },

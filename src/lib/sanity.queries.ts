@@ -2,6 +2,7 @@ import type { PortableTextBlock } from '@portabletext/types'
 import type { ImageAsset, Slug } from '@sanity/types'
 import groq from 'groq'
 import { type SanityClient } from 'next-sanity'
+import { cookies } from 'next/headers'
 
 export const postsQuery = groq`*[_type == "post" && defined(slug.current)] | order(_createdAt desc)`
 
@@ -60,25 +61,6 @@ export const integrationListQuery = groq`*[_type == "integration" ]{
     
    
   }`
-export const featureSectionQuery = groq`
-    *[_type == "featureCategory" && !(_id in path('drafts.**'))] {
-      ..., 
-      "imageUrl": categoryImage.asset->{
-        _id,
-        url,
-        metadata {
-          dimensions {
-            width,
-            height,
-            aspectRatio
-          }
-        }
-      },
-      "altText": image.altText,
-      "title": image.title,
-      "features": features[]->
-    }
-  `
 export const testimonialQuery = groq`*[_type == "testimonial"]{...,"AuthorImage":authorimage.asset->url}`
 export const heroSectionQuery_ = groq`
   *[_type == "siteSettings"][0]{
@@ -86,25 +68,35 @@ export const heroSectionQuery_ = groq`
     "about":ogDescription
   }
 `
+
 export const AboutQuery = groq`*[_type == "siteSettings"]{"about":ogDescription
 }`
-export const heroSection = groq`
-*[_type == "homeSettings"][0]{
-  "heroDescription": heroDescription,
-  "ctaName": bookBtnContent,
-  "heroStrip": heroStrip,
-  "heroTitleStatic": heroTitleStatic,
-  "heroTitleDynamic": heroTitleStaticDynamic,
-  "aboutSectionImage": aboutSectionImage.asset->url,
-  "integrationHeader": integrationHeader,
-  "benefitHeader": benefitHeader,
-  "testimonialHeader": testimonialHeader,
-  "featureHeader": featureHeader,
-  "integrationList": {
-    "selectedIntegrationList": integration[]->{
-      "image": integrationProductImage.asset->{
+
+export async function getHeroSectionData(client: SanityClient, region: string) {
+  const query = groq`*[_type == "homeSettings" && language == $region][0]{
+      ...,
+      "heroSubFeature": heroSubFeature[]->{
+        "heading": heroSubFeatureHeading,
+        "description": heroSubFeatureContent,
+        "icon": heroSubFeatureIcon.asset->url,
+        "label": "Learn More",
+        "href": ""
+      }
+    }
+  `
+
+  return await client.fetch(query, { region })
+}
+export async function getTestimonialSecitonData(
+  client: SanityClient,
+  region: string,
+) {
+  const query = groq`*[_type == "testimonialSection" && language == $region]{
+      ...,
+      "logo": logo.asset-> {
         _id,
         url,
+        altText,
         metadata {
           dimensions {
             width,
@@ -113,43 +105,10 @@ export const heroSection = groq`
           }
         }
       },
-      "altText": image.altText,
-      "title": image.title,
-      _createdAt,
-      _id
-    }
-  },
-  "features": {
-    "selectedFeatures": selectedfeatures[]->{
-      ...,
-      "imageUrl": categoryImage.asset->{
+      "image": testimonialImage.asset-> {
         _id,
         url,
-        metadata {
-          dimensions {
-            width,
-            height,
-            aspectRatio
-          }
-        }
-      },
-      "altText": image.altText,
-      "title": image.title,
-      "features": features[]->
-    }
-  },
-  "testimonial": {
-    "selectedTestimonial": selectedTestimonial[]->{
-      ...,
-      "AuthorImage": authorimage.asset->url
-    }
-  },
-  "partner": {
-    selectedPartner[]->{
-      partnerName,
-      "image": partnerLogo.asset->{
-        _id,
-        url,
+        altText,
         metadata {
           dimensions {
             width,
@@ -158,45 +117,69 @@ export const heroSection = groq`
           }
         }
       }
-    }
-  },
-  "benifits": {
-    selectedBenefits[]->{
-      "benefitHeading":benefitHeading,
-      "benifitSectionImage": benefitImageSection.asset->{
-        _id,
-        url,
-        metadata {
+    } | order( order asc)
+  `
+
+  return await client.fetch(query, { region })
+}
+
+export async function logoSection(client: SanityClient, region: string) {
+  const query = groq` *[_type == "logoListing" && language == $region][0]{
+  'image':logo[]->image.asset->{url,_id,altText,   metadata {
           dimensions {
             width,
             height,
             aspectRatio
           }
-        }
-      },
-      "benefitPoints": benefitPoints
-    }
-  }
-}
-`
-
-export const benifitQuery = groq` *[_type == "benefit"]{
-  'benefitHeading':benefitHeading,
-   'benifitSectionImage':benefitImageSection.asset->{
-       _id,
-       url,
-       metadata {
-         dimensions {
-           width,
-           height,
-           aspectRatio
-         }
-       }
-     },
-'benefitPoints':benefitPoints
+        }},
+    logoSectionHeader,
+    logoSectionHeaderDescptn,
     
 }`
-export const getFounderDetails = () => groq`*[_type == "person"]{
+  return await client.fetch(query, { region })
+}
+
+export async function featureSectionQuery(
+  client: SanityClient,
+  region: string,
+) {
+  const query = groq`*[_type == "testimonial" && language == $region]{...,
+   
+    "testimonialImage":testimonialImage.asset->{url,_id,altText,
+    metadata {
+           dimensions {
+             width,
+             height,
+             aspectRatio
+           }
+    }
+  },
+  "testimonialIcon":testimonialIcon.asset->{url,_id,altText,
+    metadata {
+           dimensions {
+             width,
+             height,
+             aspectRatio
+           }
+    }
+  },
+  "testimonialSubSection":testimonialSubSection[]->{
+    featureSubDescription,
+    featureSubHead,
+    "image":featureChipImage.asset->{url,_id,altText,
+    metadata {
+           dimensions {
+             width,
+             height,
+             aspectRatio
+           }
+    }
+  },
+  }
+  } | order(testimonialOrder asc)`
+  return await client.fetch(query, { region })
+}
+export const getFounderDetails = (region) => groq`*[_type == "person"]{
   'name':personName,
   'socialMediaLinks':socialMediaLinks,
   'image': personImage.asset->{
@@ -214,6 +197,14 @@ export const getFounderDetails = () => groq`*[_type == "person"]{
     'description':personDescription
 }`
 
+export async function fetchFaq(
+  client: SanityClient,
+  region: string,
+): Promise<any> {
+  const query = groq`*[_type == "faq" && language ==$region] |order(order asc)`
+  return await client.fetch(query, { region })
+}
+
 export const SeoQuery = groq`*[_type == "siteSettings"]
 | order(_createdAt desc)[0].seoSettings
 `
@@ -228,14 +219,6 @@ export async function fetchIntegrationList(client: SanityClient): Promise<any> {
   return await client.fetch(integrationListQuery)
 }
 
-export async function featureSection(client: SanityClient): Promise<any> {
-  return await client.fetch(featureSectionQuery)
-}
-
-export async function fetchTestimonial(client: SanityClient): Promise<any> {
-  return await client.fetch(testimonialQuery)
-}
-
 export async function heroSectionQuery(
   client: SanityClient,
 ): Promise<HomeSettings | null> {
@@ -246,14 +229,9 @@ export async function fetchAboutSection(client: SanityClient): Promise<any> {
   return await client.fetch(AboutQuery)
 }
 
-export async function fetchHeroSectionData(client: SanityClient): Promise<any> {
-  return await client.fetch(heroSection)
-}
-export async function fetchBenefitSectionData(
-  client: SanityClient,
-): Promise<any> {
-  return await client.fetch(benifitQuery)
-}
+// export async function fetchHeroSectionData(client: SanityClient): Promise<any> {
+//   return await client.fetch(heroSection)
+// }
 
 export async function getLegalInformation(
   client: SanityClient,
@@ -286,83 +264,124 @@ export async function fetchTermsAndCondition(
   return await client.fetch(query, { docType })
 }
 
-export const getALLHomeSettings = () => groq`*[_type == "homeSettings"]{
-  ...,
- "selectedIntegrations": integration[]->{
-      "image": integrationProductImage.asset->{
-        _id,
-        url,
-        metadata {
-          dimensions {
-            width,
-            height,
-            aspectRatio
+export async function getALLHomeSettings(client: SanityClient, region: string) {
+  const query = groq`*[_type == "homeSettings" && language ==$region][0]{
+    ...,
+   "selectedIntegrations": integration[]->{
+        "image": integrationProductImage.asset->{
+          _id,
+          url,
+          metadata {
+            dimensions {
+              width,
+              height,
+              aspectRatio
+            }
+          }
+        },
+        "altText": image.altText,
+        "title": image.title,
+        _createdAt,
+        _id
+      },
+    "selectedFeatures": selectedfeatures[]->{
+        ...,
+        "imageUrl": categoryImage.asset->{
+          _id,
+          url,
+          metadata {
+            dimensions {
+              width,
+              height,
+              aspectRatio
+            }
+          }
+        },
+        "altText": image.altText,
+        "title": image.title,
+        "features": features[]->
+      },
+    "selectedTestimonials": selectedTestimonial[]->{
+        ...,
+        "AuthorImage": authorimage.asset->url
+      },
+    "selectedPartners": selectedPartner[]->{
+        partnerName,
+        "image": partnerLogo.asset->{
+          _id,
+          url,
+          metadata {
+            dimensions {
+              width,
+              height,
+              aspectRatio
+            }
           }
         }
       },
-      "altText": image.altText,
-      "title": image.title,
-      _createdAt,
-      _id
-    },
-  "selectedFeatures": selectedfeatures[]->{
-      ...,
-      "imageUrl": categoryImage.asset->{
-        _id,
-        url,
-        metadata {
-          dimensions {
-            width,
-            height,
-            aspectRatio
+    "selectedBenefits": selectedBenefits[]->{
+        "benefitHeading":benefitHeading,
+        "benifitSectionImage": benefitImageSection.asset->{
+          _id,
+          url,
+          metadata {
+            dimensions {
+              width,
+              height,
+              aspectRatio
+            }
           }
-        }
-      },
-      "altText": image.altText,
-      "title": image.title,
-      "features": features[]->
-    },
-  "selectedTestimonials": selectedTestimonial[]->{
-      ...,
-      "AuthorImage": authorimage.asset->url
-    },
-  "selectedPartners": selectedPartner[]->{
-      partnerName,
-      "image": partnerLogo.asset->{
-        _id,
-        url,
-        metadata {
-          dimensions {
-            width,
-            height,
-            aspectRatio
-          }
-        }
+        },
+        "benefitPoints": benefitPoints
       }
-    },
-  "selectedBenefits": selectedBenefits[]->{
-      "benefitHeading":benefitHeading,
-      "benifitSectionImage": benefitImageSection.asset->{
-        _id,
-        url,
-        metadata {
-          dimensions {
-            width,
-            height,
-            aspectRatio
-          }
-        }
-      },
-      "benefitPoints": benefitPoints
-    }
-} | order(_createdAt desc)[0]`
+  }`
+  return await client.fetch(query, { region })
+}
 
-export const getALLSiteSettings = () =>
+
+export const getALLSiteSettings = (region) =>
   groq`*[_type == "siteSettings"] | order(_createdAt desc)[0]`
 
-export const getComparisonTableData = () =>
+export const getComparisonTableData = (region) =>
   groq`*[_type == "comparisonTable"] {
-    ..., "rowCategories": rowCategories[] { 
+    ..., 
+    "columns": columns[] {
+        ..., "logo": logo.asset-> {
+          _id,
+          url,
+          metadata {
+            dimensions {
+              width,
+              height,
+              aspectRatio
+            }
+          }
+        },
+        "logoMobile":logoMobile.asset-> {
+          _id,
+          url,
+          metadata {
+            dimensions {
+              width,
+              height,
+              aspectRatio
+            }
+          }
+        },
+        "logoMobile":logoMobile.asset-> {
+          _id,
+          url,
+          metadata {
+            dimensions {
+              width,
+              height,
+              aspectRatio
+            }
+          }
+        }
+    },
+    
+    "rowCategories": rowCategories[] { 
       ..., "rows": rows[] {
         ..., "comparisons": comparisons[] -> {
           ..., "icon": icon.asset-> {
@@ -380,20 +399,76 @@ export const getComparisonTableData = () =>
       }
     }
   } | order(_createdAt desc)[0]`
-
-export const getAllPMS = () =>
-  groq`*[_type == "allPMS"]{...,"image": pmsImage.asset -> {
+export async function getIntegrationList(client: SanityClient, region: string) {
+  const query = groq`*[_type == "platform" && language == $region] {
       _id,
-      url,
-      metadata {
-        dimensions {
-          width,
-          height,
-          aspectRatio
+      _createdAt,
+      integrationHeading,
+      integrationSubHeading,
+      integrationDescription,
+      "integrationImage": integrationImage.asset-> {
+        _id,
+        url,
+        metadata {
+          dimensions {
+            width,
+            height,
+            aspectRatio
+          }
         }
+      },
+      bgVideoUrl,
+      bgVideoUrlMobile,
+      analytics[]->{
+        ..., "image": image.asset-> {
+            _id,
+            url,
+            metadata {
+              dimensions {
+                width,
+                height,
+                aspectRatio
+              }
+            },
+            ...,
+
+          }
+      },
+      pms[]->{
+        ..., "image": image.asset-> {
+            _id,
+            url,
+            metadata {
+              dimensions {
+                width,
+                height,
+                aspectRatio
+              }
+            },
+            ...,
+
+          }
+
+      },
+      crm[]->{
+        ..., "image": image.asset-> {
+            _id,
+            url,
+            metadata {
+              dimensions {
+                width,
+                height,
+                aspectRatio
+              }
+            },
+            ...,
+
+          }
       }
-    }  
-  }`
+
+  } | order(_createdAt desc)[0]`
+  return await client.fetch(query, { region })
+}
 
 /*####################################### INTERFACES    ###########################*/
 export interface Post {
