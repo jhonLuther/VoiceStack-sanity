@@ -3,7 +3,7 @@ import useMediaQuery from '~/utils/mediaQuery';
 
 export default function VideoPlayer({videoData}) {
   const desktopVideoSrc = videoData?.bgVideoUrl || 'https://cdn.sanity.io/files/76tr0pyh/production/29c4fd446f073ca4f54cc3894cb9aebfeac2b62e.mp4';
-  const mobileVideoSrc = videoData?.bgVideoUrlMobile || 'https://cdn.sanity.io/files/76tr0pyh/production/6fca2173d8fa6e7704cf8b0deba9f489c56570a0.webm';
+  const mobileVideoSrc = videoData?.bgVideoUrlMobile || 'https://cdn.sanity.io/files/76tr0pyh/production/d2aed3780f97baf45a538423e7b9fc7fcaf80186.mp4';
   const fallBackVideoSrc = 'https://cdn.sanity.io/files/76tr0pyh/production/d2aed3780f97baf45a538423e7b9fc7fcaf80186.mp4';
 
   const isMobile = useMediaQuery(767);
@@ -29,7 +29,6 @@ export default function VideoPlayer({videoData}) {
       loop muted playsInline
     >
       <source src={videoSrc} type="video/mp4" />
-      <source src={videoSrc} type="video/webm" />
       Your browser does not support the video tag.
     </video>
   );
