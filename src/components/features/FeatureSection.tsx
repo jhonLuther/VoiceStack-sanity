@@ -151,7 +151,7 @@ export default function FeatureSection({ data }) {
               </>
             ) : (
 
-              <div className={`'md:h-[100vh]  relative flex'`} key={feature?._rev} >
+              <div className={'md:h-[100vh]  relative flex md:mb-10'} key={feature?._rev} >
                 <div className="md:mt-40 mt-5 left-0 self-start flex flex-col justify-center">
                   <motion.div
                     key={index}
@@ -249,6 +249,7 @@ export default function FeatureSection({ data }) {
         <FormModal
           className={`pt-9  flex items-start`}
           onClose={() => setOpenForm(false)}
+          source1="feature"
         />
       )}
 

@@ -7,7 +7,7 @@ import Image from 'next/image'
 
 const LinksCardsSection = ({ data }) => {
   return (
-    <Section className="pt-sm md:pt-md pb-8">
+    <Section className="pt-sm md:pt-md pb-12">
       <Container>
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-0 md:gap-6 xl:gap-12 justify-center">
           {data &&

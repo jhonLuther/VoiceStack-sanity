@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { CloseIcon } from '@sanity/icons'
 import HubSpotForm from './HubspotForm'
+import { useRouter } from 'next/router'
 
 type VideoPlatform = 'vimeo' | 'vidyard' | 'youtube'
 
@@ -8,6 +9,8 @@ export interface FormModalProps {
   className?: string
   isPopup?: boolean
   onClose?: () => void
+  source?: string
+  source1?: string
 }
 
 
@@ -15,8 +18,17 @@ export const FormModal: React.FC<FormModalProps> = ({
   className,
   isPopup,
   onClose ,
+  source,
+  source1
 }) => {
- 
+    const usFormId = "6b2d6906-028e-4d65-9cd1-34d528e0d5c0";
+    const ukFormId = "cf4c05ce-6c22-43a1-90a7-d0fc94c239fd"
+    const [formId, setFormId] = React.useState(usFormId);
+    const router = useRouter();
+
+    React.useEffect(()=>{
+      setFormId(router?.locale =='en-GB' ? ukFormId : usFormId)
+    },[router?.locale, source, source1])
 
   return (
     <div
@@ -68,7 +80,7 @@ export const FormModal: React.FC<FormModalProps> = ({
                   </button>
                 </div>
                 <div className="mt-2 w-full mb-8">
-                  <HubSpotForm/>
+                  <HubSpotForm id={formId}/>
                 </div>
               </div>
             </div>
