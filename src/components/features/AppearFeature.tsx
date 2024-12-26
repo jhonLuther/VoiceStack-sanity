@@ -51,6 +51,7 @@ export default function AppearFeature({
   }
 
   const handleClick = (e, index, ref) => {
+    if(!isMobile) return
     if (ref?.current) {
       ref.current.style.height = '100%'
       ref.current.style.scrollBehavior = 'smooth'
