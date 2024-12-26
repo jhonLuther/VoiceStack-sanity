@@ -105,8 +105,6 @@ const Header = ({data}) => {
   const before = "before:content-[''] before:h-[100px] before:absolute before:left-0 before:right-0 before:top-full before:bg-zinc-900";
   return (
     <>
-
-
         {/* Google Analytics */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-YY0CHYH7EY"
@@ -133,13 +131,14 @@ const Header = ({data}) => {
         </Script>
 
         {/* Start cookieyes banner */}
-        <Script id="cookieyes" strategy="afterInteractive" src="https://cdn-cookieyes.com/client_data/892b60d226bd40003a3303d6/script.js">
+        <Script id="cookieyes" strategy="afterInteractive" 
+          src="https://cdn-cookieyes.com/client_data/892b60d226bd40003a3303d6/script.js">
         </Script>
 
         {/* <!--[BEGIN Google Tag Manager (noscript)]--> */}
 	      <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KCX7H59S" height="0" width="0"
 			    style={{ display: 'none', visibility: 'hidden' }}></iframe></noscript>
-	    {/* <!--[END Google Tag Manager (noscript)]--> */}
+	      {/* <!--[END Google Tag Manager (noscript)]--> */}
 
       {/* {showMenu && <div className='fixed top-0 w-full h-full z-[19] bg-zinc-900'></div>} */}
       <div className={`relative w-full before:content-[''] before:-z-0 before:h-[100px] before:absolute before:left-0 before:right-0 before:top-[-100px] before:bg-vs-blue`}>
