@@ -8,6 +8,7 @@ interface ButtonProps {
     | 'primaryWhite'
     | 'video'
     | 'primarySm'
+    | 'primaryXs'
   alter?: 'bgWhite' | 'borderWhite' | 'disabled' | 'default'
   children?: React.ReactNode
   link?: any
@@ -32,6 +33,7 @@ const Button: React.FunctionComponent<ButtonProps> = ({
   const customClasses = clsx({
     'bg-vs-blue hover:bg-vs-blue text-white border border-vs-blue px-[17px] py-[10px] ': type === 'primary',
     'bg-vs-blue hover:bg-vs-blue text-white border border-vs-blue text-sm px-[12px] py-[8px]': type === 'primarySm',
+    'bg-vs-blue hover:bg-vs-blue text-white border border-vs-blue text-[10px] px-[10px] py-[5px] rounded-[4px]': type === 'primaryXs',
     'bg-white hover:bg-white text-blue-500 border border-white px-[17px] py-[10px] ': type === 'primaryWhite',
     'text-white border border-white/30 px-[17px] py-[10px] ': type === 'video'
   });
