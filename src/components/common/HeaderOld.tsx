@@ -91,9 +91,8 @@ const Header = ({ data }) => {
 
                           return (
 
-                          <li className=' md:w-auto w-full md:flex items-center md:border-none border-b'>
+                          <li className=' md:w-auto w-full md:flex items-center md:border-none border-b' key={link?.href + i}>
                             <Link
-                              key={link?.href + i}
                               href={link?.href}
                               className="text-gray-700 md:text-base text-xl font-medium text-center md:py-0 py-2 bg-red-50 "
                               onClick={toggleMenu}
