@@ -68,7 +68,7 @@ export default function FeatureSection({ data }) {
 
 
 
-  const switchIndex = (percentage) => {
+  const switchIndex = (percentage = 25) => {
     if (isMobile) return
 
     if (percentage <= 25 && percentage > 0) {
