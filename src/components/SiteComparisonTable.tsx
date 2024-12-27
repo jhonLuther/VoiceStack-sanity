@@ -104,7 +104,7 @@ export default function SiteComparisonTable({ data, mainIndex, currentIndex, isM
                     {column.logo  && column.logo.url && !isMobile && (
 
                       <Image
-                        className="justify-center items-center py-3 min-h-full w-auto max-w-[122px] m-auto"
+                        className="justify-center items-center w-auto max-w-[122px] m-auto"
                         src={column.logo.url}
                         width={135}
                         height={26}
