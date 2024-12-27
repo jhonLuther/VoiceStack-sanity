@@ -8,6 +8,7 @@ import AlertIcon from "~/components/icons/AlertIcon";
 import ChartBarIcon from "~/components/icons/ChartBarIcon";
 import StackIcon from "~/components/icons/StackIcon";
 import SparklesIcon from "~/components/icons/SparklesIcon";
+import LpHubSpotForm from "~/components/common/LpHubspotForm";
 
 
 {/* <script>
@@ -69,7 +70,8 @@ function DentalCollective() {
                 <div className="flex-grow border rounded-[20px] bg-white p-8 lg:max-w-[514px] relative">
                   <h2 className="text-3xl mb-[5px]">Book a Demo</h2>
                   <p className="text-gray-700 text-base mb-6">Complete the brief form to schedule your free VoiceStack demo!</p>
-                  <HubSpotForm></HubSpotForm>
+                  {/* <HubSpotForm></HubSpotForm> */}
+                  <LpHubSpotForm></LpHubSpotForm>
                 </div>
                 
               </div>
