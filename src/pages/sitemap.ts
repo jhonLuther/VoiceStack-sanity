@@ -12,12 +12,12 @@ export async function getStaticProps() {
             xmlns:xhtml="http://www.w3.org/1999/xhtml">
       <url>
         <loc>${url}</loc>
-        <xhtml:link rel="alternate" hreflang="en-AU" href="${url}en-AU" />
+        <xhtml:link rel="alternate" hreflang="en-GB" href="${url}en-GB" />
         <xhtml:link rel="alternate" hreflang="en" href="${url}" />
       </url>
       <url>
-        <loc>${url}en-AU</loc>
-        <xhtml:link rel="alternate" hreflang="en-AU" href="${url}en-AU" />
+        <loc>${url}en-GB</loc>
+        <xhtml:link rel="alternate" hreflang="en-GB" href="${url}en-GB" />
         <xhtml:link rel="alternate" hreflang="en" href="${url}" />
       </url>
     </urlset>`
