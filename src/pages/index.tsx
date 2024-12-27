@@ -75,7 +75,7 @@ export default function IndexPage(
   const { className, ...rProps} = props
   // can be used to scroll to top
     useEffect(() => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      // window.scrollTo({ top: 0, behavior: 'smooth' });
     }, []);
 
   if (isEmpty(rProps)) {
