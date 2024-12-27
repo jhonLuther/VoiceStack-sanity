@@ -16,7 +16,7 @@ import useMediaQuery from '~/utils/mediaQuery';
 
 
 
-const Header = ({data}) => {
+const Header = ({ data }) => {
 
   const [showMenu, setShowMenu] = useState(false);
   const [headerFixed, setHeaderFixed] = useState(false);

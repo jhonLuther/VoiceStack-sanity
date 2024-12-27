@@ -79,7 +79,7 @@ export default function AppearFeature({
         data-index={index ? index : 1}
         id={dataIndex}
         ref={scrollRef}
-        className="sticky top-40 left-0 "
+        className={`sticky top-[50%] left-0 mb-40`}
       >
         <motion.div
           initial={{ opacity: 0 }}
@@ -88,7 +88,8 @@ export default function AppearFeature({
           onViewportEnter={() => {
             sectionStartY > 1 ? '' : setSectionStartY(scrollPos)
           }}
-          className="flex flex-col gap-12 w-full"
+          className={`flex flex-col gap-12 w-full`}
+          style={{translateY:`${-scrollRef?.current?.offsetHeight/2}px`}}
         >
           <div className="flex flex-col gap-4">
             <PreText>

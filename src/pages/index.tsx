@@ -75,7 +75,7 @@ export default function IndexPage(
   const { className, ...rProps} = props
   // can be used to scroll to top
     useEffect(() => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      // window.scrollTo({ top: 0, behavior: 'smooth' });
     }, []);
 
   if (isEmpty(rProps)) {
@@ -110,7 +110,7 @@ export default function IndexPage(
         <Layout {...props}>
           <CustomHead {...props} />
           {/* <Content {...props} /> */}
-          <div className="global-wrapper pt-[64px] lg:pt-[98px]">
+          <div className="">
             <Header data ={homeSettings} />
             <HeroSection data={heroSectionData}  />
             <LinksCardsSection data={linkCardSectionData} />

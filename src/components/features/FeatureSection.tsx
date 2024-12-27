@@ -106,7 +106,7 @@ export default function FeatureSection({ data }) {
       {!isMobile && <div className='bg-white md:bg-vs-lemon-green w-1/2 h-full absolute top-0 right-0 z-0'></div>}
       <Container className={`relative flex md:gap-28 md:flex-row flex-col`}>
 
-        <div className="flex md:gap-0 gap-12  md:w-1/2 w-full flex-col flex-1 md:py-20 md:pb-40 pt-16">
+        <div className="flex md:gap-0 gap-12 md:w-1/2 w-full flex-col flex-1 pt-16">
           {data.map((feature, index) =>
             feature?.testimonialSubSection?.length ? (
               <>
@@ -151,14 +151,15 @@ export default function FeatureSection({ data }) {
               </>
             ) : (
 
-              <div className={'md:h-[100vh]  relative flex md:mb-10'} key={feature?._rev} >
-                <div className="md:mt-40 mt-5 left-0 self-start flex flex-col justify-center">
+              <div className={`md:h-[100vh] relative flex flex-col items-center mb-40 `} key={feature?._rev} >
+                <div ref={(el) => (featureRefs.current[index] = el)} className={`${index == 0 ? "md:pt-40":"top-[50%] h-[50vh] -translate-y-[50%] sticky"} mt-5 left-0 self-start flex flex-col justify-center transform`}   >
                   <motion.div
                     key={index}
-                    ref={(el) => (featureRefs.current[index] = el)}
                     data-index={index}
-                    className={`md:cursor-auto cursor-pointer gap-4 flex flex-col  self-start justify-center transform`}
+                    className={`md:cursor-auto cursor-pointer gap-4 flex flex-col self-start justify-center transform`}
                     onViewportEnter={() => setActiveImage(feature.testimonialImage.url)}
+                  
+                 
                   >
                     <PreText>
                       <span className="text-vs-blue">
