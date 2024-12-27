@@ -1,7 +1,12 @@
 import { useEffect } from "react";
 
-const HubSpotForm = ({ id, eventName }: { id?: string; eventName?: string }) => {
+
+const HubSpotForm = ({ id, eventName, locale }: { id?: string; eventName?: string, locale:string }) => {
   useEffect(() => {
+
+
+    const window2:any = window;
+    
     const loadHubSpotScript = async () => {
       // Ensure script is only fetched once
       if (!document.querySelector(`script[src="//js.hsforms.net/forms/v2.js"]`)) {
@@ -36,15 +41,27 @@ const HubSpotForm = ({ id, eventName }: { id?: string; eventName?: string }) => 
                   }
                 }
               },
-              // onFormSubmit: function (form) {
-              //   setTimeout(() => {
-              //     const email = form.querySelector('input[name="email"]').value;
-              //     window.dataLayer.push({
-              //       email: email,
-              //       event: eventName || "demo_submission",
-              //     });
-              //   }, 250);
-              // },
+              onFormSubmit: function (form) {
+                setTimeout(() => {
+                  const email = form.querySelector('input[name="email"]').value;
+
+                  if(locale =="en-GB"){
+                    window2.dataLayer.push({
+                      email: email,
+                      event: eventName || "demo_submission_uk",
+                    });
+
+                  }
+
+                  else{
+                    window2.dataLayer.push({
+                      email: email,
+                      event: eventName || "demo_submission",
+                    });
+                  }
+
+                }, 250);
+              },
             } as any);
           }
         };
