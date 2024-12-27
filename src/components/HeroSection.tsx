@@ -58,7 +58,7 @@ const HeroSection = ({ data }) => {
   ])
 
   return (
-    <Section className="pt-sm md:pt-lg bg-vs-blue" childClass="flex">
+    <Section className="pt-md md:pt-lg bg-vs-blue" childClass="flex">
       <Container>
         <div className="relative w-full flex items-center flex-col md:pt-sm pt-0">
           <div className="flex gap-8 items-center pb-10 flex-col max-w-[910px] w-full">
