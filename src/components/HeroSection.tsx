@@ -13,6 +13,7 @@ import Image from 'next/image'
 import { PortableText } from '@portabletext/react'
 import HubSpotForm from './common/HubspotForm'
 import { FormModal } from './common/FormModal'
+import VideoPlayIconWhite from './icons/VideoPlayIconWhite'
 
 const HeroSection = ({ data }) => {
   const [isOpen, setIsOpen] = useState(false)
@@ -40,7 +41,7 @@ const HeroSection = ({ data }) => {
     if (wordIndex < words?.length) {
       const wordInterval = setTimeout(() => {
         setWordIndex(wordIndex + 1)
-      }, 200)
+      }, 100)
       return () => clearTimeout(wordInterval)
     } else {
       const messageInterval = setTimeout(() => {
@@ -99,6 +100,7 @@ const HeroSection = ({ data }) => {
                 </div>
               </H1>
             </div>
+
             <div className="flex flex-col gap-8 items-center">
               <PortableText
                 components={components}
@@ -120,8 +122,7 @@ const HeroSection = ({ data }) => {
                     setIsOpen(true)
                   }}
                 >
-                  {/* <ButtonArrow></ButtonArrow> */}
-                  <PlayIcon></PlayIcon>
+                  <VideoPlayIconWhite></VideoPlayIconWhite>
                   <span className="text-base font-medium">{`Watch overview`}</span>
                 </Button>
               </div>
@@ -131,27 +132,30 @@ const HeroSection = ({ data }) => {
           <div className="relative w-full">
             {/* <Image src={device} alt='device'></Image> */}
             <div className="relative pt-[58%] lg:pt-0 lg:h-[480px] overflow-hidden w-full">
-              <div className="absolute left-0 bottom-0 md:bottom-auto md:top-[80px] w-[85%]">
+              <div className="absolute left-0 top-[23%] lg:top-[80px] w-[85%]">
                 <Image
                   className="w-full h-full object-cover"
                   src={voicestack}
+                  title="VoiceStack"
                   alt="voicestack"
                 ></Image>
               </div>
-              <div className="absolute right-0 bottom-[-40px] lg:bottom-auto lg:top-0 w-[25%]">
+              <div className="absolute right-0 bottom-[-40px] lg:bottom-auto lg:top-0 min-w-[105px] w-[30%] md:w-[25%]">
                 <Image
                   className="w-full h-full object-cover"
                   src={voicemail}
                   alt="voicemail"
+                  title="Voice Mail"
                 ></Image>
               </div>
             </div>
 
-            <div className="absolute left-0 -bottom-[80px] min-w-[200px] w-[38.5%]">
+            <div className="absolute left-[4%] md:left-0 -bottom-[45px] md:-bottom-[90px] min-w-[220px] w-[38.5%]">
               <Image
                 className="w-full h-full object-cover"
                 src={device}
                 alt="voicestack device"
+                title='VoiceStack'
               ></Image>
             </div>
           </div>

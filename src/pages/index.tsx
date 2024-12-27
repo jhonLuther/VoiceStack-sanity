@@ -30,6 +30,7 @@ import FaqSection from '~/components/FaqSection'
 import Footer from '~/components/common/Footer'
 import { getClient } from '~/lib/sanity.client'
 import { isEmpty } from 'lodash'
+import { useEffect } from 'react'
 
 export const getServerSideProps: GetStaticProps<any> = async ({
   locale,
@@ -72,10 +73,16 @@ export default function IndexPage(
 ) {
 
   const { className, ...rProps} = props
+  // can be used to scroll to top
+    useEffect(() => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, []);
+
   if (isEmpty(rProps)) {
     return <><p className="p-5">Loading ... </p></>
   }
 
+  
   const {
     homeSettings,
     heroSectionData,

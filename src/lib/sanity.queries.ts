@@ -96,6 +96,7 @@ export async function getTestimonialSecitonData(
       "logo": logo.asset-> {
         _id,
         url,
+        altText,
         metadata {
           dimensions {
             width,
@@ -107,6 +108,7 @@ export async function getTestimonialSecitonData(
       "image": testimonialImage.asset-> {
         _id,
         url,
+        altText,
         metadata {
           dimensions {
             width,

@@ -112,7 +112,9 @@ module.exports = {
 			maxWidth: {
         '7xl': '1272px', // Define a custom max-width value
       },
-
+	  boxShadow: {
+        'custom-light': '0px 6px 20px 0px rgba(0, 0, 0, 0.05)',
+      },
   	}
   },
   plugins: [require("tailwindcss-animate"),require('@tailwindcss/typography'),

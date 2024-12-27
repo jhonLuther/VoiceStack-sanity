@@ -8,52 +8,6 @@ import VoicestackLogo from 'public/assets/voicestack-logo-sm.svg';
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 
-const TopSection = ({ data, ctaName }) => {
-  return (
-    <div className="self-stretch flex-col justify-start items-start gap-14 flex">
-      <div className="w-full gap-8 inline-flex flex-col ">
-        <H2 className="text-3xl !whitespace-normal">
-          Centralize your data. Supercharge your DSO.
-        </H2>
-        <div className="flex justify-center">
-          <CTAButton url={data} className="px-6 py-3" name={ctaName} />
-        </div>
-      </div>
-      <div className="self-stretch h-[0px] border border-white/20"></div>
-    </div>
-  )
-}
-
-const BottomSection = () => {
-  return (
-    <div className="w-full flex flex-col-reverse md:flex-row justify-center md:justify-between gap-6">
-      <div className="text-white/50 text-center">
-        Copyright © 2024. OSDental.
-      </div>
-      <div className="flex flex-col md:flex-row gap-4 md:gap-8 text-center">
-        <Link
-          className=" text-white/50 hover:text-white/90"
-          href={'/legal/terms-and-conditions'}
-        >
-          Terms of use
-        </Link>
-        <Link
-          className=" text-white/50 hover:text-white/90"
-          href={'legal/privacy-policy'}
-        >
-          Privacy policy
-        </Link>
-        <Link
-          className=" text-white/50 hover:text-white/90"
-          href={'legal/business-agreement'}
-        >
-          Business Associate Agreement
-        </Link>
-      </div>
-    </div>
-  )
-}
-
 const Footer = (props) => {
   const footerContent = {
     cta: {
@@ -61,6 +15,8 @@ const Footer = (props) => {
       url: props.siteSettings?.demoBtnUrl,
     },
   }
+
+  const CopyrightYear = new Date().getFullYear();
 
   const router = useRouter();
 
@@ -73,7 +29,7 @@ const Footer = (props) => {
   return (
     <Section id="footer" className={'bg-gray-900'}>
       <Container className="flex justify-center">
-        <div className="w-full pt-16">
+        <div className="w-full pt-8 md:pt-16">
           <div className='flex justify-between items-center w-full pb-6'>
             <div>
               {/* Logo */}
@@ -205,9 +161,28 @@ const Footer = (props) => {
             </div>
           </div>
           <div className='py-6 border-gray-800 border-t'>
-            <div className='flex gap-3'>
-              <span className='text-gray-600 font-inter text-sm font-medium leading-[115%]'>&copy; VoiceStack 2024</span>
+            <div className='flex flex-col md:flex-row gap-3 items-center justify-between'>
+              <span className='text-gray-600 font-inter text-sm font-medium leading-[115%]'>&copy; VoiceStack {CopyrightYear}</span>
               {/* <span className='text-gray-600 font-inter text-sm font-medium leading-[115%]'>Made with ♥︎ in Good Methods Global</span> */}
+              {isUk ? (
+                <ul className='flex items-center gap-4'>
+                <li className='text-gray-600 font-inter text-sm font-medium leading-[115%]'>
+                  <Link href="https://www.voicestack.com/legal/uk/2024-11/privacy-policy" target='_blank'>Privacy Policy</Link>
+                </li>
+                <li className='text-gray-600 font-inter text-sm font-medium leading-[115%]'>
+                  <Link href="https://www.voicestack.com/legal/uk/2024-11/terms-and-conditions" target='_blank'>Terms of Service</Link>
+                </li>
+              </ul>
+              ):(
+              <ul className='flex items-center gap-4'>
+                {/* <li className='text-gray-600 font-inter text-sm font-medium leading-[115%]'>
+                  <Link href="/"  target='_blank'>Privacy Policy</Link>
+                </li> */}
+                <li className='text-gray-600 font-inter text-sm font-medium leading-[115%]'>
+                  <Link href="/legal/2024-10/terms-and-conditions" target='_blank'>Terms of Service</Link>
+                </li>
+              </ul>
+              )}
             </div>
           </div>
         </div>

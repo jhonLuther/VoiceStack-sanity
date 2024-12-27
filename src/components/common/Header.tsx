@@ -1,17 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { CloseIcon } from '@sanity/icons'
 import VoicestackLogo from 'public/assets/voicestack-logo.svg';
+import VoicestackLogoSm from 'public/assets/voicestack-logo-sm.svg';
 import { MenuIcon } from '@sanity/icons';
 import Image from 'next/image';
 import ButtonArrow from '../icons/ButtonArrow';
 import Button from './Button';
 import TelIcon from '../icons/TelIcon';
 import { FormModal } from './FormModal';
-import Section from '../structure/Section';
-import Container from '../structure/Container';
-import Logo from './Logo';
+import ChevronUp from '../icons/ChevronDown';
+import Script from 'next/script';
+import useMediaQuery from '~/utils/mediaQuery';
 
 
 
@@ -20,13 +21,43 @@ const Header = ({ data }) => {
   const [showMenu, setShowMenu] = useState(false);
   const [headerFixed, setHeaderFixed] = useState(false);
   const [isUk, setIsUk] = useState(false);
-  const [openForm, setOpenForm] = useState(false)
+  const [openForm, setOpenForm] = useState(false);
+  const [openSwitcher, setOpenSwitcher] = useState(false);
+  const [currentRegion, setCurrentRegion] = useState(null);
+
+  const regions = [
+    {
+      "flag": {
+        "url": "https://cdn.sanity.io/images/76tr0pyh/production/ae5158a9a8fd8ce578ee8df1ba1ffa1bcee41b84-24x24.svg",
+        "title": "US"
+      },
+      "url": "/",
+      "title": "US",
+      "locale": "en"
+    },
+    {
+      "flag": {
+        "url": "https://cdn.sanity.io/images/76tr0pyh/production/a6e6286f1884de71a5c0f801fce92438c8e30aca-24x24.svg",
+        "title": "UK"
+      },
+      "url": "/en-GB",
+      "title": "UK",
+      "locale": "en-GB"
+    }
+    
+  ]
 
   const router = useRouter();
-  useEffect(() => {
-    setIsUk(router?.locale == 'en-GB' ? true : false)
-  }, [router?.locale])
+  const matchedRegion = regions.find((region) => region.locale === router.locale);
+  const toggleRef = useRef(null);
+  const isMobile = useMediaQuery(767);
+  
 
+  useEffect(()=>{
+    setIsUk(router?.locale =='en-GB' ? true : false)
+    setCurrentRegion(router.locale);  
+  },[router?.locale])
+ 
 
   const closeMenu = () => {
     setShowMenu(false);
@@ -46,6 +77,22 @@ const Header = ({ data }) => {
   };
 
   // const isMobile: any = useMediaQuery(1024);
+  const toggleSwitcher = () => {
+    setOpenSwitcher(!openSwitcher)
+  }
+  useEffect(() => {
+    const handleBodyClick = (event) => {
+      if (toggleRef.current && !toggleRef.current.contains(event.target)) {
+        setOpenSwitcher(false);
+      }
+    };
+
+    document.addEventListener("click", handleBodyClick);
+
+    return () => {
+      document.removeEventListener("click", handleBodyClick);
+    };
+  }, []);
 
 
   useEffect(() => {
@@ -55,51 +102,252 @@ const Header = ({ data }) => {
     }
   });
 
+  
 
+  const before = "before:content-[''] before:h-[100px] before:absolute before:left-0 before:right-0 before:top-full before:bg-zinc-900";
   return (
+    <>
+        {/* Google Analytics */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-YY0CHYH7EY"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-YY0CHYH7EY');
+          `}
+        </Script>
 
-    <Section className="fixed top-0 left-0  z-[999999] md:h-auto h-screen">
-      <Container className="relative md:px-4 px-0">
-        <div className='flex md:flex-row flex-col bg-white w-full shadow-[0px_7px_40px_0px_rgba(0,0,0,0.10)] md:mt-4 mt-0 px-5 py-3 md:rounded-md items-center gap-4'>
-          <div className='md:w-1/3 w-full '>
-          <Link href="/" className="md:justify-start justify-center flex flex-1">
-            <Image src={VoicestackLogo} className='w-40' alt='VoiceStack'></Image>
-            {/* <Logo></Logo> */}
-          </Link>
+        {/* Google Tag Manager */}
+        <Script id="google-tag-manager" strategy="afterInteractive">
+          {`
+            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','GTM-KCX7H59S');
+          `}
+        </Script>
+
+        {/* Start cookieyes banner */}
+        <Script id="cookieyes" strategy="afterInteractive" 
+          src="https://cdn-cookieyes.com/client_data/892b60d226bd40003a3303d6/script.js">
+        </Script>
+
+        {/* <!--[BEGIN Google Tag Manager (noscript)]--> */}
+	      <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KCX7H59S" height="0" width="0"
+			    style={{ display: 'none', visibility: 'hidden' }}></iframe></noscript>
+	      {/* <!--[END Google Tag Manager (noscript)]--> */}
+
+      
+      <div className={`relative w-full before:content-[''] before:-z-0 before:h-[100px] before:absolute before:left-0 before:right-0 before:top-[-100px] before:bg-vs-blue`}>
+        <header
+          className={`fixed w-full top-0 lg:top-[35px] left-0 z-20 transition-all duration-300 ease-linear ${headerFixed && '!fixed w-full lg:!top-4'}  left-0`}      >
+          
+
+          <div className={`z-20 text-white`}>
+            <div className="max-w-7xl mx-auto lg:px-4 flex gap-[10px]">
+              {/* <div className={`flex flex-col gap-3 justify-between py-[10px] transition-all duration-300 ease-linear relative  ${headerFixed ? '!lg:py-3' : 'lg:py-6'}`}> */}
+              <div className={`flex flex-grow gap-3 justify-between py-0 transition-all duration-300 ease-linear lg:rounded-[10px] 
+                bg-white shadow-[0px_7px_40px_0px_rgba(0,0,0,0.10)] backdrop-blur-[12.5px] lg:pl-6 pl-3 pr-3 items-center h-[48px] lg:h-[63px]`}>
+                
+                <div className={`flex flex-row gap-3 justify-between items-center flex-1 
+                lg:relative transition-all duration-300 ease-in-out ${headerFixed ? 'lg:my-3 my-2' : 'lg:my-3 my-2'}`}>
+                  
+                  {/* Logo */}
+                  <Link href="/" className={`flex-shrink-0 text-2xl font-extrabold bg-gradient-text bg-clip-text 
+                    text-transparent font-monrope tracking-tighterText ${isMobile  && headerFixed && 'hidden'}`}>
+                    <Image src={VoicestackLogo} alt='VoiceStack' title='VoiceStack'></Image>
+                  </Link>
+
+                  {/* Logo Sm when mob scroll */}
+                  <Link href="/" className={`${isMobile  && headerFixed ? 'block': 'hidden'}`}>
+                    <Image src={VoicestackLogoSm} alt='VoiceStack' className='w-[26px] h-auto'></Image>
+                  </Link>
+
+                  <div className={`lg:flex flex-col lg:flex-row lg:gap-6 justify-between lg:rounded-none items-center 
+                    lg:static absolute top-[44px] left-0 right-0 bg-white pb-20 lg:pb-0 
+                    h-[calc(100vh-40px)] lg:h-auto shadow-[0px_40px_40px_0px_rgba(0,0,0,0.10)] lg:shadow-none
+                    xl:flex-grow xl:justify-end xl:mr-10
+                    ${showMenu ? 'flex': 'hidden'}`}>
+
+                    {/* nav items */}
+                    <div className={`lg:flex-row top-[110px] right-0 px-4 pt-4 pb-8 w-full lg:w-auto lg:p-0 bg-white lg:bg-transparent left-0 lg:static flex-col 
+                      gap-2 justify-between lg:items-center flex`}>
+                      <nav className="flex flex-col lg:flex-row lg:gap-y-4 gap-x-4 xl:gap-x-8 w-full lg:w-auto flex-wrap ">
+                        {data?.heroHeaderSection && data?.heroHeaderSection?.map((link:any, i:number) => {
+                          // if (link?.headerMenu === "Comparison" && isUk) {
+                          //   return null;
+                          // }
+                        
+                          return (
+                            <Link
+                              key={link?.href + i}
+                              href={link?.href}
+                              className="text-gray-700 lg:text-sm xl:text-base font-medium leading-[1.15] text-center py-4 border-b border-gray-200 lg:border-0 lg:p-0"
+                              onClick={toggleMenu}
+                            >
+                              {link.headerMenu}
+                            </Link>
+                          );
+
+                        })}
+                      </nav>
+                    </div>
+
+                    <div className='flex flex-col gap-8'>
+
+                      {/* mob cta and phone */}
+                      <div className='flex flex-col md:flex-row gap-3 md:gap-5 items-center lg:hidden'>
+                        <div className='flex-shrink-0'>
+                          <a href={`tel:${data?.phoneNumber}`} className='text-gray-700 px-[12px] py-[7px] rounded-[7px] text-sm font-medium leading-6 flex items-center whitespace-nowrap gap-[8px]  
+                          border border-gray-300'><TelIcon/>{data?.phoneNumber}</a>
+                        </div>
+                        <Button type='primarySm'  onClick={() => {setOpenForm(true)}}>
+                          <ButtonArrow></ButtonArrow>
+                          <span className="text-base font-medium">{data?.ctabutton}</span>
+                        </Button>
+                      </div>
+
+                      {/* mob switcher */}    
+                      <div className={`bg-white flex gap-5 justify-center items-center lg:hidden`}>
+                        {regions.map((region:any, index:number) => {
+                          return(
+                            currentRegion == region.locale ? (
+                              <div className='flex gap-2 items-center'>
+                                <Image 
+                                  src={region.flag.url} 
+                                  alt={region.flag.title} 
+                                  title={region.flag.title}
+                                  width={32}
+                                  height={32}
+                                  className='border-2 rounded-full border-black/20'
+                                  >
+                                </Image>
+                              </div>
+                            ):(
+
+                            <a href={region.url} className='flex gap-2 items-center'>
+                              <Image 
+                                src={region.flag.url} 
+                                alt={region.flag.title} 
+                                title={region.flag.title}
+                                width={32}
+                                height={32}
+                                className='border-2 rounded-full border-white'
+                                >
+                              </Image>
+                            </a>
+                            )
+                          )
+                        })}
+                      </div>
+                    </div>
+
+                  </div>
+
+                  {/* dt cta and phone */}
+                  <div className='lg:flex gap-3 items-center lg:justify-end hidden'>
+                    <div className='flex-shrink-0'>
+                      <a href={`tel:${data?.phoneNumber}`} className='text-gray-700 px-[12px] py-[7px] rounded-[7px] text-sm font-medium leading-6 flex items-center whitespace-nowrap gap-[8px]  
+                      border border-gray-300'><TelIcon/>{data?.phoneNumber}</a>
+                    </div>
+                    <Button type='primarySm' onClick={() => {setOpenForm(true)}}>
+                      <ButtonArrow></ButtonArrow>
+                      <span className="text-sm font-medium">{`Book free demo`}</span>
+                    </Button>
+                  </div>
+                  <div className='flex gap-4 items-center'>
+                    <div className={`${isMobile  && headerFixed ? 'block': 'hidden'}`}>
+                      <Button type='primaryXs' onClick={() => {setOpenForm(true)}}>
+                        <ButtonArrow></ButtonArrow>
+                        <span className="text-sm font-medium">{`Book free demo`}</span>
+                      </Button>
+                    </div>      
+
+                    {/* menu icon */}
+                    <div onClick={toggleMenu} className={`flex lg:hidden text-zinc-900 cursor-pointer items-center select-none z-20 rounded-lg lg:rounded-xl lg:py-[6px] lg:pr-[10px] lg:pl-[14px]
+                      `}>
+                      {/* {!showMenu && <span className='hidden lg:inline-flex text-zinc-800 text-sm'>More</span>} */}
+                      {showMenu ? <CloseIcon width={40} height={40} /> : <MenuIcon width={40} height={40} />}
+                    </div>
+                  </div>      
+                 
+                </div>
+              </div>
+
+              {/* Region Switcher Desktop*/}
+              {regions && regions.length > 0 &&(
+                <div className='relative hidden lg:flex w-[86px]'>
+                  <div className='flex p-[6px] rounded-[10px] bg-white w-full shadow-[0px_7px_40px_0px_rgba(0,0,0,0.10)]'>
+                    <span ref={toggleRef} className='select-none flex w-full items-center gap- p-[6px] justify-between cursor-pointer text-gray-900' onClick={toggleSwitcher}>
+                      {matchedRegion && (
+                        <Image 
+                            src={matchedRegion.flag.url} 
+                            alt={matchedRegion.flag.title} 
+                            title={matchedRegion.flag.title}
+                            width={23}
+                            height={23}
+                            >
+                          </Image>
+                      )}
+                      <div className={`${openSwitcher && '-rotate-180'} transition-transform linear duration-300`}>
+                        <ChevronUp></ChevronUp>
+                      </div>
+                    </span>
+                  </div>
+
+                  <div className={`p-[6px] rounded-[10px] bg-white  shadow-[0px_7px_40px_0px_rgba(0,0,0,0.10)] absolute top-[calc(100%+4px)] left-0 right-0 flex-col ${openSwitcher ? 'flex' : 'hidden'}`}>
+                    {regions.map((region:any, index:number) => {
+                      return(
+                        currentRegion == region.locale ? (
+                          <div className='flex gap-2 items-center opacity-80 py-[6px] pl-[6px] border-b border-gray-200 last:border-none'>
+                            <Image 
+                              src={region.flag.url} 
+                              alt={region.flag.title} 
+                              title={region.flag.title}
+                              width={23}
+                              height={23}
+                              >
+                            </Image>
+                            <span className='text-gray-900 text-sm font-medium'>{region.title}</span>
+                          </div>
+                        ):(
+
+                        <a href={region.url} className='flex gap-2 items-center py-[6px] pl-[6px] border-b border-gray-200 last:border-none'>
+                          <Image 
+                            src={region.flag.url} 
+                            alt={region.flag.title} 
+                            title={region.flag.title}
+                            width={23}
+                            height={23}
+                            >
+                          </Image>
+                          <span className='text-gray-900 text-sm font-medium'>{region.title}</span>
+                        </a>
+                        )
+                      )
+                    })}
+                  </div>
+                </div>
+              )}
+              {/* Region Switcher Desktop ./ */}
+            </div>
           </div>
-          <nav className='w-full flex justify-center items-center h-full'>
-            <ul className='flex md:flex-row flex-col gap-2 h-full items-center justify-center w-full'>
-              {data?.heroHeaderSection && data?.heroHeaderSection?.map((link: any, i: number) => {
+        </header>
+      </div>
+      {openForm && (
+        <FormModal
+          className={`pt-9  flex items-start`}
+          onClose={() => setOpenForm(false)}
+        />
+      )}
+    </>
 
-                return (
-                  <li className='md:h-full h-auto flex justify-center items-center md:border-none border-b '>
-                    <Link
-                      key={i}
-                      href={link?.href}
-                      className={`text-gray-600 cursor-pointer md:text-base text-xl font-medium text-center md:py-1.5 py-2 px-3 hover:bg-gray-50`}
-                      onClick={toggleMenu}
-                      
-                    >
-                      {link.headerMenu}
-                    </Link>
-                  </li>)
-
-              })
-              }
-            </ul>
-          </nav>
-
-          <div className='w-1/3 flex md:justify-end justify-center'>
-            <Button type='primarySm' onClick={() => { setOpenForm(true) }}>
-              <ButtonArrow></ButtonArrow>
-              <span className="text-base font-medium">{data?.ctabutton}</span>
-            </Button>
-          </div>
-        </div>
-      </Container>
-    </Section>
-
-  )
+  );
 };
 
 export default Header;

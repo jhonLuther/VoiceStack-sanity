@@ -7,7 +7,7 @@ import Image from 'next/image'
 
 const LinksCardsSection = ({ data }) => {
   return (
-    <Section className="pt-md pb-8">
+    <Section className="pt-sm md:pt-md pb-12">
       <Container>
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-0 md:gap-6 xl:gap-12 justify-center">
           {data &&
@@ -19,9 +19,8 @@ const LinksCardsSection = ({ data }) => {
                     key={index}
                     className="flex py-6 gap-3 flex-col justify-between h-full group"
                   >
-                    
-                {item.href}
-                    <div className="flex flex-col gap-3">
+                   
+                    <div className="flex flex-col gap-3 items-center md:items-start">
                       <h2 className="inline-flex items-center gap-2 text-gray-900 text-base font-medium leading-[145%]">
                         <Image
                           width={20}
@@ -32,7 +31,7 @@ const LinksCardsSection = ({ data }) => {
                         {item.heading}
                       </h2>
                       {item.description && (
-                        <p className="text-gray-500 text-base font-normal leading-[160%]">
+                        <p className="text-gray-500 text-base font-normal leading-[160%] text-center md:text-left">
                           {item.description}
                         </p>
                       )}
@@ -45,7 +44,7 @@ const LinksCardsSection = ({ data }) => {
                   key={index}
                   className="flex py-6 gap-3 flex-col justify-between"
                 >
-                  <div className="flex flex-col gap-3">
+                  <div className="flex flex-col gap-3 items-center md:items-start">
                     <h2 className="inline-flex items-center gap-2 text-gray-900 text-base font-medium leading-[145%]">
                       <Image
                         width={20}
@@ -56,7 +55,7 @@ const LinksCardsSection = ({ data }) => {
                       {item.heading}
                     </h2>
                     {item.description && (
-                      <p className="text-gray-500 text-base font-normal leading-[160%]">
+                      <p className="text-gray-500 text-base font-normal leading-[160%] text-center md:text-left">
                         {item.description}
                       </p>
                     )}

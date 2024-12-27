@@ -1,4 +1,5 @@
 import { defineField, defineType } from 'sanity'
+import showCountryFlag from '~/components/utils/common';
 
 export default defineType({
   name: 'testimonialSection',
@@ -136,8 +137,15 @@ export default defineType({
   ],
   preview: {
     select: {
-      title: 'language',
+      title: 'name',
       media: 'testimonialImage',
+      language:'language'
     },
+    prepare(selection) {
+        return {
+          title: ` ${selection?.title}`,
+          media:<img src={showCountryFlag(selection?.language)}/>
+        };
+      },
   },
 })

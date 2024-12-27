@@ -51,6 +51,7 @@ export default function AppearFeature({
   }
 
   const handleClick = (e, index, ref) => {
+    if(!isMobile) return
     if (ref?.current) {
       ref.current.style.height = '100%'
       ref.current.style.scrollBehavior = 'smooth'
@@ -130,7 +131,7 @@ export default function AppearFeature({
               })}
           </ul>
 
-          <div className="flex md:justify-start justify-center">
+          {!isMobile && <div className="flex md:justify-start justify-center">
             <Button
               type="primary"
               onClick={() => {
@@ -140,13 +141,14 @@ export default function AppearFeature({
               <ButtonArrow></ButtonArrow>
               <span className="text-base font-medium">{`Book free demo`}</span>
             </Button>
-          </div>
+          </div>}
         </motion.div>
       </div>
       {openForm && (
         <FormModal
           className={`pt-9  flex items-start`}
           onClose={() => setOpenForm(false)}
+          source="feature"
         />
       )}
     </div>

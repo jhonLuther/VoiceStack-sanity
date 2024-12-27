@@ -12,9 +12,9 @@ import { Minus, Plus } from 'lucide-react'
 
 function RowHeading({ heading, description }) {
   return (
-    <TableCell className="lg:min-w-[330px] w-[100px] md:w-auto pr-2 pl-0 md:px-4 border-b border-b-gray-200 md:border-none">
+    <TableCell className="lg:min-w-[390px] w-[120px] md:w-auto pr-2 pl-0 md:px-4 border-b border-b-gray-200 md:border-none">
       <div className='py-4 md:border-b border-b-gray-200'>
-        <p className="text-gray-500 font-inter text-[10px] md:text-xs lg:text-[15px] font-normal leading-[150%] capitalize text-left">{heading}</p>
+        <p className="text-gray-700 font-inter text-[10px] md:text-xs xl:text-[15px] font-normal leading-[150%] capitalize text-left">{heading}</p>
         {/* <p className="flex text-gray-600 text-xs font-normal !p-0">
           {description}
         </p> */}
@@ -59,7 +59,7 @@ export default function SiteComparisonTable({ data, mainIndex, currentIndex, isM
   
   return (
 
-    <div className='flex flex-col gap-2'>
+    <div className={`flex flex-col gap-2 ${(mainIndex === currentIndex  && !isMobile) || (mainIndex === currentChildIndex && isMobile) ? 'md:block' : 'md:hidden'}`}>
       <div
         className={`${currentChildIndex === mainIndex ? 'bg-gray-100 text-gray-900' : 'bg-gray-100 text-gray-900 '} flex items-center 
         gap-2 justify-between px-4 py-3 border border-gray-100 bg-gray-50 rounded-[6px] text-center text-sm font-medium leading-[145%] cursor-pointer md:hidden`}
@@ -98,27 +98,27 @@ export default function SiteComparisonTable({ data, mainIndex, currentIndex, isM
                 .map((column:any, index:number) => (
                   <TableHead
                     key={index}
-                    className={`text-white items-center justify-center pt-5 ${index == 0 ? 'bg-vs-blue/10 rounded-tl-[10px] rounded-tr-[10px]' : ''}`}
+                    className={`text-white items-center justify-center pt-3 ${index == 0 ? 'bg-vs-blue/10 rounded-tl-[10px] rounded-tr-[10px]' : ''}`}
                   >
                     {/* {column.name} */}
                     {column.logo  && column.logo.url && !isMobile && (
 
                       <Image
-                        className="justify-center items-center py-3 min-h-full w-auto m-auto"
+                        className="justify-center items-center py-3 min-h-full w-auto max-w-[122px] m-auto"
                         src={column.logo.url}
                         width={135}
                         height={26}
-                        alt="OS Dental Logo"
+                        alt="Logo"
                       />
                     )}
 
                     {column.logoMobile  && column.logoMobile.url && isMobile && (
                       <Image
-                      className="justify-center items-center py-3 min-h-full w-auto m-auto"
+                      className="justify-center items-center py-3 min-h-full w-[28px] m-auto"
                       src={column.logoMobile.url}
-                      width={135}
-                      height={26}
-                      alt="OS Dental Logo"
+                      width={28}
+                      height={28}
+                      alt="Logo"
                     />
                     )}
                   </TableHead>
@@ -132,7 +132,7 @@ export default function SiteComparisonTable({ data, mainIndex, currentIndex, isM
                 </TableRow> */}
                 <TableRow
                       key={mainIndex}
-                      className="hidden md:table-row flex-row justify-between  border-0"
+                      className="hidden md:table-row flex-row justify-between  border-0 hover:bg-inherit"
                     >
                       <TableCell className='text-gray-900 text-base font-medium leading-[145%] py-4'>{data.tableData.name}</TableCell>
                       <TableCell className={`text-center justify-center bg-vs-blue/10`}></TableCell>
