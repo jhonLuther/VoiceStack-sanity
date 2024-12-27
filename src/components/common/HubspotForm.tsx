@@ -77,7 +77,7 @@ const HubSpotForm = ({ id, eventName, locale }: { id?: string; eventName?: strin
       );
       if (hubspotScript) hubspotScript.remove();
     };
-  }, [id, eventName]);
+  }, [id, eventName, locale]);
 
   return <div id="hubspotForm"></div>;
 };
