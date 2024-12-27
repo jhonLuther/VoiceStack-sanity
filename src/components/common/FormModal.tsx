@@ -81,7 +81,7 @@ export const FormModal: React.FC<FormModalProps> = ({
                   </button>
                 </div>
                 <div className="mt-2 w-full mb-8">
-                  <HubSpotForm id={formId}/>
+                  <HubSpotForm id={formId} locale={router.locale}/>
                 </div>
               </div>
             </div>
