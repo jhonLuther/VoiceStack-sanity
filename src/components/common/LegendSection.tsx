@@ -9,7 +9,7 @@ function LegendSection() {
     const Icons = {
         'Advanced': 'https://cdn.sanity.io/images/76tr0pyh/production/4ce8892bbd32651227b49d338ecccd874a9e41c7-16x17.svg',
         'Does not exist': 'https://cdn.sanity.io/images/76tr0pyh/production/d696a46624ecb39cc509535bccf45114443123ae-17x17.svg',
-        'Intermediate': 'https://cdn.sanity.io/images/76tr0pyh/production/76ef887e240a5347ad564068c4544101f36bfa5d-17x17.svg',
+        'Intermediate': 'https://cdn.sanity.io/images/76tr0pyh/production/de3aa0aefca0fe224cece39b96c97d7b6653c34c-16x16.svg',
         'Basic': 'https://cdn.sanity.io/images/76tr0pyh/production/56d5a7c69402b9a699be24d40a8e3718db0a7595-17x17.svg',
     };
 
