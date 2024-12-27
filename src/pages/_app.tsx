@@ -5,6 +5,7 @@ import { IBM_Plex_Mono, Inter, PT_Serif,Poppins } from 'next/font/google'
 import { lazy } from 'react'
 import Layout from '../components/Layout'
 import Script from 'next/script'
+import { useRouter } from 'next/router'
 
 export interface SharedPageProps {
   heroSectionData(heroSectionData: any): any
@@ -49,6 +50,7 @@ export default function App({
   pageProps,
 }: AppProps<SharedPageProps>) {
   const { draftMode, token } = pageProps
+  const router = useRouter();
   return (
     <>
     {/* Google Analytics */}
@@ -77,9 +79,11 @@ export default function App({
         </Script>
 
         {/* Start cookieyes banner */}
-        <Script id="cookieyes" strategy="afterInteractive" 
-          src="https://cdn-cookieyes.com/client_data/892b60d226bd40003a3303d6/script.js">
-        </Script>
+        {router.locale === 'en-GB' && (
+          <Script id="cookieyes" strategy="afterInteractive" 
+            src="https://cdn-cookieyes.com/client_data/892b60d226bd40003a3303d6/script.js">
+          </Script>
+        )}
 
         {/* <!--[BEGIN Google Tag Manager (noscript)]--> */}
 	      <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KCX7H59S" height="0" width="0"
