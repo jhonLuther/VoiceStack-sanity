@@ -33,7 +33,7 @@ const LogoListingSection = ({ data }) => {
     setIsUk(router.locale == "en-GB");
   },[router.locale])
 
-  console.log({data});
+  // console.log({data});
   
 
   return (
