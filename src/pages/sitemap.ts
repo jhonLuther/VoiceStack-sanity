@@ -34,3 +34,4 @@ export async function getStaticProps() {
 export default function SitemapPage() {
   return null
 }
+
