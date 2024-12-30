@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { CloseIcon } from '@sanity/icons'
@@ -13,6 +13,7 @@ import { FormModal } from './FormModal';
 import ChevronUp from '../icons/ChevronDown';
 import Script from 'next/script';
 import useMediaQuery from '~/utils/mediaQuery';
+import { BookDemoContext } from '~/providers/BookDemoProvider';
 
 
 
@@ -24,6 +25,7 @@ const Header = ({ data }) => {
   const [openForm, setOpenForm] = useState(false);
   const [openSwitcher, setOpenSwitcher] = useState(false);
   const [currentRegion, setCurrentRegion] = useState(null);
+  const { isDemoPopUpShown } = useContext(BookDemoContext);
 
   const regions = [
     {
@@ -319,6 +321,7 @@ const Header = ({ data }) => {
         <FormModal
           className={`pt-9  flex items-start`}
           onClose={() => setOpenForm(false)}
+          data={isDemoPopUpShown}
         />
       )}
     </>

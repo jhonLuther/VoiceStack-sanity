@@ -110,6 +110,21 @@ export default defineType({
         },
       ],
     }),
+
+    defineField({
+      name: 'dmeoFormId',
+      title: 'Demo Form Id',
+      type: 'string',
+      
+    }),
+    
+    defineField({
+      name: 'dmeoFormEventName',
+      title: 'Demo Form Event Name',
+      type: 'string',
+      
+    }),
+
     defineField({
       name: 'language',
       type: 'string',
