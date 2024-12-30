@@ -11,6 +11,7 @@ export interface FormModalProps {
   onClose?: () => void
   source?: string
   source1?: string
+  data?:any
 }
 
 
@@ -19,18 +20,12 @@ export const FormModal: React.FC<FormModalProps> = ({
   isPopup,
   onClose ,
   source,
-  source1
-}) => {;
+  source1,
+  data
+}) => {
     const router = useRouter();
+    const formId = data?.dmeoFormId
 
-    const usFormId = '6b2d6906-028e-4d65-9cd1-34d528e0d5c0';
-    const ukFormId = 'cf4c05ce-6c22-43a1-90a7-d0fc94c239fd';
-  
-    const formId = React.useMemo(
-      () => (router?.locale === 'en-GB' ? ukFormId : usFormId),
-      [router?.locale]
-    );
-    
   return (
     <div
     className={`relative z-[999] `}
@@ -81,7 +76,7 @@ export const FormModal: React.FC<FormModalProps> = ({
                   </button>
                 </div>
                 <div className="mt-2 w-full mb-8">
-                  <HubSpotForm id={formId} locale={router.locale}/>
+                  <HubSpotForm id={formId} eventName={data?.dmeoFormEventName}/>
                 </div>
               </div>
             </div>

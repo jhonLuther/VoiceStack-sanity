@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef, useContext } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Section from '../structure/Section'
 import Container from '../structure/Container'
@@ -13,6 +13,7 @@ import Button from '../common/Button'
 import ButtonArrow from '../icons/ButtonArrow'
 import { FormModal } from '../common/FormModal'
 import useMediaQuery from '~/utils/mediaQuery'
+import { BookDemoContext } from '~/providers/BookDemoProvider'
 
 export default function FeatureSection({ data }) {
   const [openForm, setOpenForm] = useState(false)
@@ -27,6 +28,7 @@ export default function FeatureSection({ data }) {
   const featureRefs = useRef([])
   const isMobile: any = useMediaQuery(767);
   const imageRef = useRef(null);
+  const { isDemoPopUpShown } = useContext(BookDemoContext);
 
   // const featureData = data.sort(
   //   (a, b) => a.testimonialOrder - b.testimonialOrder,
@@ -91,15 +93,15 @@ export default function FeatureSection({ data }) {
     setActiveIndex(0)
   }, [isMobile])
 
-  // useEffect(() => {
-  //   if (imageRef.current) {
-  //     imageRef.current.children[currentIndex].scrollIntoView({
-  //       behavior: 'smooth',
-  //       block: 'nearest',
-  //       inline: 'center',
-  //     });
-  //   }
-  // }, [currentIndex]);
+  useEffect(() => {
+    if (imageRef.current) {
+      imageRef.current.children[currentIndex].scrollIntoView({
+        behavior: 'smooth',
+        block: 'nearest',
+        inline: 'center',
+      });
+    }
+  }, [currentIndex]);
 
   return (
     <Section className="relative bg-[#f9f9f9] " id="features">
@@ -251,6 +253,7 @@ export default function FeatureSection({ data }) {
           className={`pt-9  flex items-start`}
           onClose={() => setOpenForm(false)}
           source1="feature"
+          data={isDemoPopUpShown}
         />
       )}
 

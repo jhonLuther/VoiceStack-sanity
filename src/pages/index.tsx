@@ -30,7 +30,7 @@ import FaqSection from '~/components/FaqSection'
 import Footer from '~/components/common/Footer'
 import { getClient } from '~/lib/sanity.client'
 import { isEmpty } from 'lodash'
-import { useEffect } from 'react'
+import { useContext, useEffect } from 'react'
 
 export const getServerSideProps: GetStaticProps<any> = async ({
   locale,
@@ -103,13 +103,13 @@ export default function IndexPage(
     table: comparisonTableData,
   }
   const linkCardSectionData: any = heroSectionData?.heroSubFeature
+  
 
   return (
     <div>
       <BookDemoContextProvider>
         <Layout {...props}>
           <CustomHead {...props} />
-          {/* <Content {...props} /> */}
           <div className="">
             <Header data ={homeSettings} />
             <HeroSection data={heroSectionData}  />
@@ -120,7 +120,7 @@ export default function IndexPage(
             <FeatureSection data={featureSectionData} />
             <AnimatedBeamSection data={integrationPlatforms} />
             <SiteComparisonSection data={comparisonSectionData} />
-            <FaqSection data={faqSectionData}/>
+            <FaqSection data={faqSectionData} mailId={heroSectionData?.contactEmail}/>
             <BannerSection></BannerSection>
             <Footer></Footer>
           </div>

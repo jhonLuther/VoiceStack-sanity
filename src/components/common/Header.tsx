@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { CloseIcon } from '@sanity/icons'
@@ -13,6 +13,7 @@ import { FormModal } from './FormModal';
 import ChevronUp from '../icons/ChevronDown';
 import Script from 'next/script';
 import useMediaQuery from '~/utils/mediaQuery';
+import { BookDemoContext } from '~/providers/BookDemoProvider';
 
 
 
@@ -24,6 +25,7 @@ const Header = ({ data }) => {
   const [openForm, setOpenForm] = useState(false);
   const [openSwitcher, setOpenSwitcher] = useState(false);
   const [currentRegion, setCurrentRegion] = useState(null);
+  const { isDemoPopUpShown } = useContext(BookDemoContext);
 
   const regions = [
     {
@@ -43,6 +45,15 @@ const Header = ({ data }) => {
       "url": "/en-GB",
       "title": "UK",
       "locale": "en-GB"
+    },
+    {
+      "flag": {
+        "url": "https://cdn.sanity.io/images/76tr0pyh/develop/b5c24305b7dedfaf1197c61f6f7a0b5fa991b48f-44x44.png",
+        "title": "AU"
+      },
+      "url": "/en-AU",
+      "title": "AU",
+      "locale": "en-AU"
     }
     
   ]
@@ -310,6 +321,7 @@ const Header = ({ data }) => {
         <FormModal
           className={`pt-9  flex items-start`}
           onClose={() => setOpenForm(false)}
+          data={isDemoPopUpShown}
         />
       )}
     </>

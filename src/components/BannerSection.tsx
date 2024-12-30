@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import Section from './structure/Section'
 import Container from './structure/Container'
 import Wave from 'public/assets/wave.svg'
@@ -10,9 +10,10 @@ import { VideoItem, VideoModal } from './common/VideoModal'
 import Image from 'next/image'
 import { FormModal } from './common/FormModal'
 import VideoPlayIconWhite from './icons/VideoPlayIconWhite'
+import { BookDemoContext } from '~/providers/BookDemoProvider'
 
 const BannerSection = () => {
-  
+  const { isDemoPopUpShown } = useContext(BookDemoContext);
   const [isOpen, setIsOpen] = useState(false);
   
   const [openForm, setOpenForm] = useState(false)
@@ -53,11 +54,14 @@ const BannerSection = () => {
             videoDetails={overviewVideo}
             className={`pt-9 flex items-start`}
             onClose={() => setIsOpen(false)}
+            openForm ={() => setOpenForm(true)}
+            hasDemoBanner = {true}
           />
         )}
       </div>
         {openForm && (
           <FormModal
+            data={isDemoPopUpShown}
             className={`pt-9  flex items-start`}
             onClose={() => setOpenForm(false)}
           />
