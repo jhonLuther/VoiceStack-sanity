@@ -54,6 +54,8 @@ const BannerSection = () => {
             videoDetails={overviewVideo}
             className={`pt-9 flex items-start`}
             onClose={() => setIsOpen(false)}
+            openForm ={() => setOpenForm(true)}
+            hasDemoBanner = {true}
           />
         )}
       </div>

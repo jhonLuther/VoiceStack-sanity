@@ -170,6 +170,8 @@ const HeroSection = ({ data }) => {
               videoDetails={overviewVideo}
               className={`pt-9 flex items-start`}
               onClose={() => setIsOpen(false)}
+              openForm ={() => setOpenForm(true)}
+              hasDemoBanner = {true}
             />
           )}
           {openForm && (
