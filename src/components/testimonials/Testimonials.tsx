@@ -113,6 +113,8 @@ export default function Testimonails({ data }) {
             videoDetails={selectedVideo}
             className={`pt-9 z-30 flex items-start`}
             onClose={() => setIsOpen(false)}
+            openForm ={() => setOpenForm(true)}
+            hasDemoBanner = {true}
           />
         )}
         {openForm && (
