@@ -43,6 +43,15 @@ const Header = ({ data }) => {
       "url": "/en-GB",
       "title": "UK",
       "locale": "en-GB"
+    },
+    {
+      "flag": {
+        "url": "https://cdn.sanity.io/images/76tr0pyh/production/2aeef6cefdae34058558224d10484ea63763ef77-24x24.svg",
+        "title": "UK"
+      },
+      "url": "/en-AU",
+      "title": "AU",
+      "locale": "en-AU"
     }
     
   ]
