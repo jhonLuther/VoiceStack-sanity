@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useContext, useRef, useState } from 'react'
 import { motion, useMotionValueEvent, useScroll } from 'motion/react'
 import PreText from './micro/PreText'
 import H2 from '../typography/H2'
@@ -9,6 +9,7 @@ import ButtonArrow from '../icons/ButtonArrow'
 import ListItem from './micro/ListItem'
 import { FormModal } from '../common/FormModal'
 import useMediaQuery from '~/utils/mediaQuery'
+import { BookDemoContext } from '~/providers/BookDemoProvider'
 
 export default function AppearFeature({
   getIndex,
@@ -23,7 +24,7 @@ export default function AppearFeature({
   const [scrollPos, setScrollPos] = useState(0)
   const [sectionStartY, setSectionStartY] = useState(0)
   const isMobile: any = useMediaQuery(767)
-
+  const { isDemoPopUpShown } = useContext(BookDemoContext);
   const scrollRef = useRef(null)
   const numberOfItems = data?.testimonialSubSection?.length
   const actualScrollStart =
@@ -150,6 +151,7 @@ export default function AppearFeature({
           className={`pt-9  flex items-start`}
           onClose={() => setOpenForm(false)}
           source="feature"
+          data={isDemoPopUpShown}
         />
       )}
     </div>

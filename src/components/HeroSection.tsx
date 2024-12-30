@@ -1,19 +1,18 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Section from './structure/Section'
 import Button from './common/Button'
 import ButtonArrow from './icons/ButtonArrow'
 import Container from './structure/Container'
 import H1 from './typography/H1'
 import { VideoItem, VideoModal } from './common/VideoModal'
-import { PlayIcon } from '@sanity/icons'
 import device from 'public/assets/voicestack-device.png'
 import voicestack from 'public/assets/voicestack-ui.png'
 import voicemail from 'public/assets/voicemail.png'
 import Image from 'next/image'
 import { PortableText } from '@portabletext/react'
-import HubSpotForm from './common/HubspotForm'
 import { FormModal } from './common/FormModal'
 import VideoPlayIconWhite from './icons/VideoPlayIconWhite'
+import { BookDemoContext } from '~/providers/BookDemoProvider'
 
 const HeroSection = ({ data }) => {
   const [isOpen, setIsOpen] = useState(false)
@@ -36,8 +35,10 @@ const HeroSection = ({ data }) => {
       ),
     },
   }
+  const { isDemoPopUpShown, setIsDemoPopUpShown } = useContext(BookDemoContext)
 
   useEffect(() => {
+    setIsDemoPopUpShown(data);
     if (wordIndex < words?.length) {
       const wordInterval = setTimeout(() => {
         setWordIndex(wordIndex + 1)
@@ -173,6 +174,7 @@ const HeroSection = ({ data }) => {
             <FormModal
               className={`pt-9  flex items-start`}
               onClose={() => setOpenForm(false)}
+              data={isDemoPopUpShown}
             />
           )}
         </div>
