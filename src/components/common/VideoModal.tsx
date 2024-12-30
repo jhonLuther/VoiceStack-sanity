@@ -94,7 +94,7 @@ export const VideoModal: React.FC<VideoProps> = ({
           className={`${
             isPopup
               ? 'relative w-full aspect-[16/9] b rounded-lg'
-              : 'w-full aspect-[16/9] relative'
+              : 'w-full aspect-[16/9] relative bg-white'
           }`}
         >
           {isPopup && onClose && (

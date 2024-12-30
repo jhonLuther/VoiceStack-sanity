@@ -93,15 +93,15 @@ export default function FeatureSection({ data }) {
     setActiveIndex(0)
   }, [isMobile])
 
-  // useEffect(() => {
-  //   if (imageRef.current) {
-  //     imageRef.current.children[currentIndex].scrollIntoView({
-  //       behavior: 'smooth',
-  //       block: 'nearest',
-  //       inline: 'center',
-  //     });
-  //   }
-  // }, [currentIndex]);
+  useEffect(() => {
+    if (imageRef.current) {
+      imageRef.current.children[currentIndex].scrollIntoView({
+        behavior: 'smooth',
+        block: 'nearest',
+        inline: 'center',
+      });
+    }
+  }, [currentIndex]);
 
   return (
     <Section className="relative bg-[#f9f9f9] " id="features">
