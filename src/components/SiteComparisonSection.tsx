@@ -18,11 +18,11 @@ function SiteComparisonSection({ data }) {
   
   const [openForm, setOpenForm] = useState(false);
   
-  const [isUk, setIsUk] = useState(false);
+  const [hideTable, setHideTable] = useState(false);
   const router = useRouter();
 
   useEffect(()=>{
-    setIsUk(router.locale == "en-GB");
+    setHideTable(router.locale == "en-GB" || router.locale == "en-AU");
   },[router.locale])
 
   useEffect(() => {
@@ -41,7 +41,7 @@ function SiteComparisonSection({ data }) {
   }, []);
   
   return (
-    isUk ? (
+    hideTable ? (
       <></> 
     ):(
       <Section id="comparison" className="py-sm md:py-md  scroll-m-16">
