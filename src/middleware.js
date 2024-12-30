@@ -13,37 +13,24 @@ export async function middleware(request) {
   const countryLocale = (countryVersion === 1) ? "en" : (countryVersion === 2) ? "en-GB" : (countryVersion === 3) ? "en-AU" : undefined;
 
   console.log({countryVersion}, {countryLocale});
-  
-  
 
-  // Determine the cookie based on the region
-  if (region.includes('en-GB')) {
-    response.cookies.delete('region')
-    response.cookies.delete('regionAus')
-    localStorage.setItem('re',JSON.stringify(region))
-    response.cookies.set('regionAus', region, {
-      httpOnly: false,
-      secure: false,
-      path: '/',
-      maxAge: 60 * 60 * 24,
-      sameSite: 'Lax',
-    })
-  } else {
-    response.cookies.delete('region')
-    response.cookies.delete('regionAus')
-    localStorage.setItem('re',JSON.stringify(region))
-    response.cookies.set('region', region, {
-      httpOnly: false,
-      secure: false,
-      path: '/',
-      maxAge: 60 * 60 * 24,
-      sameSite: 'Lax',
-    })
+  if (countryLocale) { // setting the preferredLocale cookie for us and uk (so that the main region switcher won't appear)
+    // console.log("from mw cspl changes");
+    if (!request.cookies.get('__vs_pl')) {
+      response.cookies.set('__vs_pl', countryLocale, {
+        path: "/",
+        // maxAge: 60 * 60 * 24 * 365, // 1 year
+      } )
+    }
   }
 
- 
+  response.cookies.set('__vs_ver', countryVersion, {
+    path: "/",
+    maxAge: 60 * 60 * 24 * 365, // 1 year
+  } )
   
-  return response
+ 
+  return response;
 }
 
 export const config = {
