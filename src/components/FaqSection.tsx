@@ -8,7 +8,7 @@ import { ChevronDown, Minus, Plus } from 'lucide-react';
 import FaqItem from './FaqItem';
 import { useRouter } from 'next/router';
 
-const FaqSection = ({data}) => {
+const FaqSection = ({data,mailId}) => {
 
   const [region, setRegion] = useState('us'); // default to US
   const router = useRouter();
@@ -24,16 +24,7 @@ const FaqSection = ({data}) => {
     }
   },[router?.locale])
 
-  const getContactEmail = () => {
-    switch (region) {
-      case 'uk':
-        return 'uk.support@voicestack.com';
-      case 'au':
-        return 'au.support@voicestack.com';
-      default:
-        return 'us.support@voicestack.com';
-    }
-  };
+  const getContactEmail =mailId
 
   return (
     <Section className="py-sm md:py-md pb-8 scroll-smooth scroll-m-16" id="faq">
@@ -43,7 +34,7 @@ const FaqSection = ({data}) => {
             <div className='flex flex-col w-full max-w-[780px] text-center gap-4'>
               <H2 className="text-left">Frequently Asked Questions</H2>
               <Paragraph className="text-left">For queries contact 
-                <a href={`mailto:${getContactEmail()}`} className='flex text-vs-blue'>{getContactEmail()}</a>
+                <a href={`mailto:${getContactEmail}`} className='flex text-vs-blue'>{getContactEmail}</a>
               </Paragraph>
             </div>
           </div>
