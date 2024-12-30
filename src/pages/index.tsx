@@ -120,7 +120,7 @@ export default function IndexPage(
             <FeatureSection data={featureSectionData} />
             <AnimatedBeamSection data={integrationPlatforms} />
             <SiteComparisonSection data={comparisonSectionData} />
-            <FaqSection data={faqSectionData}/>
+            <FaqSection data={faqSectionData} mailId={heroSectionData?.contactEmail}/>
             <BannerSection></BannerSection>
             <Footer></Footer>
           </div>

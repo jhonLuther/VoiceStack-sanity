@@ -124,6 +124,13 @@ export default defineType({
       type: 'string',
       
     }),
+        
+    defineField({
+      name: 'contactEmail',
+      title: 'Contact Email',
+      type: 'string',
+      
+    }),
 
     defineField({
       name: 'language',
