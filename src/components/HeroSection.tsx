@@ -55,6 +55,8 @@ const HeroSection = ({ data }) => {
     wordIndex,
     activeIndex,
     words?.length,
+    data,
+    setIsDemoPopUpShown,
     data?.heroTitleStaticDynamic?.length,
   ])
 
