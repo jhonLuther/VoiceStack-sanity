@@ -8,6 +8,8 @@ const HubSpotForm = ({
   eventName?: string
 
 }) => {
+
+  console.log(id,eventName)
   useEffect(() => {
     const window2: any = window
     const loadHubSpotScript = async () => {
