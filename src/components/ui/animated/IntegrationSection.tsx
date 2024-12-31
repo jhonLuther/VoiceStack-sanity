@@ -33,7 +33,7 @@ export function AnimatedBeamDemo({ data }: any) {
   const [isUk, setIsUk] = useState(false);
 
     useEffect(()=>{
-      setIsUk(router.locale == "en-GB");
+      setIsUk(router.locale == "en-GB" || router.locale == "en-AU"); // this only serves to switch layout
     },[router.locale])
   
     

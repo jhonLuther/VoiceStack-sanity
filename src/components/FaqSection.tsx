@@ -8,15 +8,23 @@ import { ChevronDown, Minus, Plus } from 'lucide-react';
 import FaqItem from './FaqItem';
 import { useRouter } from 'next/router';
 
+const FaqSection = ({data,mailId}) => {
 
-const FaqSection = ({data}) => {
-
-  const [isUk, setIsUk] = useState(false);
+  const [region, setRegion] = useState('us'); // default to US
   const router = useRouter();
 
   useEffect(()=>{
-      setIsUk(router?.locale =='en-GB' ? true : false);
-    },[router?.locale])
+    const locale = router?.locale;
+    if (locale === 'en-GB') {
+      setRegion('uk');
+    } else if (locale === 'en-AU') {
+      setRegion('au');
+    } else {
+      setRegion('us');
+    }
+  },[router?.locale])
+
+  const getContactEmail =mailId
 
   return (
     <Section className="py-sm md:py-md pb-8 scroll-smooth scroll-m-16" id="faq">
@@ -26,19 +34,11 @@ const FaqSection = ({data}) => {
             <div className='flex flex-col w-full max-w-[780px] text-center gap-4'>
               <H2 className="text-left">Frequently Asked Questions</H2>
               <Paragraph className="text-left">For queries contact 
-                {
-                  isUk? (
-                  <a href="mailto:uk.support@voicestack.com" className='flex text-vs-blue'>{`uk.support@voicestack.com`}</a>
-                  ):(
-                    <a href="mailto:us.support@voicestack.com" className='flex text-vs-blue'>{`us.support@voicestack.com`}</a>
-                  )
-                }
-                
+                <a href={`mailto:${getContactEmail}`} className='flex text-vs-blue'>{getContactEmail}</a>
               </Paragraph>
             </div>
           </div>
           <div className='flex justify-center flex-grow max-w-[830px]'>
-
             <div className="flex flex-col w-full">
               {data.map((faq, index) => (
                 <FaqItem 
@@ -49,13 +49,11 @@ const FaqSection = ({data}) => {
                 />
               ))}
             </div>
-            
           </div>
         </div>
       </Container>
     </Section>
   )
 }
-
 
 export default FaqSection

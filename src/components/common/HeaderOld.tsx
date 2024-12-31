@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { CloseIcon } from '@sanity/icons'
@@ -9,6 +9,7 @@ import ButtonArrow from '../icons/ButtonArrow';
 import Button from './Button';
 import TelIcon from '../icons/TelIcon';
 import { FormModal } from './FormModal';
+import { BookDemoContext } from '~/providers/BookDemoProvider';
 
 
 
@@ -18,6 +19,7 @@ const Header = ({ data }) => {
   const [headerFixed, setHeaderFixed] = useState(false);
   const [isUk, setIsUk] = useState(false);
   const [openForm, setOpenForm] = useState(false)
+  const { isDemoPopUpShown } = useContext(BookDemoContext);
 
   const router = useRouter();
   useEffect(() => {
@@ -148,6 +150,7 @@ const Header = ({ data }) => {
         <FormModal
           className={`pt-9  flex items-start`}
           onClose={() => setOpenForm(false)}
+          data={isDemoPopUpShown}
         />
       )}
     </>
