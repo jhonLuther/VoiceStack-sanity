@@ -9,7 +9,8 @@ export async function middleware(request) {
   const userRregion = geo?.region || 'CA';
 
   const countryVersion = (country === "UM" || country === "US") ? 1 : (country === "UK" || country === "GB") ? 2 : (country === "AU") ? 3 : 4;
-  const countryLocale = (countryVersion === 1) ? "en" : (countryVersion === 2) ? "en-GB" : (countryVersion === 3) ? "en-AU" : undefined;
+  // const countryLocale = (countryVersion === 1) ? "en" : (countryVersion === 2) ? "en-GB" : (countryVersion === 3) ? "en-AU" : undefined;
+  const countryLocale = undefined;
 
   console.log('Geo Data:', { country, city, userRregion });
   console.log('Setting Cookies:', { countryVersion, countryLocale });
