@@ -63,6 +63,7 @@ module.exports = {
   				'5': 'hsl(var(--chart-5))'
   			},
 				'vs-blue': '#4A3CE1',
+				'vs-purple': '#4a3ce1',
 				'vs-lemon-green': '#B5EB92',
   		},
   		animation: {
