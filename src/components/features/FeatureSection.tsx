@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useContext } from 'react'
+import React, { useState, useEffect, useRef, useContext, useMemo } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Section from '../structure/Section'
 import Container from '../structure/Container'
@@ -17,81 +17,69 @@ import { BookDemoContext } from '~/providers/BookDemoProvider'
 
 export default function FeatureSection({ data }) {
   const [openForm, setOpenForm] = useState(false)
-  const testimonialIndex: number = data?.findIndex(
-    (e: any) => e.testimonialSubSection != null,
+  const testimonialIndex = data?.findIndex(
+    (e) => e.testimonialSubSection != null,
   )
-  const sampleImages = data[testimonialIndex]?.testimonialSubSection.map(
-    (e: any) => e.image.url,
-  );
+  const sampleImages = useMemo(() => {
+    return (
+      data[testimonialIndex]?.testimonialSubSection.map((e) => ({
+        url: e.image.url,
+        altText: e.image.altText,
+        title: e.image.title,
+      })) || []
+    );
+  }, [data, testimonialIndex]);
+  
+  
   const [activeImage, setActiveImage] = useState(null)
-  const [currentIndex, setActiveIndex] = useState(0)
+  const [currentIndex, setCurrentIndex] = useState(0)
   const featureRefs = useRef([])
-  const isMobile: any = useMediaQuery(767);
-  const imageRef = useRef(null);
-  const { isDemoPopUpShown } = useContext(BookDemoContext);
+  const isMobile = useMediaQuery(767)
+  const imageRef = useRef(null)
+  const { isDemoPopUpShown } = useContext(BookDemoContext)
 
-  // const featureData = data.sort(
-  //   (a, b) => a.testimonialOrder - b.testimonialOrder,
-  // )
-
-  // useEffect(() => {
-  //   const observerOptions = {
-  //     root: null,
-  //     rootMargin: '0px',
-  //     threshold: 0.5,
-  //   }
-
-  //   const observer = new IntersectionObserver((entries) => {
-  //     entries.forEach((entry) => {
-  //       if (entry.isIntersecting) {
-  //         const index = entry.target.getAttribute('data-index')
-  //         setActiveImage(data[index].testimonialImage.url) // Update active image
-  //       }
-  //     })
-  //   }, observerOptions)
-
-  //   featureRefs.current.forEach((ref) => {
-  //     if (ref) observer.observe(ref)
-  //   })
-
-  //   return () => {
-  //     if (observer) observer.disconnect()
-  //   }
-  // }, [data])
-
-
-
-
-
-  const openModal = () => {
-    setOpenForm(true)
-  }
-
-
-
-
-  const switchIndex = (percentage = 25) => {
+  const switchIndex = (percentage = 0) => {
     if (isMobile) return
 
-    if (percentage <= 25 && percentage > 0) {
-      setActiveImage(sampleImages[0])
-    } else if (percentage > 25 && percentage <= 50)
-      setActiveImage(sampleImages[1])
-    else if (percentage > 50 && percentage <= 75)
-      setActiveImage(sampleImages[2])
-    else if (percentage > 75 && percentage <= 100)
-      setActiveImage(sampleImages[3])
+    let newIndex = 0
+    if (percentage <= 25 && percentage >= 0) {
+      newIndex = 0
+    } else if (percentage > 25 && percentage <= 50) {
+      newIndex = 1
+    } else if (percentage > 50 && percentage <= 75) {
+      newIndex = 2
+    } else if (percentage > 75 && percentage <= 100) {
+      newIndex = 3
+    }
+
+    if (sampleImages[newIndex]) {
+      setActiveImage(sampleImages[newIndex])
+      setCurrentIndex(newIndex)
+    }
   }
 
   const getIndexfromAppear = (index) => {
-    setActiveIndex(index)
-    setActiveImage(isMobile && sampleImages[currentIndex])
+    setCurrentIndex(index)
+    if (isMobile && sampleImages[index]) {
+      setActiveImage(sampleImages[index])
+    }
   }
+
+  useEffect(() => {
+    if (isMobile && sampleImages[currentIndex]) {
+      setActiveImage(sampleImages[currentIndex])
+    }
+    console.log('hi');
+    
+  }, [currentIndex, isMobile, sampleImages])
+
+  // console.log(activeImage, "activeImage");
 
 
   useEffect(() => {
-    setActiveIndex(0)
-  }, [isMobile])
+    console.log(activeImage,'activeImage');
+    
+  }, [activeImage])
 
   useEffect(() => {
     if (imageRef.current) {
@@ -159,7 +147,16 @@ export default function FeatureSection({ data }) {
                     key={index}
                     data-index={index}
                     className={`md:cursor-auto cursor-pointer gap-4 flex flex-col self-start justify-center transform`}
-                    onViewportEnter={() => setActiveImage(feature.testimonialImage.url)}
+                    onViewportEnter={() => {
+                      if (feature.testimonialImage) {
+                        const { url, altText, title } = feature.testimonialImage;
+                        setActiveImage({
+                          url: url,
+                          altText: altText || '',
+                          title: title || ''
+                        })
+                      }
+                    }}
                   
                  
                   >
@@ -167,11 +164,11 @@ export default function FeatureSection({ data }) {
                       <span className="text-vs-blue">
                         {feature.testimonialIcon && feature.testimonialIcon.url &&
                           <div className=''>
-                            <motion.img
-                              key={activeImage}
+                            {activeImage?.url && <motion.img
+                              key={activeImage.url}
                               src={feature.testimonialIcon.url}
                               alt="testimonial icon"
-                            />
+                            />}
                           </div>
                         }
                       </span>{' '}
@@ -202,7 +199,7 @@ export default function FeatureSection({ data }) {
                     {isMobile && feature.testimonialImage && feature.testimonialImage.url &&
                       <div className='bg-vs-lemon-green mx-[-16px] h-full z-0'>
                         <motion.img
-                          key={activeImage}
+                          key={activeImage.url}
                           src={feature.testimonialImage.url}
                           alt="Active Feature"
                         />
@@ -228,18 +225,19 @@ export default function FeatureSection({ data }) {
           className={`relative mx-[-16px]   bg-vs-lemon-green md:w-1/2 w-auto h-full`}
         >
           <div className="sticky top-0 md:py-24 md:h-[100vh] flex flex-col justify-center md:pl-12 ">
-            <AnimatePresence mode="wait">
+          {activeImage?.url && <AnimatePresence mode="wait">
               <motion.img
-                key={activeImage}
-                src={activeImage}
-                alt="Active Feature"
+                key={activeImage.url}
+                src={activeImage.url}
+                alt={activeImage.altText}
+                title={activeImage.title}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.300 }}
                 className="w-auto h-auto  rounded-lg max-w-full bg-black/5 md:max-h-[538px] "
               />
-            </AnimatePresence>
+            </AnimatePresence>}
           </div>
 
         </div>}
