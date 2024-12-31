@@ -57,7 +57,7 @@ const HubSpotForm = ({
                   })
                   const urlParams = new URLSearchParams(window.location.search);
                   const responseData = await fetch(
-                    `/api/hs?email=${email}&source=${urlParams.get("utm_source")}&campaign=${urlParams.get("utm_campaign")}&medium=${urlParams.get("utm_medium")}&term=${urlParams.get("utm_term")}&lead_source=${urlParams.get("lead_source")}`
+                    `/api/hs?email=${encodeURIComponent(email)}&source=${urlParams.get("utm_source")}&campaign=${urlParams.get("utm_campaign")}&medium=${urlParams.get("utm_medium")}&term=${urlParams.get("utm_term")}&lead_source=${urlParams.get("lead_source")}`
                   );  
                 }, 250)
               },

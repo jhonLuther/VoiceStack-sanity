@@ -12,9 +12,13 @@ export default async function handler(req, res) {
     if (req.method === 'POST') {
         // Process a POST request
     } else {
+      // const email = decodeURIComponent(req.query.email);
+      const email = req.query.email;
+      console.log({email, enc:req.query.email});
+      
 
         try{
-          const response = await fetch(`https://api.hubapi.com/crm/v3/objects/contacts/${req.query.email}?idProperty=email`, requestOptionsGET)
+          const response = await fetch(`https://api.hubapi.com/crm/v3/objects/contacts/${email}?idProperty=email`, requestOptionsGET)
           const data = await response.json();
 
           var raw = JSON.stringify({
