@@ -13,6 +13,8 @@ export async function middleware(request) {
 
   console.log('Geo Data:', { country, city, userRregion });
   console.log('Setting Cookies:', { countryVersion, countryLocale });
+  console.log('__vs_pl',request.cookies.get('__vs_pl'));
+  
 
   const response = NextResponse.next();
 
@@ -28,5 +30,5 @@ export async function middleware(request) {
 }
 
 export const config = {
-  matcher: ['/', '/en-GB', '/en'],
+  matcher: ['/', '/en-GB', '/en', '/en-AU'],
 };
