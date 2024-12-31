@@ -154,7 +154,7 @@ export default function FeatureSection({ data }) {
             ) : (
 
               <div className={`md:h-[100vh] relative flex flex-col items-center ${index == 0 ? "md:mb-40":""} `} key={feature?._rev} >
-                <div ref={(el) => (featureRefs.current[index] = el)} className={`${index == 0 ? "md:pt-40":"md:top-[50%] md:h-[50vh] md:-translate-y-[50%] md:sticky"} mt-5 left-0 self-start flex flex-col justify-center transform`}   >
+                <div ref={(el) => (featureRefs.current[index] = el)} className={`${index == 0 ? "md:pt-20 lg:pt-40 md-maxh-800:pt-20 md-maxh-700:pt-0":"md:top-[50%] md:h-[50vh] md:-translate-y-[50%] md:sticky"} mt-5 left-0 self-start flex flex-col justify-center transform`}   >
                   <motion.div
                     key={index}
                     data-index={index}
