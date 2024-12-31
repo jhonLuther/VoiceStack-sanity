@@ -11,6 +11,7 @@ import BoltIcon from "~/components/icons/BoltIconEvent";
 import PhoneIcon from "~/components/icons/PhoneIcon";
 import TickSolidIcon from "~/components/icons/TickSolidIcon";
 import StarIcon from "~/components/icons/StarIcon";
+import Head from 'next/head'
 
 function DinnerDemo() {
   const features = [
@@ -22,6 +23,85 @@ function DinnerDemo() {
   ]
   return (
     <>
+    <Head>
+        {/* Meta Tags */}
+        <meta charSet="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+          name="title"
+          content="VoiceStack - AI-Driven Phone System for Dental Offices"
+        />
+        <meta
+          name="description"
+          content="VoiceStack is an AI-Driven Phone System for Dental Offices that enhances business communication with smart routing, real-time analytics, and seamless integrations."
+        />
+        <meta
+          name="keywords"
+          content="VoiceStack, AI phone system, phone system, business communication, smart routing, real-time analytics"
+        />
+        <meta name="robots" content="index, follow" />
+        <meta name="author" content="VoiceStack" />
+
+        <title>VoiceStack - Dinner & Demo</title>
+
+        {/* Open Graph Tags */}
+        <meta
+          property="og:title"
+          content="VoiceStack - Dinner & Demo"
+        />
+        <meta
+          property="og:description"
+          content="Enhance your business communication with VoiceStack, an AI-driven phone system offering smart call routing, real-time analytics, and seamless integration with your existing tools."
+        />
+        <meta
+          property="og:image"
+          content="https://www.voicestack.com/images/og.png"
+        />
+        <meta property="og:url" content="https://www.voicestack.com" />
+        <meta property="og:type" content="website" />
+
+        {/* Alternate Links */}
+        <link
+          rel="alternate"
+          hrefLang="en-au"
+          href="https://www.voicestack.com/en-AU"
+        />
+        <link
+          rel="alternate"
+          hrefLang="x-default"
+          href="https://www.voicestack.com"
+        />
+
+        {/* JSON-LD Structured Data */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "SoftwareApplication",
+            name: "VoiceStack",
+            description:
+              "VoiceStack is an AI-Driven Phone System for Dental Offices designed to optimize business communication through smart call routing, real-time analytics, and seamless integration with existing business tools.",
+            applicationCategory: "BusinessApplication",
+            operatingSystem: "All",
+            url: "https://www.voicestack.com",
+            image: "https://www.voicestack.com/images/og.png",
+            author: {
+              "@type": "Organization",
+              name: "VoiceStack",
+              url: "https://www.voicestack.com",
+            },
+            offers: {
+              "@type": "Offer",
+              priceCurrency: "USD",
+              price: "99.99",
+              url: "https://www.voicestack.com",
+              eligibleRegion: {
+                "@type": "Place",
+                name: "Worldwide",
+              },
+            },
+          })}
+        </script>
+      </Head>
       <Section className="relative flex-col items-center w-full min-h-lvh bg-gradient-to-br from-purple-800 via-black  to-vs-purple text-white overflow-hidden">
         <Container className="flex flex-col items-center gap-10 z-10 px-4 py-2 leading-[1.375]4 md:py-32">
           <a href="/" className="text-xl font-semibold">
