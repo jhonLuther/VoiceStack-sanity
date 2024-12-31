@@ -152,7 +152,7 @@ function DinnerDemo() {
         </div>
       </Section>
 
-      <Section className="flex py-2 leading-[1.375]0 bg-gray-50">
+      <Section className="flex py-2 md:py-32  leading-[1.375]0 bg-gray-50">
         <Container className="flex flex-col items-center px-4">
           <div className="text-center text-2xl md:text-4xl md:max-w-3xl">
             Discover our{' '}
@@ -337,7 +337,7 @@ function DinnerDemo() {
             </H2>
 
             <Paragraph>
-              Join us to experience how VoiceStack's AI-driven phone system can
+              Join us to experience how VoiceStack&apos;s AI-driven phone system can
               supercharge your practice.
             </Paragraph>
           </div>
@@ -525,7 +525,7 @@ function DinnerDemo() {
               <p className="text-base text-gray-500">
                 You can order your food when the demo starts, and it will be
                 ready for you by the time we arrive at the restaurant, just a
-                few minutes' walk away.
+                few minutes&apos; walk away.
               </p>
             </li>
             <li className="py-6 border-b border-white/10">
