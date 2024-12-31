@@ -98,6 +98,11 @@ module.exports = {
 			maxWidth: {
         '7xl': '1240px', // Define a custom max-width value
       },
+			screens: {
+        'md-maxh-800': {'raw': '(min-width: 768px) and (max-height: 800px)'},
+        'md-maxh-700': {'raw': '(min-width: 768px) and (max-height: 700px)'},
+        'maxh-600': {'raw': '(max-height: 600px)'},
+      },
 			
 			backgroundImage: {
 			'hero-pattern': "url('/hero-background.webp')",
