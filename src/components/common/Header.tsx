@@ -166,7 +166,7 @@ const Header = ({ data }) => {
       router.locale == "en-AU" ? "ANZ" : undefined
     );
 
-  }, [router])
+  }, [router, preLocale])
   
 
   useEffect(()=>{
