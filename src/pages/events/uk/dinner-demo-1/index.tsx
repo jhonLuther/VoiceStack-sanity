@@ -191,9 +191,9 @@ function DinnerDemo() {
             </div>
 
             <ul className="md:w-1/2 w-full flex flex-col">
-              {features.map((feature: any) => {
+              {features.map((feature: any, index:number) => {
                 return (
-                  <li className="flex items-start gap-2 md:text-xl text-lg border-b py-4">
+                  <li className="flex items-start gap-2 md:text-xl text-lg border-b py-4" key={index}>
                     <span className="text-vs-purple py-1">
                       <TickSolidIcon></TickSolidIcon>
                       </span> <span>{feature}</span>
