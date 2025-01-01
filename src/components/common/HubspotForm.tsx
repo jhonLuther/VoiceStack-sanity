@@ -49,13 +49,16 @@ const HubSpotForm = ({
                 }
               },
               onFormSubmit: function (form) {
-                setTimeout(() => {
+                setTimeout(async () => {
                   const email = form.querySelector('input[name="email"]').value
-
                   window2.dataLayer.push({
                     email: email,
                     event: eventName || 'demo_submission_uk',
                   })
+                  const urlParams = new URLSearchParams(window.location.search);
+                  const responseData = await fetch(
+                    `/api/hs?email=${encodeURIComponent(email)}&source=${urlParams.get("utm_source")}&campaign=${urlParams.get("utm_campaign")}&medium=${urlParams.get("utm_medium")}&term=${urlParams.get("utm_term")}&lead_source=${urlParams.get("lead_source")}`
+                  );  
                 }, 250)
               },
             } as any)
