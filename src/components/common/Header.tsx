@@ -33,7 +33,7 @@ const Header = ({ data }) => {
   const [regionSwitcher, setRegionSwitcher] = useState(false);
   const [regionSwitcherTop, setRegionSwitcherTop] = useState(false);
   const [currentCountry, setCurrentCountry] = useState<any>(null);
-  const [_preferredLocale, setPreferredLocale] = useState<any>('en')
+  const [_preferredLocale, setPreferredLocale] = useState<any>(null);
   
   const geoPath ="/api/geo";
   const preLocale = getCookie("__vs_pl");
@@ -108,13 +108,14 @@ const Header = ({ data }) => {
               return;
             }
         
-            // Determine country code based on the country
+            // Determine countrycode based on the country
             const countryCodeNum:any =
             res.country === "UM" || res.country === "US" ? 1 : res.country === "UK" || res.country === "GB" ? 2 : res.country === "AU"  || res.country === "NZ" ? 3 : 4;
                 
             // Set the country code state and cookie
             setCountryCode(countryCodeNum);
             setCookie("__vs_ver", countryCodeNum);
+            
         
             // Set the locale cookie based on the country
             // switch (res.country) {
@@ -143,10 +144,17 @@ const Header = ({ data }) => {
       } 
       else {
         setCountryCode(country);
+        
       }
     }
 
+    
+
   }, [router])
+
+  useEffect(()=>{
+    setPreferredLocale(countryCode === "2" ? "en-GB": countryCode === "3" ? "en-AU" : "en");
+  },[countryCode])
 
   useEffect(()=>{
     //for showing region main popup
@@ -307,12 +315,13 @@ const Header = ({ data }) => {
                   value={countryCode === "2" ? "en-GB": countryCode === "3" ? "en-AU" : "en"}
 
                   onSelect={(item) => {
+                    console.log('Selected locale:', item); // Debug log
                     setPreferredLocale(item)
                   }}
                   items={regions} />
-                {/* <button className={headerStyles.header__region__button} onClick={() => handleLocaleContinue(_preferredLocale)}> */}
+                
                   <Button type='primarySm' className='' onClick={() => _preferredLocale ? goToPreferedLocale(_preferredLocale) : goToPreferedLocale('en')}>
-                    Continue
+                    Continue {_preferredLocale}
                   </Button>
               </div>
             </div>
