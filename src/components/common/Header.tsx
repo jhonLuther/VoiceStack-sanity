@@ -284,7 +284,7 @@ const Header = ({ data }) => {
 
       {/* region popup top*/}
       {regionSwitcherTop &&
-          <div className='fixed top-0 left-0 right-0 z-30 flex justify-center bg-white px-4 py-4 md:py-6'>
+          <div className={`fixed top-0 left-0 right-0 z-30 flex justify-center bg-white px-4 py-4 md:py-6 transition-all duration-300 ease-linear ${headerFixed ? 'lg:py-5': 'lg:py-8'}`}>
             <div className='flex flex-col md:flex-row gap-3 md:gap-8 lg:gap-16 md:items-center pr-10 md:px-8 lg:px-16'>
               <p className='text-xs md:text-sm lg:text-base'>You are currently viewing our <span>{currentCountry} website</span>. If you want to view this site for another geography, please select from the dropdown.</p>
 
