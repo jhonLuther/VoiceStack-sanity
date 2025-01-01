@@ -20,21 +20,17 @@ function Dropdown({ items = [], value = "Select", onSelect, alt = false }: IDrop
 
     console.log({items, value});
     
-    const memoizedOnSelect = useCallback(onSelect, []);
+    const regionItems = items;
     useEffect(() => {
-        const localeIndex = items.findIndex(item => item.locale == value);
-        // if (localeIndex !== -1) {
-        //     const newItems = items.splice(localeIndex, 1);
-        //     items.unshift(newItems[0]);
-        // }
-        setSelected(items[localeIndex]);
-        // console.log({localeValue});
-        // setTimeout(() => {
-            onSelect(value);
-        // }, 300);
+        const localeIndex = regionItems.findIndex(item => item.locale == value);
+        setSelected(regionItems[localeIndex]);
 
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [value, items])
+    }, [value])
+
+    useEffect(() => {
+          onSelect(value);
+
+  }, [value,onSelect])
 
     
     
