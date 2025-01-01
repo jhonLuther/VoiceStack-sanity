@@ -179,7 +179,7 @@ const Header = ({ data }) => {
       router.locale == "en-GB" ? "UK" : 
       router.locale == "en-AU" ? "ANZ" : undefined
     );
-  },[router, preLocale])
+  },[router, preLocale, restrictTopSwitcher])
   
 
   useEffect(()=>{

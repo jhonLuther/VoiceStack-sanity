@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
 
 interface IDropdown {
     items: any,
@@ -20,7 +20,7 @@ function Dropdown({ items = [], value = "Select", onSelect, alt = false }: IDrop
 
     console.log({items, value});
     
-
+    const memoizedOnSelect = useCallback(onSelect, []);
     useEffect(() => {
         const localeIndex = items.findIndex(item => item.locale == value);
         // if (localeIndex !== -1) {
@@ -32,7 +32,9 @@ function Dropdown({ items = [], value = "Select", onSelect, alt = false }: IDrop
         // setTimeout(() => {
             onSelect(value);
         // }, 300);
-    }, [value])
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [value, items])
 
     
     
