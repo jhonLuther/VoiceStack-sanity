@@ -23,6 +23,7 @@
     "@sanity/demo": "1.0.2",
     "@sanity/document-internationalization": "^3.2.0",
     "@sanity/vision": "3.28.0",
+    "@vercel/edge": "^1.1.4",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "dotenv": "^16.4.7",

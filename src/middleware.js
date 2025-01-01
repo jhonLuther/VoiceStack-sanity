@@ -1,41 +1,35 @@
-import { NextResponse } from 'next/server'
+import { NextResponse } from 'next/server';
 
 export async function middleware(request) {
-  const region = request.nextUrl.href
-  const response = NextResponse.next()
+  const { geo } = request;
 
-  // Determine the cookie based on the region
-  if (region.includes('en-GB')) {
-    response.cookies.delete('region')
-    response.cookies.delete('regionAus')
-    localStorage.setItem('re',JSON.stringify(region))
-    response.cookies.set('regionAus', region, {
-      httpOnly: false,
-      secure: false,
-      path: '/',
-      maxAge: 60 * 60 * 24,
-      sameSite: 'Lax',
-    })
-  } else {
-    response.cookies.delete('region')
-    response.cookies.delete('regionAus')
-    localStorage.setItem('re',JSON.stringify(region))
-    response.cookies.set('region', region, {
-      httpOnly: false,
-      secure: false,
-      path: '/',
-      maxAge: 60 * 60 * 24,
-      sameSite: 'Lax',
-    })
-  }
+  // Default values for geo
+  const country = geo?.country || 'NZ';
+  const city = geo?.city || 'San Francisco';
+  const userRregion = geo?.region || 'CA';
 
- 
+  const countryVersion = (country === "UM" || country === "US") ? 1 : (country === "UK" || country === "GB") ? 2 : (country === "AU" || country === "NZ") ? 3 : 4;
+  // const countryLocale = (countryVersion === 1) ? "en" : (countryVersion === 2) ? "en-GB" : (countryVersion === 3) ? "en-AU" : undefined;
+  const countryLocale = undefined;
+
+  // console.log('Geo Data:', { country, city, userRregion });
+  // console.log('Setting Cookies:', { countryVersion, countryLocale });
+  // console.log('__vs_pl',request.cookies.get('__vs_pl'));
   
-  return response
+
+  const response = NextResponse.next();
+
+  // Set cookies
+  if (countryLocale && !request.cookies.get('__vs_pl')) {
+    // console.log({countryLocale});
+    
+    response.cookies.set('__vs_pl', countryLocale, { path: "/" });
+  }
+  response.cookies.set('__vs_ver', countryVersion, { path: "/", maxAge: 60 * 60 * 24 * 365 });
+
+  return response;
 }
 
 export const config = {
-  matcher: '/',
-  matcher: '/en-GB',
-  matcher: '/en',
-}
+  matcher: ['/', '/en-GB', '/en', '/en-AU'],
+};
