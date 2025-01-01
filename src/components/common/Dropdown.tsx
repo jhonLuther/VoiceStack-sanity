@@ -25,12 +25,11 @@ function Dropdown({ items = [], value = "Select", onSelect, alt = false }: IDrop
         const localeIndex = regionItems.findIndex(item => item.locale == value);
         setSelected(regionItems[localeIndex]);
 
-    }, [value])
+    }, [value,regionItems])
 
     useEffect(() => {
-          onSelect(value);
-
-  }, [value,onSelect])
+      onSelect(value);
+    }, [value,onSelect])
 
     
     
