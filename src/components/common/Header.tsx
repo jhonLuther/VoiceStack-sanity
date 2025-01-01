@@ -145,6 +145,9 @@ const Header = ({ data }) => {
       }
     }
 
+  }, [router])
+
+  useEffect(()=>{
     //for showing region main popup
     function shouldRenderPopup() {
       const countryCd:any = getCookie("__cs_ver") ? getCookie("__cs_ver") : 1;
@@ -175,8 +178,7 @@ const Header = ({ data }) => {
       router.locale == "en-GB" ? "UK" : 
       router.locale == "en-AU" ? "ANZ" : undefined
     );
-
-  }, [router, preLocale])
+  },[router])
   
 
   useEffect(()=>{
