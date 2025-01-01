@@ -25,6 +25,7 @@ const Header = ({ data }) => {
   const [headerFixed, setHeaderFixed] = useState(false);
   const [isUk, setIsUk] = useState(false);
   const [openForm, setOpenForm] = useState(false);
+  const [restrictTopSwitcher, setRestrictTopSwitcher] = useState(false);
   const [openSwitcher, setOpenSwitcher] = useState(false);
   const [currentRegion, setCurrentRegion] = useState(null);
   const { isDemoPopUpShown } = useContext(BookDemoContext);
@@ -156,14 +157,14 @@ const Header = ({ data }) => {
         countryCd != "undefined" 
       );
     }
-    setTimeout(() => {
+    // setTimeout(() => {
       setRegionSwitcher(shouldRenderPopup);
-    }, 500);
+    // }, 500);
 
     //for showing region top banner
     function shouldRenderPopupTop() {
       return (
-        preLocale !== null &&
+        preLocale !== null && !restrictTopSwitcher &&
         preLocale !== router.locale
       );
     }
@@ -178,7 +179,7 @@ const Header = ({ data }) => {
       router.locale == "en-GB" ? "UK" : 
       router.locale == "en-AU" ? "ANZ" : undefined
     );
-  },[])
+  },[router, preLocale])
   
 
   useEffect(()=>{
@@ -238,13 +239,14 @@ const Header = ({ data }) => {
   }
 
   const goToPreferedLocale = (preferedLocale: string) => {
-    setRegionSwitcher(false);
-    setRegionSwitcherTop(false);
-    setCookie('__vs_pl', preferedLocale ?? "en");
-
+    setRestrictTopSwitcher(true);
     if(preferedLocale !== router.locale){
       window.location.href = `/${preferedLocale}`
     }
+    setRegionSwitcher(false);
+    setCookie('__vs_pl', preferedLocale ?? "en");
+    setRegionSwitcherTop(false);
+
   }
 
   
