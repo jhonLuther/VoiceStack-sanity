@@ -12,16 +12,16 @@ export async function middleware(request) {
   // const countryLocale = (countryVersion === 1) ? "en" : (countryVersion === 2) ? "en-GB" : (countryVersion === 3) ? "en-AU" : undefined;
   const countryLocale = undefined;
 
-  console.log('Geo Data:', { country, city, userRregion });
-  console.log('Setting Cookies:', { countryVersion, countryLocale });
-  console.log('__vs_pl',request.cookies.get('__vs_pl'));
+  // console.log('Geo Data:', { country, city, userRregion });
+  // console.log('Setting Cookies:', { countryVersion, countryLocale });
+  // console.log('__vs_pl',request.cookies.get('__vs_pl'));
   
 
   const response = NextResponse.next();
 
   // Set cookies
   if (countryLocale && !request.cookies.get('__vs_pl')) {
-    console.log({countryLocale});
+    // console.log({countryLocale});
     
     response.cookies.set('__vs_pl', countryLocale, { path: "/" });
   }
