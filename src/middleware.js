@@ -4,11 +4,11 @@ export async function middleware(request) {
   const { geo } = request;
 
   // Default values for geo
-  const country = geo?.country || 'US';
+  const country = geo?.country || 'NZ';
   const city = geo?.city || 'San Francisco';
   const userRregion = geo?.region || 'CA';
 
-  const countryVersion = (country === "UM" || country === "US") ? 1 : (country === "UK" || country === "GB") ? 2 : (country === "AU") ? 3 : 4;
+  const countryVersion = (country === "UM" || country === "US") ? 1 : (country === "UK" || country === "GB") ? 2 : (country === "AU" || country === "NZ") ? 3 : 4;
   // const countryLocale = (countryVersion === 1) ? "en" : (countryVersion === 2) ? "en-GB" : (countryVersion === 3) ? "en-AU" : undefined;
   const countryLocale = undefined;
 
