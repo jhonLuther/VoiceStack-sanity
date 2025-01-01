@@ -145,7 +145,7 @@ export async function featureSectionQuery(
 ) {
   const query = groq`*[_type == "testimonial" && language == $region]{...,
    
-    "testimonialImage":testimonialImage.asset->{url,_id,altText,
+    "testimonialImage":testimonialImage.asset->{url,_id,altText,title,
     metadata {
            dimensions {
              width,
@@ -154,7 +154,7 @@ export async function featureSectionQuery(
            }
     }
   },
-  "testimonialIcon":testimonialIcon.asset->{url,_id,altText,
+  "testimonialIcon":testimonialIcon.asset->{url,_id,altText,title,
     metadata {
            dimensions {
              width,
@@ -166,7 +166,7 @@ export async function featureSectionQuery(
   "testimonialSubSection":testimonialSubSection[]->{
     featureSubDescription,
     featureSubHead,
-    "image":featureChipImage.asset->{url,_id,altText,
+    "image":featureChipImage.asset->{url,_id,altText,title,
     metadata {
            dimensions {
              width,
