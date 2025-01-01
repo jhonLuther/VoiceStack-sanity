@@ -7,7 +7,6 @@ import Paragraph from '../typography/Paragraph'
 import TickIcon from './micro/icons/TickIcon'
 import PillItem from './micro/PillItem'
 import PreText from './micro/PreText'
-import PhoneIcon from './micro/icons/PhoneIcon'
 import AppearFeature from './AppearFeature'
 import Button from '../common/Button'
 import ButtonArrow from '../icons/ButtonArrow'
@@ -17,8 +16,8 @@ import { BookDemoContext } from '~/providers/BookDemoProvider'
 
 export default function FeatureSection({ data }) {
   const [openForm, setOpenForm] = useState(false)
-  const testimonialIndex = data?.findIndex(
-    (e) => e.testimonialSubSection != null,
+  const testimonialIndex: number = data?.findIndex(
+    (e: any) => e.testimonialSubSection != null,
   )
   const sampleImages = useMemo(() => {
     return (
@@ -29,57 +28,42 @@ export default function FeatureSection({ data }) {
       })) || []
     );
   }, [data, testimonialIndex]);
-  
-  
   const [activeImage, setActiveImage] = useState(null)
-  const [currentIndex, setCurrentIndex] = useState(0)
+  const [currentIndex, setActiveIndex] = useState(0)
   const featureRefs = useRef([])
-  const isMobile = useMediaQuery(767)
-  const imageRef = useRef(null)
-  const { isDemoPopUpShown } = useContext(BookDemoContext)
+  const isMobile: any = useMediaQuery(767);
+  const imageRef = useRef(null);
+  const { isDemoPopUpShown } = useContext(BookDemoContext);
 
-  const switchIndex = (percentage = 0) => {
-    if (isMobile) return
+  const switchIndex = (percentage = 25) => {
 
-    let newIndex = 0
-    if (percentage <= 25 && percentage >= 0) {
-      newIndex = 0
+    if (isMobile || sampleImages.length === 0) {
+      return;
+    }
+
+    let selectedImage = null;
+
+    if (percentage <= 25 && percentage > 0) {
+      selectedImage = sampleImages[0];
     } else if (percentage > 25 && percentage <= 50) {
-      newIndex = 1
+      selectedImage = sampleImages[1];
     } else if (percentage > 50 && percentage <= 75) {
-      newIndex = 2
+      selectedImage = sampleImages[2];
     } else if (percentage > 75 && percentage <= 100) {
-      newIndex = 3
+      selectedImage = sampleImages[3];
     }
 
-    if (sampleImages[newIndex]) {
-      setActiveImage(sampleImages[newIndex])
-      setCurrentIndex(newIndex)
+    if (selectedImage) {
+      setActiveImage(selectedImage);
     }
-  }
-
+  };
   const getIndexfromAppear = (index) => {
-    setCurrentIndex(index)
-    if (isMobile && sampleImages[index]) {
-      setActiveImage(sampleImages[index])
+    setActiveIndex(index);
+    if (isMobile) {
+      const selectedImage = sampleImages[index]?.url;
+      setActiveImage(selectedImage);
     }
-  }
-
-  useEffect(() => {
-    if (isMobile && sampleImages[currentIndex]) {
-      setActiveImage(sampleImages[currentIndex])
-    }
-    console.log('hi');
-    
-  }, [currentIndex, isMobile, sampleImages])
-
-  // console.log(activeImage, "activeImage");
-
-
-  useEffect(() => {
-    console.log(activeImage,'activeImage');
-    
-  }, [activeImage])
+  };
 
   useEffect(() => {
     if (imageRef.current) {
@@ -95,7 +79,6 @@ export default function FeatureSection({ data }) {
     <Section className="relative bg-[#f9f9f9] " id="features">
       {!isMobile && <div className='bg-white md:bg-vs-lemon-green w-1/2 h-full absolute top-0 right-0 z-0'></div>}
       <Container className={`relative flex md:gap-28 md:flex-row flex-col`}>
-
         <div className="flex md:gap-0 gap-12 md:w-1/2 w-full flex-col flex-1 pt-16">
           {data.map((feature, index) =>
             feature?.testimonialSubSection?.length ? (
@@ -109,7 +92,6 @@ export default function FeatureSection({ data }) {
                   data={feature}
                   props={data[index]}
                 />
-      
                 {isMobile &&
                   <>
                     <div
@@ -119,9 +101,10 @@ export default function FeatureSection({ data }) {
                         <AnimatePresence>
                           {sampleImages?.map((image, index) => (
                             <motion.img
-                              key={image}
-                              src={image}
-                              alt="Feature Image"
+                              key={image + index}
+                              src={image?.url}
+                              alt={image?.altText}
+                              title={image?.title}
                               animate={{ opacity: currentIndex === index ? 1 : 0 }}
                               transition={{ duration: 0.300 }}
                               className={`absolute top-0 left-0 w-auto h-auto rounded-lg max-w-full bg-black/5 md:max-h-[538px]`}
@@ -140,9 +123,8 @@ export default function FeatureSection({ data }) {
                 }
               </>
             ) : (
-
-              <div className={`md:h-[100vh] relative flex flex-col items-center ${index == 0 ? "md:mb-40":""} `} key={feature?._rev} >
-                <div ref={(el) => (featureRefs.current[index] = el)} className={`${index == 0 ? "md:pt-20 lg:pt-40 md-maxh-800:pt-20 md-maxh-700:pt-0":"md:top-[50%] md:h-[50vh] md:-translate-y-[50%] md:sticky"} mt-5 left-0 self-start flex flex-col justify-center transform`}   >
+              <div className={`md:h-[100vh] relative flex flex-col items-center ${index == 0 ? "md:mb-40" : ""} `} key={feature?._rev} >
+                <div ref={(el) => (featureRefs.current[index] = el)} className={`${index == 0 ? "md:pt-20 lg:pt-40 md-maxh-800:pt-20 md-maxh-700:pt-0" : "md:top-[50%] md:h-[50vh] md:-translate-y-[50%] md:sticky"} mt-5 left-0 self-start flex flex-col justify-center transform`}   >
                   <motion.div
                     key={index}
                     data-index={index}
@@ -157,18 +139,17 @@ export default function FeatureSection({ data }) {
                         })
                       }
                     }}
-                  
-                 
                   >
                     <PreText>
                       <span className="text-vs-blue">
                         {feature.testimonialIcon && feature.testimonialIcon.url &&
                           <div className=''>
-                            {activeImage?.url && <motion.img
-                              key={activeImage.url}
+                            <motion.img
+                              key={activeImage}
                               src={feature.testimonialIcon.url}
-                              alt="testimonial icon"
-                            />}
+                              title={feature.testimonialIcon.title}
+                              alt={feature.testimonialIcon.altText}
+                            />
                           </div>
                         }
                       </span>{' '}
@@ -187,26 +168,22 @@ export default function FeatureSection({ data }) {
                           </PillItem>
                         ))}
                     </ul>
-
                     {!isMobile && <div className='mt-8 mb-12 md:m-0 flex md:justify-start justify-center'>
                       <Button type="primary" onClick={() => { setOpenForm(true) }}>
                         <ButtonArrow></ButtonArrow>
                         <span className="text-base font-medium">{`Book free demo`}</span>
                       </Button>
                     </div>}
-
-
                     {isMobile && feature.testimonialImage && feature.testimonialImage.url &&
                       <div className='bg-vs-lemon-green mx-[-16px] h-full z-0'>
                         <motion.img
-                          key={activeImage.url}
+                          key={activeImage}
                           src={feature.testimonialImage.url}
-                          alt="Active Feature"
+                          title={feature.testimonialImage.title}
+                          alt={feature.testimonialImage.altText}
                         />
                       </div>
                     }
-
-
                     {isMobile && <div className='mt-8 mb-12 md:m-0 flex md:justify-start justify-center'>
                       <Button type="primary" onClick={() => { setOpenForm(true) }}>
                         <ButtonArrow></ButtonArrow>
@@ -219,33 +196,27 @@ export default function FeatureSection({ data }) {
             )
           )}
         </div>
-
         {/* Sticky Image Section */}
         {!isMobile && <div
           className={`relative mx-[-16px]   bg-vs-lemon-green md:w-1/2 w-auto h-full`}
         >
           <div className="sticky top-0 md:py-24 md:h-[100vh] flex flex-col justify-center md:pl-12 ">
-          {activeImage?.url && <AnimatePresence mode="wait">
+            <AnimatePresence mode="wait">
               <motion.img
-                key={activeImage.url}
-                src={activeImage.url}
-                alt={activeImage.altText}
-                title={activeImage.title}
+                key={activeImage}
+                src={activeImage?.url}
+                alt={activeImage?.altText}
+                title={activeImage?.title}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.300 }}
                 className="w-auto h-auto  rounded-lg max-w-full bg-black/5 md:max-h-[538px] "
               />
-            </AnimatePresence>}
+            </AnimatePresence>
           </div>
-
         </div>}
-
-
-
       </Container>
-
       {openForm && (
         <FormModal
           className={`pt-9  flex items-start`}
@@ -254,8 +225,6 @@ export default function FeatureSection({ data }) {
           data={isDemoPopUpShown}
         />
       )}
-
-
     </Section>
   )
 }
