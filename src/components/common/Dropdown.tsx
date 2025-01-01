@@ -32,7 +32,7 @@ function Dropdown({ items = [], value = "Select", onSelect, alt = false }: IDrop
         // setTimeout(() => {
             onSelect(value);
         // }, 300);
-    }, [value])
+    }, [value, items, onselect])
 
     
     
