@@ -18,24 +18,12 @@ function Dropdown({ items = [], value = "Select", onSelect, alt = false }: IDrop
     const router = useRouter();
     const localeValue:any = router.locale;
 
-    console.log({items, value});
+    // console.log({items, value});
     
     const regionItems = items;
     const localeIndex = regionItems.findIndex(item => item.locale == value);
     const selectedRegion = regionItems[localeIndex];
-    console.log(selectedRegion);
     
-    // onSelect(value);
-    // useEffect(() => {
-    //   setSelected(regionItems[localeIndex]);
-    //   onSelect(value);  
-
-    // },[value])
-
-    // useEffect(() => {
-      // onSelect(value);
-    // }, [value])
-
     
     
     useEffect(() => {
@@ -64,7 +52,7 @@ function Dropdown({ items = [], value = "Select", onSelect, alt = false }: IDrop
                                 return <li className='cursor-pointer hover:bg-gray-200 px-[12px] py-1' key={item.regionName} onClick={() => {
                                     setSelected(item)
                                     onSelect(item.locale)
-                                }} >{item.regionName}{item.locale}</li>
+                                }} >{item.regionName}</li>
                             })}
                         </ul>
                     </div>}
