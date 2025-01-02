@@ -86,7 +86,7 @@ export default function App({
         )}
 
       {/* Meta Pixel Code */}
-      <Script
+      <Script id='meta-pixel-code'
         strategy="afterInteractive"
         dangerouslySetInnerHTML={{
           __html: `
