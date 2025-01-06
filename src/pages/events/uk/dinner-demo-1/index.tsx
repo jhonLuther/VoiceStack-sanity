@@ -134,7 +134,7 @@ function DinnerDemo() {
           <div className="flex flex-col items-center text-center gap-2">
             {/* <!-- <p className="uppercase font-bold text-sm">Join us on</p> --> */}
             <p className="md:text-2xl text-xl font-semibold">
-              December 17th 2024, 07:00 PM BST
+              Tuesday 18th Feb & Tuesday 25th Feb  2025, 07:00 PM BST
             </p>
             <div className="flex items-center gap-1">
               <svg
