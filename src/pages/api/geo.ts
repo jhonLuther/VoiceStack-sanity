@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import type { NextFetchEvent, NextRequest } from 'next/server';
 // import countries from '../../lib/countries.json'
-import { geolocation, ipAddress } from "@vercel/edge";
+import { ipAddress } from "@vercel/edge";
 
 
 export const config = {
