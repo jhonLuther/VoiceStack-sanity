@@ -20,6 +20,8 @@ export default async function handler(req, res) {
         try{
           const response = await fetch(`https://api.hubapi.com/crm/v3/objects/contacts/${email}?idProperty=email`, requestOptionsGET)
           const data = await response.json();
+          console.log({data});
+          
 
           var raw = JSON.stringify({
               "properties": {
@@ -30,6 +32,8 @@ export default async function handler(req, res) {
                   "utm_source":req.query.source || ""
               }
           });
+
+          
 
           if(req.query.lead_source == "deploy_marketing"){
             raw = JSON.stringify({
@@ -42,6 +46,9 @@ export default async function handler(req, res) {
               }
           });
           }
+
+          
+          console.log({raw});
 
           var requestOptionsPOST = {
               method: 'PATCH',
