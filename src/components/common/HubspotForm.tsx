@@ -50,17 +50,23 @@ const HubSpotForm = ({
                 }
               },
               onFormSubmit: function (form) {
+
+                const email = form.querySelector('input[name="email"]').value
+                window2.dataLayer.push({
+                  email: email,
+                  event: eventName || 'demo_submission_uk',
+                });
+                
+                document.getElementById("successMessage").style.display = "block";
+
                 setTimeout(async () => {
-                  const email = form.querySelector('input[name="email"]').value
-                  window2.dataLayer.push({
-                    email: email,
-                    event: eventName || 'demo_submission_uk',
-                  })
                   const urlParams = new URLSearchParams(window.location.search);
                   const responseData = await fetch(
                     `/api/hs?email=${email}&source=${urlParams.get("utm_source")}&campaign=${urlParams.get("utm_campaign")}&medium=${urlParams.get("utm_medium")}&term=${urlParams.get("utm_term")}&lead_source=${urlParams.get("lead_source")}`
-                  );  
-                }, 250)
+                  ); 
+                  document.getElementById("successMessage").innerHTML = "Thank you, a VoiceStack representative will reach out to you shortly."; 
+                   
+                }, 3000)
               },
             } as any)
           }
@@ -79,7 +85,14 @@ const HubSpotForm = ({
     }
   }, [id, eventName])
 
-  return <div id="hubspotForm"></div>
+  return (
+    <>
+      <div id="hubspotForm"></div>
+      <div id="successMessage" style={{display: 'none', marginTop: '20px'}}>
+        Please wait..
+      </div>
+    </>
+  )
 }
 
 export default HubSpotForm
