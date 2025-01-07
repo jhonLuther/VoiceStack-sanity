@@ -4,7 +4,7 @@ export async function middleware(request) {
   const { geo } = request;
 
   // Default values for geo
-  const country = geo?.country || 'UK';
+  const country = geo?.country || 'NZ';
   const city = geo?.city || 'San Francisco';
   const userRregion = geo?.region || 'CA';
 

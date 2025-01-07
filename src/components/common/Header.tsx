@@ -253,7 +253,7 @@ const Header = ({ data }) => {
           </svg> */}
 
           {/* <p className='text-center text-gray-800 font-medium text-base leading-[1.5]'>You are currently viewing VoiceStack&apos;s website for the<br/> {localeCountry} region</p> */}
-          <p className='text-center text-gray-800 font-medium text-base leading-[1.5]'>You will be viewing VoiceStack&apos;s website for the<br/> {currentRegion} region</p>
+          <p className='text-center text-gray-800 font-medium text-base leading-[1.5]'>You will be viewing VoiceStack&apos;s website for the {currentRegion} region</p>
 
           <Button type="primary" onClick={() => goToPreferedLocale(_preferredLocale)} >
             <span className="text-base font-medium">
