@@ -267,7 +267,7 @@ const Header = ({ data }) => {
 
           <div className='w-full'>
             <div className="mb-[6px] w-full flex justify-center relative after:content-[''] after:absolute after:left-0 after:top-1/2 after:border-b after:border-[#E5E7EB] after:right-0 after:-z-1">
-              <span className='flex px-3 text-xs bg-white relative z-[1] text-gray-400'>Or Go to</span>
+              <span className='flex px-3 text-xs bg-white relative z-[1] text-gray-400'>Or Go To</span>
             </div>
             <div className='flex items-center justify-center gap-2'>
               {regions.map((region:any, index:number) => {
