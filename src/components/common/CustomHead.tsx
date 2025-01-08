@@ -11,7 +11,8 @@ export default function CustomHead(props) {
     <Head>
       <title>VoiceStack</title>
       <meta name="description"  content={props.siteSettings?.ogDescription}></meta>
-      <link rel="icon" href={urlForImage(props.siteSettings?.ogFavicon)} sizes="any" />
+      <link rel="icon" href={urlForImage(props.siteSettings?.ogFavicon)} sizes="any" type="image/png"/>
+      <link rel="icon" href="/favicon.ico" type="image/x-icon" />
       <meta property="og:type" content="website" />
       <meta property="og:url" content={props.siteSettings?.ogUrl} />
       <meta property="og:title" content={'VoiceStack'} />
