@@ -106,7 +106,7 @@ const HubSpotForm = ({
       )
       if (hubspotScript) hubspotScript.remove()
     }
-  }, [id, eventName])
+  }, [id, eventName, router])
 
   return (
     <>
