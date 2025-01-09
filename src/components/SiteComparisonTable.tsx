@@ -28,7 +28,7 @@ function ComparisonRichIcon({ comparisonValue, vsIndex }) {
   return (
     <>
       <div className={`py-4 md:border-b ${vsIndex ? 'border-b-vs-blue/20':'border-b-gray-200'} `}>
-        <p className="flex flex-row gap-2 justify-center md:justify-start items-center text-left flex-shrink-0">
+        <p className="flex flex-row gap-2 justify-center md:justify-center items-center text-left flex-shrink-0">
           <Image
             className="object-contain"
             src={icon.url}
