@@ -104,10 +104,10 @@ export default function SiteComparisonTable({ data, mainIndex, currentIndex, isM
                     {column.logo  && column.logo.url && !isMobile && (
 
                       <Image
-                        className="justify-center items-center w-auto max-w-[122px] m-auto"
+                        className="justify-center items-center md:w-[115px] lg:w-[135px] m-auto"
                         src={column.logo.url}
                         width={135}
-                        height={26}
+                        height={40}
                         alt="Logo"
                       />
                     )}
