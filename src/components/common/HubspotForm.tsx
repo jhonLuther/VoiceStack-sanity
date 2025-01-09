@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 
 const HubSpotForm = ({
@@ -9,7 +10,8 @@ const HubSpotForm = ({
 
 }) => {
 
-  console.log(id,eventName)
+  // console.log(id,eventName)
+  const router = useRouter();
   useEffect(() => {
     const window2: any = window
     const loadHubSpotScript = async () => {
@@ -33,7 +35,7 @@ const HubSpotForm = ({
               portalId: '4832409',
               region: 'na1',
               formId: id || '6b2d6906-028e-4d65-9cd1-34d528e0d5c0',
-              // formId: id || "cf4c05ce-6c22-43a1-90a7-d0fc94c239fd",
+              // formId: "f2fbfea3-a1e5-4e17-a506-a9d341a45458",
               
               target: '#hubspotForm',
               inlineMessage:
@@ -50,6 +52,25 @@ const HubSpotForm = ({
                 }
               },
               onFormSubmit: function (form) {
+                const formData = new FormData(form); // Extract all form values
+                const allowedFields = [
+                  "email",
+                  "company",
+                  "firstname",
+                  "lastname",
+                  "mobilephone"
+                ]; // List of valid form field names
+                const params = new URLSearchParams();
+              
+                // Filter only the allowed fields from the formData
+                for (const [key, value] of formData.entries()) {
+                  if (allowedFields.includes(key)) {
+                    params.append(key, value as string);
+                  }
+                }
+
+                // console.log({paramsstring:params.toString(), params:params});
+                
 
                 const email = form.querySelector('input[name="email"]').value
                 window2.dataLayer.push({
@@ -64,7 +85,9 @@ const HubSpotForm = ({
                   const responseData = await fetch(
                     `/api/hs?email=${email}&source=${urlParams.get("utm_source")}&campaign=${urlParams.get("utm_campaign")}&medium=${urlParams.get("utm_medium")}&term=${urlParams.get("utm_term")}&lead_source=${urlParams.get("lead_source")}`
                   ); 
-                  document.getElementById("successMessage").innerHTML = "Thank you, a VoiceStack representative will reach out to you shortly."; 
+                  // document.getElementById("successMessage").innerHTML = "Thank you, a VoiceStack representative will reach out to you shortly."; 
+                  var meetingUrl = `https://meetings.hubspot.com/carestack-dan/voicestack-website?${params.toString()}`;
+                  router.push(meetingUrl);
                    
                 }, 3000)
               },
