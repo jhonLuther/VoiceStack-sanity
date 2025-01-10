@@ -92,7 +92,6 @@ const Header = ({ data }) => {
 
     //custom geo api if middleware failed
     if (window !== undefined) {
-      console.log({country});
       
       const hasCountrySet = country !== null;
 
@@ -198,7 +197,6 @@ const Header = ({ data }) => {
   }
   
   function shouldRenderPopup() {
-    console.log({rl:router.locale}, {regionlocale:getRegionLocale()}, {countryCode});
     
     const countryCd:any = getCookie("__cs_ver") ? getCookie("__cs_ver") : 1;
     return (
@@ -236,7 +234,7 @@ const Header = ({ data }) => {
   },[router])
 
 
-  const before = "before:content-[''] before:h-[100px] before:absolute before:left-0 before:right-0 before:top-full before:bg-zinc-900";
+  const btnClass = "bg-vs-blue hover:bg-vs-blue text-white border border-vs-blue px-[17px] py-[10px] rounded-[7px] text-gray-900 font-inter text-base font-medium leading-6 flex items-center whitespace-nowrap gap-[8px]";
   return (
     <>
     {/* region popup main */}
@@ -250,7 +248,7 @@ const Header = ({ data }) => {
           {/* <p className='text-center text-gray-800 font-medium text-base leading-[1.5]'>You are currently viewing VoiceStack&apos;s website for the<br/> {localeCountry} region</p> */}
           <p className='text-center text-gray-800 font-medium text-base leading-[1.5]'>You will be viewing VoiceStack&apos;s website for the {currentRegion} region</p>
 
-          <Link href="/" locale={_preferredLocale} onClick={closeRegionPopup}>
+          <Link className={`${btnClass}`} href="/" locale={_preferredLocale} onClick={closeRegionPopup}>
             <span className="text-base font-medium">
               Continue with VoiceStack {currentRegion}
             </span>
