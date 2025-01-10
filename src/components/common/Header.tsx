@@ -208,14 +208,22 @@ const Header = ({ data }) => {
   }
 
  
-  useEffect(()=>{
-    //for showing region main popup
-    const timer2 = setTimeout(() => {
-      setRegionSwitcher(shouldRenderPopup)
-    }, 500); 
+  // useEffect(()=>{
+  //   //for showing region main popup
+  //   const timer2 = setTimeout(() => {
+  //     setRegionSwitcher(shouldRenderPopup)
+  //   }, 500); 
 
-    return () => clearTimeout(timer2); 
-  })
+  //   return () => clearTimeout(timer2); 
+  // },[])
+
+  useEffect(() => {
+    const initialValue = shouldRenderPopup;
+    const timer2 = setTimeout(() => {
+      setRegionSwitcher(initialValue)
+    }, 500);
+    return () => clearTimeout(timer2);
+  }, [])
 
   useEffect(()=>{
 
