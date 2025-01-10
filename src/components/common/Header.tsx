@@ -14,7 +14,7 @@ import ChevronUp from '../icons/ChevronDown';
 import Script from 'next/script';
 import useMediaQuery from '~/utils/mediaQuery';
 import { BookDemoContext } from '~/providers/BookDemoProvider';
-import { getCookie, setCookie } from '~/utils/cookie';
+import { eraseCookie, getCookie, setCookie } from '~/utils/cookie';
 import Dropdown from './Dropdown';
 
 
@@ -37,6 +37,17 @@ const Header = ({ data }) => {
   
   const geoPath ="/api/geo";
   const preLocale = getCookie("__vs_pl");
+  const noPopup = getCookie("__vs_np");
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (noPopup !== null) {
+        eraseCookie("__vs_np");
+      }
+    }, 1000); // Adjust the delay as needed
+
+    return () => clearTimeout(timer); // Cleanup the timeout on unmount
+  }, []);
 
   
   const regions = [
@@ -144,7 +155,8 @@ const Header = ({ data }) => {
     function shouldRenderPopup() {
       const countryCd:any = getCookie("__cs_ver") ? getCookie("__cs_ver") : 1;
       return (
-        preLocale == null &&
+        // preLocale == null &&
+        noPopup == null && 
         countryCd != "undefined" 
       );
     }
@@ -160,9 +172,9 @@ const Header = ({ data }) => {
       );
     }
 
-    setTimeout(() => {
-      setRegionSwitcherTop(shouldRenderPopupTop);
-    }, 500);
+    // setTimeout(() => {
+    //   setRegionSwitcherTop(shouldRenderPopupTop);
+    // }, 500);
 
     //for localeCountry
     setLocaleCountry(
@@ -230,13 +242,18 @@ const Header = ({ data }) => {
 
   const goToPreferedLocale = (preferedLocale: string) => {
     setRestrictTopSwitcher(true);
-    if(preferedLocale !== router.locale){
+
+    // if(preferedLocale !== router.locale){
       preferedLocale == "en" ? window.location.href = `/` : window.location.href = `/${preferedLocale}`
-    }
+    // }
+    setCookie('__vs_np', "true"); //this is to not show the main popup on region switcher select
     setRegionSwitcher(false);
     setCookie('__vs_pl', preferedLocale ?? "en");
     setRegionSwitcherTop(false);
+  }
 
+  const cookieNoPopup = () => {
+    setCookie('__vs_np', "true"); //this is to not show the main popup on region switcher select
   }
 
   
@@ -404,7 +421,7 @@ const Header = ({ data }) => {
                               </div>
                             ):(
 
-                            <a href={region.url} className='flex gap-2 items-center'>
+                            <a href={region.url} className='flex gap-2 items-center' onClick={cookieNoPopup}>
                               <Image 
                                 src={region.flag.url} 
                                 alt={region.flag.title} 
@@ -491,7 +508,7 @@ const Header = ({ data }) => {
                           </div>
                         ):(
 
-                        <a href={region.url} className='flex gap-2 items-center py-[6px] pl-[6px] border-b border-gray-200 last:border-none'>
+                        <a href={region.url} className='flex gap-2 items-center py-[6px] pl-[6px] border-b border-gray-200 last:border-none'  onClick={cookieNoPopup}>
                           <Image 
                             src={region.flag.url} 
                             alt={region.flag.title} 
