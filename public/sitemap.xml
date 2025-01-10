@@ -3,25 +3,36 @@
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://www.voicestack.com/</loc>
-    <xhtml:link
-               rel="alternate"  
-               
-               hreflang="en"
-               href="https://www.voicestack.com/"/>
+    
     <xhtml:link
                rel="alternate"
                hreflang="en-GB"
                href="https://www.voicestack.com/en-GB"/>
+    <xhtml:link
+               rel="alternate"
+               hreflang="en-AU"
+               href="https://www.voicestack.com/en-AU"/>
   </url>
   <url>
     <loc>https://www.voicestack.com/en-GB</loc>
     <xhtml:link
                rel="alternate"
+               hreflang="en-AU"
+               href="https://www.voicestack.com/en-AU"/>
+    <xhtml:link
+               rel="alternate"
+               hreflang="en-US"
+               href="https://www.voicestack.com/"/>
+  </url>
+  <url>
+    <loc>https://www.voicestack.com/en-AU</loc>
+    <xhtml:link
+               rel="alternate"
                hreflang="en-GB"
                href="https://www.voicestack.com/en-GB"/>
     <xhtml:link
                rel="alternate"
-               hreflang="en"
+               hreflang="en-US"
                href="https://www.voicestack.com/"/>
   </url>
 </urlset>
