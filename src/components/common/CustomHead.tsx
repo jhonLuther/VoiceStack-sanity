@@ -9,7 +9,7 @@ export default function CustomHead(props) {
 
   return (
     <Head>
-      <title>VoiceStack</title>
+      <title>VoiceStack® | AI Powered Enterprise Phone System</title>
       <meta name="description"  content={props.siteSettings?.ogDescription}></meta>
       <link rel="icon" href={urlForImage(props.siteSettings?.ogFavicon)} sizes="any" type="image/png"/>
       <link rel="icon" href="/favicon.ico" type="image/x-icon" />
