@@ -47,7 +47,7 @@ const Header = ({ data }) => {
     }, 1000); // Adjust the delay as needed
 
     return () => clearTimeout(timer); // Cleanup the timeout on unmount
-  }, [noPopup]);
+  }, []);
 
   
   const regions = [
@@ -218,7 +218,7 @@ const Header = ({ data }) => {
   useEffect(()=>{
     //for showing region main popup
     function shouldRenderPopup() {
-      console.log({rl:router.locale}, {regionlocale:getRegionLocale()}, {countryCode});
+      console.log({rl:router.locale}, {regionlocale:getRegionLocale()});
       
       const countryCd:any = getCookie("__cs_ver") ? getCookie("__cs_ver") : 1;
       return (
