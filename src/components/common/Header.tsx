@@ -47,7 +47,7 @@ const Header = ({ data }) => {
     }, 1000); // Adjust the delay as needed
 
     return () => clearTimeout(timer); // Cleanup the timeout on unmount
-  }, []);
+  }, [noPopup]);
 
   
   const regions = [
@@ -143,7 +143,7 @@ const Header = ({ data }) => {
 
     
 
-  }, [router])
+  }, [router, country])
 
   
 
@@ -250,7 +250,7 @@ const Header = ({ data }) => {
       router.locale == "en-GB" ? "UK" : 
       router.locale == "en-AU" ? "ANZ" : undefined
     );
-  },[router, preLocale, restrictTopSwitcher])
+  },[router, preLocale, restrictTopSwitcher, country, noPopup, getRegionLocale])
 
   const goToPreferedLocale = (preferedLocale: string) => {
     setRestrictTopSwitcher(true);
