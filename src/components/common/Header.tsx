@@ -239,7 +239,12 @@ const Header = ({ data }) => {
     setRegionSwitcherTop(false);
 
   }
-
+  <Head>
+    <link rel="alternate" hrefLang="en-us" href="https://www.voicestack.com" />
+    <link rel="alternate" hrefLang="en-gb" href="https://www.voicestack.com/en-GB" />
+    <link rel="alternate" hrefLang="en-au" href="https://www.voicestack.com/en-AU" />
+    <link rel="alternate" hrefLang="x-default" href="https://www.voicestack.com" />
+  </Head>
   
 
   const before = "before:content-[''] before:h-[100px] before:absolute before:left-0 before:right-0 before:top-full before:bg-zinc-900";
