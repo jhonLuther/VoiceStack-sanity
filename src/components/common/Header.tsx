@@ -1,4 +1,5 @@
-import React, { useCallback, useContext, useEffect, useRef, useState } from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { CloseIcon } from '@sanity/icons'
@@ -196,7 +197,7 @@ const Header = ({ data }) => {
     : null;
   }
   
-  const shouldRenderPopup = useCallback(() => {
+  function shouldRenderPopup() {
     console.log({rl:router.locale}, {regionlocale:getRegionLocale()}, {countryCode});
     
     const countryCd:any = getCookie("__cs_ver") ? getCookie("__cs_ver") : 1;
@@ -205,7 +206,7 @@ const Header = ({ data }) => {
       router.locale !== getRegionLocale() &&
       countryCd != "undefined" 
     );
-  },[])
+  }
 
  
   // useEffect(()=>{
@@ -218,11 +219,10 @@ const Header = ({ data }) => {
   // },[])
 
   useEffect(() => {
-    const initialValue = shouldRenderPopup;
-    const timer2 = setTimeout(() => {
-      setRegionSwitcher(initialValue)
+    const timer = setTimeout(() => {
+      setRegionSwitcher(shouldRenderPopup)
     }, 500);
-    return () => clearTimeout(timer2);
+    return () => clearTimeout(timer);
   }, [])
 
   useEffect(()=>{
