@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { CloseIcon } from '@sanity/icons'
@@ -196,7 +196,7 @@ const Header = ({ data }) => {
     : null;
   }
   
-  function shouldRenderPopup() {
+  const shouldRenderPopup = useCallback(() => {
     console.log({rl:router.locale}, {regionlocale:getRegionLocale()}, {countryCode});
     
     const countryCd:any = getCookie("__cs_ver") ? getCookie("__cs_ver") : 1;
@@ -205,7 +205,7 @@ const Header = ({ data }) => {
       router.locale !== getRegionLocale() &&
       countryCd != "undefined" 
     );
-  }
+  },[])
 
  
   // useEffect(()=>{
