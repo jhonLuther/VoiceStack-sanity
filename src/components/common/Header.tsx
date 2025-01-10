@@ -38,19 +38,6 @@ const Header = ({ data }) => {
   const geoPath ="/api/geo";
   const preLocale = getCookie("__vs_pl");
   const noPopup = getCookie("__vs_np");
-  const isFirstLoad = useRef(true);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      if (noPopup !== null) {
-        eraseCookie("__vs_np");
-      }
-    }, 1000); // Adjust the delay as needed
-
-    return () => clearTimeout(timer); // Cleanup the timeout on unmount
-  }, []);
-  
-
   
   const regions = [
     {
@@ -147,8 +134,6 @@ const Header = ({ data }) => {
 
   }, [router, country])
 
-  
-
   useEffect(()=>{
     setPreferredLocale(countryCode === "2" ? "en-GB": countryCode === "3" ? "en-AU" : "en");
     setCurrentRegion(countryCode === "2" ? "UK": countryCode === "3" ? "ANZ" : "USA");
@@ -194,7 +179,6 @@ const Header = ({ data }) => {
     };
   }, []);
 
-
   useEffect(() => {
     window.addEventListener("scroll", handleScrollMob);
     return () => {
@@ -214,9 +198,8 @@ const Header = ({ data }) => {
     : null;
   }
   
-  //for showing region main popup
   function shouldRenderPopup() {
-    console.log({rl:router.locale}, {regionlocale:getRegionLocale()});
+    console.log({rl:router.locale}, {regionlocale:getRegionLocale()}, {countryCode});
     
     const countryCd:any = getCookie("__cs_ver") ? getCookie("__cs_ver") : 1;
     return (
@@ -226,11 +209,26 @@ const Header = ({ data }) => {
       countryCd != "undefined" 
     );
   }
+
   
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (noPopup !== null) {
+        eraseCookie("__vs_np");
+      }
+    }, 1000); // Adjust the delay as needed
+
+    return () => clearTimeout(timer); // Cleanup the timeout on unmount
+  }, []);
+
   useEffect(()=>{
+    //for showing region main popup
     setTimeout(() => {
       setRegionSwitcher(shouldRenderPopup);
     }, 500);
+  },[])
+
+  useEffect(()=>{
 
     //for showing region top banner
     // function shouldRenderPopupTop() {
@@ -258,7 +256,7 @@ const Header = ({ data }) => {
     // if(preferedLocale !== router.locale){
       preferedLocale == "en" ? window.location.href = `/` : window.location.href = `/${preferedLocale}`
     // }
-    cookieNoPopup; //this is to not show the main popup on region switcher select
+    setCookie('__vs_np', "true"); //this is to not show the main popup on region switcher select
     setCookie('__vs_pl', preferedLocale ?? "en");
     setRegionSwitcher(false);
     setRegionSwitcherTop(false);
