@@ -17,6 +17,7 @@ import useMediaQuery from '~/utils/mediaQuery';
 import { BookDemoContext } from '~/providers/BookDemoProvider';
 import { eraseCookie, getCookie, setCookie } from '~/utils/cookie';
 import Dropdown from './Dropdown';
+import Head from 'next/head';
 
 
 
@@ -195,6 +196,12 @@ const Header = ({ data }) => {
     : country === "3" ? "en-AU"
     : null;
   }
+  <Head>
+    <link rel="alternate" hrefLang="en-us" href="https://www.voicestack.com" />
+    <link rel="alternate" hrefLang="en-gb" href="https://www.voicestack.com/en-GB" />
+    <link rel="alternate" hrefLang="en-au" href="https://www.voicestack.com/en-AU" />
+    <link rel="alternate" hrefLang="x-default" href="https://www.voicestack.com" />
+  </Head>
   
   function shouldRenderPopup() {
     
@@ -237,6 +244,13 @@ const Header = ({ data }) => {
   const btnClass = "bg-vs-blue hover:bg-vs-blue text-white border border-vs-blue px-[17px] py-[10px] rounded-[7px] text-gray-900 font-inter text-base font-medium leading-6 flex items-center whitespace-nowrap gap-[8px]";
   return (
     <>
+      <Head>
+        <link rel="alternate" hrefLang="en-us" href="https://www.voicestack.com" />
+        <link rel="alternate" hrefLang="en-gb" href="https://www.voicestack.com/en-GB" />
+        <link rel="alternate" hrefLang="en-au" href="https://www.voicestack.com/en-AU" />
+        <link rel="alternate" hrefLang="x-default" href="https://www.voicestack.com" />
+      </Head>
+      
     {/* region popup main */}
     {regionSwitcher &&  
       <div className="fixed bg-[hsla(0,0%,9%,0.6)] h-screen w-screen z-[999] flex justify-center items-center">
