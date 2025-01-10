@@ -38,6 +38,7 @@ const Header = ({ data }) => {
   const geoPath ="/api/geo";
   const preLocale = getCookie("__vs_pl");
   const noPopup = getCookie("__vs_np");
+  const isFirstLoad = useRef(true);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -48,6 +49,7 @@ const Header = ({ data }) => {
 
     return () => clearTimeout(timer); // Cleanup the timeout on unmount
   }, []);
+  
 
   
   const regions = [
@@ -152,13 +154,10 @@ const Header = ({ data }) => {
     setCurrentRegion(countryCode === "2" ? "UK": countryCode === "3" ? "ANZ" : "USA");
   },[countryCode])
 
-  
-
   useEffect(()=>{
     setCurrentLocale(router.locale);   
   },[router?.locale])
  
-
   const closeMenu = () => {
     setShowMenu(false);
   };
@@ -215,30 +214,31 @@ const Header = ({ data }) => {
     : null;
   }
   
+  //for showing region main popup
+  function shouldRenderPopup() {
+    console.log({rl:router.locale}, {regionlocale:getRegionLocale()});
+    
+    const countryCd:any = getCookie("__cs_ver") ? getCookie("__cs_ver") : 1;
+    return (
+      // preLocale == null &&
+      noPopup == null && 
+      router.locale !== getRegionLocale() &&
+      countryCd != "undefined" 
+    );
+  }
+  
   useEffect(()=>{
-    //for showing region main popup
-    function shouldRenderPopup() {
-      console.log({rl:router.locale}, {regionlocale:getRegionLocale()});
-      
-      const countryCd:any = getCookie("__cs_ver") ? getCookie("__cs_ver") : 1;
-      return (
-        // preLocale == null &&
-        noPopup == null && 
-        router.locale !== getRegionLocale() &&
-        countryCd != "undefined" 
-      );
-    }
     setTimeout(() => {
       setRegionSwitcher(shouldRenderPopup);
     }, 500);
 
     //for showing region top banner
-    function shouldRenderPopupTop() {
-      return (
-        preLocale !== null && !restrictTopSwitcher &&
-        preLocale !== router.locale
-      );
-    }
+    // function shouldRenderPopupTop() {
+    //   return (
+    //     preLocale !== null && !restrictTopSwitcher &&
+    //     preLocale !== router.locale
+    //   );
+    // }
 
     // setTimeout(() => {
     //   setRegionSwitcherTop(shouldRenderPopupTop);
@@ -250,7 +250,7 @@ const Header = ({ data }) => {
       router.locale == "en-GB" ? "UK" : 
       router.locale == "en-AU" ? "ANZ" : undefined
     );
-  },[router, preLocale, restrictTopSwitcher, country, noPopup, getRegionLocale])
+  },[router])
 
   const goToPreferedLocale = (preferedLocale: string) => {
     setRestrictTopSwitcher(true);
@@ -258,7 +258,7 @@ const Header = ({ data }) => {
     // if(preferedLocale !== router.locale){
       preferedLocale == "en" ? window.location.href = `/` : window.location.href = `/${preferedLocale}`
     // }
-    setCookie('__vs_np', "true"); //this is to not show the main popup on region switcher select
+    cookieNoPopup; //this is to not show the main popup on region switcher select
     setCookie('__vs_pl', preferedLocale ?? "en");
     setRegionSwitcher(false);
     setRegionSwitcherTop(false);
