@@ -250,6 +250,13 @@ const Header = ({ data }) => {
   const before = "before:content-[''] before:h-[100px] before:absolute before:left-0 before:right-0 before:top-full before:bg-zinc-900";
   return (
     <>
+      <Head>
+        <link rel="alternate" hrefLang="en-us" href="https://www.voicestack.com" />
+        <link rel="alternate" hrefLang="en-gb" href="https://www.voicestack.com/en-GB" />
+        <link rel="alternate" hrefLang="en-au" href="https://www.voicestack.com/en-AU" />
+        <link rel="alternate" hrefLang="x-default" href="https://www.voicestack.com" />
+      </Head>
+      
     {/* region popup main */}
     {regionSwitcher &&  
       <div className="fixed bg-[hsla(0,0%,9%,0.6)] h-screen w-screen z-[999] flex justify-center items-center">
