@@ -98,12 +98,13 @@ const Header = ({ data }) => {
   const isMobile = useMediaQuery(767);
 
   // console.log({matchedRegion});
-  
+  const country:any = getCookie("__vs_ver");
   useEffect(() => {
 
     //custom geo api if middleware failed
     if (window !== undefined) {
-      const country:any = getCookie("__vs_ver");
+      console.log({country});
+      
       const hasCountrySet = country !== null;
 
       if (!hasCountrySet) {
@@ -137,7 +138,6 @@ const Header = ({ data }) => {
       } 
       else {
         setCountryCode(country);
-        
       }
     }
 
@@ -145,45 +145,13 @@ const Header = ({ data }) => {
 
   }, [router])
 
+  
+
   useEffect(()=>{
     setPreferredLocale(countryCode === "2" ? "en-GB": countryCode === "3" ? "en-AU" : "en");
     setCurrentRegion(countryCode === "2" ? "UK": countryCode === "3" ? "ANZ" : "USA");
   },[countryCode])
 
-  useEffect(()=>{
-    //for showing region main popup
-    function shouldRenderPopup() {
-      const countryCd:any = getCookie("__cs_ver") ? getCookie("__cs_ver") : 1;
-      return (
-        // preLocale == null &&
-        noPopup == null && 
-        
-        countryCd != "undefined" 
-      );
-    }
-    // setTimeout(() => {
-      setRegionSwitcher(shouldRenderPopup);
-    // }, 500);
-
-    //for showing region top banner
-    function shouldRenderPopupTop() {
-      return (
-        preLocale !== null && !restrictTopSwitcher &&
-        preLocale !== router.locale
-      );
-    }
-
-    // setTimeout(() => {
-    //   setRegionSwitcherTop(shouldRenderPopupTop);
-    // }, 500);
-
-    //for localeCountry
-    setLocaleCountry(
-      router.locale == "en" ? "USA" : 
-      router.locale == "en-GB" ? "UK" : 
-      router.locale == "en-AU" ? "ANZ" : undefined
-    );
-  },[router, preLocale, restrictTopSwitcher])
   
 
   useEffect(()=>{
@@ -240,6 +208,49 @@ const Header = ({ data }) => {
     setRegionSwitcherTop(false);
     setCookie('__vs_pl', router.locale ?? "en")
   }
+  const getRegionLocale = () => {
+    return country === "1" ? "en"
+    : country === "2" ? "en-GB"
+    : country === "3" ? "en-AU"
+    : null;
+  }
+  
+  useEffect(()=>{
+    //for showing region main popup
+    function shouldRenderPopup() {
+      console.log({rl:router.locale}, {regionlocale:getRegionLocale()}, {countryCode});
+      
+      const countryCd:any = getCookie("__cs_ver") ? getCookie("__cs_ver") : 1;
+      return (
+        // preLocale == null &&
+        noPopup == null && 
+        router.locale !== getRegionLocale() &&
+        countryCd != "undefined" 
+      );
+    }
+    setTimeout(() => {
+      setRegionSwitcher(shouldRenderPopup);
+    }, 500);
+
+    //for showing region top banner
+    function shouldRenderPopupTop() {
+      return (
+        preLocale !== null && !restrictTopSwitcher &&
+        preLocale !== router.locale
+      );
+    }
+
+    // setTimeout(() => {
+    //   setRegionSwitcherTop(shouldRenderPopupTop);
+    // }, 500);
+
+    //for localeCountry
+    setLocaleCountry(
+      router.locale == "en" ? "USA" : 
+      router.locale == "en-GB" ? "UK" : 
+      router.locale == "en-AU" ? "ANZ" : undefined
+    );
+  },[router, preLocale, restrictTopSwitcher])
 
   const goToPreferedLocale = (preferedLocale: string) => {
     setRestrictTopSwitcher(true);
@@ -248,8 +259,8 @@ const Header = ({ data }) => {
       preferedLocale == "en" ? window.location.href = `/` : window.location.href = `/${preferedLocale}`
     // }
     setCookie('__vs_np', "true"); //this is to not show the main popup on region switcher select
-    setRegionSwitcher(false);
     setCookie('__vs_pl', preferedLocale ?? "en");
+    setRegionSwitcher(false);
     setRegionSwitcherTop(false);
   }
 
@@ -257,7 +268,6 @@ const Header = ({ data }) => {
     setCookie('__vs_np', "true"); //this is to not show the main popup on region switcher select
   }
 
-  
 
   const before = "before:content-[''] before:h-[100px] before:absolute before:left-0 before:right-0 before:top-full before:bg-zinc-900";
   return (
