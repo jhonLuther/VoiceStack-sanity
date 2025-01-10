@@ -129,8 +129,6 @@ const Header = ({ data }) => {
       }
     }
 
-    
-
   }, [router, country])
 
   useEffect(()=>{
@@ -190,6 +188,7 @@ const Header = ({ data }) => {
     setRegionSwitcherTop(false);
     setCookie('__vs_pl', router.locale ?? "en")
   }
+
   const getRegionLocale = () => {
     return country === "1" ? "en"
     : country === "2" ? "en-GB"
@@ -216,7 +215,7 @@ const Header = ({ data }) => {
     }, 500); 
 
     return () => clearTimeout(timer2); 
-  },[])
+  })
 
   useEffect(()=>{
 
