@@ -124,6 +124,13 @@ export default defineType({
       type: 'string',
       
     }),
+
+    defineField({
+      name: 'canonical',
+      title: 'Canonical',
+      type: 'string',
+      
+    }),
         
     defineField({
       name: 'contactEmail',
