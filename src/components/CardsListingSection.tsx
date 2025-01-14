@@ -5,14 +5,17 @@ import SingleSiteIcon from './icons/SingleSiteIcon';
 import MultiSiteIcon from './icons/MultiSiteIcon';
 import StartupIcon from './icons/StartupIcon';
 import H3 from './typography/H3';
+import { useRouter } from 'next/router';
 
 const CardsListingSection = () => {
+
+  const router = useRouter();
 
 
   const cardsListing = [
     { 
       heading: "Single Site Dental Practices", 
-      description:"Easy to use, yet powerful front office workflows to make staff members more productive.",
+      description: router.locale == "en-GB" ? "Easy to use, yet powerful workflows to make staff members more productive." : "Easy to use, yet powerful front office workflows to make staff members more productive.",
       icon: SingleSiteIcon 
     },
     {
