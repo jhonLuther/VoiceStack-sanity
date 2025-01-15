@@ -18,6 +18,7 @@ import { BookDemoContext } from '~/providers/BookDemoProvider';
 import { eraseCookie, getCookie, setCookie } from '~/utils/cookie';
 import Dropdown from './Dropdown';
 import Head from 'next/head';
+import ProgressBar from '~/utils/progressBar/progressBar'
 
 
 
@@ -250,7 +251,7 @@ const Header = ({ data }) => {
         <link rel="alternate" hrefLang="en-au" href="https://www.voicestack.com/en-AU" />
         <link rel="alternate" hrefLang="x-default" href="https://www.voicestack.com" />
       </Head>
-      
+      <ProgressBar/>
     {/* region popup main */}
     {regionSwitcher &&  
       <div className="fixed bg-[hsla(0,0%,9%,0.6)] h-screen w-screen z-[999] flex justify-center items-center">
