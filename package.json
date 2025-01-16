@@ -38,6 +38,7 @@
     "sanity": "3.28.0",
     "sanity-plugin-iframe-pane": "2.6.1",
     "sanity-plugin-media": "^2.3.2",
+    "sharp": "^0.33.5",
     "slick-carousel": "^1.8.1",
     "styled-components": "6.1.8",
     "tailwind-merge": "^2.5.4",
