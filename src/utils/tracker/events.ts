@@ -1,7 +1,7 @@
-import { getQueryParamFromLink } from "helpers/getQueryParams";
+import { getQueryParamFromLink } from "~/helpers/getQueryParams";
 import { getCookie } from "./cookie";
 import { getSession } from "./session";
-import {cookieSelector} from 'helpers/cookieSelector'
+import {cookieSelector} from '~/helpers/cookieSelector'
 
 
 interface ITrackEvent {
