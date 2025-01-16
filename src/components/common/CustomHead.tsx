@@ -6,13 +6,15 @@ import { urlForImage } from '~/lib/sanity.image'
 export default function CustomHead(props) {
   const SchemaData = formatOrganizationSchema(props.siteSettings.seoSettings)
   const jsonLdData = JSON.parse(props.siteSettings.injectJSONld)
+  
 
   return (
     <Head>
-      <title>VoiceStack</title>
+      <title>VoiceStack® | AI Powered Enterprise Phone System</title>
       <meta name="description"  content={props.siteSettings?.ogDescription}></meta>
       <link rel="icon" href={urlForImage(props.siteSettings?.ogFavicon)} sizes="any" type="image/png"/>
       <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+      <link rel="canonical" href={props?.homeSettings?.canonical} />
       <meta property="og:type" content="website" />
       <meta property="og:url" content={props.siteSettings?.ogUrl} />
       <meta property="og:title" content={'VoiceStack'} />

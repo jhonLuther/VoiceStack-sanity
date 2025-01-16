@@ -12,6 +12,33 @@ const config = {
     locales: ['en', 'en-GB','en-AU'],
     defaultLocale: 'en'
   },
+
+  async rewrites() {
+   
+    return [
+      
+      {
+        source: '/en-gb',
+        destination: '/en-GB',
+        locale: false,
+      },
+      {
+        source: '/en-gb/:path*',
+        destination: '/en-GB/:path*',
+        locale: false,
+      },
+      {
+        source: '/en-au',
+        destination: '/en-AU',
+        locale: false,
+      },
+      {
+        source: '/en-au/:path*',
+        destination: '/en-AU/:path*',
+        locale: false,
+      },
+    ];
+  },
   
 }
 

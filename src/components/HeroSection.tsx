@@ -8,6 +8,7 @@ import { VideoItem, VideoModal } from './common/VideoModal'
 import device from 'public/assets/voicestack-device.png'
 import voicestack from 'public/assets/voicestack-ui.png'
 import voicemail from 'public/assets/voicemail.png'
+import voiceMobile from 'public/assets/VoiceStack Mobile.png'
 import Image from 'next/image'
 import { PortableText } from '@portabletext/react'
 import { FormModal } from './common/FormModal'
@@ -146,7 +147,7 @@ const HeroSection = ({ data }) => {
               <div className="absolute right-0 bottom-[-40px] lg:bottom-auto lg:top-0 min-w-[105px] w-[30%] md:w-[25%]">
                 <Image
                   className="w-full h-full object-cover"
-                  src={voicemail}
+                  src={voiceMobile}
                   alt="voicemail"
                   title="Voice Mail"
                 ></Image>

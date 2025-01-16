@@ -28,7 +28,7 @@ function ComparisonRichIcon({ comparisonValue, vsIndex }) {
   return (
     <>
       <div className={`py-4 md:border-b ${vsIndex ? 'border-b-vs-blue/20':'border-b-gray-200'} `}>
-        <p className="flex flex-row gap-2 justify-center md:justify-start items-center text-left flex-shrink-0">
+        <p className="flex flex-row gap-2 justify-center md:justify-center items-center text-left flex-shrink-0">
           <Image
             className="object-contain"
             src={icon.url}
@@ -104,10 +104,10 @@ export default function SiteComparisonTable({ data, mainIndex, currentIndex, isM
                     {column.logo  && column.logo.url && !isMobile && (
 
                       <Image
-                        className="justify-center items-center w-auto max-w-[122px] m-auto"
+                        className="justify-center items-center md:w-[115px] lg:w-[135px] m-auto"
                         src={column.logo.url}
                         width={135}
-                        height={26}
+                        height={40}
                         alt="Logo"
                       />
                     )}
