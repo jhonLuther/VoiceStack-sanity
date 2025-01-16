@@ -32,7 +32,7 @@ import { getClient } from '~/lib/sanity.client'
 import { isEmpty } from 'lodash'
 import { useContext, useEffect } from 'react'
 
-export const getServerSideProps: GetStaticProps<any> = async ({
+export const getStaticProps: GetStaticProps<any> = async ({
   locale,
   draftMode = false,
 }) => {
@@ -69,7 +69,7 @@ export const getServerSideProps: GetStaticProps<any> = async ({
 }
 
 export default function IndexPage(
-  props: InferGetStaticPropsType<typeof getServerSideProps>,
+  props: InferGetStaticPropsType<any>,
 ) {
 
   const { className, ...rProps} = props
