@@ -6,6 +6,7 @@ import { lazy } from 'react'
 import Layout from '../components/Layout'
 import Script from 'next/script'
 import { useRouter } from 'next/router'
+import { getCookie } from '~/utils/cookie'
 
 export interface SharedPageProps {
   heroSectionData(heroSectionData: any): any
@@ -15,7 +16,8 @@ export interface SharedPageProps {
   token: string
 }
 
-const PreviewProvider = lazy(() => import('~/components/PreviewProvider'))
+const PreviewProvider = lazy(() => import('~/components/PreviewProvider'));
+const countryCode = getCookie("__vs_ver");
 
 const mono = IBM_Plex_Mono({
   variable: '--font-family-mono',
@@ -79,7 +81,7 @@ export default function App({
         </Script>
 
         {/* Start cookieyes banner */}
-        {router.locale === 'en-GB' && (
+        {countryCode && countryCode == "2" && (
           <Script id="cookieyes" strategy="afterInteractive" 
             src="https://cdn-cookieyes.com/client_data/892b60d226bd40003a3303d6/script.js">
           </Script>
