@@ -1,7 +1,7 @@
 import '~/styles/global.css'
 
 import type { AppProps } from 'next/app'
-import { IBM_Plex_Mono, Inter, PT_Serif,Poppins } from 'next/font/google'
+
 import { lazy } from 'react'
 import Layout from '../components/Layout'
 import Script from 'next/script'
@@ -13,6 +13,23 @@ import { addEvent } from '~/utils/tracker/events'
 import { getSession } from '~/utils/tracker/session'
 import { getUser } from '~/utils/tracker/user'
 import { cookieSelector } from '~/helpers/cookieSelector'
+import { Inter, Manrope } from 'next/font/google'
+
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+  display: 'swap',
+  weight: ['200', '300', '400', '500', '600', '700', '800', '900'],
+})
+
+const manrope = Manrope({
+  subsets: ['latin'],
+  variable: '--font-manrope',
+  display: 'swap',
+  weight: ['200', '300', '400', '500', '600', '700', '800'],
+})
+
+
 
 export interface SharedPageProps {
   heroSectionData(heroSectionData: any): any
@@ -25,33 +42,29 @@ export interface SharedPageProps {
 const PreviewProvider = lazy(() => import('~/components/PreviewProvider'));
 const countryCode = getCookie("__vs_ver");
 
-const mono = IBM_Plex_Mono({
-  variable: '--font-family-mono',
-  subsets: ['latin'],
-  weight: ['500', '700'],
-})
-
-// const sans = Inter({
-//   variable: '--font-family-sans',
+// const mono = IBM_Plex_Mono({
+//   variable: '--font-family-mono',
 //   subsets: ['latin'],
-//   weight: ['300', '400', '500', '700', '800'],
+//   weight: ['500', '700'],
 // })
 
-const poppins = Poppins({
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-poppins',
-  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900']
-});
+
+
+// const poppins = Poppins({
+//   subsets: ['latin'],
+//   display: 'swap',
+//   variable: '--font-poppins',
+//   weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900']
+// });
 
 
 
-const serif = PT_Serif({
-  variable: '--font-family-serif',
-  style: ['normal', 'italic'],
-  subsets: ['latin'],
-  weight: ['400', '700'],
-})
+// const serif = PT_Serif({
+//   variable: '--font-family-serif',
+//   style: ['normal', 'italic'],
+//   subsets: ['latin'],
+//   weight: ['400', '700'],
+// })
 
 function App({
   Component,
@@ -60,8 +73,16 @@ function App({
   const { draftMode, token } = pageProps
   const router = useRouter();
   return (
-    <>
+    <main className={`${inter.variable} ${manrope.variable} font-sans`}>
       <TrackUserProvider>
+      {/* <style jsx global>{`
+          body {
+            font-family: ${inter.style.fontFamily};
+          }
+          .manrope {
+            font-family: ${manrope.style.fontFamily};
+          }
+        `}</style> */}
 
         {/* Google Analytics */}
         <Script
@@ -130,28 +151,19 @@ function App({
           style={{ display: 'none', visibility: 'hidden' }}></iframe></noscript>
         {/* <!--[END Google Tag Manager (noscript)]--> */}
       
-        <style jsx global>
-          {`
-            :root {
-          
-              --font-family-sans: ${poppins.style.fontFamily};
-              --font-family-serif: ${serif.style.fontFamily};
-              --font-family-mono: ${mono.style.fontFamily};
-            }
-          `}
-        </style>
+        
         {draftMode ? (
           <PreviewProvider token={token}>
-            <Component {...pageProps} className={poppins.className}/>
+            <Component {...pageProps}/>
           </PreviewProvider>
         ) : (
 
-          <Component {...pageProps} className={poppins.className}/>
+          <Component {...pageProps}/>
 
       
         )}
       </TrackUserProvider>
-    </>
+    </main>
   )
 }
 

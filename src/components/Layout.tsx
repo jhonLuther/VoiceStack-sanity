@@ -9,6 +9,7 @@ interface LayoutProps {
   className?: string
 }
 
+
 // const Layout = (props) => {
 //   return (
 //     <NavigationContextProvider>
@@ -38,7 +39,7 @@ export default function Layout({
           className={`flex flex-col w-full items-center}`}
         >
           {/* <Header /> */}
-          <main className="w-full flex flex-col">{children}</main>
+          <div className="w-full flex flex-col">{children}</div>
           {/* <Footer className={`w-full flex `} /> */}
         </div>
       </ImageSwitchProvider>

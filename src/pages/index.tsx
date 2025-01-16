@@ -106,7 +106,7 @@ export default function IndexPage(
   
 
   return (
-    <div>
+    <div className='font-sans'>
       <BookDemoContextProvider>
         <Layout {...props}>
           <CustomHead {...props} />
