@@ -13,7 +13,7 @@ const HubSpotForm = ({
 
 }) => {
 
-  console.log(id,eventName)
+  // console.log(id,eventName)
   const { trackEvent } = useTracking({}, {});
   const router = useRouter();
   useEffect(() => {
@@ -105,7 +105,7 @@ const HubSpotForm = ({
                   ); 
                   // document.getElementById("successMessage").innerHTML = "Thank you, a VoiceStack representative will reach out to you shortly."; 
                   var meetingUrl = `https://meetings.hubspot.com/carestack-dan/voicestack-website?${params.toString()}`;
-                  router.push(meetingUrl);
+                  // router.push(meetingUrl);
                    
                 }, 3000)
               },

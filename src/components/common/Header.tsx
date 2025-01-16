@@ -405,12 +405,10 @@ const Header = ({ data }) => {
                       border border-gray-300'><TelIcon/>{data?.phoneNumber}</a>
                     </div>
                     
-                    <Tracker name={`Header cta `}>
-                      <Button type='primarySm' onClick={() => {setOpenForm(true)}}>
-                        <ButtonArrow></ButtonArrow>
-                        <span className="text-sm font-medium">{`Book free demos`}</span>
-                      </Button>
-                    </Tracker>
+                    <Button type='primarySm' onClick={() => {setOpenForm(true)}}>
+                      <ButtonArrow></ButtonArrow>
+                      <span className="text-sm font-medium">{`Book free demos`}</span>
+                    </Button>
                   </div>
                   <div className='flex gap-4 items-center'>
                     <div className={`${isMobile  && headerFixed ? 'block': 'hidden'}`}>

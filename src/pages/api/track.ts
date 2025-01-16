@@ -6,7 +6,7 @@ export default async function trackEvents(
   res: NextApiResponse
 ) {
   
-  if (req.headers.host === "carestack.com") {
+  // if (req.headers.host === "") {
     if (req.method === "POST") {
       const type = req.query.type;
       switch (type) {
@@ -114,10 +114,11 @@ export default async function trackEvents(
         }
       }
     }
-  } else {
-    res.status(403).json({ error: "Forbidden" });
-  }
-}
+  } 
+  // else {
+  //   res.status(403).json({ error: "Forbidden" });
+  // }
+// }
 
 async function createUser(data: any) {
   const query = await supabase.from("users").insert(data).select("id");

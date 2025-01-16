@@ -186,7 +186,7 @@ function dispatchEvent(data: any) {
     const domain = window.location.origin;
     // if (window !== undefined && trackData.length > 0 && !isSending) {
     // if (window !== undefined && trackData.length > 0 && !isSending && domain === "http://localhost:4000") {
-    if (window !== undefined && trackData.length > 0 && !isSending && domain === "https://carestack.com") {
+    if (window !== undefined && trackData.length > 0 && !isSending ) {
       const user = getUser()
       if (user) {
 
