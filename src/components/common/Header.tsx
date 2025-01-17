@@ -19,6 +19,7 @@ import { eraseCookie, getCookie, setCookie } from '~/utils/cookie';
 import Dropdown from './Dropdown';
 import Head from 'next/head';
 import ProgressBar from '~/utils/progressBar/progressBar'
+import Tracker from './trackerComponent';
 
 
 
@@ -403,9 +404,10 @@ const Header = ({ data }) => {
                       <a href={`tel:${data?.phoneNumber}`} className='text-gray-700 px-[12px] py-[7px] rounded-[7px] text-sm font-medium leading-6 flex items-center whitespace-nowrap gap-[8px]  
                       border border-gray-300'><TelIcon/>{data?.phoneNumber}</a>
                     </div>
+                    
                     <Button type='primarySm' onClick={() => {setOpenForm(true)}}>
                       <ButtonArrow></ButtonArrow>
-                      <span className="text-sm font-medium">{`Book free demo`}</span>
+                      <span className="text-sm font-medium">{`Book free demos`}</span>
                     </Button>
                   </div>
                   <div className='flex gap-4 items-center'>
