@@ -30,7 +30,6 @@ const manrope = Manrope({
 })
 
 
-
 export interface SharedPageProps {
   heroSectionData(heroSectionData: any): any
   integrationPlatforms(integrationPlatforms: any): unknown
@@ -42,29 +41,6 @@ export interface SharedPageProps {
 const PreviewProvider = lazy(() => import('~/components/PreviewProvider'));
 const countryCode = getCookie("__vs_ver");
 
-// const mono = IBM_Plex_Mono({
-//   variable: '--font-family-mono',
-//   subsets: ['latin'],
-//   weight: ['500', '700'],
-// })
-
-
-
-// const poppins = Poppins({
-//   subsets: ['latin'],
-//   display: 'swap',
-//   variable: '--font-poppins',
-//   weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900']
-// });
-
-
-
-// const serif = PT_Serif({
-//   variable: '--font-family-serif',
-//   style: ['normal', 'italic'],
-//   subsets: ['latin'],
-//   weight: ['400', '700'],
-// })
 
 function App({
   Component,
@@ -198,8 +174,7 @@ function dispatchEvent(data: any) {
     trackData.push(temp);
     const domain = window.location.origin;
     // if (window !== undefined && trackData.length > 0 && !isSending) {
-    // if (window !== undefined && trackData.length > 0 && !isSending && domain === "http://localhost:4000") {
-    if (window !== undefined && trackData.length > 0 && !isSending ) {
+    if (window !== undefined && trackData.length > 0 && !isSending && domain === "https://voicestack.com") {
       const user = getUser()
       if (user) {
 
