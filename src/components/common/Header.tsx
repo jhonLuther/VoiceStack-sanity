@@ -407,7 +407,7 @@ const Header = ({ data }) => {
                     
                     <Button type='primarySm' onClick={() => {setOpenForm(true)}}>
                       <ButtonArrow></ButtonArrow>
-                      <span className="text-sm font-medium">{`Book free demo`}</span>
+                      <span className="text-sm font-medium">{`Book free demos`}</span>
                     </Button>
                   </div>
                   <div className='flex gap-4 items-center'>
