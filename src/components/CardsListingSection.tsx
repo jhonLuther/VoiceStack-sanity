@@ -11,8 +11,6 @@ import Image from 'next/image';
 const CardsListingSection = ({data}) => {
 
   const router = useRouter();
-
-  console.log({data});
   
   const cardsListing = data?.cardItems;
 
