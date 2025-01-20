@@ -11,6 +11,7 @@ import {
   fetchFaq,
   getHeroSectionData,
   getTestimonialSecitonData,
+  getCardsSectionData,
 } from '~/lib/sanity.queries'
 import Layout from '../components/Layout'
 import CustomHead from '~/components/common/CustomHead'
@@ -48,6 +49,7 @@ export const getStaticProps: GetStaticProps<any> = async ({
   const logoSectionData = await logoSection(client,region);
   const featureSectionData = await featureSectionQuery(client, region)
   const faqSectionData = await fetchFaq(client,region)
+  const cardsListingData = await getCardsSectionData(client,region)
 
   return {
     props: {
@@ -63,7 +65,8 @@ export const getStaticProps: GetStaticProps<any> = async ({
       logoSectionData,
       featureSectionData,
       testimonialSecitonData,
-      faqSectionData
+      faqSectionData,
+      cardsListingData
     },
   }
 }
@@ -82,6 +85,7 @@ export default function IndexPage(
     return <><p className="p-5">Loading ... </p></>
   }
 
+  console.log({props});
   
   const {
     homeSettings,
@@ -91,7 +95,8 @@ export default function IndexPage(
     featureSectionData,
     integrationPlatforms,
     comparisonTableData,
-    faqSectionData
+    faqSectionData,
+    cardsListingData
   } = props
 
   const comparisonSectionData = {
@@ -115,7 +120,7 @@ export default function IndexPage(
             <HeroSection data={heroSectionData}  />
             <LinksCardsSection data={linkCardSectionData} />
             <Testimonails data={testimonialSecitonData} />
-            <CardsListingSection />
+            <CardsListingSection data={cardsListingData}/>
             <LogoListingSection data={logoSectionData} />
             <FeatureSection data={featureSectionData} />
             <AnimatedBeamSection data={integrationPlatforms} />

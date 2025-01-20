@@ -14,6 +14,7 @@ import Platforms from './Platforms/index'
 import PlatformList from './PlatformList'
 import heroSubFeature from './heroSubFeature'
 import LogoListing from './LogoListing/index'
+import CardsListing from './CardsListing/index'
 import featureSubSection from './featureSubSection'
 import faq from './faq'
 import testimonialSection from './testimonial'
@@ -32,6 +33,7 @@ export const schemaTypes = [
   Platforms,
   PlatformList,
   LogoListing,
+  CardsListing,
   featureSubSection,
   testimonialSection,
   faq,
@@ -55,6 +57,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     Platforms,
     PlatformList,
     LogoListing,
+    CardsListing,
     featureSubSection,
     testimonialSection,
     faq,

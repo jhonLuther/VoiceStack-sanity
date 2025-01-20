@@ -139,6 +139,20 @@ export async function logoSection(client: SanityClient, region: string) {
   return await client.fetch(query, { region })
 }
 
+export async function getCardsSectionData(client: SanityClient, region: string) {
+  const query = groq` *[_type == "cardsListing" && language == $region][0]{
+    heading,
+    cardItems[]{
+      "heading": cardItemHeading,
+      "description": cardItemContent,
+      "iconSvg": cardItemSvg,
+      "icon": cardItemIcon.asset->url
+    }
+    
+}`
+  return await client.fetch(query, { region })
+}
+
 export async function featureSectionQuery(
   client: SanityClient,
   region: string,
