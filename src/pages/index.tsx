@@ -85,7 +85,6 @@ export default function IndexPage(
     return <><p className="p-5">Loading ... </p></>
   }
 
-  console.log({props});
   
   const {
     homeSettings,
