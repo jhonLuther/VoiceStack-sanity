@@ -32,6 +32,8 @@ import Footer from '~/components/common/Footer'
 import { getClient } from '~/lib/sanity.client'
 import { isEmpty } from 'lodash'
 import { useContext, useEffect } from 'react'
+import { useTracking } from 'cs-tracker'
+import { getParams } from '~/helpers/getQueryParams'
 
 export const getStaticProps: GetStaticProps<any> = async ({
   locale,
@@ -50,6 +52,8 @@ export const getStaticProps: GetStaticProps<any> = async ({
   const featureSectionData = await featureSectionQuery(client, region)
   const faqSectionData = await fetchFaq(client,region)
   const cardsListingData = await getCardsSectionData(client,region)
+  
+  
 
   return {
     props: {
@@ -74,11 +78,35 @@ export const getStaticProps: GetStaticProps<any> = async ({
 export default function IndexPage(
   props: InferGetStaticPropsType<any>,
 ) {
-
+  const { Track, trackEvent } = useTracking({ page: "home-page", }, {})
   const { className, ...rProps} = props
-  // can be used to scroll to top
-    useEffect(() => {
+  useEffect(() => {
+      const {
+        utm_source = null,
+        utm_term = null,
+        utm_content = null,
+        utm_campaign = null,
+        utm_medium = null,
+        ...params
+      } = getParams();
       // window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (window) {
+        trackEvent({
+          e_name: "home-page", e_type: "page-view", e_time: new Date(),
+          e_path: window?.location.href,
+          utm_campaign,
+          utm_content,
+          utm_source,
+          utm_term,
+          utm_medium,
+          url_params: params,
+          user_segment: "A",
+          current_path: window?.location.href,
+          base_path: window.location.origin + window.location.pathname,
+          domain: window.location.origin,
+          referrer_url: window.document.referrer
+        })
+      }
     }, []);
 
   if (isEmpty(rProps)) {
@@ -110,6 +138,7 @@ export default function IndexPage(
   
 
   return (
+    <Track>
     <div className='font-sans'>
       <BookDemoContextProvider>
         <Layout {...props}>
@@ -131,5 +160,6 @@ export default function IndexPage(
         </Layout>
       </BookDemoContextProvider>
     </div>
+    </Track>
   )
 }

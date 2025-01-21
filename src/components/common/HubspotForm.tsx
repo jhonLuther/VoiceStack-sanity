@@ -84,21 +84,21 @@ const HubSpotForm = ({
                 
                 document.getElementById("successMessage").style.display = "block";
 
+                trackEvent({
+                  e_name: eventName || 'demo_submission_uk',
+                  e_type: "form-submission",
+                  e_time: new Date(),
+                  e_path: window?.location.href,
+                  user_segment:getCookie("__cs_vs"),
+                  url_params: { email, ...params },
+                  current_path: window?.location.href,
+                  base_path: window.location.origin + window.location.pathname,
+                  domain: window.location.origin,
+                  destination_url: null,
+                  referrer_url: window.document.referrer,
+                });
+                
                 setTimeout(async () => {
-                  trackEvent({
-                    e_name: eventName || 'demo_submission_uk',
-                    e_type: "form-submission",
-                    e_time: new Date(),
-                    e_path: window?.location.href,
-                    user_segment:getCookie("__cs_vs"),
-                    url_params: { email, ...params },
-                    current_path: window?.location.href,
-                    base_path: window.location.origin + window.location.pathname,
-                    domain: window.location.origin,
-                    destination_url: null,
-                    referrer_url: window.document.referrer,
-                  });
-
                   const urlParams = new URLSearchParams(window.location.search);
                   const responseData = await fetch(
                     `/api/hs?email=${email}&source=${urlParams.get("utm_source")}&campaign=${urlParams.get("utm_campaign")}&medium=${urlParams.get("utm_medium")}&term=${urlParams.get("utm_term")}&lead_source=${urlParams.get("lead_source")}`
