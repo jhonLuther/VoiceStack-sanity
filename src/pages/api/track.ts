@@ -7,6 +7,7 @@ export default async function trackEvents(
 ) {
   
   if (req.headers.host === "voicestack.com") {
+  
     if (req.method === "POST") {
       const type = req.query.type;
       switch (type) {
