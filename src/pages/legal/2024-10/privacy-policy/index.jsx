@@ -2,7 +2,7 @@ import Section from '~/components/structure/Section'
 
 function UkPrivacyPolicy() {
   return (
-    <div className="w-full flex justify-center py-40 px-8 legal">
+    <div className="w-full flex justify-center py-40 px-8 legal-content">
       <Section className=" w-full md:max-w-5xl flex flex-col">
         <div className="flex flex-col text-center justify-center mb-10">
           <h1 className="text-4xl font-semibold">

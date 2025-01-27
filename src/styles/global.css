@@ -331,12 +331,18 @@ html {
   @apply border p-4;
 }
 
+.legal-content td {
+  p{
+    text-align: left;
+  }
+}
+
 .legal-content tr:nth-child(odd) {
   @apply bg-gray-50;
 }
 
 /* loader css */
-.progress {
+/* .progress {
   position: fixed;
   top: 0;
   left: 0;
@@ -448,4 +454,4 @@ html {
   .legal__section-title {
     font-size: 26px;
   }
-}
+} */
