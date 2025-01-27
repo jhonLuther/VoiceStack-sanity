@@ -16,8 +16,7 @@ function UkPrivacyPolicy() {
 <p class="legal__text">
   This Privacy Policy describes the privacy practices that Good Methods Global
   Inc. dba CareStack (“CareStack” or “us” or “we”) follows when collecting and
-  using information about you on our website (located at
-  <a href="https://www.carestack.com/">https://www.carestack.com/</a>
+  using information about you on our website (located at <a href="https://www.voicestack.com/">https://www.voicestack.com/</a>
   ), mobile applications, and any other channel or mobile feature that we
   operate (collectively, the “Site”). We ask that you please read this Privacy
   Policy before using the Site. It describes what information we gather from you
@@ -32,9 +31,8 @@ function UkPrivacyPolicy() {
   This Privacy Policy complies with the California Consumer Privacy Act of 2018
   (“CCPA”) and any terms defined in the CCPA have the same meaning when used in
   this Privacy Policy. Capitalized terms used but not defined in this Privacy
-  Policy have the definitions provided in our Terms of Use (located at
-  <a href="https://www.carestack.com/legal/2020-1/termsofuse/">
-    https://www.carestack.com/legal/2020-1/termsofuse/
+  Policy have the definitions provided in our Terms of Use (located at <a href="https://www.voicestack.com/legal/2024-10/terms-and-conditions">
+    https://www.voicestack.com/legal/2024-10/terms-and-conditions/
   </a>
   ). Parts of the Terms of Use affect this Privacy Policy, so unless you have
   already done so, please review the Terms of Use prior to using the Site.
