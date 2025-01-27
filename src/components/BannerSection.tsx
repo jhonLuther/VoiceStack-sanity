@@ -23,7 +23,7 @@ const BannerSection = () => {
   // const contactData = contacts;
   const router = useRouter();
 
-  const [matchingContact, setMatchingContact] = useState([]);
+  const [matchingContact, setMatchingContact] = useState(null);
 
   useEffect(() => {
     const contact = contacts.find(
@@ -67,22 +67,19 @@ const BannerSection = () => {
               </div> */}
 
               <div className='flex gap-4 items-center flex-col md:flex-row relative z-[1]'>
-              <Button type='primary' link={`tel:${matchingContact.phone}`}>
-                          <TelIcon/>
-                          <span className="text-base font-medium">{matchingContact.phone}</span>
-                        </Button>
-                        <Button type='secondary' link={`mailto:${matchingContact.email}`}>
-                          <MailIcon/>
-                          <span className="text-base font-medium">{matchingContact.email}</span>
-                        </Button>
-                {/* <Button type='primary' link={`tel:3454354`}>
-                  <TelIcon/>
-                  <span className="text-base font-medium">3454354</span>
-                </Button>
-                <Button type='secondary' link={`mailto:test@test.com`}>
-                  <MailIcon/>
-                  <span className="text-base font-medium">test@test.com</span>
-                </Button> */}
+                {matchingContact && (
+                  <>
+                    <Button type='primary' link={`tel:${matchingContact.phone}`}>
+                      <TelIcon/>
+                      <span className="text-base font-medium">{matchingContact.phone}</span>
+                    </Button>
+                    <Button type='secondary' link={`mailto:${matchingContact.email}`}>
+                      <MailIcon/>
+                      <span className="text-base font-medium">{matchingContact.email}</span>
+                    </Button>
+                  </>
+                )}
+                
               </div>
 
             </div>
