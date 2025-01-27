@@ -24,7 +24,7 @@ const FaqSection = ({data,mailId}) => {
     }
   },[router?.locale])
 
-  const getContactEmail =mailId
+  const getContactEmail = mailId;
 
   return (
     <Section className="py-sm md:py-md pb-8 scroll-smooth scroll-m-16" id="faq">
