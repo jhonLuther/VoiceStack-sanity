@@ -289,7 +289,7 @@ html {
   @apply mb-5 text-justify !text-gray-800;
 }
 
-.legal-content a {
+.legal-content a, .legal a {
   @apply text-blue-600 hover:underline underline-offset-2;
 }
 
@@ -331,12 +331,18 @@ html {
   @apply border p-4;
 }
 
+.legal-content td {
+  p{
+    text-align: left;
+  }
+}
+
 .legal-content tr:nth-child(odd) {
   @apply bg-gray-50;
 }
 
 /* loader css */
-.progress {
+/* .progress {
   position: fixed;
   top: 0;
   left: 0;
@@ -380,3 +386,72 @@ html {
   -webkit-box-shadow: rgba(59, 130, 246, 0.2) 1px 0 6px 2px;
   box-shadow: rgba(59, 130, 246, 0.2) 1px 0 6px 2px;
 }
+
+.legal__text {
+  margin-bottom: 20px;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 1.4;
+  color: #4b5563;
+}
+
+.legal__section-title {
+  color: #3d4043;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  font-size: 22px;
+}
+
+.legal__section-sub-title {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #4b5563;
+}
+
+.legal__list--bullet-point li {
+  list-style: disc;
+  line-height: 1.4;
+  margin-left: 20px;
+  margin-bottom: 0.7rem;
+}
+
+.legal__list-item, .legal__table {
+  margin-bottom: 0.7rem;
+}
+
+.legal__table {
+  width: 100%;
+  resize: both;
+  overflow: auto;
+  border-collapse: collapse;
+}
+.legal__table {
+  width: 100%;
+  margin-bottom: 1rem;
+  resize: both;
+  overflow: auto;
+  border-collapse: collapse;
+
+  
+}
+.legal__table th, .legal__table td {
+    padding: 1rem;
+    border: 1px solid #dee2e6;
+    
+}
+
+@media screen and (min-width: 768px) {
+  .legal__table th, .legal__table td {
+    padding: 1rem;
+    border: 1px solid #dee2e6;
+    
+}
+  .legal__text {
+      font-size: 20px;
+      line-height: 1.4;
+  }
+  .legal__section-title {
+    font-size: 26px;
+  }
+} */
