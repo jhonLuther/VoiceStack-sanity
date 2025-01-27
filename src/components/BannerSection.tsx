@@ -76,10 +76,10 @@ const BannerSection = () => {
                       </Button>
                     )}
                     {matchingContact.email && (
-                    <Button type='secondary' link={`mailto:${matchingContact.email}`}>
-                      <MailIcon/>
-                      <span className="text-base font-medium">{matchingContact.email}</span>
-                    </Button>
+                      <Button type='secondary' link={`mailto:${matchingContact.email}`}>
+                        <MailIcon/>
+                        <span className="text-base font-medium">{matchingContact.email}</span>
+                      </Button>
                     )}
                   </>
                 )}
