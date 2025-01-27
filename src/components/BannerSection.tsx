@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Section from './structure/Section'
 import Container from './structure/Container'
 import Wave from 'public/assets/wave.svg'
@@ -11,10 +11,28 @@ import Image from 'next/image'
 import { FormModal } from './common/FormModal'
 import VideoPlayIconWhite from './icons/VideoPlayIconWhite'
 import { BookDemoContext } from '~/providers/BookDemoProvider'
+import contacts from '~/migrations/contact.json'
+import { useRouter } from 'next/router'
+
+import TelIcon from '~/components/icons/TelIcon';
+import MailIcon from '~/components/icons/MailIcon';
 
 const BannerSection = () => {
   const { isDemoPopUpShown } = useContext(BookDemoContext);
   const [isOpen, setIsOpen] = useState(false);
+  // const contactData = contacts;
+  const router = useRouter();
+
+  const [matchingContact, setMatchingContact] = useState([]);
+
+  useEffect(() => {
+    const contact = contacts.find(
+      (contact) => contact.locale === router.locale
+    );
+    setMatchingContact(contact);
+  }, [router.locale]);
+  console.log({matchingContact});
+  
   
   const [openForm, setOpenForm] = useState(false)
   const overviewVideo:VideoItem = {
@@ -28,10 +46,16 @@ const BannerSection = () => {
       <Container>
         <div className='flex justify-center w-full'>
           <div className='flex flex-col gap-8 items-center w-full'>
-              <h2 className='text-gray-50 text-center font-manrope text-4xl lg:text-5xl font-bold leading-[1.1667] tracking-[-0.96px] w-full max-w-[800px]'>
-                Start Your Practice Growth Journey<br/> With VoiceStack.
+            <div>
+              <h2 className='text-gray-50 text-center font-manrope text-4xl lg:text-5xl font-bold leading-[1.1667] tracking-[-0.96px] w-full max-w-[800px] mb-4'>
+                {/* Start Your Practice Growth Journey<br/> With VoiceStack. */}
+                World class customer support
               </h2>
-              <div className='flex gap-4 items-center flex-col md:flex-row relative z-[1]'>
+              <p className='text-gray-200 text-center text-base font-normal leading-[145%] w-full max-w-[616px]'>
+                If you have an immediate question or are in need of assistance, please find support using your preferred method. Dedicated customer support teams are available to provide chat, email, and phone assistance.
+              </p>
+            </div>
+              {/* <div className='flex gap-4 items-center flex-col md:flex-row relative z-[1]'>
                 <Button type='primary'   onClick={() => {setOpenForm(true)}}>
                   <ButtonArrow></ButtonArrow>
                   <span className="text-base font-medium">{`Book free demo`}</span>
@@ -40,7 +64,27 @@ const BannerSection = () => {
                   <VideoPlayIconWhite></VideoPlayIconWhite>
                   <span className="text-base font-medium">{`Watch overview`}</span>
                 </Button>
+              </div> */}
+
+              <div className='flex gap-4 items-center flex-col md:flex-row relative z-[1]'>
+              <Button type='primary' link={`tel:${matchingContact.phone}`}>
+                          <TelIcon/>
+                          <span className="text-base font-medium">{matchingContact.phone}</span>
+                        </Button>
+                        <Button type='secondary' link={`mailto:${matchingContact.email}`}>
+                          <MailIcon/>
+                          <span className="text-base font-medium">{matchingContact.email}</span>
+                        </Button>
+                {/* <Button type='primary' link={`tel:3454354`}>
+                  <TelIcon/>
+                  <span className="text-base font-medium">3454354</span>
+                </Button>
+                <Button type='secondary' link={`mailto:test@test.com`}>
+                  <MailIcon/>
+                  <span className="text-base font-medium">test@test.com</span>
+                </Button> */}
               </div>
+
             </div>
         </div>
       </Container>
