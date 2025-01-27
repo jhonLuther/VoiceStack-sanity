@@ -1,0 +1,21 @@
+
+[
+    {
+    "region": "US",
+    "locale": "en",
+    "phone": "(407) 559-6068",
+    "email": "us.support@voicestack.com"
+    },
+    {
+    "region": "UK",
+    "locale": "en-GB",
+    "phone": "+44 113 512 6098",
+    "email": "uk.support@voicestack.com"
+    },
+    {
+    "region": "Australia",
+    "locale": "en-AU",
+    "phone": "+61 2 8043 6290",
+    "email": "au.support@voicestack.com"
+    }
+]
