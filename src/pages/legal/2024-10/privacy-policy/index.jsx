@@ -11,7 +11,7 @@ function UkPrivacyPolicy() {
           {/* <h2 className="text-3xl font-semibold">United Kingdom (the “DPA”)</h2>  */}
         </div>
 
-        <div class="legal_page_body"><p class="legal__text">Effective Date: January 24th 2024</p>
+        <div class="legal_page_body"><p class="legal__text">EFFECTIVE DATE: 14th November 2024</p>
 <br/>
 <p class="legal__text">
   This Privacy Policy describes the privacy practices that Good Methods Global
@@ -800,14 +800,15 @@ function UkPrivacyPolicy() {
 <p class="legal__text">
   To exercise the right to opt-out please complete this form:
 <br/>
-  <a href="https://carestack.com/legal/2020-1/optoutrequest">https://www.carestack.com/legal/privacyoptoutform/</a>
+  {/* <a href="https://carestack.com/legal/2020-1/optoutrequest">https://www.carestack.com/legal/privacyoptoutform/</a> */}
+  <a href="#">https://www.carestack.com/legal/privacyoptoutform/</a>
   . Alternately, to exercise the right to opt-out or opt-in, you (or your
   authorized representative) may submit a request to us by sending us an e-mail
-  at <a href="mailto:privacyconcerns@carestack.com">privacyconcerns@carestack.com</a>
+  at <a href="mailto:privacyconcerns@voicestack.com">privacyconcerns@voicestack.com</a>
   or, once you make an opt-out request, we will wait at least twelve (12) months
   before asking you to reauthorize certain information sharing practices.
   However, you may change your mind and opt back in at any time by sending us an
-  e-mail at <a href="mailto:privacyconcerns@carestack.com">privacyconcerns@carestack.com</a>. We will only use Personal Information provided in an opt-out request to
+  e-mail at <a href="mailto:privacyconcerns@voicestack.com">privacyconcerns@voicestack.com</a>. We will only use Personal Information provided in an opt-out request to
   review and comply with the request.
 </p>
 <h3 class="legal__section-sub-title">6.6. Exercising Your Rights.</h3>
@@ -816,10 +817,10 @@ function UkPrivacyPolicy() {
   please submit a verifiable consumer request to us by either:
 </p>
 <p class="legal__text">
-  Visiting <a href="https://www.carestack.com/legal/2020-1/accessordeletionrequest/">https://www.carestack.com/legal/2020-1/accessordeletionrequest/</a>
+  Visiting <a href="#">https://www.carestack.com/legal/2020-1/accessordeletionrequest/</a>
 </p>
 <p class="legal__text">
-  Sending us an e-mail at <a href="https://www.carestack.com/legal/2020-1/accessordeletionrequest/">https://www.carestack.com/legal/2020-1/accessordeletionrequest/</a>
+  Sending us an e-mail at <a href="#">https://www.carestack.com/legal/2020-1/accessordeletionrequest/</a>
 </p>
 <p class="legal__text">
   Only you, or a person registered with the California Secretary of State that
@@ -980,7 +981,7 @@ function UkPrivacyPolicy() {
 <p class="legal__text">
   You may exercise these rights free of charge. These rights will be exercisable
   subject to limitations as provided for by the GDPR. Any requests to exercise
-  the above-listed rights may be made to: <a href="mailto:privacyconcerns@carestack.com">privacyconcerns@carestack.com</a>. If you are an EEA resident, you have the right to lodge a complaint with a
+  the above-listed rights may be made to: <a href="mailto:privacyconcerns@voicestack.com">privacyconcerns@voicestack.com</a>. If you are an EEA resident, you have the right to lodge a complaint with a
   Data Protection Authority about how we process your Personal Information at
   the following website: <a href="https://edpb.europa.eu/about-edpb/board/members_en">https://edpb.europa.eu/about-edpb/board/members_en</a>.
 </p>
@@ -991,14 +992,14 @@ function UkPrivacyPolicy() {
   have disclosed Personal Information (if any) for direct marketing purposes in
   the preceding calendar year. If you are a California resident and you wish to
   make such a request, please send an e-mail with “California Privacy Rights” in
-  the subject line to <a href="mailto:privacyconcerns@carestack.com">privacyconcerns@carestack.com</a>.
+  the subject line to <a href="mailto:privacyconcerns@voicestack.com">privacyconcerns@voicestack.com</a>.
 </p>
 <h2 class="legal__section-title">11. CALIFORNIA MINORS.</h2>
 <p class="legal__text">
   While the Site is not intended for anyone under the age of 18, if you are a
   California resident who is under age 18 and you are unable to remove
   publicly-available content that you have submitted to us, you may request
-  removal by contacting us at: <a href="mailto:privacyconcerns@carestack.com">privacyconcerns@carestack.com</a>. When requesting removal, you must be specific about the information you
+  removal by contacting us at: <a href="mailto:privacyconcerns@voicestack.com">privacyconcerns@voicestack.com</a>. When requesting removal, you must be specific about the information you
   want removed and provide us with specific information, such as the URL for
   each page where the information was entered, so that we can find it. We are
   not required to remove any content or information that: (1) federal or state
@@ -1036,14 +1037,14 @@ function UkPrivacyPolicy() {
     <tr>
       <td style={{width: '40%'}}>E-mail: &nbsp;</td>
       <td>
-        <a href="mailto:privacyconcerns@carestack.com">privacyconcerns@carestack.com</a>
+        <a href="mailto:privacyconcerns@voicestack.com">privacyconcerns@voicestack.com</a>
       </td>
     </tr>
     <tr style={{verticalAlign: 'top'}}>
       <td>Postal Address:</td>
       <td>
         <ul class="list-unstyled">
-          <li>CareStack</li>
+          <li>VoiceStack</li>
           <li>2954 Mallory Circle</li>
           <li>Suite 209</li>
           <li>Celebration, Florida 34747</li>
