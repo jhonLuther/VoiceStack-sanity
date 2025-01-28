@@ -11,11 +11,11 @@ function UkPrivacyPolicy() {
           {/* <h2 className="text-3xl font-semibold">United Kingdom (the “DPA”)</h2>  */}
         </div>
 
-        <div class="legal_page_body"><p class="legal__text">EFFECTIVE DATE: 14th November 2024</p>
+        <div class="legal_page_body"><p class="legal__text">EFFECTIVE DATE: 28th January 2025</p>
 <br/>
 <p class="legal__text">
   This Privacy Policy describes the privacy practices that Good Methods Global
-  Inc. dba CareStack (“CareStack” or “us” or “we”) follows when collecting and
+  Inc. dba VoiceStack (“VoiceStack” or “us” or “we”) follows when collecting and
   using information about you on our website (located at <a href="https://www.voicestack.com/">https://www.voicestack.com/</a>
   ), mobile applications, and any other channel or mobile feature that we
   operate (collectively, the “Site”). We ask that you please read this Privacy
@@ -275,10 +275,10 @@ function UkPrivacyPolicy() {
 <p class="legal__text">
   Certain individually identifying health information that you may provide to us
   is protected under HIPAA (“PHI”), which offers different protections than
-  privacy laws such as the CCPA. When CareStack is acting as a “Business
+  privacy laws such as the CCPA. When VoiceStack is acting as a “Business
   Associate” (as defined in HIPAA), and to the extent that you provide such PHI,
   we will handle your PHI in accordance with HIPAA requirements. This means that
-  CareStack will only use or disclose your PHI as authorized by you or as
+  VoiceStack will only use or disclose your PHI as authorized by you or as
   otherwise permitted under the law.
 </p>
 <h3 class="legal__section-sub-title">
@@ -372,15 +372,15 @@ function UkPrivacyPolicy() {
 <h3 class="legal__section-sub-title">1.7. Social Media.</h3>
 
 <p class="legal__text">
-  If you interact with us or our other users regarding CareStack and its
+  If you interact with us or our other users regarding VoiceStack and its
   products and services on any Social Media: (a) the Personal Information that
   you submit by and through such Social Media can be read, collected and/or used
   by us (depending on your Social Media privacy settings) as described in this
-  Privacy Policy and (b) where CareStack responds to any interaction with you on
+  Privacy Policy and (b) where VoiceStack responds to any interaction with you on
   Social Media, your account name/handle may be viewable by any and all members
-  or users of CareStack’s Social Media accounts. We are not responsible for the
+  or users of VoiceStack’s Social Media accounts. We are not responsible for the
   Personal Information that you choose to submit or link on any Social Media.
-  Social Media operates independently from CareStack, and we are not responsible
+  Social Media operates independently from VoiceStack, and we are not responsible
   for Social Media interfaces or privacy or security practices. We encourage you
   to review the privacy policies and settings of any Social Media with which you
   interact to help you understand their privacy practices. If you have questions
@@ -505,7 +505,7 @@ function UkPrivacyPolicy() {
 </p>
 <h3 class="legal__section-sub-title">4.3. Advertising</h3>
 <p class="legal__text">
-  CareStack uses third party service providers to serve advertisements or
+  VoiceStack uses third party service providers to serve advertisements or
   collect data on our behalf across the internet and on this Site
   (“<strong>Advertisers</strong>”). Some of these Advertisers may collect your
   Personal Information about your Site visits and your interactions with our
