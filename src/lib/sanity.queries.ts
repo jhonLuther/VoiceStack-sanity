@@ -156,11 +156,12 @@ export async function getCardsSectionData(client: SanityClient, region: string) 
 export async function getCsCardsSectionData(client: SanityClient, region: string) {
   const query = groq` *[_type == "csCardsListing" && language == $region][0]{
     heading,
+    subHeading,
     cardItems[]{
       "heading": cardItemHeading,
       "description": cardItemContent,
       "iconSvg": cardItemSvg,
-      "icon": cardItemImage.asset->url
+      "image": cardItemImage.asset->url
     }
     
 }`

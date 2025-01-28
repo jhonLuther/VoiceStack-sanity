@@ -24,38 +24,36 @@ const CsCardsListingSection = ({data}) => {
       <Container className="w-full gap-16 flex flex-col items-center">
         <div className='flex flex-col w-full items-center max-w-[780px] text-center gap-4'>
           <div className='flex items-center justify-center'>
-          <PreText><span className=' text-vs-blue'></span> {data?.heading}</PreText>
+          <PreText><span>{data?.heading}</span> </PreText>
           </div>
           <div className='max-w-[620px] flex flex-col gap-4'>
             <H2>{data?.subHeading}</H2>
-            <Paragraph>{data?.description}</Paragraph>
+            {/* <Paragraph>{data?.description}</Paragraph> */}
             </div>
           
         </div>
         <div className='flex flex-col gap-16 items-center w-full'>
           
-          <div className='flex flex-wrap gap-0 md:gap-0 flex-col md:flex-row justify-center'>
+          <div className='flex flex-wrap gap-6 md:gap-6 flex-col md:flex-row justify-center'>
             {cardsListing && cardsListing.length > 0 && (
               cardsListing.map((item:any, index:number)=>{
                 return(
-                  <div key={index} className='flex flex-1 p-8 gap-3 flex-col justify-between 
-                    border-t last:border-b md:border-y border-r border-gray-700 border-l 
-                    md:border-l-0 md:first:border-l first:rounded-t-[20px] md:first:rounded-t-none 
-                    md:first:!rounded-l-[20px] last:rounded-b-[20px] md:last:rounded-b-none md:last:!rounded-r-[20px]'>
-                    {/* <div className='flex flex-col gap-3'>
-                      <H3 className='inline-flex items-center gap-2 text-white'>{item.icon && <item.icon />}{item.heading}</H3>
-                      {item.description && (
-                        <p className='text-gray-400 text-base font-normal leading-[160%]'>{item.description}</p>
+                  <div key={index} className='flex flex-1 bg-[#F9F9F9] gap-3 flex-col justify-between rounded-2xl overflow-hidden'>
+                    
+                    <div className='flex flex-col'>
+                      {item.image && (
+                        <Image className='w-full h-auto' width={292} height={250} src={item?.image} alt={'icon'}/>
                       )}
-                    </div> */}
-                    <div className='flex flex-col gap-3'>
-                      <H3 className='inline-flex items-center gap-2 text-white'>
-                        {item.iconSvg ? <span dangerouslySetInnerHTML={{__html: item.iconSvg}}></span> : item.icon && <Image width={20} height={20} src={item?.icon} alt={'icon'}/>}
-                        {item.heading}
-                      </H3>
-                      {item.description && (
-                        <p className='text-gray-400 text-base font-normal leading-[160%]'>{item.description}</p>
-                      )}
+                      <div className='flex flex-col p-6 gap-2'>
+                        {item.heading && (
+                          <H3 className='inline-flex items-center gap-2 text-gray-900'>
+                            {item.heading}
+                          </H3>
+                        )}
+                        {item.description && (
+                          <p className='text-gray-500 text-base font-normal leading-[145%]'>{item.description}</p>
+                        )}
+                      </div>
                     </div>
                   </div>
                 )
