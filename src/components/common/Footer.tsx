@@ -21,9 +21,11 @@ const Footer = (props) => {
   const router = useRouter();
 
   const [isUk, setIsUk] = useState(false);
+  const [isAu, setIsAu] = useState(false);
 
   useEffect(()=>{
     setIsUk(router.locale == "en-GB");
+    setIsAu(router.locale == "en-AU");
   },[router.locale])
 
   return (
@@ -173,13 +175,22 @@ const Footer = (props) => {
                   <Link href="https://www.voicestack.com/legal/uk/2024-11/terms-and-conditions" target='_blank'>Terms of Service</Link>
                 </li>
               </ul>
+              ): isAu ? (
+                <ul className='flex items-center gap-4'>
+                  <li className='text-gray-600 font-inter text-sm font-medium leading-[115%]'>
+                    <Link href="https://www.voicestack.com/legal/aus/2024-11/privacy-policy" target='_blank'>Privacy Policy</Link>
+                  </li>
+                  {/* <li className='text-gray-600 font-inter text-sm font-medium leading-[115%]'>
+                    <Link href="https://www.voicestack.com/legal/uk/2024-11/terms-and-conditions" target='_blank'>Terms of Service</Link>
+                  </li> */}
+                </ul>
               ):(
               <ul className='flex items-center gap-4'>
-                {/* <li className='text-gray-600 font-inter text-sm font-medium leading-[115%]'>
-                  <Link href="/"  target='_blank'>Privacy Policy</Link>
-                </li> */}
                 <li className='text-gray-600 font-inter text-sm font-medium leading-[115%]'>
-                  <Link href="/legal/2024-10/terms-and-conditions" target='_blank'>Terms of Service</Link>
+                  <Link href="https://www.voicestack.com/legal/2024-10/privacy-policy"  target='_blank'>Privacy Policy</Link>
+                </li> 
+                <li className='text-gray-600 font-inter text-sm font-medium leading-[115%]'>
+                  <Link href="https://www.voicestack.com/legal/2024-10/terms-and-conditions" target='_blank'>Terms of Service</Link>
                 </li>
               </ul>
               )}
