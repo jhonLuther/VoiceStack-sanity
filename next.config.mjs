@@ -22,6 +22,16 @@ const config = {
         destination: '/legal/2024-10/privacy-policy',
         permanent: false,
       },
+      {
+        source: '/legal/uk/privacy-policy',
+        destination: '/legal/uk/2024-11/privacy-policy',
+        permanent: false,
+      },
+      {
+        source: '/legal/au/privacy-policy',
+        destination: '/legal/aus/2024-11/privacy-policy',
+        permanent: false,
+      },
     ]
   },
 
