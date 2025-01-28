@@ -1,22 +1,20 @@
+import HubspotFormLegal from '~/components/common/hubspotFormLegal'
 import Section from '~/components/structure/Section'
 
-function UkPrivacyPolicy() {
+function UsOptOutRequest() {
   return (
     <div className="w-full flex justify-center py-40 px-8 legal-content">
       <Section className=" w-full md:max-w-5xl flex flex-col">
         <div className="flex flex-col text-center justify-center mb-10">
           <h1 className="text-4xl font-semibold">
-            Privacy Policy - VoiceStack
+          Good Methods Global Inc. dba VoiceStack Sale of Personal
+          Information Opt-Out Request Form
           </h1>
           {/* <h2 className="text-3xl font-semibold">United Kingdom (the “DPA”)</h2>  */}
         </div>
 
         <div class="legal">
           <div class="legal--inner">
-            <h1 class="legal__main-header">
-              Good Methods Global Inc. dba VoiceStack Sale of Personal
-              Information Opt-Out Request Form
-            </h1>
             <div class="legal_page_body">
               <span>
                 <p class="legal__text">
@@ -36,16 +34,14 @@ function UkPrivacyPolicy() {
                   You do not have to use this form, but using this form should
                   make it easier for you to make sure you have provided us with
                   all relevant information and for us to process your request.
-                  You may also submit your opt-out request via email at
-                  <a href="mailto:privacyconcerns@carestack.com">
+                  You may also submit your opt-out request via email at <a href="mailto:privacyconcerns@carestack.com">
                     privacyconcerns@carestack.com
                   </a>
                   .
                 </p>
                 <p class="legal__text">
                   For more information regarding VoiceStack’s privacy practices
-                  please review our Privacy Policy available at:
-                  <a href="https://www.carestack.com/legal/2020-1/privacypolicy/">
+                  please review our Privacy Policy available at: <a href="https://www.carestack.com/legal/2020-1/privacypolicy/">
                     https://www.carestack.com/legal/2020-1/privacypolicy/
                   </a>
                   .
@@ -66,6 +62,7 @@ function UkPrivacyPolicy() {
                   our response.
                 </p>
               </span>
+              <HubspotFormLegal formId="6caf31db-71f3-4c1b-98f2-e4616adfeec8"/>
               <span>
                 <h2 class="legal__section-title">
                   2. Requests Made by an Authorized Agent on a Resident’s Behalf
@@ -76,6 +73,7 @@ function UkPrivacyPolicy() {
                   the Resident’s behalf.
                 </p>
               </span>
+              <HubspotFormLegal formId="66fd1037-6e78-4256-a6bb-69da3a35cf3d"/>
             </div>
           </div>
         </div>
@@ -84,4 +82,4 @@ function UkPrivacyPolicy() {
   )
 }
 
-export default UkPrivacyPolicy
+export default UsOptOutRequest
