@@ -1,4 +1,5 @@
-import HubspotFormLegal from '~/components/common/HubspotFormLegal'
+
+import HubspotFormLegal from '~/components/common/HubspotLegalForm'
 import Section from '~/components/structure/Section'
 
 function UsOptOutRequest() {
