@@ -13,6 +13,18 @@ const config = {
     defaultLocale: 'en'
   },
 
+  async redirects() {
+   
+    return [
+      
+      {
+        source: '/legal/privacy-policy',
+        destination: '/legal/2024-10/privacy-policy',
+        permanent: false,
+      },
+    ]
+  },
+
   async rewrites() {
    
     return [

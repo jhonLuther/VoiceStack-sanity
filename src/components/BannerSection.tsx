@@ -31,7 +31,7 @@ const BannerSection = () => {
     );
     setMatchingContact(contact);
   }, [router.locale]);
-  console.log({matchingContact});
+  // console.log({matchingContact});
   
   
   const [openForm, setOpenForm] = useState(false)
