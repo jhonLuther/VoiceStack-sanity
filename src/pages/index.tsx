@@ -12,6 +12,7 @@ import {
   getHeroSectionData,
   getTestimonialSecitonData,
   getCardsSectionData,
+  getCsCardsSectionData,
 } from '~/lib/sanity.queries'
 import Layout from '../components/Layout'
 import CustomHead from '~/components/common/CustomHead'
@@ -34,6 +35,7 @@ import { isEmpty } from 'lodash'
 import { useContext, useEffect } from 'react'
 import { useTracking } from 'cs-tracker'
 import { getParams } from '~/helpers/getQueryParams'
+import CsCardsListingSection from '~/components/CsCardsListingSection'
 
 export const getStaticProps: GetStaticProps<any> = async ({
   locale,
@@ -52,6 +54,7 @@ export const getStaticProps: GetStaticProps<any> = async ({
   const featureSectionData = await featureSectionQuery(client, region)
   const faqSectionData = await fetchFaq(client,region)
   const cardsListingData = await getCardsSectionData(client,region)
+  const cSCardsListingData = await getCsCardsSectionData(client,region)
   
   
 
@@ -70,7 +73,8 @@ export const getStaticProps: GetStaticProps<any> = async ({
       featureSectionData,
       testimonialSecitonData,
       faqSectionData,
-      cardsListingData
+      cardsListingData,
+      cSCardsListingData
     },
   }
 }
@@ -123,7 +127,8 @@ export default function IndexPage(
     integrationPlatforms,
     comparisonTableData,
     faqSectionData,
-    cardsListingData
+    cardsListingData,
+    cSCardsListingData
   } = props
 
   const comparisonSectionData = {
@@ -136,6 +141,7 @@ export default function IndexPage(
   }
   const linkCardSectionData: any = heroSectionData?.heroSubFeature
   
+console.log({cardsListingData});
 
   return (
     <Track>
@@ -152,6 +158,7 @@ export default function IndexPage(
             <LogoListingSection data={logoSectionData} />
             <FeatureSection data={featureSectionData} />
             <AnimatedBeamSection data={integrationPlatforms} />
+            <CsCardsListingSection data={cSCardsListingData}></CsCardsListingSection>
             <SiteComparisonSection data={comparisonSectionData} />
             <FaqSection data={faqSectionData} mailId={heroSectionData?.contactEmail}/>
             <BannerSection></BannerSection>

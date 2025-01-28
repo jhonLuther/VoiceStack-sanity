@@ -82,6 +82,7 @@ export default defineConfig({
         'testimonialSection',
         'logoListing',
         'cardsListing',
+        'csCardsListing',
         'platform',
       ],
     }),
@@ -145,6 +146,7 @@ export default defineConfig({
             S.documentTypeListItem('platformList').title('PlatformList'),
             S.documentTypeListItem('logoListing').title('logoListing'),
             S.documentTypeListItem('cardsListing').title('cardsListing'),
+            S.documentTypeListItem('csCardsListing').title('CsCardsListing'),
             S.documentTypeListItem('faq').title('Faq'),
 
             // S.documentTypeListItem('platform').title('Platform'),
