@@ -85,12 +85,12 @@ export default function IndexPage(
 ) {
   const { Track, trackEvent } = useTracking({ page: "home-page", }, {})
   const searchParams = useSearchParams();
-  // const source = searchParams.get("source"); // Get 'source' param from URL
-  const [source, setSource] = useState(null);
+  // const source = searchParams.get("refer"); // Get 'refer' param from URL
+  const [refer, setRefer] = useState(null);
 
   useEffect(() => {
-    const sourceParam = searchParams.get("source");
-    setSource(sourceParam || ""); // Set source once available
+    const sourceParam = searchParams.get("refer");
+    setRefer(sourceParam || ""); // Set refer once available
   }, [searchParams]);
   
   const { className, ...rProps} = props
@@ -160,14 +160,14 @@ export default function IndexPage(
           <CustomHead {...props} />
           <div className="">
             <Header data ={homeSettings} />
-            <HeroSection data={heroSectionData} source={source}/>
+            <HeroSection data={heroSectionData} refer={refer}/>
             <LinksCardsSection data={linkCardSectionData} />
             <Testimonails data={testimonialSecitonData} />
             <CardsListingSection data={cardsListingData}/>
             <LogoListingSection data={logoSectionData} />
             <FeatureSection data={featureSectionData} />
             <AnimatedBeamSection data={integrationPlatforms} />
-            <CsCardsListingSection data={cSCardsListingData} source={source}></CsCardsListingSection>
+            <CsCardsListingSection data={cSCardsListingData} refer={refer}></CsCardsListingSection>
             <SiteComparisonSection data={comparisonSectionData} />
             <FaqSection data={faqSectionData} mailId={heroSectionData?.contactEmail}/>
             <BannerSection></BannerSection>

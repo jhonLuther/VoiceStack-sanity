@@ -15,8 +15,9 @@ import { FormModal } from './common/FormModal'
 import VideoPlayIconWhite from './icons/VideoPlayIconWhite'
 import { BookDemoContext } from '~/providers/BookDemoProvider'
 import { useSearchParams } from 'next/navigation'
+import getTextByReferrer from '~/helpers/getTextByReferrer'
 
-const HeroSection = ({ data, source = null }) => {
+const HeroSection = ({ data, refer = null }) => {
   const [isOpen, setIsOpen] = useState(false)
   const [openForm, setOpenForm] = useState(false)
   const overviewVideo: VideoItem = {
@@ -40,7 +41,6 @@ const HeroSection = ({ data, source = null }) => {
     },
   }
   const { isDemoPopUpShown, setIsDemoPopUpShown } = useContext(BookDemoContext)
-  console.log({hero:data});
   
   useEffect(() => {
     setIsDemoPopUpShown(data);
@@ -64,6 +64,7 @@ const HeroSection = ({ data, source = null }) => {
     setIsDemoPopUpShown,
     data?.heroTitleStaticDynamic?.length,
   ])
+// console.log(data?.heroTitleReferrer.filter((item:any)=> item['_key'] == "cs"));
 
   return (
     <Section className="pt-md md:pt-lg bg-vs-blue" childClass="flex">
@@ -77,18 +78,19 @@ const HeroSection = ({ data, source = null }) => {
                 </span>
               </div>
               <H1 className="text-center w-full">
-                {source == "website" ? (
+                {/* {source == "website" ? ( */}
                   <span className="block [&>span]:text-vs-lemon-green"
-                    dangerouslySetInnerHTML={{__html:data?.heroTitleReferrer}}
+                    dangerouslySetInnerHTML={{__html:getTextByReferrer(refer, data?.heroTitleReferrer || [])}}
+                    // dangerouslySetInnerHTML={{__html:data?.heroTitleReferrer.filter((item:any)=> item['_key'] == "cs")[0].value}}
                   ></span>
-                ):(
+                {/* ):(
                   <>
                     <span className="block text-vs-lemon-green">
                       {data?.heroStrip ? data.heroStrip : ''}
                     </span>
                     <span className="block">{data?.heroTitleStatic}</span>
                   </>
-                )}
+                )} */}
 
                 <div className="relative h-20 overflow-hidden">
                   {data?.heroTitleStaticDynamic?.map((message, index) => (

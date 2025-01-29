@@ -1,9 +1,10 @@
 /**
  * This config is used to set up Sanity Studio that's mounted on the `/pages/studio/[[...index]].tsx` route
  */
-
 import { visionTool } from '@sanity/vision'
 import { defineConfig } from 'sanity'
+import {languageFilter} from '@sanity/language-filter'
+import {internationalizedArray} from 'sanity-plugin-internationalized-array'
 import { deskTool } from 'sanity/desk'
 import {
   defineUrlResolver,
@@ -63,6 +64,31 @@ export default defineConfig({
     },
   },
   plugins: [
+    languageFilter({
+      supportedLanguages: [
+        {id: 'en', title: 'English'},
+        {id: 'cs', title: 'CareStack'},
+        {id: 'fmc', title: 'FMC'},
+        //...
+      ],
+      // Select Norwegian (Bokmål) by default
+      defaultLanguages: ['en'],
+      // Only show language filter for document type `page` (schemaType.name)
+      documentTypes: ['homeSettings'],
+      // filterField: (enclosingType, member, selectedLanguageIds) =>
+      //   !enclosingType.name.startsWith('locale') || !enclosingType.name.startsWith('language') || selectedLanguageIds.includes(member.name),
+    }),
+
+    internationalizedArray({
+      languages: [
+        {id: 'default', title: 'Default'},
+        {id: 'cs', title: 'CareStack'},
+        {id: 'fmc', title: 'FMC'},
+      ],
+      defaultLanguages: ['default'],
+      fieldTypes: ['string', 'customBlockContent'],
+    }),
+    
     documentInternationalization({
       supportedLanguages: [
         { id: 'en', title: 'US English' },

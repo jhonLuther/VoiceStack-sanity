@@ -92,6 +92,9 @@ const Header = ({ data }) => {
   const { query } = router;
 
   const queryString = new URLSearchParams(query as Record<string, string>).toString();
+  const query1 = queryString ? `?${queryString}` : "";
+  console.log({queryString});
+  
 
   // console.log({matchedRegion});
   const country:any = getCookie("__vs_ver");
@@ -267,7 +270,7 @@ const Header = ({ data }) => {
 
           <p className='text-center text-gray-800 font-medium text-base leading-[1.5]'>You will be viewing VoiceStack&apos;s website for the {currentRegion} region</p>
 
-          <Link className={`${btnClass}`} href={`/?${queryString}`} locale={_preferredLocale} onClick={closeRegionPopup}>
+          <Link className={`${btnClass}`} href={`/${query1}`} locale={_preferredLocale} onClick={closeRegionPopup}>
             <span className="text-base font-medium">
               Continue with VoiceStack {currentRegion}
             </span>
@@ -282,7 +285,7 @@ const Header = ({ data }) => {
               {regions.map((region:any, index:number) => {
                 return(
                   _preferredLocale !== region.locale && (
-                    <Link href={`/?${queryString}`} locale={region.locale} className='flex  py-[6px] px-3 rounded-[4px] text-xs font-medium text-gray-400 hover:bg-gray-100'
+                    <Link href={`/${query1}`} locale={region.locale} className='flex  py-[6px] px-3 rounded-[4px] text-xs font-medium text-gray-400 hover:bg-gray-100'
                     onClick={closeRegionPopup}>VoiceStack {region.regionName}
                     </Link>
                   )
@@ -471,7 +474,7 @@ const Header = ({ data }) => {
                           </div>
                         ):(
 
-                        <Link href="/" locale={region.locale} className='flex gap-2 items-center py-[6px] pl-[6px] border-b border-gray-200 last:border-none'>
+                        <Link href={`/${query1}`} locale={region.locale} className='flex gap-2 items-center py-[6px] pl-[6px] border-b border-gray-200 last:border-none'>
                           <Image 
                             src={region.flag.url} 
                             alt={region.flag.title} 
