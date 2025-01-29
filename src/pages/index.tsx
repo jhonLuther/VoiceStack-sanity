@@ -32,10 +32,11 @@ import FaqSection from '~/components/FaqSection'
 import Footer from '~/components/common/Footer'
 import { getClient } from '~/lib/sanity.client'
 import { isEmpty } from 'lodash'
-import { useContext, useEffect } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { useTracking } from 'cs-tracker'
 import { getParams } from '~/helpers/getQueryParams'
 import CsCardsListingSection from '~/components/CsCardsListingSection'
+import { useSearchParams } from 'next/navigation'
 
 export const getStaticProps: GetStaticProps<any> = async ({
   locale,
@@ -83,6 +84,15 @@ export default function IndexPage(
   props: InferGetStaticPropsType<any>,
 ) {
   const { Track, trackEvent } = useTracking({ page: "home-page", }, {})
+  const searchParams = useSearchParams();
+  // const source = searchParams.get("source"); // Get 'source' param from URL
+  const [source, setSource] = useState(null);
+
+  useEffect(() => {
+    const sourceParam = searchParams.get("source");
+    setSource(sourceParam || ""); // Set source once available
+  }, [searchParams]);
+  
   const { className, ...rProps} = props
   useEffect(() => {
       const {
@@ -141,7 +151,6 @@ export default function IndexPage(
   }
   const linkCardSectionData: any = heroSectionData?.heroSubFeature
   
-console.log({cardsListingData});
 
   return (
     <Track>
@@ -151,14 +160,14 @@ console.log({cardsListingData});
           <CustomHead {...props} />
           <div className="">
             <Header data ={homeSettings} />
-            <HeroSection data={heroSectionData}  />
+            <HeroSection data={heroSectionData} source={source}/>
             <LinksCardsSection data={linkCardSectionData} />
             <Testimonails data={testimonialSecitonData} />
             <CardsListingSection data={cardsListingData}/>
             <LogoListingSection data={logoSectionData} />
             <FeatureSection data={featureSectionData} />
             <AnimatedBeamSection data={integrationPlatforms} />
-            <CsCardsListingSection data={cSCardsListingData}></CsCardsListingSection>
+            <CsCardsListingSection data={cSCardsListingData} source={source}></CsCardsListingSection>
             <SiteComparisonSection data={comparisonSectionData} />
             <FaqSection data={faqSectionData} mailId={heroSectionData?.contactEmail}/>
             <BannerSection></BannerSection>

@@ -14,8 +14,9 @@ import { PortableText } from '@portabletext/react'
 import { FormModal } from './common/FormModal'
 import VideoPlayIconWhite from './icons/VideoPlayIconWhite'
 import { BookDemoContext } from '~/providers/BookDemoProvider'
+import { useSearchParams } from 'next/navigation'
 
-const HeroSection = ({ data }) => {
+const HeroSection = ({ data, source = null }) => {
   const [isOpen, setIsOpen] = useState(false)
   const [openForm, setOpenForm] = useState(false)
   const overviewVideo: VideoItem = {
@@ -25,7 +26,9 @@ const HeroSection = ({ data }) => {
 
   const [activeIndex, setActiveIndex] = useState(0)
   const [wordIndex, setWordIndex] = useState(0)
-  const words = data?.heroTitleStaticDynamic[activeIndex]?.split(' ')
+  const words = data?.heroTitleStaticDynamic[activeIndex]?.split(' ');
+  const searchParams = useSearchParams();
+  const source2 = searchParams.get("source"); // Get 'source' param from URL
 
   const components: any = {
     block: {
@@ -37,7 +40,8 @@ const HeroSection = ({ data }) => {
     },
   }
   const { isDemoPopUpShown, setIsDemoPopUpShown } = useContext(BookDemoContext)
-
+  console.log({hero:data});
+  
   useEffect(() => {
     setIsDemoPopUpShown(data);
     if (wordIndex < words?.length) {
@@ -73,10 +77,18 @@ const HeroSection = ({ data }) => {
                 </span>
               </div>
               <H1 className="text-center w-full">
-                <span className="block text-vs-lemon-green">
-                  {data?.heroStrip ? data.heroStrip : ''}
-                </span>
-                <span className="block">{data?.heroTitleStatic}</span>
+                {source == "website" ? (
+                  <span className="block [&>span]:text-vs-lemon-green"
+                    dangerouslySetInnerHTML={{__html:data?.heroTitleReferrer}}
+                  ></span>
+                ):(
+                  <>
+                    <span className="block text-vs-lemon-green">
+                      {data?.heroStrip ? data.heroStrip : ''}
+                    </span>
+                    <span className="block">{data?.heroTitleStatic}</span>
+                  </>
+                )}
 
                 <div className="relative h-20 overflow-hidden">
                   {data?.heroTitleStaticDynamic?.map((message, index) => (

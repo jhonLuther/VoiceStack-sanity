@@ -21,12 +21,21 @@ export default defineType({
       title: 'Hero Title Static',
       type: 'string',
     }),
+
+    defineField({
+      name: 'heroTitleReferrer',
+      title: 'Hero Title Referrer',
+      type: 'string',
+      description: '*This data will be shown when referred from carestack website'
+    }),
+
     defineField({
       name: 'heroTitleStaticDynamic',
       title: 'Hero Title Dynamic',
       type: 'array',
       of: [{ type: 'string' }],
     }),
+
     defineField({
       name: 'bookBtnContent',
       title: 'CTA Button',

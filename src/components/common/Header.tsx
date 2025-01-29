@@ -89,6 +89,10 @@ const Header = ({ data }) => {
   const toggleRef = useRef(null);
   const isMobile = useMediaQuery(767);
 
+  const { query } = router;
+
+  const queryString = new URLSearchParams(query as Record<string, string>).toString();
+
   // console.log({matchedRegion});
   const country:any = getCookie("__vs_ver");
   useEffect(() => {
@@ -263,7 +267,7 @@ const Header = ({ data }) => {
 
           <p className='text-center text-gray-800 font-medium text-base leading-[1.5]'>You will be viewing VoiceStack&apos;s website for the {currentRegion} region</p>
 
-          <Link className={`${btnClass}`} href="/" locale={_preferredLocale} onClick={closeRegionPopup}>
+          <Link className={`${btnClass}`} href={`/?${queryString}`} locale={_preferredLocale} onClick={closeRegionPopup}>
             <span className="text-base font-medium">
               Continue with VoiceStack {currentRegion}
             </span>
@@ -278,7 +282,7 @@ const Header = ({ data }) => {
               {regions.map((region:any, index:number) => {
                 return(
                   _preferredLocale !== region.locale && (
-                    <Link href="/" locale={region.locale} className='flex  py-[6px] px-3 rounded-[4px] text-xs font-medium text-gray-400 hover:bg-gray-100'
+                    <Link href={`/?${queryString}`} locale={region.locale} className='flex  py-[6px] px-3 rounded-[4px] text-xs font-medium text-gray-400 hover:bg-gray-100'
                     onClick={closeRegionPopup}>VoiceStack {region.regionName}
                     </Link>
                   )
