@@ -159,7 +159,7 @@ export default function IndexPage(
         <Layout {...props}>
           <CustomHead {...props} />
           <div className="">
-            <Header data ={homeSettings} />
+            <Header data ={homeSettings} refer={refer}/>
             <HeroSection data={heroSectionData} refer={refer}/>
             <LinksCardsSection data={linkCardSectionData} />
             <Testimonails data={testimonialSecitonData} />

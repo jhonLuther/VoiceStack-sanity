@@ -16,6 +16,7 @@ import VideoPlayIconWhite from './icons/VideoPlayIconWhite'
 import { BookDemoContext } from '~/providers/BookDemoProvider'
 import { useSearchParams } from 'next/navigation'
 import getTextByReferrer from '~/helpers/getTextByReferrer'
+import { useRouter } from 'next/router'
 
 const HeroSection = ({ data, refer = null }) => {
   const [isOpen, setIsOpen] = useState(false)
@@ -30,6 +31,7 @@ const HeroSection = ({ data, refer = null }) => {
   const words = data?.heroTitleStaticDynamic[activeIndex]?.split(' ');
   const searchParams = useSearchParams();
   const source2 = searchParams.get("source"); // Get 'source' param from URL
+  const router = useRouter();
 
   const components: any = {
     block: {
@@ -141,12 +143,22 @@ const HeroSection = ({ data, refer = null }) => {
               {/* <HubSpotForm></HubSpotForm> */}
 
               <div className="flex gap-4 flex-col md:flex-row items-center">
+                {refer == "carestack" ? (
+                  <Button type="primaryWhite" link={`/demo?region=${router.locale}`} locale={false}>
+                    <ButtonArrow></ButtonArrow>
+                    <span className="text-base font-medium">
+                      {data?.bookBtnContent}
+                    </span>
+                  </Button>
+                ):(
+
                 <Button type="primaryWhite" onClick={() => {setOpenForm(true)}}>
                   <ButtonArrow></ButtonArrow>
                   <span className="text-base font-medium">
                     {data?.bookBtnContent}
                   </span>
                 </Button>
+                )}
                 <Button
                   type="video"
                   onClick={() => {

@@ -23,7 +23,7 @@ import Tracker from './trackerComponent';
 
 
 
-const Header = ({ data }) => {
+const Header = ({ data, refer=null }) => {
 
   const [showMenu, setShowMenu] = useState(false);
   const [headerFixed, setHeaderFixed] = useState(false);
@@ -411,11 +411,19 @@ const Header = ({ data }) => {
                       <a href={`tel:${data?.phoneNumber}`} className='text-gray-700 px-[12px] py-[7px] rounded-[7px] text-sm font-medium leading-6 flex items-center whitespace-nowrap gap-[8px]  
                       border border-gray-300'><TelIcon/>{data?.phoneNumber}</a>
                     </div>
-                    
-                    <Button type='primarySm' onClick={() => {setOpenForm(true)}}>
-                      <ButtonArrow></ButtonArrow>
-                      <span className="text-sm font-medium">{`Book free demo`}</span>
-                    </Button>
+                   
+                    {refer == "carestack" ? (
+                      <Button type='primarySm' link={`/demo?region=${router.locale}`} locale={false}>
+                        <ButtonArrow></ButtonArrow>
+                        <span className="text-sm font-medium">{`Book free demo`}</span>
+                      </Button>
+                    ):(
+
+                      <Button type='primarySm' onClick={() => {setOpenForm(true)}}>
+                        <ButtonArrow></ButtonArrow>
+                        <span className="text-sm font-medium">{`Book free demo`}</span>
+                      </Button>
+                    )}
                   </div>
                   <div className='flex gap-4 items-center'>
                     <div className={`${isMobile  && headerFixed ? 'block': 'hidden'}`}>

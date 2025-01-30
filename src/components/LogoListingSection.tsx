@@ -23,7 +23,7 @@ const LogoListingSection = ({ data, refer=null }) => {
   },[router.locale])
   const { isDemoPopUpShown } = useContext(BookDemoContext);
 
-  console.log({ldata: data});
+  // console.log({ldata: data});
   
 
   return (
