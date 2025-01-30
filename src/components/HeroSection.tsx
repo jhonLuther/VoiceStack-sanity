@@ -64,12 +64,25 @@ const HeroSection = ({ data, refer = null }) => {
     setIsDemoPopUpShown,
     data?.heroTitleStaticDynamic?.length,
   ])
+
+  useEffect(()=>{
+      const script = document.createElement("script");
+      script.type = "text/javascript";
+      script.async = true;
+      script.src =
+        "https://static.hsappstatic.net/MeetingsEmbed/ex/MeetingsEmbedCode.js";
+      document.body.appendChild(script);
+  },[])
 // console.log(data?.heroTitleReferrer.filter((item:any)=> item['_key'] == "cs"));
 
   return (
     <Section className="pt-md md:pt-lg bg-vs-blue" childClass="flex">
       <Container>
         <div className="relative w-full flex items-center flex-col md:pt-sm pt-0">
+        {/* <div
+          className="meetings-iframe-container"
+          data-src="https://meetings.hubspot.com/carestack-dan/cspay?embed=true"
+        ></div> */}
           <div className="flex gap-8 items-center pb-10 flex-col max-w-[910px] w-full">
             <div className="flex flex-col items-center w-full gap-5">
               <div className="flex py-2.5 px-[17px] justify-center items-center gap-2 rounded-full border border-white/10 bg-gray-50/5">
