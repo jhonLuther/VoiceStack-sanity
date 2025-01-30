@@ -164,9 +164,9 @@ export default function IndexPage(
             <LinksCardsSection data={linkCardSectionData} />
             <Testimonails data={testimonialSecitonData} />
             <CardsListingSection data={cardsListingData}/>
-            <LogoListingSection data={logoSectionData} />
+            <LogoListingSection data={logoSectionData}  refer={refer}/>
             <FeatureSection data={featureSectionData} />
-            <AnimatedBeamSection data={integrationPlatforms} />
+            <AnimatedBeamSection data={integrationPlatforms} refer={refer} />
             <CsCardsListingSection data={cSCardsListingData} refer={refer}></CsCardsListingSection>
             <SiteComparisonSection data={comparisonSectionData} />
             <FaqSection data={faqSectionData} mailId={heroSectionData?.contactEmail}/>

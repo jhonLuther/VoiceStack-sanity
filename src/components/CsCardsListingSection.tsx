@@ -21,7 +21,7 @@ const CsCardsListingSection = ({data, refer=null}) => {
   const [openForm, setOpenForm] = useState(false);
   const { isDemoPopUpShown } = useContext(BookDemoContext);
   const cardsListing = data?.cardItems;
-  console.log({refer});
+  // console.log({refer});
   
   
   return (

@@ -125,6 +125,7 @@ export async function getTestimonialSecitonData(
 
 export async function logoSection(client: SanityClient, region: string) {
   const query = groq` *[_type == "logoListing" && language == $region][0]{
+    ...,
   'image':logo[]->image.asset->{url,_id,altText,   metadata {
           dimensions {
             width,
@@ -430,6 +431,7 @@ export const getComparisonTableData = (region) =>
   } | order(_createdAt desc)[0]`
 export async function getIntegrationList(client: SanityClient, region: string) {
   const query = groq`*[_type == "platform" && language == $region] {
+    ...,
       _id,
       _createdAt,
       integrationHeading,

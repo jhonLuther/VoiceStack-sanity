@@ -25,7 +25,7 @@ const Circle = forwardRef<
 
 Circle.displayName = 'Circle'
 
-export function AnimatedBeamDemo({ data }: any) {
+export function AnimatedBeamDemo({ data, refer = null }: any) {
   const containerRef = useRef<HTMLDivElement>(null)
   const centerRef = useRef<HTMLDivElement>(null)
   const isMobile = useMediaQuery(767)
@@ -86,6 +86,11 @@ export function AnimatedBeamDemo({ data }: any) {
                 key={outerIndex}
                 className="flex border-t py-2 border-gray-100  first:border-none"
               >
+                {/* {refer && refer == "carestack" ? (
+
+                ):(
+
+                )} */}
                 {pmss &&
                   pmss.map((pmsItem, innerIndex) => {
                     return (

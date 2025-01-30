@@ -93,7 +93,7 @@ const Header = ({ data }) => {
 
   const queryString = new URLSearchParams(query as Record<string, string>).toString();
   const query1 = queryString ? `?${queryString}` : "";
-  console.log({queryString});
+  // console.log({queryString});
   
 
   // console.log({matchedRegion});
@@ -235,7 +235,7 @@ const Header = ({ data }) => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setRegionSwitcher(shouldRenderPopup)
-    }, 500);
+    }, 1000);
     return () => clearTimeout(timer);
   }, [])
 
