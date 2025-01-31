@@ -8,8 +8,8 @@ function UsOptOutRequest() {
       <Section className=" w-full md:max-w-5xl flex flex-col">
         <div className="flex flex-col text-center justify-center mb-10">
           <h1 className="text-4xl font-semibold">
-          Good Methods Global Inc. dba VoiceStack Sale of Personal
-          Information Opt-Out Request Form
+          Good Methods Global Inc. dba VoiceStack <br/>
+          Sale of Personal Information Opt-Out Request Form
           </h1>
           {/* <h2 className="text-3xl font-semibold">United Kingdom (the “DPA”)</h2>  */}
         </div>
@@ -42,8 +42,8 @@ function UsOptOutRequest() {
                 </p>
                 <p class="legal__text">
                   For more information regarding VoiceStack’s privacy practices
-                  please review our Privacy Policy available at: <a href="#">
-                    https://www.voicestack.com/legal/2020-1/privacypolicy/
+                  please review our Privacy Policy available at: <a href="https://www.voicestack.com/legal/2024-10/privacy-policy">
+                  https://www.voicestack.com/legal/2024-10/privacy-policy
                   </a>
                   .
                 </p>
