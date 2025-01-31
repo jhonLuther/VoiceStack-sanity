@@ -6,7 +6,7 @@ function Terms() {
       <Section className=" w-full md:max-w-5xl flex flex-col">
         <div className="flex flex-col text-center justify-center mb-10">
           <h1 className="text-4xl font-semibold">Terms and Conditions</h1>
-          <h2 className="text-3xl font-semibold">SaaS Customer</h2>
+          <h2 className="text-3xl font-semibold">SaaS Customer Agreement</h2>
         </div>
 
         <div className="legal-content">

@@ -801,7 +801,7 @@ function UkPrivacyPolicy() {
   To exercise the right to opt-out please complete this form:
 <br/>
   {/* <a href="https://carestack.com/legal/2020-1/optoutrequest">https://www.carestack.com/legal/privacyoptoutform/</a> */}
-  <a href="#">https://www.voicestack.com/legal/privacyoptoutform/</a>
+  <a href="https://www.voicestack.com/legal/2024-10/optoutrequest">https://www.voicestack.com/legal/2024-10/optoutrequest</a>
   . Alternately, to exercise the right to opt-out or opt-in, you (or your
   authorized representative) may submit a request to us by sending us an e-mail
   at <a href="mailto:privacyconcerns@voicestack.com">privacyconcerns@voicestack.com</a>
@@ -817,10 +817,10 @@ function UkPrivacyPolicy() {
   please submit a verifiable consumer request to us by either:
 </p>
 <p class="legal__text">
-  Visiting <a href="#">https://www.voicestack.com/legal/2024-10/accessordeletionrequest/</a>
+  Visiting <a href="https://www.voicestack.com/legal/2024-10/accessordeletionrequest">https://www.voicestack.com/legal/2024-10/accessordeletionrequest</a>
 </p>
 <p class="legal__text">
-  Sending us an e-mail at <a href="#">https://www.voicestack.com/legal/2024-10/accessordeletionrequest/</a>
+  or visiting <a href="https://www.voicestack.com/legal/2024-10/optoutrequest">https://www.voicestack.com/legal/2024-10/optoutrequest</a>
 </p>
 <p class="legal__text">
   Only you, or a person registered with the California Secretary of State that
