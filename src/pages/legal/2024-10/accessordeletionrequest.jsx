@@ -38,8 +38,8 @@ function UsAccessOrDeletionRequest() {
                   this form but using this form should make it easier for you to
                   make sure you have provided us with all relevant information
                   and for us to process your request. You may also submit your
-                  request via email at <a href="mailto:privacyconcerns@carestack.com">
-                    privacyconcerns@carestack.com
+                  request via email at <a href="mailto:privacyconcerns@voicestack.com">
+                    privacyconcerns@voicestack.com
                   </a>
                   .
                 </p>
@@ -59,7 +59,7 @@ function UsAccessOrDeletionRequest() {
                   keep a record of your request and our response.
                 </p>
               </span>
-              <HubspotFormLegal formId="190f002f-9f12-4bf1-980f-da026ecea1d7"/>
+              <HubspotFormLegal formId="6499c50a-6230-4b0b-9695-3284ff3616bf"/>
               <span>
                 <h2 class="legal__section-title">
                   2. Proof of Resident’s Identity
@@ -84,11 +84,11 @@ function UsAccessOrDeletionRequest() {
                   the Resident’s behalf.
                 </p>
               </span>
-              <HubspotFormLegal formId="8ed580f1-7737-4af9-b389-5a0eb8eb0dcb"/>
+              <HubspotFormLegal formId="925f3a75-0771-431f-9f0d-79e83c83c3ad"/>
               <span>
                 <h2 class="legal__section-title">4. Resident Request</h2>
               </span>
-              <HubspotFormLegal formId="32bf6acd-8a11-4199-af9f-c539b3cc60fd"/>
+              <HubspotFormLegal formId="41f86a13-262f-4116-881c-64ad5b063a11"/>
             </div>
           </div>
         </div>

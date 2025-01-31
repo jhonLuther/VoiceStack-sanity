@@ -35,15 +35,15 @@ function UsOptOutRequest() {
                   You do not have to use this form, but using this form should
                   make it easier for you to make sure you have provided us with
                   all relevant information and for us to process your request.
-                  You may also submit your opt-out request via email at <a href="mailto:privacyconcerns@carestack.com">
-                    privacyconcerns@carestack.com
+                  You may also submit your opt-out request via email at <a href="mailto:privacyconcerns@voicestack.com">
+                    privacyconcerns@voicestack.com
                   </a>
                   .
                 </p>
                 <p class="legal__text">
                   For more information regarding VoiceStack’s privacy practices
-                  please review our Privacy Policy available at: <a href="https://www.carestack.com/legal/2020-1/privacypolicy/">
-                    https://www.carestack.com/legal/2020-1/privacypolicy/
+                  please review our Privacy Policy available at: <a href="#">
+                    https://www.voicestack.com/legal/2020-1/privacypolicy/
                   </a>
                   .
                 </p>
@@ -63,7 +63,7 @@ function UsOptOutRequest() {
                   our response.
                 </p>
               </span>
-              <HubspotFormLegal formId="6caf31db-71f3-4c1b-98f2-e4616adfeec8"/>
+              <HubspotFormLegal formId="ff6fa0a7-9ecd-4b33-b239-3441be16a6f3"/>
               <span>
                 <h2 class="legal__section-title">
                   2. Requests Made by an Authorized Agent on a Resident’s Behalf
@@ -74,7 +74,7 @@ function UsOptOutRequest() {
                   the Resident’s behalf.
                 </p>
               </span>
-              <HubspotFormLegal formId="66fd1037-6e78-4256-a6bb-69da3a35cf3d"/>
+              <HubspotFormLegal formId="d981206e-424c-4d36-a8f6-e8fdd1070ff6"/>
             </div>
           </div>
         </div>
