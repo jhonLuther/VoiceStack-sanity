@@ -27,9 +27,9 @@ function Terms() {
             <span className="c7 c8">
               <a
                 className="c3"
-                href="https://www.voicestack.com/legal/2024-10/baa"
+                href="https://www.voicestack.com"
               >
-                https://www.voicestack.com/legal/2024-10/baa
+                https://www.voicestack.com
               </a>
             </span>
             <span className="c1">
