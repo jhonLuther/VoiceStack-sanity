@@ -42,6 +42,11 @@ const config = {
         destination: '/en-GB?refer=fmc2',
         permanent: false,
       },
+      {
+        source: '/fmc2',
+        destination: '/?refer=fmc2',
+        permanent: false,
+      },
     ]
   },
 
