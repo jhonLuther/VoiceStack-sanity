@@ -32,6 +32,11 @@ const config = {
         destination: '/legal/aus/2024-11/privacy-policy',
         permanent: false,
       },
+      {
+        source: '/fmc',
+        destination: '/?refer=fmc',
+        permanent: false,
+      },
     ]
   },
 
