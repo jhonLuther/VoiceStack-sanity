@@ -64,11 +64,17 @@ export default function Testimonails({ data, refer=null }) {
           <div className="flex justify-center w-full">
             <div className="flex flex-col w-full max-w-[780px] text-center gap-4">
               <H2 className="text-white">Purpose-built for Practice Growth</H2>
+              {refer == "carestack" ? (
+                <Paragraph className="text-gray-400">
+                VoiceStack is trusted by the most successful dental groups in CareStack to create impactful business outcomes across all their locations.
+              </Paragraph>
+              ):(
               <Paragraph className="text-gray-400">
                 VoiceStack is trusted by some of the most successful dental
                 groups to create impactful business outcomes across all their
                 locations.
               </Paragraph>
+              )}
             </div>
           </div>
 
