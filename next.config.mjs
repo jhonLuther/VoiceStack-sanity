@@ -37,6 +37,11 @@ const config = {
         destination: '/?refer=fmc',
         permanent: false,
       },
+      {
+        source: '/fmc2',
+        destination: '/?refer=fmc2',
+        permanent: false,
+      },
     ]
   },
 
