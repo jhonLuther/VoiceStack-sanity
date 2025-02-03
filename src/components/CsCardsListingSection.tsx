@@ -67,10 +67,19 @@ const CsCardsListingSection = ({data, refer=null}) => {
               )}
             </div>
             <div className="flex gap-4 items-center mt-12 lg:mt-16">
-              <Button type="primary" onClick={() => {setOpenForm(true)}}>
-                <ButtonArrow></ButtonArrow>
-                <span className="text-base font-medium">{`Book free demo`}</span>
-              </Button>
+              {refer == "carestack" ? (
+                <Button type="primary" link={`/demo?region=${router.locale}`} locale={false}>
+                  <ButtonArrow></ButtonArrow>
+                  <span className="text-base font-medium">
+                    {`Book free demo`}
+                  </span>
+                </Button>
+                ):(
+                <Button type="primary" onClick={() => { setOpenForm(true) }}>
+                  <ButtonArrow></ButtonArrow>
+                  <span className="text-base font-medium">{`Book free demo`}</span>
+                </Button>
+              )}
             </div>
           </div>
           {openForm && (

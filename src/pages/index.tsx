@@ -162,15 +162,15 @@ export default function IndexPage(
             <Header data ={homeSettings} refer={refer}/>
             <HeroSection data={heroSectionData} refer={refer}/>
             <LinksCardsSection data={linkCardSectionData} />
-            <Testimonails data={testimonialSecitonData} />
+            <Testimonails data={testimonialSecitonData} refer={refer}/>
             <CardsListingSection data={cardsListingData}/>
             <LogoListingSection data={logoSectionData}  refer={refer}/>
-            <FeatureSection data={featureSectionData} />
+            <FeatureSection data={featureSectionData} refer={refer}/>
             <AnimatedBeamSection data={integrationPlatforms} refer={refer} />
             <CsCardsListingSection data={cSCardsListingData} refer={refer}></CsCardsListingSection>
-            <SiteComparisonSection data={comparisonSectionData} />
+            <SiteComparisonSection data={comparisonSectionData} refer={refer}/>
             <FaqSection data={faqSectionData} mailId={heroSectionData?.contactEmail}/>
-            <BannerSection></BannerSection>
+            <BannerSection refer={refer}></BannerSection>
             <Footer></Footer>
           </div>
         </Layout>

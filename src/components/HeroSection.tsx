@@ -206,6 +206,7 @@ const HeroSection = ({ data, refer = null }) => {
         <div>
           {isOpen && (
             <VideoModal
+              refer={refer}
               isPopup={true}
               videoDetails={overviewVideo}
               className={`pt-9 flex items-start`}

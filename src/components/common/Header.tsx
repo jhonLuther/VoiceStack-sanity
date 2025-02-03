@@ -427,10 +427,20 @@ const Header = ({ data, refer=null }) => {
                   </div>
                   <div className='flex gap-4 items-center'>
                     <div className={`${isMobile  && headerFixed ? 'block': 'hidden'}`}>
-                      <Button type='primaryXs' onClick={() => {setOpenForm(true)}}>
-                        <ButtonArrow></ButtonArrow>
-                        <span className="text-sm font-medium">{`Book free demo`}</span>
-                      </Button>
+                      {refer == "carestack" ? (
+                        <Button type="primaryXs" link={`/demo?region=${router.locale}`} locale={false}>
+                          <ButtonArrow></ButtonArrow>
+                          <span className="text-sm font-medium">
+                            {`Book free demo`}
+                          </span>
+                        </Button>
+                        ):(
+                        <Button type="primaryXs" onClick={() => { setOpenForm(true) }}>
+                          <ButtonArrow></ButtonArrow>
+                          <span className="text-sm font-medium">{`Book free demo`}</span>
+                        </Button>
+                      )}
+                        
                     </div>      
 
                     {/* menu icon */}

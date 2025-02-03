@@ -22,11 +22,11 @@ const BookFreeDemoMeeting = () => {
     window.addEventListener("message", async function (event) {
       if (event.origin != "https://meetings.hubspot.com") return false;
       if (event.data.meetingBookSucceeded) {
-        document.getElementsByClassName(
-          "meetings-iframe-container"
-        )[0].style.display = "none"; //hiding the meeting iframe
-        document.getElementsByClassName("meeting-confirm")[0].style.display =
-          "block"; //showing the temporary meeting status (if needed)
+        // document.getElementsByClassName(
+        //   "meetings-iframe-container"
+        // )[0].style.display = "none"; //hiding the meeting iframe
+        // document.getElementsByClassName("meeting-confirm")[0].style.display =
+        //   "block"; //showing the temporary meeting status (if needed)
         let meetingData = event.data.meetingsPayload.bookingResponse; //data
         let organizer = meetingData.postResponse.organizer.name;
         let email = meetingData.postResponse.contact.email;
@@ -91,7 +91,7 @@ const BookFreeDemoMeeting = () => {
   
 
   return (
-    <>
+    <div className="py-24 px-4">
       <div
         style={{ textAlign: "center", padding: "50px", display: "none" }}
         className="meeting-confirm"
@@ -108,6 +108,7 @@ const BookFreeDemoMeeting = () => {
         <div
           className="meetings-iframe-container"
           data-src="https://meetings.hubspot.com/carestack-dan/cs-conversation-website?embed=true"
+          // data-src="https://meetings.hubspot.com/marcomm-admin/test-link-harsha?embed=true"
         ></div>
       )}
       {isRegion && isRegion === "en-AU" && (
@@ -116,7 +117,7 @@ const BookFreeDemoMeeting = () => {
           data-src="https://meetings.hubspot.com/carestack-dan/csconv-aus-website?embed=true"
         ></div>
       )}
-      </>
+      </div>
   );
 };
 

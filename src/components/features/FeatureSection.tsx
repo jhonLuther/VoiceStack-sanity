@@ -13,12 +13,14 @@ import ButtonArrow from '../icons/ButtonArrow'
 import { FormModal } from '../common/FormModal'
 import useMediaQuery from '~/utils/mediaQuery'
 import { BookDemoContext } from '~/providers/BookDemoProvider'
+import { useRouter } from 'next/router'
 
-export default function FeatureSection({ data }) {
+export default function FeatureSection({ data, refer=null }) {
   const [openForm, setOpenForm] = useState(false)
   const testimonialIndex: number = data?.findIndex(
     (e: any) => e.testimonialSubSection != null,
   )
+  const router = useRouter();
   const sampleImages = useMemo(() => {
     return (
       data[testimonialIndex]?.testimonialSubSection.map((e) => ({
@@ -84,6 +86,7 @@ export default function FeatureSection({ data }) {
             feature?.testimonialSubSection?.length ? (
               <>
                 <AppearFeature
+                  refer={refer}
                   key={feature?._id}
                   getIndex={(percentage) => switchIndex(percentage)}
                   getIndexfromAppear={(index) => getIndexfromAppear(index)}
@@ -114,10 +117,20 @@ export default function FeatureSection({ data }) {
                       </div>
                     </div>
                     <div className=' mb-16 md:m-0 flex md:justify-start justify-center'>
+                    {refer == "carestack" ? (
+                      <Button type="primary" link={`/demo?region=${router.locale}`} locale={false}>
+                        <ButtonArrow></ButtonArrow>
+                        <span className="text-base font-medium">
+                          {`Book free demo`}
+                        </span>
+                      </Button>
+                      ):(
                       <Button type="primary" onClick={() => { setOpenForm(true) }}>
                         <ButtonArrow></ButtonArrow>
                         <span className="text-base font-medium">{`Book free demo`}</span>
                       </Button>
+                    )}
+                      
                     </div>
                   </>
                 }
@@ -169,10 +182,21 @@ export default function FeatureSection({ data }) {
                         ))}
                     </ul>
                     {!isMobile && <div className='mt-8 mb-12 md:m-0 flex md:justify-start justify-center'>
-                      <Button type="primary" onClick={() => { setOpenForm(true) }}>
-                        <ButtonArrow></ButtonArrow>
-                        <span className="text-base font-medium">{`Book free demo`}</span>
-                      </Button>
+
+                      {refer == "carestack" ? (
+                        <Button type="primary" link={`/demo?region=${router.locale}`} locale={false}>
+                          <ButtonArrow></ButtonArrow>
+                          <span className="text-base font-medium">
+                            {`Book free demo`}
+                          </span>
+                        </Button>
+                        ):(
+                        <Button type="primary" onClick={() => { setOpenForm(true) }}>
+                          <ButtonArrow></ButtonArrow>
+                          <span className="text-base font-medium">{`Book free demo`}</span>
+                        </Button>
+                      )}
+                      
                     </div>}
                     {isMobile && feature.testimonialImage && feature.testimonialImage.url &&
                       <div className='bg-vs-lemon-green mx-[-16px] h-full z-0'>
@@ -185,10 +209,20 @@ export default function FeatureSection({ data }) {
                       </div>
                     }
                     {isMobile && <div className='mt-8 mb-12 md:m-0 flex md:justify-start justify-center'>
-                      <Button type="primary" onClick={() => { setOpenForm(true) }}>
-                        <ButtonArrow></ButtonArrow>
-                        <span className="text-base font-medium">{`Book free demo`}</span>
-                      </Button>
+                      {refer == "carestack" ? (
+                        <Button type="primary" link={`/demo?region=${router.locale}`} locale={false}>
+                          <ButtonArrow></ButtonArrow>
+                          <span className="text-base font-medium">
+                            {`Book free demo`}
+                          </span>
+                        </Button>
+                        ):(
+                        <Button type="primary" onClick={() => { setOpenForm(true) }}>
+                          <ButtonArrow></ButtonArrow>
+                          <span className="text-base font-medium">{`Book free demo`}</span>
+                        </Button>
+                      )}
+                      
                     </div>}
                   </motion.div>
                 </div>
