@@ -17,7 +17,7 @@ import { useRouter } from 'next/router'
 import TelIcon from '~/components/icons/TelIcon';
 import MailIcon from '~/components/icons/MailIcon';
 
-const BannerSection = () => {
+const BannerSection = (refer=null) => {
   const { isDemoPopUpShown } = useContext(BookDemoContext);
   const [isOpen, setIsOpen] = useState(false);
   // const contactData = contacts;
@@ -95,6 +95,7 @@ const BannerSection = () => {
       <div>
         {isOpen && (
           <VideoModal
+            refer={refer}
             isPopup={true}
             videoDetails={overviewVideo}
             className={`pt-9 flex items-start`}

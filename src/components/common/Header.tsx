@@ -23,7 +23,7 @@ import Tracker from './trackerComponent';
 
 
 
-const Header = ({ data }) => {
+const Header = ({ data, refer=null }) => {
 
   const [showMenu, setShowMenu] = useState(false);
   const [headerFixed, setHeaderFixed] = useState(false);
@@ -88,6 +88,13 @@ const Header = ({ data }) => {
   const matchedRegion = regions.find((region) => region.locale === router.locale);
   const toggleRef = useRef(null);
   const isMobile = useMediaQuery(767);
+
+  const { query } = router;
+
+  const queryString = new URLSearchParams(query as Record<string, string>).toString();
+  const query1 = queryString ? `?${queryString}` : "";
+  // console.log({queryString});
+  
 
   // console.log({matchedRegion});
   const country:any = getCookie("__vs_ver");
@@ -228,7 +235,7 @@ const Header = ({ data }) => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setRegionSwitcher(shouldRenderPopup)
-    }, 500);
+    }, 1000);
     return () => clearTimeout(timer);
   }, [])
 
@@ -263,7 +270,7 @@ const Header = ({ data }) => {
 
           <p className='text-center text-gray-800 font-medium text-base leading-[1.5]'>You will be viewing VoiceStack&apos;s website for the {currentRegion} region</p>
 
-          <Link className={`${btnClass}`} href="/" locale={_preferredLocale} onClick={closeRegionPopup}>
+          <Link className={`${btnClass}`} href={`/${query1}`} locale={_preferredLocale} onClick={closeRegionPopup}>
             <span className="text-base font-medium">
               Continue with VoiceStack {currentRegion}
             </span>
@@ -278,7 +285,7 @@ const Header = ({ data }) => {
               {regions.map((region:any, index:number) => {
                 return(
                   _preferredLocale !== region.locale && (
-                    <Link href="/" locale={region.locale} className='flex  py-[6px] px-3 rounded-[4px] text-xs font-medium text-gray-400 hover:bg-gray-100'
+                    <Link href={`/${query1}`} locale={region.locale} className='flex  py-[6px] px-3 rounded-[4px] text-xs font-medium text-gray-400 hover:bg-gray-100'
                     onClick={closeRegionPopup}>VoiceStack {region.regionName}
                     </Link>
                   )
@@ -404,18 +411,36 @@ const Header = ({ data }) => {
                       <a href={`tel:${data?.phoneNumber}`} className='text-gray-700 px-[12px] py-[7px] rounded-[7px] text-sm font-medium leading-6 flex items-center whitespace-nowrap gap-[8px]  
                       border border-gray-300'><TelIcon/>{data?.phoneNumber}</a>
                     </div>
-                    
-                    <Button type='primarySm' onClick={() => {setOpenForm(true)}}>
-                      <ButtonArrow></ButtonArrow>
-                      <span className="text-sm font-medium">{`Book free demo`}</span>
-                    </Button>
-                  </div>
-                  <div className='flex gap-4 items-center'>
-                    <div className={`${isMobile  && headerFixed ? 'block': 'hidden'}`}>
-                      <Button type='primaryXs' onClick={() => {setOpenForm(true)}}>
+                   
+                    {refer == "carestack" ? (
+                      <Button type='primarySm' link={`/demo?region=${router.locale}`} locale={false}  target='_blank'>
                         <ButtonArrow></ButtonArrow>
                         <span className="text-sm font-medium">{`Book free demo`}</span>
                       </Button>
+                    ):(
+
+                      <Button type='primarySm' onClick={() => {setOpenForm(true)}}>
+                        <ButtonArrow></ButtonArrow>
+                        <span className="text-sm font-medium">{`Book free demo`}</span>
+                      </Button>
+                    )}
+                  </div>
+                  <div className='flex gap-4 items-center'>
+                    <div className={`${isMobile  && headerFixed ? 'block': 'hidden'}`}>
+                      {refer == "carestack" ? (
+                        <Button type="primaryXs" link={`/demo?region=${router.locale}`} locale={false} target='_blank'>
+                          <ButtonArrow></ButtonArrow>
+                          <span className="text-sm font-medium">
+                            {`Book free demo`}
+                          </span>
+                        </Button>
+                        ):(
+                        <Button type="primaryXs" onClick={() => { setOpenForm(true) }}>
+                          <ButtonArrow></ButtonArrow>
+                          <span className="text-sm font-medium">{`Book free demo`}</span>
+                        </Button>
+                      )}
+                        
                     </div>      
 
                     {/* menu icon */}
@@ -467,7 +492,7 @@ const Header = ({ data }) => {
                           </div>
                         ):(
 
-                        <Link href="/" locale={region.locale} className='flex gap-2 items-center py-[6px] pl-[6px] border-b border-gray-200 last:border-none'>
+                        <Link href={`/${query1}`} locale={region.locale} className='flex gap-2 items-center py-[6px] pl-[6px] border-b border-gray-200 last:border-none'>
                           <Image 
                             src={region.flag.url} 
                             alt={region.flag.title} 

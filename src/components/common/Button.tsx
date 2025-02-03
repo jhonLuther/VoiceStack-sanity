@@ -17,6 +17,7 @@ interface ButtonProps {
   isDemo?: boolean
   [x: string]: any
   className?: string
+  locale?: string | false;
 }
 
 const Button: React.FunctionComponent<ButtonProps> = ({
@@ -27,6 +28,7 @@ const Button: React.FunctionComponent<ButtonProps> = ({
   isDemo,
   target,
   className,
+  locale,
   ...rest
 }) => {
   const baseClasses = `rounded-[7px] text-gray-900 font-inter text-base font-medium leading-6 flex items-center whitespace-nowrap gap-[8px]  ${className}`;
@@ -47,7 +49,7 @@ const Button: React.FunctionComponent<ButtonProps> = ({
 
   if (link) {
     return (
-      <Link href={link} className={combinedClasses} target={target} {...rest}>
+      <Link href={link} className={combinedClasses} target={target} locale={locale} {...rest}>
         {children}
       </Link>
     )

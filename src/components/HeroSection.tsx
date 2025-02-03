@@ -14,8 +14,11 @@ import { PortableText } from '@portabletext/react'
 import { FormModal } from './common/FormModal'
 import VideoPlayIconWhite from './icons/VideoPlayIconWhite'
 import { BookDemoContext } from '~/providers/BookDemoProvider'
+import { useSearchParams } from 'next/navigation'
+import getTextByReferrer from '~/helpers/getTextByReferrer'
+import { useRouter } from 'next/router'
 
-const HeroSection = ({ data }) => {
+const HeroSection = ({ data, refer = null }) => {
   const [isOpen, setIsOpen] = useState(false)
   const [openForm, setOpenForm] = useState(false)
   const overviewVideo: VideoItem = {
@@ -25,7 +28,10 @@ const HeroSection = ({ data }) => {
 
   const [activeIndex, setActiveIndex] = useState(0)
   const [wordIndex, setWordIndex] = useState(0)
-  const words = data?.heroTitleStaticDynamic[activeIndex]?.split(' ')
+  const words = data?.heroTitleStaticDynamic[activeIndex]?.split(' ');
+  const searchParams = useSearchParams();
+  const source2 = searchParams.get("source"); // Get 'source' param from URL
+  const router = useRouter();
 
   const components: any = {
     block: {
@@ -37,7 +43,7 @@ const HeroSection = ({ data }) => {
     },
   }
   const { isDemoPopUpShown, setIsDemoPopUpShown } = useContext(BookDemoContext)
-
+  
   useEffect(() => {
     setIsDemoPopUpShown(data);
     if (wordIndex < words?.length) {
@@ -61,10 +67,24 @@ const HeroSection = ({ data }) => {
     data?.heroTitleStaticDynamic?.length,
   ])
 
+  useEffect(()=>{
+      const script = document.createElement("script");
+      script.type = "text/javascript";
+      script.async = true;
+      script.src =
+        "https://static.hsappstatic.net/MeetingsEmbed/ex/MeetingsEmbedCode.js";
+      document.body.appendChild(script);
+  },[])
+// console.log(data?.heroTitleReferrer.filter((item:any)=> item['_key'] == "cs"));
+
   return (
     <Section className="pt-md md:pt-lg bg-vs-blue" childClass="flex">
       <Container>
         <div className="relative w-full flex items-center flex-col md:pt-sm pt-0">
+        {/* <div
+          className="meetings-iframe-container"
+          data-src="https://meetings.hubspot.com/carestack-dan/cspay?embed=true"
+        ></div> */}
           <div className="flex gap-8 items-center pb-10 flex-col max-w-[910px] w-full">
             <div className="flex flex-col items-center w-full gap-5">
               <div className="flex py-2.5 px-[17px] justify-center items-center gap-2 rounded-full border border-white/10 bg-gray-50/5">
@@ -73,10 +93,19 @@ const HeroSection = ({ data }) => {
                 </span>
               </div>
               <H1 className="text-center w-full">
-                <span className="block text-vs-lemon-green">
-                  {data?.heroStrip ? data.heroStrip : ''}
-                </span>
-                <span className="block">{data?.heroTitleStatic}</span>
+                {/* {source == "website" ? ( */}
+                  <span className="block [&>span]:text-vs-lemon-green"
+                    dangerouslySetInnerHTML={{__html:getTextByReferrer(refer, data?.heroTitleReferrer || [])}}
+                    // dangerouslySetInnerHTML={{__html:data?.heroTitleReferrer.filter((item:any)=> item['_key'] == "cs")[0].value}}
+                  ></span>
+                {/* ):(
+                  <>
+                    <span className="block text-vs-lemon-green">
+                      {data?.heroStrip ? data.heroStrip : ''}
+                    </span>
+                    <span className="block">{data?.heroTitleStatic}</span>
+                  </>
+                )} */}
 
                 <div className="relative h-20 overflow-hidden">
                   {data?.heroTitleStaticDynamic?.map((message, index) => (
@@ -114,12 +143,22 @@ const HeroSection = ({ data }) => {
               {/* <HubSpotForm></HubSpotForm> */}
 
               <div className="flex gap-4 flex-col md:flex-row items-center">
+                {refer == "carestack" ? (
+                  <Button type="primaryWhite" link={`/demo?region=${router.locale}`} locale={false} target='_blank'>
+                    <ButtonArrow></ButtonArrow>
+                    <span className="text-base font-medium">
+                      {data?.bookBtnContent}
+                    </span>
+                  </Button>
+                ):(
+
                 <Button type="primaryWhite" onClick={() => {setOpenForm(true)}}>
                   <ButtonArrow></ButtonArrow>
                   <span className="text-base font-medium">
                     {data?.bookBtnContent}
                   </span>
                 </Button>
+                )}
                 <Button
                   type="video"
                   onClick={() => {
@@ -167,6 +206,7 @@ const HeroSection = ({ data }) => {
         <div>
           {isOpen && (
             <VideoModal
+              refer={refer}
               isPopup={true}
               videoDetails={overviewVideo}
               className={`pt-9 flex items-start`}

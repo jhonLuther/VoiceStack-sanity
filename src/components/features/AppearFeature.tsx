@@ -10,6 +10,7 @@ import ListItem from './micro/ListItem'
 import { FormModal } from '../common/FormModal'
 import useMediaQuery from '~/utils/mediaQuery'
 import { BookDemoContext } from '~/providers/BookDemoProvider'
+import { useRouter } from 'next/router'
 
 export default function AppearFeature({
   getIndex,
@@ -17,6 +18,7 @@ export default function AppearFeature({
   index,
   dataIndex,
   data,
+  refer,
   props,
 }: any) {
   const { scrollY } = useScroll()
@@ -33,6 +35,7 @@ export default function AppearFeature({
   const percentScrolled =
     ((actualScrollStart - scrollPos) / (actualScrollStart - sectionEndY)) * 100
   const [activeItemIndex, setActiveItemIndex] = useState(0)
+  const router = useRouter();
 
   const switchIndex = (percentage) => {
     if (scrollPos > actualScrollStart) {
@@ -134,15 +137,24 @@ export default function AppearFeature({
           </ul>
 
           {!isMobile && <div className="flex md:justify-start justify-center">
-            <Button
-              type="primary"
-              onClick={() => {
-                setOpenForm(true)
-              }}
-            >
-              <ButtonArrow></ButtonArrow>
-              <span className="text-base font-medium">{`Book free demo`}</span>
-            </Button>
+            {refer == "carestack" ? (
+              <Button type="primary" link={`/demo?region=${router.locale}`} locale={false} target='_blank'>
+                <ButtonArrow></ButtonArrow>
+                <span className="text-base font-medium">
+                  {`Book free demo`}
+                </span>
+              </Button>
+              ):(
+              <Button
+                type="primary"
+                onClick={() => {
+                  setOpenForm(true)
+                }}
+              >
+                <ButtonArrow></ButtonArrow>
+                <span className="text-base font-medium">{`Book free demo`}</span>
+              </Button>
+            )}
           </div>}
         </motion.div>
       </div>

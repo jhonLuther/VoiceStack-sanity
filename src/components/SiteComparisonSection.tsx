@@ -11,7 +11,7 @@ import { FormModal } from './common/FormModal'
 import { useRouter } from 'next/router'
 import LegendSection from './common/LegendSection'
 
-function SiteComparisonSection({ data }) {
+function SiteComparisonSection({ data, refer=null }) {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [isOpen, setIsOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
@@ -97,10 +97,20 @@ function SiteComparisonSection({ data }) {
             </div>
           }
           <div className='flex gap-4 items-center mt-12 lg:mt-16'>
-              <Button type='primary'   onClick={() => {setOpenForm(true)}}>
+            {refer == "carestack" ? (
+              <Button type="primary" link={`/demo?region=${router.locale}`} locale={false}  target='_blank'>
+                <ButtonArrow></ButtonArrow>
+                <span className="text-base font-medium">
+                  {`Book free demo`}
+                </span>
+              </Button>
+              ):(
+              <Button type="primary" onClick={() => { setOpenForm(true) }}>
                 <ButtonArrow></ButtonArrow>
                 <span className="text-base font-medium">{`Book free demo`}</span>
               </Button>
+            )}
+             
             </div>
         </Container>
           {openForm && (

@@ -16,6 +16,16 @@ export default defineType({
       type: 'string',
     }),
     defineField({
+      name: 'logoSectionHeaderRef',
+      title: 'Logo Section Header Ref',
+      type: 'internationalizedArrayString',
+    }),
+    defineField({
+      name: 'logoSectionHeaderDescRef',
+      title: 'Logo Section Description Ref',
+      type: 'internationalizedArrayString',
+    }),
+    defineField({
       name: 'logo',
       title: 'Choose Logo',
       type:'array',

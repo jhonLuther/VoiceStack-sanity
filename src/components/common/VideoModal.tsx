@@ -3,6 +3,8 @@ import { CloseIcon } from '@sanity/icons'
 import Button from './Button'
 import ButtonArrow from '../icons/ButtonArrow'
 import useMediaQuery from '~/utils/mediaQuery'
+import { useSearchParams } from 'next/navigation'
+import { useRouter } from 'next/router'
 
 type VideoPlatform = 'vimeo' | 'vidyard' | 'youtube'
 
@@ -21,7 +23,18 @@ interface VideoProps {
   video?: VideoItem | VideoItem[]
   openForm?: () => void
   hasDemoBanner?:boolean
+  refer?:any
 }
+
+  // const searchParams = useSearchParams();
+  // // const source = searchParams.get("refer"); // Get 'refer' param from URL
+  // const [refer, setRefer] = React.useState(null);
+
+  // React.useEffect(() => {
+  //   const sourceParam = searchParams.get("refer");
+  //   setRefer(sourceParam || ""); // Set refer once available
+  // }, [searchParams]);
+  
 
 const getIframeUrl = (videoPlatform: VideoPlatform, videoId: string): string => {
   switch (videoPlatform) {
@@ -58,18 +71,20 @@ export const VideoModal: React.FC<VideoProps> = ({
   onClose,
   openForm,
   video,
-  hasDemoBanner
+  hasDemoBanner,
+  refer
 }) => {
   const videoData = video || videoDetails
 
   const toggleRef = React.useRef(null);
   const isMobile = useMediaQuery(767);
+  const router = useRouter();
 
   // Close the modal if clicking on the parent outside the child
   const handleParentClick = (e) => {
     // Check if the click target is the parent
     if (e.target === e.currentTarget) {
-      console.log("clooooooose");
+      // console.log("clooooooose");
       onClose();
       
     }
@@ -121,17 +136,26 @@ export const VideoModal: React.FC<VideoProps> = ({
         {hasDemoBanner && (
           <div className='flex flex-col md:flex-row justify-between gap-3 md:gap-10 items-center py-4 md:py-6 px-8 bg-white'>
             <span className='text-[18px] md:text-[23px] font-medium text-gray-900'>Book a meeting with us</span>
-
-            <Button type={isMobile ? "primarySm" : "primary"} onClick={() => {
-              openForm();
-              onClose();
-            }}>
-              <ButtonArrow></ButtonArrow>
-              <span className="text-base font-medium">
-                {/* {data?.bookBtnContent} */}
-                Book free demo
-              </span>
-            </Button>
+            {refer == "carestack" ? (
+              <Button type={isMobile ? "primarySm" : "primary"} link={`/demo?region=${router.locale}`} locale={false} target='_blank'>
+                <ButtonArrow></ButtonArrow>
+                <span className="text-base font-medium">
+                  {`Book free demo`}
+                </span>
+              </Button>
+              ):(
+                <Button type={isMobile ? "primarySm" : "primary"} onClick={() => {
+                  openForm();
+                  onClose();
+                }}>
+                  <ButtonArrow></ButtonArrow>
+                  <span className="text-base font-medium">
+                    {/* {data?.bookBtnContent} */}
+                    Book free demo
+                  </span>
+                </Button>
+            )}
+            
           </div>
         )}
       </div>
