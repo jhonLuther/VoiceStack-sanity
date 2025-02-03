@@ -9,8 +9,9 @@ import Paragraph from './typography/Paragraph'
 import { FormModal } from './common/FormModal'
 import { useRouter } from 'next/router'
 import { BookDemoContext } from '~/providers/BookDemoProvider'
+import getTextByReferrer from '~/helpers/getTextByReferrer'
 
-const LogoListingSection = ({ data }) => {
+const LogoListingSection = ({ data, refer=null }) => {
   
   const [openForm, setOpenForm] = useState(false);
   
@@ -22,15 +23,18 @@ const LogoListingSection = ({ data }) => {
   },[router.locale])
   const { isDemoPopUpShown } = useContext(BookDemoContext);
 
+  // console.log({ldata: data});
+  
+
   return (
     <Section className="py-sm md:py-md md:pb-16">
       <Container>
         <div className="flex flex-col items-center w-full">
           <div className={`flex justify-center w-full ${ data?.image?.length > 0 && `mb-12`}`}>
             <div className="flex flex-col w-full max-w-[780px] text-center gap-4">
-              <H2>{data?.logoSectionHeader}</H2>
+              <H2>{getTextByReferrer(refer, data?.logoSectionHeaderRef || [])}</H2>
               <Paragraph
-                dangerouslySetInnerHTML={{__html: data?.logoSectionHeaderDescptn}}
+                dangerouslySetInnerHTML={{__html: getTextByReferrer(refer, data?.logoSectionHeaderDescRef || [])}}
               ></Paragraph>
             </div>
           </div>

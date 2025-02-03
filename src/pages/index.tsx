@@ -12,6 +12,7 @@ import {
   getHeroSectionData,
   getTestimonialSecitonData,
   getCardsSectionData,
+  getCsCardsSectionData,
 } from '~/lib/sanity.queries'
 import Layout from '../components/Layout'
 import CustomHead from '~/components/common/CustomHead'
@@ -31,9 +32,11 @@ import FaqSection from '~/components/FaqSection'
 import Footer from '~/components/common/Footer'
 import { getClient } from '~/lib/sanity.client'
 import { isEmpty } from 'lodash'
-import { useContext, useEffect } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { useTracking } from 'cs-tracker'
 import { getParams } from '~/helpers/getQueryParams'
+import CsCardsListingSection from '~/components/CsCardsListingSection'
+import { useSearchParams } from 'next/navigation'
 
 export const getStaticProps: GetStaticProps<any> = async ({
   locale,
@@ -52,6 +55,7 @@ export const getStaticProps: GetStaticProps<any> = async ({
   const featureSectionData = await featureSectionQuery(client, region)
   const faqSectionData = await fetchFaq(client,region)
   const cardsListingData = await getCardsSectionData(client,region)
+  const cSCardsListingData = await getCsCardsSectionData(client,region)
   
   
 
@@ -70,7 +74,8 @@ export const getStaticProps: GetStaticProps<any> = async ({
       featureSectionData,
       testimonialSecitonData,
       faqSectionData,
-      cardsListingData
+      cardsListingData,
+      cSCardsListingData
     },
   }
 }
@@ -79,6 +84,15 @@ export default function IndexPage(
   props: InferGetStaticPropsType<any>,
 ) {
   const { Track, trackEvent } = useTracking({ page: "home-page", }, {})
+  const searchParams = useSearchParams();
+  // const source = searchParams.get("refer"); // Get 'refer' param from URL
+  const [refer, setRefer] = useState(null);
+
+  useEffect(() => {
+    const sourceParam = searchParams.get("refer");
+    setRefer(sourceParam || ""); // Set refer once available
+  }, [searchParams]);
+  
   const { className, ...rProps} = props
   useEffect(() => {
       const {
@@ -123,7 +137,8 @@ export default function IndexPage(
     integrationPlatforms,
     comparisonTableData,
     faqSectionData,
-    cardsListingData
+    cardsListingData,
+    cSCardsListingData
   } = props
 
   const comparisonSectionData = {
@@ -144,14 +159,15 @@ export default function IndexPage(
         <Layout {...props}>
           <CustomHead {...props} />
           <div className="">
-            <Header data ={homeSettings} />
-            <HeroSection data={heroSectionData}  />
+            <Header data ={homeSettings} refer={refer}/>
+            <HeroSection data={heroSectionData} refer={refer}/>
             <LinksCardsSection data={linkCardSectionData} />
             <Testimonails data={testimonialSecitonData} />
             <CardsListingSection data={cardsListingData}/>
-            <LogoListingSection data={logoSectionData} />
+            <LogoListingSection data={logoSectionData}  refer={refer}/>
             <FeatureSection data={featureSectionData} />
-            <AnimatedBeamSection data={integrationPlatforms} />
+            <AnimatedBeamSection data={integrationPlatforms} refer={refer} />
+            <CsCardsListingSection data={cSCardsListingData} refer={refer}></CsCardsListingSection>
             <SiteComparisonSection data={comparisonSectionData} />
             <FaqSection data={faqSectionData} mailId={heroSectionData?.contactEmail}/>
             <BannerSection></BannerSection>

@@ -125,6 +125,7 @@ export async function getTestimonialSecitonData(
 
 export async function logoSection(client: SanityClient, region: string) {
   const query = groq` *[_type == "logoListing" && language == $region][0]{
+    ...,
   'image':logo[]->image.asset->{url,_id,altText,   metadata {
           dimensions {
             width,
@@ -147,6 +148,21 @@ export async function getCardsSectionData(client: SanityClient, region: string) 
       "description": cardItemContent,
       "iconSvg": cardItemSvg,
       "icon": cardItemIcon.asset->url
+    }
+    
+}`
+  return await client.fetch(query, { region })
+}
+
+export async function getCsCardsSectionData(client: SanityClient, region: string) {
+  const query = groq` *[_type == "csCardsListing" && language == $region][0]{
+    heading,
+    subHeading,
+    cardItems[]{
+      "heading": cardItemHeading,
+      "description": cardItemContent,
+      "iconSvg": cardItemSvg,
+      "image": cardItemImage.asset->url
     }
     
 }`
@@ -415,6 +431,7 @@ export const getComparisonTableData = (region) =>
   } | order(_createdAt desc)[0]`
 export async function getIntegrationList(client: SanityClient, region: string) {
   const query = groq`*[_type == "platform" && language == $region] {
+    ...,
       _id,
       _createdAt,
       integrationHeading,

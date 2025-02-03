@@ -4,6 +4,10 @@ export default defineType({
   name: 'homeSettings',
   title: 'Home Settings',
   type: 'document',
+  options: {
+    // show language filter for this document type, regardless of how documentTypes for the plugin is configured
+    languageFilter: true,
+  },
   fields: [
     defineField({
       name: 'heroStripHeader',
@@ -21,12 +25,21 @@ export default defineType({
       title: 'Hero Title Static',
       type: 'string',
     }),
+
+    defineField({
+      name: 'heroTitleReferrer',
+      title: 'Hero Title Referrer',
+      type: 'internationalizedArrayString',
+      description: '*This data will be shown when referred from carestack website'
+    }),
+
     defineField({
       name: 'heroTitleStaticDynamic',
       title: 'Hero Title Dynamic',
       type: 'array',
       of: [{ type: 'string' }],
     }),
+
     defineField({
       name: 'bookBtnContent',
       title: 'CTA Button',
@@ -38,6 +51,12 @@ export default defineType({
       title: 'Hero Description',
       type: 'customBlockContent',
     }),
+    
+    // defineField({
+    //   name: 'heroDescription2',
+    //   title: 'Hero Description2',
+    //   type: 'internationalizedArrayCustomBlockContent',
+    // }),
 
     defineField({
       name: 'heroImage',

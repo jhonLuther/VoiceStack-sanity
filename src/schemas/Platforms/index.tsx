@@ -20,6 +20,16 @@ export default defineType({
       title: 'Integration Description',
       type: 'string',
     }),
+    defineField({
+      name: 'integrationSubHeadingRef',
+      title: 'Integration Sub Heading Ref',
+      type: 'internationalizedArrayString',
+    }),
+    defineField({
+      name: 'integrationDescriptionRef',
+      title: 'Integration Description Ref',
+      type: 'internationalizedArrayString',
+    }),
 
     defineField({
       name: 'integrationImage',
