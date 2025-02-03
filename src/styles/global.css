@@ -572,11 +572,15 @@ html {
   margin-bottom: 30px;
 }
 
-.legal__list--bullet-point li, ul li {
+.legal__list--bullet-point li {
   list-style: disc;
   line-height: 1.4;
   margin-left: 20px;
   margin-bottom: 0.7rem;
+}
+
+.list-unstyled li{
+  list-style-type: none;
 }
 
 /* loader css */
