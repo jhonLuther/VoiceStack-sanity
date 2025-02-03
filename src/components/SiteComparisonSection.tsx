@@ -98,7 +98,7 @@ function SiteComparisonSection({ data, refer=null }) {
           }
           <div className='flex gap-4 items-center mt-12 lg:mt-16'>
             {refer == "carestack" ? (
-              <Button type="primary" link={`/demo?region=${router.locale}`} locale={false}>
+              <Button type="primary" link={`/demo?region=${router.locale}`} locale={false}  target='_blank'>
                 <ButtonArrow></ButtonArrow>
                 <span className="text-base font-medium">
                   {`Book free demo`}

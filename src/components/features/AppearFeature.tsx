@@ -138,7 +138,7 @@ export default function AppearFeature({
 
           {!isMobile && <div className="flex md:justify-start justify-center">
             {refer == "carestack" ? (
-              <Button type="primary" link={`/demo?region=${router.locale}`} locale={false}>
+              <Button type="primary" link={`/demo?region=${router.locale}`} locale={false} target='_blank'>
                 <ButtonArrow></ButtonArrow>
                 <span className="text-base font-medium">
                   {`Book free demo`}

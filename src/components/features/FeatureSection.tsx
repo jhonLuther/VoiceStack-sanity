@@ -118,7 +118,7 @@ export default function FeatureSection({ data, refer=null }) {
                     </div>
                     <div className=' mb-16 md:m-0 flex md:justify-start justify-center'>
                     {refer == "carestack" ? (
-                      <Button type="primary" link={`/demo?region=${router.locale}`} locale={false}>
+                      <Button type="primary" link={`/demo?region=${router.locale}`} locale={false} target='_blank'>
                         <ButtonArrow></ButtonArrow>
                         <span className="text-base font-medium">
                           {`Book free demo`}
@@ -184,7 +184,7 @@ export default function FeatureSection({ data, refer=null }) {
                     {!isMobile && <div className='mt-8 mb-12 md:m-0 flex md:justify-start justify-center'>
 
                       {refer == "carestack" ? (
-                        <Button type="primary" link={`/demo?region=${router.locale}`} locale={false}>
+                        <Button type="primary" link={`/demo?region=${router.locale}`} locale={false} target='_blank'>
                           <ButtonArrow></ButtonArrow>
                           <span className="text-base font-medium">
                             {`Book free demo`}
@@ -210,7 +210,7 @@ export default function FeatureSection({ data, refer=null }) {
                     }
                     {isMobile && <div className='mt-8 mb-12 md:m-0 flex md:justify-start justify-center'>
                       {refer == "carestack" ? (
-                        <Button type="primary" link={`/demo?region=${router.locale}`} locale={false}>
+                        <Button type="primary" link={`/demo?region=${router.locale}`} locale={false} target='_blank'>
                           <ButtonArrow></ButtonArrow>
                           <span className="text-base font-medium">
                             {`Book free demo`}

@@ -137,7 +137,7 @@ export const VideoModal: React.FC<VideoProps> = ({
           <div className='flex flex-col md:flex-row justify-between gap-3 md:gap-10 items-center py-4 md:py-6 px-8 bg-white'>
             <span className='text-[18px] md:text-[23px] font-medium text-gray-900'>Book a meeting with us</span>
             {refer == "carestack" ? (
-              <Button type={isMobile ? "primarySm" : "primary"} link={`/demo?region=${router.locale}`} locale={false}>
+              <Button type={isMobile ? "primarySm" : "primary"} link={`/demo?region=${router.locale}`} locale={false} target='_blank'>
                 <ButtonArrow></ButtonArrow>
                 <span className="text-base font-medium">
                   {`Book free demo`}

@@ -144,7 +144,7 @@ const HeroSection = ({ data, refer = null }) => {
 
               <div className="flex gap-4 flex-col md:flex-row items-center">
                 {refer == "carestack" ? (
-                  <Button type="primaryWhite" link={`/demo?region=${router.locale}`} locale={false}>
+                  <Button type="primaryWhite" link={`/demo?region=${router.locale}`} locale={false} target='_blank'>
                     <ButtonArrow></ButtonArrow>
                     <span className="text-base font-medium">
                       {data?.bookBtnContent}
