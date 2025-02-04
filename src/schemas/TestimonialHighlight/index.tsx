@@ -89,20 +89,7 @@ export default defineType({
           ],
         },
       ],
-      preview: {
-        select: {
-          title: 'testimonialDescription', // First video title
-          subtitle: 'rating', // Rating as subtitle
-          media: 'testimonialThumbnail', // Thumbnail preview
-        },
-        prepare({ title, subtitle, media }) {
-          return {
-            title: title || 'No Video Title',
-            subtitle: `Rating: ${subtitle || 'N/A'}`,
-            media,
-          };
-        },
-      },
+      
     }),
 
     defineField({
