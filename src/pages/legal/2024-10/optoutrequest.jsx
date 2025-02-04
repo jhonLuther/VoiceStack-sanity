@@ -42,8 +42,8 @@ function UsOptOutRequest() {
                 </p>
                 <p class="legal__text">
                   For more information regarding VoiceStack’s privacy practices
-                  please review our Privacy Policy available at: <a href="https://www.voicestack.com/legal/2024-10/privacy-policy">
-                  https://www.voicestack.com/legal/2024-10/privacy-policy
+                  please review our Privacy Policy available at: <a href="https://www.voicestack.com/legal/2025-01/privacy-policy">
+                  https://www.voicestack.com/legal/2025-01/privacy-policy
                   </a>
                   .
                 </p>

@@ -19,7 +19,7 @@ const config = {
       
       {
         source: '/legal/privacy-policy',
-        destination: '/legal/2024-10/privacy-policy',
+        destination: '/legal/2025-01/privacy-policy',
         permanent: false,
       },
       {
