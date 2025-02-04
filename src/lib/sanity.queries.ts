@@ -169,6 +169,30 @@ export async function getCsCardsSectionData(client: SanityClient, region: string
   return await client.fetch(query, { region })
 }
 
+export async function getTestimonialHighlightSectionData(client: SanityClient, region: string) {
+  const query = groq` *[_type == "testimonialHighlightSection" && language == $region][0]{
+    ...,
+    testimonials[]{
+      ...,
+      "testimonialThumbnail": testimonialThumbnail.asset-> {
+        _id,
+        url,
+        altText,
+        title
+      },
+      "clientLogo": clientLogo.asset -> {
+        _id,
+        url,
+        altText,
+        title
+      },
+    }
+    
+    
+}`
+  return await client.fetch(query, { region })
+}
+
 export async function featureSectionQuery(
   client: SanityClient,
   region: string,
