@@ -21,7 +21,6 @@ const TestimonialCard = forwardRef<HTMLDivElement, TestimonialCardProps>(
 
     const topValue = isMobile ? 80 + (index * 20) : 160 + (index * 20);
 
-    // console.log({data});
     
     const video  = data.video
   return (

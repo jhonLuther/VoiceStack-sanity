@@ -13,6 +13,7 @@ import {
   getTestimonialSecitonData,
   getCardsSectionData,
   getCsCardsSectionData,
+  getTestimonialHighlightSectionData,
 } from '~/lib/sanity.queries'
 import Layout from '../components/Layout'
 import CustomHead from '~/components/common/CustomHead'
@@ -37,6 +38,7 @@ import { useTracking } from 'cs-tracker'
 import { getParams } from '~/helpers/getQueryParams'
 import CsCardsListingSection from '~/components/CsCardsListingSection'
 import { useSearchParams } from 'next/navigation'
+import TestimonialHighlightSection from '~/components/TestimonialHighlightSection'
 
 export const getStaticProps: GetStaticProps<any> = async ({
   locale,
@@ -56,6 +58,7 @@ export const getStaticProps: GetStaticProps<any> = async ({
   const faqSectionData = await fetchFaq(client,region)
   const cardsListingData = await getCardsSectionData(client,region)
   const cSCardsListingData = await getCsCardsSectionData(client,region)
+  const testimonialHighlightsData = await getTestimonialHighlightSectionData(client,region)
   
   
 
@@ -75,7 +78,8 @@ export const getStaticProps: GetStaticProps<any> = async ({
       testimonialSecitonData,
       faqSectionData,
       cardsListingData,
-      cSCardsListingData
+      cSCardsListingData,
+      testimonialHighlightsData
     },
   }
 }
@@ -138,7 +142,8 @@ export default function IndexPage(
     comparisonTableData,
     faqSectionData,
     cardsListingData,
-    cSCardsListingData
+    cSCardsListingData,
+    testimonialHighlightsData
   } = props
 
   const comparisonSectionData = {
@@ -169,6 +174,7 @@ export default function IndexPage(
             <AnimatedBeamSection data={integrationPlatforms} refer={refer} />
             <CsCardsListingSection data={cSCardsListingData} refer={refer}></CsCardsListingSection>
             <SiteComparisonSection data={comparisonSectionData} refer={refer}/>
+            <TestimonialHighlightSection data={testimonialHighlightsData} refer={refer}/>
             <FaqSection data={faqSectionData} mailId={heroSectionData?.contactEmail}/>
             <BannerSection refer={refer}></BannerSection>
             <Footer></Footer>
