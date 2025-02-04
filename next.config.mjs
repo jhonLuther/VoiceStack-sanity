@@ -34,19 +34,15 @@ const config = {
       },
       {
         source: '/fmc',
-        destination: '/en-GB?refer=fmc',
+        destination: '/?lead_source=FMC&utm_medium=digital',
         permanent: false,
       },
       {
         source: '/fmc2',
-        destination: '/en-GB?refer=fmc2',
+        destination: '/?lead_source=FMC&utm_medium=print',
         permanent: false,
       },
-      {
-        source: '/fmc2',
-        destination: '/?refer=fmc2',
-        permanent: false,
-      },
+      
     ]
   },
 
