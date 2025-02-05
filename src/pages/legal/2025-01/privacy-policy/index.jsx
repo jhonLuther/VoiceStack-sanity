@@ -224,7 +224,7 @@ function USPrivacyPolicy() {
         transcripts, class lists, student schedules, student identification
         codes, student financial information, or student disciplinary records.</p>
       </td>
-      <td><p class="legal__text">YES</p></td>
+      <td><p class="legal__text">NO</p></td>
     </tr>
     <tr>
       <td><p class="legal__text">K. Inferences drawn from other Personal Information.</p></td>
