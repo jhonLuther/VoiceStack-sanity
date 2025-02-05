@@ -966,7 +966,7 @@ function USPrivacyPolicy() {
   <li>the right to withdraw consent to data processing at any time;</li>
   <li>the right of access to your Personal Information;</li>
   <li>the right to request a copy of your Personal Information;</li>
-  <li>the right to correct any inaccuracies in t your Personal Information;</li>
+  <li>the right to correct any inaccuracies in your Personal Information;</li>
   <li>the right to erase your Personal Information;</li>
   <li>
     the right to data portability, meaning to request a transfer of your

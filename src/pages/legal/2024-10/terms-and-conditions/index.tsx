@@ -93,7 +93,7 @@ function Terms() {
               1.3 VoiceStack Voip Terms of Use (&ldquo;VoiceStack ToU&rdquo;) is
               listed in Exhibit A. By submitting the order form or this
               agreement or otherwise accessing or using Services the Customer
-              and End users (as defined in Exhibit A) agree to VoiceStack ToU.
+              and End Users (as defined in Exhibit A) agree to VoiceStack ToU.
               Customer represents and warrants that (i) Customer is duly
               authorised to bind the entity and End Users to the VoiceStack ToU,
               and (ii) Customer agree that all such use of Services by Customer
