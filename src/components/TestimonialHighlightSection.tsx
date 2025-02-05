@@ -14,7 +14,6 @@ import PlayIcon from 'public/assets/play-icon-white.svg'
 
 const TestimonialHighlightSection = ({data, refer=null}) => {
 
-  console.log({data});
   
   const [isOpen, setIsOpen] = useState(false);
   const [selectedVideo, setSelectedVideo] = useState<VideoItem | null>(null)
