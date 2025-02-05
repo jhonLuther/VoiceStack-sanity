@@ -1,6 +1,6 @@
 import Section from '~/components/structure/Section'
 
-function UkPrivacyPolicy() {
+function USPrivacyPolicy() {
   return (
     <div className="w-full flex justify-center py-40 px-8 legal-content">
       <Section className=" w-full md:max-w-5xl flex flex-col">
@@ -1059,4 +1059,4 @@ function UkPrivacyPolicy() {
   )
 }
 
-export default UkPrivacyPolicy;
+export default USPrivacyPolicy;
