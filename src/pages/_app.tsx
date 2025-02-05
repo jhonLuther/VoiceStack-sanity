@@ -174,9 +174,9 @@ function dispatchEvent(data: any) {
     trackData.push(temp);
     const domain = window.location.origin;
     // if (window !== undefined && trackData.length > 0 && !isSending) {
-    console.log({domain});
+    // console.log({domain});
     
-    if (window !== undefined && trackData.length > 0 && !isSending) {
+    if (window !== undefined && trackData.length > 0 && !isSending && (domain == "https://voicestack.com" || domain == "https://www.voicestack.com") ) {
       const user = getUser()
       if (user) {
 
