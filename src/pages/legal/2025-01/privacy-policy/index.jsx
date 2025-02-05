@@ -206,7 +206,7 @@ function UkPrivacyPolicy() {
       <td>
         <p class="legal__text">Audio, electronic, visual, thermal, olfactory, or similar information.</p>
       </td>
-      <td><p class="legal__text">NO</p></td>
+      <td><p class="legal__text">YES</p></td>
     </tr>
     <tr>
       <td><p class="legal__text">I. Professional or employment-related information.</p></td>
@@ -224,7 +224,7 @@ function UkPrivacyPolicy() {
         transcripts, class lists, student schedules, student identification
         codes, student financial information, or student disciplinary records.</p>
       </td>
-      <td><p class="legal__text">NO</p></td>
+      <td><p class="legal__text">YES</p></td>
     </tr>
     <tr>
       <td><p class="legal__text">K. Inferences drawn from other Personal Information.</p></td>
