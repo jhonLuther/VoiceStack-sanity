@@ -8,7 +8,8 @@ export default async function trackEvents(
   // console.log({rhh:req.headers.host, r:req.headers});
   
   
-  if (req.headers.host == "voicestack.com" || req.headers.host == "www.voicestack.com") {
+  // if (req.headers.host == "voicestack.com" || req.headers.host == "www.voicestack.com") {
+    if (req.method) {
   
     if (req.method === "POST") {
       const type = req.query.type;
