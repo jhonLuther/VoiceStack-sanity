@@ -6,7 +6,7 @@ export default async function trackEvents(
   res: NextApiResponse
 ) {
   
-  if (req.headers.host === "voicestack.com") {
+  if (req.headers.host === "voicestack-sanity-shakir.vercel.app") {
   
     if (req.method === "POST") {
       const type = req.query.type;

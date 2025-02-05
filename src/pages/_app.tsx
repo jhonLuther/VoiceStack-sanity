@@ -174,7 +174,8 @@ function dispatchEvent(data: any) {
     trackData.push(temp);
     const domain = window.location.origin;
     // if (window !== undefined && trackData.length > 0 && !isSending) {
-    if (window !== undefined && trackData.length > 0 && !isSending && domain === "https://voicestack.com") {
+    if (window !== undefined && trackData.length > 0 && !isSending && domain === "https://voicestack-sanity-shakir.vercel.app") {
+    // if (window !== undefined && trackData.length > 0 && !isSending && domain === "https://voicestack.com") {
       const user = getUser()
       if (user) {
 
