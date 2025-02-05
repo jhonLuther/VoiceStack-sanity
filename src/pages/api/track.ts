@@ -5,6 +5,8 @@ export default async function trackEvents(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
+  // console.log({rhh:req.headers.host, r:req.headers});
+  
   
   if (req.headers.host === "voicestack.com") {
   
