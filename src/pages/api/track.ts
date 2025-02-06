@@ -1,3 +1,4 @@
+import { NextApiRequest, NextApiResponse } from "next";
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
   // Always send a valid JSON response
   res.status(200).json({
