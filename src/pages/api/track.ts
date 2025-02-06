@@ -16,7 +16,6 @@ export default async function trackEvents(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  // console.log({rhh:req.headers.host, r:req.headers});
   const allowedMethods = ['GET', 'POST', 'PATCH'];
   if (!allowedMethods.includes(req.method!)) {
     return res.status(405).json({ 
@@ -24,121 +23,121 @@ export default async function trackEvents(
       allowedMethods
     });
   }
-  
-  // if (req.headers.host == "voicestack.com" || req.headers.host == "www.voicestack.com") {
-    if (req.method) {
-  
-    if (req.method === "POST") {
-      const type = req.query.type;
-      switch (type) {
-        case "user": {
-          try {
-            const id = await createUser(req.body);
-            return res.json({ userId: id });
-          } catch (error) {
-            console.log(error);
-            return res.status(500).json({ error: "Error" });
-          }
-        }
-        case "event": {
-          try {
-            const events = req.body.events;
-            await addEvent(events);
-            return res.json({ msg: "success" });
-          } catch (error) {
-            console.log(error);
 
-            if (error !== null && typeof error === "object") {
-              if (
-                (error as any)?.details?.includes(
-                  `Key is not present in table "sessions".`
-                ) ||
-                (error as any).code === "22P02"
-              ) {
-                return res.status(400).json({ error: "session_key_invalid" });
-              }
-              if (
-                (error as any)?.details?.includes(
-                  `Key is not present in table "users".`
-                ) ||
-                (error as any).code === "22P02"
-              ) {
-                return res.status(400).json({ error: "user_key_invalid" });
-              }
-            }
-            return res.status(500).json({ error: "Error" });
-          }
-        }
-        case "session": {
-          try {
-            const session = req.body.session;
-            const id = await addSession(session);
-            return res.json({ id });
-          } catch (error) {
-            console.log(error);
-            if (error !== null && typeof error === "object") {
-              if (
-                (error as any)?.details?.includes(
-                  `Key is not present in table "users".`
-                ) ||
-                (error as any).code === "22P02"
-              ) {
-                return res.status(400).json({ error: "user_key_invalid" });
-              }
-            }
-            return res.status(500).json({ error: "Error" });
-          }
-        }
-        default: {
-          return res.send("non-type");
+  // Handle POST requests
+  if (req.method === "POST") {
+    const type = req.query.type;
+    switch (type) {
+      case "user": {
+        try {
+          const id = await createUser(req.body);
+          return res.json({ userId: id });
+        } catch (error) {
+          console.log(error);
+          return res.status(500).json({ error: "Error" });
         }
       }
-    }
-    if (req.method === "PATCH") {
-      try {
-        const type = req.query.type;
-        switch (type) {
-          case "session": {
-            const id = req.query.id;
-            const data = req.body;
-            const update = await updateSession(id, data);
-            if (update) {
-              return res.json({ msg: "success" });
-            } else return res.status(500).json({ error: "Error" });
-          }
-          case "user": {
-            const data = req.body;
-            const id = await patchUser(data);
-            if (typeof id === "string") {
-              return res.json({ id: id });
-            } else return res.status(500).json({ error: "Error" });
-          }
-        }
-      } catch (error) {
-        console.log(error);
-        res.status(500).json({ error: "Error" });
-      }
-    }
-    if (req.method === "GET") {
-      const type = req.query.type;
-      switch (type) {
-        case "user": {
-          try {
-            const id = req.query.id;
-            const query = await supabase.from("users").select("*").eq("id", id);
-            return res.json(query.data![0] ?? null);
-          } catch (error) {
-            console.log(error);
+      case "event": {
+        try {
+          const events = req.body.events;
+          await addEvent(events);
+          return res.json({ msg: "success" });
+        } catch (error) {
+          console.log(error);
 
-            return res.json({ error: "Error" });
+          if (error !== null && typeof error === "object") {
+            if (
+              (error as any)?.details?.includes(
+                `Key is not present in table "sessions".`
+              ) ||
+              (error as any).code === "22P02"
+            ) {
+              return res.status(400).json({ error: "session_key_invalid" });
+            }
+            if (
+              (error as any)?.details?.includes(
+                `Key is not present in table "users".`
+              ) ||
+              (error as any).code === "22P02"
+            ) {
+              return res.status(400).json({ error: "user_key_invalid" });
+            }
           }
+          return res.status(500).json({ error: "Error" });
         }
       }
+      case "session": {
+        try {
+          const session = req.body.session;
+          const id = await addSession(session);
+          return res.json({ id });
+        } catch (error) {
+          console.log(error);
+          if (error !== null && typeof error === "object") {
+            if (
+              (error as any)?.details?.includes(
+                `Key is not present in table "users".`
+              ) ||
+              (error as any).code === "22P02"
+            ) {
+              return res.status(400).json({ error: "user_key_invalid" });
+            }
+          }
+          return res.status(500).json({ error: "Error" });
+        }
+      }
+      default: {
+        return res.send("non-type");
+      }
     }
-  } 
-  else {
-    res.status(403).json({ error: "Forbidden" });
   }
+
+  // Handle PATCH requests
+  if (req.method === "PATCH") {
+    try {
+      const type = req.query.type;
+      switch (type) {
+        case "session": {
+          const id = req.query.id;
+          const data = req.body;
+          const update = await updateSession(id, data);
+          if (update) {
+            return res.json({ msg: "success" });
+          } else return res.status(500).json({ error: "Error" });
+        }
+        case "user": {
+          const data = req.body;
+          const id = await patchUser(data);
+          if (typeof id === "string") {
+            return res.json({ id: id });
+          } else return res.status(500).json({ error: "Error" });
+        }
+      }
+    } catch (error) {
+      console.log(error);
+      res.status(500).json({ error: "Error" });
+    }
+  }
+
+  // Handle GET requests
+  if (req.method === "GET") {
+    const type = req.query.type;
+    switch (type) {
+      case "user": {
+        try {
+          const id = req.query.id;
+          const query = await supabase.from("users").select("*").eq("id", id);
+          return res.json(query.data![0] ?? null);
+        } catch (error) {
+          console.log(error);
+          return res.json({ error: "Error" });
+        }
+      }
+    }
+  }
+
+  // If no method matches, return 403 Forbidden
+  res.status(403).json({ error: "Forbidden" });
 }
 
 async function createUser(data: any) {
