@@ -6,7 +6,13 @@ export default async function trackEvents(
   res: NextApiResponse
 ) {
   // console.log({rhh:req.headers.host, r:req.headers});
-  
+  const allowedMethods = ['GET', 'POST', 'PATCH'];
+  if (!allowedMethods.includes(req.method!)) {
+    return res.status(405).json({ 
+      error: "Method Not Allowed",
+      allowedMethods
+    });
+  }
   
   // if (req.headers.host == "voicestack.com" || req.headers.host == "www.voicestack.com") {
     if (req.method) {
