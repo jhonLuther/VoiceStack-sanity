@@ -12,7 +12,7 @@ import { supabase } from "~/utils/tracker/supabase";
 //   });
 // }
 
-export default async function trackEvents(
+export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
