@@ -2,6 +2,9 @@ import { NextResponse } from 'next/server';
 
 
 export async function middleware(request) {
+  if (request.nextUrl.pathname.startsWith('/api/')) {
+    return NextResponse.next();
+  }
   const { geo } = request;
 
   // Default values for geo
@@ -32,5 +35,5 @@ export async function middleware(request) {
 }
 
 export const config = {
-  matcher: ['/', '/en-GB', '/en', '/en-AU'],
+  matcher: ['/', '/en-GB', '/en', '/en-AU', '/api/:path*'],
 };
