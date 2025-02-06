@@ -1,3 +1,5 @@
+import { NextApiRequest, NextApiResponse } from "next";
+import { supabase } from "~/utils/tracker/supabase";
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
   // Always send a valid JSON response
   res.status(200).json({
