@@ -1,202 +1,115 @@
-
 import { NextApiRequest, NextApiResponse } from "next";
-import { supabase } from "~/utils/tracker/supabase";
-
-// export default function handler(req: NextApiRequest, res: NextApiResponse) {
-//   // Always send a valid JSON response
-//   res.status(200).json({
-//     success: true,
-//     method: req.method,
-//     type: req.query.type,
-//     receivedAt: new Date().toISOString()
-//   });
-// }
+import { supabase } from "@/utils/supabaseClient"; // Ensure you have Supabase initialized
 
 export default async function trackEvents(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  // console.log({rhh:req.headers.host, r:req.headers});
-  const allowedMethods = ['GET', 'POST', 'PATCH'];
+  const allowedMethods = ["GET", "POST", "PATCH"];
   if (!allowedMethods.includes(req.method!)) {
-    return res.status(405).json({ 
-      error: "Method Not Allowed",
-      allowedMethods
-    });
+    return res.status(405).json({ error: "Method Not Allowed", allowedMethods });
   }
-  
-  // if (req.headers.host == "voicestack.com" || req.headers.host == "www.voicestack.com") {
-    if (req.method) {
-  
+
+  if (!req.body) {
+    return res.status(400).json({ error: "Invalid request, body is required" });
+  }
+
+  try {
     if (req.method === "POST") {
       const type = req.query.type;
-      switch (type) {
-        case "user": {
-          try {
-            const id = await createUser(req.body);
-            return res.json({ userId: id });
-          } catch (error) {
-            console.log(error);
-            return res.status(500).json({ error: "Error" });
-          }
-        }
-        case "event": {
-          try {
-            const events = req.body.events;
-            await addEvent(events);
-            return res.json({ msg: "success" });
-          } catch (error) {
-            console.log(error);
+      if (!type) {
+        return res.status(400).json({ error: "Missing type query parameter" });
+      }
 
-            if (error !== null && typeof error === "object") {
-              if (
-                (error as any)?.details?.includes(
-                  `Key is not present in table "sessions".`
-                ) ||
-                (error as any).code === "22P02"
-              ) {
-                return res.status(400).json({ error: "session_key_invalid" });
-              }
-              if (
-                (error as any)?.details?.includes(
-                  `Key is not present in table "users".`
-                ) ||
-                (error as any).code === "22P02"
-              ) {
-                return res.status(400).json({ error: "user_key_invalid" });
-              }
-            }
-            return res.status(500).json({ error: "Error" });
-          }
-        }
-        case "session": {
-          try {
-            const session = req.body.session;
-            const id = await addSession(session);
-            return res.json({ id });
-          } catch (error) {
-            console.log(error);
-            if (error !== null && typeof error === "object") {
-              if (
-                (error as any)?.details?.includes(
-                  `Key is not present in table "users".`
-                ) ||
-                (error as any).code === "22P02"
-              ) {
-                return res.status(400).json({ error: "user_key_invalid" });
-              }
-            }
-            return res.status(500).json({ error: "Error" });
-          }
-        }
-        default: {
-          return res.send("non-type");
-        }
+      switch (type) {
+        case "user":
+          const id = await createUser(req.body);
+          return res.status(200).json({ userId: id });
+
+        case "event":
+          await addEvent(req.body.events);
+          return res.status(200).json({ msg: "success" });
+
+        case "session":
+          const sessionId = await addSession(req.body.session);
+          return res.status(200).json({ id: sessionId });
+
+        default:
+          return res.status(400).json({ error: "Invalid type" });
       }
     }
+
     if (req.method === "PATCH") {
-      try {
-        const type = req.query.type;
-        switch (type) {
-          case "session": {
-            const id = req.query.id;
-            const data = req.body;
-            const update = await updateSession(id, data);
-            if (update) {
-              return res.json({ msg: "success" });
-            } else return res.status(500).json({ error: "Error" });
-          }
-          case "user": {
-            const data = req.body;
-            const id = await patchUser(data);
-            if (typeof id === "string") {
-              return res.json({ id: id });
-            } else return res.status(500).json({ error: "Error" });
-          }
-        }
-      } catch (error) {
-        console.log(error);
-        res.status(500).json({ error: "Error" });
+      const type = req.query.type;
+      if (!type) {
+        return res.status(400).json({ error: "Missing type query parameter" });
+      }
+
+      switch (type) {
+        case "session":
+          const id = req.query.id;
+          const data = req.body;
+          const update = await updateSession(id, data);
+          return res.json({ msg: update ? "success" : "Error" });
+
+        case "user":
+          const updatedId = await patchUser(req.body);
+          return res.json({ id: updatedId });
+
+        default:
+          return res.status(400).json({ error: "Invalid type" });
       }
     }
+
     if (req.method === "GET") {
       const type = req.query.type;
-      switch (type) {
-        case "user": {
-          try {
-            const id = req.query.id;
-            const query = await supabase.from("users").select("*").eq("id", id);
-            return res.json(query.data![0] ?? null);
-          } catch (error) {
-            console.log(error);
-
-            return res.json({ error: "Error" });
-          }
-        }
+      if (type === "user") {
+        const id = req.query.id;
+        const query = await supabase.from("users").select("*").eq("id", id);
+        return res.json(query.data?.[0] ?? null);
       }
     }
-  } 
-  else {
-    res.status(403).json({ error: "Forbidden" });
+  } catch (error) {
+    console.error("API Error:", error);
+    return res.status(500).json({ error: "Internal Server Error" });
   }
 }
 
 async function createUser(data: any) {
-  const query = await supabase.from("users").insert(data).select("id");
-  if (query.error) {
-    throw query.error;
-  }
-  if (query.data !== null) {
-    return query.data[0].id;
-  }
+  const { data: result, error } = await supabase.from("users").insert(data).select("id").single();
+  if (error) throw error;
+  return result.id;
 }
 
 async function addEvent(data: any) {
-  try {
-    const res = await supabase.from("events").insert(data);
-    if (res.error) throw res.error;
-  } catch (error) {
-    throw error;
-  }
+  const { error } = await supabase.from("events").insert(data);
+  if (error) throw error;
 }
 
 async function addSession(data: any) {
-  try {
-    // if (product.error) throw product.error;
-    // if (product.data !== null) {
-    const product_id = process.env.CSTRACKER_PRODUCT_ID;
-    const res = await supabase
-      .from("sessions")
-      .insert({ ...data, product_id })
-      .select("id");
-    if (res.error) {
-      throw res.error;
-    }
-    return res.data![0]?.id;
-    // } else {
-    //   throw Error("product not found");
-    // }
-  } catch (error) {
-    throw error;
-  }
+  const product_id = process.env.CSTRACKER_PRODUCT_ID;
+  const { data: result, error } = await supabase
+    .from("sessions")
+    .insert({ ...data, product_id })
+    .select("id")
+    .single();
+  if (error) throw error;
+  return result.id;
 }
 
 async function updateSession(id: any, data: any) {
-  const query = await supabase.from("sessions").update(data).eq("id", id);
-  if (query.error) throw query.error;
-  else return true;
+  const { error } = await supabase.from("sessions").update(data).eq("id", id);
+  if (error) throw error;
+  return true;
 }
 
 async function patchUser(data: any) {
-  const query = await supabase
+  const { data: result, error } = await supabase
     .from("users")
     .update(data)
     .eq("id", data.id)
-    .select("id");
-  if (query.error) {
-    throw query.error;
-  }
-  if (query.data !== null) {
-    return query.data[0].id;
-  }
+    .select("id")
+    .single();
+  if (error) throw error;
+  return result.id;
 }
