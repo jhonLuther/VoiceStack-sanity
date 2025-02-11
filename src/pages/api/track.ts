@@ -1,5 +1,16 @@
+
 import { NextApiRequest, NextApiResponse } from "next";
 import { supabase } from "~/utils/tracker/supabase";
+
+// export default function handler(req: NextApiRequest, res: NextApiResponse) {
+//   // Always send a valid JSON response
+//   res.status(200).json({
+//     success: true,
+//     method: req.method,
+//     type: req.query.type,
+//     receivedAt: new Date().toISOString()
+//   });
+// }
 
 export default async function trackEvents(
   req: NextApiRequest,
