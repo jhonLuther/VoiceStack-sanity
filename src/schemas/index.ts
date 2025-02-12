@@ -23,6 +23,10 @@ import customBlockContent from './customBlockContent'
 import TestimonialHighlight from './TestimonialHighlight'
 import Miscellaneous from './Miscellaneous'
 import page from './page'
+import DynamicComponent from './DynamicComponent'
+import customContent from './customContent'
+import ListingBlock from './ListingBlock'
+import BrowserList from './BrowserList'
 
 export const schemaTypes = [
   layout,
@@ -43,7 +47,11 @@ export const schemaTypes = [
   faq,
   customBlockContent,
   Miscellaneous,
-  page
+  page,
+  DynamicComponent,
+  customContent,
+  ListingBlock,
+  BrowserList
 
 ]
 
@@ -72,6 +80,11 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     customBlockContent,
     TestimonialHighlight,
     Miscellaneous,
-    page
+    page,
+    DynamicComponent,
+    customContent,
+    ListingBlock,
+    BrowserList
+    
   ],
 }
