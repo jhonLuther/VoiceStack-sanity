@@ -218,6 +218,7 @@ const Header = ({ data, refer=null }) => {
     return (
       // preLocale == null &&
       router.locale !== getRegionLocale() &&
+      router.asPath === '/' &&
       countryCd != "undefined" 
     );
   }

@@ -13,7 +13,7 @@ const HubSpotForm = ({
 
 }) => {
 
-  // console.log(id,eventName)
+  console.log(id,eventName)
   const { trackEvent } = useTracking({}, {});
   const router = useRouter();
   useEffect(() => {
