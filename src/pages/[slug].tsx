@@ -22,12 +22,13 @@ interface PageProps {
 }
 
 export default function Page({ page, homeSettings, heroData, region }: PageProps) {
-  if (!page) return <div>Page not found</div>
   const { isDemoPopUpShown, setIsDemoPopUpShown } = useContext(BookDemoContext);
   
   useEffect(() => {
     setIsDemoPopUpShown(heroData);
   },[heroData])
+  
+  if (!page) return <div>Page not found</div>
   return (
     <>
       <Header data={homeSettings} />
