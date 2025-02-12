@@ -33,7 +33,17 @@ const SanityPortableText: React.FC<SanityPortableTextProps> = ({
     },
 
     block: {
-
+      normal: ({ children }) => {
+        return <p className="text-gray-700 leading-[1.6] text-[16px]">{children}</p>
+      },
+      // Blockquote
+      blockquote: ({ children }) => {
+        return (
+          <blockquote className="p-6 rounded-[12px] bg-yellow-100">
+            {children}
+          </blockquote>
+        )
+      },
     },
     types: {
       // image: ({ value }) => {

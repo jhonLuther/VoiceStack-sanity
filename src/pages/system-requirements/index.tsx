@@ -64,8 +64,8 @@ export default function SystemRequirements({ homeSettings, heroData, region ,mis
   return (
     <>
       <Header data={homeSettings} />
-      <BannerSection></BannerSection>
       <ContentSection content={miscellaneousData} draftMode={draftMode} token={token}/>
+      <BannerSection></BannerSection>
       <Footer></Footer>
       <div>
         {/* <h1>{page.title}{region}</h1> */}
