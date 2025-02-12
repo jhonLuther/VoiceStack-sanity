@@ -117,7 +117,7 @@ export function AnimatedBeamDemo({ data, refer = null }: any) {
                         <div
                           key={innerIndex}
                           ref={pmsRefs[innerIndex]}
-                          className="md:max-w-[172px] border-r border-gray-100  last:border-none flex flex-1  "
+                          className="md:max-w-[138px] border-r border-gray-100  last:border-none flex flex-1  "
                         >
                           <ImageLoader
                             className="flex justify-center h-20 w-full "
