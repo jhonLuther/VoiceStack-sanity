@@ -106,7 +106,7 @@ export function AnimatedBeamDemo({ data, refer = null }: any) {
         ) : (
           <div className="flex flex-col  px-3 border-gray-100  relative z-10 md:rounded-b-[20px] rounded-b-[10px]   bg-white shadow-custom-light ">
             {groupedItems.map((pmss, outerIndex) => {
-              return isMobile && outerIndex >= 4 ? null : (
+              return isMobile && outerIndex >= 5 ? null : (
                 <div
                   key={outerIndex}
                   className="flex border-t py-2 border-gray-100  first:border-none justify-center"
