@@ -21,6 +21,7 @@ import faq from './faq'
 import testimonialSection from './testimonial'
 import customBlockContent from './customBlockContent'
 import TestimonialHighlight from './TestimonialHighlight'
+import Miscellaneous from './Miscellaneous'
 import page from './page'
 
 export const schemaTypes = [
@@ -41,6 +42,7 @@ export const schemaTypes = [
   testimonialSection,
   faq,
   customBlockContent,
+  Miscellaneous,
   page
 
 ]
@@ -69,6 +71,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     faq,
     customBlockContent,
     TestimonialHighlight,
+    Miscellaneous,
     page
   ],
 }
