@@ -13,6 +13,7 @@ import {
 } from 'sanity-plugin-iframe-pane'
 import { previewUrl } from 'sanity-plugin-iframe-pane/preview-url'
 import {documentInternationalization} from '@sanity/document-internationalization'
+import {ExpandIcon} from '@sanity/icons'
 
 // see https://www.sanity.io/docs/api-versioning for how versioning works
 import {
@@ -110,7 +111,8 @@ export default defineConfig({
         'cardsListing',
         'csCardsListing',
         'platform',
-        'testimonialHighlightSection'
+        'testimonialHighlightSection',
+        'page'
       ],
     }),
 
@@ -176,6 +178,8 @@ export default defineConfig({
             S.documentTypeListItem('csCardsListing').title('CsCardsListing'),
             S.documentTypeListItem('faq').title('Faq'),
             S.documentTypeListItem('testimonialHighlightSection').title('TestimonialHighlights'),
+            S.documentTypeListItem('miscellaneous').title('Miscellaneous').icon(ExpandIcon),
+            S.documentTypeListItem('page').title('Pages'),
 
             // S.documentTypeListItem('platform').title('Platform'),
           ]),

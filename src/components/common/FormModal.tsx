@@ -25,6 +25,7 @@ export const FormModal: React.FC<FormModalProps> = ({
 }) => {
     const router = useRouter();
     const formId = data?.dmeoFormId
+    const meetingLink = data.demoMeetingLink;
 
   return (
     <div
@@ -76,7 +77,7 @@ export const FormModal: React.FC<FormModalProps> = ({
                   </button>
                 </div>
                 <div className="mt-2 w-full mb-8">
-                  <HubSpotForm id={formId} eventName={data?.dmeoFormEventName}/>
+                  <HubSpotForm id={formId} eventName={data?.dmeoFormEventName} meetingLink={meetingLink}/>
                 </div>
               </div>
             </div>

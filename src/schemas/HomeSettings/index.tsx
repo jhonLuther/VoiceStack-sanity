@@ -138,6 +138,13 @@ export default defineType({
     }),
     
     defineField({
+      name: 'demoMeetingLink',
+      title: 'Demo Meeting Link',
+      type: 'string',
+      
+    }),
+    
+    defineField({
       name: 'dmeoFormEventName',
       title: 'Demo Form Event Name',
       type: 'string',
