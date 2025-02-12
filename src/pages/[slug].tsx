@@ -21,7 +21,23 @@ interface PageProps {
   region: string
 }
 
-
+export default function Page({ page, homeSettings, heroData, region }: PageProps) {
+  if (!page) return <div>Page not found</div>
+  const { isDemoPopUpShown, setIsDemoPopUpShown } = useContext(BookDemoContext);
+  
+  useEffect(() => {
+    setIsDemoPopUpShown(heroData);
+  },[heroData])
+  return (
+    <>
+      <Header data={homeSettings} />
+      <div>
+        <h1>{page.title}{region}</h1>
+        {/* Add your content rendering here */}
+      </div>
+    </>
+  )
+}
 
 // Helper function for page data fetching
 async function getPageData(client: SanityClient, slug: string, region: string) {
@@ -95,20 +111,3 @@ export const getStaticPaths: GetStaticPaths = async () => {
   }
 }
 
-export default function Page({ page, homeSettings, heroData, region }: PageProps) {
-  if (!page) return <div>Page not found</div>
-  const { isDemoPopUpShown, setIsDemoPopUpShown } = useContext(BookDemoContext);
-  
-  useEffect(() => {
-    setIsDemoPopUpShown(heroData);
-  },[heroData])
-  return (
-    <>
-      <Header data={homeSettings} />
-      <div>
-        <h1>{page.title}{region}</h1>
-        {/* Add your content rendering here */}
-      </div>
-    </>
-  )
-}
