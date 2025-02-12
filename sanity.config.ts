@@ -110,7 +110,8 @@ export default defineConfig({
         'cardsListing',
         'csCardsListing',
         'platform',
-        'testimonialHighlightSection'
+        'testimonialHighlightSection',
+        'page'
       ],
     }),
 
@@ -176,6 +177,7 @@ export default defineConfig({
             S.documentTypeListItem('csCardsListing').title('CsCardsListing'),
             S.documentTypeListItem('faq').title('Faq'),
             S.documentTypeListItem('testimonialHighlightSection').title('TestimonialHighlights'),
+            S.documentTypeListItem('page').title('Pages'),
 
             // S.documentTypeListItem('platform').title('Platform'),
           ]),
