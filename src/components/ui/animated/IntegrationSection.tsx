@@ -64,9 +64,6 @@ export function AnimatedBeamDemo({ data, refer = null }: any) {
   const gridNumber = isMobile ? 3 : 7
   const groupedItems = chunkItems(pmsData, gridNumber)
 
-  console.log({groupedItems});
-  
-
   return (
     <div
       className="relative flex w-full h-full flex-col items-center rounded-lg overflow-hidden  "
