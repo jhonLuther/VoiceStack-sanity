@@ -7,13 +7,15 @@ import { getCookie } from '~/utils/tracker/cookie'
 const HubSpotForm = ({
   id,
   eventName,
+  meetingLink
 }: {
   id?: string
   eventName?: string
+  meetingLink?: string
 
 }) => {
 
-  console.log(id,eventName)
+  console.log(id,eventName, meetingLink)
   const { trackEvent } = useTracking({}, {});
   const router = useRouter();
   useEffect(() => {
@@ -104,7 +106,7 @@ const HubSpotForm = ({
                     `/api/hs?email=${email}&source=${urlParams.get("utm_source")}&campaign=${urlParams.get("utm_campaign")}&medium=${urlParams.get("utm_medium")}&term=${urlParams.get("utm_term")}&lead_source=${urlParams.get("lead_source")}`
                   ); 
                   // document.getElementById("successMessage").innerHTML = "Thank you, a VoiceStack representative will reach out to you shortly."; 
-                  var meetingUrl = `https://meetings.hubspot.com/carestack-dan/voicestack-website?${params.toString()}`;
+                  var meetingUrl = `${meetingLink}?${params.toString()}`;
                   router.push(meetingUrl);
                    
                 }, 3000)
