@@ -40,8 +40,8 @@ const SanityPortableText: React.FC<SanityPortableTextProps> = ({
       // Blockquote
       blockquote: ({ children }) => {
         return (
-          <blockquote className="p-6 rounded-[12px] bg-yellow-100 flex gap-6 items-center text-base text-[#78350F]">
-            <WarningIcon className='text-[#78350F]'></WarningIcon><div>{children}</div>
+          <blockquote className="p-4 md:p-6 rounded-[8px] md:rounded-[12px] bg-yellow-100 flex gap-3 md:gap-6 items-center text-sm md:text-base text-[#78350F]">
+            <WarningIcon className='text-[#78350F] flex-shrink-0 w-5 md:w-8'></WarningIcon><div>{children}</div>
           </blockquote>
         )
       },

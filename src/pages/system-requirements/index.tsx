@@ -12,6 +12,7 @@ import { BookDemoContext } from '~/providers/BookDemoProvider'
 import Footer from '~/components/common/Footer'
 import BannerSection from '~/components/BannerSection'
 import ContentSection from '~/components/ContentSection'
+import Head from 'next/head'
 
 interface PageProps {
   homeSettings: any;
@@ -63,6 +64,10 @@ export default function SystemRequirements({ homeSettings, heroData, region ,mis
 
   return (
     <>
+    <Head>
+      <title>VoiceStack® | System Requirements</title>
+      <meta name="description"  content="To ensure optimal performance of VoiceStack, your system should meet the following specifications"></meta>
+    </Head>
       <Header data={homeSettings} />
       <ContentSection content={miscellaneousData} draftMode={draftMode} token={token}/>
       <BannerSection></BannerSection>

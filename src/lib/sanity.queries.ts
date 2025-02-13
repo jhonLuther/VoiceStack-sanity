@@ -103,13 +103,14 @@ export async function getMiscellaneousData(client) {
           }
         },
         browserList {
+        ...,
           mainHeading,
           listingItem[] {
             name,
-            image {
-              "asset": asset-> {
+              "image": image.asset-> {
                 _id,
                 url,
+                altText,
                 metadata {
                   dimensions {
                     width,
@@ -117,8 +118,8 @@ export async function getMiscellaneousData(client) {
                     aspectRatio
                   }
                 }
-              }
-            }
+              },
+              
           }
         }
       }
