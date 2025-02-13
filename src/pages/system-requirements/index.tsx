@@ -13,6 +13,7 @@ import Footer from '~/components/common/Footer'
 import BannerSection from '~/components/BannerSection'
 import ContentSection from '~/components/ContentSection'
 import Head from 'next/head'
+import { notFound } from 'next/navigation'
 
 interface PageProps {
   homeSettings: any;
@@ -35,9 +36,14 @@ export const getStaticProps: GetStaticProps<any> = async ({
   const [homeSettings, heroData,miscellaneousData] = await Promise.all([
     getALLHomeSettings(client, region),
     getHeroSectionData(client, region),
-    getMiscellaneousData(client)
+    getMiscellaneousData(client, region)
   ])
-
+  
+ if (!miscellaneousData) {
+      return {
+        notFound: true
+      }
+  }
 
   return {
     props: {
@@ -61,6 +67,8 @@ export default function SystemRequirements({ homeSettings, heroData, region ,mis
   useEffect(() => {
     setIsDemoPopUpShown(heroData);
   }, [heroData])
+
+ 
 
   return (
     <>

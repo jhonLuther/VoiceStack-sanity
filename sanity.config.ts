@@ -112,7 +112,8 @@ export default defineConfig({
         'csCardsListing',
         'platform',
         'testimonialHighlightSection',
-        'page'
+        'page',
+        'miscellaneous',
       ],
     }),
 
