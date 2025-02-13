@@ -12,6 +12,8 @@ import { BookDemoContext } from '~/providers/BookDemoProvider'
 import Footer from '~/components/common/Footer'
 import BannerSection from '~/components/BannerSection'
 import ContentSection from '~/components/ContentSection'
+import Head from 'next/head'
+import { notFound } from 'next/navigation'
 
 interface PageProps {
   homeSettings: any;
@@ -34,9 +36,14 @@ export const getStaticProps: GetStaticProps<any> = async ({
   const [homeSettings, heroData,miscellaneousData] = await Promise.all([
     getALLHomeSettings(client, region),
     getHeroSectionData(client, region),
-    getMiscellaneousData(client)
+    getMiscellaneousData(client, region)
   ])
-
+  
+ if (!miscellaneousData) {
+      return {
+        notFound: true
+      }
+  }
 
   return {
     props: {
@@ -61,16 +68,19 @@ export default function SystemRequirements({ homeSettings, heroData, region ,mis
     setIsDemoPopUpShown(heroData);
   }, [heroData])
 
+ 
+
   return (
     <>
+    <Head>
+      <title>VoiceStack® | System Requirements</title>
+      <meta name="description"  content="To ensure optimal performance of VoiceStack, your system should meet the following specifications"></meta>
+    </Head>
       <Header data={homeSettings} />
       <ContentSection content={miscellaneousData} draftMode={draftMode} token={token}/>
       <BannerSection></BannerSection>
       <Footer></Footer>
-      <div>
-        {/* <h1>{page.title}{region}</h1> */}
-        {/* Add your content rendering here */}
-      </div>
+      
     </>
   )
 }

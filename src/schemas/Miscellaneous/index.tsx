@@ -1,4 +1,5 @@
 import { defineField, defineType } from 'sanity'
+import showCountryFlag from '~/components/utils/common';
 export default defineType({
   name: 'miscellaneous',
   title: 'Miscellaneous',
@@ -24,16 +25,25 @@ export default defineType({
       title: 'Content Area',
       type: 'customContent',
     }),
+    {
+      name: 'language',
+      type: 'string',
+      readOnly: true,
+      hidden: true,
+      
+    }
 ],
 preview: {
-  select: {
-    title: 'heroSectionHeader',
-  },
-  prepare(selection) {
-    return {
-      title: ` ${selection?.title}`,
-    };
-  },
-},
+      select: {
+        title: 'heroSectionHeader',
+        language:'language',
+      },
+      prepare(selection) {
+        return {
+          title: ` ${selection?.title}`,
+          media:<img src={showCountryFlag(selection?.language)}/>
+        };
+      },
+    },
    
 })

@@ -88,8 +88,8 @@ export async function getHeroSectionData(client: SanityClient, region: string) {
   return await client.fetch(query, { region })
 }
 
-export async function getMiscellaneousData(client) {
-  const query = `*[_type == 'miscellaneous'][0]{
+export async function getMiscellaneousData(client: SanityClient, region: string) {
+  const query = groq` *[_type == 'miscellaneous' && language == $region][0]{
     ...,
     contentArea[] {
       ...,
@@ -103,13 +103,14 @@ export async function getMiscellaneousData(client) {
           }
         },
         browserList {
+        ...,
           mainHeading,
           listingItem[] {
             name,
-            image {
-              "asset": asset-> {
+              "image": image.asset-> {
                 _id,
                 url,
+                altText,
                 metadata {
                   dimensions {
                     width,
@@ -117,15 +118,15 @@ export async function getMiscellaneousData(client) {
                     aspectRatio
                   }
                 }
-              }
-            }
+              },
+              
           }
         }
       }
     }
   }`
 
-  const result = await client.fetch(query)
+  const result = await client.fetch(query, { region })
 
   return result
 }
