@@ -18,7 +18,7 @@ const ListingBlock: React.FC<ListingBlockProps> = ({ itemHeading, listingItem })
         {listingItem && listingItem.length > 0 && (
           listingItem.map((item:any, index:number) => {
             return(
-              <div className='flex p-3 items-center border-b border-gray-200'>
+              <div className='flex p-3 items-center border-b border-gray-200' key={item.key}>
                 <div className='w-[207px] text-gray-600 leading-[1.45]'>{item.key}</div>
                 <div className='text-gray-600 leading-[1.45]'>{item.value}</div>
               </div>
