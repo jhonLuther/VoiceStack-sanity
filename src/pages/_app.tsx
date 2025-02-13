@@ -62,6 +62,16 @@ function App({
         `}</style> */}
 
         {/* Google Analytics */}
+
+        {/* Start of HubSpot Embed Code */}
+        <Script type="text/javascript" 
+          id="hs-script-loader" async defer 
+          src="//js.hs-scripts.com/4832409.js?businessUnitId=2351862"
+          strategy='lazyOnload'
+          >
+        </Script>
+        {/* End of HubSpot Embed Code */}
+
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-YY0CHYH7EY"
           strategy="afterInteractive"
