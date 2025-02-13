@@ -7,10 +7,10 @@ interface BrowserBlockProps {
 }
 
 const BrowserBlock: React.FC<BrowserBlockProps> = ({ mainHeading, listingItem }) => {
-  console.log(mainHeading,'mainHeading', listingItem, 'listingItem')
+  // console.log(mainHeading,'mainHeading', listingItem, 'listingItem')
   return (
     <div className="flex flex-1 bg-zinc-800 md:flex-row flex-col rounded-lg p-6 md:p-8 my-8 gap-6 justify-between">
-      BB
+      {/* BB */}
       
     </div>
   )
