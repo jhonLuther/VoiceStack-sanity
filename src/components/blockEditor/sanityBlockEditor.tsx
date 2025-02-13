@@ -5,6 +5,7 @@ import {
 } from '@portabletext/react'
 import { getClient } from '~/lib/sanity.client'
 import DynamicComponent from './DynamicComponent'
+import WarningIcon from '../icons/WarningIcon'
 // import DecoratorTable from '~/components/DecoratorTable'
 // import ListItem from '~/components/typography/ListItem'
 // import { VideoModal } from '../commonSections/VideoModal'
@@ -39,8 +40,8 @@ const SanityPortableText: React.FC<SanityPortableTextProps> = ({
       // Blockquote
       blockquote: ({ children }) => {
         return (
-          <blockquote className="p-6 rounded-[12px] bg-yellow-100">
-            {children}
+          <blockquote className="p-6 rounded-[12px] bg-yellow-100 flex gap-6 items-center text-base text-[#78350F]">
+            <WarningIcon className='text-[#78350F]'></WarningIcon><div>{children}</div>
           </blockquote>
         )
       },
