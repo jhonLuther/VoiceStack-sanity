@@ -7,10 +7,14 @@ import H1 from '../typography/H1';
 import HeroBg from 'public/assets/hero-bg.png';
 
 interface HeroInnerProps {
-  data: any;
+  data?: any;
 }
 
 const HeroInner: React.FC<HeroInnerProps> = ({ data }) => {
+  if (!data) {
+    return null; 
+  }
+  
   const { 
     heroSectionHeader, 
     heroSectionHeading, 

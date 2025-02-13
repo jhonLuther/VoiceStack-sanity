@@ -20,7 +20,7 @@ const ContentSection = ({ content, draftMode, token }) => {
           <div className="flex justify-center w-full max-w-[822px]">
             <div className="flex flex-col gap-8 lg:gap-12 w-full">
               <SanityPortableText
-                content={content.contentArea}
+                content={content?.contentArea}
                 draftMode={draftMode}
                 token={token}
               />
