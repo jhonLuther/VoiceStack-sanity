@@ -87,6 +87,47 @@ export async function getHeroSectionData(client: SanityClient, region: string) {
 
   return await client.fetch(query, { region })
 }
+
+export async function getMiscellaneousData(client) {
+  const query = `*[_type == 'miscellaneous'][0]{
+    ...,
+    contentArea[] {
+      ...,
+      _type == "dynamicComponent" => {
+        listingBlock {
+          itemHeading,
+          listingItem[] {
+            key,
+            value
+          }
+        },
+        browserList {
+          mainHeading,
+          listingItem[] {
+            name,
+            image {
+              "asset": asset-> {
+                _id,
+                url,
+                metadata {
+                  dimensions {
+                    width,
+                    height,
+                    aspectRatio
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }`
+
+  const result = await client.fetch(query)
+
+  return result
+}
 export async function getTestimonialSecitonData(
   client: SanityClient,
   region: string,

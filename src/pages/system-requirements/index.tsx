@@ -5,31 +5,36 @@ import { getClient } from '~/lib/sanity.client'
 import { readToken } from '~/lib/sanity.api'
 import { SanityClient } from 'sanity'
 import Header from '~/components/common/Header'
-import { getALLHomeSettings } from '~/lib/sanity.queries'
+import { getALLHomeSettings, getMiscellaneousData } from '~/lib/sanity.queries'
 import { getHeroSectionData } from '~/lib/sanity.queries'
 import { useContext, useEffect } from 'react'
 import { BookDemoContext } from '~/providers/BookDemoProvider'
 import Footer from '~/components/common/Footer'
 import BannerSection from '~/components/BannerSection'
+import ContentSection from '~/components/ContentSection'
 
 interface PageProps {
   homeSettings: any;
   heroData: any;
   region: string
+  miscellaneousData: any
+  draftMode: boolean,
+  token: string
 }
 
 
 
-export const getStaticProps: GetStaticProps<PageProps> = async ({
+export const getStaticProps: GetStaticProps<any> = async ({
   locale,
   draftMode = false,
 }) => {
   const region = locale
 
   const client = getClient(draftMode ? { token: readToken } : undefined) as SanityClient
-  const [homeSettings, heroData] = await Promise.all([
+  const [homeSettings, heroData,miscellaneousData] = await Promise.all([
     getALLHomeSettings(client, region),
     getHeroSectionData(client, region),
+    getMiscellaneousData(client)
   ])
 
 
@@ -37,13 +42,19 @@ export const getStaticProps: GetStaticProps<PageProps> = async ({
     props: {
       homeSettings,
       heroData,
-      region
+      region,
+      miscellaneousData,
+      draftMode,
+      token: draftMode ? readToken : '',
     },
     revalidate: 60
   }
 }
 
-export default function SystemRequirements({ homeSettings, heroData, region }: PageProps) {
+export default function SystemRequirements({ homeSettings, heroData, region ,miscellaneousData,draftMode,token}: PageProps) {
+
+  console.log(miscellaneousData,'miscellaneousData');
+  
   const { isDemoPopUpShown, setIsDemoPopUpShown } = useContext(BookDemoContext);
 
   useEffect(() => {
@@ -53,6 +64,7 @@ export default function SystemRequirements({ homeSettings, heroData, region }: P
   return (
     <>
       <Header data={homeSettings} />
+      <ContentSection content={miscellaneousData} draftMode={draftMode} token={token}/>
       <BannerSection></BannerSection>
       <Footer></Footer>
       <div>
