@@ -97,6 +97,7 @@ export async function getMiscellaneousData(client) {
         listingBlock {
           itemHeading,
           listingItem[] {
+          ...,
             key,
             value
           }
