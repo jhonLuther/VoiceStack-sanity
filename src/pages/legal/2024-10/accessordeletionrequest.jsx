@@ -59,7 +59,7 @@ function UsAccessOrDeletionRequest() {
                   keep a record of your request and our response.
                 </p>
               </span>
-              <HubspotFormLegal formId="6499c50a-6230-4b0b-9695-3284ff3616bf"/>
+              <HubspotFormLegal formId="412535aa-add6-4b91-935f-31510710d94e"/>
               <span>
                 <h2 class="legal__section-title">
                   2. Proof of Resident’s Identity
@@ -84,11 +84,11 @@ function UsAccessOrDeletionRequest() {
                   the Resident’s behalf.
                 </p>
               </span>
-              <HubspotFormLegal formId="925f3a75-0771-431f-9f0d-79e83c83c3ad"/>
+              <HubspotFormLegal formId="349de032-905c-4fe6-8e33-2adbec438ce7"/>
               <span>
                 <h2 class="legal__section-title">4. Resident Request</h2>
               </span>
-              <HubspotFormLegal formId="41f86a13-262f-4116-881c-64ad5b063a11"/>
+              <HubspotFormLegal formId="c2cbc9c8-3f7d-49f6-af56-2c9fb4c9c60d"/>
             </div>
           </div>
         </div>

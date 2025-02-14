@@ -63,7 +63,7 @@ function UsOptOutRequest() {
                   our response.
                 </p>
               </span>
-              <HubspotFormLegal formId="ff6fa0a7-9ecd-4b33-b239-3441be16a6f3"/>
+              <HubspotFormLegal formId="29261e6e-3d10-4ca1-b909-7f0b1fa722d1"/>
               <span>
                 <h2 class="legal__section-title">
                   2. Requests Made by an Authorized Agent on a Resident’s Behalf
@@ -74,7 +74,7 @@ function UsOptOutRequest() {
                   the Resident’s behalf.
                 </p>
               </span>
-              <HubspotFormLegal formId="d981206e-424c-4d36-a8f6-e8fdd1070ff6"/>
+              <HubspotFormLegal formId="0a29f8e8-0d49-4d8a-a207-1c7fa5da452f"/>
             </div>
           </div>
         </div>
