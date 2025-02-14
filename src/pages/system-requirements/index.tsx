@@ -60,7 +60,7 @@ export const getStaticProps: GetStaticProps<any> = async ({
 
 export default function SystemRequirements({ homeSettings, heroData, region ,miscellaneousData,draftMode,token}: PageProps) {
 
-  console.log(miscellaneousData,'miscellaneousData');
+  // console.log(miscellaneousData,'miscellaneousData');
   
   const { isDemoPopUpShown, setIsDemoPopUpShown } = useContext(BookDemoContext);
 
