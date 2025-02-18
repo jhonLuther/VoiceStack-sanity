@@ -58,7 +58,7 @@ const Anchor: React.FunctionComponent<CustomLinkProps> =
     const dataId = elementId || btnId || '';
 
     return (
-      <Link {...(dataId && { 'data-elementid': dataId })} href={href} locale={locale} replace={replace}
+      <Link {...(dataId && { 'data-elementid': dataId })} href={newLink} locale={locale} replace={replace}
         onClick={(e) => {
           const element = getCssSelectorShort(e.target as Element);
           let e_name = "";
