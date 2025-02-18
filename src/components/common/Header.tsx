@@ -20,6 +20,7 @@ import Dropdown from './Dropdown';
 import Head from 'next/head';
 import ProgressBar from '~/utils/progressBar/progressBar'
 import Tracker from './trackerComponent';
+import Anchor from './anchor';
 
 
 
@@ -271,11 +272,11 @@ const Header = ({ data, refer=null }) => {
 
           <p className='text-center text-gray-800 font-medium text-base leading-[1.5]'>You will be viewing VoiceStack&apos;s website for the {currentRegion} region</p>
 
-          <Link className={`${btnClass}`} href={`/${query1}`} locale={_preferredLocale} onClick={closeRegionPopup}>
+          <Anchor className={`${btnClass}`} href={`/${query1}`} locale={_preferredLocale} onClick={closeRegionPopup}>
             <span className="text-base font-medium">
               Continue with VoiceStack {currentRegion}
             </span>
-          </Link>
+          </Anchor>
           
 
           <div className='w-full'>
@@ -315,15 +316,15 @@ const Header = ({ data, refer=null }) => {
                 lg:relative transition-all duration-300 ease-in-out ${headerFixed ? 'lg:my-3 my-2' : 'lg:my-3 my-2'}`}>
                   
                   {/* Logo */}
-                  <Link href="/" className={`flex-shrink-0 text-2xl font-extrabold bg-gradient-text bg-clip-text 
+                  <Anchor href="/" className={`flex-shrink-0 text-2xl font-extrabold bg-gradient-text bg-clip-text 
                     text-transparent font-monrope tracking-tighterText ${isMobile  && headerFixed && 'hidden'}`}>
                     <Image src={VoicestackLogo} alt='VoiceStack' title='VoiceStack'></Image>
-                  </Link>
+                  </Anchor>
 
                   {/* Logo Sm when mob scroll */}
-                  <Link href="/" className={`${isMobile  && headerFixed ? 'block': 'hidden'}`}>
+                  <Anchor href="/" className={`${isMobile  && headerFixed ? 'block': 'hidden'}`}>
                     <Image src={VoicestackLogoSm} alt='VoiceStack' className='w-[26px] h-auto'></Image>
-                  </Link>
+                  </Anchor>
 
                   <div className={`lg:flex flex-col lg:flex-row lg:gap-6 justify-between lg:rounded-none items-center 
                     lg:static absolute top-[44px] left-0 right-0 bg-white pb-20 lg:pb-0 
@@ -341,14 +342,15 @@ const Header = ({ data, refer=null }) => {
                           // }
                         
                           return (
-                            <Link
+                            <Anchor
+                              elementId={`header-menu-${link.headerMenu}`}
                               key={link?.href + i}
                               href={link?.href}
                               className="text-gray-700 lg:text-sm xl:text-base font-medium leading-[1.15] text-center py-4 border-b border-gray-200 lg:border-0 lg:p-0"
                               onClick={toggleMenu}
                             >
                               {link.headerMenu}
-                            </Link>
+                            </Anchor>
                           );
 
                         })}
@@ -387,7 +389,7 @@ const Header = ({ data, refer=null }) => {
                               </div>
                             ):(
 
-                              <Link href="/" locale={region.locale} className='flex gap-2 items-center' onClick={closeMenu}>
+                              <Anchor href="/" locale={region.locale} className='flex gap-2 items-center' onClick={closeMenu}>
                               <Image 
                                 src={region.flag.url} 
                                 alt={region.flag.title} 
@@ -397,7 +399,7 @@ const Header = ({ data, refer=null }) => {
                                 className='border-2 rounded-full border-white'
                                 >
                               </Image>
-                            </Link>
+                            </Anchor>
                             )
                           )
                         })}
@@ -493,7 +495,7 @@ const Header = ({ data, refer=null }) => {
                           </div>
                         ):(
 
-                        <Link href={`/${query1}`} locale={region.locale} className='flex gap-2 items-center py-[6px] pl-[6px] border-b border-gray-200 last:border-none'>
+                        <Anchor href={`/${query1}`} locale={region.locale} className='flex gap-2 items-center py-[6px] pl-[6px] border-b border-gray-200 last:border-none'>
                           <Image 
                             src={region.flag.url} 
                             alt={region.flag.title} 
@@ -503,7 +505,7 @@ const Header = ({ data, refer=null }) => {
                             >
                           </Image>
                           <span className='text-gray-900 text-sm font-medium'>{region.title}</span>
-                        </Link>
+                        </Anchor>
                         )
                       )
                     })}
