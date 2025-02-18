@@ -169,15 +169,21 @@ const Footer = (props) => {
               {/* <span className='text-gray-600 font-inter text-sm font-medium leading-[115%]'>Made with ♥︎ in Good Methods Global</span> */}
               {isUk ? (
                 <ul className='flex items-center gap-4'>
-                <li className='text-gray-600 font-inter text-sm font-medium leading-[115%]'>
-                  <Anchor href="https://www.voicestack.com/legal/uk/2024-11/privacy-policy" target='_blank'>Privacy Policy</Anchor>
-                </li>
-                <li className='text-gray-600 font-inter text-sm font-medium leading-[115%]'>
-                  <Anchor href="https://www.voicestack.com/legal/uk/2024-11/terms-and-conditions" target='_blank'>Terms of Service</Anchor>
-                </li>
-              </ul>
+                  <li className='text-gray-600 font-inter text-sm font-medium leading-[115%]'>
+                    <Anchor href="/system-requirements" target='_blank' locale={router.locale}>System Requirements</Anchor>
+                  </li>
+                  <li className='text-gray-600 font-inter text-sm font-medium leading-[115%]'>
+                    <Anchor href="https://www.voicestack.com/legal/uk/2024-11/privacy-policy" target='_blank'>Privacy Policy</Anchor>
+                  </li>
+                  <li className='text-gray-600 font-inter text-sm font-medium leading-[115%]'>
+                    <Anchor href="https://www.voicestack.com/legal/uk/2024-11/terms-and-conditions" target='_blank'>Terms of Service</Anchor>
+                  </li>
+                </ul>
               ): isAu ? (
                 <ul className='flex items-center gap-4'>
+                  <li className='text-gray-600 font-inter text-sm font-medium leading-[115%]'>
+                    <Anchor href="/system-requirements" locale={router.locale} target='_blank'>System Requirements</Anchor>
+                  </li>
                   <li className='text-gray-600 font-inter text-sm font-medium leading-[115%]'>
                     <Anchor href="https://www.voicestack.com/legal/aus/2024-11/privacy-policy" target='_blank'>Privacy Policy</Anchor>
                   </li>
@@ -187,6 +193,9 @@ const Footer = (props) => {
                 </ul>
               ):(
               <ul className='flex items-center gap-4'>
+                <li className='text-gray-600 font-inter text-sm font-medium leading-[115%]'>
+                  <Anchor href="/system-requirements" locale={router.locale} target='_blank'>System Requirements</Anchor>
+                </li>
                 <li className='text-gray-600 font-inter text-sm font-medium leading-[115%]'>
                   <Anchor href="https://www.voicestack.com/legal/2025-01/privacy-policy"  target='_blank'>Privacy Policy</Anchor>
                 </li> 

@@ -362,8 +362,8 @@ const Header = ({ data, refer=null }) => {
                       {/* mob cta and phone */}
                       <div className='flex flex-col md:flex-row gap-3 md:gap-5 items-center lg:hidden'>
                         <div className='flex-shrink-0'>
-                          <a href={`tel:${data?.phoneNumber}`} className='text-gray-700 px-[12px] py-[7px] rounded-[7px] text-sm font-medium leading-6 flex items-center whitespace-nowrap gap-[8px]  
-                          border border-gray-300'><TelIcon/>{data?.phoneNumber}</a>
+                          <Anchor href={`tel:${data?.phoneNumber}`} className='text-gray-700 px-[12px] py-[7px] rounded-[7px] text-sm font-medium leading-6 flex items-center whitespace-nowrap gap-[8px]  
+                          border border-gray-300'><TelIcon/>{data?.phoneNumber}</Anchor>
                         </div>
                         <Button type='primarySm'  onClick={() => {setOpenForm(true)}}>
                           <ButtonArrow></ButtonArrow>
@@ -411,8 +411,8 @@ const Header = ({ data, refer=null }) => {
                   {/* dt cta and phone */}
                   <div className='lg:flex gap-3 items-center lg:justify-end hidden'>
                     <div className='flex-shrink-0'>
-                      <a href={`tel:${data?.phoneNumber}`} className='text-gray-700 px-[12px] py-[7px] rounded-[7px] text-sm font-medium leading-6 flex items-center whitespace-nowrap gap-[8px]  
-                      border border-gray-300'><TelIcon/>{data?.phoneNumber}</a>
+                      <Anchor href={`tel:${data?.phoneNumber}`} className='text-gray-700 px-[12px] py-[7px] rounded-[7px] text-sm font-medium leading-6 flex items-center whitespace-nowrap gap-[8px]  
+                      border border-gray-300'><TelIcon/>{data?.phoneNumber}</Anchor>
                     </div>
                    
                     {refer == "carestack" ? (

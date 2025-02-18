@@ -29,7 +29,7 @@ const Anchor: React.FunctionComponent<CustomLinkProps> =
     const [newLink, setNewLink] = useState("#");
     const trackCtx = useTrackUser();
     const [btnId, setBtnId] = useState<any>("");
-    const abSegment:any = getCookie("__cs_vs");     
+    const abSegment:any = getCookie("__vs_ver");     
 
     useEffect(() => {
 
@@ -58,7 +58,7 @@ const Anchor: React.FunctionComponent<CustomLinkProps> =
     const dataId = elementId || btnId || '';
 
     return (
-      <Link data-elementid={dataId} href={href} locale={locale} replace={replace}
+      <Link {...(dataId && { 'data-elementid': dataId })} href={href} locale={locale} replace={replace}
         onClick={(e) => {
           const element = getCssSelectorShort(e.target as Element);
           let e_name = "";
