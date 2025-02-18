@@ -1,6 +1,7 @@
 import clsx from 'clsx'
 import Link from 'next/link'
 import React from 'react'
+import Anchor from './anchor'
 
 interface ButtonProps {
   type?:
@@ -49,9 +50,14 @@ const Button: React.FunctionComponent<ButtonProps> = ({
 
   if (link) {
     return (
-      <Link href={link} className={combinedClasses} target={target} locale={locale} {...rest}>
+      <>
+      {/* <Link href={link} className={combinedClasses} target={target} locale={locale} {...rest}>
         {children}
-      </Link>
+      </Link> */}
+      <Anchor href={link} className={combinedClasses} target={target} locale={locale} {...rest}>
+        {children}
+      </Anchor>
+      </>
     )
   }
 

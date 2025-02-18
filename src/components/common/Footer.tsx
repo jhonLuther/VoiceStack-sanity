@@ -7,6 +7,7 @@ import Image from 'next/image'
 import VoicestackLogo from 'public/assets/voicestack-logo-sm.svg';
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
+import Anchor from './anchor'
 
 const Footer = (props) => {
   const footerContent = {
@@ -35,9 +36,9 @@ const Footer = (props) => {
           <div className='flex justify-between items-center w-full pb-6'>
             <div>
               {/* Logo */}
-              <Link href="/" className="xl:flex-1 flex-shrink-0 text-2xl font-extrabold bg-gradient-text bg-clip-text text-transparent font-monrope tracking-tighterText">
+              <Anchor elementId='footer-logo' href="/" className="xl:flex-1 flex-shrink-0 text-2xl font-extrabold bg-gradient-text bg-clip-text text-transparent font-monrope tracking-tighterText">
                 <Image src={VoicestackLogo} alt='VoiceStack'></Image>
-              </Link>
+              </Anchor>
             </div>
             {/* Social media   */}
             <div className="mt-6 self-end">
@@ -168,17 +169,23 @@ const Footer = (props) => {
               {/* <span className='text-gray-600 font-inter text-sm font-medium leading-[115%]'>Made with ♥︎ in Good Methods Global</span> */}
               {isUk ? (
                 <ul className='flex items-center gap-4'>
-                <li className='text-gray-600 font-inter text-sm font-medium leading-[115%]'>
-                  <Link href="https://www.voicestack.com/legal/uk/2024-11/privacy-policy" target='_blank'>Privacy Policy</Link>
-                </li>
-                <li className='text-gray-600 font-inter text-sm font-medium leading-[115%]'>
-                  <Link href="https://www.voicestack.com/legal/uk/2024-11/terms-and-conditions" target='_blank'>Terms of Service</Link>
-                </li>
-              </ul>
+                  <li className='text-gray-600 font-inter text-sm font-medium leading-[115%]'>
+                    <Anchor href="/system-requirements" target='_blank' locale={router.locale}>System Requirements</Anchor>
+                  </li>
+                  <li className='text-gray-600 font-inter text-sm font-medium leading-[115%]'>
+                    <Anchor href="https://www.voicestack.com/legal/uk/2024-11/privacy-policy" target='_blank'>Privacy Policy</Anchor>
+                  </li>
+                  <li className='text-gray-600 font-inter text-sm font-medium leading-[115%]'>
+                    <Anchor href="https://www.voicestack.com/legal/uk/2024-11/terms-and-conditions" target='_blank'>Terms of Service</Anchor>
+                  </li>
+                </ul>
               ): isAu ? (
                 <ul className='flex items-center gap-4'>
                   <li className='text-gray-600 font-inter text-sm font-medium leading-[115%]'>
-                    <Link href="https://www.voicestack.com/legal/aus/2024-11/privacy-policy" target='_blank'>Privacy Policy</Link>
+                    <Anchor href="/system-requirements" locale={router.locale} target='_blank'>System Requirements</Anchor>
+                  </li>
+                  <li className='text-gray-600 font-inter text-sm font-medium leading-[115%]'>
+                    <Anchor href="https://www.voicestack.com/legal/aus/2024-11/privacy-policy" target='_blank'>Privacy Policy</Anchor>
                   </li>
                   {/* <li className='text-gray-600 font-inter text-sm font-medium leading-[115%]'>
                     <Link href="https://www.voicestack.com/legal/uk/2024-11/terms-and-conditions" target='_blank'>Terms of Service</Link>
@@ -187,10 +194,13 @@ const Footer = (props) => {
               ):(
               <ul className='flex items-center gap-4'>
                 <li className='text-gray-600 font-inter text-sm font-medium leading-[115%]'>
-                  <Link href="https://www.voicestack.com/legal/2025-01/privacy-policy"  target='_blank'>Privacy Policy</Link>
+                  <Anchor href="/system-requirements" locale={router.locale} target='_blank'>System Requirements</Anchor>
+                </li>
+                <li className='text-gray-600 font-inter text-sm font-medium leading-[115%]'>
+                  <Anchor href="https://www.voicestack.com/legal/2025-01/privacy-policy"  target='_blank'>Privacy Policy</Anchor>
                 </li> 
                 <li className='text-gray-600 font-inter text-sm font-medium leading-[115%]'>
-                  <Link href="https://www.voicestack.com/legal/2024-10/terms-and-conditions" target='_blank'>Terms of Service</Link>
+                  <Anchor href="https://www.voicestack.com/legal/2024-10/terms-and-conditions" target='_blank'>Terms of Service</Anchor>
                 </li>
               </ul>
               )}
