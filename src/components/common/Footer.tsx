@@ -187,9 +187,9 @@ const Footer = (props) => {
                   <li className='text-gray-600 font-inter text-sm font-medium leading-[115%]'>
                     <Anchor href="https://www.voicestack.com/legal/aus/2024-11/privacy-policy" target='_blank'>Privacy Policy</Anchor>
                   </li>
-                  {/* <li className='text-gray-600 font-inter text-sm font-medium leading-[115%]'>
-                    <Link href="https://www.voicestack.com/legal/uk/2024-11/terms-and-conditions" target='_blank'>Terms of Service</Link>
-                  </li> */}
+                  <li className='text-gray-600 font-inter text-sm font-medium leading-[115%]'>
+                    <Link href="https://voicestack.com/legal/aus/2024-11/saas-customer-agreement" target='_blank'>Terms of Service</Link>
+                  </li>
                 </ul>
               ):(
               <ul className='flex items-center gap-4'>
