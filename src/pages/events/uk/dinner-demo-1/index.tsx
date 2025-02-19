@@ -206,7 +206,7 @@ function DinnerDemo() {
             </div>
           </div>
 
-          <div className="flex flex-col items-center gap-4">
+          {/* <div className="flex flex-col items-center gap-4">
              <Button type="primary" link="https://share.hsforms.com/1NRK3g7SnRLmCEEBi1qjzfg2vkpl" target="_blank">Secure My Spot</Button>
             <p>
               <span className="text-red-600">*</span>
@@ -214,7 +214,7 @@ function DinnerDemo() {
                 Limited seats available
               </span>
             </p>
-          </div>
+          </div> */}
         </Container>
 
         <div className="w-[2000px] h-[500px] bg-[#ff236c] rounded-full -rotate-45 blur-[200px] bg-opacity-40 absolute bottom-0 z-0 left-0"></div>
@@ -283,7 +283,7 @@ function DinnerDemo() {
             </ul>
           </div>
 
-          <div className="flex flex-col items-center gap-4">
+          {/* <div className="flex flex-col items-center gap-4">
              <Button type="primary" link="https://share.hsforms.com/1NRK3g7SnRLmCEEBi1qjzfg2vkpl" target="_blank">Secure My Spot</Button>
             <p>
               <span className="text-red-600">*</span>
@@ -291,7 +291,7 @@ function DinnerDemo() {
                 Limited seats available
               </span>
             </p>
-          </div>
+          </div> */}
         </Container>
       </Section>
 
@@ -506,7 +506,7 @@ function DinnerDemo() {
             />
           </div>
 
-          <div className="flex flex-col items-center gap-4">
+          {/* <div className="flex flex-col items-center gap-4">
              <Button type="primary" link="https://share.hsforms.com/1NRK3g7SnRLmCEEBi1qjzfg2vkpl" target="_blank">Secure My Spot</Button>
             <p>
               <span className="text-red-600">*</span>
@@ -514,7 +514,7 @@ function DinnerDemo() {
                 Limited seats available
               </span>
             </p>
-          </div>
+          </div> */}
         </Container>
       </Section>
 
@@ -558,7 +558,7 @@ function DinnerDemo() {
             </div>
           </div>
 
-          <div className="flex flex-col items-center gap-4">
+          {/* <div className="flex flex-col items-center gap-4">
              <Button type="primary" link="https://share.hsforms.com/1NRK3g7SnRLmCEEBi1qjzfg2vkpl" target="_blank">Secure My Spot</Button>
             <p>
               <span className="text-red-600">*</span>
@@ -566,7 +566,7 @@ function DinnerDemo() {
                 Limited seats available
               </span>
             </p>
-          </div>
+          </div> */}
         </Container>
       </Section>
 
@@ -636,7 +636,7 @@ function DinnerDemo() {
             </li>
           </ul>
 
-          <div className="flex flex-col items-center gap-4">
+          {/* <div className="flex flex-col items-center gap-4">
              <Button type="primary" link="https://share.hsforms.com/1NRK3g7SnRLmCEEBi1qjzfg2vkpl" target="_blank">Secure My Spot</Button>
             <p>
               <span className="text-red-600">*</span>
@@ -644,7 +644,7 @@ function DinnerDemo() {
                 Limited seats available
               </span>
             </p>
-          </div>
+          </div> */}
         </Container>
       </Section>
         <footer className="flex w-full justify-center py-8 bg-gray-50 px-8 text-center">
