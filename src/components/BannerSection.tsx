@@ -17,13 +17,16 @@ import { useRouter } from 'next/router'
 import TelIcon from '~/components/icons/TelIcon';
 import MailIcon from '~/components/icons/MailIcon';
 
-const BannerSection = (refer=null) => {
+const BannerSection = ({data, refer=null}) => {
   const { isDemoPopUpShown } = useContext(BookDemoContext);
   const [isOpen, setIsOpen] = useState(false);
   // const contactData = contacts;
   const router = useRouter();
 
   const [matchingContact, setMatchingContact] = useState(null);
+
+  console.log({data});
+  
 
   useEffect(() => {
     const contact = contacts.find(
@@ -47,13 +50,17 @@ const BannerSection = (refer=null) => {
         <div className='flex justify-center w-full'>
           <div className='flex flex-col gap-8 items-center w-full'>
             <div>
-              <h2 className='text-gray-50 text-center font-manrope text-4xl lg:text-5xl font-bold leading-[1.1667] tracking-[-0.96px] w-full max-w-[800px] mb-4'>
-                {/* Start Your Practice Growth Journey<br/> With VoiceStack. */}
-                World class customer support
-              </h2>
-              <p className='text-gray-200 text-center text-base font-normal leading-[145%] w-full max-w-[616px]'>
-                If you have an immediate question or are in need of assistance, please find support using your preferred method. Dedicated customer support teams are available to provide chat, email, and phone assistance.
-              </p>
+              {data?.title && (
+                <h2 className='text-gray-50 text-center font-manrope text-4xl lg:text-5xl font-bold leading-[1.1667] tracking-[-0.96px] w-full max-w-[800px] mb-4'>
+                  {/* Start Your Practice Growth Journey<br/> With VoiceStack. */}
+                  {data.title}
+                </h2>
+              )}
+              {data?.description && (
+                <p className='text-gray-200 text-center text-base font-normal leading-[145%] w-full max-w-[616px]'>
+                  {data.description}
+                </p>
+              )}
             </div>
               {/* <div className='flex gap-4 items-center flex-col md:flex-row relative z-[1]'>
                 <Button type='primary'   onClick={() => {setOpenForm(true)}}>
@@ -67,18 +74,18 @@ const BannerSection = (refer=null) => {
               </div> */}
 
               <div className='flex gap-4 items-center flex-col md:flex-row relative z-[1]'>
-                {matchingContact && (
+                {data && (
                   <>
-                    {matchingContact.phone && (
-                      <Button type='primary' link={`tel:${matchingContact.phone}`}>
+                    {data.phone && (
+                      <Button type='primary' link={`tel:${data.phone}`}>
                         <TelIcon/>
-                        <span className="text-base font-medium">{matchingContact.phone}</span>
+                        <span className="text-base font-medium">{data.phone}</span>
                       </Button>
                     )}
-                    {matchingContact.email && (
-                      <Button type='secondary' link={`mailto:${matchingContact.email}`}>
+                    {data.email && (
+                      <Button type='secondary' link={`mailto:${data.email}`}>
                         <MailIcon/>
-                        <span className="text-base font-medium">{matchingContact.email}</span>
+                        <span className="text-base font-medium">{data.email}</span>
                       </Button>
                     )}
                   </>
