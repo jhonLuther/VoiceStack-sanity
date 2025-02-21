@@ -27,6 +27,8 @@ import DynamicComponent from './DynamicComponent'
 import customContent from './customContent'
 import ListingBlock from './ListingBlock'
 import BrowserList from './BrowserList'
+import footer from './footer'
+import banner from './banner'
 
 export const schemaTypes = [
   layout,
@@ -84,7 +86,9 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     DynamicComponent,
     customContent,
     ListingBlock,
-    BrowserList
+    BrowserList,
+    footer,
+    banner
     
   ],
 }

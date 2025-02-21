@@ -197,6 +197,20 @@ export async function getCardsSectionData(client: SanityClient, region: string) 
   return await client.fetch(query, { region })
 }
 
+export async function getFooterData(client:SanityClient, region:string) {
+  const query = groq ` *[_type == "footer" && language == $region][0]{
+    ...,
+  }`
+  return await client.fetch(query, { region })
+}
+
+export async function getBannerData(client:SanityClient, region:string) {
+  const query = groq ` *[_type == "banner" && language == $region][0]{
+    ...,
+  }`
+  return await client.fetch(query, { region })
+}
+
 export async function getCsCardsSectionData(client: SanityClient, region: string) {
   const query = groq` *[_type == "csCardsListing" && language == $region][0]{
     heading,

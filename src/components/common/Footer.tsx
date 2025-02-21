@@ -9,13 +9,17 @@ import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import Anchor from './anchor'
 
-const Footer = (props) => {
-  const footerContent = {
-    cta: {
-      name: props.homeSettings?.bookBtnContent,
-      url: props.siteSettings?.demoBtnUrl,
-    },
-  }
+const Footer = ({data}) => {
+
+  // console.log({data});
+  
+  
+  // const footerContent = {
+  //   cta: {
+  //     name: props.homeSettings?.bookBtnContent,
+  //     url: props.siteSettings?.demoBtnUrl,
+  //   },
+  // }
 
   const CopyrightYear = new Date().getFullYear();
 
@@ -167,7 +171,7 @@ const Footer = (props) => {
             <div className='flex flex-col md:flex-row gap-3 items-center justify-between'>
               <span className='text-gray-600 font-inter text-sm font-medium leading-[115%]'>&copy; VoiceStack {CopyrightYear}</span>
               {/* <span className='text-gray-600 font-inter text-sm font-medium leading-[115%]'>Made with ♥︎ in Good Methods Global</span> */}
-              {isUk ? (
+              {/* {isUk ? (
                 <ul className='flex items-center gap-4'>
                   <li className='text-gray-600 font-inter text-sm font-medium leading-[115%]'>
                     <Anchor href="/system-requirements" target='_blank' locale={router.locale}>System Requirements</Anchor>
@@ -203,7 +207,27 @@ const Footer = (props) => {
                   <Anchor href="https://www.voicestack.com/legal/2024-10/terms-and-conditions" target='_blank'>Terms of Service</Anchor>
                 </li>
               </ul>
-              )}
+              )} */}
+              <ul className='flex items-center gap-4'>
+                {data?.links && data?.links.length > 0 &&(
+                  data.links.map((linkItem:any, index:number) => {
+                    return(
+                      <li className='text-gray-600 font-inter text-sm font-medium leading-[115%]' key={index}>
+                        <Anchor href={linkItem.link} target={linkItem.newTab ? '_blank' : '_self'}>{linkItem.text}</Anchor>
+                      </li>
+                    )
+                  })
+                )}
+                  {/* <li className='text-gray-600 font-inter text-sm font-medium leading-[115%]'>
+                    <Anchor href="/system-requirements" target='_blank' locale={router.locale}>System Requirements</Anchor>
+                  </li>
+                  <li className='text-gray-600 font-inter text-sm font-medium leading-[115%]'>
+                    <Anchor href="https://www.voicestack.com/legal/uk/2024-11/privacy-policy" target='_blank'>Privacy Policy</Anchor>
+                  </li>
+                  <li className='text-gray-600 font-inter text-sm font-medium leading-[115%]'>
+                    <Anchor href="https://www.voicestack.com/legal/uk/2024-11/terms-and-conditions" target='_blank'>Terms of Service</Anchor>
+                  </li> */}
+                </ul>
             </div>
           </div>
         </div>

@@ -14,6 +14,8 @@ import {
   getCardsSectionData,
   getCsCardsSectionData,
   getTestimonialHighlightSectionData,
+  getFooterData,
+  getBannerData,
 } from '~/lib/sanity.queries'
 import Layout from '../components/Layout'
 import CustomHead from '~/components/common/CustomHead'
@@ -59,6 +61,8 @@ export const getStaticProps: GetStaticProps<any> = async ({
   const cardsListingData = await getCardsSectionData(client,region)
   const cSCardsListingData = await getCsCardsSectionData(client,region)
   const testimonialHighlightsData = await getTestimonialHighlightSectionData(client,region)
+  const footerData = await getFooterData(client, region)
+  const bannerData = await getBannerData(client, region)
   
   
 
@@ -79,7 +83,9 @@ export const getStaticProps: GetStaticProps<any> = async ({
       faqSectionData,
       cardsListingData,
       cSCardsListingData,
-      testimonialHighlightsData
+      testimonialHighlightsData,
+      footerData,
+      bannerData
     },
   }
 }
@@ -143,7 +149,9 @@ export default function IndexPage(
     faqSectionData,
     cardsListingData,
     cSCardsListingData,
-    testimonialHighlightsData
+    testimonialHighlightsData,
+    footerData,
+    bannerData
   } = props
 
   const comparisonSectionData = {
@@ -175,8 +183,8 @@ export default function IndexPage(
           <SiteComparisonSection data={comparisonSectionData} refer={refer}/>
           <TestimonialHighlightSection data={testimonialHighlightsData} refer={refer}/>
           <FaqSection data={faqSectionData} mailId={heroSectionData?.contactEmail}/>
-          <BannerSection refer={refer}></BannerSection>
-          <Footer></Footer>
+          <BannerSection data={bannerData} refer={refer}></BannerSection>
+          <Footer data={footerData}></Footer>
         </div>
       </Layout>
       
