@@ -22,7 +22,12 @@ export default {
     },
     {
       name: 'phone',
-      title: 'Phone',
+      title: 'Phone Primary',
+      type: 'string'
+    },
+    {
+      name: 'phoneSecondary',
+      title: 'Phone Secondary',
       type: 'string'
     },
     {

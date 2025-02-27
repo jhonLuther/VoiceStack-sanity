@@ -77,9 +77,15 @@ const BannerSection = ({data, refer=null}) => {
                 {data && (
                   <>
                     {data.phone && (
-                      <Button type='primary' link={`tel:${data.phone}`}>
+                      <Button type='secondary' link={`tel:${data.phone}`}>
                         <TelIcon/>
                         <span className="text-base font-medium">{data.phone}</span>
+                      </Button>
+                    )}
+                    {data.phoneSecondary && (
+                      <Button type='secondary' link={`tel:${data.phoneSecondary}`}>
+                        <TelIcon/>
+                        <span className="text-base font-medium">{data.phoneSecondary}</span>
                       </Button>
                     )}
                     {data.email && (
