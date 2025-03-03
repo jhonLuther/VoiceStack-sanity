@@ -25,7 +25,7 @@ const BannerSection = ({data, refer=null}) => {
 
   const [matchingContact, setMatchingContact] = useState(null);
 
-  console.log({data});
+  //console.log({data});
   
 
   useEffect(() => {
