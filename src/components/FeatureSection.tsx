@@ -23,7 +23,7 @@ const FeatureSection = ({data}) => {
           {data.featuresByCategory?.map((featureCategory: any, index: number) => {
             return (
               <FeatureCategoryCard
-                key={index}
+                key={index+featureCategory?.categoryHeading}
                 imageUrl={featureCategory.imageUrl}
                 heading={featureCategory.categoryHeading}
                 features={featureCategory.features}

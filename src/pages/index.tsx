@@ -1,7 +1,6 @@
 import type { GetStaticProps, InferGetStaticPropsType } from 'next'
 import { readToken } from '~/lib/sanity.api'
 import {
-  getALLHomeSettings,
   getALLSiteSettings,
   getComparisonTableData,
   getFounderDetails,
@@ -16,6 +15,7 @@ import {
   getTestimonialHighlightSectionData,
   getFooterData,
   getBannerData,
+  getHeaderData,
 } from '~/lib/sanity.queries'
 import Layout from '../components/Layout'
 import CustomHead from '~/components/common/CustomHead'
@@ -48,7 +48,7 @@ export const getStaticProps: GetStaticProps<any> = async ({
 }) => {
   const region = locale
   const client = getClient(draftMode ? { token: readToken } : undefined)
-  const homeSettings = await getALLHomeSettings(client, region)
+  const homeSettings = await getHeaderData(client, region)
   const siteSettings = await runQuery(getALLSiteSettings(region))
   const founderDetails = await runQuery(getFounderDetails(region))
   const comparisonTableData = await runQuery(getComparisonTableData(region))

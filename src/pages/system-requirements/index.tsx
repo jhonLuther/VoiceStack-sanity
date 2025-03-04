@@ -1,11 +1,10 @@
 // system-requirements/index.tsx
 import { GetStaticProps } from 'next'
-import { groq } from 'next-sanity'
 import { getClient } from '~/lib/sanity.client'
 import { readToken } from '~/lib/sanity.api'
 import { SanityClient } from 'sanity'
 import Header from '~/components/common/Header'
-import { getALLHomeSettings, getMiscellaneousData, getFooterData, getBannerData } from '~/lib/sanity.queries'
+import {getMiscellaneousData, getFooterData, getBannerData, getHeaderData } from '~/lib/sanity.queries'
 import { getHeroSectionData } from '~/lib/sanity.queries'
 import { useContext, useEffect } from 'react'
 import { BookDemoContext } from '~/providers/BookDemoProvider'
@@ -36,7 +35,7 @@ export const getStaticProps: GetStaticProps<any> = async ({
 
   const client = getClient(draftMode ? { token: readToken } : undefined) as SanityClient
   const [homeSettings, heroData, bannerData, footerData, miscellaneousData,] = await Promise.all([
-    getALLHomeSettings(client, region),
+    getHeaderData(client, region),
     getHeroSectionData(client, region),
     getBannerData(client, region),
     getFooterData(client, region),

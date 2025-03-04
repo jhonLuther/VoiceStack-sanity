@@ -87,7 +87,7 @@ export default function FeatureSection({ data, refer=null }) {
               <>
                 <AppearFeature
                   refer={refer}
-                  key={feature?._id}
+                  key={feature?._id+index}
                   getIndex={(percentage) => switchIndex(percentage)}
                   getIndexfromAppear={(index) => getIndexfromAppear(index)}
                   index={index}
@@ -173,7 +173,7 @@ export default function FeatureSection({ data, refer=null }) {
                     <ul className="flex flex-wrap gap-3 mt-4 mb-8 ">
                       {feature?.testimonialChip &&
                         feature?.testimonialChip?.map((item, i) => (
-                          <PillItem key={i}>
+                          <PillItem key={i+item}>
                             <span className="text-green-500">
                               <TickIcon />
                             </span>{' '}

@@ -448,6 +448,14 @@ export async function getALLHomeSettings(client: SanityClient, region: string) {
   }`
   return await client.fetch(query, { region })
 }
+export async function getHeaderData(client: SanityClient, region: string) {
+  const query = groq`*[_type == "homeSettings" && language ==$region][0]{
+    heroHeaderSection,
+    phoneNumber,
+    ctabutton
+  }`
+  return await client.fetch(query, { region })
+}
 
 
 export const getALLSiteSettings = (region) =>

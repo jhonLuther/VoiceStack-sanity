@@ -36,6 +36,11 @@ export default {
       type: 'string'
     },
     {
+      name: 'salesEmail',
+      title: 'Sales Email',
+      type: 'string'
+    },
+    {
       name: 'language',
       type: 'string',
       readOnly: true,

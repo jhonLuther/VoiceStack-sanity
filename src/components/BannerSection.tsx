@@ -49,7 +49,7 @@ const BannerSection = ({data, refer=null}) => {
       <Container>
         <div className='flex justify-center w-full'>
           <div className='flex flex-col gap-8 items-center w-full'>
-            <div>
+            <div className='flex flex-col  items-center'>
               {data?.title && (
                 <h2 className='text-gray-50 text-center font-manrope text-4xl lg:text-5xl font-bold leading-[1.1667] tracking-[-0.96px] w-full max-w-[800px] mb-4'>
                   {/* Start Your Practice Growth Journey<br/> With VoiceStack. */}
@@ -73,10 +73,11 @@ const BannerSection = ({data, refer=null}) => {
                 </Button>
               </div> */}
 
-              <div className='flex gap-4 items-center flex-col md:flex-row relative z-[1]'>
+              <div className='flex gap-4 items-center flex-col  relative z-[1]'>
                 {data && (
                   <>
-                    {data.phone && (
+                  <div className='flex md:flex-row flex-col  gap-4 items-center'>
+                  {data.phone && (
                       <Button type='secondary' link={`tel:${data.phone}`}>
                         <TelIcon/>
                         <span className="text-base font-medium">{data.phone}</span>
@@ -88,12 +89,21 @@ const BannerSection = ({data, refer=null}) => {
                         <span className="text-base font-medium">{data.phoneSecondary}</span>
                       </Button>
                     )}
-                    {data.email && (
+                  </div>
+                  <div className='flex md:flex-row flex-col gap-4 items-center'>
+                  {data.email && (
                       <Button type='secondary' link={`mailto:${data.email}`}>
                         <MailIcon/>
                         <span className="text-base font-medium">{data.email}</span>
                       </Button>
                     )}
+                    {data.salesEmail && (
+                      <Button type='secondary' link={`mailto:${data.salesEmail}`}>
+                        <MailIcon/>
+                        <span className="text-base font-medium">{data.salesEmail}</span>
+                      </Button>
+                    )}
+                  </div>
                   </>
                 )}
                 

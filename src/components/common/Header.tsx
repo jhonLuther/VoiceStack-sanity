@@ -287,7 +287,7 @@ const Header = ({ data, refer=null }) => {
               {regions.map((region:any, index:number) => {
                 return(
                   _preferredLocale !== region.locale && (
-                    <Link href={`/${query1}`} locale={region.locale} className='flex  py-[6px] px-3 rounded-[4px] text-xs font-medium text-gray-400 hover:bg-gray-100'
+                    <Link key={index+region?.regionName} href={`/${query1}`} locale={region.locale} className='flex  py-[6px] px-3 rounded-[4px] text-xs font-medium text-gray-400 hover:bg-gray-100'
                     onClick={closeRegionPopup}>VoiceStack {region.regionName}
                     </Link>
                   )
@@ -376,7 +376,7 @@ const Header = ({ data, refer=null }) => {
                         {regions.map((region:any, index:number) => {
                           return(
                             currentLocale == region.locale ? (
-                              <div className='flex gap-2 items-center'>
+                              <div key={index + region?.flag.url} className='flex gap-2 items-center'>
                                 <Image 
                                   src={region.flag.url} 
                                   alt={region.flag.title} 
@@ -389,7 +389,7 @@ const Header = ({ data, refer=null }) => {
                               </div>
                             ):(
 
-                              <Anchor href="/" locale={region.locale} className='flex gap-2 items-center' onClick={closeMenu}>
+                              <Anchor key={index + region?.flag.url} href="/" locale={region.locale} className='flex gap-2 items-center' onClick={closeMenu}>
                               <Image 
                                 src={region.flag.url} 
                                 alt={region.flag.title} 
@@ -482,7 +482,7 @@ const Header = ({ data, refer=null }) => {
                     {regions.map((region:any, index:number) => {
                       return(
                         currentLocale == region.locale ? (
-                          <div className='flex gap-2 items-center opacity-80 py-[6px] pl-[6px] border-b border-gray-200 last:border-none'>
+                          <div key={index+region.flag.url} className='flex gap-2 items-center opacity-80 py-[6px] pl-[6px] border-b border-gray-200 last:border-none'>
                             <Image 
                               src={region.flag.url} 
                               alt={region.flag.title} 
@@ -495,7 +495,7 @@ const Header = ({ data, refer=null }) => {
                           </div>
                         ):(
 
-                        <Anchor href={`/${query1}`} locale={region.locale} className='flex gap-2 items-center py-[6px] pl-[6px] border-b border-gray-200 last:border-none'>
+                        <Anchor key={index+region.flag.url} href={`/${query1}`} locale={region.locale} className='flex gap-2 items-center py-[6px] pl-[6px] border-b border-gray-200 last:border-none'>
                           <Image 
                             src={region.flag.url} 
                             alt={region.flag.title} 
