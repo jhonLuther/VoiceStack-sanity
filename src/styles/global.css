@@ -210,9 +210,9 @@ html {
   }
 }
 
-#hubspotForm .submitted-message{
+/* #hubspotForm .submitted-message{
   display: none;
-}
+} */
 
 #hubspotForm .form-columns-1 .field.hs-form-field .input .hs-input {
   /* @apply rounded-lg py-3 px-4 shadow-md ; */

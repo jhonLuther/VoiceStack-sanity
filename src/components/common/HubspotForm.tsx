@@ -83,9 +83,10 @@ const HubSpotForm = ({
                   email: email,
                   event: eventName || 'demo_submission_uk',
                 });
+                if(meetingLink){
+                  document.getElementById("successMessage").style.display = "block";
+                }
                 
-                document.getElementById("successMessage").style.display = "block";
-
                 trackEvent({
                   e_name: eventName || 'demo_submission_uk',
                   e_type: "form-submission",
@@ -106,8 +107,10 @@ const HubSpotForm = ({
                     `/api/hs?email=${email}&source=${urlParams.get("utm_source")}&campaign=${urlParams.get("utm_campaign")}&medium=${urlParams.get("utm_medium")}&term=${urlParams.get("utm_term")}&lead_source=${urlParams.get("lead_source")}`
                   ); 
                   // document.getElementById("successMessage").innerHTML = "Thank you, a VoiceStack representative will reach out to you shortly."; 
-                  var meetingUrl = `${meetingLink}?${params.toString()}`;
-                  router.push(meetingUrl);
+                  if(meetingLink){
+                    var meetingUrl = `${meetingLink}?${params.toString()}`;
+                    router.push(meetingUrl);
+                  }
                    
                 }, 3000)
               },
@@ -135,6 +138,12 @@ const HubSpotForm = ({
       <div id="successMessage" style={{display: 'none', marginTop: '20px'}}>
         Please wait..
       </div>
+      <style jsx global>{`
+        #hubspotForm .submitted-message {
+          display: ${meetingLink ? 'none' : 'block'};
+        }
+        
+      `}</style>
     </>
   )
 }
