@@ -12,11 +12,6 @@ export default defineType({
       type: 'portableContent',
     }),
     defineField({
-      name: 'description',
-      title: 'Feature Description',
-      type: 'portableContent',
-    }),
-    defineField({
       name: 'mainImage',
       title: 'Main Image',
       type: 'image',
@@ -30,13 +25,13 @@ export default defineType({
           type: 'object',
           fields: [
             {
-              name: 'heading',
-              title: 'Heading',
+              name: 'itemHeading',
+              title: 'Item Heading',
               type: 'string',
             },
             {
-              name: 'description',
-              title: 'Description',
+              name: 'itemSubHeading',
+              title: 'Item Sub Heading',
               type: 'string',
             },
           ],
