@@ -85,8 +85,6 @@ export default defineType({
       group: 'basic',
       to: [{ type: 'featureCategory' }],
     }),
-
-
     defineField({
       name: 'featureSubSection',
       title: 'Feature Sub Section',
@@ -116,6 +114,13 @@ export default defineType({
         {
           type: 'reference',
           to: [{ type: 'featureList' }],
+          options: {
+            filter: ({ document }) => ({
+              filter: '_type == "featureList" && language == $language',
+              params: { language: document.language }, 
+            }),
+            disableNew: true,
+          },
         },
       ],
     }),
@@ -128,6 +133,13 @@ export default defineType({
         {
           type: 'reference',
           to: [{ type: 'faq' }],
+          options: {
+            filter: ({ document }) => ({
+              filter: '_type == "faq" && language == $language',
+              params: { language: document.language }, 
+            }),
+            disableNew: true,
+          },
         },
       ],
     }),
