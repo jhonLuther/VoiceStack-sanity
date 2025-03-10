@@ -117,6 +117,7 @@ export default defineConfig({
         'footer',
         'page',
         'miscellaneous',
+        'featureList'
       ],
     }),
 

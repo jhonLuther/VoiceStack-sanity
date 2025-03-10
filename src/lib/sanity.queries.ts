@@ -4,6 +4,22 @@ import groq from 'groq'
 import { type SanityClient } from 'next-sanity'
 import { cookies } from 'next/headers'
 
+// ##############################################common fragments
+
+
+const bodyFragment = `
+  body[] {
+    ...,
+    },
+    _type == "image" => {
+      ...,
+      asset->,
+    },
+  }
+`
+
+
+
 export const postsQuery = groq`*[_type == "post" && defined(slug.current)] | order(_createdAt desc)`
 
 export async function getPosts(client: SanityClient): Promise<Post[]> {
@@ -307,6 +323,19 @@ export const getFounderDetails = (region) => groq`*[_type == "person"]{
     'designation':personDesignation,
     'description':personDescription
 }`
+
+export async function getFeatureList(client: SanityClient, region: string) {
+  const query = groq`*[_type == "featureList" && language == $region][0]{
+    language,
+    name,
+    description,
+    shortDescription,
+    slug,
+    _id
+  }`
+  
+  return await client.fetch(query, { region })
+}
 
 export async function fetchFaq(
   client: SanityClient,

@@ -32,7 +32,6 @@ export async function isUniqueAcrossAllDocuments(slug, context) {
     slug.current == $slug
   ][0]._id)`
 
-
   try {
     const result = await client.fetch(query, params)
     return result
@@ -41,6 +40,8 @@ export async function isUniqueAcrossAllDocuments(slug, context) {
     return false
   }
 }
+
+
 export async function isUniqueOtherThanLanguage(slug: string, context: SlugValidationContext) {
   const {document, getClient} = context
   if (!document?.language) {

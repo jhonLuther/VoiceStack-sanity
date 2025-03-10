@@ -1,4 +1,5 @@
 import { defineField, defineType } from 'sanity'
+import { isUniqueAcrossAllDocuments, isUniqueOtherThanLanguage } from '~/lib/sanity'
 export default defineType({
   name: 'featureList',
   title: 'Feature List',
@@ -8,12 +9,7 @@ export default defineType({
       name: 'basic',
       title: 'Basic',
       default: true,
-    },
-    {
-      name: 'shortBanner',
-      title: 'Short Banner Section',
-    },
- 
+    }, 
     {
       name: 'featureDetailed',
       title: 'Feature Detailed Section',
@@ -27,8 +23,8 @@ export default defineType({
       title: 'Related Features Section',
     },
     {
-      name: 'singeImageSection',
-      title: 'Single Image Section',
+      name: 'faqSection',
+      title: 'FAQ Section',
     },
   ],
 
@@ -48,6 +44,7 @@ export default defineType({
       options: {
         source: 'name',
         maxLength: 96,
+        isUnique: isUniqueOtherThanLanguage
       },
     },
 
@@ -88,16 +85,6 @@ export default defineType({
       group: 'basic',
       to: [{ type: 'featureCategory' }],
     }),
-
-    defineField({
-      name: 'shortBannerSection',
-      title: 'Short Banner Section',
-      type: 'reference',
-      group: 'shortBanner',
-      to: [{ type: 'listingAtom' }],
-    }),
-    
-
     defineField({
       name: 'featureSubSection',
       title: 'Feature Sub Section',
@@ -127,16 +114,34 @@ export default defineType({
         {
           type: 'reference',
           to: [{ type: 'featureList' }],
+          options: {
+            filter: ({ document }) => ({
+              filter: '_type == "featureList" && language == $language',
+              params: { language: document.language }, 
+            }),
+            disableNew: true,
+          },
         },
       ],
     }),
-
     defineField({
-      name: 'singleImageSection',
-      title: 'Single Image Section',
-      type: 'reference',
-      group: 'singeImageSection',
-      to: [{ type: 'listingAtom' }],
+      name: 'featureFAQSection',
+      title: 'FAQ Section',
+      type: 'array',
+      group: 'faqSection',
+      of: [
+        {
+          type: 'reference',
+          to: [{ type: 'faq' }],
+          options: {
+            filter: ({ document }) => ({
+              filter: '_type == "faq" && language == $language',
+              params: { language: document.language }, 
+            }),
+            disableNew: true,
+          },
+        },
+      ],
     }),
     defineField({
       name: 'language',
@@ -145,4 +150,15 @@ export default defineType({
       hidden: true,
     }),
   ],
+  preview: {
+    select: {
+      title: 'name',
+      lang: 'language',
+      media: 'mainImage',
+    },
+    prepare(selection) {
+      const { lang, title } = selection
+      return { ...selection, subtitle: lang && `${lang}` }
+    },
+      },
 })
