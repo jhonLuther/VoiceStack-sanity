@@ -1,4 +1,5 @@
 import { defineField, defineType } from 'sanity'
+import { isUniqueAcrossAllDocuments } from '~/lib/sanity'
 export default defineType({
   name: 'featureList',
   title: 'Feature List',
@@ -43,6 +44,7 @@ export default defineType({
       options: {
         source: 'name',
         maxLength: 96,
+        isUnique: isUniqueAcrossAllDocuments
       },
     },
 
@@ -136,4 +138,15 @@ export default defineType({
       hidden: true,
     }),
   ],
+  preview: {
+    select: {
+      title: 'name',
+      lang: 'language',
+      media: 'mainImage',
+    },
+    prepare(selection) {
+      const { lang, title } = selection
+      return { ...selection, subtitle: lang && `${lang}` }
+    },
+      },
 })
