@@ -8,12 +8,7 @@ export default defineType({
       name: 'basic',
       title: 'Basic',
       default: true,
-    },
-    {
-      name: 'shortBanner',
-      title: 'Short Banner Section',
-    },
- 
+    }, 
     {
       name: 'featureDetailed',
       title: 'Feature Detailed Section',
@@ -27,8 +22,8 @@ export default defineType({
       title: 'Related Features Section',
     },
     {
-      name: 'singeImageSection',
-      title: 'Single Image Section',
+      name: 'faqSection',
+      title: 'FAQ Section',
     },
   ],
 
@@ -89,14 +84,6 @@ export default defineType({
       to: [{ type: 'featureCategory' }],
     }),
 
-    defineField({
-      name: 'shortBannerSection',
-      title: 'Short Banner Section',
-      type: 'reference',
-      group: 'shortBanner',
-      to: [{ type: 'listingAtom' }],
-    }),
-    
 
     defineField({
       name: 'featureSubSection',
@@ -130,13 +117,17 @@ export default defineType({
         },
       ],
     }),
-
     defineField({
-      name: 'singleImageSection',
-      title: 'Single Image Section',
-      type: 'reference',
-      group: 'singeImageSection',
-      to: [{ type: 'listingAtom' }],
+      name: 'featureFAQSection',
+      title: 'FAQ Section',
+      type: 'array',
+      group: 'faqSection',
+      of: [
+        {
+          type: 'reference',
+          to: [{ type: 'faq' }],
+        },
+      ],
     }),
     defineField({
       name: 'language',
