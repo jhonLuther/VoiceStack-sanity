@@ -3,11 +3,7 @@ import { getClient } from '~/lib/sanity.client'
 import { readToken } from '~/lib/sanity.api'
 import { SanityClient } from 'sanity'
 import Header from '~/components/common/Header'
-<<<<<<< HEAD
 import { getALLHomeSettings, getFeatureList } from '~/lib/sanity.queries'
-=======
-import { getALLHomeSettings, getFeatureList, getPageData } from '~/lib/sanity.queries'
->>>>>>> a82149f6ba21ea0892d1261a1879b9729932043e
 import { getHeroSectionData } from '~/lib/sanity.queries'
 import { useContext, useEffect } from 'react'
 import { BookDemoContext } from '~/providers/BookDemoProvider'

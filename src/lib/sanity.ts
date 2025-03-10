@@ -40,7 +40,6 @@ export async function isUniqueAcrossAllDocuments(slug, context) {
     return false
   }
 }
-<<<<<<< HEAD
 
 
 export async function isUniqueOtherThanLanguage(slug: string, context: SlugValidationContext) {
@@ -64,5 +63,3 @@ export async function isUniqueOtherThanLanguage(slug: string, context: SlugValid
   const result = await client.fetch(query, params)
   return result
 }
-=======
->>>>>>> a82149f6ba21ea0892d1261a1879b9729932043e
