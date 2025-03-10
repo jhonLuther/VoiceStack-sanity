@@ -1,5 +1,9 @@
 import { defineField, defineType } from 'sanity'
+<<<<<<< HEAD
 import { isUniqueAcrossAllDocuments, isUniqueOtherThanLanguage } from '~/lib/sanity'
+=======
+import { isUniqueAcrossAllDocuments } from '~/lib/sanity'
+>>>>>>> a82149f6ba21ea0892d1261a1879b9729932043e
 export default defineType({
   name: 'featureList',
   title: 'Feature List',
@@ -44,7 +48,11 @@ export default defineType({
       options: {
         source: 'name',
         maxLength: 96,
+<<<<<<< HEAD
         isUnique: isUniqueOtherThanLanguage
+=======
+        isUnique: isUniqueAcrossAllDocuments
+>>>>>>> a82149f6ba21ea0892d1261a1879b9729932043e
       },
     },
 
