@@ -117,7 +117,8 @@ export default defineConfig({
         'footer',
         'page',
         'miscellaneous',
-        'featureList'
+        'featureList',
+        'featureCategory'
       ],
     }),
 
@@ -188,6 +189,7 @@ export default defineConfig({
             S.documentTypeListItem('miscellaneous').title('Miscellaneous').icon(ExpandIcon),
             S.documentTypeListItem('page').title('Pages'),
             S.documentTypeListItem('featureList').title('FeatureList').icon(BoltIcon),
+            S.documentTypeListItem('featureCategory').title('Feature Category').icon(BoltIcon),
 
             // S.documentTypeListItem('platform').title('Platform'),
           ]),

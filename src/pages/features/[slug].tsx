@@ -9,9 +9,12 @@ import { getALLHomeSettings, getFeaturePageData } from '~/lib/sanity.queries'
 import { getHeroSectionData } from '~/lib/sanity.queries'
 import { useContext, useEffect } from 'react'
 import { BookDemoContext } from '~/providers/BookDemoProvider'
+import FeatureBenefitSection from '~/components/features/FeatureBenefitSection'
 
 interface PageProps {
   page: {
+    featureSubSection: unknown
+    featureBenefitsSection: unknown
     title: string
     content: any[]
     // Add other fields you need
@@ -35,11 +38,7 @@ export default function Page({ page, homeSettings, heroData, region }: PageProps
   return (
     <>
       <Header data={homeSettings} />
-      <div>
-        <h1>{page.title}{region}</h1>
-        cc
-        {/* Add your content rendering here */}
-      </div>
+        <FeatureBenefitSection data={page?.featureSubSection}/>
     </>
   )
 }

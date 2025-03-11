@@ -7,8 +7,13 @@ export default defineType({
 
   fields: [
     defineField({
-      name: 'heading',
-      title: 'Feature Heading',
+      name: 'featureTitle',
+      title: 'Feature title',
+      type: 'string',
+    }),
+    defineField({
+      name: 'subHeading',
+      title: 'Feature Sub Heading',
       type: 'portableContent',
     }),
     defineField({
@@ -41,7 +46,7 @@ export default defineType({
   ],
   preview: {
     select: {
-      title: 'heading',
+      title: 'title',
     },
   },
 })
