@@ -10,6 +10,7 @@ import { getHeroSectionData } from '~/lib/sanity.queries'
 import { useContext, useEffect } from 'react'
 import { BookDemoContext } from '~/providers/BookDemoProvider'
 import FeatureBenefitSection from '~/components/features/FeatureBenefitSection'
+import FeatureImageSection from '~/components/features/FeatureImageSection'
 
 interface PageProps {
   page: {
@@ -39,6 +40,7 @@ export default function Page({ page, homeSettings, heroData, region }: PageProps
     <>
       <Header data={homeSettings} />
         <FeatureBenefitSection data={page?.featureSubSection}/>
+        <FeatureImageSection data={page?.featureBenefitsSection}/>
     </>
   )
 }

@@ -13,7 +13,7 @@ const FeatureAtom = ({ data, index }) => {
 	if(!data) return null
 
 	return (
-		<Section id="about-us-section" className={`py-12 ${index % 2 === 0 ? 'md:pb-0' : 'md:py-24'}  `}>
+		<Section id="about-us-section" className={`py-12 ${index % 2 === 0 ? 'md:pb-0' : 'md:py-24' } last:pb-0  `}>
 			<Container className="flex flex-col items-center gap-10 w-full ">
 				<div
 					className={`flex flex-col ${index % 2 === 0 ? 'md:flex-row-reverse' : 'md:flex-row'} items-center justify-between md:gap-20 gap-3  p-6`}

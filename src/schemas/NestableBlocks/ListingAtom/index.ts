@@ -21,6 +21,11 @@ export default defineType({
       title: 'Main Image',
       type: 'image',
     }),
+    defineField({
+      name: 'secondaryImage',
+      title: 'Secondary Image',
+      type: 'image',
+    }),
     {
       name: 'listingItem',
       title: 'ListingItem',

@@ -359,6 +359,19 @@ export async function getFeaturePageData(client: SanityClient, slug: string, reg
           }
         }
       },
+      "secondaryImage": secondaryImage.asset->{
+        _id,
+        url,
+        "altText": secondaryImage.altText,
+        "title": secondaryImage.title,
+        metadata {
+          dimensions {
+            width,
+            height,
+            aspectRatio
+          }
+        }
+      },
     },
     featureFAQSection[]->,
     "featureSubSection": featureSubSection[]->{
