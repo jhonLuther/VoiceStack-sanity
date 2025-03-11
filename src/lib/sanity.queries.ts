@@ -325,7 +325,7 @@ export const getFounderDetails = (region) => groq`*[_type == "person"]{
 }`
 
 export async function getFeatureList(client: SanityClient, region: string) {
-  const query = groq`*[_type == "featureList" && language == $region][0]{
+  const query = groq`*[_type == "featureList" && language == $region]{
     language,
     name,
     description,
@@ -335,6 +335,52 @@ export async function getFeatureList(client: SanityClient, region: string) {
   }`
   
   return await client.fetch(query, { region })
+}
+
+
+export async function getFeaturePageData(client: SanityClient, slug: string, region: string) {
+  const query = groq`*[_type == "featureList" && slug.current == $slug && language == $region][0]{
+    name,
+    title,
+    slug,
+    content,
+    featureBenefitsSection->{
+      ...,
+      "mainImage": mainImage.asset->{
+        _id,
+        url,
+        "altText": mainImage.altText,
+        "title": mainImage.title,
+        metadata {
+          dimensions {
+            width,
+            height,
+            aspectRatio
+          }
+        }
+      },
+    },
+    featureFAQSection[]->,
+    "featureSubSection": featureSubSection[]->{
+        "mainImage": mainImage.asset->{
+          _id,
+          url,
+          metadata {
+            dimensions {
+              width,
+              height,
+              aspectRatio
+            }
+          }
+        },
+        "altText": mainImage.altText,
+        "title": mainImage.title,
+        _createdAt,
+        _id
+      },
+  }`
+  
+  return await client.fetch(query, { slug, region })
 }
 
 export async function fetchFaq(

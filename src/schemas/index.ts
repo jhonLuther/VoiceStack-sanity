@@ -64,8 +64,6 @@ export const schemaTypes = [
   ListingAtom,
   portableContent,
   HtmlCode
-
-
 ]
 
 export const schema: { types: SchemaTypeDefinition[] } = {
@@ -105,7 +103,6 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     ListingAtom,
     portableContent,
     HtmlCode
-
     
   ],
 }

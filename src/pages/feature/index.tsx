@@ -7,18 +7,23 @@ import { getALLHomeSettings, getFeatureList } from '~/lib/sanity.queries'
 import { getHeroSectionData } from '~/lib/sanity.queries'
 import { useContext, useEffect } from 'react'
 import { BookDemoContext } from '~/providers/BookDemoProvider'
+import SanityPortableText from '~/components/blockEditor/sanityBlockEditor'
+
 
 interface PageProps {
   page: {
     title: string
     content: any[]
+    map?: any
   }
   homeSettings:any;
   heroData:any;
   region: string
+  draftMode: boolean,
+  token: string
 }
 
-export default function Page({ page, homeSettings, heroData, region }: PageProps) {
+export default function Page({ page, homeSettings, heroData, region, draftMode, token }: PageProps) {
   const { isDemoPopUpShown, setIsDemoPopUpShown } = useContext(BookDemoContext);
   
   useEffect(() => {
@@ -34,8 +39,19 @@ export default function Page({ page, homeSettings, heroData, region }: PageProps
       <Header data={homeSettings} />
       <div>
         <h1>{page.title}{region}</h1>
-        cc
-        {/* Add your content rendering here */}
+        Feature Home
+        {page?.map((item, index) => {
+          return (
+            <div key={index}>
+              <h2>{item.name}</h2>
+              <SanityPortableText
+                content={item?.description}
+                draftMode={draftMode}
+                token={token}
+              />
+            </div>
+          )
+        })}
       </div>
     </>
   )
@@ -68,7 +84,9 @@ export const getStaticProps: GetStaticProps<PageProps> = async ({
       page,
       homeSettings,
       heroData,
-      region
+      region,
+      draftMode,
+      token: draftMode ? readToken : '',
     },
     // revalidate: 60
   }

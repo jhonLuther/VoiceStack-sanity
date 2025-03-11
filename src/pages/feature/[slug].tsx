@@ -5,7 +5,7 @@ import { getClient } from '~/lib/sanity.client'
 import { readToken } from '~/lib/sanity.api'
 import { SanityClient } from 'sanity'
 import Header from '~/components/common/Header'
-import { getALLHomeSettings } from '~/lib/sanity.queries'
+import { getALLHomeSettings, getFeaturePageData } from '~/lib/sanity.queries'
 import { getHeroSectionData } from '~/lib/sanity.queries'
 import { useContext, useEffect } from 'react'
 import { BookDemoContext } from '~/providers/BookDemoProvider'
@@ -27,6 +27,9 @@ export default function Page({ page, homeSettings, heroData, region }: PageProps
   useEffect(() => {
     setIsDemoPopUpShown(heroData);
   },[heroData])
+
+  console.log(page,'page');
+  
   
   if (!page) return <div>Page not found</div>
   return (
@@ -42,15 +45,6 @@ export default function Page({ page, homeSettings, heroData, region }: PageProps
 }
 
 // Helper function for page data fetching
-async function getPageData(client: SanityClient, slug: string, region: string) {
-  const query = groq`*[_type == "featureList" && slug.current == $slug && language == $region][0]{
-    title,
-    content,
-    // Add other fields you need
-  }`
-  
-  return await client.fetch(query, { slug, region })
-}
 
 
 
@@ -64,7 +58,7 @@ export const getStaticProps: GetStaticProps<PageProps> = async ({
   
   const client = getClient(draftMode ? { token: readToken } : undefined) as SanityClient
   const [page, homeSettings, heroData] = await Promise.all([
-    getPageData(client, slug, region),
+    getFeaturePageData(client, slug, region),
     getALLHomeSettings(client, region),
     getHeroSectionData(client, region),
 
@@ -112,4 +106,5 @@ export const getStaticPaths: GetStaticPaths = async () => {
     fallback: 'blocking'
   }
 }
+
 
