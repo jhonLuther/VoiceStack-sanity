@@ -17,6 +17,7 @@ import Footer from '~/components/common/Footer'
 
 interface PageProps {
   page: {
+    featureFAQSection: unknown
     featureSubSection: unknown
     featureBenefitsSection: unknown
     title: string
