@@ -12,7 +12,7 @@ const FeatureBenefitSection = ({ data }) => {
 			id="about-us-section"
 			className="py-12 md:py-24 bg-white  bg-contain bg-no-repeat bg-right"
 		>
-			<Container className="flex flex-col items-center gap-10 w-full ">
+			<Container className="flex flex-col items-center md:gap-10 w-full ">
 				<div className="flex flex-col gap-4 md:gap-6">
 					<div className="flex justify-center w-full">
 						<H2 className="md:!text-4xl">{'Advanced Features'}</H2>

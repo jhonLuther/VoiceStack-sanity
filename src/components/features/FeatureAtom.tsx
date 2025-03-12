@@ -1,12 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react';
 import Section from '../structure/Section';
 import Container from '../structure/Container';
-import dynamic from 'next/dynamic';
-import ImageLoader from '../common/imageLoader/imageLoader';
 import SanityPortableText from '../blockEditor/sanityBlockEditor';
-import H2 from '../typography/H2';
 import CheckMark from '../icons/CheckMark';
 import H3 from '../typography/H3';
+import Image from 'next/image';
 import Button from '../common/Button';
 import ButtonArrow from '../icons/ButtonArrow';
 import { FormModal } from '../common/FormModal';
@@ -20,18 +18,25 @@ const FeatureAtom = ({ data, index }) => {
 	const { isDemoPopUpShown } = useContext(BookDemoContext);
 	const [openForm, setOpenForm] = useState(false)
 	return (
-		<Section id="about-us-section" className={`py-12 ${index % 2 === 0 ? 'md:pb-0' : 'md:py-24' } last:pb-0  `}>
-			<Container className="flex flex-col items-center gap-10 w-full ">
+		<Section id="about-us-section" className={`md:py-12 py-6 ${index % 2 === 0 ? 'md:pb-0' : 'md:py-24' } last:pb-0  `}>
+			<Container className="flex flex-col items-center gap-10 w-full px-0">
 				<div
-					className={`flex flex-col ${index % 2 === 0 ? 'md:flex-row-reverse' : 'md:flex-row'} items-center justify-between md:gap-20 gap-3  p-6`}
+					className={`flex flex-col ${index % 2 === 0 ? 'md:flex-row-reverse' : 'md:flex-row'} items-center justify-between md:gap-20 gap-10  md:p-6`}
 				>
 					<div
 						className="  rounded-3xl "
 
 					>
 						<div className="bg-white  rounded-xl shadow-md ">
-							<div className="flex flex-col items-center text-center">
-								{data?.mainImage && <ImageLoader image={data?.mainImage} alt={data?.name} className="!w-[520px] !h-[455px] !rounded-2xl" />}
+							<div className="flex flex-col items-center text-center w-full ">
+								{data?.mainImage && <Image   
+                  src={data?.mainImage?.url} alt={data?.name}
+									quality={100}
+									width={data?.mainImage?.metadata?.dimensions?.width }
+									height={data?.mainImage?.metadata?.dimensions?.height }
+									title=''
+									sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+									/>}
 							</div>
 						</div>
 
@@ -61,11 +66,14 @@ const FeatureAtom = ({ data, index }) => {
 								</ul>
 							))
 						}
-						
+						<div className='md:mt-8 mt-6'>
+
 						<Button type='primary'   onClick={() => {setOpenForm(true)}}>
 							<ButtonArrow></ButtonArrow>
 							<span className="text-base font-medium">{`Book free demo`}</span>
 						</Button>
+						</div>
+
 					</div>
 				</div>
 						{openForm && (
