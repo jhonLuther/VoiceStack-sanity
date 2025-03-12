@@ -40,7 +40,7 @@ const BannerSection = ({data, refer=null, cta=false}) => {
   const [openForm, setOpenForm] = useState(false)
   const overviewVideo:VideoItem = {
     videoPlatform: 'vidyard',
-    videoId: "Hj4GYLXARVjqQEnaejq3Bz",
+    videoId: "3CsThXKvcvRrR3hwRsWWJY",
   }
   
   return (
