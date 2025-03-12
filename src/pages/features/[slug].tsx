@@ -14,9 +14,11 @@ import FeatureImageSection from '~/components/features/FeatureImageSection'
 import FaqSection from '~/components/FaqSection'
 import BannerSection from '~/components/BannerSection'
 import Footer from '~/components/common/Footer'
+import InnerHeroSection from '~/components/InnerHeroSection'
 
 interface PageProps {
   page: {
+    heroSection: unknown
     featureFAQSection: unknown
     featureSubSection: unknown
     featureBenefitsSection: unknown
@@ -47,6 +49,7 @@ export default function Page({ page, homeSettings, heroData, region, faqSectionD
   return (
     <>
       <Header data={homeSettings} />
+      <InnerHeroSection data={page.heroSection}/>
       <FeatureBenefitSection data={page?.featureSubSection} />
       <FeatureImageSection data={page?.featureBenefitsSection} />
       <FaqSection data={page.featureFAQSection} mailId={''} />

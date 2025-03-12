@@ -86,6 +86,19 @@ export default defineType({
       to: [{ type: 'featureCategory' }],
     }),
     defineField({
+      name: "heroTheme",
+      title: "Hero Theme",
+      type: "string",
+      group: 'basic',
+      options: {
+        list: [
+          { title: "Blue", value: "blue" },
+          { title: "Pink", value: "pink" },
+        ]
+      },
+      initialValue: "1" 
+    }),
+    defineField({
       name: 'featureSubSection',
       title: 'Feature Sub Section',
       type: 'array',

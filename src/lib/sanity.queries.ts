@@ -344,6 +344,41 @@ export async function getFeaturePageData(client: SanityClient, slug: string, reg
     title,
     slug,
     content,
+    "heroSection":{
+      name,
+      slug,
+      heading,
+      description,
+      shortDescription,
+      "mainImage": mainImage.asset->{
+        _id,
+        url,
+        "altText": mainImage.altText,
+        "title": mainImage.title,
+        metadata {
+          dimensions {
+            width,
+            height,
+            aspectRatio
+          }
+        }
+      },
+      "secondaryImage": secondaryImage.asset->{
+        _id,
+        url,
+        "altText": secondaryImage.altText,
+        "title": secondaryImage.title,
+        metadata {
+          dimensions {
+            width,
+            height,
+            aspectRatio
+          }
+        }
+      },
+      "featureCategory": featureCategory->,
+      heroTheme
+    },
     featureBenefitsSection->{
       ...,
       "mainImage": mainImage.asset->{

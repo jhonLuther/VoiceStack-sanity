@@ -24,7 +24,7 @@ const FeatureImageSection = ({ data }) => {
                     <H2 className='text-gray-400 md:text-4xl'>{'Benefits of '}</H2>
                     <H2 className='md:text-4xl whitespace-nowrap'>{'VoiceStack’s IVR System'}</H2>
                 </div>
-                <div className='z-10 flex flex-col  '>
+                <div className='z-10 flex flex-col'>
                 {
                     data?.listingItem && data?.listingItem.map((item, index) => (
                         <ul key={index} className={`flex items-center gap-4 pt-4 pb-4 border-b border-gray-200 ${index === data.listingItem.length - 1 ? 'border-b-0' : ''}`}>
