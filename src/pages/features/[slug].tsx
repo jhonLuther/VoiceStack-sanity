@@ -50,7 +50,7 @@ export default function Page({ page, homeSettings, heroData, region, faqSectionD
       <FeatureBenefitSection data={page?.featureSubSection} />
       <FeatureImageSection data={page?.featureBenefitsSection} />
       <FaqSection data={page.featureFAQSection} mailId={''} />
-      <BannerSection data={bannerData} refer={refer}></BannerSection>
+      <BannerSection data={bannerData} refer={refer} cta={true}></BannerSection>
       <Footer data={footerData}></Footer>
     </>
   )
