@@ -18,10 +18,10 @@ const FeatureAtom = ({ data, index }) => {
 	const { isDemoPopUpShown } = useContext(BookDemoContext);
 	const [openForm, setOpenForm] = useState(false)
 	return (
-		<Section id="about-us-section" className={`py-12 ${index % 2 === 0 ? 'md:pb-0' : 'md:py-24' } last:pb-0  `}>
+		<Section id="about-us-section" className={`md:py-12 py-6 ${index % 2 === 0 ? 'md:pb-0' : 'md:py-24' } last:pb-0  `}>
 			<Container className="flex flex-col items-center gap-10 w-full px-0">
 				<div
-					className={`flex flex-col ${index % 2 === 0 ? 'md:flex-row-reverse' : 'md:flex-row'} items-center justify-between md:gap-20 gap-3  md:p-6`}
+					className={`flex flex-col ${index % 2 === 0 ? 'md:flex-row-reverse' : 'md:flex-row'} items-center justify-between md:gap-20 gap-10  md:p-6`}
 				>
 					<div
 						className="  rounded-3xl "
@@ -66,11 +66,14 @@ const FeatureAtom = ({ data, index }) => {
 								</ul>
 							))
 						}
-						
+						<div className='md:mt-8 mt-6'>
+
 						<Button type='primary'   onClick={() => {setOpenForm(true)}}>
 							<ButtonArrow></ButtonArrow>
 							<span className="text-base font-medium">{`Book free demo`}</span>
 						</Button>
+						</div>
+
 					</div>
 				</div>
 						{openForm && (
