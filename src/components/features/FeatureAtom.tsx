@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Section from '../structure/Section';
 import Container from '../structure/Container';
 import dynamic from 'next/dynamic';
@@ -7,11 +7,18 @@ import SanityPortableText from '../blockEditor/sanityBlockEditor';
 import H2 from '../typography/H2';
 import CheckMark from '../icons/CheckMark';
 import H3 from '../typography/H3';
+import Button from '../common/Button';
+import ButtonArrow from '../icons/ButtonArrow';
+import { FormModal } from '../common/FormModal';
+import { BookDemoContext } from '~/providers/BookDemoProvider';
+
 
 
 const FeatureAtom = ({ data, index }) => {
 	if(!data) return null
-
+	
+	const { isDemoPopUpShown } = useContext(BookDemoContext);
+	const [openForm, setOpenForm] = useState(false)
 	return (
 		<Section id="about-us-section" className={`py-12 ${index % 2 === 0 ? 'md:pb-0' : 'md:py-24' } last:pb-0  `}>
 			<Container className="flex flex-col items-center gap-10 w-full ">
@@ -54,9 +61,20 @@ const FeatureAtom = ({ data, index }) => {
 								</ul>
 							))
 						}
+						
+						<Button type='primary'   onClick={() => {setOpenForm(true)}}>
+							<ButtonArrow></ButtonArrow>
+							<span className="text-base font-medium">{`Book free demo`}</span>
+						</Button>
 					</div>
 				</div>
-
+						{openForm && (
+							<FormModal
+								className={`pt-9  flex items-start`}
+								onClose={() => setOpenForm(false)}
+								data={isDemoPopUpShown}
+							/>
+						)}
 			</Container>
 		</Section>
 	);
