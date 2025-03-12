@@ -23,7 +23,7 @@ const HeroSection = ({ data, refer = null }) => {
   const [openForm, setOpenForm] = useState(false)
   const overviewVideo: VideoItem = {
     videoPlatform: 'vidyard',
-    videoId: 'Hj4GYLXARVjqQEnaejq3Bz',
+    videoId: '3CsThXKvcvRrR3hwRsWWJY',
   }
 
   const [activeIndex, setActiveIndex] = useState(0)
