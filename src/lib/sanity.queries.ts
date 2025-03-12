@@ -377,7 +377,7 @@ export async function getFeaturePageData(client: SanityClient, slug: string, reg
     "featureSubSection": featureSubSection[]->{
       title,
       ...,
-        "mainImage": mainImage.asset->{
+      "mainImage": mainImage.asset->{
           _id,
           url,
           metadata {
