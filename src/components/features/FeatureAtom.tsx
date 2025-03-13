@@ -13,10 +13,10 @@ import { BookDemoContext } from '~/providers/BookDemoProvider';
 
 
 const FeatureAtom = ({ data, index }) => {
-	if(!data) return null
 	
 	const { isDemoPopUpShown } = useContext(BookDemoContext);
 	const [openForm, setOpenForm] = useState(false)
+	if(!data) return null
 	return (
 		<Section id="about-us-section" className={`md:py-12 py-6 ${index % 2 === 0 ? 'md:pb-0' : 'md:py-24' } last:pb-0  `}>
 			<Container className="flex flex-col items-center gap-10 w-full px-0">

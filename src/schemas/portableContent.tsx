@@ -25,12 +25,12 @@ export default defineType({
             icon: HighlightIcon, 
           },
         ],
+        annotations: [], 
       },
       lists: [], 
       options: {
         spellCheck: true,
       },
-      annotations: [], 
     }),
     defineArrayMember(htmlCode),
   ],

@@ -18,11 +18,11 @@ import { FormModal } from './common/FormModal'
 import themeData from '~/migrations/theme.json'
 
 const InnerHeroSection = ({ data }) => {
-  if (!data) return null
   const { isDemoPopUpShown } = useContext(BookDemoContext)
   const [openForm, setOpenForm] = useState(false)
 	const heroTheme = data.heroTheme;
 	const selectedTheme = themeData.featureHero.find(item => item.theme === heroTheme);
+  if (!data) return null
 	
   return (
     <div
