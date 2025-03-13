@@ -21,9 +21,13 @@ import { useRouter } from 'next/router'
 const HeroSection = ({ data, refer = null }) => {
   const [isOpen, setIsOpen] = useState(false)
   const [openForm, setOpenForm] = useState(false)
+  const router = useRouter();
+  const videoId = router.locale == "en" ? "3CsThXKvcvRrR3hwRsWWJY" : "Hj4GYLXARVjqQEnaejq3Bz";
+  console.log({videoId});
+  
   const overviewVideo: VideoItem = {
     videoPlatform: 'vidyard',
-    videoId: '3CsThXKvcvRrR3hwRsWWJY',
+    videoId: videoId,
   }
 
   const [activeIndex, setActiveIndex] = useState(0)
@@ -31,7 +35,6 @@ const HeroSection = ({ data, refer = null }) => {
   const words = data?.heroTitleStaticDynamic[activeIndex]?.split(' ');
   const searchParams = useSearchParams();
   const source2 = searchParams.get("source"); // Get 'source' param from URL
-  const router = useRouter();
 
   const components: any = {
     block: {
