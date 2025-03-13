@@ -14,6 +14,7 @@ import {
 import { previewUrl } from 'sanity-plugin-iframe-pane/preview-url'
 import {documentInternationalization} from '@sanity/document-internationalization'
 import {ExpandIcon} from '@sanity/icons'
+import {BoltIcon} from '@sanity/icons'
 
 // see https://www.sanity.io/docs/api-versioning for how versioning works
 import {
@@ -116,6 +117,8 @@ export default defineConfig({
         'footer',
         'page',
         'miscellaneous',
+        'featureList',
+        'featureCategory'
       ],
     }),
 
@@ -185,6 +188,8 @@ export default defineConfig({
             S.documentTypeListItem('footer').title('Footer'),
             S.documentTypeListItem('miscellaneous').title('Miscellaneous').icon(ExpandIcon),
             S.documentTypeListItem('page').title('Pages'),
+            S.documentTypeListItem('featureList').title('FeatureList').icon(BoltIcon),
+            S.documentTypeListItem('featureCategory').title('Feature Category').icon(BoltIcon),
 
             // S.documentTypeListItem('platform').title('Platform'),
           ]),

@@ -6,10 +6,6 @@ import {
 import { getClient } from '~/lib/sanity.client'
 import DynamicComponent from './DynamicComponent'
 import WarningIcon from '../icons/WarningIcon'
-// import DecoratorTable from '~/components/DecoratorTable'
-// import ListItem from '~/components/typography/ListItem'
-// import { VideoModal } from '../commonSections/VideoModal'
-// import ImageLoader from '../commonSections/ImageLoader'
 
 interface SanityPortableTextProps {
   content: any
@@ -31,6 +27,11 @@ const SanityPortableText: React.FC<SanityPortableTextProps> = ({
           </a>
         )
       },
+      highlight: ({ children }: { children: React.ReactNode }) => (
+        <span style={{ backgroundColor: 'yellow', fontWeight: 'semibold' }}>
+          {children}
+        </span>
+      ),
     },
 
     block: {

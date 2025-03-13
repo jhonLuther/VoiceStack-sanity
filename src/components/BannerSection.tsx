@@ -17,7 +17,7 @@ import { useRouter } from 'next/router'
 import TelIcon from '~/components/icons/TelIcon';
 import MailIcon from '~/components/icons/MailIcon';
 
-const BannerSection = ({data, refer=null}) => {
+const BannerSection = ({data, refer=null, cta=false}) => {
   const { isDemoPopUpShown } = useContext(BookDemoContext);
   const [isOpen, setIsOpen] = useState(false);
   // const contactData = contacts;
@@ -62,7 +62,9 @@ const BannerSection = ({data, refer=null}) => {
                 </p>
               )}
             </div>
-              {/* <div className='flex gap-4 items-center flex-col md:flex-row relative z-[1]'>
+            {cta ? (
+
+              <div className='flex gap-4 items-center flex-col md:flex-row relative z-[1]'>
                 <Button type='primary'   onClick={() => {setOpenForm(true)}}>
                   <ButtonArrow></ButtonArrow>
                   <span className="text-base font-medium">{`Book free demo`}</span>
@@ -71,7 +73,8 @@ const BannerSection = ({data, refer=null}) => {
                   <VideoPlayIconWhite></VideoPlayIconWhite>
                   <span className="text-base font-medium">{`Watch overview`}</span>
                 </Button>
-              </div> */}
+              </div>
+            ):(
 
               <div className='flex gap-4 items-center flex-col  relative z-[1]'>
                 {data && (
@@ -108,6 +111,8 @@ const BannerSection = ({data, refer=null}) => {
                 )}
                 
               </div>
+            )}
+
 
             </div>
         </div>

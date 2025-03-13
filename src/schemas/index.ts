@@ -29,6 +29,11 @@ import ListingBlock from './ListingBlock'
 import BrowserList from './BrowserList'
 import footer from './footer'
 import banner from './banner'
+import FeatureCategory from './FeatureCategory'
+import FeatureList from './FeatureList'
+import ListingAtom from './NestableBlocks/ListingAtom'
+import portableContent from './portableContent'
+import HtmlCode from './Utilis/HtmlCode'
 
 export const schemaTypes = [
   layout,
@@ -53,8 +58,12 @@ export const schemaTypes = [
   DynamicComponent,
   customContent,
   ListingBlock,
-  BrowserList
-
+  BrowserList,
+  FeatureCategory,
+  FeatureList,
+  ListingAtom,
+  portableContent,
+  HtmlCode
 ]
 
 export const schema: { types: SchemaTypeDefinition[] } = {
@@ -88,7 +97,12 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     ListingBlock,
     BrowserList,
     footer,
-    banner
+    banner,
+    FeatureCategory,
+    FeatureList,
+    ListingAtom,
+    portableContent,
+    HtmlCode
     
   ],
 }

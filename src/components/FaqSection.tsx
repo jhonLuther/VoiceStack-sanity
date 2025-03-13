@@ -9,6 +9,7 @@ import FaqItem from './FaqItem';
 import { useRouter } from 'next/router';
 
 const FaqSection = ({data,mailId}) => {
+console.log(data,'data faq');
 
   const [region, setRegion] = useState('us'); // default to US
   const router = useRouter();
@@ -40,7 +41,7 @@ const FaqSection = ({data,mailId}) => {
           </div>
           <div className='flex justify-center flex-grow max-w-[830px]'>
             <div className="flex flex-col w-full">
-              {data.map((faq, index) => (
+              {data?.map((faq, index) => (
                 <FaqItem 
                   key={faq?._id}
                   index={index}

@@ -4,6 +4,22 @@ import groq from 'groq'
 import { type SanityClient } from 'next-sanity'
 import { cookies } from 'next/headers'
 
+// ##############################################common fragments
+
+
+const bodyFragment = `
+  body[] {
+    ...,
+    },
+    _type == "image" => {
+      ...,
+      asset->,
+    },
+  }
+`
+
+
+
 export const postsQuery = groq`*[_type == "post" && defined(slug.current)] | order(_createdAt desc)`
 
 export async function getPosts(client: SanityClient): Promise<Post[]> {
@@ -307,6 +323,115 @@ export const getFounderDetails = (region) => groq`*[_type == "person"]{
     'designation':personDesignation,
     'description':personDescription
 }`
+
+export async function getFeatureList(client: SanityClient, region: string) {
+  const query = groq`*[_type == "featureList" && language == $region]{
+    language,
+    name,
+    description,
+    shortDescription,
+    slug,
+    _id
+  }`
+  
+  return await client.fetch(query, { region })
+}
+
+
+export async function getFeaturePageData(client: SanityClient, slug: string, region: string) {
+  const query = groq`*[_type == "featureList" && slug.current == $slug && language == $region][0]{
+    name,
+    title,
+    slug,
+    content,
+    "heroSection":{
+      name,
+      slug,
+      heading,
+      description,
+      shortDescription,
+      "mainImage": mainImage.asset->{
+        _id,
+        url,
+        "altText": mainImage.altText,
+        "title": mainImage.title,
+        metadata {
+          dimensions {
+            width,
+            height,
+            aspectRatio
+          }
+        }
+      },
+      "secondaryImage": secondaryImage.asset->{
+        _id,
+        url,
+        "altText": secondaryImage.altText,
+        "title": secondaryImage.title,
+        metadata {
+          dimensions {
+            width,
+            height,
+            aspectRatio
+          }
+        }
+      },
+      "featureCategory": featureCategory->,
+      heroTheme
+    },
+    featureBenefitsSection->{
+      ...,
+      "mainImage": mainImage.asset->{
+        _id,
+        url,
+        "altText": mainImage.altText,
+        "title": mainImage.title,
+        metadata {
+          dimensions {
+            width,
+            height,
+            aspectRatio
+          }
+        }
+      },
+      "secondaryImage": secondaryImage.asset->{
+        _id,
+        url,
+        "altText": secondaryImage.altText,
+        "title": secondaryImage.title,
+        metadata {
+          dimensions {
+            width,
+            height,
+            aspectRatio
+          }
+        }
+      },
+    },
+    featureFAQSection[]->,
+    "featureSubSection": featureSubSection[]->{
+      title,
+      ...,
+      "mainImage": mainImage.asset->{
+          _id,
+          url,
+          metadata {
+            dimensions {
+              width,
+              height,
+              aspectRatio
+            }
+          }
+        },
+        "altText": mainImage.altText,
+        "title": mainImage.title,
+        _createdAt,
+        _id
+      },
+  }`
+  
+  return await client.fetch(query, { slug, region })
+}
 
 export async function fetchFaq(
   client: SanityClient,
