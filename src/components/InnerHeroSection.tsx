@@ -16,13 +16,14 @@ import ButtonArrow from './icons/ButtonArrow'
 import { BookDemoContext } from '~/providers/BookDemoProvider'
 import { FormModal } from './common/FormModal'
 import themeData from '~/migrations/theme.json'
+import Breadcrumb from './utils/breadCrumb'
 
 const InnerHeroSection = ({ data }) => {
-  if (!data) return null
   const { isDemoPopUpShown } = useContext(BookDemoContext)
   const [openForm, setOpenForm] = useState(false)
 	const heroTheme = data.heroTheme;
 	const selectedTheme = themeData.featureHero.find(item => item.theme === heroTheme);
+  if (!data) return null
 	
   return (
     <div
@@ -38,9 +39,11 @@ const InnerHeroSection = ({ data }) => {
 				</div>
 			) }
       <Section className={`py-12 md:py-24`}>
-        <Container className="flex relative overflow-hidden pt-16 md:pt-24">
-          <div className="flex">
-            <div className='flex flex-col gap-5 items-start'>
+        <Container className="flex flex-col relative overflow-hidden pt-16 md:pt-24">
+            <Breadcrumb/>
+          <div className="grid md:grid-cols-[50%_50%] grid-cols-[50%]">
+
+            <div className='flex !flex-col gap-5 items-start'>
               <H1>
                 <PortableText value={data.heading} />
               </H1>
