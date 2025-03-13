@@ -42,20 +42,20 @@ const FeatureAtom = ({ data, index }) => {
 
 					</div>
 
-					<div className="max-w-lg" >
+					<div className="flex flex-col h-full justify-evenly" >
 						<div className='flex flex-col gap-3'>
 
 							{data?.featureTitle &&
 								<H3 className='md:text-2xl'>{data.featureTitle}
 								</H3>}
-							{data?.subHeading && <SanityPortableText
+							{data?.subHeading && <span className='prose prose-gray'><SanityPortableText
 								content={data?.subHeading}
-							/>}
+							/></span>}
 						</div>
 
 						{
 							data.listingItem && data?.listingItem.map((item, index) => (
-								<ul key={index} className="flex items-center gap-4 mt-4">
+								<ul key={index} className="flex items-center gap-4 ">
 									{item?.itemHeading &&
 										<div className='flex items-center gap-3'>
 											<CheckMark />
