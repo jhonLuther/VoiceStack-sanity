@@ -48,6 +48,7 @@ const BannerSection = ({data, refer=null, cta=false}) => {
     <Section className="pt-sm md:pt-lg pb-[200px] md:pb-[300px] bg-gray-900 relative scroll-smooth scroll-m-16" id="support">
       <Container>
         <div className='flex justify-center w-full'>
+          
           <div className='flex flex-col gap-8 items-center w-full'>
             <div className='flex flex-col  items-center'>
               {data?.title && (
