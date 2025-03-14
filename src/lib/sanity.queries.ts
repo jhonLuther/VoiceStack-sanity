@@ -336,6 +336,25 @@ export async function getFeatureList(client: SanityClient, region: string) {
   
   return await client.fetch(query, { region })
 }
+export async function getCategoryWithFeatures(client: SanityClient, region: string = 'en') {
+  const query = groq`
+    *[_type == "featureCategory" && language == $region]{
+      _id,
+      name,
+      heading,
+      description,
+      icon,
+      "features": *[_type == "featureList" && references(^._id)]{
+        featureHeading,
+        slug,
+        features
+      }
+    }
+  `;
+
+  return await client.fetch(query, { region });
+}
+
 
 
 export async function getFeaturePageData(client: SanityClient, slug: string, region: string) {

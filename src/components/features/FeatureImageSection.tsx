@@ -5,6 +5,8 @@ import H2 from '../typography/H2';
 import Star from '../icons/Star';
 
 const FeatureImageSection = ({ data }) => {
+	console.log(data, 'data');
+	
 	if (!data) return null
  
 	return (
@@ -12,7 +14,7 @@ const FeatureImageSection = ({ data }) => {
 			<Container className="flex relative overflow-hidden  md:flex-row flex-col justify-around items-center gap-10 w-full md:!p-16  md:bg-gray-100 rounded-3xl ">
 				<div className=" md:visible invisible absolute left-0 bottom-0 w-300 h-full bg-cover bg-no-repeat" style={{ backgroundImage: `url(${data.mainImage?.url})`, width: '25rem' }}></div>
 				<div className=" md:visible invisible absolute top-0 right-0 w-300 h-full bg-cover bg-no-repeat" style={{ backgroundImage: `url(${data.secondaryImage?.url})`, width: '29rem' }}></div>
-				<div className='z-10 flex flex-col align-top h-full'>
+				<div className='z-10 flex flex-col align-top sah-full'>
 					<H2 className='text-gray-400 md:!text-4xl !text-2xl'>{'Benefits of '}</H2>
 					<H2 className='md:!text-4xl whitespace-nowrap !text-2xl'>{'VoiceStack’s IVR System'}</H2>
 				</div>
