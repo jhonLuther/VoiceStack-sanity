@@ -45,10 +45,10 @@ const Breadcrumb = ({ className }: BreadCrumbProps) => {
   return (
     <Fragment>
       <nav
-        className={`mb-4 ${className} md:w-[28%]`}
+        className={`mb-4 ${className}`}
         aria-label="Breadcrumb"
       >
-        <div className="flex items-center justify-evenly rounded-full border border-white/20 backdrop-blur-md   p-[10px]  border-gray-20   text-white text-xs font-medium">
+        <div className="flex items-center justify-evenly rounded-full border border-white/20 backdrop-blur-md px-5  py-[10px]  border-gray-20   text-white text-xs font-medium">
           {/* Home Link */}
           <span className="flex items-center">
             <Anchor href="/" className="text-white uppercase">
@@ -65,7 +65,7 @@ const Breadcrumb = ({ className }: BreadCrumbProps) => {
           {breadcrumbs.map((breadcrumb, index) => {
             const isLast = index === breadcrumbs.length - 1
             return (
-              <span key={breadcrumb.href} className="flex items-center">
+              <span key={breadcrumb.href} className="flex items-center text-xs tracking-[0.84px]">
                 {isLast ? (
                   <span className="text-white uppercase ">
                     {removeUnwantedCharacters(breadcrumb.label)}
