@@ -29,6 +29,7 @@ const HeroSection = ({ data, refer = null }) => {
     videoPlatform: 'vidyard',
     videoId: videoId,
   }
+  
 
   const [activeIndex, setActiveIndex] = useState(0)
   const [wordIndex, setWordIndex] = useState(0)
