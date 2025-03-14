@@ -23,7 +23,7 @@ const HeroSection = ({ data, refer = null }) => {
   const [openForm, setOpenForm] = useState(false)
   const router = useRouter();
   const videoId = router.locale == "en" ? "3CsThXKvcvRrR3hwRsWWJY" : "Hj4GYLXARVjqQEnaejq3Bz";
-  console.log({videoId});
+  // console.log({videoId});
   
   const overviewVideo: VideoItem = {
     videoPlatform: 'vidyard',

@@ -13,10 +13,10 @@ import { BookDemoContext } from '~/providers/BookDemoProvider';
 
 
 const FeatureAtom = ({ data, index }) => {
-	if(!data) return null
 	
 	const { isDemoPopUpShown } = useContext(BookDemoContext);
 	const [openForm, setOpenForm] = useState(false)
+	if(!data) return null
 	return (
 		<Section id="about-us-section" className={`md:py-12 py-6 ${index % 2 === 0 ? 'md:pb-0' : 'md:py-24' } last:pb-0  `}>
 			<Container className="flex flex-col items-center gap-10 w-full px-0">
@@ -30,6 +30,7 @@ const FeatureAtom = ({ data, index }) => {
 						<div className="bg-white  rounded-xl shadow-md ">
 							<div className="flex flex-col items-center text-center w-full ">
 								{data?.mainImage && <Image   
+								 className='max-w-[520px] w-full h-auto rounded-t-xl'
                   src={data?.mainImage?.url} alt={data?.name}
 									quality={100}
 									width={data?.mainImage?.metadata?.dimensions?.width }
@@ -42,20 +43,20 @@ const FeatureAtom = ({ data, index }) => {
 
 					</div>
 
-					<div className="max-w-lg" >
+					<div className="flex flex-col h-full justify-evenly" >
 						<div className='flex flex-col gap-3'>
 
 							{data?.featureTitle &&
 								<H3 className='md:text-2xl'>{data.featureTitle}
 								</H3>}
-							{data?.subHeading && <SanityPortableText
+							{data?.subHeading && <span className='prose prose-gray'><SanityPortableText
 								content={data?.subHeading}
-							/>}
+							/></span>}
 						</div>
 
 						{
 							data.listingItem && data?.listingItem.map((item, index) => (
-								<ul key={index} className="flex items-center gap-4 mt-4">
+								<ul key={index} className="flex items-center gap-4 ">
 									{item?.itemHeading &&
 										<div className='flex items-center gap-3'>
 											<CheckMark />
