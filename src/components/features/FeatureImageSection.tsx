@@ -12,7 +12,7 @@ const FeatureImageSection = ({ data }) => {
 	return (
 		<Section className={`py-12 'md:py-24'`}>
 			<Container>
-				<div className='flex relative lg:flex-row flex-col justify-around gap-10 w-full p-9 md:!p-16 bg-gray-100 rounded-3xl'>
+				<div className='flex relative lg:flex-row flex-col justify-around gap-10 w-full p-9 md:!p-16 bg-gray-100 rounded-3xl overflow-hidden'>
 					<div className="lg:visible invisible absolute left-0 bottom-0 w-300 h-full bg-cover bg-no-repeat" style={{ backgroundImage: `url(${data.mainImage?.url})`, width: '25rem' }}></div>
 					<div className="lg:visible invisible absolute top-0 right-0 w-300 h-full bg-cover bg-no-repeat" style={{ backgroundImage: `url(${data.secondaryImage?.url})`, width: '29rem' }}></div>
 
