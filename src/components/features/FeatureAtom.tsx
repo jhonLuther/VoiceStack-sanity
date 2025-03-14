@@ -30,6 +30,7 @@ const FeatureAtom = ({ data, index }) => {
 						<div className="bg-white  rounded-xl shadow-md ">
 							<div className="flex flex-col items-center text-center w-full ">
 								{data?.mainImage && <Image   
+								 className='max-w-[520px] w-full h-auto rounded-t-xl'
                   src={data?.mainImage?.url} alt={data?.name}
 									quality={100}
 									width={data?.mainImage?.metadata?.dimensions?.width }
