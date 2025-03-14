@@ -17,7 +17,7 @@ const FeatureBenefitSection = ({ data }) => {
 					<div className="flex justify-center w-full">
 						<H2 className="md:!text-4xl">{'Advanced Features'}</H2>
 					</div>
-					<Paragraph className="text-center">{`Interactive Voice Response (IVR) systems enhance the efficiency of call routing. They allow callers to navigate menus using their voice or keypad.
+					<Paragraph className="md:max-w-[620px] text-center">{`Interactive Voice Response (IVR) systems enhance the efficiency of call routing. They allow callers to navigate menus using their voice or keypad.
           `}</Paragraph>
 				</div>
 
