@@ -54,19 +54,6 @@ const FeatureAtom = ({ data, index }) => {
 							/></span>}
 						</div>
 
-						{/* {
-							data.listingItem && data?.listingItem.map((item, index) => (
-								<ul ">
-									{item?.itemHeading &&
-										<div className='flex items-center gap-3'>
-											<CheckMark />
-											<li className="text-gray-800 text-base leading-6 font-normal">{item.itemHeading}</li>
-										</div>
-									}
-									{item?.itemSubHeading && <li className="">{item.itemSubHeading}</li>}
-								</ul>
-							))
-						} */}
 						<ul>
 							{data.listingItem && data?.listingItem.map((item, index) => (
 								<li key={index} className="flex items-center gap-4 py-2">
