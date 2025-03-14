@@ -54,9 +54,9 @@ const FeatureAtom = ({ data, index }) => {
 							/></span>}
 						</div>
 
-						{
+						{/* {
 							data.listingItem && data?.listingItem.map((item, index) => (
-								<ul key={index} className="flex items-center gap-4 ">
+								<ul ">
 									{item?.itemHeading &&
 										<div className='flex items-center gap-3'>
 											<CheckMark />
@@ -66,7 +66,17 @@ const FeatureAtom = ({ data, index }) => {
 									{item?.itemSubHeading && <li className="">{item.itemSubHeading}</li>}
 								</ul>
 							))
-						}
+						} */}
+						<ul>
+							{data.listingItem && data?.listingItem.map((item, index) => (
+								<li key={index} className="flex items-center gap-4 py-2">
+									<div className='flex items-center gap-3'>
+										<CheckMark />
+										<span className="text-gray-800 text-base leading-6 font-normal block">{item.itemHeading}</span>
+									</div>
+								</li>
+							))}
+						</ul>
 						<div className='md:mt-8 mt-6'>
 
 						<Button type='primary'   onClick={() => {setOpenForm(true)}}>
