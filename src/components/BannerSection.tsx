@@ -37,10 +37,11 @@ const BannerSection = ({data, refer=null, cta=false}) => {
   // console.log({matchingContact});
   
   
-  const [openForm, setOpenForm] = useState(false)
+  const [openForm, setOpenForm] = useState(false);
+  const videoId = router.locale == "en" ? "3CsThXKvcvRrR3hwRsWWJY" : "Hj4GYLXARVjqQEnaejq3Bz";
   const overviewVideo:VideoItem = {
     videoPlatform: 'vidyard',
-    videoId: "3CsThXKvcvRrR3hwRsWWJY",
+    videoId: videoId,
   }
   
   return (
