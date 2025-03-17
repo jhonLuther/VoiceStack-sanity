@@ -8,6 +8,7 @@ import { getHeroSectionData } from '~/lib/sanity.queries'
 import { useContext, useEffect } from 'react'
 import { BookDemoContext } from '~/providers/BookDemoProvider'
 import SanityPortableText from '~/components/blockEditor/sanityBlockEditor'
+import NumberSection from '~/components/NumberSection'
 
 
 interface PageProps {
@@ -41,6 +42,7 @@ export default function Page({ page, homeSettings, heroData, region,categories, 
       <div>
         <h1>{page.title}{region}</h1>
         Feature Home
+        <NumberSection data={['sxs']}/>
         {page?.map((item, index) => {
           return (
             <div key={index}>
