@@ -42,7 +42,7 @@ export default function Page({ page, homeSettings, heroData, region,categories, 
       <div>
         <h1>{page.title}{region}</h1>
         Feature Home
-        <NumberSection data={['sxs']}/>
+        <NumberSection />
         {page?.map((item, index) => {
           return (
             <div key={index}>

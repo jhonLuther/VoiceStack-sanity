@@ -1,56 +1,60 @@
-import React, { useEffect, useState } from 'react'
-import { motion } from 'framer-motion'
-import Section from './structure/Section'
-import Container from './structure/Container'
+import React from "react";
+import Section from "./structure/Section";
+import Container from "./structure/Container";
+import AnimatedNumber from "./AnimatedNumber";
+import { motion } from "framer-motion";
 
-const AnimatedNumber = ({ value, suffix = "" }) => {
-  const [count, setCount] = useState(0)
-
-  useEffect(() => {
-    const controls = setInterval(() => {
-      setCount((prev) => {
-        const next = prev + value / 50 // Smooth increment
-        return next >= value ? value : next
-      })
-    }, 30) // Speed of animation
-
-    return () => clearInterval(controls)
-  }, [value])
-
-  // Formatting logic: Convert large numbers to B / M format
-  const formatNumber = (num) => {
-    if (num >= 1_000_000_000) return `${Math.round(num / 1_000_000_000)}B` // No decimal for B
-    if (num >= 1_000_000) return `${Math.round(num / 1_000_000)}M` // Whole number for M
-    return `${Math.round(num)}${suffix}`
-  }
-
-  return (
-    <motion.span
-      className="text-white font-bold text-4xl md:text-6xl"
-      animate={{ opacity: [0, 1], y: [20, 0] }}
-      transition={{ duration: 1, ease: 'easeOut' }}
-    >
-      {formatNumber(count)}
-    </motion.span>
-  )
-}
-
-const NumberSection = ({data}) => {
+const NumberSection = () => {
   return (
     <Section
       id="about-us-section"
-      className="py-12 md:py-24 bg-[#8639f8] bg-grid-pattern bg-contain bg-no-repeat bg-right"
+      className="py-16 md:py-28 bg-gradient-to-r from-[#7928ca] to-[#8639f8] relative overflow-hidden"
     >
-      <Container className="flex flex-col items-center gap-10 w-full">
-        <div className="flex gap-8 md:gap-16 text-center">
-          <AnimatedNumber value={9000000000} /> {/* 9B */}
-          <AnimatedNumber value={363000000} /> {/* 363M */}
-          <AnimatedNumber value={342000000} /> {/* 342M */}
-          <AnimatedNumber value={60} suffix="%" /> {/* 60% */}
-        </div>
+      
+      <Container>
+        <motion.div 
+          className="flex flex-col items-center w-full"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <div className="mb-6">
+  
+            
+            <motion.h2 
+              className="text-white text-center text-3xl md:text-4xl font-bold mb-12"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              VoiceStack by the Numbers
+            </motion.h2>
+          </div>
+          
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 lg:gap-16 w-full ">
+            <div className="flex flex-col items-start  ">
+              <AnimatedNumber value={9000000000} />
+              <p className="text-white/80 mt-2 text-center text-sm md:text-base">Global Reach</p>
+            </div>
+            <div className="flex flex-col items-start ">
+              <AnimatedNumber value={363000000} />
+              <p className="text-white/80 mt-2 text-center text-sm md:text-base">Active Users</p>
+            </div>
+            <div className="flex flex-col items-start ">
+              <AnimatedNumber value={342000000} />
+              <p className="text-white/80 mt-2 text-center text-sm md:text-base">Projects Delivered</p>
+            </div>
+            <div className="flex flex-col items-start ">
+              <AnimatedNumber value={60} suffix="%" />
+              <p className="text-white/80 mt-2 text-center text-sm md:text-base">Growth Rate</p>
+            </div>
+          </div>
+        </motion.div>
       </Container>
     </Section>
-  )
-}
+  );
+};
 
-export default NumberSection
+export default NumberSection;
