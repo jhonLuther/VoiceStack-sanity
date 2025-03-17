@@ -89,7 +89,7 @@ export const VideoModal: React.FC<VideoProps> = ({
       
     }
   };
-  console.log({videoData});
+  // console.log({videoData});
   
 
   if (!videoData) {
