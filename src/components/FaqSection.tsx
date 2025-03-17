@@ -31,8 +31,8 @@ const FaqSection = ({ data, mailId, revamp = false }) => {
             <div className={`flex flex-col w-full ${revamp ? 'text-center' : 'text-left'} gap-4`}>
               <H2>Frequently Asked Questions</H2>
               <Paragraph>
-                For queries contact 
-                <a href={`mailto:${getContactEmail}`} className="text-vs-blue ml-1">
+                For queries contact <br/>
+                <a href={`mailto:${getContactEmail}`} className="text-vs-blue">
                   {getContactEmail}
                 </a>
               </Paragraph>
