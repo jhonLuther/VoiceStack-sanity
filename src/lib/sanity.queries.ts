@@ -104,7 +104,7 @@ export async function getHeroSectionData(client: SanityClient, region: string) {
   return await client.fetch(query, { region })
 }
 
-export async function fetchContactAndVideoInfo(client: SanityClient, region: string) {
+export async function getContactAndVideoInfo(client: SanityClient, region: string) {
   const query = groq`*[_type == "homeSettings" && language == $region][0]{
       contactEmail,
       video,

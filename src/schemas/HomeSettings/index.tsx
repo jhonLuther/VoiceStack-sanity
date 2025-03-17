@@ -182,7 +182,15 @@ export default defineType({
               name: 'videoPlatform',
               title: 'Video Platform',
               type: 'string',
-              description: 'vimeo, vidyard and youtube'
+              description: 'vimeo, vidyard and youtube',
+              options: {
+                list: [
+                  { title: 'Vimeo', value: 'vimeo' },
+                  { title: 'Vidyard', value: 'vidyard' },
+                  { title: 'YouTube', value: 'youtube' }
+                ],
+                layout: 'dropdown'
+              },
             },
             {
               name: 'videoId',

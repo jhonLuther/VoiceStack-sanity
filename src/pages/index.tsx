@@ -16,6 +16,7 @@ import {
   getFooterData,
   getBannerData,
   getHeaderData,
+  getContactAndVideoInfo,
 } from '~/lib/sanity.queries'
 import Layout from '../components/Layout'
 import CustomHead from '~/components/common/CustomHead'
@@ -63,6 +64,7 @@ export const getStaticProps: GetStaticProps<any> = async ({
   const testimonialHighlightsData = await getTestimonialHighlightSectionData(client,region)
   const footerData = await getFooterData(client, region)
   const bannerData = await getBannerData(client, region)
+  const contactAndVideoData = await getContactAndVideoInfo(client, region)
   
   
 
@@ -85,7 +87,8 @@ export const getStaticProps: GetStaticProps<any> = async ({
       cSCardsListingData,
       testimonialHighlightsData,
       footerData,
-      bannerData
+      bannerData,
+      contactAndVideoData,
     },
   }
 }
@@ -151,7 +154,8 @@ export default function IndexPage(
     cSCardsListingData,
     testimonialHighlightsData,
     footerData,
-    bannerData
+    bannerData,
+    contactAndVideoData
   } = props
 
   const comparisonSectionData = {
@@ -162,7 +166,8 @@ export default function IndexPage(
     columnDimensionName: 'Features',
     table: comparisonTableData,
   }
-  const linkCardSectionData: any = heroSectionData?.heroSubFeature
+  const linkCardSectionData: any = heroSectionData?.heroSubFeature;
+  const videoData = contactAndVideoData?.video;
   
 
   return (
@@ -172,7 +177,7 @@ export default function IndexPage(
         <CustomHead {...props} />
         <div className="">
           <Header data ={homeSettings} refer={refer}/>
-          <HeroSection data={heroSectionData} refer={refer}/>
+          <HeroSection data={heroSectionData} refer={refer} video={videoData}/>
           <LinksCardsSection data={linkCardSectionData} />
           <Testimonails data={testimonialSecitonData} refer={refer}/>
           <CardsListingSection data={cardsListingData}/>
