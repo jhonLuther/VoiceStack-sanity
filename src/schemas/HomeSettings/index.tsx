@@ -100,11 +100,6 @@ export default defineType({
       title: 'CTA Button Title',
       type: 'string',
     }),
-    defineField({
-      name: 'phoneNumber',
-      title: 'Phone Number',
-      type: 'string',
-    }),
 
     defineField({
       name: 'heroSubFeature',
@@ -157,12 +152,51 @@ export default defineType({
       type: 'string',
       
     }),
+
+    defineField({
+      name: 'phoneNumber',
+      title: 'Phone Number',
+      type: 'string',
+    }),
         
     defineField({
       name: 'contactEmail',
       title: 'Contact Email',
       type: 'string',
+      description:'Support email'
       
+    }),
+
+    
+    defineField({
+      name: 'video',
+      title: 'Overview Video',
+      type: 'array',
+      of: [
+        {
+          type: 'object',
+          name: 'videoDetails',
+          title: 'Video Details',
+          fields: [
+            {
+              name: 'videoPlatform',
+              title: 'Video Platform',
+              type: 'string',
+              description: 'vimeo, vidyard and youtube'
+            },
+            {
+              name: 'videoId',
+              title: 'Video Id',
+              type: 'string',
+            },
+            {
+              name: 'videotitle',
+              title: 'Video Title',
+              type: 'string',
+            },
+          ],
+        },
+      ],
     }),
 
     defineField({
