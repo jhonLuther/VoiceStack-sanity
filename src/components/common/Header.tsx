@@ -482,7 +482,7 @@ const Header = ({ data, refer=null }) => {
                     {regions.map((region:any, index:number) => {
                       return(
                         currentLocale == region.locale ? (
-                          <div key={index+region.flag.url} className='flex bg-gray-200 gap-2 items-center opacity-80 py-[6px] pl-[12px] border-b border-gray-200 last:border-none'>
+                          <div key={index+region.flag.url} className='flex bg-gray-200 gap-2 items-center py-[6px] pl-[12px] border-b border-gray-200 last:border-none'>
                             <Image 
                               src={region.flag.url} 
                               alt={region.flag.title} 
