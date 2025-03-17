@@ -478,11 +478,11 @@ const Header = ({ data, refer=null }) => {
                     </span>
                   </div>
 
-                  <div className={`p-[6px] rounded-[10px] bg-white  shadow-[0px_7px_40px_0px_rgba(0,0,0,0.10)] absolute top-[calc(100%+4px)] left-0 right-0 flex-col ${openSwitcher ? 'flex' : 'hidden'}`}>
+                  <div className={`py-[6px] rounded-[10px] overflow-hidden bg-white  shadow-[0px_7px_40px_0px_rgba(0,0,0,0.10)] absolute top-[calc(100%+4px)] left-0 right-0 flex-col ${openSwitcher ? 'flex' : 'hidden'}`}>
                     {regions.map((region:any, index:number) => {
                       return(
                         currentLocale == region.locale ? (
-                          <div key={index+region.flag.url} className='flex gap-2 items-center opacity-80 py-[6px] pl-[6px] border-b border-gray-200 last:border-none'>
+                          <div key={index+region.flag.url} className='flex bg-gray-200 gap-2 items-center py-[6px] pl-[12px] border-b border-gray-200 last:border-none'>
                             <Image 
                               src={region.flag.url} 
                               alt={region.flag.title} 
@@ -495,7 +495,7 @@ const Header = ({ data, refer=null }) => {
                           </div>
                         ):(
 
-                        <Anchor key={index+region.flag.url} href={`/${query1}`} locale={region.locale} className='flex gap-2 items-center py-[6px] pl-[6px] border-b border-gray-200 last:border-none'>
+                        <Anchor key={index+region.flag.url} href={`/${query1}`} locale={region.locale} className='flex gap-2 items-center py-[6px] pl-[12px] border-b border-gray-200 last:border-none hover:bg-gray-200 transition-all duration-300 ease-linea'>
                           <Image 
                             src={region.flag.url} 
                             alt={region.flag.title} 
