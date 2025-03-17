@@ -63,6 +63,7 @@ module.exports = {
   				'5': 'hsl(var(--chart-5))'
   			},
 				'vs-blue': '#4A3CE1',
+				'vs-blue-secondary': '#5342FF',
 				'vs-purple': '#4a3ce1',
 				'vs-lemon-green': '#B5EB92',
   		},
