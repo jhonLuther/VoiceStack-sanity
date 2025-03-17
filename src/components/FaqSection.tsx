@@ -26,9 +26,9 @@ const FaqSection = ({ data, mailId, revamp = false }) => {
   return (
     <Section className="py-sm md:py-md pb-8 scroll-smooth scroll-m-16" id="faq">
       <Container>
-        <div className={`flex ${revamp ? 'flex-col' : 'flex-col md:flex-row'} gap-10 lg:gap-20 w-full`}>
-          <div className="flex justify-center w-full max-w-[320px] md:sticky top-28 self-start">
-            <div className={`flex flex-col w-full ${revamp ? 'text-center' : 'text-left'} gap-4`}>
+        <div className={`flex ${revamp ? 'flex-col' : 'flex-col md:flex-row'} gap-10 lg:gap-20 w-full it`}>
+          <div className={`flex justify-center w-full ${revamp ? '' : ' max-w-[320px]' } md:sticky top-28 self-start`}>
+            <div className={`flex flex-col w-full ${revamp ? 'text-center items-center' : 'text-left'} gap-4`}>
               <H2>Frequently Asked Questions</H2>
               <Paragraph>
                 For queries contact <br/>

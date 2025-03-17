@@ -92,10 +92,12 @@ const Header = ({ data, refer=null }) => {
 
   const { query } = router;
 
-  const queryString = new URLSearchParams(query as Record<string, string>).toString();
-  const query1 = queryString ? `?${queryString}` : "";
-  // console.log({queryString});
+  const filteredQuery = Object.fromEntries(
+    Object.entries(query).filter(([key]) => key !== "slug")
+  );
   
+  const queryString = new URLSearchParams(filteredQuery as Record<string, string>).toString();
+  const query1 = queryString ? `?${queryString}` : "";
 
   // console.log({matchedRegion});
   const country:any = getCookie("__vs_ver");

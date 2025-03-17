@@ -22,7 +22,7 @@ export default defineType({
       type: 'portableContent',
     }),
     defineField({
-        name: 'Icon',
+        name: 'icon',
         title: 'Category Icon',
         type: 'image',
       }),
@@ -32,5 +32,17 @@ export default defineType({
       readOnly: true,
       hidden: true,
     }),
+    
   ],
+  preview: {
+    select: {
+      title: 'name',
+      lang: 'language',
+      media: 'icon',
+    },
+    prepare(selection) {
+      const { lang, title } = selection
+      return { ...selection, subtitle: lang && `${lang}` }
+    },
+      },
 })

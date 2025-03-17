@@ -5,6 +5,8 @@ import H2 from '../typography/H2';
 import Star from '../icons/Star';
 
 const FeatureImageSection = ({ data }) => {
+	console.log(data, 'data');
+	
 	if (!data) return null
  
 	return (
