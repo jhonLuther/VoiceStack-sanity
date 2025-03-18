@@ -406,41 +406,44 @@ export async function getGlobalSettings(client: SanityClient, type: string, regi
 }
 export async function getHeroes(client: SanityClient,contentType: string, region: string = 'en') {
   const query = groq`
-    *[_type == "heroes" && contentType == $contentType && language == $region]{
+  *[_type == "heroes" && contentType == $contentType && language == $region][0]{
+    _id,
+    contentType,
+    name,
+    heading,
+    subHeading,
+    description,
+    
+    "mainImage": mainImage.asset->{
       _id,
-      contentType,
-      name,
-      heading,
-      description,
-      icon,
-      'mainImage': mainImage.asset->{
-       _id,
-       url,
-       altText,title,
-       metadata {
-         dimensions {
-           width,
-           height,
-           aspectRatio
-         }
-       }
-     },
-    'bgImage': bgImage.asset->{
-       _id,
-       url,
-       altText,title,
-       metadata {
-         dimensions {
-           width,
-           height,
-           aspectRatio
-         }
-       }
-     },
-     ...,
+      url,
+      altText,
+      title,
+      metadata {
+        dimensions {
+          width,
+          height,
+          aspectRatio
+        }
+      }
+    },
 
+    "bgImage": bgImage.asset->{
+      _id,
+      url,
+      altText,
+      title,
+      metadata {
+        dimensions {
+          width,
+          height,
+          aspectRatio
+        }
+      }
     }
-  `;
+  }
+`;
+
 
   return await client.fetch(query, { contentType, region });
 }
