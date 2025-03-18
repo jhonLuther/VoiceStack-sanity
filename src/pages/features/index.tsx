@@ -3,16 +3,17 @@ import { getClient } from '~/lib/sanity.client'
 import { readToken } from '~/lib/sanity.api'
 import { SanityClient } from 'sanity'
 import Header from '~/components/common/Header'
-import { getALLHomeSettings, getCategoryWithFeatures, getFeatureList } from '~/lib/sanity.queries'
+import { getALLHomeSettings, getCategoryWithFeatures, getFeatureList, getFooterData, getHeaders } from '~/lib/sanity.queries'
 import { getHeroSectionData } from '~/lib/sanity.queries'
 import { useContext, useEffect } from 'react'
 import { BookDemoContext } from '~/providers/BookDemoProvider'
 import SanityPortableText from '~/components/blockEditor/sanityBlockEditor'
 import NumberSection from '~/components/NumberSection'
+import Footer from '~/components/common/Footer'
 
 
 interface PageProps {
-  page: {
+  heroes: {
     title: string
     content: any[]
     map?: any
@@ -23,16 +24,17 @@ interface PageProps {
   draftMode: boolean,
   categories: any
   token: string
+  footerData: any
 }
 
-export default function Page({ page, homeSettings, heroData, region,categories, draftMode, token }: PageProps) {
+export default function Page({ heroes, homeSettings, heroData, region,categories,footerData, draftMode, token }: PageProps) {
   const { isDemoPopUpShown, setIsDemoPopUpShown } = useContext(BookDemoContext);
   
   useEffect(() => {
     setIsDemoPopUpShown(heroData);
   },[heroData])
   
-  if (!page) return <div>Page not found</div>
+  if (!heroes) return <div>heroes not found</div>
 
   console.log(categories,'categories');
   
@@ -40,10 +42,10 @@ export default function Page({ page, homeSettings, heroData, region,categories, 
     <>
       <Header data={homeSettings} />
       <div>
-        <h1>{page.title}{region}</h1>
+        <h1>{heroes.title}{region}</h1>
         Feature Home
         <NumberSection />
-        {page?.map((item, index) => {
+        {heroes?.map((item, index) => {
           return (
             <div key={index}>
               <h2>{item.name}</h2>
@@ -55,6 +57,8 @@ export default function Page({ page, homeSettings, heroData, region,categories, 
             </div>
           )
         })}
+        <Footer data={footerData}></Footer>
+
       </div>
     </>
   )
@@ -70,14 +74,16 @@ export const getStaticProps: GetStaticProps<PageProps> = async ({
   const slug = params?.slug as string
   
   const client = getClient(draftMode ? { token: readToken } : undefined) as SanityClient
-  const [page, homeSettings, heroData,categories] = await Promise.all([
-    getFeatureList(client, region),
+  const [heroes, homeSettings, heroData,categories,footerData] = await Promise.all([
+    getHeaders(client, region),
     getALLHomeSettings(client, region),
     getHeroSectionData(client, region),
-    getCategoryWithFeatures(client, region)
+    getCategoryWithFeatures(client, region),
+    getFooterData(client, region),
+    
   ])
 
-  if (!page) {
+  if (!heroes) {
     return {
       notFound: true
     }
@@ -85,11 +91,12 @@ export const getStaticProps: GetStaticProps<PageProps> = async ({
 
   return {
     props: {
-      page,
+      heroes,
       homeSettings,
       heroData,
       region,
       categories,
+      footerData,
       draftMode,
       token: draftMode ? readToken : '',
     },

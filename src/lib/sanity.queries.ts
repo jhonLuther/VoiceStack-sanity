@@ -354,6 +354,58 @@ export async function getCategoryWithFeatures(client: SanityClient, region: stri
 
   return await client.fetch(query, { region });
 }
+export async function getGlobalSettings(client: SanityClient, region: string = 'en') {
+  const query = groq`
+    *[_type == "globalSettings" && language == $region]{
+      _id,
+      name,
+      heading,
+      description,
+      icon,
+    }
+  `;
+
+  return await client.fetch(query, { region });
+}
+export async function getHeaders(client: SanityClient, region: string = 'en') {
+  const query = groq`
+    *[_type == "headers" && language == $region]{
+      _id,
+      name,
+      slug,
+      heading,
+      description,
+      icon,
+      'mainImage': mainImage.asset->{
+       _id,
+       url,
+       altText,title,
+       metadata {
+         dimensions {
+           width,
+           height,
+           aspectRatio
+         }
+       }
+     },
+    'bgImage': bgImage.asset->{
+       _id,
+       url,
+       altText,title,
+       metadata {
+         dimensions {
+           width,
+           height,
+           aspectRatio
+         }
+       }
+     },
+
+    }
+  `;
+
+  return await client.fetch(query, { region });
+}
 
 
 
