@@ -14,16 +14,21 @@ export default defineType({
     defineField({
       name: 'heading',
       title: 'Category Heading',
-      type: 'portableContent',
+      type: 'string',
     }),
     defineField({
       name: 'description',
       title: 'Category Description',
-      type: 'portableContent',
+      type: 'text',
     }),
     defineField({
         name: 'icon',
         title: 'Category Icon',
+        type: 'image',
+      }),
+    defineField({
+        name: 'mainImage',
+        title: 'Main Image',
         type: 'image',
       }),
     defineField({

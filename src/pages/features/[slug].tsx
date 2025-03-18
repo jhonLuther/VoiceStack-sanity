@@ -42,8 +42,6 @@ export default function Page({ page, homeSettings, heroData, region, faqSectionD
     setIsDemoPopUpShown(heroData);
   }, [heroData])
 
-  console.log(page, 'page');
-
 
   if (!page) return <div>Page not found</div>
   return (
