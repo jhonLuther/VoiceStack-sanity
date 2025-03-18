@@ -8,7 +8,7 @@ const NumberSection = () => {
   return (
     <Section
       id="about-us-section"
-      className="py-16 md:py-28 bg-gradient-to-r from-[#7928ca] to-[#8639f8] relative overflow-hidden"
+      className="py-16 md:py-28  relative overflow-hidden"
     >
       
       <Container>
@@ -20,10 +20,8 @@ const NumberSection = () => {
           transition={{ duration: 0.6 }}
         >
           <div className="mb-6">
-  
-            
             <motion.h2 
-              className="text-white text-center text-3xl md:text-4xl font-bold mb-12"
+              className=" text-center text-3xl md:text-4xl font-bold mb-12"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -32,23 +30,22 @@ const NumberSection = () => {
               VoiceStack by the Numbers
             </motion.h2>
           </div>
-          
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 lg:gap-16 w-full ">
             <div className="flex flex-col items-start  ">
               <AnimatedNumber value={9000000000} />
-              <p className="text-white/80 mt-2 text-center text-sm md:text-base">Global Reach</p>
+              <p className=" mt-2 text-center text-sm md:text-base">Minutes of AI enabled calls</p>
             </div>
             <div className="flex flex-col items-start ">
               <AnimatedNumber value={363000000} />
-              <p className="text-white/80 mt-2 text-center text-sm md:text-base">Active Users</p>
+              <p className=" mt-2 text-center text-sm md:text-base">Minutes of AI enabled calls</p>
             </div>
             <div className="flex flex-col items-start ">
               <AnimatedNumber value={342000000} />
-              <p className="text-white/80 mt-2 text-center text-sm md:text-base">Projects Delivered</p>
+              <p className=" mt-2 text-center text-sm md:text-base">Minutes of AI enabled calls</p>
             </div>
             <div className="flex flex-col items-start ">
               <AnimatedNumber value={60} suffix="%" />
-              <p className="text-white/80 mt-2 text-center text-sm md:text-base">Growth Rate</p>
+              <p className=" mt-2 text-center text-sm md:text-base">Minutes of AI enabled calls</p>
             </div>
           </div>
         </motion.div>
