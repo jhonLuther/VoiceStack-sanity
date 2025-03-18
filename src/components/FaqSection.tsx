@@ -30,9 +30,9 @@ const FaqSection = ({ data, mailId, revamp = false }) => {
           <div className={`flex justify-center w-full ${revamp ? '' : ' max-w-[320px]' } md:sticky top-28 self-start`}>
             <div className={`flex flex-col w-full ${revamp ? 'text-center items-center' : 'text-left'} gap-4`}>
               <H2>Frequently Asked Questions</H2>
-              <Paragraph className={`${revamp ? '' : ' max-w-[320px]' }`}>
-                For queries contact 
-                <a href={`mailto:${getContactEmail}`} className="text-vs-blue ml-1">
+              <Paragraph>
+                For queries contact <br/>
+                <a href={`mailto:${getContactEmail}`} className="text-vs-blue">
                   {getContactEmail}
                 </a>
               </Paragraph>
