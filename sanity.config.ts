@@ -121,7 +121,7 @@ export default defineConfig({
         'miscellaneous',
         'featureList',
         'featureCategory',
-        'headers',
+        'heroes',
         'globalSettings',
       ],
     }),
@@ -194,8 +194,15 @@ export default defineConfig({
             S.documentTypeListItem('page').title('Pages'),
             S.documentTypeListItem('featureList').title('Features').icon(BoltIcon),
             S.documentTypeListItem('featureCategory').title('Feature Category').icon(BoltIcon),
-            S.documentTypeListItem('headers').title('Heroes').icon(DesktopIcon),
-            S.documentTypeListItem('globalSettings').title('Global Settings').icon(EarthGlobeIcon),
+            S.documentTypeListItem('heroes').title('Heroes').icon(DesktopIcon),
+            S.listItem()
+            .title('Global Settings')
+            .icon(EarthGlobeIcon)
+            .child(
+              S.document()
+                .schemaType('globalSettings')
+                .documentId('globalSettings'),
+            ),
 
             // S.documentTypeListItem('platform').title('Platform'),
           ]),

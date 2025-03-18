@@ -35,7 +35,7 @@ import ListingAtom from './NestableBlocks/ListingAtom'
 import portableContent from './portableContent'
 import HtmlCode from './Utilis/HtmlCode'
 import GlobalSettings from './GlobalSettings'
-import Headers from './Headers'
+import Heroes from './Heroes'
 
 export const schemaTypes = [
   layout,
@@ -67,7 +67,7 @@ export const schemaTypes = [
   portableContent,
   HtmlCode,
   GlobalSettings,
-  Headers
+  Heroes
 ]
 
 export const schema: { types: SchemaTypeDefinition[] } = {
@@ -108,6 +108,6 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     portableContent,
     HtmlCode,
     GlobalSettings,
-    Headers
+    Heroes
   ],
 }

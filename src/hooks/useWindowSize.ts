@@ -7,7 +7,6 @@ export default function useWindowSize() {
   });
 
   useEffect(() => {
-    // Only run this code on the client (browser)
     if (typeof window !== "undefined") {
       const handleResize = () => {
         setWindowSize({
@@ -16,14 +15,11 @@ export default function useWindowSize() {
         });
       };
 
-      // Set initial size
       handleResize();
 
-      // Add event listener for resize
       window.addEventListener("resize", handleResize);
 
       return () => {
-        // Cleanup event listener
         window.removeEventListener("resize", handleResize);
       };
     }

@@ -365,25 +365,51 @@ export async function getCategoryWithFeatures(client: SanityClient, region: stri
 
   return await client.fetch(query, { region });
 }
-export async function getGlobalSettings(client: SanityClient, region: string = 'en') {
-  const query = groq`
-    *[_type == "globalSettings" && language == $region]{
+export async function getGlobalSettings(client: SanityClient, type: string, region: string = 'en') {
+  let query = groq`
+    *[_type == "globalSettings" && language == $region][0]{
       _id,
       name,
       heading,
       description,
       icon,
+      ...
     }
   `;
 
+  if (type === 'features') {
+    query = groq`
+      *[_type == "globalSettings" && language == $region][0]{
+        _id,
+        name,
+        heading,
+        description,
+        icon,
+        heroSubFeatureHeading,
+        listingItem,
+      }
+    `;
+  } else if (type === 'integrations') {
+    query = groq`
+      *[_type == "globalSettings" && language == $region][0]{
+        _id,
+        name,
+        heading,
+        description,
+        icon,
+        secondaryImage,
+      }
+    `;
+  }
+
   return await client.fetch(query, { region });
 }
-export async function getHeaders(client: SanityClient, region: string = 'en') {
+export async function getHeroes(client: SanityClient,contentType: string, region: string = 'en') {
   const query = groq`
-    *[_type == "headers" && language == $region]{
+    *[_type == "heroes" && contentType == $contentType && language == $region]{
       _id,
+      contentType,
       name,
-      slug,
       heading,
       description,
       icon,
@@ -411,11 +437,12 @@ export async function getHeaders(client: SanityClient, region: string = 'en') {
          }
        }
      },
+     ...,
 
     }
   `;
 
-  return await client.fetch(query, { region });
+  return await client.fetch(query, { contentType, region });
 }
 
 

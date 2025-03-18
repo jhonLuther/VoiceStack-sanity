@@ -96,7 +96,6 @@ export const getStaticProps: GetStaticProps<PageProps> = async ({
       region,
       faqSectionData, footerData, bannerData
     },
-    // revalidate: 60
   }
 }
 
