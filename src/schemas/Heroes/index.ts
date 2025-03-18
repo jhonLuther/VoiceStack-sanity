@@ -7,6 +7,7 @@ const seoFields = [
     title: 'Meta Title',
     description: 'Overrides main page title',
     type: 'string',
+    group: 'seo'
   }),
   defineField({
     name: 'seoDescription',
@@ -18,16 +19,19 @@ const seoFields = [
         .error('A description of at least 10 characters is required'),
       Rule.max(155).warning('Shorter descriptions are usually better'),
     ],
+    group: 'seo'
   }),
   defineField({
     name: 'seoKeywords',
     title: 'Meta Keywords',
     type: 'string',
+    group: 'seo'
   }),
   defineField({
     name: 'seoJSONLD',
     title: 'Meta JSON-LD',
     type: 'text',
+    group: 'seo',
     validation: (Rule: any) =>
       Rule.custom((json) => {
         try {
@@ -42,6 +46,7 @@ const seoFields = [
     name: 'seoCanonical',
     title: 'Canonical URL',
     type: 'url',
+    group: 'seo'
   }),
 ]
 export default defineType({
@@ -49,15 +54,29 @@ export default defineType({
   title: 'Heroes',
   type: 'document',
 
+  groups: [
+    {
+      name: 'content',
+      title: 'Content',
+      default: true,
+    }, 
+    {
+      name: 'seo',
+      title: 'SEO',
+    }, 
+    
+  ],
+
   fields: [
     defineField({
       name: 'contentType',
       title: 'Content Type',
       type: 'string',
+      group: 'content',
       options: {
         list: [
-          { title: 'Features', value: 'features' },
-          { title: 'Integrations', value: 'integrations' },
+          { title: 'Feature', value: 'feature' },
+          { title: 'Integration', value: 'integration' },
         ],
       },
       validation: (Rule) => Rule.required().error('Content type is required.'),
@@ -65,22 +84,32 @@ export default defineType({
     defineField({
       name: 'heading',
       title: 'Heading',
-      type: 'portableContent',
+      type: 'string',
+      group: 'content',
+    }),
+    defineField({
+      name: 'subHeading',
+      title: 'Sub Heading',
+      type: 'string',
+      group: 'content',
     }),
     defineField({
       name: 'description',
       title: 'Description',
-      type: 'portableContent',
+      type: 'text',
+      group: 'content',
     }),
     defineField({
       name: 'mainImage',
       title: 'Main Image',
       type: 'image',
+      group: 'content',
     }),
     defineField({
       name: 'bgImage',
       title: 'Background Image',
       type: 'image',
+      group: 'content',
     }),
     defineField({
       name: 'language',
@@ -92,7 +121,7 @@ export default defineType({
   ],
   preview: {
     select: {
-      title: 'name',
+      title: 'contentType',
       lang: 'language',
       media: 'icon',
     },
