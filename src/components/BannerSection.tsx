@@ -17,7 +17,7 @@ import { useRouter } from 'next/router'
 import TelIcon from '~/components/icons/TelIcon';
 import MailIcon from '~/components/icons/MailIcon';
 
-const BannerSection = ({data, refer=null, cta=false}) => {
+const BannerSection = ({data, refer=null, video, cta=false}) => {
   const { isDemoPopUpShown } = useContext(BookDemoContext);
   const [isOpen, setIsOpen] = useState(false);
   // const contactData = contacts;
@@ -71,10 +71,12 @@ const BannerSection = ({data, refer=null, cta=false}) => {
                   <ButtonArrow></ButtonArrow>
                   <span className="text-base font-medium">{`Book free demo`}</span>
                 </Button>
-                <Button type='video' onClick={() => {setIsOpen(true) }}>
-                  <VideoPlayIconWhite></VideoPlayIconWhite>
-                  <span className="text-base font-medium">{`Watch overview`}</span>
-                </Button>
+                {video && (
+                  <Button type='video' onClick={() => {setIsOpen(true) }}>
+                    <VideoPlayIconWhite></VideoPlayIconWhite>
+                    <span className="text-base font-medium">{`Watch overview`}</span>
+                  </Button>
+                )}
               </div>
             ):(
 
@@ -127,7 +129,8 @@ const BannerSection = ({data, refer=null, cta=false}) => {
           <VideoModal
             refer={refer}
             isPopup={true}
-            videoDetails={overviewVideo}
+            // videoDetails={overviewVideo}
+            videoDetails={video[0]}
             className={`pt-9 flex items-start`}
             onClose={() => setIsOpen(false)}
             openForm ={() => setOpenForm(true)}
