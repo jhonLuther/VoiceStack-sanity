@@ -50,10 +50,9 @@ export default function Page({ heroes, homeSettings, heroData, region, categorie
   return (
     <>
       <Header data={homeSettings} />
-        Feature Home
-        <HeroMainSection data={heroes}></HeroMainSection>
-        <NumberSection data={globalSettings} />
-        <Footer data={footerData}></Footer>
+      <HeroMainSection data={heroes}></HeroMainSection>
+      <NumberSection data={globalSettings} />
+      <Footer data={footerData}></Footer>
     </>
   )
 }
