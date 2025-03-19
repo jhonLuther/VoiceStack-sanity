@@ -369,11 +369,48 @@ export async function getCategoryWithFeatures(
       name,
       heading,
       description,
-      icon,
+      "icon": icon.asset->{
+      _id,
+      url,
+      altText,
+      title,
+      metadata {
+        dimensions {
+          width,
+          height,
+          aspectRatio
+        }
+      }
+    },
+      "mainImage": mainImage.asset->{
+      _id,
+      url,
+      altText,
+      title,
+      metadata {
+        dimensions {
+          width,
+          height,
+          aspectRatio
+        }
+      }
+    },
       "features": *[_type == "featureList" && references(^._id)]{
         name,
         slug,
-        icon,
+        "icon": icon.asset->{
+      _id,
+      url,
+      altText,
+      title,
+      metadata {
+        dimensions {
+          width,
+          height,
+          aspectRatio
+        }
+      }
+    },
         features 
       }
     }

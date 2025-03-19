@@ -18,6 +18,7 @@ import SanityPortableText from '~/components/blockEditor/sanityBlockEditor'
 import NumberSection from '~/components/NumberSection'
 import Footer from '~/components/common/Footer'
 import HeroMainSection from '~/components/common/HeroMainSection'
+import CategoryFeatureSection from '~/components/CategoryFeatureSection'
 
 export interface PageProps {
   heroes: {
@@ -53,6 +54,7 @@ export default function Page({ heroes, homeSettings, heroData, region, categorie
         Feature Home
         <HeroMainSection data={heroes}></HeroMainSection>
         <NumberSection data={globalSettings} />
+        <CategoryFeatureSection data={categories} />
         <Footer data={footerData}></Footer>
     </>
   )

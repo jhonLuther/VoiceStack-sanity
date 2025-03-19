@@ -1,0 +1,102 @@
+import React from "react";
+import Section from "../structure/Section";
+import Container from "../structure/Container";
+import { motion } from 'framer-motion';
+import Image from 'next/image';
+import Paragraph from "../typography/Paragraph";
+import H2 from "../typography/H2";
+const CategoryAtom = ({ data }) => {
+	const { listingItem } = data
+	console.log(data, 'datainner');
+
+
+	return (
+		<Section
+			id="about-us-section"
+			className="py-16 md:py-28  relative overflow-hidden"
+		>
+			<Container>
+				<motion.div
+					className="flex flex-col items-center w-full"
+					initial={{ opacity: 0 }}
+					whileInView={{ opacity: 1 }}
+					viewport={{ once: true }}
+					transition={{ duration: 0.6 }}
+				>
+					<div className="grid md:grid-cols-[1fr_1fr] gap-6 items-center">
+						<motion.div
+							initial={{ opacity: 0, x: -50 }}
+							animate={{ opacity: 1, x: 0 }}
+							transition={{ duration: 0.5 }}
+							className="max-w-[415px]"
+						>
+							<Paragraph className="text-blue-600 text-sm font-semibold">{data?.name}</Paragraph>
+							<H2 className="text-3xl font-bold mt-2">
+								{data?.heading}
+							</H2>
+							<Paragraph className="text-gray-600 mt-3">
+								{data?.description}
+							</Paragraph>
+							{/* <Button className="mt-4">Book free demo</Button> */}
+						</motion.div>
+						{data?.mainImage && <motion.div
+							initial={{ opacity: 0, x: 50 }}
+							animate={{ opacity: 1, x: 0 }}
+							transition={{ duration: 0.5 }}
+							className="flex-1"
+						>
+							<Image
+								src={data?.mainImage?.url}
+								alt="VoIP Support"
+								width={800}
+								height={500}
+								className="rounded-xl"
+							/>
+						</motion.div>}
+					</div>
+					<motion.div
+						className="flex flex-wrap  gap-4 mt-10 w-full"
+						initial="hidden"
+						animate="visible"
+						variants={{
+							hidden: { opacity: 0, y: 50 },
+							visible: {
+								opacity: 1,
+								y: 0,
+								transition: { staggerChildren: 0.2 }
+							}
+						}}
+					>
+						{data?.features && data?.features.map((feature, index) => (
+							<motion.div
+								key={index}
+								className="p-6 border rounded-lg text-center shadow-sm"
+								variants={{
+									hidden: { opacity: 0, y: 20 },
+									visible: { opacity: 1, y: 0 }
+								}}
+							>
+								<div className="flex flex-col items-start gap-3">
+
+									<Image
+										src={feature?.icon?.url}
+										alt={feature?.icon?.altText}
+										title={feature?.icon?.title}
+										width={24}
+										height={24}
+										className="rounded-xl"
+									/>
+									<span className="text-base">{feature.name}
+									</span>
+								</div>
+							</motion.div>
+						))}
+					</motion.div>
+
+				</motion.div>
+			</Container>
+		</Section>
+	);
+};
+
+export default CategoryAtom;
