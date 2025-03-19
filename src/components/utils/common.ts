@@ -191,8 +191,7 @@ export default function showCountryFlag(region: string) {
 
 
 export function convertData(data) {
-  console.log(data, 'data');
-
+  if(!data) return { value: 0, suffix: '' };
   if (typeof data === 'string') {
     const conversions = {
       B: 1e9, // Billion

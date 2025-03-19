@@ -84,6 +84,12 @@ export default defineType({
       type: 'reference',
       group: 'basic',
       to: [{ type: 'featureCategory' }],
+      options: {
+        filter: ({ document }) => ({
+          filter: '_type == "featureCategory" && language == $language',
+          params: { language: document.language }, 
+        }),
+      }
     }),
     defineField({
       name: "heroTheme",
@@ -97,6 +103,12 @@ export default defineType({
         ]
       },
       initialValue: "1" 
+    }),
+    defineField({
+      name: 'icon',
+      title: 'Icon',
+      type: 'image',
+      group: 'basic',
     }),
     defineField({
       name: 'featureSubSection',
