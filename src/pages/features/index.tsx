@@ -12,7 +12,8 @@ import {
   getGlobalSettings,
   getHeroes,
   getHeroSectionData,
-  getIntegrationList
+  getIntegrationList,
+  getContactAndVideoInfo
 } from '~/lib/sanity.queries'
 import { useContext, useEffect } from 'react'
 import { BookDemoContext } from '~/providers/BookDemoProvider'
@@ -40,11 +41,12 @@ export interface PageProps {
   globalSettings: any
   integrationPlatforms: any
   bannerData: any
+  contactAndVideoData: any
 }
 
-export default function Page({ heroes, homeSettings, heroData, region, categories, footerData, globalSettings,bannerData,integrationPlatforms, draftMode, token }: PageProps) {
+export default function Page({ heroes, homeSettings, heroData, region, categories, footerData, globalSettings,bannerData,integrationPlatforms, contactAndVideoData }: PageProps) {
   const { isDemoPopUpShown, setIsDemoPopUpShown } = useContext(BookDemoContext);
-  
+  const videoData = contactAndVideoData?.video;
   useEffect(() => {
     setIsDemoPopUpShown(heroData);
   }, [heroData, setIsDemoPopUpShown]);
@@ -62,7 +64,7 @@ export default function Page({ heroes, homeSettings, heroData, region, categorie
         <NumberSection data={globalSettings} />
         <CategoryFeatureSection data={categories} />
         <AnimatedBeamSection data={integrationPlatforms} refer={''} />
-        <BannerSection data={bannerData} refer={''}></BannerSection>
+        <BannerSection data={bannerData} cta video={videoData}></BannerSection>
         <Footer data={footerData}></Footer>
     </>
   )
@@ -77,7 +79,7 @@ export const getStaticProps: GetStaticProps<PageProps> = async ({
   const slug = params?.slug as string
   
   const client = getClient(draftMode ? { token: readToken } : undefined) as SanityClient
-  const [heroes, homeSettings, heroData, categories, footerData, globalSettings, bannerData,integrationPlatforms] = await Promise.all([
+  const [heroes, homeSettings, heroData, categories, footerData, globalSettings, bannerData,integrationPlatforms,contactAndVideoData ] = await Promise.all([
     getHeroes(client, 'feature', region),
     getALLHomeSettings(client, region),
     getHeroSectionData(client, region),
@@ -85,7 +87,8 @@ export const getStaticProps: GetStaticProps<PageProps> = async ({
     getFooterData(client, region),
     getGlobalSettings(client, 'features', region),
     getBannerData(client, region),
-    getIntegrationList(client, region)
+    getIntegrationList(client, region),
+    getContactAndVideoInfo(client, region)
   ])
 
   if (!heroes) {
@@ -105,6 +108,7 @@ export const getStaticProps: GetStaticProps<PageProps> = async ({
       globalSettings,
       bannerData,
       integrationPlatforms,
+      contactAndVideoData,
       draftMode,
       token: draftMode ? readToken : '',
     },
