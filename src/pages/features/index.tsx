@@ -44,8 +44,8 @@ export default function Page({ heroes, homeSettings, heroData, region, categorie
   
   if (!heroes) return <div>heroes not found</div>
 
-  console.log(heroes, 'heroes');
-  console.log(globalSettings, 'globalSettings');
+  // console.log(heroes, 'heroes');
+  console.log(categories, 'categories');
   
   return (
     <>
