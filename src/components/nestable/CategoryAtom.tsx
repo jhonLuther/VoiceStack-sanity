@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Paragraph from "../typography/Paragraph";
 import H2 from "../typography/H2";
+import Anchor from "../common/anchor";
 const CategoryAtom = ({ data }) => {
 	const { listingItem } = data
 	console.log(data, 'datainner');
@@ -30,7 +31,18 @@ const CategoryAtom = ({ data }) => {
 							transition={{ duration: 0.5 }}
 							className="max-w-[415px]"
 						>
+							<div className="flex items-center gap-2">
+							<Image
+								src={data?.icon?.url}
+								alt={data?.icon?.altText}
+								title={data?.icon?.title}
+								width={12}
+								height={12}
+								className="rounded-xl"
+							/>
 							<Paragraph className="text-blue-600 text-sm font-semibold">{data?.name}</Paragraph>
+
+							</div>
 							<H2 className="text-3xl font-bold mt-2">
 								{data?.heading}
 							</H2>
@@ -47,7 +59,8 @@ const CategoryAtom = ({ data }) => {
 						>
 							<Image
 								src={data?.mainImage?.url}
-								alt="VoIP Support"
+								alt={data?.mainImage?.altText}
+								title={data?.mainImage?.title}
 								width={800}
 								height={500}
 								className="rounded-xl"
@@ -76,7 +89,7 @@ const CategoryAtom = ({ data }) => {
 									visible: { opacity: 1, y: 0 }
 								}}
 							>
-								<div className="flex flex-col items-start gap-3">
+								<Anchor  href={`features/${feature?.slug?.current}`}  className="flex flex-col items-start gap-3">
 
 									<Image
 										src={feature?.icon?.url}
@@ -88,7 +101,7 @@ const CategoryAtom = ({ data }) => {
 									/>
 									<span className="text-base">{feature.name}
 									</span>
-								</div>
+								</Anchor>
 							</motion.div>
 						))}
 					</motion.div>
