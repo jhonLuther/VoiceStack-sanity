@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { convertData } from "./utils/common";
 
 const NumberSection = ({data}) => {
+  if(!data) return null
   const {listingItem} = data
   
   return (

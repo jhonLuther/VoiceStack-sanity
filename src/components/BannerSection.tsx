@@ -17,7 +17,7 @@ import { useRouter } from 'next/router'
 import TelIcon from '~/components/icons/TelIcon';
 import MailIcon from '~/components/icons/MailIcon';
 
-const BannerSection = ({data, refer=null, video, cta=false}) => {
+const BannerSection = ({data, refer=null, video, cta=false}: any) => {
   const { isDemoPopUpShown } = useContext(BookDemoContext);
   const [isOpen, setIsOpen] = useState(false);
   // const contactData = contacts;

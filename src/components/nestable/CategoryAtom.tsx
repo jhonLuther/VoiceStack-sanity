@@ -14,7 +14,7 @@ const CategoryAtom = ({ data }) => {
 	return (
 		<Section
 			id="about-us-section"
-			className="py-16 md:py-28  relative overflow-hidden"
+			className=" relative overflow-hidden"
 		>
 			<Container>
 				<motion.div
@@ -90,7 +90,6 @@ const CategoryAtom = ({ data }) => {
 								}}
 							>
 								<Anchor  href={`features/${feature?.slug?.current}`}  className="flex flex-col items-start gap-3">
-
 									<Image
 										src={feature?.icon?.url}
 										alt={feature?.icon?.altText}
