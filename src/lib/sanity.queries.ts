@@ -889,6 +889,24 @@ export async function getIntegrationList(client: SanityClient, region: string) {
   return await client.fetch(query, { region })
 }
 
+export const siteMapQuery = groq`*[_type == "featureList" && defined(slug.current)]{
+  "url": slug.current,
+  _updatedAt,
+  language,
+  contentType
+} `
+
+
+export async function getSitemapData(client: SanityClient): Promise<Post[]> {
+  try {
+    const features = await client.fetch(siteMapQuery)
+    return [...features]
+  } catch (error) {
+    console.error(error)
+    return []
+  }
+}
+
 /*####################################### INTERFACES    ###########################*/
 export interface Post {
   _type: 'post'

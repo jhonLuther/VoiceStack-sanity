@@ -35,6 +35,14 @@ export default defineType({
       group: 'basic',
       type: 'string',
     }),
+    defineField({
+      name: 'contentType',
+      title: 'Content Type',
+      description: 'This is used in sitemap and for internal reference',
+      validation: (Rule) => Rule.required(),
+      group: 'basic',
+      type: 'string',
+    }),
     {
       name: 'slug',
       title: 'Page Path',
