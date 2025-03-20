@@ -13,8 +13,7 @@ const CategoryAtom = ({ data }) => {
 
 	return (
 		<Section
-			id="about-us-section"
-			className=" relative overflow-hidden"
+			className="relative overflow-hidden p-16 rounded-[32px] bg-white"
 		>
 			<Container>
 				<motion.div
