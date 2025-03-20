@@ -468,6 +468,7 @@ export async function getHeroes(
 ) {
   const query = groq`
   *[_type == "heroes" && contentType == $contentType && language == $region][0]{
+    ...,
     _id,
     contentType,
     name,
