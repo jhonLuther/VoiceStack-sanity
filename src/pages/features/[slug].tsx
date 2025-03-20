@@ -14,6 +14,7 @@ import FaqSection from '~/components/FaqSection'
 import BannerSection from '~/components/BannerSection'
 import Footer from '~/components/common/Footer'
 import InnerHeroSection from '~/components/InnerHeroSection'
+import SeoHeader from '~/components/common/SeoHeader'
 
 export interface PageProps {
   page: {
@@ -44,12 +45,12 @@ export default function Page({ page, homeSettings, heroData, region, faqSectionD
   }, [heroData])
 
   console.log(page, 'page');
-  
 
 
   if (!page) return <div>Page not found</div>
   return (
     <>
+      <SeoHeader seoData={page}/>
       <Header data={homeSettings} />
       <InnerHeroSection data={page.heroSection}/>
       <FeatureBenefitSection data={page?.featureSubSection} />
