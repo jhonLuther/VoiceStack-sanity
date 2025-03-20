@@ -10,7 +10,6 @@ const FeatureBenefitSection = ({ data }) => {
   
   return (
     <Section
-      id="about-us-section"
       className="py-12 md:py-24 bg-white  bg-contain bg-no-repeat bg-right"
     >
       <Container className="flex flex-col items-center  w-full ">
@@ -21,13 +20,15 @@ const FeatureBenefitSection = ({ data }) => {
           <Paragraph className="md:max-w-[620px] text-center">{`Interactive Voice Response (IVR) systems enhance the efficiency of call routing. They allow callers to navigate menus using their voice or keypad.
           `}</Paragraph>
         </div>
-        {
-          data && data?.map((item, index) => {
-            return (
-              <FeatureAtom data={item} index={index} key={index} />
-            )
-          })
-        }
+				<div className='flex flex-col'>
+					{
+						data && data?.map((item, index) => {
+							return (
+								<FeatureAtom data={item} index={index} key={index} />
+							)
+						})
+					}
+				</div>
       </Container>
     </Section>
   )

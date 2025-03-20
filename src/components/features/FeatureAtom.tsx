@@ -18,15 +18,11 @@ const FeatureAtom = ({ data, index }) => {
   const [openForm, setOpenForm] = useState(false)
   if (!data) return null
   return (
-    <Section id="about-us-section" className={` border-b last:border-none  md:py-12 py-6 ${'md:py-24'} last:pb-0  `}>
-      <Container className="flex flex-col items-center  gap-10 w-full md:px-0">
+    <div className={`flex justify-center border-b last:border-none  md:py-12 py-6 ${'md:py-24'} last:pb-0  `}>
         <div
-          className={`flex flex-col ${index % 2 === 0 ? 'md:flex-row-reverse' : 'md:flex-row'} items-center justify-between md:gap-20 gap-10`}
+          className={`flex max-w-[1040px] flex-col ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} items-center justify-between md:gap-20 gap-10`}
         >
-          <div
-            className="  rounded-3xl "
-          >
-            <div className="bg-white  rounded-xl  ">
+          <div className=" md:max-w-[520px] w-full">
               <div className="flex flex-col items-center text-center w-full ">
                 {data?.mainImage && <Image
                   className='max-w-[520px] w-full h-auto rounded-t-xl'
@@ -38,30 +34,28 @@ const FeatureAtom = ({ data, index }) => {
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />}
               </div>
-            </div>
           </div>
-          <div className="flex flex-col h-full justify-evenly" >
+          <div className="flex flex-col gap-8">
             <div className='flex flex-col gap-3'>
               {data?.featureTitle &&
-                <H3 className='md:text-2xl'>{data.featureTitle}
+                <H3 className='md:text-2xl font-semibold'>{data.featureTitle}
                 </H3>}
-              {data?.subHeading && <span className='prose prose-gray'><SanityPortableText
+              {data?.subHeading && <span className='text-gray-500'><SanityPortableText
                 content={data?.subHeading}
               /></span>}
+							<ul>
+								{data.listingItem && data?.listingItem.map((item, index) => (
+									<li key={index} className="flex items-center gap-4 py-2">
+										<div className='flex items-center gap-3'>
+											<CheckMark className='text-vs-blue' />
+											<span className="text-gray-800 text-base leading-relaxed font-normal block">{item.itemHeading}</span>
+										</div>
+									</li>
+								))}
+							</ul>
             </div>
 
-            <ul>
-							{data.listingItem && data?.listingItem.map((item, index) => (
-								<li key={index} className="flex items-center gap-4 py-2">
-									<div className='flex items-center gap-3'>
-										<CheckMark />
-										<span className="text-gray-800 text-base leading-6 font-normal block">{item.itemHeading}</span>
-									</div>
-								</li>
-							))}
-						</ul>
-            <div className='md:mt-8 mt-6'>
-
+            <div>
               <Button type='primary' onClick={() => { setOpenForm(true) }}>
                 <ButtonArrow></ButtonArrow>
                 <span className="text-base font-medium">{`Book free demo`}</span>
@@ -77,8 +71,8 @@ const FeatureAtom = ({ data, index }) => {
             data={isDemoPopUpShown}
           />
         )}
-      </Container>
-    </Section>
+      
+    </div>
   );
 };
 
