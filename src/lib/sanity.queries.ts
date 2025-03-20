@@ -602,6 +602,11 @@ export async function getFeaturePageData(
         _createdAt,
         _id
       },
+      seoTitle,
+      seoDescription,
+      seoKeywords,
+      seoCanonical,
+      seoRobots,
   }`
 
   return await client.fetch(query, { slug, region })
@@ -895,7 +900,6 @@ export const siteMapQuery = groq`*[_type == "featureList" && defined(slug.curren
   language,
   contentType
 } `
-
 
 export async function getSitemapData(client: SanityClient): Promise<Post[]> {
   try {

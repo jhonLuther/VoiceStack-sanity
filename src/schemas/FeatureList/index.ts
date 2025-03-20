@@ -1,5 +1,6 @@
 import { defineField, defineType } from 'sanity'
 import { isUniqueOtherThanLanguage } from '~/lib/sanity'
+import { seoFields } from '../Heroes'
 export default defineType({
   name: 'featureList',
   title: 'Feature List',
@@ -25,6 +26,10 @@ export default defineType({
     {
       name: 'faqSection',
       title: 'FAQ Section',
+    },
+    {
+      name: 'seo',
+      title: 'Seo',
     },
   ],
 
@@ -176,6 +181,7 @@ export default defineType({
         },
       ],
     }),
+    ...seoFields,
     defineField({
       name: 'language',
       type: 'string',

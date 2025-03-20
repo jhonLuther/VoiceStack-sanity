@@ -1,7 +1,7 @@
 import { defineField, defineType } from 'sanity'
 import { isUniqueOtherThanLanguage } from '~/lib/sanity'
 
-const seoFields = [
+export const seoFields = [
   defineField({
     name: 'seoTitle',
     title: 'Meta Title',

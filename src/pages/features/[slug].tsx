@@ -1,4 +1,3 @@
-// pages/[slug].tsx
 import { GetStaticProps, GetStaticPaths } from 'next'
 import { groq } from 'next-sanity'
 import { getClient } from '~/lib/sanity.client'
@@ -16,7 +15,7 @@ import BannerSection from '~/components/BannerSection'
 import Footer from '~/components/common/Footer'
 import InnerHeroSection from '~/components/InnerHeroSection'
 
-interface PageProps {
+export interface PageProps {
   page: {
     heroSection: unknown
     featureFAQSection: unknown
@@ -44,6 +43,9 @@ export default function Page({ page, homeSettings, heroData, region, faqSectionD
     setIsDemoPopUpShown(heroData);
   }, [heroData])
 
+  console.log(page, 'page');
+  
+
 
   if (!page) return <div>Page not found</div>
   return (
@@ -58,10 +60,6 @@ export default function Page({ page, homeSettings, heroData, region, faqSectionD
     </>
   )
 }
-
-// Helper function for page data fetching
-
-
 
 export const getStaticProps: GetStaticProps<PageProps> = async ({
   params,
@@ -80,7 +78,6 @@ export const getStaticProps: GetStaticProps<PageProps> = async ({
       getFooterData(client, region),
       getBannerData(client, region),
       getContactAndVideoInfo(client, region)
-
     ])
 
   if (!page) {
@@ -102,8 +99,6 @@ export const getStaticProps: GetStaticProps<PageProps> = async ({
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const client = getClient()
-
-  // Get all pages with their slugs and languages
   const query = groq`*[_type == "featureList"]{
     "slug": slug.current,
     language
