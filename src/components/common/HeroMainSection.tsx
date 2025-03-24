@@ -16,13 +16,11 @@ interface HeroMainSectionProps {
 }
 
 const HeroMainSection: React.FC<HeroMainSectionProps> = ({ data }) => {
-  if (!data) {
-    return null; 
-  }
+
   const { isDemoPopUpShown } = useContext(BookDemoContext);
   const [isOpen, setIsOpen] = useState(false);
   const [openForm, setOpenForm] = useState(false)
-  console.log({data});
+  if (!data) return null; 
   
   return (
     <>
