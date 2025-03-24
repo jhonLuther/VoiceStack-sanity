@@ -43,6 +43,8 @@ function generateSiteMap(sitemapData: any = {}): string {
       'en-AU': `${BASE_URL}/en-AU${staticPath ? `/${staticPath}` : ''}`
     };
     urlMap.set(urlKey, variants);
+    console.log(urlMap, "urlmap static");
+    
   });
 
 
