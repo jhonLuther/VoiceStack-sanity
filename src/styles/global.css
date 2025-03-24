@@ -16,6 +16,7 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+
 @layer base {
   :root {
     --background: 0 0% 100%;
