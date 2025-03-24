@@ -34,7 +34,6 @@ function generateSiteMap(sitemapData: any = {}): string {
   // Define static paths we need to generate
   const staticPaths = ['', 'system-requirements','features'];
 
-  // Generate URL map
   staticPaths.forEach(staticPath => {
     const urlKey = staticPath || 'home';
     const variants = {
@@ -48,12 +47,10 @@ function generateSiteMap(sitemapData: any = {}): string {
 
   sitemapData?.forEach((post) => {
     if (!post.url || !post.language) return;
-  
+
     const postLocale = post.language; 
-    
-    locales.forEach((locale) => {
+    locales?.forEach((locale) => {
       if (locale !== postLocale) return;
-  
       const url = `${BASE_URL}${generateHref(locale, `${post?.contentType}/${post.url}`)}`;
       const cleanedUrl = cleanUrl(url);
       const urlKey = cleanedUrl.replace(BASE_URL, '').replace(/^\/(en-[A-Z]{2}\/)?/, '');
@@ -73,24 +70,29 @@ function generateSiteMap(sitemapData: any = {}): string {
   xml += '<urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9"\n';
   xml += '        xmlns:xhtml="https://www.w3.org/1999/xhtml">\n';
 
-  // Generate XML
   for (const [_, variants] of urlMap) {
-    Object.entries(variants).forEach(([locale, url]) => {
+    const availableVariants = Object.fromEntries(
+      Object.entries(variants).filter(([_, url]) => url)
+    );
+    
+    const variantCount = Object.keys(availableVariants).length;
+    
+    Object.entries(availableVariants).forEach(([locale, url]) => {
       if (!url) return;
       xml += '  <url>\n';
       xml += `    <loc>${url}</loc>\n`;
       xml += `    <lastmod>${new Date().toISOString()}</lastmod>\n`;
-
-      // Add all alternates
-      Object.entries(variants).forEach(([altLocale, altUrl]) => {
-        xml += `    <xhtml:link rel="alternate" hreflang="${formatHreflang(altLocale)}" href="${altUrl}"/>\n`;
-      });
-
-      // Add x-default (using en-US version)
-      console.log(variants);
       
-      xml += `    <xhtml:link rel="alternate" hreflang="x-default" href="${variants['en-US'] || url}"/>\n`;
-
+      if (variantCount > 1) {
+        Object.entries(availableVariants).forEach(([altLocale, altUrl]) => {
+          if (altUrl) {
+            xml += `    <xhtml:link rel="alternate" hreflang="${formatHreflang(altLocale)}" href="${altUrl}"/>\n`;
+          }
+        });
+        
+        xml += `    <xhtml:link rel="alternate" hreflang="x-default" href="${availableVariants['en-US'] || url}"/>\n`;
+      }
+      
       xml += '  </url>\n';
     });
   }
