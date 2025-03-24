@@ -46,26 +46,28 @@ function generateSiteMap(sitemapData: any = {}): string {
   });
 
 
-  sitemapData?.forEach((post) => {    
-    if(!post.url) return;
-      locales.forEach((locale) => {
-        const url = `${BASE_URL}${generateHref(locale, `${post?.contentType}/${post.url}`)}`;
-        const cleanedUrl = cleanUrl(url);
-        const urlKey = cleanedUrl.replace(BASE_URL, '').replace(/^\/(en-[A-Z]{2}\/)?/, '');
-        if (!urlMap.has(urlKey)) {
-          urlMap.set(urlKey, { 'en-US': cleanedUrl, 'en-GB': cleanedUrl, 'en-AU': cleanedUrl });
-        }
-        const variants = urlMap.get(urlKey);
-
-        if (!locale || locale === '') {
-          variants['en-US'] = cleanedUrl;
-        } else {
-          const formattedLocale = formatHreflang(locale);
-          variants[formattedLocale] = cleanedUrl;
-        }
-        
-      });
+  sitemapData?.forEach((post) => {
+    if (!post.url || !post.language) return;
+  
+    const postLocale = post.language; 
+    
+    locales.forEach((locale) => {
+      if (locale !== postLocale) return;
+  
+      const url = `${BASE_URL}${generateHref(locale, `${post?.contentType}/${post.url}`)}`;
+      const cleanedUrl = cleanUrl(url);
+      const urlKey = cleanedUrl.replace(BASE_URL, '').replace(/^\/(en-[A-Z]{2}\/)?/, '');
+  
+      if (!urlMap.has(urlKey)) {
+        urlMap.set(urlKey, { [postLocale]: cleanedUrl });
+      }
+      
+      const variants = urlMap.get(urlKey);
+      const formattedLocale = formatHreflang(locale);
+      variants[formattedLocale] = cleanedUrl;
+    });
   });
+  
 
   let xml = '<?xml version="1.0" encoding="UTF-8"?>\n';
   xml += '<urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9"\n';
@@ -85,7 +87,9 @@ function generateSiteMap(sitemapData: any = {}): string {
       });
 
       // Add x-default (using en-US version)
-      xml += `    <xhtml:link rel="alternate" hreflang="x-default" href="${variants['en-US']}"/>\n`;
+      console.log(variants);
+      
+      xml += `    <xhtml:link rel="alternate" hreflang="x-default" href="${variants['en-US'] || url}"/>\n`;
 
       xml += '  </url>\n';
     });
