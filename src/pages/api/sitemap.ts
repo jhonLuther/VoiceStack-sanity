@@ -9,7 +9,6 @@ import { getSitemapData } from '~/lib/sanity.queries'
 const BASE_URL = "https://www.voicestack.com"
 
 function cleanUrl(url: string): string {
-  // return url.split(' ')[0].trim();
   return url.split(' ')[0].trim().replace(/\/+$/, '');
 }
 
