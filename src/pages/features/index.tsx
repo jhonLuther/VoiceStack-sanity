@@ -73,7 +73,7 @@ export default function Page({ heroes, homeSettings, heroData, region, categorie
 export const getStaticProps: GetStaticProps<PageProps> = async ({
   params,
   locale,
-  draftMode = false,
+  draftMode = process.env.NEXT_PUBLIC_NODE_ENV === "development" ? true : false,
 }) => {
   const region = locale
   const slug = params?.slug as string

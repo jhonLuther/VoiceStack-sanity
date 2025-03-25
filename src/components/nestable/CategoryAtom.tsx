@@ -45,6 +45,7 @@ const CategoryAtom = ({ data }) => {
 							<H2 className="text-3xl font-bold mt-2">
 								{data?.heading}
 							</H2>
+							
 							<Paragraph className="text-gray-600 mt-3">
 								{data?.description}
 							</Paragraph>

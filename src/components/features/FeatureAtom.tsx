@@ -5,17 +5,12 @@ import SanityPortableText from '../blockEditor/sanityBlockEditor';
 import CheckMark from '../icons/CheckMark';
 import H3 from '../typography/H3';
 import Image from 'next/image';
-import Button from '../common/Button';
-import ButtonArrow from '../icons/ButtonArrow';
-import { FormModal } from '../common/FormModal';
-import { BookDemoContext } from '~/providers/BookDemoProvider';
+import DemoButton from '../common/DemoButton';
 
 
 
 const FeatureAtom = ({ data, index }) => {
 
-  const { isDemoPopUpShown } = useContext(BookDemoContext);
-  const [openForm, setOpenForm] = useState(false)
   if (!data) return null
   return (
     <div className={`flex justify-center border-b last:border-none  md:py-12 py-6 ${'md:py-24'} last:pb-0  `}>
@@ -54,23 +49,11 @@ const FeatureAtom = ({ data, index }) => {
 								))}
 							</ul>
             </div>
-
-            <div>
-              <Button type='primary' onClick={() => { setOpenForm(true) }}>
-                <ButtonArrow></ButtonArrow>
-                <span className="text-base font-medium">{`Book free demo`}</span>
-              </Button>
-            </div>
+            <DemoButton></DemoButton>
 
           </div>
         </div>
-        {openForm && (
-          <FormModal
-            className={`pt-9  flex items-start`}
-            onClose={() => setOpenForm(false)}
-            data={isDemoPopUpShown}
-          />
-        )}
+        
       
     </div>
   );

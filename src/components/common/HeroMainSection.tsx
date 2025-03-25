@@ -5,11 +5,8 @@ import Container from '../structure/Container';
 import Section from '../structure/Section';
 import H1 from '../typography/H1';
 import HeroBg from 'public/assets/hero-bg.png';
-import Button from './Button';
-import ButtonArrow from '../icons/ButtonArrow';
-import { FormModal } from './FormModal';
-import { BookDemoContext } from '~/providers/BookDemoProvider';
 import SeoHeader from './SeoHeader';
+import DemoButton from './DemoButton';
 
 interface HeroMainSectionProps {
   data?: any;
@@ -17,9 +14,6 @@ interface HeroMainSectionProps {
 
 const HeroMainSection: React.FC<HeroMainSectionProps> = ({ data }) => {
 
-  const { isDemoPopUpShown } = useContext(BookDemoContext);
-  const [isOpen, setIsOpen] = useState(false);
-  const [openForm, setOpenForm] = useState(false)
   if (!data) return null; 
   
   return (
@@ -52,19 +46,10 @@ const HeroMainSection: React.FC<HeroMainSectionProps> = ({ data }) => {
                 {data.description}
               </p>
             </div>
-            <Button type='primaryWhite' onClick={() => {setOpenForm(true)}}>
-              <ButtonArrow></ButtonArrow>
-              <span className="text-base font-medium">{`Book free demo`}</span>
-            </Button>
+            <DemoButton type={"primaryWhite"}></DemoButton>
           </div>
         </Container>
-        {openForm && (
-          <FormModal
-            data={isDemoPopUpShown}
-            className={`pt-9  flex items-start`}
-            onClose={() => setOpenForm(false)}
-          />
-        )}
+        
       </Section>
     </>
   );

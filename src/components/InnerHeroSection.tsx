@@ -13,14 +13,12 @@ import H1 from './typography/H1'
 import { PortableText } from '@portabletext/react'
 import Button from './common/Button'
 import ButtonArrow from './icons/ButtonArrow'
-import { BookDemoContext } from '~/providers/BookDemoProvider'
 import { FormModal } from './common/FormModal'
 import themeData from '~/migrations/theme.json'
 import Breadcrumb from './utils/breadCrumb'
+import DemoButton from './common/DemoButton'
 
 const InnerHeroSection = ({ data }) => {
-  const { isDemoPopUpShown } = useContext(BookDemoContext)
-  const [openForm, setOpenForm] = useState(false)
 	const heroTheme = data.heroTheme;
 	const selectedTheme = themeData.featureHero.find(item => item.theme === heroTheme);
   if (!data) return null
@@ -44,7 +42,7 @@ const InnerHeroSection = ({ data }) => {
 								<Image src={selectedTheme.imageUrl} alt='hero' width={1155} height={1155} className='w-full h-auto'></Image>
 							</div>
 						)}
-            <div className='flex !flex-col gap-12 flex-grow items-start relative z-10'>
+            <div className='flex !flex-col gap-12 flex-grow items-start relative'>
 							<div className="flex flex-col gap-4 items-start">
 								<Breadcrumb/>
 								<H1>
@@ -54,15 +52,7 @@ const InnerHeroSection = ({ data }) => {
 									<PortableText value={data.description} />
 								</div>
 							</div>
-              <Button
-                type="primaryWhite"
-                onClick={() => {
-                  setOpenForm(true)
-                }}
-              >
-                <ButtonArrow></ButtonArrow>
-                <span className="text-base font-medium">{`Book free demo`}</span>
-              </Button>
+              <DemoButton type={"primaryWhite"}></DemoButton>
             </div>
 
             <div className='flex-grow max-w-[500px] w-full relative'>
@@ -87,13 +77,6 @@ const InnerHeroSection = ({ data }) => {
             </div>
           </div>
 
-          {openForm && (
-            <FormModal
-              className={`pt-9  flex items-start`}
-              onClose={() => setOpenForm(false)}
-              data={isDemoPopUpShown}
-            />
-          )}
         </Container>
       </Section>
     </div>

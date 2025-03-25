@@ -39,6 +39,7 @@ export default function Page({ page, homeSettings, heroData, region, faqSectionD
   const { isDemoPopUpShown, setIsDemoPopUpShown } = useContext(BookDemoContext);
   const [refer, setRefer] = useState(null);
   const videoData = contactAndVideoData?.video;
+  const isDev = process.env.NEXT_PUBLIC_NODE_ENV === "development";
 
   useEffect(() => {
     setIsDemoPopUpShown(heroData);
@@ -65,7 +66,7 @@ export default function Page({ page, homeSettings, heroData, region, faqSectionD
 export const getStaticProps: GetStaticProps<PageProps> = async ({
   params,
   locale,
-  draftMode = false,
+  draftMode = process.env.NEXT_PUBLIC_NODE_ENV === "development" ? true : false,
 }) => {
   const region = locale
   const slug = params?.slug as string
