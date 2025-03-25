@@ -169,6 +169,7 @@ export default defineType({
     {
       name: 'hideChildPage',
       title: 'Hide Child Page',
+      description: 'Hide Child Page from sitemap',
       type: 'boolean',
       group: 'preference',
     },
