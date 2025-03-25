@@ -31,6 +31,10 @@ export default defineType({
       name: 'seo',
       title: 'Seo',
     },
+    {
+      name: 'preference',
+      title: 'Preference',
+    },
   ],
 
   fields: [
@@ -162,6 +166,13 @@ export default defineType({
         },
       ],
     }),
+    {
+      name: 'hideChildPage',
+      title: 'Hide Child Page',
+      description: 'Hide Child Page from sitemap',
+      type: 'boolean',
+      group: 'preference',
+    },
     defineField({
       name: 'featureFAQSection',
       title: 'FAQ Section',
