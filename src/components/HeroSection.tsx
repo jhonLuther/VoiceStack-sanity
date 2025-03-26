@@ -184,7 +184,7 @@ const HeroSection = ({ data, refer = null, video }) => {
             </div>
           </div>
 
-          <div className="relative w-full">
+          <div className="relative w-full fade-in">
             {/* <Image src={device} alt='device'></Image> */}
             <div className={`relative pt-[58%] lg:pt-0 ${isUk ? 'lg:h-[520px]' : 'lg:h-[480px]'} overflow-hidden w-full`}>
               <div className={`absolute left-0 top-[23%] lg:top-[80px] ${isUk ? 'w-[100%]' : 'w-[85%]'}`}>
