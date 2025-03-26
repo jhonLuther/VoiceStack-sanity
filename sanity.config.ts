@@ -15,6 +15,8 @@ import { previewUrl } from 'sanity-plugin-iframe-pane/preview-url'
 import {documentInternationalization} from '@sanity/document-internationalization'
 import {ExpandIcon} from '@sanity/icons'
 import {BoltIcon} from '@sanity/icons'
+import {DesktopIcon} from '@sanity/icons'
+import {EarthGlobeIcon} from '@sanity/icons'
 
 // see https://www.sanity.io/docs/api-versioning for how versioning works
 import {
@@ -118,7 +120,9 @@ export default defineConfig({
         'page',
         'miscellaneous',
         'featureList',
-        'featureCategory'
+        'featureCategory',
+        'heroes',
+        'globalSettings',
       ],
     }),
 
@@ -171,25 +175,34 @@ export default defineConfig({
             //     .documentId('platform'),
             // ),
 
-            S.documentTypeListItem('homeSettings').title('homeSettings'),
-            S.documentTypeListItem('testimonial').title('FeatureSection'),
+            S.documentTypeListItem('homeSettings').title('Home Settings'),
+            S.documentTypeListItem('testimonial').title('Feature Section'),
             S.documentTypeListItem('testimonialSection').title('Testimonial'),
             // S.documentTypeListItem('feature').title('Feature'),
             S.documentTypeListItem('legal').title('Legal'),
             S.documentTypeListItem('comparisonValue').title('Comparison Value'),
-            S.documentTypeListItem('platform').title('IntegrationList'),
-            S.documentTypeListItem('platformList').title('PlatformList'),
-            S.documentTypeListItem('logoListing').title('logoListing'),
-            S.documentTypeListItem('cardsListing').title('cardsListing'),
-            S.documentTypeListItem('csCardsListing').title('CsCardsListing'),
+            S.documentTypeListItem('platform').title('Integration List'),
+            S.documentTypeListItem('platformList').title('Platform List'),
+            S.documentTypeListItem('logoListing').title('logo Listing'),
+            S.documentTypeListItem('cardsListing').title('Cards Listing'),
+            S.documentTypeListItem('csCardsListing').title('Refer Cards Listing'),
             S.documentTypeListItem('faq').title('Faq'),
-            S.documentTypeListItem('testimonialHighlightSection').title('TestimonialHighlights'),
+            S.documentTypeListItem('testimonialHighlightSection').title('Testimonial Highlight'),
             S.documentTypeListItem('banner').title('banner'),
             S.documentTypeListItem('footer').title('Footer'),
             S.documentTypeListItem('miscellaneous').title('Miscellaneous').icon(ExpandIcon),
             S.documentTypeListItem('page').title('Pages'),
-            S.documentTypeListItem('featureList').title('FeatureList').icon(BoltIcon),
+            S.documentTypeListItem('featureList').title('Features').icon(BoltIcon),
             S.documentTypeListItem('featureCategory').title('Feature Category').icon(BoltIcon),
+            S.documentTypeListItem('heroes').title('Heroes').icon(DesktopIcon),
+            S.listItem()
+            .title('Global Settings')
+            .icon(EarthGlobeIcon)
+            .child(
+              S.document()
+                .schemaType('globalSettings')
+                .documentId('globalSettings'),
+            ),
 
             // S.documentTypeListItem('platform').title('Platform'),
           ]),

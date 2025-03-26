@@ -1,15 +1,13 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import { getClient } from '~/lib/sanity.client'
 import { readToken } from '~/lib/sanity.api'
-// import { getSitemapData } from '~/lib/sanity.queries'
 import siteConfig from 'config/siteConfig'
 import { generateHref } from '~/utils/common'
+import { getSitemapData } from '~/lib/sanity.queries'
 
-// const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
 const BASE_URL = "https://www.voicestack.com"
 
 function cleanUrl(url: string): string {
-  // return url.split(' ')[0].trim();
   return url.split(' ')[0].trim().replace(/\/+$/, '');
 }
 
@@ -27,14 +25,13 @@ function formatHreflang(locale: string): string {
   return localeMap[locale] || 'en-US';
 }
 
-function generateSiteMap() {
+function generateSiteMap(sitemapData: any = {}): string {
   const locales = siteConfig.locales;
   const urlMap = new Map();
 
   // Define static paths we need to generate
-  const staticPaths = ['', 'system-requirements'];
+  const staticPaths = ['', 'system-requirements','features'];
 
-  // Generate URL map
   staticPaths.forEach(staticPath => {
     const urlKey = staticPath || 'home';
     const variants = {
@@ -43,27 +40,66 @@ function generateSiteMap() {
       'en-AU': `${BASE_URL}/en-AU${staticPath ? `/${staticPath}` : ''}`
     };
     urlMap.set(urlKey, variants);
+    console.log(urlMap, "urlmap static");
+    
   });
 
+  sitemapData?.forEach((post) => {
+    if (!post.url || !post.language) return;
+
+    const postLocale = post.language; 
+    locales?.forEach((locale) => {
+      if (locale !== postLocale) return;
+      
+      const url = `${BASE_URL}${generateHref(locale, `${post?.contentType}/${post.url}`)}`;
+      const cleanedUrl = cleanUrl(url);
+      const urlKey = cleanedUrl.replace(BASE_URL, '').replace(/^\/(en-[A-Z]{2}\/)?/, '');
+  
+      if (!urlMap.has(urlKey)) {
+        urlMap.set(urlKey, { [postLocale]: cleanedUrl });
+      }      
+      
+      const variants = urlMap.get(urlKey);
+      const formattedLocale = formatHreflang(locale);
+      variants[formattedLocale] = cleanedUrl;
+    });
+  });
+  
   let xml = '<?xml version="1.0" encoding="UTF-8"?>\n';
   xml += '<urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9"\n';
   xml += '        xmlns:xhtml="https://www.w3.org/1999/xhtml">\n';
 
-  // Generate XML
   for (const [_, variants] of urlMap) {
-    Object.entries(variants).forEach(([locale, url]) => {
+    const uniqueUrls = new Set(Object.values(variants));
+    
+    if (uniqueUrls.size === 1) {
+      const url = [...uniqueUrls][0];
       xml += '  <url>\n';
       xml += `    <loc>${url}</loc>\n`;
       xml += `    <lastmod>${new Date().toISOString()}</lastmod>\n`;
+      xml += '  </url>\n';
+      continue;
+    }
 
-      // Add all alternates
-      Object.entries(variants).forEach(([altLocale, altUrl]) => {
-        xml += `    <xhtml:link rel="alternate" hreflang="${formatHreflang(altLocale)}" href="${altUrl}"/>\n`;
-      });
-
-      // Add x-default (using en-US version)
-      xml += `    <xhtml:link rel="alternate" hreflang="x-default" href="${variants['en-US']}"/>\n`;
-
+    // Multiple unique URLs
+    Object.entries(variants).forEach(([locale, url]) => {
+      if (!url) return;
+      
+      xml += '  <url>\n';
+      xml += `    <loc>${url}</loc>\n`;
+      xml += `    <lastmod>${new Date().toISOString()}</lastmod>\n`;
+      
+      const variantCount = Object.keys(variants).length;
+      if (variantCount > 1) {
+        Object.entries(variants).forEach(([altLocale, altUrl]) => {
+          if (altUrl) {
+            xml += `    <xhtml:link rel="alternate" hreflang="${formatHreflang(altLocale)}" href="${altUrl}"/>\n`;
+          }
+        });
+        
+        xml += `    <xhtml:link rel="alternate" hreflang="x-default" href="${variants['en-US'] || url}"/>\n`;
+      }
+      
       xml += '  </url>\n';
     });
   }
@@ -78,9 +114,9 @@ export default async function handler(
 ) {
   try {
     const client = getClient(req?.preview ? { token: readToken } : undefined);
-    // const data = await getSitemapData(client);
-    const sitemap = generateSiteMap();
+    const data = await getSitemapData(client);
     
+    const sitemap = generateSiteMap(data);
     res.setHeader('Content-Type', 'application/xml; charset=utf-8');
     res.write(sitemap);
     res.end();

@@ -188,3 +188,38 @@ export default function showCountryFlag(region: string) {
     return enAu.src
   }
 }
+
+
+export function convertData(data) {
+  if(!data) return { value: 0, suffix: '' };
+  if (typeof data === 'string') {
+    const conversions = {
+      B: 1e9, // Billion
+      M: 1e6, // Million
+      K: 1e3, // Thousand
+      '%': 1, // Percentage
+    };
+
+    const regex = /(\d+)([BMK%]?)/i; 
+    const match = data.match(regex);
+
+    if (match) {
+      const value = parseFloat(match[1]);
+      let unit = match[2] ? match[2].toUpperCase() : ''; 
+      if (unit === '%') {
+        return { value, suffix: '%' };
+      }
+
+      const multiplier = conversions[unit] || 1;
+      const formattedValue = value * multiplier;
+
+      return { value: formattedValue, suffix: '' }; 
+    } else {
+      return { value: parseFloat(data) || 0, suffix: '' }; 
+    }
+  } else if (typeof data === 'number') {
+    return { value: data, suffix: '' };
+  } else {
+    return { value: 0, suffix: '' }; 
+  }
+}

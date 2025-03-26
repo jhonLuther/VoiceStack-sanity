@@ -18,20 +18,24 @@ import { useSearchParams } from 'next/navigation'
 import getTextByReferrer from '~/helpers/getTextByReferrer'
 import { useRouter } from 'next/router'
 
-const HeroSection = ({ data, refer = null }) => {
+const HeroSection = ({ data, refer = null, video }) => {
   const [isOpen, setIsOpen] = useState(false)
   const [openForm, setOpenForm] = useState(false)
+  const router = useRouter();
+  const videoId = router.locale == "en" ? "3CsThXKvcvRrR3hwRsWWJY" : "Hj4GYLXARVjqQEnaejq3Bz";
+  // console.log(video[0]);
+  
   const overviewVideo: VideoItem = {
     videoPlatform: 'vidyard',
-    videoId: '3CsThXKvcvRrR3hwRsWWJY',
+    videoId: videoId,
   }
+  
 
   const [activeIndex, setActiveIndex] = useState(0)
   const [wordIndex, setWordIndex] = useState(0)
   const words = data?.heroTitleStaticDynamic[activeIndex]?.split(' ');
   const searchParams = useSearchParams();
   const source2 = searchParams.get("source"); // Get 'source' param from URL
-  const router = useRouter();
 
   const components: any = {
     block: {
@@ -159,15 +163,17 @@ const HeroSection = ({ data, refer = null }) => {
                   </span>
                 </Button>
                 )}
-                <Button
-                  type="video"
-                  onClick={() => {
-                    setIsOpen(true)
-                  }}
-                >
-                  <VideoPlayIconWhite></VideoPlayIconWhite>
-                  <span className="text-base font-medium">{`Watch overview`}</span>
-                </Button>
+                {video && (
+                  <Button
+                    type="video"
+                    onClick={() => {
+                      setIsOpen(true)
+                    }}
+                  >
+                    <VideoPlayIconWhite></VideoPlayIconWhite>
+                    <span className="text-base font-medium">{`Watch overview`}</span>
+                  </Button>
+                )}
               </div>
             </div>
           </div>
@@ -208,7 +214,8 @@ const HeroSection = ({ data, refer = null }) => {
             <VideoModal
               refer={refer}
               isPopup={true}
-              videoDetails={overviewVideo}
+              // videoDetails={overviewVideo}
+              videoDetails={video[0]}
               className={`pt-9 flex items-start`}
               onClose={() => setIsOpen(false)}
               openForm ={() => setOpenForm(true)}

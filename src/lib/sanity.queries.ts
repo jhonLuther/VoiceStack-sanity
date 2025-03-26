@@ -6,7 +6,6 @@ import { cookies } from 'next/headers'
 
 // ##############################################common fragments
 
-
 const bodyFragment = `
   body[] {
     ...,
@@ -17,8 +16,6 @@ const bodyFragment = `
     },
   }
 `
-
-
 
 export const postsQuery = groq`*[_type == "post" && defined(slug.current)] | order(_createdAt desc)`
 
@@ -104,7 +101,24 @@ export async function getHeroSectionData(client: SanityClient, region: string) {
   return await client.fetch(query, { region })
 }
 
-export async function getMiscellaneousData(client: SanityClient, region: string) {
+export async function getContactAndVideoInfo(
+  client: SanityClient,
+  region: string,
+) {
+  const query = groq`*[_type == "homeSettings" && language == $region][0]{
+      contactEmail,
+      video,
+      phoneNumber
+    }
+  `
+
+  return await client.fetch(query, { region })
+}
+
+export async function getMiscellaneousData(
+  client: SanityClient,
+  region: string,
+) {
   const query = groq` *[_type == 'miscellaneous' && language == $region][0]{
     ...,
     contentArea[] {
@@ -199,7 +213,10 @@ export async function logoSection(client: SanityClient, region: string) {
   return await client.fetch(query, { region })
 }
 
-export async function getCardsSectionData(client: SanityClient, region: string) {
+export async function getCardsSectionData(
+  client: SanityClient,
+  region: string,
+) {
   const query = groq` *[_type == "cardsListing" && language == $region][0]{
     heading,
     cardItems[]{
@@ -213,21 +230,24 @@ export async function getCardsSectionData(client: SanityClient, region: string) 
   return await client.fetch(query, { region })
 }
 
-export async function getFooterData(client:SanityClient, region:string) {
-  const query = groq ` *[_type == "footer" && language == $region][0]{
+export async function getFooterData(client: SanityClient, region: string) {
+  const query = groq` *[_type == "footer" && language == $region][0]{
     ...,
   }`
   return await client.fetch(query, { region })
 }
 
-export async function getBannerData(client:SanityClient, region:string) {
-  const query = groq ` *[_type == "banner" && language == $region][0]{
+export async function getBannerData(client: SanityClient, region: string) {
+  const query = groq` *[_type == "banner" && language == $region][0]{
     ...,
   }`
   return await client.fetch(query, { region })
 }
 
-export async function getCsCardsSectionData(client: SanityClient, region: string) {
+export async function getCsCardsSectionData(
+  client: SanityClient,
+  region: string,
+) {
   const query = groq` *[_type == "csCardsListing" && language == $region][0]{
     heading,
     subHeading,
@@ -242,7 +262,10 @@ export async function getCsCardsSectionData(client: SanityClient, region: string
   return await client.fetch(query, { region })
 }
 
-export async function getTestimonialHighlightSectionData(client: SanityClient, region: string) {
+export async function getTestimonialHighlightSectionData(
+  client: SanityClient,
+  region: string,
+) {
   const query = groq` *[_type == "testimonialHighlightSection" && language == $region][0]{
     ...,
     testimonials[]{
@@ -333,12 +356,164 @@ export async function getFeatureList(client: SanityClient, region: string) {
     slug,
     _id
   }`
-  
+
   return await client.fetch(query, { region })
 }
+export async function getCategoryWithFeatures(
+  client: SanityClient,
+  region: string = 'en',
+) {
+  const query = groq`
+    *[_type == "featureCategory" && language == $region]{
+      _id,
+      name,
+      heading,
+      description,
+      "icon": icon.asset->{
+      _id,
+      url,
+      altText,
+      title,
+      metadata {
+        dimensions {
+          width,
+          height,
+          aspectRatio
+        }
+      }
+    },
+      "mainImage": mainImage.asset->{
+      _id,
+      url,
+      altText,
+      title,
+      metadata {
+        dimensions {
+          width,
+          height,
+          aspectRatio
+        }
+      }
+    },
+      "features": *[_type == "featureList" && references(^._id)]{
+        name,
+        slug,
+        "icon": icon.asset->{
+      _id,
+      url,
+      altText,
+      title,
+      metadata {
+        dimensions {
+          width,
+          height,
+          aspectRatio
+        }
+      }
+    },
+        features 
+      }
+    }
+  `
 
+  return await client.fetch(query, { region })
+}
+export async function getGlobalSettings(
+  client: SanityClient,
+  type: string,
+  region: string = 'en',
+) {
+  let query = groq`
+    *[_type == "globalSettings" && language == $region][0]{
+      _id,
+      name,
+      heading,
+      description,
+      icon,
+      ...
+    }
+  `
 
-export async function getFeaturePageData(client: SanityClient, slug: string, region: string) {
+  if (type === 'features') {
+    query = groq`
+      *[_type == "globalSettings" && language == $region][0]{
+        _id,
+        name,
+        heading,
+        description,
+        icon,
+        heroSubFeatureHeading,
+        listingItem,
+      }
+    `
+  } else if (type === 'integrations') {
+    query = groq`
+      *[_type == "globalSettings" && language == $region][0]{
+        _id,
+        name,
+        heading,
+        description,
+        icon,
+        secondaryImage,
+      }
+    `
+  }
+
+  return await client.fetch(query, { region })
+}
+export async function getHeroes(
+  client: SanityClient,
+  contentType: string,
+  region: string = 'en',
+) {
+  const query = groq`
+  *[_type == "heroes" && contentType == $contentType && language == $region][0]{
+    ...,
+    _id,
+    contentType,
+    name,
+    heading,
+    subHeading,
+    description,
+    
+    "mainImage": mainImage.asset->{
+      _id,
+      url,
+      altText,
+      title,
+      metadata {
+        dimensions {
+          width,
+          height,
+          aspectRatio
+        }
+      }
+    },
+
+    "bgImage": bgImage.asset->{
+      _id,
+      url,
+      altText,
+      title,
+      metadata {
+        dimensions {
+          width,
+          height,
+          aspectRatio
+        }
+      }
+    }
+  }
+`
+
+  return await client.fetch(query, { contentType, region })
+}
+
+export async function getFeaturePageData(
+  client: SanityClient,
+  slug: string,
+  region: string,
+) {
   const query = groq`*[_type == "featureList" && slug.current == $slug && language == $region][0]{
     name,
     title,
@@ -428,8 +603,13 @@ export async function getFeaturePageData(client: SanityClient, slug: string, reg
         _createdAt,
         _id
       },
+      seoTitle,
+      seoDescription,
+      seoKeywords,
+      seoCanonical,
+      seoRobots,
   }`
-  
+
   return await client.fetch(query, { slug, region })
 }
 
@@ -573,6 +753,7 @@ export async function getALLHomeSettings(client: SanityClient, region: string) {
   }`
   return await client.fetch(query, { region })
 }
+
 export async function getHeaderData(client: SanityClient, region: string) {
   const query = groq`*[_type == "homeSettings" && language ==$region][0]{
     heroHeaderSection,
@@ -581,7 +762,6 @@ export async function getHeaderData(client: SanityClient, region: string) {
   }`
   return await client.fetch(query, { region })
 }
-
 
 export const getALLSiteSettings = (region) =>
   groq`*[_type == "siteSettings"] | order(_createdAt desc)[0]`
@@ -713,6 +893,24 @@ export async function getIntegrationList(client: SanityClient, region: string) {
 
   } | order(_createdAt desc)[0]`
   return await client.fetch(query, { region })
+}
+
+export const siteMapQuery = groq`*[_type == "featureList"  && defined(slug.current) && hideChildPage != true]{
+  "url": slug.current,
+  _updatedAt,
+  language,
+  contentType,
+  hideChildPage
+}`
+
+export async function getSitemapData(client: SanityClient): Promise<Post[]> {
+  try {
+    const features = await client.fetch(siteMapQuery)
+    return [...features]
+  } catch (error) {
+    console.error(error)
+    return []
+  }
 }
 
 /*####################################### INTERFACES    ###########################*/

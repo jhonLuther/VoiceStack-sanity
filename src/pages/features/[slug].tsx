@@ -1,11 +1,10 @@
-// pages/[slug].tsx
 import { GetStaticProps, GetStaticPaths } from 'next'
 import { groq } from 'next-sanity'
 import { getClient } from '~/lib/sanity.client'
 import { readToken } from '~/lib/sanity.api'
 import { SanityClient } from 'sanity'
 import Header from '~/components/common/Header'
-import { fetchFaq, getALLHomeSettings, getBannerData, getFeaturePageData, getFooterData } from '~/lib/sanity.queries'
+import { fetchFaq, getALLHomeSettings, getBannerData, getFeaturePageData, getFooterData, getContactAndVideoInfo } from '~/lib/sanity.queries'
 import { getHeroSectionData } from '~/lib/sanity.queries'
 import { useContext, useEffect, useState } from 'react'
 import { BookDemoContext } from '~/providers/BookDemoProvider'
@@ -15,8 +14,9 @@ import FaqSection from '~/components/FaqSection'
 import BannerSection from '~/components/BannerSection'
 import Footer from '~/components/common/Footer'
 import InnerHeroSection from '~/components/InnerHeroSection'
+import SeoHeader from '~/components/common/SeoHeader'
 
-interface PageProps {
+export interface PageProps {
   page: {
     heroSection: unknown
     featureFAQSection: unknown
@@ -32,11 +32,14 @@ interface PageProps {
   faqSectionData: any;
   bannerData: any;
   footerData: any;
+  contactAndVideoData: any;
 }
 
-export default function Page({ page, homeSettings, heroData, region, faqSectionData, bannerData, footerData }: PageProps) {
+export default function Page({ page, homeSettings, heroData, region, faqSectionData, bannerData, footerData, contactAndVideoData }: PageProps) {
   const { isDemoPopUpShown, setIsDemoPopUpShown } = useContext(BookDemoContext);
   const [refer, setRefer] = useState(null);
+  const videoData = contactAndVideoData?.video;
+  const isDev = process.env.NEXT_PUBLIC_NODE_ENV === "development";
 
   useEffect(() => {
     setIsDemoPopUpShown(heroData);
@@ -48,38 +51,35 @@ export default function Page({ page, homeSettings, heroData, region, faqSectionD
   if (!page) return <div>Page not found</div>
   return (
     <>
+      <SeoHeader seoData={page}/>
       <Header data={homeSettings} />
       <InnerHeroSection data={page.heroSection}/>
       <FeatureBenefitSection data={page?.featureSubSection} />
       <FeatureImageSection data={page?.featureBenefitsSection} />
-      <FaqSection data={page.featureFAQSection} mailId={''} />
-      <BannerSection data={bannerData} refer={refer} cta={true}></BannerSection>
+      <FaqSection data={page.featureFAQSection} mailId={heroData?.contactEmail} revamp={false} />
+      <BannerSection data={bannerData} refer={refer} cta={true} video={videoData}></BannerSection>
       <Footer data={footerData}></Footer>
     </>
   )
 }
 
-// Helper function for page data fetching
-
-
-
 export const getStaticProps: GetStaticProps<PageProps> = async ({
   params,
   locale,
-  draftMode = false,
+  draftMode = process.env.NEXT_PUBLIC_NODE_ENV === "development" ? true : false,
 }) => {
   const region = locale
   const slug = params?.slug as string
 
   const client = getClient(draftMode ? { token: readToken } : undefined) as SanityClient
-  const [page, homeSettings, heroData, faqSectionData, footerData, bannerData] = await Promise.all([
+  const [page, homeSettings, heroData, faqSectionData, footerData, bannerData, contactAndVideoData] = await Promise.all([
       getFeaturePageData(client, slug, region),
       getALLHomeSettings(client, region),
       getHeroSectionData(client, region),
       fetchFaq(client, region),
       getFooterData(client, region),
-      getBannerData(client, region)
-
+      getBannerData(client, region),
+      getContactAndVideoInfo(client, region)
     ])
 
   if (!page) {
@@ -94,16 +94,13 @@ export const getStaticProps: GetStaticProps<PageProps> = async ({
       homeSettings,
       heroData,
       region,
-      faqSectionData, footerData, bannerData
+      faqSectionData, footerData, bannerData, contactAndVideoData
     },
-    // revalidate: 60
   }
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const client = getClient()
-
-  // Get all pages with their slugs and languages
   const query = groq`*[_type == "featureList"]{
     "slug": slug.current,
     language

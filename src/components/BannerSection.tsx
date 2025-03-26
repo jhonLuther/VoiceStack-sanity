@@ -17,7 +17,7 @@ import { useRouter } from 'next/router'
 import TelIcon from '~/components/icons/TelIcon';
 import MailIcon from '~/components/icons/MailIcon';
 
-const BannerSection = ({data, refer=null, cta=false}) => {
+const BannerSection = ({data, refer=null, video, cta=false}: any) => {
   const { isDemoPopUpShown } = useContext(BookDemoContext);
   const [isOpen, setIsOpen] = useState(false);
   // const contactData = contacts;
@@ -38,9 +38,10 @@ const BannerSection = ({data, refer=null, cta=false}) => {
   
   
   const [openForm, setOpenForm] = useState(false)
+  const videoId = router.locale == "en" ? "3CsThXKvcvRrR3hwRsWWJY" : "Hj4GYLXARVjqQEnaejq3Bz";
   const overviewVideo:VideoItem = {
     videoPlatform: 'vidyard',
-    videoId: "3CsThXKvcvRrR3hwRsWWJY",
+    videoId: videoId,
   }
   
   return (
@@ -48,6 +49,7 @@ const BannerSection = ({data, refer=null, cta=false}) => {
     <Section className="pt-sm md:pt-lg pb-[200px] md:pb-[300px] bg-gray-900 relative scroll-smooth scroll-m-16" id="support">
       <Container>
         <div className='flex justify-center w-full'>
+          
           <div className='flex flex-col gap-8 items-center w-full'>
             <div className='flex flex-col  items-center'>
               {data?.title && (
@@ -69,10 +71,12 @@ const BannerSection = ({data, refer=null, cta=false}) => {
                   <ButtonArrow></ButtonArrow>
                   <span className="text-base font-medium">{`Book free demo`}</span>
                 </Button>
-                <Button type='video' onClick={() => {setIsOpen(true) }}>
-                  <VideoPlayIconWhite></VideoPlayIconWhite>
-                  <span className="text-base font-medium">{`Watch overview`}</span>
-                </Button>
+                {video && (
+                  <Button type='video' onClick={() => {setIsOpen(true) }}>
+                    <VideoPlayIconWhite></VideoPlayIconWhite>
+                    <span className="text-base font-medium">{`Watch overview`}</span>
+                  </Button>
+                )}
               </div>
             ):(
 
@@ -125,7 +129,8 @@ const BannerSection = ({data, refer=null, cta=false}) => {
           <VideoModal
             refer={refer}
             isPopup={true}
-            videoDetails={overviewVideo}
+            // videoDetails={overviewVideo}
+            videoDetails={video[0]}
             className={`pt-9 flex items-start`}
             onClose={() => setIsOpen(false)}
             openForm ={() => setOpenForm(true)}

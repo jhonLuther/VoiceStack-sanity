@@ -20,4 +20,16 @@ export default defineType({
         type: 'text',
       }),
   ],
+
+  preview: {
+    select: {
+      title: 'featureSubHead',
+      lang: 'language',
+      media: 'featureChipImage',
+    },
+    prepare(selection) {
+      const { lang, title } = selection
+      return { ...selection, subtitle: lang && `${lang}` }
+    },
+      },
 })

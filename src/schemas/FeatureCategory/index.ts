@@ -14,16 +14,21 @@ export default defineType({
     defineField({
       name: 'heading',
       title: 'Category Heading',
-      type: 'portableContent',
+      type: 'string',
     }),
     defineField({
       name: 'description',
       title: 'Category Description',
-      type: 'portableContent',
+      type: 'text',
     }),
     defineField({
-        name: 'Icon',
+        name: 'icon',
         title: 'Category Icon',
+        type: 'image',
+      }),
+    defineField({
+        name: 'mainImage',
+        title: 'Main Image',
         type: 'image',
       }),
     defineField({
@@ -32,5 +37,17 @@ export default defineType({
       readOnly: true,
       hidden: true,
     }),
+    
   ],
+  preview: {
+    select: {
+      title: 'name',
+      lang: 'language',
+      media: 'icon',
+    },
+    prepare(selection) {
+      const { lang, title } = selection
+      return { ...selection, subtitle: lang && `${lang}` }
+    },
+      },
 })

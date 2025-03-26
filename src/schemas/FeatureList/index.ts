@@ -1,5 +1,6 @@
 import { defineField, defineType } from 'sanity'
 import { isUniqueOtherThanLanguage } from '~/lib/sanity'
+import { seoFields } from '../Heroes'
 export default defineType({
   name: 'featureList',
   title: 'Feature List',
@@ -26,12 +27,28 @@ export default defineType({
       name: 'faqSection',
       title: 'FAQ Section',
     },
+    {
+      name: 'seo',
+      title: 'Seo',
+    },
+    {
+      name: 'preference',
+      title: 'Preference',
+    },
   ],
 
   fields: [
     defineField({
       name: 'name',
       title: 'Feature Name',
+      group: 'basic',
+      type: 'string',
+    }),
+    defineField({
+      name: 'contentType',
+      title: 'Content Type',
+      description: 'This is used in sitemap and for internal reference',
+      validation: (Rule) => Rule.required(),
       group: 'basic',
       type: 'string',
     }),
@@ -84,6 +101,12 @@ export default defineType({
       type: 'reference',
       group: 'basic',
       to: [{ type: 'featureCategory' }],
+      options: {
+        filter: ({ document }) => ({
+          filter: '_type == "featureCategory" && language == $language',
+          params: { language: document.language }, 
+        }),
+      }
     }),
     defineField({
       name: "heroTheme",
@@ -97,6 +120,12 @@ export default defineType({
         ]
       },
       initialValue: "1" 
+    }),
+    defineField({
+      name: 'icon',
+      title: 'Icon',
+      type: 'image',
+      group: 'basic',
     }),
     defineField({
       name: 'featureSubSection',
@@ -137,6 +166,13 @@ export default defineType({
         },
       ],
     }),
+    {
+      name: 'hideChildPage',
+      title: 'Hide Child Page',
+      description: 'Hide Child Page from sitemap',
+      type: 'boolean',
+      group: 'preference',
+    },
     defineField({
       name: 'featureFAQSection',
       title: 'FAQ Section',
@@ -156,6 +192,7 @@ export default defineType({
         },
       ],
     }),
+    ...seoFields,
     defineField({
       name: 'language',
       type: 'string',
